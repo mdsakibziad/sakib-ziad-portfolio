@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Variables ──────────────────────────────────────────────────────────── */
+:root {
+  --color-background:   #0B0B0A;
+  --color-surface:      #111110;
+  --color-ivory:        #F7F4EF;
+  --color-gold:         #C9A66B;
+  --color-gold-light:   #D8BA8A;
+  --color-gold-dark:    #A8854A;
+  --color-muted:        #6B6B68;
+  --color-border:       rgba(247, 244, 239, 0.12);
+  --color-border-strong: rgba(247, 244, 239, 0.24);
+
+  /* Typography */
+  --font-fraunces: 'Fraunces', Georgia, serif;
+  --font-inter:    'Inter', system-ui, sans-serif;
+
+  /* Transitions */
+  --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Base Reset & Globals ───────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-ivory font-inter;
+    font-size: 1rem;
+    line-height: 1.65;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  /* Headings default to Fraunces */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-fraunces font-light;
+    letter-spacing: -0.02em;
+  }
+
+  /* Anchor reset */
+  a {
+    @apply text-ivory no-underline;
+    transition: color 300ms var(--ease-luxury);
+  }
+
+  /* Selection styling */
+  ::selection {
+    background-color: var(--color-gold);
+    color: var(--color-background);
+  }
+
+  /* Focus visible */
+  :focus-visible {
+    outline: 1.5px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+}
+
+/* ── Custom Scrollbar ───────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(247, 244, 239, 0.15);
+  border-radius: 100px;
+  transition: background 300ms ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 166, 107, 0.4);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(247, 244, 239, 0.15) var(--color-background);
+}
+
+/* ── Utility Components ─────────────────────────────────────────────────────── */
+@layer components {
+  /* Container override — luxury wide grid */
+  .container-luxury {
+    @apply w-full mx-auto px-6 md:px-10 lg:px-16;
+    max-width: 88rem;
+  }
+
+  /* Editorial section spacing */
+  .section-pad {
+    @apply py-24 md:py-32 lg:py-40;
+  }
+
+  /* Gold horizontal rule */
+  .hr-gold {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--color-gold) 30%,
+      var(--color-gold) 70%,
+      transparent 100%
+    );
+    opacity: 0.3;
+    border: none;
+  }
+
+  /* Eyebrow label above headings */
+  .eyebrow {
+    @apply font-inter text-label-md uppercase tracking-widest text-gold;
+    letter-spacing: 0.18em;
+  }
+
+  /* Gold text gradient */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #C9A66B 0%, #D8BA8A 50%, #A8854A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Surface card */
+  .card-surface {
+    @apply bg-surface border border-border rounded-2xl;
+    transition: border-color 400ms var(--ease-luxury), box-shadow 400ms var(--ease-luxury);
+  }
+
+  .card-surface:hover {
+    @apply border-border-strong;
+    box-shadow: 0 0 0 1px rgba(201, 166, 107, 0.12), 0 8px 40px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ── Animations ─────────────────────────────────────────────────────────────── */
+@layer utilities {
+  /* Animation delays */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+  .animation-delay-600 { animation-delay: 600ms; }
+  .animation-delay-700 { animation-delay: 700ms; }
+  .animation-delay-800 { animation-delay: 800ms; }
+
+  /* Fill mode */
+  .animation-fill-both { animation-fill-mode: both; }
+
+  /* Noise texture overlay */
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+}
