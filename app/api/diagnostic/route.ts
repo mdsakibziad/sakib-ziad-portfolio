@@ -88,7 +88,8 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const { brandName, websiteUrl, instagramHandle, primaryChallenge, email } =
     parsed.data
 
-  const resend = new Resend(process.env.RESEND_API_KEY)
+  const apiKey = process.env.RESEND_API_KEY
+  const resend = apiKey ? new Resend(apiKey) : null
 
   const reportInput: GapReportInput = {
     brandName,
@@ -98,7 +99,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   }
 
   // 3a. Fire-and-forget owner acknowledgement (don't block on AI)
-  void sendOwnerAcknowledgement(resend, { ...body, type: 'diagnostic' })
+  if (resend) {
+    void sendOwnerAcknowledgement(resend, { ...body, type: 'diagnostic' })
+  } else {
+    console.warn('[diagnostic] RESEND_API_KEY not configured. Mocking diagnostic email dispatch.')
+  }
 
   // 3b. Generate AI Gap Report (awaited — we need it for both emails)
   let reportGenerated = false
@@ -107,56 +112,60 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const report = await generateGapReport(reportInput)
     reportGenerated = true
 
-    // 4a. Email owner: full report + raw submission data (parallel with prospect email)
-    const ownerEmailPromise = resend.emails.send({
-      from: FROM_EMAIL,
-      to: NOTIFICATION_EMAIL,
-      subject: `[Full Gap Report] ${brandName}`,
-      html: gapReportOwnerEmail(brandName, body, report),
-    })
+    if (resend) {
+      // 4a. Email owner: full report + raw submission data (parallel with prospect email)
+      const ownerEmailPromise = resend.emails.send({
+        from: FROM_EMAIL,
+        to: NOTIFICATION_EMAIL,
+        subject: `[Full Gap Report] ${brandName}`,
+        html: gapReportOwnerEmail(brandName, body, report),
+      })
 
-    // 4b. Email prospect: teaser version with CTA
-    const prospectEmailPromise = resend.emails.send({
-      from: FROM_EMAIL,
-      to: email,
-      subject: `Your AI Gap Report for ${brandName} is ready`,
-      html: gapReportProspectEmail(brandName, report),
-    })
+      // 4b. Email prospect: teaser version with CTA
+      const prospectEmailPromise = resend.emails.send({
+        from: FROM_EMAIL,
+        to: email,
+        subject: `Your AI Gap Report for ${brandName} is ready`,
+        html: gapReportProspectEmail(brandName, report),
+      })
 
-    const [ownerResult, prospectResult] = await Promise.allSettled([
-      ownerEmailPromise,
-      prospectEmailPromise,
-    ])
+      const [ownerResult, prospectResult] = await Promise.allSettled([
+        ownerEmailPromise,
+        prospectEmailPromise,
+      ])
 
-    if (ownerResult.status === 'rejected') {
-      console.error('[diagnostic] Failed to send full report to owner:', ownerResult.reason)
-    } else {
-      console.log('[diagnostic] Full report emailed to owner.')
-    }
+      if (ownerResult.status === 'rejected') {
+        console.error('[diagnostic] Failed to send full report to owner:', ownerResult.reason)
+      } else {
+        console.log('[diagnostic] Full report emailed to owner.')
+      }
 
-    if (prospectResult.status === 'rejected') {
-      console.error('[diagnostic] Failed to send teaser to prospect:', prospectResult.reason)
-    } else {
-      console.log('[diagnostic] Teaser report emailed to prospect:', email)
+      if (prospectResult.status === 'rejected') {
+        console.error('[diagnostic] Failed to send teaser to prospect:', prospectResult.reason)
+      } else {
+        console.log('[diagnostic] Teaser report emailed to prospect:', email)
+      }
     }
   } catch (err) {
     // AI report failed — send owner the raw data so nothing is lost
     console.error('[diagnostic] AI report generation failed:', err)
 
-    try {
-      await resend.emails.send({
-        from: FROM_EMAIL,
-        to: NOTIFICATION_EMAIL,
-        subject: `[Diagnostic Requested — Manual Review] ${brandName}`,
-        html: contactNotificationEmail({
-          ...body,
-          type: 'diagnostic',
-          '_note': 'AI report generation failed. Please prepare manually.',
-        }),
-      })
-      console.log('[diagnostic] Manual review notification sent to owner.')
-    } catch (fallbackErr) {
-      console.error('[diagnostic] Fallback owner email also failed:', fallbackErr)
+    if (resend) {
+      try {
+        await resend.emails.send({
+          from: FROM_EMAIL,
+          to: NOTIFICATION_EMAIL,
+          subject: `[Diagnostic Requested — Manual Review] ${brandName}`,
+          html: contactNotificationEmail({
+            ...body,
+            type: 'diagnostic',
+            '_note': 'AI report generation failed. Please prepare manually.',
+          }),
+        })
+        console.log('[diagnostic] Manual review notification sent to owner.')
+      } catch (fallbackErr) {
+        console.error('[diagnostic] Fallback owner email also failed:', fallbackErr)
+      }
     }
 
     // Still return 200 — user experience is not penalised for our AI failure

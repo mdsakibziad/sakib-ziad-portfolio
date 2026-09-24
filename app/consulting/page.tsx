@@ -1,24 +1,20 @@
 'use client'
 
-import React from 'react'
-import Link from 'next/link'
+import React, { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
 import {
-  ArrowRight,
-  ArrowUpRight,
   CheckCircle2,
   XCircle,
+  ArrowRight,
+  ArrowUpRight,
+  Layers,
   Sparkles,
-  Cpu,
-  ShieldCheck,
-  Calendar,
-  Mail,
+  Bot,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ApplicationForm } from '@/components/application-form'
 
-const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
+const EASE_LUXURY = [0.16, 1, 0.3, 1] as const
 
 function RevealSection({
   children,
@@ -63,29 +59,29 @@ export default function ConsultingPage() {
   const engagements = [
     {
       num: '01',
-      title: 'The Diagnostic & Strategy Blueprint',
-      badge: 'Single Engagement',
-      ideal: 'Best for brands seeking an immediate, forensic audit of their creative pipeline and a 90-day AI roadmap.',
+      title: 'The AI Creative & Systems Audit',
+      badge: '90-Min Intensive + Blueprint',
+      ideal: 'Best for founders and executives seeking an objective, forensic evaluation of their brand’s generative readiness.',
       features: [
-        'Complete audit of visual assets, prompt stacks, and category positioning',
-        '90-minute private architectural strategy session with Sakib Ziad',
-        'Custom written AI Opportunity Blueprint & tool-stack recommendations',
-        'Immediate delivery of prioritized 30/60/90 day execution steps',
+        '90-minute private strategy session with Sakib Ziad',
+        'Deep-dive audit of your visual identity, content pipelines, and creative tech stack',
+        'Custom Gap & Opportunity Synthesis with immediate 30-day action items',
+        'Direct identification of high-leverage generative workflows for your vertical',
       ],
-      investment: 'Fixed strategic audit fee — credited toward retainer upon mutual fit',
+      investment: 'Investment discussed during qualification application',
     },
     {
       num: '02',
       title: 'Monthly Advisory Retainer',
-      badge: 'Ongoing Partner Access',
-      ideal: 'Best for growth-stage brands needing dedicated executive creative direction and ongoing AI systems evolution.',
+      badge: 'Ongoing Strategic Partnership',
+      ideal: 'Best for growth-stage beauty brands actively deploying generative creative and scaling multi-channel output.',
       features: [
-        'Bi-weekly strategic direction calls with founder & internal marketing leads',
-        'Direct async access for prompt optimization, aesthetic review, and model tuning',
-        'Continual testing and deployment of emerging generative models (Midjourney, Flux, Kling)',
-        'Ongoing oversight of autonomous brand agent and content workflows',
+        'Bi-weekly strategic direction and prompt architecture reviews',
+        'Asynchronous executive counsel via private communication channel',
+        'Creative direction oversight across campaigns and launch assets',
+        'Ongoing AI toolstack evaluations, LoRA model guidance, and prompt repositories',
       ],
-      investment: 'Monthly strategic retainer — strictly capped at 3 concurrent brands',
+      investment: 'Selective retainer — strictly limited to 3 concurrent brand partners',
     },
     {
       num: '03',
@@ -103,14 +99,14 @@ export default function ConsultingPage() {
   ]
 
   return (
-    <div className="bg-background text-ivory min-h-screen selection:bg-gold selection:text-background pt-28">
+    <div className="bg-background text-ivory min-h-screen selection:bg-white selection:text-black pt-28">
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="section-pad border-b border-border/80" aria-label="Consulting Hero">
+      <section className="section-pad border-b border-white/[0.08]" aria-label="Consulting Hero">
         <div className="container-luxury">
           <div className="max-w-4xl">
             <RevealSection>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gold/30 bg-surface/50 text-[11px] uppercase tracking-[0.2em] text-gold mb-8">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full liquid-glass-pill text-[11px] uppercase tracking-[0.2em] text-white/80 mb-8">
                 Private Advisory & Infrastructure
               </div>
             </RevealSection>
@@ -118,22 +114,22 @@ export default function ConsultingPage() {
             <RevealSection delay={0.1}>
               <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
                 Strategic AI Counsel for Beauty Brands That{' '}
-                <span className="italic font-fraunces text-gold font-light">
+                <span className="italic font-fraunces font-light text-zinc-300">
                   Mean Business.
                 </span>
               </h1>
             </RevealSection>
 
             <RevealSection delay={0.2}>
-              <p className="body-editorial text-lg sm:text-xl text-ivory/80 max-w-2xl mb-10">
+              <p className="body-editorial text-lg sm:text-xl text-zinc-300 max-w-2xl mb-10">
                 High-touch advisory spanning AI-native creative direction, campaign audits, and autonomous agent pipelines — engineered to make your creative operations unstoppable.
               </p>
             </RevealSection>
 
             <RevealSection delay={0.3}>
-              <Button asChild variant="gold" size="lg">
-                <a href="#application" className="flex items-center gap-2">
-                  <span>Apply for an Advisory Strategy Call</span>
+              <Button asChild variant="default" size="lg" className="w-full sm:w-auto">
+                <a href="#application" className="flex items-center justify-center gap-2">
+                  <span>Apply for Advisory Call</span>
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </Button>
@@ -142,27 +138,27 @@ export default function ConsultingPage() {
         </div>
       </section>
 
-      {/* ── Qualification Criteria (Who It Is / Is Not For) ────────────────── */}
+      {/* ── Qualification Criteria ────────────────────────────────────────── */}
       <section className="section-pad bg-surface/30" aria-label="Qualification">
         <div className="container-luxury">
           <RevealSection className="text-center max-w-2xl mx-auto mb-16">
             <p className="eyebrow-luxury mb-4">Mutual Fit</p>
             <h2 className="heading-section">Selective by Necessity</h2>
-            <p className="body-muted">We protect outcomes by only partnering where we know we can create 10× leverage.</p>
+            <p className="body-muted text-zinc-400">We protect outcomes by only partnering where we know we can create 10× leverage.</p>
           </RevealSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
             {/* IS FOR */}
             <RevealSection delay={0.1}>
-              <div className="card-surface p-8 sm:p-10 border-gold/30 h-full">
+              <div className="card-surface p-6 sm:p-10 h-full border-white/10">
                 <div className="flex items-center gap-3 mb-6">
-                  <CheckCircle2 className="w-6 h-6 text-gold" />
-                  <h3 className="heading-card text-2xl text-ivory">This Is For You If</h3>
+                  <CheckCircle2 className="w-6 h-6 text-white" />
+                  <h3 className="heading-card text-2xl text-white">This Is For You If</h3>
                 </div>
                 <ul className="space-y-4">
                   {isFor.map((item) => (
-                    <li key={item} className="flex items-start gap-3 body-editorial text-sm sm:text-base">
-                      <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-2.5" />
+                    <li key={item} className="flex items-start gap-3 body-editorial text-sm sm:text-base text-zinc-300">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/60 shrink-0 mt-2.5" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -172,15 +168,15 @@ export default function ConsultingPage() {
 
             {/* IS NOT FOR */}
             <RevealSection delay={0.2}>
-              <div className="card-surface p-8 sm:p-10 border-border/80 h-full">
+              <div className="card-surface p-6 sm:p-10 h-full border-white/10">
                 <div className="flex items-center gap-3 mb-6">
-                  <XCircle className="w-6 h-6 text-muted-light" />
-                  <h3 className="heading-card text-2xl text-ivory">This Is Not For You If</h3>
+                  <XCircle className="w-6 h-6 text-zinc-500" />
+                  <h3 className="heading-card text-2xl text-white">This Is Not For You If</h3>
                 </div>
                 <ul className="space-y-4">
                   {isNotFor.map((item) => (
-                    <li key={item} className="flex items-start gap-3 body-muted text-sm sm:text-base">
-                      <span className="w-1.5 h-1.5 rounded-full bg-muted-light/50 shrink-0 mt-2.5" />
+                    <li key={item} className="flex items-start gap-3 body-editorial text-sm sm:text-base text-zinc-400">
+                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-600 shrink-0 mt-2.5" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -191,62 +187,99 @@ export default function ConsultingPage() {
         </div>
       </section>
 
-      {/* ── Two Pillars Scope of Work ──────────────────────────────────────── */}
-      <section className="section-pad border-t border-border/80" aria-label="Scope of Advisory">
+      {/* ── Scope of Work (The Two Pillars) ─────────────────────────────────── */}
+      <section className="section-pad border-t border-white/[0.08]" aria-label="Scope of Work">
         <div className="container-luxury">
           <RevealSection className="text-center max-w-2xl mx-auto mb-16">
             <p className="eyebrow-luxury mb-4">Advisory Scope</p>
-            <h2 className="heading-section">Dual-Pillar Advisory Architecture</h2>
+            <h2 className="heading-section">Two Pillars. One Strategic Partner.</h2>
+            <p className="body-muted text-zinc-400">Artistic direction engineered with computational leverage.</p>
           </RevealSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mb-16">
-            {/* Pillar 1 */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
+            {/* PILLAR 1 */}
             <RevealSection delay={0.1}>
-              <div className="card-surface p-8 sm:p-10 h-full">
-                <div className="w-10 h-10 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold mb-6">
-                  <Sparkles className="w-5 h-5" />
+              <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-white/10">
+                <div>
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/15 flex items-center justify-center text-white">
+                      <Sparkles className="w-6 h-6 stroke-[1.5]" />
+                    </div>
+                    <div>
+                      <span className="eyebrow-luxury text-[10px]">Pillar 01</span>
+                      <h3 className="heading-card text-xl sm:text-2xl">AI Creative Strategy & Direction</h3>
+                    </div>
+                  </div>
+                  <ul className="space-y-3.5 body-editorial text-sm sm:text-base text-zinc-300">
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/50 shrink-0 mt-2" />
+                      <span>Proprietary prompt taxonomies calibrated to cosmetic physics and packaging caustics</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/50 shrink-0 mt-2" />
+                      <span>High-fashion visual worldbuilding and editorial moodboard synthesis</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/50 shrink-0 mt-2" />
+                      <span>Internal team training on diffusion models (Midjourney, Flux, Stable Diffusion)</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/50 shrink-0 mt-2" />
+                      <span>Creative audits ensuring brand defensibility and eliminating synthetic artifacting</span>
+                    </li>
+                  </ul>
                 </div>
-                <span className="eyebrow-luxury text-gold">Pillar 01</span>
-                <h3 className="heading-card text-2xl my-3">AI Creative Strategy & Art Direction</h3>
-                <ul className="space-y-3 body-muted text-sm pt-4 border-t border-border">
-                  <li>• Creative audits & brand aesthetic deconstruction</li>
-                  <li>• Custom prompt taxonomy engineered for skincare & cosmetic physics</li>
-                  <li>• Packaging visualization & 3D generative asset workflows</li>
-                  <li>• Visual brand guidelines calibrated for generative consistency</li>
-                </ul>
               </div>
             </RevealSection>
 
-            {/* Pillar 2 */}
+            {/* PILLAR 2 */}
             <RevealSection delay={0.2}>
-              <div className="card-surface p-8 sm:p-10 h-full">
-                <div className="w-10 h-10 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold mb-6">
-                  <Cpu className="w-5 h-5" />
+              <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-white/10">
+                <div>
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/15 flex items-center justify-center text-white">
+                      <Bot className="w-6 h-6 stroke-[1.5]" />
+                    </div>
+                    <div>
+                      <span className="eyebrow-luxury text-[10px]">Pillar 02</span>
+                      <h3 className="heading-card text-xl sm:text-2xl">Autonomous Agents & Brand Systems</h3>
+                    </div>
+                  </div>
+                  <ul className="space-y-3.5 body-editorial text-sm sm:text-base text-zinc-300">
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/50 shrink-0 mt-2" />
+                      <span>Automated customer review & sentiment ingestion mapped directly to visual briefs</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/50 shrink-0 mt-2" />
+                      <span>Custom Make.com and n8n orchestration connecting APIs and diffusion pipelines</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/50 shrink-0 mt-2" />
+                      <span>Prestige skincare tone-of-voice copy models for ad scripts and retention copy</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/50 shrink-0 mt-2" />
+                      <span>Autonomous multi-aspect ratio rendering pipelines for seamless omnichannel distribution</span>
+                    </li>
+                  </ul>
                 </div>
-                <span className="eyebrow-luxury text-gold">Pillar 02</span>
-                <h3 className="heading-card text-2xl my-3">Autonomous AI Brand Operations</h3>
-                <ul className="space-y-3 body-muted text-sm pt-4 border-t border-border">
-                  <li>• Autonomous content engines mapping audience search to creative generation</li>
-                  <li>• Custom Make.com and n8n pipeline orchestration for multi-channel assets</li>
-                  <li>• Tone-of-voice agent calibration for beauty copywriting</li>
-                  <li>• Creative ops bottleneck elimination and internal team empowerment</li>
-                </ul>
               </div>
             </RevealSection>
           </div>
 
-          {/* Explicit Witlyn Callout Box */}
-          <RevealSection delay={0.3}>
-            <div className="card-surface p-8 sm:p-10 border-gold/40 bg-surface/80 flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Studio Production Callout */}
+          <RevealSection>
+            <div className="card-surface p-8 sm:p-12 border-white/15 bg-surface-elevated/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div className="max-w-2xl">
-                <span className="eyebrow-luxury text-gold">Need Full Production Instead?</span>
-                <h4 className="heading-card text-2xl my-2">Looking for a full-service creative studio?</h4>
-                <p className="body-muted text-sm sm:text-base">
-                  If you need end-to-end campaign execution, finished 3D asset packs, or done-for-you monthly content retainers, visit <strong>Witlyn</strong> — our dedicated production studio.
+                <span className="eyebrow-luxury mb-2 block">Production Alternative</span>
+                <h4 className="heading-card text-2xl text-white mb-2">Looking for Done-For-You Campaign Production?</h4>
+                <p className="body-muted text-zinc-300">
+                  If you need a full creative studio to concept and execute complete campaigns rather than advisory guidance, visit Witlyn — my full-service AI-native creative studio.
                 </p>
               </div>
-              <Button asChild variant="outline-gold" size="lg" className="shrink-0">
-                <a href="https://witlyn.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+              <Button asChild variant="outline" size="lg" className="shrink-0 w-full sm:w-auto">
+                <a href="https://witlyn.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                   <span>Visit Witlyn Studio</span>
                   <ArrowUpRight className="w-4 h-4" />
                 </a>
@@ -256,42 +289,43 @@ export default function ConsultingPage() {
         </div>
       </section>
 
-      {/* ── Engagement Structures ─────────────────────────────────────────── */}
-      <section className="section-pad bg-surface/30 border-t border-border/80" aria-label="Engagements">
+      {/* ── Engagement Structures ───────────────────────────────────────────── */}
+      <section className="section-pad bg-surface/30 border-t border-white/[0.08]" aria-label="Engagements">
         <div className="container-luxury">
           <RevealSection className="text-center max-w-2xl mx-auto mb-16">
-            <p className="eyebrow-luxury mb-4">Engagement Models</p>
-            <h2 className="heading-section">Structured for Depth, Not Volume</h2>
-            <p className="body-muted">Select the tier matching your brand's growth phase and operational scale.</p>
+            <p className="eyebrow-luxury mb-4">Structure</p>
+            <h2 className="heading-section">How We Work Together</h2>
+            <p className="body-muted text-zinc-400">Structured for depth and partner-level attention.</p>
           </RevealSection>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {engagements.map((tier, idx) => (
-              <RevealSection key={tier.num} delay={idx * 0.1}>
-                <div className="card-surface p-8 flex flex-col justify-between h-full border-border/80 hover:border-gold/50">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+            {engagements.map((eng, idx) => (
+              <RevealSection key={eng.num} delay={idx * 0.1}>
+                <div className="card-surface p-6 sm:p-8 flex flex-col justify-between h-full border-white/10">
                   <div>
-                    <span className="font-fraunces text-2xl text-gold/40 block mb-4">{tier.num}</span>
-                    <span className="inline-block px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-gold/10 border border-gold/30 text-gold mb-4">
-                      {tier.badge}
-                    </span>
-                    <h3 className="heading-card text-2xl mb-3">{tier.title}</h3>
-                    <p className="body-muted text-xs sm:text-sm mb-6">{tier.ideal}</p>
-
-                    <div className="pt-6 border-t border-border space-y-3 mb-8">
-                      {tier.features.map((feature) => (
-                        <div key={feature} className="flex items-start gap-2.5 text-xs text-ivory/80 leading-relaxed font-light">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-gold shrink-0 mt-0.5" />
-                          <span>{feature}</span>
-                        </div>
-                      ))}
+                    <div className="flex items-center justify-between mb-6">
+                      <span className="font-fraunces text-2xl text-white/40">{eng.num}</span>
+                      <span className="px-3 py-1 rounded-full text-[10px] font-inter uppercase tracking-wider bg-white/10 border border-white/15 text-white">
+                        {eng.badge}
+                      </span>
                     </div>
+
+                    <h3 className="heading-card text-xl sm:text-2xl mb-3 text-white">{eng.title}</h3>
+                    <p className="body-muted text-xs sm:text-sm text-zinc-400 mb-6">{eng.ideal}</p>
+
+                    <ul className="space-y-3 pt-6 border-t border-white/10 mb-8 body-editorial text-xs sm:text-sm text-zinc-300">
+                      {eng.features.map((feat) => (
+                        <li key={feat} className="flex items-start gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-white/70 shrink-0 mt-0.5" />
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  <div className="pt-6 border-t border-border">
-                    <p className="eyebrow-luxury text-[10px] text-muted-light mb-1">Investment Framework</p>
-                    <p className="font-inter text-xs text-ivory/70 italic leading-relaxed">
-                      {tier.investment}
-                    </p>
+                  <div className="pt-6 border-t border-white/10">
+                    <span className="eyebrow-luxury text-[10px] text-zinc-400 block mb-1">Pricing Model</span>
+                    <p className="font-inter text-xs text-zinc-300 font-medium">{eng.investment}</p>
                   </div>
                 </div>
               </RevealSection>
@@ -300,21 +334,23 @@ export default function ConsultingPage() {
         </div>
       </section>
 
-      {/* ── Application Form Section ───────────────────────────────────────── */}
+      {/* ── Unified Application Form ────────────────────────────────────────── */}
       <section id="application" className="section-pad" aria-label="Advisory Application">
-        <div className="container-luxury max-w-3xl mx-auto">
+        <div className="container-luxury max-w-2xl mx-auto">
           <RevealSection className="text-center mb-12">
-            <p className="eyebrow-luxury mb-4">Confidential Application</p>
-            <h2 className="heading-section mb-4">Apply for a Strategy Session</h2>
-            <p className="body-muted">
-              Every application is reviewed personally by Sakib Ziad within 48 business hours.
+            <p className="eyebrow-luxury mb-3">Qualification</p>
+            <h2 className="heading-section text-3xl sm:text-4xl mb-4">Apply for an Advisory Strategy Call</h2>
+            <p className="body-muted text-zinc-400">
+              Please detail your brand, current bottlenecks, and goals. Applications are reviewed personally within 48 business hours.
             </p>
           </RevealSection>
 
-          <RevealSection delay={0.15}>
+          <RevealSection delay={0.1}>
             <ApplicationForm
               defaultInterest="consulting"
               pageSource="consulting"
+              title="Advisory Qualification Form"
+              subtitle="All details remain strictly confidential under NDA principles."
               submitText="Submit Advisory Application"
             />
           </RevealSection>

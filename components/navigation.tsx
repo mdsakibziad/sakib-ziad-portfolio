@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-/* ── Split Nav Links Config for Centered-Logo Studio Header ───────────────── */
+/* ── Split Nav Links for Centered-Logo Studio Header ──────────────────────── */
 const NAV_LEFT = [
   { label: 'Work',       href: '/work' },
   { label: 'Consulting', href: '/consulting' },
@@ -18,20 +18,21 @@ const NAV_RIGHT = [
   { label: 'About',      href: '/about' },
 ] as const
 
+/* ── Core Navigation Links (Simplified & Focused) ─────────────────────────── */
 const ALL_LINKS = [
   { label: 'Work',             href: '/work' },
   { label: 'Consulting',       href: '/consulting' },
   { label: 'Digital Products', href: '/digital-products' },
   { label: 'Membership',       href: '/membership' },
   { label: 'About',            href: '/about' },
-  { label: 'Insights',         href: '/insights' },
+  { label: 'Contact',          href: '/contact' },
 ] as const
 
 /* ── Mobile Drawer Overlay Variants ───────────────────────────────────────── */
 const overlayVariants = {
-  hidden: { opacity: 0 },
+  hidden:  { opacity: 0 },
   visible: { opacity: 1, transition: { duration: 0.3 } },
-  exit:   { opacity: 0, transition: { duration: 0.25 } },
+  exit:    { opacity: 0, transition: { duration: 0.25 } },
 }
 
 const drawerVariants = {
@@ -40,24 +41,15 @@ const drawerVariants = {
   exit:    { x: '100%', transition: { type: 'spring' as const, stiffness: 400, damping: 40 } },
 }
 
-const navItemVariants = {
-  hidden:  { opacity: 0, x: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: { delay: i * 0.06 + 0.1, duration: 0.4, ease: [0.22, 1, 0.36, 1] },
-  }),
-}
-
-/* ── Boutique Centered-Logo Navigation Component ─────────────────────────── */
+/* ── Pure Monochromatic Liquid-Glass Navigation Component ──────────────────── */
 export function Navigation() {
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
-  // Scroll listener — subtle backdrop blur & border after 40px
+  // Scroll listener — frosted glass backdrop blur & border after 30px
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
+    const onScroll = () => setScrolled(window.scrollY > 30)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -80,7 +72,7 @@ export function Navigation() {
         className={cn(
           'fixed top-0 inset-x-0 z-50 transition-all duration-500 ease-luxury',
           scrolled
-            ? 'bg-background/85 backdrop-blur-md border-b border-border/80 shadow-[0_4px_30px_rgba(0,0,0,0.5)]'
+            ? 'bg-black/75 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.8)]'
             : 'bg-transparent border-b border-transparent'
         )}
         role="banner"
@@ -100,7 +92,7 @@ export function Navigation() {
                     href={href}
                     className={cn(
                       'nav-link-hover',
-                      isActive && 'active text-ivory'
+                      isActive && 'active text-white'
                     )}
                     aria-current={isActive ? 'page' : undefined}
                   >
@@ -117,10 +109,10 @@ export function Navigation() {
                 className="group flex flex-col items-start lg:items-center focus-visible:outline-none"
                 aria-label="Sakib Ziad — home"
               >
-                <span className="font-fraunces font-light text-ivory text-xl md:text-2xl tracking-[-0.01em] transition-opacity duration-300 group-hover:opacity-80">
+                <span className="font-fraunces font-light text-white text-xl md:text-2xl tracking-[-0.01em] transition-opacity duration-300 group-hover:opacity-80">
                   Sakib Ziad
                 </span>
-                <span className="font-inter text-[9px] uppercase tracking-[0.24em] text-gold/80 -mt-0.5 transition-colors duration-300 group-hover:text-gold">
+                <span className="font-inter text-[9px] uppercase tracking-[0.24em] text-white/50 -mt-0.5 transition-colors duration-300 group-hover:text-white/80">
                   Creative Strategy & AI
                 </span>
               </Link>
@@ -128,58 +120,56 @@ export function Navigation() {
 
             {/* ── Desktop Right Nav Links + Far-Right CTA ─────────────────── */}
             <div className="hidden lg:flex items-center justify-end gap-8 xl:gap-10">
-              <div className="flex items-center gap-8 xl:gap-10">
-                {NAV_RIGHT.map(({ label, href }) => {
-                  const isActive = pathname === href || pathname.startsWith(href + '/')
-                  return (
-                    <Link
-                      key={href}
-                      href={href}
-                      className={cn(
-                        'nav-link-hover',
-                        isActive && 'active text-ivory'
-                      )}
-                      aria-current={isActive ? 'page' : undefined}
-                    >
-                      {label}
-                    </Link>
-                  )
-                })}
-              </div>
+              {NAV_RIGHT.map(({ label, href }) => {
+                const isActive = pathname === href || pathname.startsWith(href + '/')
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    className={cn(
+                      'nav-link-hover',
+                      isActive && 'active text-white'
+                    )}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    {label}
+                  </Link>
+                )
+              })}
 
-              {/* Far-Right Standalone CTA Button */}
+              {/* Primary Header CTA — Liquid Glass White Pill */}
               <Link
                 href="/contact"
                 className={cn(
-                  'group relative inline-flex items-center justify-center gap-2',
-                  'h-11 px-6 rounded-full border border-gold/50 bg-gold/10 text-gold text-xs font-inter font-semibold uppercase tracking-[0.16em]',
-                  'transition-all duration-300 ease-luxury shadow-[0_0_15px_rgba(201,166,107,0.15)]',
-                  'hover:border-gold hover:bg-gold hover:text-background hover:scale-[1.03] hover:shadow-[0_0_28px_rgba(201,166,107,0.35)]',
+                  'inline-flex items-center justify-center gap-2',
+                  'font-inter text-[11px] font-semibold uppercase tracking-[0.14em]',
+                  'text-black bg-white rounded-full',
+                  'px-5 py-2.5',
+                  'shadow-[0_0_20px_rgba(255,255,255,0.18)]',
+                  'transition-all duration-300 ease-luxury',
+                  'hover:bg-zinc-200 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]',
                   'active:scale-[0.98]'
                 )}
               >
-                <span>Apply for Call</span>
-                <ArrowUpRight
-                  className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                  aria-hidden="true"
-                />
+                <span>Apply for a Call</span>
+                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
               </Link>
             </div>
 
-            {/* ── Mobile Hamburger ────────────────────────────────────────── */}
-            <div className="flex lg:hidden items-center justify-end">
+            {/* ── Mobile Hamburger Button ──────────────────────────────────── */}
+            <div className="flex items-center justify-end lg:hidden">
               <button
                 type="button"
                 onClick={toggleMenu}
-                aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
                 aria-expanded={menuOpen}
                 aria-controls="mobile-nav-drawer"
+                aria-label={menuOpen ? 'Close menu' : 'Open menu'}
                 className={cn(
-                  'flex items-center justify-center',
-                  'h-11 w-11 rounded-full border border-border',
-                  'text-ivory transition-all duration-300',
-                  'hover:bg-ivory/5 hover:border-gold/40',
-                  'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold'
+                  'relative h-10 w-10 flex items-center justify-center rounded-full',
+                  'bg-white/[0.04] backdrop-blur-md border border-white/10',
+                  'text-white transition-all duration-300',
+                  'hover:bg-white/10 hover:border-white/20',
+                  'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white'
                 )}
               >
                 <AnimatePresence mode="wait" initial={false}>
@@ -223,7 +213,7 @@ export function Navigation() {
               animate="visible"
               exit="exit"
               onClick={toggleMenu}
-              className="fixed inset-0 z-40 bg-background/80 backdrop-blur-md lg:hidden"
+              className="fixed inset-0 z-40 bg-black/80 backdrop-blur-md lg:hidden"
               aria-hidden="true"
             />
 
@@ -240,10 +230,10 @@ export function Navigation() {
               aria-label="Navigation menu"
               className={cn(
                 'fixed top-0 right-0 bottom-0 z-50',
-                'w-full max-w-sm',
-                'bg-surface border-l border-border',
+                'w-full max-w-xs sm:max-w-sm',
+                'bg-[#0D0D0D]/95 backdrop-blur-2xl border-l border-white/10',
                 'flex flex-col justify-between',
-                'p-8 pt-24',
+                'p-6 sm:p-8 pt-20 sm:pt-24',
                 'lg:hidden'
               )}
             >
@@ -252,69 +242,58 @@ export function Navigation() {
                 type="button"
                 onClick={toggleMenu}
                 aria-label="Close menu"
-                className="absolute top-6 right-6 h-10 w-10 flex items-center justify-center rounded-full border border-border text-ivory hover:border-gold/40 transition-colors"
+                className="absolute top-5 right-5 h-10 w-10 flex items-center justify-center rounded-full border border-white/10 text-white hover:border-white/30 transition-colors"
               >
                 <X className="h-5 w-5" />
               </button>
 
               {/* Navigation Items */}
-              <nav aria-label="Mobile navigation">
-                <ul className="flex flex-col gap-6" role="list">
-                  {ALL_LINKS.map(({ label, href }, i) => {
+              <nav aria-label="Mobile navigation" className="space-y-4">
+                <p className="font-inter text-[10px] uppercase tracking-[0.24em] text-white/40 mb-4">
+                  Navigation
+                </p>
+                <ul className="space-y-2">
+                  {ALL_LINKS.map(({ label, href }) => {
                     const isActive = pathname === href || pathname.startsWith(href + '/')
                     return (
-                      <motion.li
-                        key={href}
-                        custom={i}
-                        variants={navItemVariants}
-                        initial="hidden"
-                        animate="visible"
-                      >
+                      <li key={href}>
                         <Link
                           href={href}
+                          onClick={() => setMenuOpen(false)}
                           className={cn(
-                            'block font-fraunces text-2xl transition-colors duration-300',
-                            isActive ? 'text-gold' : 'text-ivory/80 hover:text-ivory'
+                            'block py-2.5 text-base sm:text-lg font-fraunces transition-colors duration-200',
+                            isActive ? 'text-white pl-2 border-l border-white font-normal' : 'text-zinc-400 hover:text-white'
                           )}
                         >
                           {label}
                         </Link>
-                      </motion.li>
+                      </li>
                     )
                   })}
                 </ul>
               </nav>
 
-              {/* Bottom Actions */}
-              <div className="flex flex-col gap-6 pt-8 border-t border-border/80">
+              {/* Mobile Drawer Footer CTA */}
+              <div className="pt-6 border-t border-white/10 space-y-4">
                 <Link
                   href="/contact"
+                  onClick={() => setMenuOpen(false)}
                   className={cn(
-                    'w-full inline-flex items-center justify-center gap-2',
-                    'h-12 rounded-full bg-gold text-background font-inter text-xs font-semibold uppercase tracking-[0.16em]',
-                    'hover:bg-gold-light transition-colors duration-300'
+                    'w-full flex items-center justify-center gap-2',
+                    'font-inter text-xs font-semibold uppercase tracking-[0.14em]',
+                    'text-black bg-white rounded-full',
+                    'py-3 px-6 text-center leading-snug',
+                    'shadow-[0_0_24px_rgba(255,255,255,0.18)]',
+                    'transition-all duration-300 hover:bg-zinc-200'
                   )}
                 >
                   <span>Apply for a Strategy Call</span>
-                  <ArrowUpRight className="h-4 w-4" />
+                  <ArrowUpRight className="h-3.5 w-3.5 shrink-0" />
                 </Link>
 
-                <div className="flex items-center justify-between text-xs text-muted-light font-inter">
-                  <a
-                    href="https://witlyn.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-gold transition-colors"
-                  >
-                    Studio: witlyn.com ↗
-                  </a>
-                  <a
-                    href="mailto:Sakib@witlyn.com"
-                    className="hover:text-gold transition-colors"
-                  >
-                    Sakib@witlyn.com
-                  </a>
-                </div>
+                <p className="text-center text-[10px] text-zinc-500 font-inter">
+                  Sakib Ziad · AI Creative Strategist
+                </p>
               </div>
             </motion.div>
           </>

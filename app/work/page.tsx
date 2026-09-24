@@ -1,14 +1,13 @@
 'use client'
 
-import React from 'react'
+import React, { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { ArrowRight, ArrowUpRight, Sparkles, Layers, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
-const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
+const EASE_LUXURY = [0.16, 1, 0.3, 1] as const
 
 function RevealSection({
   children,
@@ -108,44 +107,43 @@ export default function WorkPage() {
   ]
 
   const servicePillars = [
-    'Campaign Art Direction',
-    'Generative Brand Systems',
-    'Autonomous Content Pipelines',
-    'Prestige Aesthetic Engineering',
-    'AI Model Prompt Calibration',
-    'Creative Ops Automation',
+    'AI-Native Campaign Direction',
+    'Computational Brand Worldbuilding',
+    'Autonomous Content Engines',
+    'Custom Generative Pipeline Architecture',
+    'Prestige Packaging Visualization',
+    'Multi-Platform Diffusion Deployment',
   ]
 
   return (
-    <div className="bg-background text-ivory min-h-screen selection:bg-gold selection:text-background pt-28">
+    <div className="bg-background text-ivory min-h-screen selection:bg-white selection:text-black pt-28">
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="section-pad border-b border-border/80" aria-label="Work Archive">
+      <section className="section-pad border-b border-white/[0.08]" aria-label="Work Hero">
         <div className="container-luxury">
           <div className="max-w-4xl">
             <RevealSection>
-              <span className="eyebrow-luxury mb-4 block">Archive of Practice</span>
-              <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
-                Creative systems built for{' '}
-                <span className="italic font-fraunces text-gold font-light">
-                  enduring beauty brands.
-                </span>
-              </h1>
-              <p className="body-editorial text-lg sm:text-xl text-ivory/80 max-w-2xl mb-8">
-                A selection of art-directed campaigns, autonomous pipelines, and generative visual worlds. Works are clearly marked for strategic transparency.
-              </p>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full liquid-glass-pill text-[11px] uppercase tracking-[0.2em] text-white/80 mb-8">
+                Portfolio & Systems Archive
+              </div>
             </RevealSection>
 
-            {/* Service Tags Pill Strip */}
-            <RevealSection delay={0.15} className="flex flex-wrap gap-2.5 pt-4">
-              {servicePillars.map((pillar) => (
-                <span
-                  key={pillar}
-                  className="px-3.5 py-1.5 rounded-full border border-border/80 bg-surface/40 text-xs font-inter text-muted-light"
-                >
-                  {pillar}
+            <RevealSection delay={0.1}>
+              <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
+                Creative systems built for{' '}
+                <span className="italic font-fraunces font-light text-zinc-300">
+                  beauty & skincare brands.
                 </span>
-              ))}
+              </h1>
+            </RevealSection>
+
+            <RevealSection delay={0.2}>
+              <p className="body-editorial text-lg sm:text-xl text-zinc-300 max-w-2xl mb-8">
+                High-fashion art direction meets neural computation. Each project represents a proprietary generative pipeline crafted for category-defining visual defensibility.
+              </p>
+              <div className="inline-block px-3 py-1 rounded-full text-xs font-inter text-zinc-400 border border-white/10 bg-white/[0.02]">
+                *All works clearly labeled as Live Client Engagements or Spec Commercials produced via Witlyn.
+              </div>
             </RevealSection>
           </div>
         </div>
@@ -153,84 +151,97 @@ export default function WorkPage() {
 
       {/* ── Case Studies Detail Stream ────────────────────────────────────── */}
       <section className="section-pad bg-surface/20" aria-label="Case Studies">
-        <div className="container-luxury space-y-28">
-          {caseStudies.map((study, idx) => (
+        <div className="container-luxury space-y-24 sm:space-y-32">
+          {caseStudies.map((study) => (
             <div
               key={study.id}
               id={study.id}
-              className="scroll-mt-32 pt-8 border-t border-border/60 first:border-none first:pt-0"
+              className="scroll-mt-32 pt-8 border-t border-white/[0.08] first:border-none first:pt-0"
             >
               <RevealSection>
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
                   
                   {/* Left Column: Metadata & Header */}
                   <div className="lg:col-span-4 flex flex-col gap-6 lg:sticky lg:top-32">
                     <div className="flex items-center gap-3">
-                      <span className="font-fraunces text-3xl text-gold font-light">{study.num}</span>
-                      <span className="w-8 h-px bg-border" />
-                      <span className="eyebrow-luxury text-gold">{study.tag}</span>
+                      <span className="font-fraunces text-3xl text-white font-light">{study.num}</span>
+                      <span className="w-8 h-px bg-white/20" />
+                      <span className="eyebrow-luxury">{study.tag}</span>
                     </div>
 
-                    <h2 className="heading-section text-3xl sm:text-4xl text-ivory">
+                    <h2 className="heading-section text-3xl sm:text-4xl text-white">
                       {study.brand}
                     </h2>
 
                     <div className="flex flex-wrap gap-2">
-                      <span className="inline-block px-3 py-1 rounded-full text-[11px] font-inter uppercase tracking-wider bg-gold/10 border border-gold/30 text-gold">
+                      <span className="inline-block px-3 py-1 rounded-full text-[11px] font-inter uppercase tracking-wider bg-white/10 border border-white/20 text-white">
                         {study.status}
                       </span>
-                      <span className="inline-block px-3 py-1 rounded-full text-[11px] font-inter uppercase tracking-wider bg-surface border border-border text-muted-light">
+                      <span className="inline-block px-3 py-1 rounded-full text-[11px] font-inter uppercase tracking-wider bg-surface border border-white/10 text-zinc-300">
                         {study.category}
                       </span>
                     </div>
 
                     {/* Metric Callout Card */}
-                    <div className="card-surface p-6 border-gold/30 mt-4">
-                      <p className="eyebrow-luxury text-[10px] text-muted-light mb-2">Key Metric / Result</p>
-                      <p className="font-fraunces text-lg text-gold font-light leading-snug">
+                    <div className="card-surface p-6 border-white/10 mt-2">
+                      <p className="eyebrow-luxury text-[10px] text-zinc-400 mb-2">Scope Delivered</p>
+                      <p className="font-fraunces text-base sm:text-lg text-white font-light leading-snug">
                         {study.metric}
                       </p>
                     </div>
                   </div>
 
                   {/* Right Column: Imagery & Strategic Breakdown */}
-                  <div className="lg:col-span-8 flex flex-col gap-10">
+                  <div className="lg:col-span-8 flex flex-col gap-8 sm:gap-10">
                     
-                    {/* Full-bleed Case Visual with Zoom Hover */}
-                    <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-border shadow-2xl group">
+                    {/* Full-bleed Case Visual */}
+                    <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
                       <Image
                         src={study.image}
                         alt={`${study.brand} campaign visual`}
                         fill
-                        className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
+                        sizes="(max-width: 1024px) 100vw, 66vw"
+                        className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-102"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent pointer-events-none" />
-                      <div className="absolute bottom-4 right-4 bg-background/80 backdrop-blur-md px-3 py-1 rounded-md text-[10px] font-inter uppercase tracking-widest text-ivory/70 border border-border">
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute bottom-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1 rounded-md text-[10px] font-inter uppercase tracking-widest text-white/80 border border-white/10">
                         AI-Native Production
                       </div>
                     </div>
 
                     {/* Headline */}
-                    <p className="font-fraunces text-2xl sm:text-3xl text-ivory font-light italic leading-tight">
+                    <p className="font-fraunces text-2xl sm:text-3xl text-white font-light italic leading-tight">
                       "{study.headline}"
                     </p>
 
                     {/* 3-Step Strategy Breakdown */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-border">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-white/10">
                       <div className="flex flex-col gap-2">
-                        <span className="eyebrow-luxury text-gold">01 · Objective</span>
-                        <p className="body-muted text-sm leading-relaxed">{study.objective}</p>
+                        <span className="eyebrow-luxury text-[10px]">01 · The Objective</span>
+                        <p className="body-muted text-sm text-zinc-300">{study.objective}</p>
                       </div>
                       <div className="flex flex-col gap-2">
-                        <span className="eyebrow-luxury text-gold">02 · Approach</span>
-                        <p className="body-muted text-sm leading-relaxed">{study.approach}</p>
+                        <span className="eyebrow-luxury text-[10px]">02 · The Approach</span>
+                        <p className="body-muted text-sm text-zinc-300">{study.approach}</p>
                       </div>
                       <div className="flex flex-col gap-2">
-                        <span className="eyebrow-luxury text-gold">03 · Outcome</span>
-                        <p className="body-muted text-sm leading-relaxed">{study.outcome}</p>
+                        <span className="eyebrow-luxury text-[10px]">03 · The Outcome</span>
+                        <p className="body-muted text-sm text-zinc-300">{study.outcome}</p>
                       </div>
                     </div>
 
+                    {/* Bottom Link out to Witlyn studio */}
+                    <div className="pt-2">
+                      <a
+                        href="https://witlyn.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-inter uppercase tracking-[0.16em] text-zinc-400 hover:text-white transition-colors"
+                      >
+                        <span>View complete production archive on Witlyn</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
                   </div>
 
                 </div>
@@ -240,37 +251,36 @@ export default function WorkPage() {
         </div>
       </section>
 
-      {/* ── Production Arm Distinction ─────────────────────────────────────── */}
-      <section className="py-20 border-y border-border/80 bg-surface/40">
-        <div className="container-luxury max-w-4xl mx-auto text-center">
-          <RevealSection>
-            <p className="eyebrow-luxury mb-3">Full-Service Studio Execution</p>
-            <h2 className="heading-section text-3xl sm:text-4xl mb-4">
-              Need Done-For-You Production Instead of Advisory?
-            </h2>
-            <p className="body-editorial text-base sm:text-lg max-w-xl mx-auto mb-8">
-              Witlyn is our dedicated creative studio providing end-to-end campaign execution, 3D generative still packs, and monthly content retainers.
-            </p>
-            <Button asChild variant="outline-gold" size="lg">
-              <a href="https://witlyn.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
-                <span>Visit Witlyn Studio (witlyn.com)</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </Button>
+      {/* ── Services Architectural Taxonomy ─────────────────────────────────── */}
+      <section className="section-pad border-t border-white/[0.08] bg-surface/30" aria-label="Capabilities">
+        <div className="container-luxury">
+          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
+            <p className="eyebrow-luxury mb-4">Capabilities</p>
+            <h2 className="heading-section">Systems Architecture Deployed Across Work</h2>
           </RevealSection>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {servicePillars.map((service, i) => (
+              <RevealSection key={service} delay={i * 0.05}>
+                <div className="card-surface p-6 sm:p-8 flex items-center justify-between">
+                  <span className="font-fraunces text-base sm:text-lg text-white font-normal">{service}</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-white/40 shrink-0 ml-4" />
+                </div>
+              </RevealSection>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ── Invitation CTA ─────────────────────────────────────────────────── */}
-      <section className="section-pad text-center">
-        <div className="container-luxury max-w-3xl mx-auto">
+      {/* ── Bottom Call to Action ───────────────────────────────────────────── */}
+      <section className="py-20 sm:py-24 border-t border-white/[0.08] bg-surface/50 text-center">
+        <div className="container-luxury max-w-2xl mx-auto">
           <RevealSection>
-            <p className="eyebrow-luxury mb-4">Start Here</p>
-            <h2 className="heading-section mb-6">Install this creative system in your brand.</h2>
-            <Button asChild variant="gold" size="xl">
+            <h2 className="heading-section text-3xl sm:text-4xl mb-6">Ready to engineer your brand's AI edge?</h2>
+            <Button asChild variant="default" size="lg">
               <Link href="/contact" className="flex items-center gap-2">
-                <span>Apply for a Strategy Call</span>
-                <ArrowRight className="w-5 h-5" />
+                <span>Apply for Strategy Call</span>
+                <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
           </RevealSection>

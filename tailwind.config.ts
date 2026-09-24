@@ -10,31 +10,32 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // ── Brand Colors ─────────────────────────────────────────────────────────
+      // ── Pure Monochromatic Liquid-Glass Palette (Black, White, Zinc) ───────────
       colors: {
-        background: '#0B0B0A',
-        surface:    '#111110',
-        ivory:      '#F7F4EF',
-        gold:       '#C9A66B',
-        'gold-light': '#D8BA8A',
-        'gold-dark':  '#A8854A',
-        muted:      '#6B6B68',
-        'muted-light': '#8A8A87',
-        border:     'rgba(247,244,239,0.12)',
-        'border-strong': 'rgba(247,244,239,0.24)',
+        background: '#070707',
+        surface:    '#111111',
+        'surface-elevated': '#171717',
+        ivory:      '#FFFFFF',
+        muted:      '#A1A1AA', // zinc-400: High contrast, WCAG AA compliant
+        'muted-light': '#D4D4D8', // zinc-300: Crisp secondary body
+        border:     'rgba(255, 255, 255, 0.08)',
+        'border-strong': 'rgba(255, 255, 255, 0.16)',
+        glass:      'rgba(255, 255, 255, 0.03)',
+        'glass-border': 'rgba(255, 255, 255, 0.12)',
+        'glass-highlight': 'rgba(255, 255, 255, 0.22)',
       },
 
       // ── Typography ────────────────────────────────────────────────────────────
       fontFamily: {
-        fraunces: ['Fraunces', 'Georgia', 'serif'],
-        inter:    ['Inter', 'system-ui', 'sans-serif'],
+        fraunces: ['var(--font-fraunces)', 'Georgia', 'serif'],
+        inter:    ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         // Display / hero scale
-        'display-2xl': ['clamp(3rem, 8vw, 7.5rem)', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
-        'display-xl':  ['clamp(2.5rem, 6vw, 5.5rem)', { lineHeight: '1.08', letterSpacing: '-0.025em' }],
-        'display-lg':  ['clamp(2rem, 4.5vw, 4rem)',   { lineHeight: '1.1',  letterSpacing: '-0.02em' }],
-        'display-md':  ['clamp(1.75rem, 3vw, 3rem)',  { lineHeight: '1.15', letterSpacing: '-0.018em' }],
+        'display-2xl': ['clamp(2.75rem, 7vw, 7rem)',   { lineHeight: '1.05', letterSpacing: '-0.03em' }],
+        'display-xl':  ['clamp(2.25rem, 5.5vw, 5rem)',  { lineHeight: '1.08', letterSpacing: '-0.025em' }],
+        'display-lg':  ['clamp(1.85rem, 4vw, 3.75rem)', { lineHeight: '1.1',  letterSpacing: '-0.02em' }],
+        'display-md':  ['clamp(1.5rem, 2.8vw, 2.75rem)',{ lineHeight: '1.15', letterSpacing: '-0.018em' }],
         // Editorial body
         'body-xl': ['1.25rem', { lineHeight: '1.75' }],
         'body-lg': ['1.125rem', { lineHeight: '1.7' }],
@@ -85,10 +86,10 @@ const config: Config = {
 
       // ── Shadows ───────────────────────────────────────────────────────────────
       boxShadow: {
-        'luxury':     '0 0 0 1px rgba(201,166,107,0.15), 0 4px 32px rgba(0,0,0,0.6)',
-        'luxury-lg':  '0 0 0 1px rgba(201,166,107,0.2),  0 16px 64px rgba(0,0,0,0.8)',
-        'ivory-glow': '0 0 40px rgba(247,244,239,0.04)',
-        'gold-glow':  '0 0 60px rgba(201,166,107,0.15)',
+        'luxury':     '0 0 0 1px rgba(255,255,255,0.08), 0 4px 32px rgba(0,0,0,0.8)',
+        'luxury-lg':  '0 0 0 1px rgba(255,255,255,0.14), 0 16px 64px rgba(0,0,0,0.9)',
+        'glass-glow': '0 0 50px rgba(255,255,255,0.08)',
+        'glass-specular': 'inset 0 1px 0 0 rgba(255,255,255,0.25), 0 8px 32px rgba(0,0,0,0.6)',
       },
 
       // ── Animations ────────────────────────────────────────────────────────────
@@ -115,7 +116,11 @@ const config: Config = {
         },
         'pulse-slow': {
           '0%, 100%': { opacity: '1' },
-          '50%':      { opacity: '0.5' },
+          '50%':      { opacity: '0.4' },
+        },
+        'liquid-pulse': {
+          '0%, 100%': { transform: 'scale(1)', opacity: '0.8' },
+          '50%':      { transform: 'scale(1.03)', opacity: '1' },
         },
       },
       animation: {
@@ -127,9 +132,10 @@ const config: Config = {
         'slide-in-right': 'slide-in-right 700ms cubic-bezier(0.22, 1, 0.36, 1) both',
         'shimmer':        'shimmer 2s linear infinite',
         'pulse-slow':     'pulse-slow 3s ease-in-out infinite',
+        'liquid-pulse':   'liquid-pulse 6s ease-in-out infinite',
       },
       transitionTimingFunction: {
-        'luxury': 'cubic-bezier(0.22, 1, 0.36, 1)',
+        'luxury': 'cubic-bezier(0.16, 1, 0.3, 1)',
       },
       transitionDuration: {
         '400': '400ms',
@@ -141,6 +147,8 @@ const config: Config = {
       // ── Backdrop blur ─────────────────────────────────────────────────────────
       backdropBlur: {
         xs: '2px',
+        '2xl': '40px',
+        '3xl': '64px',
       },
     },
   },

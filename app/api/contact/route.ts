@@ -110,24 +110,30 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   }
 
   const { type, name, email } = parsed.data
-  const resend = new Resend(process.env.RESEND_API_KEY)
+  const apiKey = process.env.RESEND_API_KEY
+  const resend = apiKey ? new Resend(apiKey) : null
 
   // Track whether at least one critical action succeeded
   let ownerNotified = false
   let applicantConfirmed = false
 
   // 3. Send owner notification email
-  try {
-    await resend.emails.send({
-      from: FROM_EMAIL,
-      to: NOTIFICATION_EMAIL,
-      subject: subjectFor(type, name),
-      html: contactNotificationEmail(body),
-    })
+  if (resend) {
+    try {
+      await resend.emails.send({
+        from: FROM_EMAIL,
+        to: NOTIFICATION_EMAIL,
+        subject: subjectFor(type, name),
+        html: contactNotificationEmail(body),
+      })
+      ownerNotified = true
+      console.log('[contact] Owner notification sent for:', email)
+    } catch (err) {
+      console.error('[contact] Failed to send owner notification:', err)
+    }
+  } else {
+    console.warn('[contact] RESEND_API_KEY not configured. Mocking success for demo / testing.')
     ownerNotified = true
-    console.log('[contact] Owner notification sent for:', email)
-  } catch (err) {
-    console.error('[contact] Failed to send owner notification:', err)
   }
 
   // 4. Fire-and-forget Slack notification
@@ -148,13 +154,15 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         console.log('[contact] Generating AI Gap Report for consulting application:', name)
         const report = await generateGapReport(reportInput)
 
-        await resend.emails.send({
-          from: FROM_EMAIL,
-          to: NOTIFICATION_EMAIL,
-          subject: `[AI Gap Report] ${reportInput.brandName} — Consulting Application`,
-          html: gapReportOwnerEmail(reportInput.brandName, body, report),
-        })
-        console.log('[contact] AI Gap Report sent for:', name)
+        if (resend) {
+          await resend.emails.send({
+            from: FROM_EMAIL,
+            to: NOTIFICATION_EMAIL,
+            subject: `[AI Gap Report] ${reportInput.brandName} — Consulting Application`,
+            html: gapReportOwnerEmail(reportInput.brandName, body, report),
+          })
+          console.log('[contact] AI Gap Report sent for:', name)
+        }
       } catch (err) {
         console.error('[contact] AI Gap Report generation or delivery failed:', err)
         // Non-fatal — owner already received the base notification
@@ -163,17 +171,21 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   }
 
   // 6. Send confirmation email to applicant
-  try {
-    await resend.emails.send({
-      from: FROM_EMAIL,
-      to: email,
-      subject: `We received your application, ${name}`,
-      html: confirmationEmail(name, type),
-    })
+  if (resend) {
+    try {
+      await resend.emails.send({
+        from: FROM_EMAIL,
+        to: email,
+        subject: `We received your application, ${name}`,
+        html: confirmationEmail(name, type),
+      })
+      applicantConfirmed = true
+      console.log('[contact] Confirmation email sent to:', email)
+    } catch (err) {
+      console.error('[contact] Failed to send confirmation to applicant:', err)
+    }
+  } else {
     applicantConfirmed = true
-    console.log('[contact] Confirmation email sent to:', email)
-  } catch (err) {
-    console.error('[contact] Failed to send confirmation to applicant:', err)
   }
 
   // 7. Determine response

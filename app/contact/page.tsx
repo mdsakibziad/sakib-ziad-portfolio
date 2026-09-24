@@ -46,14 +46,14 @@ function RevealSection({
 
 export default function ContactPage() {
   return (
-    <div className="bg-background text-ivory min-h-screen selection:bg-gold selection:text-background pt-28">
+    <div className="bg-background text-ivory min-h-screen selection:bg-white selection:text-black pt-28">
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="section-pad border-b border-border/80" aria-label="Contact Header">
+      <section className="section-pad border-b border-white/[0.08]" aria-label="Contact Header">
         <div className="container-luxury">
           <div className="max-w-3xl">
             <RevealSection>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gold/30 bg-surface/50 text-[11px] uppercase tracking-[0.2em] text-gold mb-8">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-white/20 bg-white/[0.04] text-[11px] uppercase tracking-[0.2em] text-zinc-300 mb-8 backdrop-blur-md">
                 Direct Inquiries
               </div>
             </RevealSection>
@@ -61,7 +61,7 @@ export default function ContactPage() {
             <RevealSection delay={0.1}>
               <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
                 Every partnership begins with a{' '}
-                <span className="italic font-fraunces text-gold font-light">
+                <span className="italic font-fraunces text-white font-light">
                   conversation.
                 </span>
               </h1>
@@ -98,12 +98,12 @@ export default function ContactPage() {
             <div className="lg:col-span-4 flex flex-col gap-8">
               <RevealSection delay={0.15}>
                 <div className="card-surface p-8 space-y-6">
-                  <span className="eyebrow-luxury text-gold block">Direct Inquiries</span>
+                  <span className="eyebrow-luxury text-zinc-400 block">Direct Inquiries</span>
                   <div>
                     <p className="text-xs uppercase tracking-wider text-muted-light mb-1">Direct Email</p>
                     <a
                       href="mailto:Sakib@witlyn.com"
-                      className="font-fraunces text-xl text-ivory hover:text-gold transition-colors"
+                      className="font-fraunces text-xl text-ivory hover:text-white transition-colors"
                     >
                       Sakib@witlyn.com
                     </a>
@@ -116,27 +116,27 @@ export default function ContactPage() {
                         href="https://www.linkedin.com/in/sakib-ziad-290104211/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-ivory/80 hover:text-gold transition-colors"
+                        className="flex items-center gap-2 text-ivory/80 hover:text-white transition-colors"
                       >
-                        <Linkedin className="w-4 h-4 text-gold" />
+                        <Linkedin className="w-4 h-4 text-zinc-400" />
                         <span>LinkedIn / sakib-ziad</span>
                       </a>
                       <a
                         href="https://www.instagram.com/sakibziad/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-ivory/80 hover:text-gold transition-colors"
+                        className="flex items-center gap-2 text-ivory/80 hover:text-white transition-colors"
                       >
-                        <Instagram className="w-4 h-4 text-gold" />
+                        <Instagram className="w-4 h-4 text-zinc-400" />
                         <span>Instagram / @sakibziad</span>
                       </a>
                       <a
                         href="https://www.facebook.com/sakibziad.21"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-ivory/80 hover:text-gold transition-colors"
+                        className="flex items-center gap-2 text-ivory/80 hover:text-white transition-colors"
                       >
-                        <Facebook className="w-4 h-4 text-gold" />
+                        <Facebook className="w-4 h-4 text-zinc-400" />
                         <span>Facebook / sakibziad.21</span>
                       </a>
                     </div>
@@ -148,7 +148,7 @@ export default function ContactPage() {
                       href="https://witlyn.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm text-gold hover:underline"
+                      className="inline-flex items-center gap-1.5 text-sm text-zinc-300 hover:text-white hover:underline"
                     >
                       <span>Witlyn Studio (witlyn.com)</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />

@@ -50,13 +50,13 @@ function FieldLabel({
 }
 
 const sharedInputClass = `
-  w-full bg-transparent border border-ivory/10
+  w-full bg-white/[0.03] border border-white/10
   font-inter text-sm text-ivory placeholder:text-ivory/20
-  px-4 py-3.5 rounded-none
+  px-4 py-3.5 rounded-xl
   outline-none
-  transition-colors duration-200
-  focus:border-gold focus:ring-0
-  hover:border-ivory/20
+  transition-all duration-300
+  focus:border-white/50 focus:ring-1 focus:ring-white/20
+  hover:border-white/20
 `.trim();
 
 /* ─────────────────────────────────────────────
@@ -133,8 +133,8 @@ export default function DiagnosticForm({ className }: DiagnosticFormProps) {
           className,
         )}
       >
-        {/* Gold rule */}
-        <div className="w-10 hr-gold" />
+        {/* Divider rule */}
+        <div className="w-10 hr-glass" />
 
         <div className="space-y-3">
           <p className="font-fraunces text-ivory text-2xl sm:text-3xl leading-snug">
@@ -150,10 +150,11 @@ export default function DiagnosticForm({ className }: DiagnosticFormProps) {
           href="/contact"
           className="
             inline-flex items-center justify-center
-            px-8 py-3.5
-            font-inter text-sm font-medium tracking-wide
-            bg-gold text-background
-            transition-opacity duration-300 hover:opacity-80
+            px-8 py-3.5 rounded-full
+            font-inter text-sm font-semibold tracking-wide
+            bg-white text-black
+            shadow-[0_0_24px_rgba(255,255,255,0.18)]
+            transition-all duration-300 hover:bg-zinc-200 hover:scale-[1.02]
           "
         >
           Book a Strategy Call
@@ -171,7 +172,7 @@ export default function DiagnosticForm({ className }: DiagnosticFormProps) {
           className,
         )}
       >
-        <div className="w-10 hr-gold" />
+        <div className="w-10 hr-glass" />
 
         <div className="space-y-3">
           <p className="font-fraunces text-ivory text-2xl sm:text-3xl leading-snug">
@@ -187,10 +188,10 @@ export default function DiagnosticForm({ className }: DiagnosticFormProps) {
           onClick={handleReset}
           className="
             inline-flex items-center justify-center
-            px-8 py-3.5
+            px-8 py-3.5 rounded-full
             font-inter text-sm font-medium tracking-wide
-            border border-ivory/20 text-ivory/70
-            transition-colors duration-300 hover:border-gold hover:text-gold
+            border border-white/20 text-white/80 bg-white/[0.04]
+            transition-all duration-300 hover:border-white/40 hover:text-white hover:bg-white/10
           "
         >
           Try Again
@@ -285,8 +286,8 @@ export default function DiagnosticForm({ className }: DiagnosticFormProps) {
         />
       </div>
 
-      {/* Gold divider */}
-      <div className="hr-gold" />
+      {/* Divider */}
+      <div className="hr-glass" />
 
       {/* Submit */}
       <div className="flex items-center justify-between gap-6 flex-wrap">
@@ -295,11 +296,13 @@ export default function DiagnosticForm({ className }: DiagnosticFormProps) {
           disabled={isLoading}
           className="
             inline-flex items-center justify-center
-            px-10 py-4
-            font-inter text-sm font-medium tracking-wide
-            bg-gold text-background
-            transition-opacity duration-300
-            hover:opacity-80 disabled:opacity-60 disabled:cursor-not-allowed
+            px-10 py-4 rounded-full
+            font-inter text-sm font-semibold tracking-wide
+            bg-white text-black
+            shadow-[0_0_24px_rgba(255,255,255,0.18)]
+            transition-all duration-300
+            hover:bg-zinc-200 hover:scale-[1.02]
+            disabled:opacity-60 disabled:cursor-not-allowed
           "
         >
           {isLoading ? (

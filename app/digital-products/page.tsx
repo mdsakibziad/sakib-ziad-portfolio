@@ -1,24 +1,19 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
 import {
-  ArrowRight,
-  ArrowUpRight,
   CheckCircle2,
-  Sparkles,
-  Download,
+  ArrowRight,
   BookOpen,
-  Layers,
   Cpu,
   Compass,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
-const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
+const EASE_LUXURY = [0.16, 1, 0.3, 1] as const
 
 function RevealSection({
   children,
@@ -65,7 +60,7 @@ export default function DigitalProductsPage() {
 
   const products = [
     {
-      // TODO: confirm product name/contents/price with owner before launch
+      // TODO: confirm product name/contents/price ($249) with owner before official public cart launch
       id: 'brief-system',
       name: 'The Beauty Brand AI Creative Brief & Prompt Blueprint',
       tag: 'Framework & Blueprint',
@@ -73,9 +68,9 @@ export default function DigitalProductsPage() {
       price: '$249',
       schemaCode: 'SYS.01 // PROMPT ARCHITECTURE',
       icon: BookOpen,
-      metric: '40+ BLUEPRINTS',
+      metric: '40+ TESTED BLUEPRINTS',
       description:
-        'The exact prompt architecture, visual reference taxonomies, and art direction frameworks used at Witlyn to concept publication-grade beauty campaigns across Midjourney and Flux.',
+        'The exact prompt architecture, visual reference taxonomies, and art direction frameworks used to concept publication-grade beauty campaigns across Midjourney and Flux.',
       deliverables: [
         '40+ Tested Prompt Blueprints: Botanical caustics, skin subsurface scattering & glass refraction',
         'Art Direction Taxonomy Guide: Photographic lenses, aperture codes & luxury lighting schemas',
@@ -83,10 +78,9 @@ export default function DigitalProductsPage() {
         'Commercial Guardrail Checklist: Ensuring brand consistency and avoiding artifacting',
       ],
       cta: 'Enquire About This Kit',
-      variant: 'gold' as const,
     },
     {
-      // TODO: confirm product name/contents/price with owner before launch
+      // TODO: confirm product name/contents/price ($495) with owner before official public cart launch
       id: 'agent-kit',
       name: 'Autonomous AI Content Engine & Agent Blueprint',
       tag: 'Automation Architecture',
@@ -96,23 +90,22 @@ export default function DigitalProductsPage() {
       icon: Cpu,
       metric: 'TURNKEY WORKFLOW',
       description:
-        'A comprehensive automation kit that maps customer search intent and trending review angles directly into synthesized visual briefs and multi-platform content schedules.',
+        'A comprehensive automation blueprint that maps customer review angles and search intent directly into synthesized visual briefs and multi-platform content pipelines.',
       deliverables: [
         'Make.com & n8n Scenario Blueprints: Pre-configured API connections for automated workflows',
         'Tone-of-Voice Prompt Engine: Calibrated for prestige skincare copy & social scripts',
         'Dynamic Asset Storage & Tagging Pipeline: Automatic multi-aspect ratio rendering',
-        'Complete Video Architecture Walkthrough: 45-minute step-by-step setup tutorial',
+        'Complete Architecture Walkthrough: 45-minute step-by-step setup tutorial',
       ],
       cta: 'Enquire About This Kit',
-      variant: 'gold' as const,
     },
     {
-      // TODO: confirm product name/contents/price with owner before launch
+      // TODO: confirm cohort start dates and pricing with owner before official launch
       id: 'masterclass',
       name: 'Executive Masterclass: In-House Generative Direction',
       tag: 'Cohort Masterclass',
-      badge: 'Cohort 01 Waitlist',
-      price: 'Waitlist Only',
+      badge: 'Cohort Waitlist',
+      price: 'Waitlist Application',
       schemaCode: 'EXE.03 // PRIVATE COHORT',
       icon: Compass,
       metric: '4-WEEK INTENSIVE',
@@ -121,23 +114,22 @@ export default function DigitalProductsPage() {
       deliverables: [
         'Live weekly strategy & prompt architecture workshops with Sakib Ziad',
         'Custom model fine-tuning and brand LoRA training walkthroughs',
-        'Private Slack community with peer beauty & cosmetic brand operators',
+        'Private peer group with beauty & cosmetic brand operators',
         'Lifetime access to template updates and model upgrade blueprints',
       ],
       cta: 'Join Cohort Waitlist',
-      variant: 'outline-gold' as const,
     },
   ]
 
   return (
-    <div className="bg-background text-ivory min-h-screen selection:bg-gold selection:text-background pt-28">
+    <div className="bg-background text-ivory min-h-screen selection:bg-white selection:text-black pt-28">
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="section-pad border-b border-border/80" aria-label="Digital Products Hero">
+      <section className="section-pad border-b border-white/[0.08]" aria-label="Digital Products Hero">
         <div className="container-luxury">
           <div className="max-w-4xl">
             <RevealSection>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gold/30 bg-surface/50 text-[11px] uppercase tracking-[0.2em] text-gold mb-8">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full liquid-glass-pill text-[11px] uppercase tracking-[0.2em] text-white/80 mb-8">
                 Productized Intelligence
               </div>
             </RevealSection>
@@ -145,14 +137,14 @@ export default function DigitalProductsPage() {
             <RevealSection delay={0.1}>
               <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
                 The AI creative playbooks I wish{' '}
-                <span className="italic font-fraunces text-gold font-light">
+                <span className="italic font-fraunces font-light text-zinc-300">
                   existed when I began.
                 </span>
               </h1>
             </RevealSection>
 
             <RevealSection delay={0.2}>
-              <p className="body-editorial text-lg sm:text-xl text-ivory/80 max-w-2xl">
+              <p className="body-editorial text-lg sm:text-xl text-zinc-300 max-w-2xl">
                 Proprietary prompt frameworks, automation blueprints, and creative direction kits distilled directly from active client engagements in beauty and skincare.
               </p>
             </RevealSection>
@@ -160,104 +152,106 @@ export default function DigitalProductsPage() {
         </div>
       </section>
 
-      {/* ── Products Showcase with Visual Mockups ──────────────────────────── */}
-      <section className="section-pad bg-surface/30" aria-label="Products Grid">
-        <div className="container-luxury space-y-16">
+      {/* ── Product Grid ─────────────────────────────────────────────────── */}
+      <section className="section-pad bg-surface/30" aria-label="Products Catalog">
+        <div className="container-luxury">
           <RevealSection className="text-center max-w-2xl mx-auto mb-16">
-            <p className="eyebrow-luxury mb-4">Available Frameworks</p>
-            <h2 className="heading-section">Engineered for Autonomous Execution</h2>
-            <p className="body-muted">Each kit contains production-tested assets ready to deploy today.</p>
+            <p className="eyebrow-luxury mb-4">Tactical Blueprints</p>
+            <h2 className="heading-section">Deployable Systems for Immediate Leverage</h2>
           </RevealSection>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
             {products.map((product, idx) => (
               <RevealSection key={product.id} delay={idx * 0.1}>
-                <div className="card-surface overflow-hidden flex flex-col justify-between h-full group hover:border-gold/50">
+                <div className="card-surface overflow-hidden flex flex-col justify-between h-full group">
                   
-                  {/* Abstract Luxury Graphic Treatment (Not Stock Photography) */}
-                  <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-[#0E0E0D] p-6 flex flex-col justify-between group-hover:border-gold/40 transition-colors">
+                  {/* Abstract Monochrome Liquid-Glass Graphic Treatment */}
+                  <div className="relative aspect-[16/10] overflow-hidden border-b border-white/10 bg-[#0C0C0C] p-6 flex flex-col justify-between group-hover:border-white/20 transition-colors">
                     {/* Precision dot matrix overlay */}
                     <div 
-                      className="absolute inset-0 opacity-[0.08] pointer-events-none"
+                      className="absolute inset-0 opacity-[0.06] pointer-events-none"
                       style={{
-                        backgroundImage: `radial-gradient(circle at 1px 1px, rgba(201, 166, 107, 0.7) 1px, transparent 0)`,
+                        backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.8) 1px, transparent 0)`,
                         backgroundSize: '20px 20px'
                       }}
                     />
 
-                    {/* Ambient gold radial glow */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-gold/10 blur-3xl pointer-events-none group-hover:bg-gold/20 transition-all duration-700" />
+                    {/* Ambient white radial glow */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-white/[0.04] blur-3xl pointer-events-none group-hover:bg-white/[0.08] transition-all duration-700" />
 
-                    {/* Luxury geometric concentric circles */}
-                    <div className="absolute -right-8 -bottom-8 w-44 h-44 rounded-full border border-gold/10 pointer-events-none group-hover:border-gold/25 transition-colors duration-500" />
-                    <div className="absolute -right-2 -bottom-2 w-32 h-32 rounded-full border border-gold/15 pointer-events-none" />
+                    {/* Concentric circles */}
+                    <div className="absolute -right-8 -bottom-8 w-44 h-44 rounded-full border border-white/[0.06] pointer-events-none" />
+                    <div className="absolute -right-2 -bottom-2 w-32 h-32 rounded-full border border-white/[0.1] pointer-events-none" />
 
                     {/* Top Row: System Code & Badge */}
                     <div className="relative z-10 flex items-center justify-between w-full">
-                      <span className="font-mono text-[10px] tracking-[0.2em] text-gold/70 uppercase">
+                      <span className="font-mono text-[10px] tracking-[0.2em] text-white/50 uppercase">
                         {product.schemaCode}
                       </span>
-                      <span className="px-3 py-1 rounded-full text-[10px] font-inter uppercase tracking-wider bg-background/85 backdrop-blur-md text-gold border border-gold/30">
+                      <span className="px-3 py-1 rounded-full text-[10px] font-inter uppercase tracking-wider bg-white/10 backdrop-blur-md text-white border border-white/15">
                         {product.badge}
                       </span>
                     </div>
 
-                    {/* Central Emblem / Luxury Icon */}
+                    {/* Central Emblem */}
                     <div className="relative z-10 my-auto flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-2xl bg-surface/90 border border-gold/40 flex items-center justify-center text-gold shadow-[0_0_24px_rgba(201,166,107,0.15)] group-hover:border-gold group-hover:scale-105 group-hover:shadow-[0_0_32px_rgba(201,166,107,0.3)] transition-all duration-500">
+                      <div className="w-14 h-14 rounded-2xl bg-white/[0.04] border border-white/15 flex items-center justify-center text-white shadow-[0_0_24px_rgba(255,255,255,0.06)] group-hover:border-white/30 group-hover:scale-105 transition-all duration-500">
                         <product.icon className="w-6 h-6 stroke-[1.5]" />
                       </div>
                       <div>
-                        <span className="font-fraunces text-xs uppercase tracking-[0.2em] text-ivory/50 block">Digital System</span>
-                        <span className="font-inter text-xs text-ivory/80 font-medium">{product.tag}</span>
+                        <span className="font-fraunces text-xs uppercase tracking-[0.2em] text-white/40 block">Digital Architecture</span>
+                        <span className="font-inter text-xs text-zinc-300 font-medium">{product.tag}</span>
                       </div>
                     </div>
 
-                    {/* Bottom Bar: Abstract Specification / Status */}
-                    <div className="relative z-10 flex items-center justify-between text-[11px] text-muted-light font-mono pt-3 border-t border-border/40">
-                      <span className="text-ivory/60 tracking-wider">{product.metric}</span>
-                      <span className="text-gold/80 flex items-center gap-1.5 tracking-wider">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block animate-pulse" />
-                        ACTIVE BLUEPRINT
+                    {/* Bottom Bar */}
+                    <div className="relative z-10 flex items-center justify-between text-[11px] text-zinc-400 font-mono pt-3 border-t border-white/10">
+                      <span className="text-zinc-300 tracking-wider">{product.metric}</span>
+                      <span className="text-white flex items-center gap-1.5 tracking-wider">
+                        <span className="w-1.5 h-1.5 rounded-full bg-white inline-block animate-pulse" />
+                        READY
                       </span>
                     </div>
                   </div>
 
-                  {/* Body Content */}
-                  <div className="p-8 flex flex-col justify-between flex-1">
+                  {/* Card Content */}
+                  <div className="p-6 sm:p-8 flex flex-col justify-between flex-1">
                     <div>
-                      <span className="eyebrow-luxury text-gold block mb-2">{product.tag}</span>
-                      <h3 className="heading-card text-2xl mb-4 group-hover:text-gold transition-colors leading-snug">
+                      <h3 className="heading-card text-xl sm:text-2xl mb-3 text-white">
                         {product.name}
                       </h3>
-                      <p className="body-muted text-sm mb-6 leading-relaxed">
+                      <p className="body-muted text-sm text-zinc-400 mb-6 leading-relaxed">
                         {product.description}
                       </p>
 
-                      <div className="pt-6 border-t border-border space-y-3 mb-8">
-                        <p className="eyebrow-luxury text-[10px] text-muted-light">What's Inside</p>
-                        {product.deliverables.map((item) => (
-                          <div key={item} className="flex items-start gap-2.5 text-xs text-ivory/80 leading-relaxed font-light">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-gold shrink-0 mt-0.5" />
-                            <span>{item}</span>
-                          </div>
-                        ))}
+                      <div className="space-y-3 pt-6 border-t border-white/10 mb-8">
+                        <p className="eyebrow-luxury text-[10px] text-zinc-400">What's Inside</p>
+                        <ul className="space-y-2.5 body-editorial text-xs sm:text-sm text-zinc-300">
+                          {product.deliverables.map((item) => (
+                            <li key={item} className="flex items-start gap-2.5">
+                              <CheckCircle2 className="w-4 h-4 text-white/70 shrink-0 mt-0.5" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
 
-                    <div className="pt-6 border-t border-border flex items-center justify-between gap-4">
+                    <div className="pt-6 border-t border-white/10 flex items-center justify-between gap-4">
                       <div>
-                        <span className="eyebrow-luxury text-[10px] text-muted-light block">Investment</span>
-                        <span className="font-fraunces text-2xl text-ivory font-light">{product.price}</span>
+                        <span className="eyebrow-luxury text-[10px] text-zinc-400 block">Tier</span>
+                        <p className="font-fraunces text-xl sm:text-2xl text-white font-light">
+                          {product.price}
+                        </p>
                       </div>
-                      <Button asChild variant={product.variant} size="md" className="group/btn">
-                        <Link href="/contact" className="inline-flex items-center gap-2">
+
+                      <Button asChild variant="default" size="md">
+                        <Link href="/contact" className="flex items-center gap-2">
                           <span>{product.cta}</span>
-                          <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                          <ArrowRight className="w-3.5 h-3.5" />
                         </Link>
                       </Button>
                     </div>
-
                   </div>
 
                 </div>
@@ -268,19 +262,19 @@ export default function DigitalProductsPage() {
       </section>
 
       {/* ── Why These Exist Editorial Section ─────────────────────────────── */}
-      <section className="section-pad border-t border-border/80" aria-label="Philosophy">
+      <section className="section-pad border-t border-white/[0.08]" aria-label="Philosophy">
         <div className="container-luxury max-w-4xl mx-auto">
-          <RevealSection className="card-surface p-10 sm:p-14 border-gold/30">
-            <span className="eyebrow-luxury text-gold mb-3 block">Field Intelligence</span>
+          <RevealSection className="card-surface p-8 sm:p-12 md:p-14 border-white/10">
+            <span className="eyebrow-luxury mb-3 block">Field Intelligence</span>
             <h2 className="heading-section text-3xl sm:text-4xl mb-6">
               Extracted from real campaign rooms — never theoretical.
             </h2>
-            <div className="space-y-4 body-editorial text-base sm:text-lg">
+            <div className="space-y-4 body-editorial text-base sm:text-lg text-zinc-300">
               <p>
                 The internet is saturated with generic "AI prompts" that generate plastic figures on marble floors. Those have zero commercial utility for a serious beauty brand protecting millions in perceived equity.
               </p>
               <p>
-                Every framework and agent template in this library is extracted directly from the production environment of Witlyn. They have generated commercial campaign assets, satisfied rigorous packaging designers, and driven actual ecommerce conversion.
+                Every framework and agent template in this library is extracted directly from the active production environment of Witlyn. They have generated publication-grade campaign assets, satisfied rigorous packaging designers, and established permanent visual brand systems for innovative cosmetic brands.
               </p>
             </div>
           </RevealSection>
@@ -288,31 +282,32 @@ export default function DigitalProductsPage() {
       </section>
 
       {/* ── Newsletter Dispatch ────────────────────────────────────────────── */}
-      <section className="py-20 border-t border-border/80 bg-surface/50 text-center" aria-label="Drop Alerts">
+      <section className="py-20 border-t border-white/[0.08] bg-surface/50 text-center" aria-label="Drop Alerts">
         <div className="container-luxury max-w-xl mx-auto">
           <RevealSection>
             <p className="eyebrow-luxury mb-3">Release Dispatches</p>
             <h2 className="heading-section text-3xl sm:text-4xl mb-4">Be First When New Blueprints Drop</h2>
-            <p className="body-muted mb-8 text-sm">
+            <p className="body-muted mb-8 text-sm text-zinc-400">
               New prompt blueprints and agent architectures are released on a rolling basis. Subscribers receive early access and launch pricing.
             </p>
 
             {newsletterSuccess ? (
-              <div className="p-4 rounded-xl bg-gold/10 border border-gold/30 text-gold text-sm text-center">
-                Confirmed. You'll receive early access to new framework drops.
+              <div className="card-surface p-6 border-white/20 inline-flex items-center gap-3 text-white text-sm">
+                <CheckCircle2 className="w-5 h-5 text-white shrink-0" />
+                <span>Confirmed. You'll receive early access to new framework drops.</span>
               </div>
             ) : (
-              <form onSubmit={handleNewsletter} className="flex flex-col sm:flex-row gap-3">
+              <form onSubmit={handleNewsletter} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
                 <Input
-                  required
                   type="email"
+                  required
                   placeholder="Enter your work email"
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
-                  className="flex-1"
+                  className="bg-surface border-white/10 text-white placeholder:text-zinc-500 text-sm focus:border-white/40"
                 />
-                <Button type="submit" variant="gold" size="md">
-                  Join Dispatch List
+                <Button type="submit" variant="default" size="md" className="shrink-0">
+                  Notify Me
                 </Button>
               </form>
             )}

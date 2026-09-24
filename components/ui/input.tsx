@@ -42,10 +42,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             'font-inter text-body-md text-ivory placeholder:text-ivory/25',
             // Background & border
             'bg-surface border border-ivory/20',
-            // Transitions
-            'transition-all duration-300',
-            // Focus state — gold ring
-            'focus:outline-none focus:border-gold/60 focus:ring-1 focus:ring-gold/30',
+            // Focus state — monochrome liquid-glass ring
+            'focus:outline-none focus:border-white/50 focus:ring-1 focus:ring-white/20',
             // Error state
             error && 'border-red-400/50 focus:border-red-400/70 focus:ring-red-400/20',
             // Disabled state

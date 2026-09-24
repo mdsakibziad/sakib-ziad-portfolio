@@ -24,11 +24,11 @@ const badgeVariants = cva(
           'hover:border-border-strong hover:text-ivory/70',
         ],
         /**
-         * Gold — warm gold tone for featured/highlighted labels.
+         * Glass / Highlight — frosted monochrome liquid-glass accent.
          */
         gold: [
-          'bg-gold/10 border-gold/30 text-gold',
-          'hover:bg-gold/15 hover:border-gold/50',
+          'bg-white/10 border-white/20 text-zinc-200',
+          'hover:bg-white/15 hover:border-white/30',
         ],
         /**
          * Ivory — light on dark for primary category labels.
@@ -92,7 +92,7 @@ export interface BadgeProps
 /* ── Dot color map matching variant ───────────────────────────────────────── */
 const dotColorMap: Record<string, string> = {
   default: 'bg-muted',
-  gold:    'bg-gold',
+  gold:    'bg-white',
   ivory:   'bg-ivory/60',
   outline: 'bg-muted',
   success: 'bg-emerald-400',

@@ -21,7 +21,7 @@ export default function PrivacyPage() {
           </p>
         </div>
 
-        <hr className="hr-gold mb-12" />
+        <hr className="hr-glass mb-12" />
 
         {/* Content */}
         <div className="space-y-12 font-inter text-ivory/75 leading-relaxed">
@@ -41,7 +41,7 @@ export default function PrivacyPage() {
                 'Analytics data — anonymised page-view data, referral source, and device type collected through Vercel Analytics or a similar privacy-respecting tool.',
               ].map((item) => (
                 <li key={item} className="flex gap-3">
-                  <span className="text-gold flex-shrink-0 mt-1">—</span>
+                  <span className="text-white/60 flex-shrink-0 mt-1">—</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -67,7 +67,7 @@ export default function PrivacyPage() {
                 'Understanding how visitors engage with the site so we can improve it.',
               ].map((item) => (
                 <li key={item} className="flex gap-3">
-                  <span className="text-gold flex-shrink-0 mt-1">—</span>
+                  <span className="text-white/60 flex-shrink-0 mt-1">—</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -89,7 +89,7 @@ export default function PrivacyPage() {
                 'Cal.com — calendar scheduling for strategy calls. Any data you enter on a booking page is subject to Cal.com\'s privacy policy.',
               ].map((item) => (
                 <li key={item} className="flex gap-3">
-                  <span className="text-gold flex-shrink-0 mt-1">—</span>
+                  <span className="text-white/60 flex-shrink-0 mt-1">—</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -137,7 +137,7 @@ export default function PrivacyPage() {
                 'The right to opt out of the sale of personal information (CCPA). Note: we do not sell personal information.',
               ].map((item) => (
                 <li key={item} className="flex gap-3">
-                  <span className="text-gold flex-shrink-0 mt-1">—</span>
+                  <span className="text-white/60 flex-shrink-0 mt-1">—</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -156,7 +156,7 @@ export default function PrivacyPage() {
               For any privacy-related questions, requests, or concerns, please reach out to:{' '}
               <a
                 href="mailto:Sakib@witlyn.com"
-                className="text-gold underline underline-offset-4 hover:text-gold/80 transition-colors duration-200"
+                className="text-white underline underline-offset-4 hover:text-white/80 transition-colors duration-200"
               >
                 Sakib@witlyn.com
               </a>
@@ -165,9 +165,9 @@ export default function PrivacyPage() {
         </div>
 
         {/* Legal Review Notice */}
-        <div className="mt-16 p-6 border border-gold/30 bg-surface rounded-sm">
+        <div className="mt-16 p-6 border border-white/15 bg-white/[0.02] backdrop-blur-md rounded-xl">
           <p className="font-inter text-sm text-ivory/60 leading-relaxed">
-            <span className="text-gold font-medium">Notice:</span> This policy is provided for informational reference. Please review with your legal counsel for specific jurisdictional compliance prior to commercial operation.
+            <span className="text-white font-medium">Notice:</span> This policy is provided for informational reference. Please review with your legal counsel for specific jurisdictional compliance prior to commercial operation.
           </p>
         </div>
 
@@ -175,7 +175,7 @@ export default function PrivacyPage() {
         <div className="mt-12">
           <Link
             href="/"
-            className="font-inter text-sm text-ivory/50 hover:text-gold transition-colors duration-200 inline-flex items-center gap-2"
+            className="font-inter text-sm text-ivory/50 hover:text-white transition-colors duration-200 inline-flex items-center gap-2"
           >
             <span aria-hidden>←</span>
             Back to Home

@@ -1,7 +1,22 @@
 import type { Metadata } from 'next'
+import { Fraunces, Inter } from 'next/font/google'
 import './globals.css'
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-fraunces',
+  display: 'swap',
+  weight: ['300', '400', '500', '600'],
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+  weight: ['300', '400', '500', '600'],
+})
 
 /* ── Metadata ──────────────────────────────────────────────────────────────── */
 export const metadata: Metadata = {
@@ -11,7 +26,7 @@ export const metadata: Metadata = {
     template: '%s — Sakib Ziad',
   },
   description:
-    'Helping beauty & skincare brands grow through AI-native creative systems and AI automation.',
+    'Helping beauty & skincare brands grow through AI-native creative systems and intelligent brand automation.',
   keywords: [
     'AI Creative Strategist',
     'AI automation',
@@ -30,10 +45,10 @@ export const metadata: Metadata = {
     siteName: 'Sakib Ziad',
     title: 'Sakib Ziad — AI Creative Strategist',
     description:
-      'Helping beauty & skincare brands grow through AI-native creative systems and AI automation.',
+      'Helping beauty & skincare brands grow through AI-native creative systems and intelligent brand automation.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/images/sakib-ziad.jpg',
         width: 1200,
         height: 630,
         alt: 'Sakib Ziad — AI Creative Strategist',
@@ -44,8 +59,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Sakib Ziad — AI Creative Strategist',
     description:
-      'Helping beauty & skincare brands grow through AI-native creative systems and AI automation.',
-    images: ['/og-image.jpg'],
+      'Helping beauty & skincare brands grow through AI-native creative systems and intelligent brand automation.',
+    images: ['/images/sakib-ziad.jpg'],
   },
   robots: {
     index: true,
@@ -59,9 +74,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
+    icon: '/favicon.svg',
   },
 }
 
@@ -72,16 +85,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen bg-background text-ivory antialiased">
+    <html lang="en" className={`${fraunces.variable} ${inter.variable}`} suppressHydrationWarning>
+      <body className="min-h-screen bg-background text-ivory antialiased selection:bg-white selection:text-black overflow-x-hidden">
         {/* Skip to main content (accessibility) */}
         <a
           href="#main-content"
           className="
             sr-only focus:not-sr-only
             fixed top-4 left-4 z-[9999]
-            bg-gold text-background text-sm font-medium
-            px-4 py-2 rounded-lg
+            bg-white text-black text-sm font-semibold
+            px-4 py-2 rounded-full shadow-lg
             focus:outline-none
           "
         >

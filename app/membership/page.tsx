@@ -79,14 +79,14 @@ export default function MembershipPage() {
   ]
 
   return (
-    <div className="bg-background text-ivory min-h-screen selection:bg-gold selection:text-background pt-28">
+    <div className="bg-background text-ivory min-h-screen selection:bg-white selection:text-black pt-28">
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="section-pad border-b border-border/80" aria-label="Membership Hero">
+      <section className="section-pad border-b border-white/[0.08]" aria-label="Membership Hero">
         <div className="container-luxury">
           <div className="max-w-4xl">
             <RevealSection>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gold/30 bg-surface/50 text-[11px] uppercase tracking-[0.2em] text-gold mb-8">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-white/20 bg-white/[0.04] text-[11px] uppercase tracking-[0.2em] text-zinc-300 mb-8 backdrop-blur-md">
                 Private Advisory Syndicate
               </div>
             </RevealSection>
@@ -94,7 +94,7 @@ export default function MembershipPage() {
             <RevealSection delay={0.1}>
               <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
                 A standing strategic relationship with{' '}
-                <span className="italic font-fraunces text-gold font-light">
+                <span className="italic font-fraunces text-white font-light">
                   your AI Creative Strategist.
                 </span>
               </h1>
@@ -130,11 +130,11 @@ export default function MembershipPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((b, i) => (
               <RevealSection key={b.num} delay={i * 0.08}>
-                <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full hover:border-gold/50">
+                <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full hover:border-white/30">
                   <div>
                     <div className="flex items-center justify-between mb-6">
-                      <span className="font-fraunces text-2xl text-gold/40">{b.num}</span>
-                      <b.icon className="w-5 h-5 text-gold" />
+                      <span className="font-fraunces text-2xl text-white/40">{b.num}</span>
+                      <b.icon className="w-5 h-5 text-zinc-300" />
                     </div>
                     <h3 className="heading-card text-2xl mb-4 leading-snug">{b.title}</h3>
                     <p className="body-muted text-sm leading-relaxed">{b.body}</p>
@@ -145,9 +145,9 @@ export default function MembershipPage() {
 
             {/* Final Highlight Card */}
             <RevealSection delay={0.4}>
-              <div className="card-surface p-8 sm:p-10 border-gold/40 bg-surface/80 flex flex-col justify-between h-full">
+              <div className="card-surface p-8 sm:p-10 border-white/20 bg-surface/80 flex flex-col justify-between h-full">
                 <div>
-                  <span className="eyebrow-luxury text-gold block mb-4">Compounding Signal</span>
+                  <span className="eyebrow-luxury text-zinc-400 block mb-4">Compounding Signal</span>
                   <h3 className="heading-card text-2xl mb-4">Ongoing Category Moat</h3>
                   <p className="body-muted text-sm leading-relaxed">
                     AI models upgrade every 90 days. As a member, your team never wastes months figuring out new tools alone. We digest the technical chaos and hand you the commercial playbook.
@@ -165,8 +165,8 @@ export default function MembershipPage() {
           <RevealSection>
             <p className="eyebrow-luxury mb-4">Syndicate Allocation</p>
             <h2 className="heading-section mb-6">Membership Investment</h2>
-            <div className="card-surface p-10 sm:p-12 border-gold/30">
-              <span className="eyebrow-luxury text-gold block mb-2">Founding Member Allocation</span>
+            <div className="card-surface p-10 sm:p-12 border-white/20">
+              <span className="eyebrow-luxury text-zinc-400 block mb-2">Founding Member Allocation</span>
               {/* TODO: confirm membership pricing ($290/month) and billing cadence with owner before launch */}
               <p className="font-fraunces text-4xl sm:text-5xl text-ivory font-light mb-4">
                 $290 <span className="text-xl text-muted-light font-inter">/ month</span>

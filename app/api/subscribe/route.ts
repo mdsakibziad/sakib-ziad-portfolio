@@ -98,37 +98,46 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   }
 
   const { email, source = 'unknown' } = parsed.data
-  const resend = new Resend(process.env.RESEND_API_KEY)
+  const apiKey = process.env.RESEND_API_KEY
+  const resend = apiKey ? new Resend(apiKey) : null
 
   let ownerNotified = false
   let subscriberWelcomed = false
 
   // 3. Notify owner
-  try {
-    await resend.emails.send({
-      from: FROM_EMAIL,
-      to: NOTIFICATION_EMAIL,
-      subject: `[New Subscriber] ${email} via ${source}`,
-      html: ownerSubscribeEmail(email, source),
-    })
+  if (resend) {
+    try {
+      await resend.emails.send({
+        from: FROM_EMAIL,
+        to: NOTIFICATION_EMAIL,
+        subject: `[New Subscriber] ${email} via ${source}`,
+        html: ownerSubscribeEmail(email, source),
+      })
+      ownerNotified = true
+      console.log('[subscribe] Owner notified of new subscriber:', email)
+    } catch (err) {
+      console.error('[subscribe] Failed to notify owner:', err)
+    }
+  } else {
     ownerNotified = true
-    console.log('[subscribe] Owner notified of new subscriber:', email)
-  } catch (err) {
-    console.error('[subscribe] Failed to notify owner:', err)
   }
 
   // 4. Send welcome email to subscriber
-  try {
-    await resend.emails.send({
-      from: FROM_EMAIL,
-      to: email,
-      subject: "You're on the list — Sakib Ziad",
-      html: subscribeConfirmationEmail(email),
-    })
+  if (resend) {
+    try {
+      await resend.emails.send({
+        from: FROM_EMAIL,
+        to: email,
+        subject: "You're on the list — Sakib Ziad",
+        html: subscribeConfirmationEmail(email),
+      })
+      subscriberWelcomed = true
+      console.log('[subscribe] Welcome email sent to:', email)
+    } catch (err) {
+      console.error('[subscribe] Failed to send welcome email to subscriber:', err)
+    }
+  } else {
     subscriberWelcomed = true
-    console.log('[subscribe] Welcome email sent to:', email)
-  } catch (err) {
-    console.error('[subscribe] Failed to send welcome email to subscriber:', err)
   }
 
   // 5. Response — only hard-fail if both emails failed

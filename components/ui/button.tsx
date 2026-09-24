@@ -3,86 +3,86 @@ import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
-/* ── Button Variants ───────────────────────────────────────────────────────── */
+/* ── Liquid-Glass Button Variants (Pure Monochrome) ───────────────────────── */
 const buttonVariants = cva(
-  // Base styles shared across all variants
+  // Base styles shared across all variants — mobile responsive wrapping & safe bounds
   [
-    'inline-flex items-center justify-center gap-2',
-    'font-inter font-medium uppercase tracking-[0.14em]',
+    'inline-flex items-center justify-center',
+    'font-inter font-medium uppercase tracking-[0.12em]',
     'rounded-full border transition-all duration-300 ease-luxury',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-background',
     'disabled:pointer-events-none disabled:opacity-40',
-    'select-none whitespace-nowrap',
+    'select-none whitespace-normal sm:whitespace-nowrap text-center break-words max-w-full leading-snug',
     'hover:scale-[1.02] active:scale-[0.98]',
   ],
   {
     variants: {
       variant: {
         /**
-         * Default — ivory background, dark text. Primary CTA.
+         * Default — Pure white luxury pill with soft reflection. Primary CTA.
          */
         default: [
-          'bg-ivory text-background border-ivory font-semibold shadow-[0_0_24px_rgba(247,244,239,0.18)]',
-          'hover:bg-white hover:border-white hover:scale-[1.03] hover:shadow-[0_0_35px_rgba(247,244,239,0.35)]',
+          'bg-white text-black border-white font-semibold shadow-[0_0_24px_rgba(255,255,255,0.18)]',
+          'hover:bg-zinc-200 hover:border-zinc-200 hover:scale-[1.02] hover:shadow-[0_0_36px_rgba(255,255,255,0.32)]',
           'active:scale-[0.98]',
         ],
         /**
-         * Gold — warm gold background, dark text. Accent CTA.
+         * Glass / Gold alias — Monochromatic frosted liquid glass.
          */
         gold: [
-          'bg-gold text-background border-gold font-semibold shadow-[0_0_24px_rgba(201,166,107,0.25)]',
-          'hover:bg-gold-light hover:border-gold-light hover:scale-[1.03] hover:shadow-[0_0_35px_rgba(201,166,107,0.45)]',
+          'bg-white text-black border-white font-semibold shadow-[0_0_24px_rgba(255,255,255,0.18)]',
+          'hover:bg-zinc-200 hover:border-zinc-200 hover:scale-[1.02] hover:shadow-[0_0_36px_rgba(255,255,255,0.32)]',
           'active:scale-[0.98]',
         ],
         /**
-         * Outline — surface background with border, fills ivory on hover.
+         * Outline — Frosted liquid glass with white specular highlight.
          */
         outline: [
-          'bg-surface/80 text-ivory border-border-strong font-medium shadow-[0_4px_16px_rgba(0,0,0,0.4)]',
-          'hover:bg-ivory hover:text-background hover:border-ivory hover:scale-[1.03] hover:shadow-[0_0_25px_rgba(247,244,239,0.2)]',
+          'bg-white/[0.04] backdrop-blur-xl text-white border-white/20 font-medium shadow-[0_4px_16px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.15)]',
+          'hover:bg-white/10 hover:border-white/35 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(255,255,255,0.15)]',
           'active:scale-[0.98]',
         ],
         /**
-         * Outline Gold — gold tint, fills gold on hover.
+         * Outline-Gold alias — mapped to liquid glass outline.
          */
         'outline-gold': [
-          'bg-gold/10 text-gold border-gold/50 font-semibold',
-          'hover:bg-gold hover:text-background hover:border-gold hover:scale-[1.03] hover:shadow-[0_0_28px_rgba(201,166,107,0.35)]',
+          'bg-white/[0.04] backdrop-blur-xl text-white border-white/20 font-medium shadow-[0_4px_16px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.15)]',
+          'hover:bg-white/10 hover:border-white/35 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(255,255,255,0.15)]',
           'active:scale-[0.98]',
         ],
         /**
-         * Ghost — no border, subtle hover fill.
+         * Ghost — transparent background with subtle frosted hover.
          */
         ghost: [
-          'bg-transparent text-ivory border-transparent',
-          'hover:bg-ivory/10 hover:border-ivory/20 hover:scale-[1.02]',
+          'bg-transparent text-white/80 border-transparent',
+          'hover:bg-white/10 hover:text-white hover:border-white/15 hover:scale-[1.02]',
           'active:scale-[0.98]',
         ],
         /**
-         * Ghost Gold — ghost with gold text.
+         * Ghost-Gold alias — mapped to ghost.
          */
         'ghost-gold': [
-          'bg-transparent text-gold border-transparent',
-          'hover:bg-gold/10 hover:scale-[1.02]',
+          'bg-transparent text-white/80 border-transparent',
+          'hover:bg-white/10 hover:text-white hover:border-white/15 hover:scale-[1.02]',
           'active:scale-[0.98]',
         ],
         /**
-         * Muted — dimmed surface, for secondary/tertiary actions.
+         * Muted — dimmed surface for secondary actions.
          */
         muted: [
-          'bg-surface text-ivory/70 border-border',
-          'hover:bg-surface/90 hover:text-ivory hover:border-border-strong hover:scale-[1.02]',
+          'bg-surface text-zinc-300 border-border',
+          'hover:bg-surface-elevated hover:text-white hover:border-border-strong hover:scale-[1.02]',
           'active:scale-[0.98]',
         ],
       },
       size: {
-        sm: 'h-10 px-6 text-xs gap-2',
-        md: 'h-12 px-8 text-xs font-semibold gap-2.5',
-        lg: 'h-14 px-10 text-sm font-semibold gap-3',
-        xl: 'h-16 px-12 text-sm font-semibold tracking-[0.16em] gap-3.5',
-        icon: 'h-11 w-11 rounded-full p-0',
-        'icon-sm': 'h-9 w-9 rounded-full p-0',
-        'icon-lg': 'h-13 w-13 rounded-full p-0',
+        sm: 'min-h-[2.25rem] px-3.5 sm:px-5 py-1.5 sm:py-2 text-[11px] gap-1.5',
+        md: 'min-h-[2.75rem] px-4.5 sm:px-7 py-2 sm:py-2.5 text-xs font-semibold gap-2',
+        lg: 'min-h-[3.25rem] px-5 sm:px-9 py-2.5 sm:py-3.5 text-xs sm:text-sm font-semibold tracking-[0.12em] gap-2.5 sm:gap-3',
+        xl: 'min-h-[3.5rem] px-6 sm:px-11 py-3 sm:py-4 text-xs sm:text-sm font-semibold tracking-[0.14em] gap-3 sm:gap-3.5',
+        icon: 'h-11 w-11 rounded-full p-0 shrink-0',
+        'icon-sm': 'h-9 w-9 rounded-full p-0 shrink-0',
+        'icon-lg': 'h-13 w-13 rounded-full p-0 shrink-0',
       },
     },
     defaultVariants: {
@@ -96,10 +96,6 @@ const buttonVariants = cva(
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  /**
-   * When true, renders as a `Slot` (passes props to its child element).
-   * Useful for rendering a `<Link>` styled as a button.
-   */
   asChild?: boolean
 }
 
