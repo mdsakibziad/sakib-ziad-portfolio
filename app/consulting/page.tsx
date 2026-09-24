@@ -48,13 +48,13 @@ function RevealSection({
 export default function ConsultingPage() {
   const isFor = [
     'Founders & CMOs of beauty, skincare, or cosmetic brands seeking category-defining visual prestige.',
-    'Brands spending \$15k–\$50k+/quarter on production who want to replace agency delays with compounding internal systems.',
+    'Brands spending $15k–$50k+/quarter on production who want to replace agency delays with compounding internal systems.',
     'Teams ready to install custom AI agent workflows to automate marketing and creative operations.',
     'Decision-makers who value high-level strategic counsel, architectural rigor, and partner-level attention.',
   ]
 
   const isNotFor = [
-    'Brands looking for bargain \$500 content production or generic template social media posts.',
+    'Brands looking for bargain $500 content production or generic template social media posts.',
     'Founders seeking a magic one-click button without strategic positioning and brand discipline.',
     'Businesses outside the prestige beauty, skincare, fragrance, and wellness sectors.',
     'Organizations seeking a traditional agency team of 20 juniors (For done-for-you production, see Witlyn).',

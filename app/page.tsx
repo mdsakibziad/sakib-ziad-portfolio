@@ -218,9 +218,6 @@ export default function HomePage() {
         className="relative min-h-[94vh] lg:min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-20"
         aria-label="Hero"
       >
-        {/* Subtle Ambient 3D Mesh Canvas (Three.js WebGL) */}
-        <Hero3D />
-
         {/* Real Witlyn Campaign Atmosphere Background with Parallax */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <Image
@@ -234,6 +231,9 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/60" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold/5 via-transparent to-transparent" />
         </div>
+
+        {/* Procedural Liquid-Glass 3D Canvas (Three.js WebGL) */}
+        <Hero3D />
 
         {/* Ambient Subtle Architectural Coordinate Guides */}
         <div className="absolute top-32 left-8 lg:left-16 hidden sm:block text-[10px] font-mono tracking-[0.25em] text-gold/40 select-none">

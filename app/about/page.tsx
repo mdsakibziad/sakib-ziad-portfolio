@@ -114,7 +114,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
             
             {/* Real Executive Headshot — Large & Editorial */}
-            <RevealSection className="lg:col-span-5 sticky top-28">
+            <RevealSection className="lg:col-span-5 lg:sticky lg:top-28">
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-border shadow-[0_16px_48px_rgba(0,0,0,0.8)] group">
                 <Image
                   src="/images/sakib-ziad.jpg"
@@ -145,7 +145,7 @@ export default function AboutPage() {
                   My journey began inside an academic degree in Artificial Intelligence. While the technology world was fascinated by theoretical benchmarks, I was captivated by how neural networks interpret visual aesthetics, light refraction, and brand emotion.
                 </p>
                 <p>
-                  Looking closely at the beauty and cosmetics landscape, the disparity was striking: founders were spending \$30,000 to \$50,000 per quarter on studio shoots that yielded static, quickly exhausted assets. When brands attempted to use early AI tools, the results looked plastic, synthetic, and completely detached from the sensory luxury beauty consumers demand.
+                  Looking closely at the beauty and cosmetics landscape, the disparity was striking: founders were spending $30,000 to $50,000 per quarter on studio shoots that yielded static, quickly exhausted assets. When brands attempted to use early AI tools, the results looked plastic, synthetic, and completely detached from the sensory luxury beauty consumers demand.
                 </p>
                 <p>
                   To solve this, I founded <a href="https://witlyn.com" target="_blank" rel="noopener noreferrer" className="text-gold font-medium underline underline-offset-4 hover:text-gold-light">Witlyn</a> — a full-service AI-native creative studio. Witlyn proved that when computational prompt systems are guided by high-fashion art direction, the resulting creative not only equals traditional studio photography, but delivers radical aesthetic consistency at 10× speed.
