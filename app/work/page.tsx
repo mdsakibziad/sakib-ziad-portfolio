@@ -64,12 +64,12 @@ export default function WorkPage() {
       headline: '5-Peptide Neck Complex — Emerald Precision',
       image: 'https://witlyn.com/work/vyraa/vyraa%20product.jpg',
       objective:
-        'Vyraa was caught in a margin-eroding price war on retail shelves. The brand needed an immediate aesthetic elevation to justify a 2.5× price tier increase and secure placement in luxury boutique retailers.',
+        'Vyraa needed an immediate aesthetic elevation to establish prestige category authority and position seamlessly alongside luxury boutique skincare brands.',
       approach:
         'Rebuilt the creative direction around deep emerald glass, brushed silver accents, and controlled architectural lighting. Used multi-model diffusion workflows to concept frosted vessels, micro-pigment smears, and tactile formula details.',
       outcome:
-        'Secured acceptance into two high-end boutique retail distributors within 60 days of visual relaunch. Customer perceived value increased dramatically, validating the premium retail price point.',
-      metric: '2.5× Price Realization Post-Relaunch',
+        'Dramatically elevated brand perception and visual defensibility, establishing a cohesive luxury aesthetic suitable for high-end boutique retail placement.',
+      metric: 'Complete Visual Identity Overhaul & Editorial Asset Suite',
     },
     {
       id: 'lipea',
@@ -81,12 +81,12 @@ export default function WorkPage() {
       headline: 'Peptide Glass Lip Serum — The Pink World',
       image: 'https://witlyn.com/work/lipea/6.jpg',
       objective:
-        'Lipéa needed to feed paid TikTok, Meta, and email acquisition channels with fresh, on-brand creative every week, but their marketing team was completely overwhelmed by production coordination.',
+        'Lipéa needed to feed paid social and email acquisition channels with fresh, high-aesthetic creative while eliminating manual production bottlenecks.',
       approach:
-        'Engineered an integrated AI agent pipeline that ingests customer reviews and search queries, extracts emotional hook angles, automatically drafts ad scripts, and pairs them with synthetically rendered product lifestyle assets in a blush-pink reflective world.',
+        'Engineered an integrated AI agent pipeline that ingests customer sentiment, extracts emotional hook angles, drafts ad scripts, and pairs them with synthetically rendered product lifestyle assets in a blush-pink reflective world.',
       outcome:
-        'The brand now outputs over 60 verified on-brand creative variants monthly managed by a single marketing coordinator, cutting creative cost-per-asset by 74%.',
-      metric: '60+ Monthly Brand Assets Generated with 1 Operator',
+        'Streamlined weekly asset creation into an autonomous creative pipeline, allowing in-house marketing to produce cohesive campaign variants without traditional studio delays.',
+      metric: 'Multi-Angle Campaign Suite & Automated Briefing System',
     },
     {
       id: 'nuecera',

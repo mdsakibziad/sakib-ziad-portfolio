@@ -57,8 +57,8 @@ export default function InsightsPage() {
     {
       id: 'creative-systems',
       tag: 'AI Creative Systems',
-      readTime: '6 min read',
-      date: 'March 2026',
+      readTime: 'Strategic Essay',
+      date: 'LinkedIn Dispatch',
       title: 'Why Beauty Brands Need Creative Systems, Not More Agency Retainers',
       excerpt:
         'The traditional 6-week agency turnaround is dead. High-growth cosmetics brands are replacing bloated production cycles with AI-native generative engines that concept, iterate, and output on-demand.',
@@ -66,8 +66,8 @@ export default function InsightsPage() {
     {
       id: 'aesthetics-post-generative',
       tag: 'Brand Strategy',
-      readTime: '8 min read',
-      date: 'February 2026',
+      readTime: 'Design Theory',
+      date: 'Founder Note',
       title: 'The Prompt Is Not The Strategy: Aesthetics in the Post-Generative Era',
       excerpt:
         'Anyone can generate a glass dropper on a marble countertop. The competitive moat is in the art direction, emotional caustics, and non-negotiable brand codes that generic AI outputs miss.',
@@ -75,20 +75,20 @@ export default function InsightsPage() {
     {
       id: 'autonomous-brand-ops',
       tag: 'AI Automation',
-      readTime: '7 min read',
-      date: 'January 2026',
+      readTime: 'Systems Blueprint',
+      date: 'Field Monograph',
       title: 'Autonomous Brand Operations: Building an In-House Content Pipeline',
       excerpt:
-        'How we architected an automated agent workflow that maps customer search intent to visual campaign briefs, reducing founder bottleneck from 20 hours to 45 minutes a week.',
+        'Architecting automated agent workflows that map customer search intent to visual campaign briefs, transforming production bottlenecks into an agile generative studio.',
     },
     {
       id: 'synthetic-editorial',
       tag: 'Creative Direction',
-      readTime: '5 min read',
-      date: 'December 2025',
+      readTime: 'Studio Practice',
+      date: 'Witlyn Archive',
       title: 'The Art of the Synthetic Editorial: Lessons from Founding Witlyn',
       excerpt:
-        'What running an AI-native creative studio taught us about brand defensibility, human taste curation, and scaling aesthetic prestige without enterprise budgets.',
+        'What running an AI-native creative studio teaches us about brand defensibility, human taste curation, and scaling aesthetic prestige without enterprise budgets.',
     },
   ]
 

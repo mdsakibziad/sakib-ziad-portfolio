@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import {
@@ -14,10 +15,22 @@ import {
   CheckCircle2,
   ChevronDown,
   Compass,
+  Workflow,
+  BookOpen,
+  Activity,
+  ShieldCheck,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { TiltCard } from '@/components/ui/tilt-card'
+import { ParallaxLayer } from '@/components/parallax-layer'
+
+// Dynamically load Three.js 3D canvas on client-side only
+const Hero3D = dynamic(
+  () => import('@/components/hero-3d').then((mod) => mod.Hero3D),
+  { ssr: false }
+)
 
 /* ── Animation Curve ──────────────────────────────────────────────────────── */
 const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
@@ -138,61 +151,31 @@ export default function HomePage() {
     }
   }
 
-  /* ── Method Steps ──────────────────────────────────────────────────────── */
+  /* ── Method Milestones ─────────────────────────────────────────────────── */
   const methodSteps = [
     {
       num: '01',
-      name: 'We Talk',
-      desc: 'An intimate 30-minute discovery session to audit your current brand creative bottleneck, growth vectors, and AI readiness.',
+      title: 'Discovery & Forensic Audit',
+      role: 'Week 01',
+      desc: 'An intensive discovery audit evaluating your current creative bottlenecks, asset velocity, and prompt stack architecture.',
     },
     {
       num: '02',
-      name: 'We Diagnose',
-      desc: 'We map your aesthetic and operational gaps — comparing your current content engine with what AI-native infrastructure can unlock.',
+      title: 'Diagnostic Systems Blueprint',
+      role: 'Week 02',
+      desc: 'Formulation of your bespoke AI opportunity roadmap — defining brand LoRAs, visual style taxonomies, and agent pipelines.',
     },
     {
       num: '03',
-      name: 'We Design',
-      desc: 'We architect your bespoke AI Creative System: prompt libraries, visual style guides, and autonomous agent workflows.',
+      title: 'Architecture & Model Calibration',
+      role: 'Weeks 03–04',
+      desc: 'Engineering proprietary prompt stacks calibrated to botanical physics, formula caustics, and prestige packaging codes.',
     },
     {
       num: '04',
-      name: 'We Build',
-      desc: 'Deployment, testing, and team handoff. Systems are put into live production until creative output compounds effortlessly.',
-    },
-  ]
-
-  /* ── Case Studies (Real Witlyn Campaign Assets) ────────────────────────── */
-  const caseStudies = [
-    {
-      id: 'solae',
-      num: '01',
-      brand: 'SOLAÉ',
-      tag: 'AI Campaign Direction',
-      type: 'Spec Commercial · Witlyn Production',
-      headline: 'AIRVEIL — SPF50+ PA++++ Invisible Sun Serum',
-      desc: 'A cinematic sun-care campaign shaped around sunlight, clarity, and sensorial sun care. Hero product translated across film, macro detail, and campaign-ready social creative.',
-      image: 'https://witlyn.com/work/solae/01-solae-campaign-hero.jpg.jpg',
-    },
-    {
-      id: 'vyraa',
-      num: '02',
-      brand: 'VYRAA',
-      tag: 'Brand Repositioning',
-      type: 'Spec Commercial · Witlyn Production',
-      headline: '5-Peptide Neck Complex — Emerald Precision',
-      desc: 'A deep-emerald product system built around brushed silver, formula texture, and controlled architectural lighting. Reimagining clinical skincare positioning.',
-      image: 'https://witlyn.com/work/vyraa/vyraa%20product.jpg',
-    },
-    {
-      id: 'lipea',
-      num: '03',
-      brand: 'LIPÉA',
-      tag: 'Content Engine & Automation',
-      type: 'Spec Commercial · Witlyn Production',
-      headline: 'Peptide Glass Lip Serum — The Pink World',
-      desc: 'A translucent beauty campaign built around liquid shine, chrome reflection, and blush-pink light. Translating one hero SKU into an infinite asset ecosystem.',
-      image: 'https://witlyn.com/work/lipea/6.jpg',
+      title: 'Turnkey Production & Handoff',
+      role: 'Ongoing',
+      desc: 'System deployment into active marketing channels, team enablement, and continuous model upgrades as new diffusion engines drop.',
     },
   ]
 
@@ -201,7 +184,7 @@ export default function HomePage() {
     {
       question: 'Is this AI-generated-looking work?',
       answer:
-        'Never. AI is treated as an instrument of execution under strict creative direction. Every render passes through high-fashion art direction, color grading, and category aesthetic standards. The output regularly outperforms traditional studio photography in both visual prestige and engagement.',
+        'Never. AI is treated as an instrument of execution under strict human creative direction. Every render passes through high-fashion art direction, color grading, and category aesthetic standards. The output regularly outperforms traditional studio photography in both visual prestige and engagement.',
     },
     {
       question: "What if my brand isn't ready for AI yet?",
@@ -229,34 +212,36 @@ export default function HomePage() {
     <div className="bg-background text-ivory overflow-x-hidden selection:bg-gold selection:text-background">
 
       {/* ════════════════════════════════════════════════════════════════════
-          SECTION 1 · CINEMATIC HERO
+          SECTION 1 · CINEMATIC HERO (WITH 3D DEPTH CANVAS)
       ════════════════════════════════════════════════════════════════════ */}
       <section
-        className="relative min-h-[92vh] lg:min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-20"
+        className="relative min-h-[94vh] lg:min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-20"
         aria-label="Hero"
       >
-        {/* Real Witlyn Campaign Atmosphere Background */}
-        <div className="absolute inset-0 z-0">
+        {/* Subtle Ambient 3D Mesh Canvas (Three.js WebGL) */}
+        <Hero3D />
+
+        {/* Real Witlyn Campaign Atmosphere Background with Parallax */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
           <Image
             src="https://witlyn.com/work/solae/01-solae-campaign-hero.jpg.jpg"
             alt="Witlyn campaign aesthetic atmosphere"
             fill
             priority
-            className="object-cover object-center opacity-15 scale-105 transition-transform duration-1000 ease-out"
+            className="object-cover object-center opacity-15 scale-105"
           />
-          {/* Multi-layer gradient overlays for seamless dark integration */}
+          {/* Multi-layer gradient overlays for seamless luxury dark integration */}
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/60" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold/5 via-transparent to-transparent" />
         </div>
 
-        {/* Ambient Gold Horizontal Guide */}
-        <div
-          className="absolute left-0 right-0 top-[40%] h-px pointer-events-none"
-          style={{
-            background:
-              'linear-gradient(90deg, transparent 0%, rgba(201,166,107,0.2) 30%, rgba(201,166,107,0.2) 70%, transparent 100%)',
-          }}
-        />
+        {/* Ambient Subtle Architectural Coordinate Guides */}
+        <div className="absolute top-32 left-8 lg:left-16 hidden sm:block text-[10px] font-mono tracking-[0.25em] text-gold/40 select-none">
+          SYSTEM: AI-NATIVE CREATIVE ARCHITECTURE
+        </div>
+        <div className="absolute top-32 right-8 lg:right-16 hidden sm:block text-[10px] font-mono tracking-[0.25em] text-muted-light/40 select-none">
+          ED. 2026 // BEAUTY & PRESTIGE
+        </div>
 
         <div className="container-luxury relative z-10">
           <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
@@ -266,7 +251,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: EASE_LUXURY }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold/30 bg-surface/60 backdrop-blur-sm mb-8"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold/30 bg-surface/60 backdrop-blur-md mb-8 shadow-[0_0_20px_rgba(201,166,107,0.1)]"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
               <span className="eyebrow-luxury">AI Creative Strategist for Beauty & Skincare</span>
@@ -280,10 +265,10 @@ export default function HomePage() {
               className="heading-hero mb-8 max-w-4xl"
             >
               The AI{' '}
-              <span className="italic font-fraunces text-gold-gradient font-light">
-                Creative
+              <span className="italic font-fraunces text-gold font-light">
+                Creative Edge
               </span>{' '}
-              Edge Beauty Brands Have Been Missing.
+              Beauty Brands Have Been Missing.
             </motion.h1>
 
             {/* Sub-headline */}
@@ -291,10 +276,10 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, ease: EASE_LUXURY, delay: 0.2 }}
-              className="body-editorial text-lg sm:text-xl max-w-2xl mb-12"
+              className="body-editorial text-lg sm:text-xl max-w-2xl mb-12 text-ivory/85"
             >
               I help beauty, skincare, and cosmetics brands compound their growth
-              through AI-native creative systems and autonomous brand intelligence.
+              through AI-native creative systems and autonomous brand operations.
             </motion.p>
 
             {/* CTAs */}
@@ -323,190 +308,412 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          SECTION 3 · THE GAP (PROBLEM STATEMENT)
+          SECTION 2 · THE STRATEGIC GAP (ASYMMETRIC 2-COLUMN SPLIT)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad relative" aria-label="The Gap">
+      <section className="section-pad relative border-t border-border/70 bg-[#0C0C0B]" aria-label="The Gap">
         <div className="container-luxury">
-          <div className="max-w-3xl mx-auto text-center">
-            <RevealSection>
-              <p className="eyebrow-luxury mb-4">The Strategic Gap</p>
-              <h2 className="heading-section mb-8">
-                Most beauty brands are churning content.{' '}
-                <span className="italic font-fraunces text-gold font-light">
-                  Almost none are building creative systems.
-                </span>
-              </h2>
-            </RevealSection>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            {/* Left Column: Bold Editorial Narrative Statement */}
+            <div className="lg:col-span-7">
+              <RevealSection>
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gold/30 bg-surface/50 text-[11px] uppercase tracking-[0.2em] text-gold mb-6">
+                  The Structural Dilemma
+                </div>
+                <h2 className="heading-section text-3xl sm:text-4xl lg:text-5xl mb-8 leading-tight">
+                  Most beauty brands are churning content.{' '}
+                  <span className="italic font-fraunces text-gold font-light">
+                    Almost none are architecting creative systems.
+                  </span>
+                </h2>
+              </RevealSection>
 
-            <RevealSection delay={0.1} className="space-y-6 text-left sm:text-center">
-              <p className="body-editorial text-lg">
-                The traditional beauty playbook — relying on 6-week agency production cycles, expensive studio shoots, and disjointed freelance rosters — is collapsing under the velocity of modern consumer demand.
-              </p>
-              <p className="body-editorial text-lg">
-                Meanwhile, brands dabbling in off-the-shelf AI generate uninspired, plastic-looking visuals that dilute their brand equity. The true moat is not prompt generation; it is architecting an end-to-end AI-native creative infrastructure with human art direction at the helm.
-              </p>
-              <p className="body-editorial text-lg text-gold/90 font-normal">
-                When you systemize creative intelligence, output expands 10× while cost and turnaround shrink by 70%.
-              </p>
-            </RevealSection>
+              <RevealSection delay={0.1} className="space-y-6 body-editorial text-base sm:text-lg">
+                <p>
+                  The legacy beauty playbook — relying on 6-week agency production cycles, fragile retainer agreements, and disjointed creative rosters — is collapsing under the velocity of modern consumer attention.
+                </p>
+                <p>
+                  Meanwhile, brands dabbling in off-the-shelf generative tools produce plastic figures and generic white-label visuals that actively erode luxury brand equity. The true moat is not raw prompt generation; it is architecting an end-to-end, AI-native creative infrastructure governed by uncompromising human art direction.
+                </p>
+              </RevealSection>
+            </div>
+
+            {/* Right Column: Architectural Paradigm Contrast Card */}
+            <div className="lg:col-span-5">
+              <RevealSection delay={0.2}>
+                <TiltCard className="card-surface p-8 sm:p-10 border-gold/40 bg-surface/90 shadow-[0_0_50px_rgba(201,166,107,0.08)]">
+                  <div className="flex items-center justify-between border-b border-border pb-4 mb-6">
+                    <span className="eyebrow-luxury text-gold">Operating Paradigm</span>
+                    <span className="font-mono text-xs text-muted-light">SHIFT ANALYSIS</span>
+                  </div>
+
+                  <div className="space-y-6">
+                    {/* Legacy Box */}
+                    <div className="p-4 rounded-xl bg-background/60 border border-border/80">
+                      <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-muted-light mb-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-400/80" />
+                        <span>Legacy Agency Production</span>
+                      </div>
+                      <p className="font-inter text-xs sm:text-sm text-ivory/70 leading-relaxed font-light">
+                        6–8 week lead times, escalating per-asset costs, manual retouching bottlenecks, and generic ad creative that burns paid spend.
+                      </p>
+                    </div>
+
+                    {/* AI-Native System Box */}
+                    <div className="p-4 rounded-xl bg-gold/10 border border-gold/40">
+                      <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-gold mb-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+                        <span>AI-Native Creative System</span>
+                      </div>
+                      <p className="font-inter text-xs sm:text-sm text-ivory/90 leading-relaxed font-light">
+                        Rapid concepting velocity, brand-calibrated prompt taxonomies, autonomous multi-format diffusion, and compounding creative equity owned entirely in-house.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-8 pt-4 border-t border-border/60 flex items-center justify-between text-[11px] font-mono text-muted-light">
+                    <span>STATUS: REVOLUTIONARY</span>
+                    <span className="text-gold">WITLYN PROVEN</span>
+                  </div>
+                </TiltCard>
+              </RevealSection>
+            </div>
+
           </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          SECTION 4 · TWO PILLARS
+          PACING MOMENT 1 · SPARSE FULL-WIDTH EDITORIAL BREATHER
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad bg-surface/30 border-y border-border/80" aria-label="Two Pillars">
+      <section className="py-28 lg:py-36 border-t border-border/80 bg-background relative overflow-hidden" aria-label="Philosophy Quote">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(201,166,107,0.06)_0%,_transparent_70%)] pointer-events-none" />
+        <div className="container-luxury max-w-4xl mx-auto text-center relative z-10">
+          <RevealSection>
+            <span className="text-gold/40 font-fraunces text-6xl lg:text-7xl block mb-4 leading-none">“</span>
+            <blockquote className="font-fraunces text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-ivory font-light italic leading-snug mb-8">
+              In the generative era, prestige will not be measured by the volume of content you produce. It will be determined by the precision of the systems you command.
+            </blockquote>
+            <cite className="font-inter text-xs sm:text-sm uppercase tracking-[0.25em] text-gold font-medium not-italic block">
+              Sakib Ziad · Founder of Witlyn
+            </cite>
+          </RevealSection>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════════════
+          SECTION 3 · TWO PILLARS (VISUALLY CONTRASTING BLOCKS)
+      ════════════════════════════════════════════════════════════════════ */}
+      <section className="section-pad bg-surface/30 border-t border-border/80" aria-label="Two Pillars">
         <div className="container-luxury">
-          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
-            <p className="eyebrow-luxury mb-4">Core Architecture</p>
-            <h2 className="heading-section mb-4">Two connected pillars of growth.</h2>
-            <p className="body-muted">Creative vision engineered with operational rigor.</p>
+          
+          <RevealSection className="max-w-2xl mb-16">
+            <p className="eyebrow-luxury text-gold mb-3">Two Pillars of Growth</p>
+            <h2 className="heading-section text-3xl sm:text-4xl lg:text-5xl">
+              Artistic direction engineered with computational leverage.
+            </h2>
           </RevealSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-            {/* Pillar 01 */}
+          <div className="space-y-12">
+            
+            {/* PILLAR 1: IMAGE-LED LUXURY EDITORIAL SHOWCASE */}
             <RevealSection delay={0.1}>
-              <div className="card-surface p-8 sm:p-12 flex flex-col justify-between h-full group hover:border-gold/40">
-                <div>
-                  <div className="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold mb-8 transition-transform duration-300 group-hover:scale-110">
-                    <Sparkles className="w-6 h-6" />
+              <TiltCard className="card-surface p-8 sm:p-12 border-gold/40 bg-gradient-to-br from-surface to-background">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                  
+                  {/* Left: Real Campaign Image with Parallax */}
+                  <div className="lg:col-span-5 relative aspect-[16/11] rounded-xl overflow-hidden border border-gold/30 group">
+                    <ParallaxLayer offset={25} className="w-full h-full">
+                      <Image
+                        src="https://witlyn.com/work/solae/01-solae-campaign-hero.jpg.jpg"
+                        alt="Solaé campaign generative direction by Witlyn"
+                        fill
+                        className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
+                      />
+                    </ParallaxLayer>
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent pointer-events-none" />
+                    <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-inter uppercase tracking-wider bg-background/85 backdrop-blur-md text-gold border border-gold/30">
+                      Pillar 01 · Creative Direction
+                    </span>
                   </div>
-                  <span className="eyebrow-luxury">Pillar 01 · Creative Direction</span>
-                  <h3 className="heading-card text-2xl sm:text-3xl mt-2 mb-4">
-                    AI-Native Creative Systems
-                  </h3>
-                  <p className="body-editorial text-base mb-6">
-                    Proven through Witlyn — campaign concepting, visual worldbuilding, and generative asset systems tailored for prestige skincare and cosmetics. High-fashion aesthetics executed without studio friction.
-                  </p>
+
+                  {/* Right: Editorial Content */}
+                  <div className="lg:col-span-7 flex flex-col justify-between">
+                    <div>
+                      <span className="eyebrow-luxury text-gold block mb-2">Aesthetic Architecture</span>
+                      <h3 className="heading-card text-2xl sm:text-3xl mb-4 text-ivory">
+                        AI-Native Creative Systems & Visual Direction
+                      </h3>
+                      <p className="body-editorial text-base sm:text-lg mb-6 leading-relaxed">
+                        Proven through Witlyn — comprehensive campaign concepting, visual worldbuilding, and proprietary prompt taxonomies crafted specifically for prestige skincare and cosmetics physics. High-fashion aesthetics executed without studio friction.
+                      </p>
+                      
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 text-xs text-ivory/80 font-light">
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
+                          <span>Formula caustics & refractive glass physics</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
+                          <span>Bespoke brand LoRAs & style guards</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
+                          <span>Packaging visualization & 3D renders</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
+                          <span>40+ commercial prompt blueprint repositories</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <Link
+                      href="/work"
+                      className="inline-flex items-center justify-center gap-2 self-start h-11 px-7 rounded-full bg-gold text-background font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury shadow-[0_0_20px_rgba(201,166,107,0.25)] hover:bg-gold-light hover:scale-[1.03] group/btn"
+                    >
+                      <span>Explore Campaign Proof</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                    </Link>
+                  </div>
+
                 </div>
-                <Link
-                  href="/work"
-                  className="inline-flex items-center justify-center gap-2 self-start h-11 px-6 rounded-full bg-gold text-background font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury shadow-[0_0_18px_rgba(201,166,107,0.25)] hover:bg-gold-light hover:scale-[1.03] hover:shadow-[0_0_28px_rgba(201,166,107,0.4)] active:scale-[0.98] mt-6 group/btn"
-                >
-                  <span>Explore Case Studies</span>
-                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                </Link>
-              </div>
+              </TiltCard>
             </RevealSection>
 
-            {/* Pillar 02 */}
+            {/* PILLAR 2: CODE & SYSTEMS-LED ARCHITECTURAL BLOCK */}
             <RevealSection delay={0.2}>
-              <div className="card-surface p-8 sm:p-12 flex flex-col justify-between h-full group hover:border-gold/40">
-                <div>
-                  <div className="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold mb-8 transition-transform duration-300 group-hover:scale-110">
-                    <Cpu className="w-6 h-6" />
+              <TiltCard className="card-surface p-8 sm:p-12 border-border/80 bg-[#0E0E0D]">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                  
+                  {/* Left: Editorial Narrative */}
+                  <div className="lg:col-span-6 flex flex-col justify-between order-2 lg:order-1">
+                    <div>
+                      <span className="eyebrow-luxury text-gold block mb-2">Operational Infrastructure</span>
+                      <h3 className="heading-card text-2xl sm:text-3xl mb-4 text-ivory">
+                        Autonomous AI Brand Operations & Agent Pipelines
+                      </h3>
+                      <p className="body-editorial text-base sm:text-lg mb-6 leading-relaxed">
+                        Transform your marketing department from a bottleneck into an autonomous generative studio. Custom agent pipelines that ingest customer sentiment, draft ad hooks, orchestrate diffusion engines, and output multi-channel campaigns with minimal human oversight.
+                      </p>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 text-xs text-ivory/80 font-light">
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
+                          <span>Automated search intent ➔ visual brief synthesis</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
+                          <span>Make.com & n8n multi-model orchestration</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
+                          <span>Prestige skincare tone-of-voice copy models</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
+                          <span>Autonomous multi-aspect ratio rendering</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <Link
+                      href="/consulting"
+                      className="inline-flex items-center justify-center gap-2 self-start h-11 px-7 rounded-full bg-surface border border-gold/40 text-gold font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury hover:bg-gold hover:text-background hover:scale-[1.03] group/btn"
+                    >
+                      <span>View Systems Scope</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                    </Link>
                   </div>
-                  <span className="eyebrow-luxury">Pillar 02 · Brand Operations</span>
-                  <h3 className="heading-card text-2xl sm:text-3xl mt-2 mb-4">
-                    AI Automation & Agents
-                  </h3>
-                  <p className="body-editorial text-base mb-6">
-                    Autonomous brand operations. Custom workflows that connect audience trend signals to asset generation, copy synthesis, and multi-channel asset routing — liberating founders from execution drag.
-                  </p>
+
+                  {/* Right: Interactive Pipeline Visual Schema */}
+                  <div className="lg:col-span-6 order-1 lg:order-2">
+                    <div className="p-6 rounded-2xl bg-[#090908] border border-border/80 font-mono text-xs space-y-4">
+                      <div className="flex items-center justify-between border-b border-border/60 pb-3">
+                        <div className="flex items-center gap-2 text-gold">
+                          <Activity className="w-4 h-4 animate-pulse" />
+                          <span className="font-semibold tracking-wider">PIPELINE TELEMETRY</span>
+                        </div>
+                        <span className="text-[10px] text-muted-light">NODE 4/4 ACTIVE</span>
+                      </div>
+
+                      {/* Pipeline steps */}
+                      <div className="space-y-3">
+                        <div className="p-3 rounded-lg bg-surface/60 border border-border flex items-center justify-between">
+                          <span className="text-ivory/80">01 // Sentiment & Review Ingestion</span>
+                          <span className="text-gold text-[10px]">CONNECTED</span>
+                        </div>
+                        <div className="p-3 rounded-lg bg-surface/60 border border-border flex items-center justify-between">
+                          <span className="text-ivory/80">02 // Dynamic Prompt Formulation</span>
+                          <span className="text-gold text-[10px]">CALIBRATED</span>
+                        </div>
+                        <div className="p-3 rounded-lg bg-surface/60 border border-border flex items-center justify-between">
+                          <span className="text-ivory/80">03 // Multi-Model Diffusion Render</span>
+                          <span className="text-gold text-[10px]">FLUX / MIDJOURNEY</span>
+                        </div>
+                        <div className="p-3 rounded-lg bg-gold/10 border border-gold/40 flex items-center justify-between text-gold">
+                          <span>04 // Multi-Channel Asset Dispatch</span>
+                          <span className="text-[10px] font-semibold">AUTONOMOUS</span>
+                        </div>
+                      </div>
+
+                      <div className="pt-2 flex items-center justify-between text-[10px] text-muted-light border-t border-border/50">
+                        <span>LATENCY: ZERO BOTTLENECK</span>
+                        <span className="text-gold">COMPOSITE ARCHITECTURE</span>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
+              </TiltCard>
+            </RevealSection>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════════════
+          SECTION 4 · THREE WAYS TO WORK WITH ME (HIERARCHICAL HUB)
+      ════════════════════════════════════════════════════════════════════ */}
+      <section className="section-pad border-t border-border/80 bg-background" aria-label="Offerings">
+        <div className="container-luxury">
+          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
+            <p className="eyebrow-luxury text-gold mb-3">Engagement Hub</p>
+            <h2 className="heading-section text-3xl sm:text-4xl">Three Ways to Partner</h2>
+            <p className="body-muted text-sm sm:text-base">Structured for strategic depth, self-direction, or ongoing syndicate access.</p>
+          </RevealSection>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+            
+            {/* Card 1: Consulting / Advisory (Flagship - Elevated) */}
+            <RevealSection delay={0.1}>
+              <TiltCard className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-gold/50 shadow-[0_0_35px_rgba(201,166,107,0.12)] bg-gradient-to-b from-surface via-surface to-[#161614] relative">
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-gold/15 border border-gold/40 text-gold">
+                      By Application Only
+                    </span>
+                    <span className="text-xs font-mono text-muted-light">FLAGSHIP</span>
+                  </div>
+                  <h3 className="heading-card text-2xl mb-3 text-ivory">1:1 Consulting & Advisory</h3>
+                  <p className="body-muted text-sm mb-6 leading-relaxed">
+                    Private executive counsel spanning creative audits, campaign direction, and custom AI automation pipelines tailored to your brand operations.
+                  </p>
+                  
+                  <div className="space-y-2.5 pt-4 border-t border-border/80 mb-8 text-xs text-ivory/80 font-light">
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                      <span>Bi-weekly architectural strategy sessions</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                      <span>Direct async review for prompt & model tuning</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                      <span>Strictly capped at 3 concurrent brands</span>
+                    </div>
+                  </div>
+                </div>
+
                 <Link
                   href="/consulting"
-                  className="inline-flex items-center justify-center gap-2 self-start h-11 px-6 rounded-full bg-gold text-background font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury shadow-[0_0_18px_rgba(201,166,107,0.25)] hover:bg-gold-light hover:scale-[1.03] hover:shadow-[0_0_28px_rgba(201,166,107,0.4)] active:scale-[0.98] mt-6 group/btn"
+                  className="inline-flex items-center justify-center gap-2 w-full h-12 px-6 rounded-full bg-gold text-background font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury shadow-[0_0_20px_rgba(201,166,107,0.25)] hover:bg-gold-light hover:scale-[1.02] group/btn"
                 >
-                  <span>View Consulting Scope</span>
-                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                  <span>Apply for Advisory</span>
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                 </Link>
-              </div>
-            </RevealSection>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════════════
-          SECTION 5 · THREE WAYS TO WORK WITH ME
-      ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad" aria-label="Offerings">
-        <div className="container-luxury">
-          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
-            <p className="eyebrow-luxury mb-4">Engagement Hub</p>
-            <h2 className="heading-section mb-4">Three Ways to Work With Me</h2>
-            <p className="body-muted">Engineered for depth, self-direction, and compounding partnership.</p>
-          </RevealSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Card 1: Consulting */}
-            <RevealSection delay={0.1}>
-              <div className="card-surface p-8 flex flex-col justify-between h-full group hover:border-gold/50">
-                <div>
-                  <span className="inline-block px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-gold/10 border border-gold/30 text-gold mb-6">
-                    By Application Only
-                  </span>
-                  <h3 className="heading-card text-2xl mb-3">1:1 Consulting & Advisory</h3>
-                  <p className="body-muted mb-6">
-                    High-touch strategic counsel spanning creative direction, campaign audits, and custom AI automation pipelines built for your brand.
-                  </p>
-                </div>
-                <div className="pt-6 border-t border-border">
-                  <Link
-                    href="/consulting"
-                    className="inline-flex items-center justify-center gap-2 w-full h-11 px-6 rounded-full bg-gold text-background font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury shadow-[0_0_20px_rgba(201,166,107,0.25)] hover:bg-gold-light hover:scale-[1.02] hover:shadow-[0_0_28px_rgba(201,166,107,0.4)] active:scale-[0.98] group/btn"
-                  >
-                    <span>Apply for Advisory</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                  </Link>
-                </div>
-              </div>
+              </TiltCard>
             </RevealSection>
 
-            {/* Card 2: Digital Products */}
+            {/* Card 2: Digital Products (Technical Blueprint Model) */}
             <RevealSection delay={0.2}>
-              <div className="card-surface p-8 flex flex-col justify-between h-full group hover:border-gold/50">
+              <TiltCard className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-border/80 hover:border-gold/40">
                 <div>
-                  <span className="inline-block px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-ivory/10 border border-ivory/20 text-ivory/80 mb-6">
-                    Self-Serve Systems
-                  </span>
-                  <h3 className="heading-card text-2xl mb-3">Digital Products & Kits</h3>
-                  <p className="body-muted mb-6">
-                    Battle-tested prompt architectures, creative director playbooks, and ready-to-deploy AI automation kits developed for beauty brands.
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-surface border border-border text-ivory/80">
+                      Self-Serve Systems
+                    </span>
+                    <BookOpen className="w-4 h-4 text-gold" />
+                  </div>
+                  <h3 className="heading-card text-2xl mb-3 text-ivory">Digital Products & Kits</h3>
+                  <p className="body-muted text-sm mb-6 leading-relaxed">
+                    Battle-tested prompt frameworks, art direction taxonomies, and ready-to-deploy Make/n8n automation blueprints developed directly for beauty brands.
                   </p>
+
+                  <div className="space-y-2.5 pt-4 border-t border-border/80 mb-8 text-xs text-ivory/80 font-light">
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                      <span>40+ tested prompt blueprints (Flux / Midjourney)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                      <span>Turnkey agent scenario blueprints</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                      <span>Immediate Notion repository access</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="pt-6 border-t border-border">
-                  <Link
-                    href="/digital-products"
-                    className="inline-flex items-center justify-center gap-2 w-full h-11 px-6 rounded-full bg-surface border border-border-strong text-ivory font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury hover:bg-ivory hover:text-background hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(247,244,239,0.2)] active:scale-[0.98] group/btn"
-                  >
-                    <span>Enquire About Kits</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                  </Link>
-                </div>
-              </div>
+
+                <Link
+                  href="/digital-products"
+                  className="inline-flex items-center justify-center gap-2 w-full h-12 px-6 rounded-full bg-surface border border-border-strong text-ivory font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury hover:bg-ivory hover:text-background hover:scale-[1.02] group/btn"
+                >
+                  <span>Enquire About Kits</span>
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                </Link>
+              </TiltCard>
             </RevealSection>
 
-            {/* Card 3: Membership */}
+            {/* Card 3: Membership (Syndicate Cohort Model) */}
             <RevealSection delay={0.3}>
-              <div className="card-surface p-8 flex flex-col justify-between h-full group hover:border-gold/50">
+              <TiltCard className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-border/80 hover:border-gold/40">
                 <div>
-                  <span className="inline-block px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-gold/10 border border-gold/30 text-gold mb-6">
-                    Private Syndicate
-                  </span>
-                  <h3 className="heading-card text-2xl mb-3">The Advisory Syndicate</h3>
-                  <p className="body-muted mb-6">
-                    Ongoing monthly intelligence, new model breakdowns, template drops, and direct async strategy counsel for long-term category leaders.
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-gold/10 border border-gold/30 text-gold">
+                      Syndicate Access
+                    </span>
+                    <Compass className="w-4 h-4 text-gold" />
+                  </div>
+                  <h3 className="heading-card text-2xl mb-3 text-ivory">The Advisory Syndicate</h3>
+                  <p className="body-muted text-sm mb-6 leading-relaxed">
+                    Ongoing monthly intelligence, emerging model setups, private template releases, and direct async guidance for brand leaders playing the long game.
                   </p>
+
+                  <div className="space-y-2.5 pt-4 border-t border-border/80 mb-8 text-xs text-ivory/80 font-light">
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                      <span>Monthly strategic intelligence monographs</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                      <span>Curated founder roundtables & ad reviews</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                      <span>Direct async advisory channel access</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="pt-6 border-t border-border">
-                  <Link
-                    href="/membership"
-                    className="inline-flex items-center justify-center gap-2 w-full h-11 px-6 rounded-full bg-surface border border-gold/40 text-gold font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury hover:bg-gold hover:text-background hover:scale-[1.02] hover:shadow-[0_0_24px_rgba(201,166,107,0.35)] active:scale-[0.98] group/btn"
-                  >
-                    <span>Explore Membership</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                  </Link>
-                </div>
-              </div>
+
+                <Link
+                  href="/membership"
+                  className="inline-flex items-center justify-center gap-2 w-full h-12 px-6 rounded-full bg-surface border border-gold/40 text-gold font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury hover:bg-gold hover:text-background hover:scale-[1.02] group/btn"
+                >
+                  <span>Explore Membership</span>
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                </Link>
+              </TiltCard>
             </RevealSection>
+
           </div>
 
           {/* Explicit Witlyn Distinction Callout */}
           <RevealSection delay={0.4} className="mt-14 text-center">
             <div className="inline-flex items-center flex-wrap justify-center gap-2 px-6 py-3 rounded-full border border-border bg-surface/50 text-xs font-inter text-muted-light">
-              <span>Looking for full-service AI creative production or campaign execution?</span>
+              <span>Looking for full-service AI creative production or done-for-you monthly retainers?</span>
               <a
                 href="https://witlyn.com"
                 target="_blank"
@@ -522,14 +729,15 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          SECTION 6 · SELECTED WORK WITH CINEMATIC IMAGERY
+          SECTION 5 · PROOF OF WORK (MAGAZINE EDITORIAL SPREAD LAYOUT)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad bg-surface/20 border-t border-border/80" aria-label="Selected Work">
+      <section className="section-pad bg-[#0B0B0A] border-t border-border/80" aria-label="Selected Work">
         <div className="container-luxury">
-          <RevealSection className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
+          
+          <RevealSection className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-20 border-b border-border/80 pb-8">
             <div>
-              <p className="eyebrow-luxury mb-4">Proof of Work</p>
-              <h2 className="heading-section">Selected Campaign Work</h2>
+              <p className="eyebrow-luxury text-gold mb-3">Field Proof</p>
+              <h2 className="heading-section text-3xl sm:text-4xl lg:text-5xl">Selected Campaign Work</h2>
             </div>
             <Button asChild variant="outline" size="sm">
               <Link href="/work" className="flex items-center gap-2">
@@ -539,243 +747,388 @@ export default function HomePage() {
             </Button>
           </RevealSection>
 
-          <div className="space-y-12">
-            {caseStudies.map((study, i) => (
-              <RevealSection key={study.id} delay={i * 0.1}>
-                <div className="card-surface overflow-hidden group">
-                  <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] items-center">
-                    
-                    {/* Content */}
-                    <div className="p-8 sm:p-12 lg:p-14 flex flex-col justify-between h-full order-2 lg:order-1">
-                      <div>
-                        <div className="flex items-center gap-4 mb-6">
-                          <span className="font-inter text-xs font-semibold text-gold tracking-widest">{study.num}</span>
-                          <span className="w-4 h-px bg-border" />
-                          <span className="font-inter text-xs uppercase tracking-wider text-muted-light">{study.type}</span>
-                        </div>
-                        <h3 className="heading-card text-2xl sm:text-3xl mb-4 group-hover:text-gold transition-colors">
-                          {study.brand}
-                        </h3>
-                        <p className="font-fraunces text-lg text-ivory/90 mb-4 font-light italic">
-                          "{study.headline}"
-                        </p>
-                        <p className="body-muted mb-8">
-                          {study.desc}
-                        </p>
-                      </div>
-
-                      <div>
-                        <Link
-                          href={`/work#${study.id}`}
-                          className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full bg-gold text-background font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury shadow-[0_0_18px_rgba(201,166,107,0.25)] hover:bg-gold-light hover:scale-[1.03] hover:shadow-[0_0_28px_rgba(201,166,107,0.4)] active:scale-[0.98] group/btn"
-                        >
-                          <span>Read Case Breakdown</span>
-                          <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                        </Link>
-                      </div>
-                    </div>
-
-                    {/* Image with subtle zoom on hover */}
-                    <div className="relative aspect-[16/10] lg:aspect-auto lg:h-full min-h-[300px] overflow-hidden order-1 lg:order-2">
-                      <Image
-                        src={study.image}
-                        alt={`${study.brand} creative campaign preview`}
-                        fill
-                        className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-l from-background/40 to-transparent pointer-events-none" />
-                    </div>
-
-                  </div>
+          {/* SPREAD 01: Solaé (Large Image Bleed Left, Editorial Narrative Right) */}
+          <div className="space-y-24">
+            
+            <RevealSection>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+                {/* Large Left Image */}
+                <div className="lg:col-span-7 relative aspect-[16/10] rounded-2xl overflow-hidden border border-gold/30 group">
+                  <ParallaxLayer offset={30} className="w-full h-full">
+                    <Image
+                      src="https://witlyn.com/work/solae/01-solae-campaign-hero.jpg.jpg"
+                      alt="SOLAÉ sun care campaign editorial"
+                      fill
+                      className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
+                    />
+                  </ParallaxLayer>
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent pointer-events-none" />
+                  <span className="absolute bottom-6 left-6 font-mono text-xs uppercase tracking-widest text-gold bg-background/80 px-3 py-1 rounded backdrop-blur-md">
+                    01 // CAMPAIGN DIRECTION
+                  </span>
                 </div>
-              </RevealSection>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* ════════════════════════════════════════════════════════════════════
-          SECTION 7 · THE METHOD
-      ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad border-y border-border/80 bg-surface" aria-label="Process">
-        <div className="container-luxury">
-          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
-            <p className="eyebrow-luxury mb-4">Methodology</p>
-            <h2 className="heading-section mb-4">How Engagement Works</h2>
-            <p className="body-muted">A clear, disciplined progression from initial audit to compounding asset generation.</p>
-          </RevealSection>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {methodSteps.map((step, idx) => (
-              <RevealSection key={step.num} delay={idx * 0.08} className="flex flex-col gap-4 relative">
-                <span className="font-fraunces text-4xl text-gold/40 font-light">{step.num}</span>
-                <h3 className="heading-card text-xl">{step.name}</h3>
-                <p className="body-muted text-sm">{step.desc}</p>
-              </RevealSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════════════
-          SECTION 8 · THE DIAGNOSTIC (LEAD GENERATION ENGINE)
-      ════════════════════════════════════════════════════════════════════ */}
-      <section id="diagnostic" className="section-pad relative" aria-label="AI Diagnostic">
-        <div className="container-luxury">
-          <div className="max-w-2xl mx-auto">
-            <RevealSection className="text-center mb-12">
-              <p className="eyebrow-luxury mb-4">Immediate Value</p>
-              <h2 className="heading-section mb-4">
-                Get an AI-Generated Gap & Opportunity Snapshot
-              </h2>
-              <p className="body-muted">
-                Input your brand details. Our specialized LLM engine analyzes your visual presence and returns 3 strategic creative opportunities within minutes.
-              </p>
-            </RevealSection>
-
-            <RevealSection delay={0.15}>
-              <div className="card-surface p-8 sm:p-12 border-gold/30 shadow-[0_0_50px_rgba(201,166,107,0.06)]">
-                {diagnosticStatus === 'success' ? (
-                  <div className="text-center py-8 space-y-6">
-                    <CheckCircle2 className="w-12 h-12 text-gold mx-auto" />
-                    <h3 className="heading-card text-2xl">Snapshot Initiated</h3>
-                    <p className="body-editorial text-base max-w-md mx-auto">
-                      We are processing your brand synthesis. A detailed overview is being dispatched to your email, and our strategy team will follow up directly.
+                {/* Right Narrative */}
+                <div className="lg:col-span-5 flex flex-col justify-between">
+                  <div>
+                    <span className="eyebrow-luxury text-muted-light block mb-2">Spec Commercial · Witlyn Production</span>
+                    <h3 className="heading-card text-3xl sm:text-4xl text-ivory mb-4">
+                      SOLAÉ
+                    </h3>
+                    <p className="font-fraunces text-xl text-gold/90 mb-4 font-light italic">
+                      AIRVEIL — SPF50+ Invisible Sun Serum
                     </p>
-                    <Button asChild variant="gold" size="md">
-                      <Link href="/contact">Book Strategy Call</Link>
-                    </Button>
+                    <p className="body-editorial text-base text-ivory/80 mb-6 leading-relaxed">
+                      A cinematic sun-care campaign shaped around sunlight, skin refraction, and sensorial fluidity. Constructed 12 distinct art-directed scenes including liquid dispersion and golden-hour lifestyle stills.
+                    </p>
+                    <div className="p-4 rounded-xl bg-surface border border-border mb-8">
+                      <span className="text-[10px] font-mono text-muted-light uppercase tracking-wider block mb-1">Delivered Systems</span>
+                      <span className="text-xs font-inter text-gold">Hero Campaign Film + 48 High-Resolution Assets</span>
+                    </div>
                   </div>
-                ) : (
-                  <form onSubmit={handleDiagnosticSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                          Brand Name *
-                        </label>
-                        <Input
-                          required
-                          placeholder="e.g. Solaé Botanicals"
-                          value={diagnosticForm.brandName}
-                          onChange={(e) => setDiagnosticForm({ ...diagnosticForm, brandName: e.target.value })}
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                          Website URL *
-                        </label>
-                        <Input
-                          required
-                          type="url"
-                          placeholder="https://yourbrand.com"
-                          value={diagnosticForm.websiteUrl}
-                          onChange={(e) => setDiagnosticForm({ ...diagnosticForm, websiteUrl: e.target.value })}
-                        />
-                      </div>
-                    </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                          Work Email *
-                        </label>
-                        <Input
-                          required
-                          type="email"
-                          placeholder="founder@yourbrand.com"
-                          value={diagnosticForm.email}
-                          onChange={(e) => setDiagnosticForm({ ...diagnosticForm, email: e.target.value })}
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                          Instagram Handle
-                        </label>
-                        <Input
-                          placeholder="@yourbrand"
-                          value={diagnosticForm.instagramHandle}
-                          onChange={(e) => setDiagnosticForm({ ...diagnosticForm, instagramHandle: e.target.value })}
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                        Primary Creative / Growth Bottleneck *
-                      </label>
-                      <Textarea
-                        required
-                        rows={3}
-                        placeholder="What is limiting your creative velocity right now? (e.g. agency turnaround too slow, generic visuals, ad fatigue)"
-                        value={diagnosticForm.growthChallenge}
-                        onChange={(e) => setDiagnosticForm({ ...diagnosticForm, growthChallenge: e.target.value })}
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      variant="gold"
-                      size="lg"
-                      className="w-full"
-                      disabled={diagnosticStatus === 'loading'}
-                    >
-                      {diagnosticStatus === 'loading' ? 'Analyzing Brand System...' : 'Generate My Gap Snapshot →'}
-                    </Button>
-
-                    <p className="text-[11px] text-muted-light text-center font-inter">
-                      100% confidential. No spam. Reviewed by Sakib Ziad personally.
-                    </p>
-                  </form>
-                )}
+                  <Link
+                    href="/work#solae"
+                    className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-gold hover:text-gold-light group/link"
+                  >
+                    <span>Read Solaé Breakdown</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                  </Link>
+                </div>
               </div>
             </RevealSection>
+
+            {/* SPREAD 02: Vyraa (REVERSE LAYOUT: Narrative Left, Emerald Visual Bleed Right) */}
+            <RevealSection delay={0.1}>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+                
+                {/* Left Narrative */}
+                <div className="lg:col-span-5 flex flex-col justify-between order-2 lg:order-1">
+                  <div>
+                    <span className="eyebrow-luxury text-muted-light block mb-2">Spec Commercial · Witlyn Production</span>
+                    <h3 className="heading-card text-3xl sm:text-4xl text-ivory mb-4">
+                      VYRAA
+                    </h3>
+                    <p className="font-fraunces text-xl text-gold/90 mb-4 font-light italic">
+                      5-Peptide Neck Complex — Emerald Precision
+                    </p>
+                    <p className="body-editorial text-base text-ivory/80 mb-6 leading-relaxed">
+                      A deep-emerald product universe built around brushed silver, tactile formula smears, and architectural lighting. Reimagined clinical skincare positioning to establish uncompromising category prestige.
+                    </p>
+                    <div className="p-4 rounded-xl bg-surface border border-border mb-8">
+                      <span className="text-[10px] font-mono text-muted-light uppercase tracking-wider block mb-1">Delivered Systems</span>
+                      <span className="text-xs font-inter text-gold">Complete Visual Identity Overhaul & Editorial Asset Suite</span>
+                    </div>
+                  </div>
+
+                  <Link
+                    href="/work#vyraa"
+                    className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-gold hover:text-gold-light group/link"
+                  >
+                    <span>Read Vyraa Breakdown</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                  </Link>
+                </div>
+
+                {/* Right Image */}
+                <div className="lg:col-span-7 relative aspect-[16/10] rounded-2xl overflow-hidden border border-gold/30 order-1 lg:order-2 group">
+                  <ParallaxLayer offset={30} className="w-full h-full">
+                    <Image
+                      src="https://witlyn.com/work/vyraa/vyraa%20product.jpg"
+                      alt="VYRAA skincare luxury packaging campaign"
+                      fill
+                      className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
+                    />
+                  </ParallaxLayer>
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent pointer-events-none" />
+                  <span className="absolute bottom-6 right-6 font-mono text-xs uppercase tracking-widest text-gold bg-background/80 px-3 py-1 rounded backdrop-blur-md">
+                    02 // BRAND REPOSITIONING
+                  </span>
+                </div>
+
+              </div>
+            </RevealSection>
+
+            {/* SPREAD 03: Lipéa (CINEMATIC WIDE HORIZONTAL BANNER) */}
+            <RevealSection delay={0.2}>
+              <div className="relative rounded-2xl overflow-hidden border border-gold/40 bg-surface/80 group">
+                <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
+                  
+                  <div className="lg:col-span-5 p-8 sm:p-12 lg:p-14 z-10">
+                    <span className="eyebrow-luxury text-gold block mb-2">Spec Commercial · Witlyn Production</span>
+                    <h3 className="heading-card text-3xl sm:text-4xl text-ivory mb-2">LIPÉA</h3>
+                    <p className="font-fraunces text-xl text-gold/90 mb-4 font-light italic">
+                      Peptide Glass Lip Serum — The Pink World
+                    </p>
+                    <p className="body-muted text-sm sm:text-base mb-6 leading-relaxed">
+                      A translucent beauty campaign built around liquid shine, chrome reflection, and blush-pink caustics. Replaced manual production coordination with an automated pipeline for paid social acquisition.
+                    </p>
+                    <div className="p-3.5 rounded-xl bg-background/80 border border-border mb-6">
+                      <span className="text-[10px] font-mono text-muted-light uppercase tracking-wider block mb-1">Delivered Systems</span>
+                      <span className="text-xs font-inter text-gold">Multi-Angle Campaign Suite & Automated Briefing System</span>
+                    </div>
+                    <Link
+                      href="/work#lipea"
+                      className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-gold hover:text-gold-light group/link"
+                    >
+                      <span>Read Lipéa Breakdown</span>
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                    </Link>
+                  </div>
+
+                  <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto lg:h-[440px] overflow-hidden">
+                    <Image
+                      src="https://witlyn.com/work/lipea/6.jpg"
+                      alt="LIPÉA Pink World campaign asset"
+                      fill
+                      className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-surface via-transparent to-transparent pointer-events-none" />
+                  </div>
+
+                </div>
+              </div>
+            </RevealSection>
+
           </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          SECTION 9 · ABOUT TEASER (WITH REAL PORTRAIT PHOTO)
+          SECTION 6 · METHODOLOGY (CONNECTED VISUAL TIMELINE)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad bg-surface/40 border-y border-border/80" aria-label="About Sakib Ziad">
+      <section className="section-pad border-t border-border/80 bg-[#0E0E0D]" aria-label="Methodology">
+        <div className="container-luxury">
+          <RevealSection className="text-center max-w-2xl mx-auto mb-20">
+            <p className="eyebrow-luxury text-gold mb-3">Architectural Sequence</p>
+            <h2 className="heading-section text-3xl sm:text-4xl">The Path to Compounding Leverage</h2>
+            <p className="body-muted text-sm sm:text-base">A disciplined sequence moving from forensic diagnosis to automated production.</p>
+          </RevealSection>
+
+          {/* Connected Sequence Flow with Golden Progress Track */}
+          <div className="relative">
+            {/* Horizontal Connecting Line (Desktop) */}
+            <div className="hidden lg:block absolute top-[44px] left-[5%] right-[5%] h-px bg-gradient-to-r from-gold/20 via-gold/60 to-gold/20 z-0" />
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+              {methodSteps.map((step, idx) => (
+                <RevealSection key={step.num} delay={idx * 0.1}>
+                  <div className="card-surface p-8 flex flex-col justify-between h-full border-border/80 group hover:border-gold/40">
+                    <div>
+                      {/* Step Node Marker */}
+                      <div className="flex items-center justify-between mb-8">
+                        <div className="w-11 h-11 rounded-full bg-surface border border-gold/50 flex items-center justify-center font-fraunces text-base text-gold shadow-[0_0_16px_rgba(201,166,107,0.2)] group-hover:scale-110 transition-transform">
+                          {step.num}
+                        </div>
+                        <span className="font-mono text-[10px] text-muted-light tracking-widest uppercase">
+                          {step.role}
+                        </span>
+                      </div>
+
+                      <h3 className="heading-card text-xl mb-3 text-ivory group-hover:text-gold transition-colors">
+                        {step.title}
+                      </h3>
+                      <p className="body-muted text-xs sm:text-sm leading-relaxed">
+                        {step.desc}
+                      </p>
+                    </div>
+
+                    <div className="pt-6 mt-6 border-t border-border/50 text-[10px] font-mono text-gold/70">
+                      MILESTONE {step.num} · VERIFIED
+                    </div>
+                  </div>
+                </RevealSection>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════════════
+          SECTION 7 · THE DIAGNOSTIC (ASYMMETRIC INTERACTIVE LEAD ENGINE)
+      ════════════════════════════════════════════════════════════════════ */}
+      <section id="diagnostic" className="section-pad relative border-t border-border/80 bg-background" aria-label="AI Diagnostic">
         <div className="container-luxury">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
-            {/* Real Executive Portrait Image */}
-            <RevealSection className="lg:col-span-5">
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-border shadow-2xl group">
-                <Image
-                  src="/images/sakib-ziad.jpg"
-                  alt="Sakib Ziad — AI Creative Strategist"
-                  fill
-                  className="object-cover object-top transition-transform duration-700 ease-luxury group-hover:scale-102"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-6 left-6 right-6">
-                  <p className="font-fraunces text-xl text-ivory">Sakib Ziad</p>
-                  <p className="eyebrow-luxury text-gold">Founder of Witlyn · AI Strategist</p>
+            {/* Left Column: Context & Strategic Value */}
+            <div className="lg:col-span-5">
+              <RevealSection>
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gold/30 bg-surface/50 text-[11px] uppercase tracking-[0.2em] text-gold mb-6">
+                  Complimentary Diagnosis
                 </div>
-              </div>
-            </RevealSection>
+                <h2 className="heading-section text-3xl sm:text-4xl mb-6">
+                  Get a Free Gap & Opportunity Snapshot
+                </h2>
+                <p className="body-editorial text-base sm:text-lg mb-6 leading-relaxed">
+                  Input your brand details. Our specialized LLM diagnostic analyzes your visual presence and returns 3 strategic creative opportunities directly to your inbox.
+                </p>
+                <div className="space-y-4 text-xs font-inter text-ivory/80 font-light">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
+                    <span>Forensic audit of your current aesthetic bottlenecks</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
+                    <span>3 concrete generative opportunities tailored to your vertical</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
+                    <span>1 actionable 30-day next step (no obligation)</span>
+                  </div>
+                </div>
+              </RevealSection>
+            </div>
 
-            {/* Narrative */}
+            {/* Right Column: Diagnostic Form Card */}
+            <div className="lg:col-span-7">
+              <RevealSection delay={0.15}>
+                <TiltCard className="card-surface p-8 sm:p-12 border-gold/40 shadow-[0_0_50px_rgba(201,166,107,0.08)]">
+                  {diagnosticStatus === 'success' ? (
+                    <div className="text-center py-8 space-y-6">
+                      <CheckCircle2 className="w-12 h-12 text-gold mx-auto" />
+                      <h3 className="heading-card text-2xl">Snapshot Initiated</h3>
+                      <p className="body-editorial text-base max-w-md mx-auto">
+                        We are processing your brand synthesis. A detailed overview is being dispatched to your email, and our strategy team will follow up directly.
+                      </p>
+                      <Button asChild variant="gold" size="md">
+                        <Link href="/contact">Book Strategy Call</Link>
+                      </Button>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleDiagnosticSubmit} className="space-y-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                          <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                            Brand Name *
+                          </label>
+                          <Input
+                            required
+                            placeholder="e.g. Solaé Botanicals"
+                            value={diagnosticForm.brandName}
+                            onChange={(e) => setDiagnosticForm({ ...diagnosticForm, brandName: e.target.value })}
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                            Website URL *
+                          </label>
+                          <Input
+                            required
+                            type="url"
+                            placeholder="https://yourbrand.com"
+                            value={diagnosticForm.websiteUrl}
+                            onChange={(e) => setDiagnosticForm({ ...diagnosticForm, websiteUrl: e.target.value })}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                          <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                            Work Email *
+                          </label>
+                          <Input
+                            required
+                            type="email"
+                            placeholder="founder@yourbrand.com"
+                            value={diagnosticForm.email}
+                            onChange={(e) => setDiagnosticForm({ ...diagnosticForm, email: e.target.value })}
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                            Instagram Handle
+                          </label>
+                          <Input
+                            placeholder="@yourbrand"
+                            value={diagnosticForm.instagramHandle}
+                            onChange={(e) => setDiagnosticForm({ ...diagnosticForm, instagramHandle: e.target.value })}
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                          Primary Creative / Growth Bottleneck *
+                        </label>
+                        <Textarea
+                          required
+                          rows={3}
+                          placeholder="What is limiting your creative velocity right now? (e.g. agency turnaround too slow, generic visuals, ad fatigue)"
+                          value={diagnosticForm.growthChallenge}
+                          onChange={(e) => setDiagnosticForm({ ...diagnosticForm, growthChallenge: e.target.value })}
+                        />
+                      </div>
+
+                      <Button
+                        type="submit"
+                        variant="gold"
+                        size="lg"
+                        className="w-full"
+                        disabled={diagnosticStatus === 'loading'}
+                      >
+                        {diagnosticStatus === 'loading' ? 'Analyzing Brand System...' : 'Generate My Gap Snapshot →'}
+                      </Button>
+
+                      <p className="text-[11px] text-muted-light text-center font-inter">
+                        100% confidential. No spam. Reviewed by Sakib Ziad personally.
+                      </p>
+                    </form>
+                  )}
+                </TiltCard>
+              </RevealSection>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════════════
+          SECTION 8 · FOUNDER PHILOSOPHY / ABOUT TEASE (LARGE-FORMAT EDITORIAL)
+      ════════════════════════════════════════════════════════════════════ */}
+      <section className="section-pad bg-surface/40 border-t border-border/80" aria-label="About Sakib Ziad">
+        <div className="container-luxury">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            {/* Left: Bleed Portrait Editorial Photo */}
+            <div className="lg:col-span-5">
+              <RevealSection>
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-gold/40 shadow-2xl group">
+                  <Image
+                    src="/images/sakib-ziad.jpg"
+                    alt="Sakib Ziad — AI Creative Strategist"
+                    fill
+                    className="object-cover object-top transition-transform duration-700 ease-luxury group-hover:scale-102"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <p className="font-fraunces text-2xl text-ivory">Sakib Ziad</p>
+                    <p className="eyebrow-luxury text-gold">Founder of Witlyn · AI Creative Strategist</p>
+                  </div>
+                </div>
+              </RevealSection>
+            </div>
+
+            {/* Right: Large Editorial Pull-Quote & Narrative */}
             <div className="lg:col-span-7 flex flex-col gap-6">
               <RevealSection>
-                <p className="eyebrow-luxury">Founder Philosophy</p>
-                <h2 className="heading-section my-4">
-                  "AI is not a tool I use. It is the architectural lens I design through."
+                <span className="eyebrow-luxury text-gold">Founder Philosophy</span>
+                <h2 className="font-fraunces text-3xl sm:text-4xl lg:text-5xl text-ivory font-light italic my-4 leading-tight">
+                  “AI is not a tool I use. It is the architectural lens I design through.”
                 </h2>
               </RevealSection>
 
-              <RevealSection delay={0.1} className="space-y-4 body-editorial">
+              <RevealSection delay={0.1} className="space-y-4 body-editorial text-base sm:text-lg">
                 <p>
                   With an academic degree in Artificial Intelligence and an obsession for prestige aesthetics, I founded Witlyn to prove that generative systems could exceed traditional studio campaigns in emotional depth and commercial conversion.
                 </p>
                 <p>
-                  Now, through this private advisory practice, I partner directly with founders and creative leaders to install these proprietary systems inside their brands — turning sporadic marketing into an autonomous, compounding creative asset.
+                  Now, through this private advisory practice, I partner directly with founders and CMOs to install these proprietary systems inside their brands — turning sporadic marketing into an autonomous, compounding creative asset.
                 </p>
               </RevealSection>
 
-              <RevealSection delay={0.2} className="pt-4">
+              <RevealSection delay={0.2} className="pt-2">
                 <Button asChild variant="outline" size="md">
                   <Link href="/about" className="flex items-center gap-2">
                     <span>Read Full Founder Story</span>
@@ -790,78 +1143,93 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          SECTION 10 · THOUGHT LEADERSHIP TEASER
+          SECTION 9 · STRATEGIC PERSPECTIVES (ASYMMETRIC EDITORIAL INDEX)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad" aria-label="Insights">
+      <section className="section-pad border-t border-border/80 bg-background" aria-label="Insights">
         <div className="container-luxury">
-          <RevealSection className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
-            <div>
-              <p className="eyebrow-luxury mb-4">Strategic Perspectives</p>
-              <h2 className="heading-section">Thinking on AI & Beauty</h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-16">
+            
+            {/* Left Header */}
+            <div className="lg:col-span-5">
+              <RevealSection>
+                <p className="eyebrow-luxury text-gold mb-3">Strategic Perspectives</p>
+                <h2 className="heading-section text-3xl sm:text-4xl mb-4">Thinking on AI & Beauty</h2>
+                <p className="body-muted mb-8 text-sm sm:text-base leading-relaxed">
+                  Essays, architectural breakdowns, and field notes exploring how computational creativity reshapes brand authority.
+                </p>
+                <Button asChild variant="outline" size="sm">
+                  <Link href="/insights" className="flex items-center gap-2">
+                    <span>View All Essays</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </Button>
+              </RevealSection>
             </div>
-            <Button asChild variant="outline" size="sm">
-              <Link href="/insights" className="flex items-center gap-2">
-                <span>View All Essays</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </Button>
-          </RevealSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <RevealSection delay={0.1}>
-              <Link href="/insights" className="card-surface p-8 flex flex-col justify-between h-full group hover:border-gold/40">
-                <div>
-                  <span className="eyebrow-luxury text-gold">AI Creative</span>
-                  <h3 className="heading-card text-xl mt-3 mb-3 group-hover:text-gold transition-colors">
+            {/* Right Editorial List */}
+            <div className="lg:col-span-7 space-y-6">
+              
+              <RevealSection delay={0.1}>
+                <Link href="/insights" className="card-surface p-6 sm:p-8 block group hover:border-gold/40 transition-colors">
+                  <div className="flex items-center justify-between gap-4 mb-2">
+                    <span className="eyebrow-luxury text-gold text-[10px]">AI Creative Systems</span>
+                    <span className="text-xs font-mono text-muted-light">Strategic Essay</span>
+                  </div>
+                  <h3 className="heading-card text-xl sm:text-2xl my-2 group-hover:text-gold transition-colors">
                     Why Beauty Brands Need Creative Systems, Not Agencies
                   </h3>
-                  <p className="body-muted text-sm">
-                    The 6-week agency turnaround is dead. How leading cosmetics brands are replacing bloated production with on-demand AI systems.
+                  <p className="body-muted text-xs sm:text-sm leading-relaxed mb-4">
+                    The 6-week agency turnaround is dead. How high-growth cosmetics brands replace bloated production with on-demand AI systems.
                   </p>
-                </div>
-                <span className="text-xs font-inter text-gold/70 mt-6 inline-flex items-center gap-1">
-                  Read Essay <ArrowRight className="w-3 h-3" />
-                </span>
-              </Link>
-            </RevealSection>
+                  <span className="text-xs font-mono text-gold/80 flex items-center gap-1">
+                    READ DISPATCH <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </Link>
+              </RevealSection>
 
-            <RevealSection delay={0.2}>
-              <Link href="/insights" className="card-surface p-8 flex flex-col justify-between h-full group hover:border-gold/40">
-                <div>
-                  <span className="eyebrow-luxury text-gold">Brand Strategy</span>
-                  <h3 className="heading-card text-xl mt-3 mb-3 group-hover:text-gold transition-colors">
+              <RevealSection delay={0.2}>
+                <Link href="/insights" className="card-surface p-6 sm:p-8 block group hover:border-gold/40 transition-colors">
+                  <div className="flex items-center justify-between gap-4 mb-2">
+                    <span className="eyebrow-luxury text-gold text-[10px]">Brand Strategy</span>
+                    <span className="text-xs font-mono text-muted-light">Design Theory</span>
+                  </div>
+                  <h3 className="heading-card text-xl sm:text-2xl my-2 group-hover:text-gold transition-colors">
                     The Prompt Is Not The Strategy: Aesthetics in 2026
                   </h3>
-                  <p className="body-muted text-sm">
+                  <p className="body-muted text-xs sm:text-sm leading-relaxed mb-4">
                     Why generic Midjourney renders dilute luxury brand equity, and how true art direction creates uncopyable visual prestige.
                   </p>
-                </div>
-                <span className="text-xs font-inter text-gold/70 mt-6 inline-flex items-center gap-1">
-                  Read Essay <ArrowRight className="w-3 h-3" />
-                </span>
-              </Link>
-            </RevealSection>
+                  <span className="text-xs font-mono text-gold/80 flex items-center gap-1">
+                    READ DISPATCH <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </Link>
+              </RevealSection>
 
-            <RevealSection delay={0.3}>
-              <Link href="/insights" className="card-surface p-8 flex flex-col justify-between h-full group hover:border-gold/40">
-                <div>
-                  <span className="eyebrow-luxury text-gold">AI Automation</span>
-                  <h3 className="heading-card text-xl mt-3 mb-3 group-hover:text-gold transition-colors">
+              <RevealSection delay={0.3}>
+                <Link href="/insights" className="card-surface p-6 sm:p-8 block group hover:border-gold/40 transition-colors">
+                  <div className="flex items-center justify-between gap-4 mb-2">
+                    <span className="eyebrow-luxury text-gold text-[10px]">AI Automation</span>
+                    <span className="text-xs font-mono text-muted-light">Systems Blueprint</span>
+                  </div>
+                  <h3 className="heading-card text-xl sm:text-2xl my-2 group-hover:text-gold transition-colors">
                     Autonomous Content Engines: Operational Breakdown
                   </h3>
-                  <p className="body-muted text-sm">
-                    Step-by-step architecture of the agent pipeline that produces 60+ commercial beauty assets every month with single-operator oversight.
+                  <p className="body-muted text-xs sm:text-sm leading-relaxed mb-4">
+                    Step-by-step architecture of the agent pipeline that translates audience intent into commercial beauty campaign variants.
                   </p>
-                </div>
-                <span className="text-xs font-inter text-gold/70 mt-6 inline-flex items-center gap-1">
-                  Read Essay <ArrowRight className="w-3 h-3" />
-                </span>
-              </Link>
-            </RevealSection>
+                  <span className="text-xs font-mono text-gold/80 flex items-center gap-1">
+                    READ DISPATCH <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </Link>
+              </RevealSection>
+
+            </div>
+
           </div>
 
           {/* Newsletter Box */}
-          <RevealSection delay={0.35} className="mt-16 card-surface p-8 sm:p-12 border-border/80">
+          <RevealSection delay={0.35} className="card-surface p-8 sm:p-12 border-border/80">
             <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 items-center">
               <div>
                 <p className="eyebrow-luxury mb-2">Private Dispatches</p>
@@ -896,17 +1264,17 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          SECTION 11 · FINAL CTA & APPLICATION INVITATION
+          SECTION 10 · FINAL INVITATION & DIRECT ACTION
       ════════════════════════════════════════════════════════════════════ */}
       <section className="section-pad border-t border-border/80 bg-surface/50 text-center" aria-label="Final Invitation">
         <div className="container-luxury max-w-3xl mx-auto">
           <RevealSection>
-            <p className="eyebrow-luxury mb-4">Exclusivity by Design</p>
+            <p className="eyebrow-luxury text-gold mb-4">Exclusivity by Design</p>
             <h2 className="heading-section text-4xl sm:text-5xl lg:text-6xl mb-6">
               Ready to install your AI creative edge?
             </h2>
-            <p className="body-editorial text-lg max-w-xl mx-auto mb-10">
-              Applications are reviewed personally. Limited advisory cohorts ensure deep immersion and measurable compounding growth.
+            <p className="body-editorial text-lg max-w-xl mx-auto mb-10 text-ivory/80">
+              Applications are reviewed personally. Limited advisory cohorts ensure deep immersion and compounding brand authority.
             </p>
             <Button asChild variant="gold" size="xl">
               <Link href="/contact" className="flex items-center gap-2">
@@ -919,12 +1287,12 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          SECTION 12 · OBJECTION-HANDLING FAQ
+          SECTION 11 · OBJECTION-HANDLING FAQ
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad border-t border-border/80" aria-label="FAQ">
+      <section className="section-pad border-t border-border/80 bg-background" aria-label="FAQ">
         <div className="container-luxury max-w-4xl mx-auto">
           <RevealSection className="text-center mb-16">
-            <p className="eyebrow-luxury mb-4">Clarity</p>
+            <p className="eyebrow-luxury text-gold mb-4">Clarity</p>
             <h2 className="heading-section mb-4">Frequently Asked Questions</h2>
             <p className="body-muted">Direct answers to strategic questions before applying.</p>
           </RevealSection>
