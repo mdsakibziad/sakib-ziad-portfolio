@@ -78,7 +78,7 @@ export default function DigitalProductsPage() {
         'Notion Creative Brief Hub: Structured briefing workflow for marketing teams',
         'Commercial Guardrail Checklist: Ensuring brand consistency and avoiding artifacting',
       ],
-      cta: 'Get Instant Access',
+      cta: 'Enquire About This Kit',
       variant: 'gold' as const,
     },
     {
@@ -96,7 +96,7 @@ export default function DigitalProductsPage() {
         'Dynamic Asset Storage & Tagging Pipeline: Automatic multi-aspect ratio rendering',
         'Complete Video Architecture Walkthrough: 45-minute step-by-step setup tutorial',
       ],
-      cta: 'Get Instant Access',
+      cta: 'Enquire About This Kit',
       variant: 'gold' as const,
     },
     {
@@ -181,6 +181,11 @@ export default function DigitalProductsPage() {
                   {/* Body Content */}
                   <div className="p-8 flex flex-col justify-between flex-1">
                     <div>
+                      {/* Internal Confirmation Tag */}
+                      <div className="mb-5 p-3 rounded-lg border border-gold/40 bg-gold/10 text-gold text-xs font-mono leading-relaxed">
+                        [CONFIRM: is this a real, ready-to-sell product? Confirm name, contents, and price before launch]
+                      </div>
+
                       <span className="eyebrow-luxury text-gold block mb-2">{product.tag}</span>
                       <h3 className="heading-card text-2xl mb-4 group-hover:text-gold transition-colors leading-snug">
                         {product.name}
@@ -205,9 +210,10 @@ export default function DigitalProductsPage() {
                         <span className="eyebrow-luxury text-[10px] text-muted-light block">Investment</span>
                         <span className="font-fraunces text-2xl text-ivory font-light">{product.price}</span>
                       </div>
-                      <Button asChild variant={product.variant} size="md">
-                        <Link href="/contact">
+                      <Button asChild variant={product.variant} size="md" className="group/btn">
+                        <Link href="/contact" className="inline-flex items-center gap-2">
                           <span>{product.cta}</span>
+                          <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                         </Link>
                       </Button>
                     </div>

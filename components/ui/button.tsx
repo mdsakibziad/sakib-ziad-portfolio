@@ -22,36 +22,40 @@ const buttonVariants = cva(
          * Default — ivory background, dark text. Primary CTA.
          */
         default: [
-          'bg-ivory text-background border-ivory font-semibold',
-          'hover:bg-white hover:border-white hover:shadow-[0_0_30px_rgba(247,244,239,0.25)]',
+          'bg-ivory text-background border-ivory font-semibold shadow-[0_0_24px_rgba(247,244,239,0.18)]',
+          'hover:bg-white hover:border-white hover:scale-[1.03] hover:shadow-[0_0_35px_rgba(247,244,239,0.35)]',
+          'active:scale-[0.98]',
         ],
         /**
          * Gold — warm gold background, dark text. Accent CTA.
          */
         gold: [
-          'bg-gold text-background border-gold font-semibold',
-          'hover:bg-gold-light hover:border-gold-light hover:shadow-[0_0_35px_rgba(201,166,107,0.4)]',
+          'bg-gold text-background border-gold font-semibold shadow-[0_0_24px_rgba(201,166,107,0.25)]',
+          'hover:bg-gold-light hover:border-gold-light hover:scale-[1.03] hover:shadow-[0_0_35px_rgba(201,166,107,0.45)]',
+          'active:scale-[0.98]',
         ],
         /**
-         * Outline — transparent with ivory border.
+         * Outline — surface background with border, fills ivory on hover.
          */
         outline: [
-          'bg-transparent text-ivory border-border-strong',
-          'hover:bg-ivory/10 hover:border-ivory/60 hover:shadow-[0_0_25px_rgba(247,244,239,0.08)]',
+          'bg-surface/80 text-ivory border-border-strong font-medium shadow-[0_4px_16px_rgba(0,0,0,0.4)]',
+          'hover:bg-ivory hover:text-background hover:border-ivory hover:scale-[1.03] hover:shadow-[0_0_25px_rgba(247,244,239,0.2)]',
+          'active:scale-[0.98]',
         ],
         /**
-         * Outline Gold — transparent with gold border.
+         * Outline Gold — gold tint, fills gold on hover.
          */
         'outline-gold': [
-          'bg-transparent text-gold border-gold/40',
-          'hover:bg-gold/10 hover:border-gold hover:shadow-[0_0_25px_rgba(201,166,107,0.25)]',
+          'bg-gold/10 text-gold border-gold/50 font-semibold',
+          'hover:bg-gold hover:text-background hover:border-gold hover:scale-[1.03] hover:shadow-[0_0_28px_rgba(201,166,107,0.35)]',
+          'active:scale-[0.98]',
         ],
         /**
          * Ghost — no border, subtle hover fill.
          */
         ghost: [
           'bg-transparent text-ivory border-transparent',
-          'hover:bg-ivory/8 hover:border-ivory/10',
+          'hover:bg-ivory/10 hover:border-ivory/20 hover:scale-[1.02]',
           'active:scale-[0.98]',
         ],
         /**
@@ -59,7 +63,7 @@ const buttonVariants = cva(
          */
         'ghost-gold': [
           'bg-transparent text-gold border-transparent',
-          'hover:bg-gold/8',
+          'hover:bg-gold/10 hover:scale-[1.02]',
           'active:scale-[0.98]',
         ],
         /**
@@ -67,18 +71,18 @@ const buttonVariants = cva(
          */
         muted: [
           'bg-surface text-ivory/70 border-border',
-          'hover:bg-surface/80 hover:text-ivory hover:border-border-strong',
+          'hover:bg-surface/90 hover:text-ivory hover:border-border-strong hover:scale-[1.02]',
           'active:scale-[0.98]',
         ],
       },
       size: {
-        sm: 'h-9 px-5 text-label-sm gap-1.5',
-        md: 'h-11 px-7 text-label-md gap-2',
-        lg: 'h-13 px-9 text-label-lg gap-2.5',
-        xl: 'h-15 px-11 text-label-lg gap-3',
-        icon: 'h-10 w-10 rounded-full p-0',
-        'icon-sm': 'h-8 w-8 rounded-full p-0',
-        'icon-lg': 'h-12 w-12 rounded-full p-0',
+        sm: 'h-10 px-6 text-xs gap-2',
+        md: 'h-12 px-8 text-xs font-semibold gap-2.5',
+        lg: 'h-14 px-10 text-sm font-semibold gap-3',
+        xl: 'h-16 px-12 text-sm font-semibold tracking-[0.16em] gap-3.5',
+        icon: 'h-11 w-11 rounded-full p-0',
+        'icon-sm': 'h-9 w-9 rounded-full p-0',
+        'icon-lg': 'h-13 w-13 rounded-full p-0',
       },
     },
     defaultVariants: {

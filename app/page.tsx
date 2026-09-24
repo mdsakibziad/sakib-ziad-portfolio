@@ -138,30 +138,6 @@ export default function HomePage() {
     }
   }
 
-  /* ── Credibility Pillars ───────────────────────────────────────────────── */
-  const credibilityPillars = [
-    {
-      num: '01',
-      label: 'BSc in Artificial Intelligence',
-      detail: 'Rigorous computational foundation translated into commercial brand systems.',
-    },
-    {
-      num: '02',
-      label: 'Beauty & Skincare Focus',
-      detail: 'Obsessive category specialization — understanding aesthetics, skin, and prestige codes.',
-    },
-    {
-      num: '03',
-      label: 'Founder of Witlyn',
-      detail: 'Proof in production — built an AI-native creative studio delivering commercial campaigns.',
-    },
-    {
-      num: '04',
-      label: 'Autonomous Brand Systems',
-      detail: 'From prompt architecture to automated multi-channel operational intelligence.',
-    },
-  ]
-
   /* ── Method Steps ──────────────────────────────────────────────────────── */
   const methodSteps = [
     {
@@ -186,37 +162,37 @@ export default function HomePage() {
     },
   ]
 
-  /* ── Case Studies ──────────────────────────────────────────────────────── */
+  /* ── Case Studies (Real Witlyn Campaign Assets) ────────────────────────── */
   const caseStudies = [
     {
       id: 'solae',
       num: '01',
-      brand: 'Solaé',
+      brand: 'SOLAÉ',
       tag: 'AI Campaign Direction',
-      type: 'Concept & Spec Direction',
-      headline: 'AI-native skincare campaign from zero to launch.',
-      desc: 'Designed a complete visual world for a high-potency antioxidant serum. From fluid caustics to micro-droplet macro stills, generated entirely through structured prompt systems.',
-      image: 'https://images.unsplash.com/photo-1608248597359-009587424ca6?q=80&w=1600&auto=format&fit=crop',
+      type: 'Spec Commercial · Witlyn Production',
+      headline: 'AIRVEIL — SPF50+ PA++++ Invisible Sun Serum',
+      desc: 'A cinematic sun-care campaign shaped around sunlight, clarity, and sensorial sun care. Hero product translated across film, macro detail, and campaign-ready social creative.',
+      image: 'https://witlyn.com/work/solae/01-solae-campaign-hero.jpg.jpg',
     },
     {
       id: 'vyraa',
       num: '02',
-      brand: 'Vyraa',
+      brand: 'VYRAA',
       tag: 'Brand Repositioning',
-      type: 'Creative Direction & Strategy',
-      headline: 'Repositioning a clean cosmetic line for the luxury market.',
-      desc: 'Transitioned a direct-to-consumer skincare line into high-end editorial positioning using architectural studio lighting and hyper-refined texture photography.',
-      image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1600&auto=format&fit=crop',
+      type: 'Spec Commercial · Witlyn Production',
+      headline: '5-Peptide Neck Complex — Emerald Precision',
+      desc: 'A deep-emerald product system built around brushed silver, formula texture, and controlled architectural lighting. Reimagining clinical skincare positioning.',
+      image: 'https://witlyn.com/work/vyraa/vyraa%20product.jpg',
     },
     {
       id: 'lipea',
       num: '03',
-      brand: 'Lipéa',
+      brand: 'LIPÉA',
       tag: 'Content Engine & Automation',
-      type: 'Autonomous Brand Pipeline',
-      headline: 'Scaling 60+ on-brand assets per month with zero studio overhead.',
-      desc: 'Constructed an automated content pipeline mapping beauty consumer search queries directly into synthesized lifestyle and packaging renders.',
-      image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=1600&auto=format&fit=crop',
+      type: 'Spec Commercial · Witlyn Production',
+      headline: 'Peptide Glass Lip Serum — The Pink World',
+      desc: 'A translucent beauty campaign built around liquid shine, chrome reflection, and blush-pink light. Translating one hero SKU into an infinite asset ecosystem.',
+      image: 'https://witlyn.com/work/lipea/6.jpg',
     },
   ]
 
@@ -259,17 +235,17 @@ export default function HomePage() {
         className="relative min-h-[92vh] lg:min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-20"
         aria-label="Hero"
       >
-        {/* Subtle Cinematic Background Image with dark luxury overlay */}
+        {/* Real Witlyn Campaign Atmosphere Background */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=2200&auto=format&fit=crop"
-            alt="Atmospheric luxury skincare aesthetic"
+            src="https://witlyn.com/work/solae/01-solae-campaign-hero.jpg.jpg"
+            alt="Witlyn campaign aesthetic atmosphere"
             fill
             priority
-            className="object-cover object-center opacity-20 scale-105 transition-transform duration-1000 ease-out"
+            className="object-cover object-center opacity-15 scale-105 transition-transform duration-1000 ease-out"
           />
           {/* Multi-layer gradient overlays for seamless dark integration */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/60" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold/5 via-transparent to-transparent" />
         </div>
 
@@ -326,57 +302,22 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, ease: EASE_LUXURY, delay: 0.3 }}
-              className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-16 w-full sm:w-auto"
+              className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto"
             >
               <Button asChild variant="gold" size="lg" className="w-full sm:w-auto group">
                 <Link href="/contact" className="flex items-center gap-2">
                   <span>Apply for a Strategy Call</span>
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="w-full sm:w-auto group">
                 <Link href="/work" className="flex items-center gap-2">
                   <span>Explore Selected Work</span>
-                  <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </Link>
               </Button>
             </motion.div>
 
-            {/* Authority Strip */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.9, delay: 0.45 }}
-              className="w-full pt-8 border-t border-border/60"
-            >
-              <p className="font-inter text-xs uppercase tracking-[0.2em] text-muted-light flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-                <span>BSc in AI</span>
-                <span className="text-gold/50">·</span>
-                <span>Beauty & Skincare Specialist</span>
-                <span className="text-gold/50">·</span>
-                <span>Founder of Witlyn</span>
-                <span className="text-gold/50">·</span>
-                <span>AI-Native Creative Systems</span>
-              </p>
-            </motion.div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════════════
-          SECTION 2 · CREDIBILITY PILLARS
-      ════════════════════════════════════════════════════════════════════ */}
-      <section className="py-20 border-y border-border/80 bg-surface/40" aria-label="Credentials">
-        <div className="container-luxury">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-            {credibilityPillars.map((item, i) => (
-              <RevealSection key={item.num} delay={i * 0.08} className="flex flex-col gap-3">
-                <span className="font-inter text-xs font-semibold text-gold tracking-widest">{item.num}</span>
-                <h3 className="font-fraunces text-xl text-ivory font-light leading-snug">{item.label}</h3>
-                <p className="body-muted text-sm leading-relaxed">{item.detail}</p>
-              </RevealSection>
-            ))}
           </div>
         </div>
       </section>
@@ -441,10 +382,10 @@ export default function HomePage() {
                 </div>
                 <Link
                   href="/work"
-                  className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-gold hover:text-gold-light mt-4"
+                  className="inline-flex items-center justify-center gap-2 self-start h-11 px-6 rounded-full bg-gold text-background font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury shadow-[0_0_18px_rgba(201,166,107,0.25)] hover:bg-gold-light hover:scale-[1.03] hover:shadow-[0_0_28px_rgba(201,166,107,0.4)] active:scale-[0.98] mt-6 group/btn"
                 >
                   <span>Explore Case Studies</span>
-                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
                 </Link>
               </div>
             </RevealSection>
@@ -466,10 +407,10 @@ export default function HomePage() {
                 </div>
                 <Link
                   href="/consulting"
-                  className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-gold hover:text-gold-light mt-4"
+                  className="inline-flex items-center justify-center gap-2 self-start h-11 px-6 rounded-full bg-gold text-background font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury shadow-[0_0_18px_rgba(201,166,107,0.25)] hover:bg-gold-light hover:scale-[1.03] hover:shadow-[0_0_28px_rgba(201,166,107,0.4)] active:scale-[0.98] mt-6 group/btn"
                 >
                   <span>View Consulting Scope</span>
-                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
                 </Link>
               </div>
             </RevealSection>
@@ -504,10 +445,10 @@ export default function HomePage() {
                 <div className="pt-6 border-t border-border">
                   <Link
                     href="/consulting"
-                    className="inline-flex items-center justify-between w-full text-xs font-inter uppercase tracking-[0.16em] text-ivory group-hover:text-gold transition-colors"
+                    className="inline-flex items-center justify-center gap-2 w-full h-11 px-6 rounded-full bg-gold text-background font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury shadow-[0_0_20px_rgba(201,166,107,0.25)] hover:bg-gold-light hover:scale-[1.02] hover:shadow-[0_0_28px_rgba(201,166,107,0.4)] active:scale-[0.98] group/btn"
                   >
                     <span>Apply for Advisory</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                   </Link>
                 </div>
               </div>
@@ -528,10 +469,10 @@ export default function HomePage() {
                 <div className="pt-6 border-t border-border">
                   <Link
                     href="/digital-products"
-                    className="inline-flex items-center justify-between w-full text-xs font-inter uppercase tracking-[0.16em] text-ivory group-hover:text-gold transition-colors"
+                    className="inline-flex items-center justify-center gap-2 w-full h-11 px-6 rounded-full bg-surface border border-border-strong text-ivory font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury hover:bg-ivory hover:text-background hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(247,244,239,0.2)] active:scale-[0.98] group/btn"
                   >
-                    <span>Browse Frameworks</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    <span>Enquire About Kits</span>
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                   </Link>
                 </div>
               </div>
@@ -552,10 +493,10 @@ export default function HomePage() {
                 <div className="pt-6 border-t border-border">
                   <Link
                     href="/membership"
-                    className="inline-flex items-center justify-between w-full text-xs font-inter uppercase tracking-[0.16em] text-ivory group-hover:text-gold transition-colors"
+                    className="inline-flex items-center justify-center gap-2 w-full h-11 px-6 rounded-full bg-surface border border-gold/40 text-gold font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury hover:bg-gold hover:text-background hover:scale-[1.02] hover:shadow-[0_0_24px_rgba(201,166,107,0.35)] active:scale-[0.98] group/btn"
                   >
-                    <span>View Membership</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    <span>Explore Membership</span>
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                   </Link>
                 </div>
               </div>
@@ -626,10 +567,10 @@ export default function HomePage() {
                       <div>
                         <Link
                           href={`/work#${study.id}`}
-                          className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-gold group-hover:text-gold-light"
+                          className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full bg-gold text-background font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury shadow-[0_0_18px_rgba(201,166,107,0.25)] hover:bg-gold-light hover:scale-[1.03] hover:shadow-[0_0_28px_rgba(201,166,107,0.4)] active:scale-[0.98] group/btn"
                         >
                           <span>Read Case Breakdown</span>
-                          <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                          <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
                         </Link>
                       </div>
                     </div>

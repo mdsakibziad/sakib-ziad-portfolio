@@ -175,25 +175,24 @@ export function Footer() {
             <p className="font-fraunces font-light text-ivory text-xl lg:text-2xl leading-snug tracking-tight">
               Ready to build an AI-native brand?
             </p>
-            <a
-              href={process.env.NEXT_PUBLIC_CAL_LINK ?? 'https://cal.com/sakib-ziad/strategy-call'}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/contact"
               className={cn(
-                'inline-flex items-center gap-2',
-                'font-inter text-label-md uppercase tracking-widest',
-                'text-ivory border border-border-strong rounded-full',
-                'px-5 py-2.5',
-                'transition-all duration-300 group',
-                'hover:border-gold/40 hover:text-gold hover:bg-gold/5'
+                'inline-flex items-center justify-center gap-2.5',
+                'font-inter text-xs font-semibold uppercase tracking-[0.16em]',
+                'text-background bg-gold rounded-full',
+                'px-7 py-3.5',
+                'transition-all duration-300 ease-luxury group',
+                'hover:bg-gold-light hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(201,166,107,0.35)]',
+                'active:scale-[0.98]'
               )}
             >
-              Apply for a Call
+              <span>Apply for a Strategy Call</span>
               <ArrowUpRight
-                className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
                 aria-hidden="true"
               />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

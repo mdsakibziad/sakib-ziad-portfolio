@@ -40,33 +40,33 @@ export default function WorkPage() {
     {
       id: 'solae',
       num: '01',
-      brand: 'Solaé Botanicals',
+      brand: 'SOLAÉ',
       tag: 'AI Campaign Direction',
-      status: 'Speculative Direction',
-      category: 'Clinical Botanical Skincare',
-      headline: 'Architecting an AI-native visual universe for a clinical serum launch.',
-      image: 'https://images.unsplash.com/photo-1608248597359-009587424ca6?q=80&w=1600&auto=format&fit=crop',
+      status: 'Spec Commercial · Witlyn Production',
+      category: 'Clinical Botanical Sun Care',
+      headline: 'AIRVEIL — SPF50+ PA++++ Invisible Sun Serum',
+      image: 'https://witlyn.com/work/solae/01-solae-campaign-hero.jpg.jpg',
       objective:
-        'Solaé required an aspirational, hyper-tactile campaign for their high-potency antioxidant serum. Traditional studio shooting projected a 7-week delay and substantial budget overhead for caustics and fluid-rig photography.',
+        'Solaé required a luminous, hyper-tactile commercial campaign for an invisible sun serum. Traditional studio shooting projected a 7-week delay and heavy budget overhead for fluid-rig photography and architectural lighting sets.',
       approach:
-        'Developed a proprietary prompt architecture calibrated to botanical cell morphology and amber glass refraction. Constructed 12 distinct art-directed scenes including liquid dispersion, macro dropper textures, and golden-hour lifestyle stills.',
+        'Developed a proprietary prompt architecture calibrated to botanical cell morphology and warm architectural sunlight. Constructed 12 distinct art-directed scenes including liquid dispersion, macro dropper textures, and golden-hour lifestyle stills.',
       outcome:
-        'Delivered 48 publication-grade campaign assets in 5 days. Established the permanent visual brand playbook now used across product packaging, digital paid acquisition, and wholesale retail merchandising.',
-      metric: '48 High-Resolution Campaign Assets Delivered in 5 Days',
+        'Delivered publication-grade campaign assets in 5 days. Established the permanent visual brand playbook now deployed across product packaging, digital paid acquisition, and wholesale retail merchandising.',
+      metric: 'Hero Campaign Film + 48 High-Resolution Assets Delivered in 5 Days',
     },
     {
       id: 'vyraa',
       num: '02',
-      brand: 'Vyraa Cosmetics',
+      brand: 'VYRAA',
       tag: 'Brand Repositioning',
-      status: 'Creative Direction & Strategy',
-      category: 'Prestige Color Cosmetics',
-      headline: 'Repositioning mass-market color cosmetics into high-fashion luxury.',
-      image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1600&auto=format&fit=crop',
+      status: 'Spec Commercial · Witlyn Production',
+      category: 'Prestige Clinical Skincare',
+      headline: '5-Peptide Neck Complex — Emerald Precision',
+      image: 'https://witlyn.com/work/vyraa/vyraa%20product.jpg',
       objective:
         'Vyraa was caught in a margin-eroding price war on retail shelves. The brand needed an immediate aesthetic elevation to justify a 2.5× price tier increase and secure placement in luxury boutique retailers.',
       approach:
-        'Rebuilt the creative direction around minimalist brutalism and architectural chiaroscuro lighting. Used multi-model diffusion workflows to concept frosted glass vessels, micro-pigment smears, and Parisian editorial model styling.',
+        'Rebuilt the creative direction around deep emerald glass, brushed silver accents, and controlled architectural lighting. Used multi-model diffusion workflows to concept frosted vessels, micro-pigment smears, and tactile formula details.',
       outcome:
         'Secured acceptance into two high-end boutique retail distributors within 60 days of visual relaunch. Customer perceived value increased dramatically, validating the premium retail price point.',
       metric: '2.5× Price Realization Post-Relaunch',
@@ -74,16 +74,16 @@ export default function WorkPage() {
     {
       id: 'lipea',
       num: '03',
-      brand: 'Lipéa Skin',
+      brand: 'LIPÉA',
       tag: 'Autonomous Content Engine',
-      status: 'Production Automation System',
-      category: 'Barrier Repair Skincare',
-      headline: 'Constructing an autonomous multi-platform content engine.',
-      image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=1600&auto=format&fit=crop',
+      status: 'Spec Commercial · Witlyn Production',
+      category: 'Lip Care & Serum Cosmetics',
+      headline: 'Peptide Glass Lip Serum — The Pink World',
+      image: 'https://witlyn.com/work/lipea/6.jpg',
       objective:
-        'Lipéa needed to feed paid TikTok, Meta, and email acquisition channels with fresh, on-brand creative every week, but their 2-person marketing team was completely overwhelmed by production coordination.',
+        'Lipéa needed to feed paid TikTok, Meta, and email acquisition channels with fresh, on-brand creative every week, but their marketing team was completely overwhelmed by production coordination.',
       approach:
-        'Engineered an integrated AI agent pipeline that ingests customer reviews and search queries, extracts emotional hook angles, automatically drafts ad scripts, and pairs them with synthetically rendered product lifestyle assets.',
+        'Engineered an integrated AI agent pipeline that ingests customer reviews and search queries, extracts emotional hook angles, automatically drafts ad scripts, and pairs them with synthetically rendered product lifestyle assets in a blush-pink reflective world.',
       outcome:
         'The brand now outputs over 60 verified on-brand creative variants monthly managed by a single marketing coordinator, cutting creative cost-per-asset by 74%.',
       metric: '60+ Monthly Brand Assets Generated with 1 Operator',
@@ -91,19 +91,19 @@ export default function WorkPage() {
     {
       id: 'nuecera',
       num: '04',
-      brand: 'Nuécera Paris',
+      brand: 'NUÉCERA',
       tag: 'Visual Identity & Generative Worldbuilding',
-      status: 'Concept & Direction',
-      category: 'Prestige Fragrance & Body Care',
-      headline: 'Translating olfactory notes into synesthetic visual worlds.',
-      image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=1600&auto=format&fit=crop',
+      status: 'Spec Concept · Witlyn Production',
+      category: 'Botanical Moisturizing Cream',
+      headline: 'Moisturizing Cream — A Complete Visual World',
+      image: 'https://witlyn.com/work/nuecera/nuecera%20cream%201.jpg',
       objective:
-        'Nuécera needed to evoke the scent notes of Mediterranean fig, wet limestone, and bergamot without relying on clichéd perfume commercial tropes.',
+        'Nuécera needed to create a complete visual ecosystem around a single flagship moisturizing cream — expanding beyond standard white-background e-commerce shots into everyday rituals and rich editorial atmosphere.',
       approach:
-        'Created a synesthetic prompt framework mapping fragrance pyramid chemistry (top, heart, base notes) directly into visual metaphors — raw stone textures, sea mist reflections, and botanical silhouettes.',
+        'Constructed a multi-scene generative world spanning reflective green surfaces, micro-texture fingertip studies, application moments in warm window light, and sunlit bathroom counter lifestyle setups.',
       outcome:
-        'Formed the foundational identity deck for angel investor presentations, successfully securing early-stage backing for global launch distribution.',
-      metric: 'Complete 30-Scene Visual Identity Deck Produced for Seed Round',
+        'Created 30 high-cohesion campaign assets under one creative direction without commissioning physical sets, delivering a complete brand identity world ready for retail pitch decks.',
+      metric: '30-Scene Complete Visual World Built Around 1 SKU',
     },
   ]
 

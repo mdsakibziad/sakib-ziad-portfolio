@@ -9,15 +9,13 @@ import { cn } from '@/lib/utils'
 
 /* ── Split Nav Links Config for Centered-Logo Studio Header ───────────────── */
 const NAV_LEFT = [
-  { label: 'Work',             href: '/work' },
-  { label: 'Consulting',       href: '/consulting' },
-  { label: 'Products',         href: '/digital-products' },
+  { label: 'Work',       href: '/work' },
+  { label: 'Consulting', href: '/consulting' },
 ] as const
 
 const NAV_RIGHT = [
-  { label: 'Membership',       href: '/membership' },
-  { label: 'About',            href: '/about' },
-  { label: 'Insights',         href: '/insights' },
+  { label: 'Products',   href: '/digital-products' },
+  { label: 'About',      href: '/about' },
 ] as const
 
 const ALL_LINKS = [
@@ -154,15 +152,15 @@ export function Navigation() {
                 href="/contact"
                 className={cn(
                   'group relative inline-flex items-center justify-center gap-2',
-                  'h-10 px-5 rounded-full border border-gold/40 text-gold text-xs font-inter uppercase tracking-[0.16em]',
-                  'transition-all duration-300 ease-luxury',
-                  'hover:border-gold hover:bg-gold/10 hover:shadow-[0_0_20px_rgba(201,166,107,0.2)]',
+                  'h-11 px-6 rounded-full border border-gold/50 bg-gold/10 text-gold text-xs font-inter font-semibold uppercase tracking-[0.16em]',
+                  'transition-all duration-300 ease-luxury shadow-[0_0_15px_rgba(201,166,107,0.15)]',
+                  'hover:border-gold hover:bg-gold hover:text-background hover:scale-[1.03] hover:shadow-[0_0_28px_rgba(201,166,107,0.35)]',
                   'active:scale-[0.98]'
                 )}
               >
                 <span>Apply for Call</span>
                 <ArrowUpRight
-                  className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
                   aria-hidden="true"
                 />
               </Link>
