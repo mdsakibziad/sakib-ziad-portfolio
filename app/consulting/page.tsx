@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
@@ -16,8 +16,7 @@ import {
   Mail,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
+import { ApplicationForm } from '@/components/application-form'
 
 const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
 
@@ -47,40 +46,6 @@ function RevealSection({
 }
 
 export default function ConsultingPage() {
-  const [formSubmitted, setFormSubmitted] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    brandName: '',
-    websiteUrl: '',
-    brandStage: 'Growing ($50k–$250k/mo)',
-    challenge: '',
-    successVision: '',
-  })
-
-  const calUrl = process.env.NEXT_PUBLIC_CAL_LINK
-
-  async function handleApplicationSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setIsSubmitting(true)
-    try {
-      await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'consulting',
-          ...formData,
-        }),
-      })
-      setFormSubmitted(true)
-    } catch {
-      setFormSubmitted(true)
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
   const isFor = [
     'Founders & CMOs of beauty, skincare, or cosmetic brands seeking category-defining visual prestige.',
     'Brands spending \$15k–\$50k+/quarter on production who want to replace agency delays with compounding internal systems.',
@@ -347,148 +312,11 @@ export default function ConsultingPage() {
           </RevealSection>
 
           <RevealSection delay={0.15}>
-            <div className="card-surface p-8 sm:p-12 border-gold/30 shadow-[0_0_60px_rgba(201,166,107,0.06)]">
-              {formSubmitted ? (
-                <div className="text-center py-10 space-y-6">
-                  <CheckCircle2 className="w-14 h-14 text-gold mx-auto" />
-                  <h3 className="heading-card text-3xl">Application Received</h3>
-                  <p className="body-editorial text-base max-w-md mx-auto">
-                    Thank you for detailing your brand. Sakib reviews all inquiries personally and will respond within 48 hours.
-                  </p>
-
-                  {/* Clean Booking Card */}
-                  <div className="card-surface p-6 border-border mt-8 text-left max-w-lg mx-auto">
-                    <div className="flex items-center gap-3 text-gold mb-3">
-                      <Calendar className="w-5 h-5" />
-                      <span className="font-fraunces text-lg text-ivory">Direct Meeting Access</span>
-                    </div>
-                    <p className="body-muted text-xs mb-4">
-                      If your matter is time-sensitive or you wish to secure a strategy window directly:
-                    </p>
-                    {calUrl && !calUrl.includes('PLACEHOLDER') ? (
-                      <Button asChild variant="gold" size="md" className="w-full">
-                        <a href={calUrl} target="_blank" rel="noopener noreferrer">
-                          Schedule Intro Call via Cal.com
-                        </a>
-                      </Button>
-                    ) : (
-                      <Button asChild variant="gold" size="md" className="w-full">
-                        <a href="mailto:Sakib@witlyn.com?subject=Strategic%20Advisory%20Call%20Request">
-                          Email Sakib Directly (Sakib@witlyn.com)
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                </div>
-              ) : (
-                <form onSubmit={handleApplicationSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                        Your Full Name *
-                      </label>
-                      <Input
-                        required
-                        placeholder="e.g. Elena Rostova"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                        Work Email Address *
-                      </label>
-                      <Input
-                        required
-                        type="email"
-                        placeholder="elena@brand.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                        Brand / Company Name *
-                      </label>
-                      <Input
-                        required
-                        placeholder="e.g. Solaé Botanicals"
-                        value={formData.brandName}
-                        onChange={(e) => setFormData({ ...formData, brandName: e.target.value })}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                        Website or Storefront URL *
-                      </label>
-                      <Input
-                        required
-                        type="url"
-                        placeholder="https://yourbrand.com"
-                        value={formData.websiteUrl}
-                        onChange={(e) => setFormData({ ...formData, websiteUrl: e.target.value })}
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                      Current Monthly Revenue Stage
-                    </label>
-                    <select
-                      className="w-full h-11 px-4 rounded-xl bg-surface border border-border text-ivory font-inter text-sm focus:outline-none focus:border-gold"
-                      value={formData.brandStage}
-                      onChange={(e) => setFormData({ ...formData, brandStage: e.target.value })}
-                    >
-                      <option value="Pre-launch / Seed">Pre-launch / Seed Stage</option>
-                      <option value="Early Traction ($10k–$50k/mo)">Early Traction (\$10k–\$50k / month)</option>
-                      <option value="Growing ($50k–$250k/mo)">Growing (\$50k–\$250k / month)</option>
-                      <option value="Scale ($250k–$1M/mo)">Scale (\$250k–\$1M / month)</option>
-                      <option value="Enterprise ($1M+/mo)">Enterprise (\$1M+ / month)</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                      What is your most pressing creative or content challenge? *
-                    </label>
-                    <Textarea
-                      required
-                      rows={3}
-                      placeholder="e.g. Current agency turnaround is 6 weeks, content looks generic, need an automated pipeline for paid social acquisition..."
-                      value={formData.challenge}
-                      onChange={(e) => setFormData({ ...formData, challenge: e.target.value })}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                      What would an ideal 6-month outcome look like? *
-                    </label>
-                    <Textarea
-                      required
-                      rows={2}
-                      placeholder="e.g. In-house AI creative studio running smoothly, 50% reduction in production costs, 5× output..."
-                      value={formData.successVision}
-                      onChange={(e) => setFormData({ ...formData, successVision: e.target.value })}
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    variant="gold"
-                    size="lg"
-                    className="w-full"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? 'Transmitting Application...' : 'Submit Advisory Application →'}
-                  </Button>
-                </form>
-              )}
-            </div>
+            <ApplicationForm
+              defaultInterest="consulting"
+              pageSource="consulting"
+              submitText="Submit Advisory Application"
+            />
           </RevealSection>
         </div>
       </section>

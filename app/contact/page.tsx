@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
@@ -15,8 +15,7 @@ import {
   Facebook,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
+import { ApplicationForm } from '@/components/application-form'
 
 const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
 
@@ -46,37 +45,6 @@ function RevealSection({
 }
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    brand: '',
-    website: '',
-    intent: 'Consulting & Advisory',
-    message: '',
-    timeline: 'Within 1 month',
-  })
-
-  const calUrl = process.env.NEXT_PUBLIC_CAL_LINK
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setIsSubmitting(true)
-    try {
-      await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'general', ...formData }),
-      })
-      setSubmitted(true)
-    } catch {
-      setSubmitted(true)
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
   return (
     <div className="bg-background text-ivory min-h-screen selection:bg-gold selection:text-background pt-28">
 
@@ -116,151 +84,13 @@ export default function ContactPage() {
             {/* Form Column */}
             <div className="lg:col-span-8">
               <RevealSection>
-                <div className="card-surface p-8 sm:p-12 border-gold/30 shadow-[0_0_50px_rgba(201,166,107,0.06)]">
-                  {submitted ? (
-                    <div className="text-center py-10 space-y-6">
-                      <CheckCircle2 className="w-14 h-14 text-gold mx-auto" />
-                      <h2 className="heading-card text-3xl">Application Received</h2>
-                      <p className="body-editorial text-base max-w-md mx-auto">
-                        Thank you for reaching out. I review all inquiries personally and will respond via email within 48 hours.
-                      </p>
-
-                      <div className="card-surface p-6 border-border mt-8 text-left max-w-md mx-auto">
-                        <div className="flex items-center gap-2 text-gold mb-2">
-                          <Calendar className="w-4 h-4" />
-                          <span className="font-fraunces text-base text-ivory">Schedule Direct Intro</span>
-                        </div>
-                        <p className="body-muted text-xs mb-4">
-                          If you'd like to schedule your 30-minute intro directly:
-                        </p>
-                        {calUrl && !calUrl.includes('PLACEHOLDER') ? (
-                          <Button asChild variant="gold" size="md" className="w-full">
-                            <a href={calUrl} target="_blank" rel="noopener noreferrer">
-                              Open Calendar via Cal.com
-                            </a>
-                          </Button>
-                        ) : (
-                          <Button asChild variant="gold" size="md" className="w-full">
-                            <a href="mailto:Sakib@witlyn.com?subject=Strategic%20Advisory%20Inquiry">
-                              Email Directly (Sakib@witlyn.com)
-                            </a>
-                          </Button>
-                        )}
-                      </div>
-                    </div>
-                  ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                            Your Name *
-                          </label>
-                          <Input
-                            required
-                            placeholder="e.g. Julian Vance"
-                            value={formData.name}
-                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                            Email Address *
-                          </label>
-                          <Input
-                            required
-                            type="email"
-                            placeholder="julian@brand.com"
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                            Brand / Company Name *
-                          </label>
-                          <Input
-                            required
-                            placeholder="e.g. Solaé Botanicals"
-                            value={formData.brand}
-                            onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                            Website or Store URL *
-                          </label>
-                          <Input
-                            required
-                            type="url"
-                            placeholder="https://yourbrand.com"
-                            value={formData.website}
-                            onChange={(e) => setFormData({ ...formData, website: e.target.value })}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                            Area of Interest
-                          </label>
-                          <select
-                            className="w-full h-11 px-4 rounded-xl bg-surface border border-border text-ivory font-inter text-sm focus:outline-none focus:border-gold"
-                            value={formData.intent}
-                            onChange={(e) => setFormData({ ...formData, intent: e.target.value })}
-                          >
-                            <option value="Consulting & Advisory">1:1 Strategic Advisory</option>
-                            <option value="AI Automation System Build">AI Automation & Agent Build</option>
-                            <option value="Digital Products">Digital Products & Blueprints</option>
-                            <option value="Syndicate Membership">Syndicate Membership</option>
-                            <option value="General Speaking / Inquiries">Speaking & Media</option>
-                          </select>
-                        </div>
-                        <div>
-                          <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                            Implementation Timeline
-                          </label>
-                          <select
-                            className="w-full h-11 px-4 rounded-xl bg-surface border border-border text-ivory font-inter text-sm focus:outline-none focus:border-gold"
-                            value={formData.timeline}
-                            onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-                          >
-                            <option value="Immediately (Next 2 weeks)">Immediately (Next 2 weeks)</option>
-                            <option value="Within 1 month">Within 1 month</option>
-                            <option value="1–3 months out">1–3 months out</option>
-                            <option value="Exploring & Planning">Exploring & Planning</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                          Tell me about your brand and what you wish to achieve with AI *
-                        </label>
-                        <Textarea
-                          required
-                          rows={4}
-                          placeholder="What is your biggest creative challenge, current monthly content volume, and ideal outcome?"
-                          value={formData.message}
-                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        />
-                      </div>
-
-                      <Button
-                        type="submit"
-                        variant="gold"
-                        size="lg"
-                        className="w-full"
-                        disabled={isSubmitting}
-                      >
-                        {isSubmitting ? 'Transmitting Inbound...' : 'Submit Application →'}
-                      </Button>
-                    </form>
-                  )}
-                </div>
+                <ApplicationForm
+                  defaultInterest="general"
+                  pageSource="contact"
+                  title="Direct Strategic Application"
+                  subtitle="Please detail your brand and current bottlenecks to initiate review."
+                  submitText="Submit Strategic Application"
+                />
               </RevealSection>
             </div>
 

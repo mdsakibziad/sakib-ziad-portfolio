@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
@@ -15,8 +15,7 @@ import {
   FileCode,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
+import { ApplicationForm } from '@/components/application-form'
 
 const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
 
@@ -46,32 +45,6 @@ function RevealSection({
 }
 
 export default function MembershipPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    brand: '',
-    reason: '',
-  })
-
-  async function handleWaitlist(e: React.FormEvent) {
-    e.preventDefault()
-    setIsSubmitting(true)
-    try {
-      await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'membership', ...formData }),
-      })
-      setSubmitted(true)
-    } catch {
-      setSubmitted(true)
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
   const benefits = [
     {
       icon: Compass,
@@ -194,6 +167,7 @@ export default function MembershipPage() {
             <h2 className="heading-section mb-6">Membership Investment</h2>
             <div className="card-surface p-10 sm:p-12 border-gold/30">
               <span className="eyebrow-luxury text-gold block mb-2">Founding Member Allocation</span>
+              {/* TODO: confirm membership pricing ($290/month) and billing cadence with owner before launch */}
               <p className="font-fraunces text-4xl sm:text-5xl text-ivory font-light mb-4">
                 $290 <span className="text-xl text-muted-light font-inter">/ month</span>
               </p>
@@ -210,7 +184,7 @@ export default function MembershipPage() {
 
       {/* ── Waitlist & Application Form ────────────────────────────────────── */}
       <section id="waitlist-form" className="section-pad bg-surface/40 border-t border-border/80" aria-label="Waitlist Form">
-        <div className="container-luxury max-w-xl mx-auto">
+        <div className="container-luxury max-w-2xl mx-auto">
           <RevealSection className="text-center mb-12">
             <p className="eyebrow-luxury mb-3">Admission Request</p>
             <h2 className="heading-section text-3xl sm:text-4xl mb-4">Apply for Syndicate Access</h2>
@@ -220,78 +194,11 @@ export default function MembershipPage() {
           </RevealSection>
 
           <RevealSection delay={0.15}>
-            <div className="card-surface p-8 sm:p-10 border-gold/30">
-              {submitted ? (
-                <div className="text-center py-8 space-y-4">
-                  <CheckCircle2 className="w-12 h-12 text-gold mx-auto" />
-                  <h3 className="heading-card text-2xl">Application Registered</h3>
-                  <p className="body-muted text-sm">
-                    Thank you. We will review your brand details and notify you when the next syndicate allocation opens.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleWaitlist} className="space-y-6">
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                      Full Name *
-                    </label>
-                    <Input
-                      required
-                      placeholder="e.g. Marc Jacobs"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                      Work Email *
-                    </label>
-                    <Input
-                      required
-                      type="email"
-                      placeholder="marc@brand.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                      Brand or Company Name *
-                    </label>
-                    <Input
-                      required
-                      placeholder="e.g. Lipéa Skin"
-                      value={formData.brand}
-                      onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
-                      What are you hoping to build with AI in 2026?
-                    </label>
-                    <Textarea
-                      rows={3}
-                      placeholder="Briefly describe your brand goals and what made you interested in the syndicate..."
-                      value={formData.reason}
-                      onChange={(e) => setFormData({ ...formData, reason: e.target.value })}
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    variant="gold"
-                    size="lg"
-                    className="w-full"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? 'Registering...' : 'Submit Syndicate Application →'}
-                  </Button>
-                </form>
-              )}
-            </div>
+            <ApplicationForm
+              defaultInterest="membership"
+              pageSource="membership"
+              submitText="Submit Syndicate Application"
+            />
           </RevealSection>
         </div>
       </section>
