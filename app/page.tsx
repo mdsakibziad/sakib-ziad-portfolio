@@ -213,22 +213,13 @@ export default function HomePage() {
         className="relative min-h-[94vh] lg:min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-20"
         aria-label="Hero"
       >
-        {/* Real Witlyn Campaign Atmosphere Background with Parallax */}
+        {/* Ambient Subtle Radial Illumination (Zero photos/watermarks) */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <Image
-            src="https://witlyn.com/work/solae/01-solae-campaign-hero.jpg.jpg"
-            alt="Witlyn campaign aesthetic atmosphere"
-            fill
-            sizes="100vw"
-            priority
-            className="object-cover object-center opacity-10 scale-105"
-          />
-          {/* Multi-layer gradient overlays for seamless luxury dark integration */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/60" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/[0.04] via-transparent to-transparent" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,_rgba(255,255,255,0.045)_0%,_transparent_65%)] blur-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
         </div>
 
-        {/* Procedural Liquid-Glass 3D Canvas (Three.js WebGL - Apple-inspired monochrome refraction sheet) */}
+        {/* Procedural Liquid-Glass 3D Canvas (Three.js WebGL - Smooth Organic Droplet) */}
         <Hero3D />
 
         {/* Ambient Subtle Architectural Coordinate Guides */}
@@ -240,7 +231,7 @@ export default function HomePage() {
         </div>
 
         <div className="container-luxury relative z-10">
-          <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
+          <div className="max-w-5xl mx-auto text-center flex flex-col items-center">
             
             {/* Eyebrow badge */}
             <motion.div
@@ -253,13 +244,13 @@ export default function HomePage() {
               <span className="eyebrow-luxury text-zinc-300">AI Creative Strategist for Beauty & Skincare</span>
             </motion.div>
 
-            {/* Main Staggered Headline Reveal */}
-            <h1 className="heading-hero mb-8 max-w-4xl text-center">
+            {/* Main Dominant Headline Reveal */}
+            <h1 className="heading-hero text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] xl:text-[6.25rem] mb-10 max-w-5xl text-center leading-[1.03] tracking-[-0.035em]">
               <span className="block overflow-hidden py-1">
                 <motion.span
                   initial={{ y: '100%', opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.9, ease: EASE_LUXURY, delay: 0.15 }}
+                  transition={{ duration: 0.95, ease: EASE_LUXURY, delay: 0.15 }}
                   className="block"
                 >
                   The AI{' '}
@@ -272,7 +263,7 @@ export default function HomePage() {
                 <motion.span
                   initial={{ y: '100%', opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.9, ease: EASE_LUXURY, delay: 0.3 }}
+                  transition={{ duration: 0.95, ease: EASE_LUXURY, delay: 0.3 }}
                   className="block"
                 >
                   Beauty Brands
@@ -282,7 +273,7 @@ export default function HomePage() {
                 <motion.span
                   initial={{ y: '100%', opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.9, ease: EASE_LUXURY, delay: 0.45 }}
+                  transition={{ duration: 0.95, ease: EASE_LUXURY, delay: 0.45 }}
                   className="block text-zinc-300 font-light"
                 >
                   Have Been Missing.
@@ -290,15 +281,19 @@ export default function HomePage() {
               </span>
             </h1>
 
-            {/* Sub-headline */}
+            {/* Considered Editorial Subheading */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, ease: EASE_LUXURY, delay: 0.55 }}
-              className="body-editorial text-lg sm:text-xl max-w-2xl mb-12 text-zinc-300 font-light"
+              transition={{ duration: 0.85, ease: EASE_LUXURY, delay: 0.6 }}
+              className="text-base sm:text-xl md:text-2xl text-zinc-300 font-light max-w-3xl mb-12 leading-[1.75] tracking-wide text-center"
             >
               I help beauty, skincare, and cosmetics brands compound their growth
-              through AI-native creative systems and autonomous brand operations.
+              through{' '}
+              <span className="inline-block px-3 py-0.5 my-0.5 rounded-full bg-white/[0.08] border border-white/20 text-white font-normal backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.22)] align-baseline">
+                AI-native creative systems
+              </span>{' '}
+              and autonomous brand intelligence.
             </motion.p>
 
             {/* CTAs */}

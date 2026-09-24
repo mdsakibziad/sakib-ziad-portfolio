@@ -158,7 +158,8 @@
 
   /* Editorial Section Headings */
   .heading-hero {
-    @apply font-fraunces font-light text-white tracking-[-0.03em] leading-[1.08];
+    @apply font-fraunces font-light text-white tracking-[-0.035em] leading-[1.03];
+    font-size: clamp(2.75rem, 6.2vw, 6.25rem);
   }
 
   .heading-section {

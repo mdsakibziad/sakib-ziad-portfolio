@@ -5,10 +5,13 @@ import * as THREE from 'three'
 
 /**
  * LiquidGlassHeroRefraction
- * Inspired by Apple's restrained liquid-glass material:
- * A subtle, architectural monochrome light refraction sheet that gently undulates
- * with soft specular highlights, silver caustics, and zero circular/orb shapes.
- * Optimized specifically for mobile GPUs with low polycount and zero layout shift.
+ * 
+ * Rebuilt from scratch with extreme restraint:
+ * - A smooth, organic, rounded liquid-glass droplet/blob with subtle spherical harmonic displacement.
+ * - Genuine transmission & clearcoat glass optics via MeshPhysicalMaterial + procedural HDR environment.
+ * - Soft refraction, subtle specular highlights, gentle continuous rotation & breathing.
+ * - Zero sharp facets, zero diagonal shards or planes cutting across the screen.
+ * - Sits quietly as an ethereal, elegant visual complement behind/around the headline.
  */
 export function LiquidGlassHeroRefraction() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -19,83 +22,141 @@ export function LiquidGlassHeroRefraction() {
 
     // Safety check for WebGL
     try {
-      const canvas = document.createElement('canvas')
-      const gl = canvas.getContext('webgl2') || canvas.getContext('webgl')
+      const testCanvas = document.createElement('canvas')
+      const gl = testCanvas.getContext('webgl2') || testCanvas.getContext('webgl')
       if (!gl) return
     } catch {
       return
     }
 
-    const isMobile = typeof window !== 'undefined' && (window.innerWidth < 768 || 'ontouchstart' in window)
+    const isMobile =
+      typeof window !== 'undefined' &&
+      (window.innerWidth < 768 || 'ontouchstart' in window)
+
     const width = container.clientWidth || window.innerWidth
-    const height = container.clientHeight || (isMobile ? 450 : 650)
+    const height = container.clientHeight || (isMobile ? 500 : 700)
 
+    // Scene & Perspective Camera
     const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(35, width / height, 0.1, 100)
-    camera.position.set(0, 0, 4.5)
+    const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 50)
+    camera.position.set(0, 0, 4.2)
 
+    // WebGL Renderer with ACES Filmic tonemapping
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
-      antialias: !isMobile,
+      antialias: true,
       powerPreference: isMobile ? 'low-power' : 'high-performance',
     })
     renderer.setSize(width, height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isMobile ? 1.25 : 1.75))
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2.0))
     renderer.toneMapping = THREE.ACESFilmicToneMapping
-    renderer.toneMappingExposure = 1.0
+    renderer.toneMappingExposure = 1.05
     container.appendChild(renderer.domElement)
 
     // ─────────────────────────────────────────────────────────────────────────
-    // PROCEDURAL MONOCHROME GLASS REFRACTION PLANE (Curved Horizon Wave)
+    // PROCEDURAL STUDIO LIGHTING ENVIRONMENT
+    // Generates an offscreen monochrome studio reflection map for realistic glass caustics
     // ─────────────────────────────────────────────────────────────────────────
-    const segmentsX = isMobile ? 24 : 48
-    const segmentsY = isMobile ? 16 : 32
-    const planeGeo = new THREE.PlaneGeometry(6.5, 3.8, segmentsX, segmentsY)
+    const envCanvas = document.createElement('canvas')
+    envCanvas.width = 512
+    envCanvas.height = 256
+    const ctx = envCanvas.getContext('2d')
+    if (ctx) {
+      // Dark studio background
+      ctx.fillStyle = '#080808'
+      ctx.fillRect(0, 0, 512, 256)
 
-    // Pure monochrome physical glass material
-    const glassMat = new THREE.MeshPhysicalMaterial({
-      color: new THREE.Color(0xffffff),
-      transmission: 0.94,
-      roughness: 0.12,
-      ior: 1.45,
-      thickness: 1.5,
-      clearcoat: 0.9,
-      clearcoatRoughness: 0.1,
-      specularIntensity: 1.0,
-      specularColor: new THREE.Color(0xffffff),
-      transparent: true,
-      opacity: 0.45,
-      wireframe: false,
-    })
+      // Top softbox reflector (smooth white gradient)
+      const gradTop = ctx.createRadialGradient(256, 40, 10, 256, 40, 180)
+      gradTop.addColorStop(0, 'rgba(255, 255, 255, 0.95)')
+      gradTop.addColorStop(0.4, 'rgba(240, 240, 245, 0.6)')
+      gradTop.addColorStop(1, 'rgba(8, 8, 8, 0)')
+      ctx.fillStyle = gradTop
+      ctx.fillRect(0, 0, 512, 200)
 
-    // Store original z positions
-    const posAttr = planeGeo.attributes.position
-    const count = posAttr.count
-    const originalZ = new Float32Array(count)
-    for (let i = 0; i < count; i++) {
-      originalZ[i] = posAttr.getZ(i)
+      // Left specular accent strip
+      const gradLeft = ctx.createRadialGradient(70, 128, 5, 70, 128, 90)
+      gradLeft.addColorStop(0, 'rgba(255, 255, 255, 0.8)')
+      gradLeft.addColorStop(1, 'rgba(8, 8, 8, 0)')
+      ctx.fillStyle = gradLeft
+      ctx.fillRect(0, 0, 200, 256)
+
+      // Right soft rim reflector
+      const gradRight = ctx.createRadialGradient(440, 140, 10, 440, 140, 120)
+      gradRight.addColorStop(0, 'rgba(230, 230, 235, 0.65)')
+      gradRight.addColorStop(1, 'rgba(8, 8, 8, 0)')
+      ctx.fillStyle = gradRight
+      ctx.fillRect(300, 0, 212, 256)
     }
 
-    const mesh = new THREE.Mesh(planeGeo, glassMat)
-    mesh.position.set(0, -0.4, -0.5)
-    mesh.rotation.x = -0.35 // Slightly tilted backward to catch overhead light
-    scene.add(mesh)
+    const envTexture = new THREE.CanvasTexture(envCanvas)
+    envTexture.mapping = THREE.EquirectangularReflectionMapping
+    const pmremGenerator = new THREE.PMREMGenerator(renderer)
+    pmremGenerator.compileEquirectangularShader()
+    const envMap = pmremGenerator.fromEquirectangular(envTexture).texture
+    scene.environment = envMap
+    envTexture.dispose()
 
     // ─────────────────────────────────────────────────────────────────────────
-    // LIGHTING: Monochrome Key, Rim & Specular Glint
+    // GEOMETRY: Ultra-Smooth Organic Sphere / Droplet
+    // Highly subdivided so surface normals interpolate with pure continuous curvature
     // ─────────────────────────────────────────────────────────────────────────
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.35)
+    const baseRadius = isMobile ? 1.05 : 1.25
+    const segments = isMobile ? 48 : 64
+    const sphereGeo = new THREE.SphereGeometry(baseRadius, segments, segments)
+
+    // Store un-displaced unit normals
+    const posAttr = sphereGeo.attributes.position
+    const vertexCount = posAttr.count
+    const normals = new Float32Array(vertexCount * 3)
+
+    for (let i = 0; i < vertexCount; i++) {
+      const x = posAttr.getX(i)
+      const y = posAttr.getY(i)
+      const z = posAttr.getZ(i)
+      const len = Math.sqrt(x * x + y * y + z * z) || 1
+      normals[i * 3]     = x / len
+      normals[i * 3 + 1] = y / len
+      normals[i * 3 + 2] = z / len
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // MATERIAL: Physical Liquid Glass with Transmission & Clearcoat
+    // Pure monochrome optical clarity, soft caustics, and subtle specular shine
+    // ─────────────────────────────────────────────────────────────────────────
+    const glassMat = new THREE.MeshPhysicalMaterial({
+      color: new THREE.Color(0xffffff),
+      transmission: 0.96, // Near complete transmission
+      roughness: 0.06,    // High clarity, soft specular sheen
+      ior: 1.48,          // Natural crown glass / liquid refraction index
+      thickness: 2.0,     // Volumetric refraction depth
+      specularIntensity: 1.0,
+      specularColor: new THREE.Color(0xffffff),
+      clearcoat: 1.0,     // High-gloss outer liquid sheen
+      clearcoatRoughness: 0.05,
+      transparent: true,
+      opacity: 0.88,
+      attenuationColor: new THREE.Color(0xf4f4f6),
+      attenuationDistance: 4.0,
+    })
+
+    const blobMesh = new THREE.Mesh(sphereGeo, glassMat)
+    blobMesh.position.set(0, 0.08, 0)
+    scene.add(blobMesh)
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // DIRECTIONAL & RIM LIGHTING
+    // ─────────────────────────────────────────────────────────────────────────
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.45)
     scene.add(ambientLight)
 
-    // Overhead cool white key light
-    const keyLight = new THREE.PointLight(0xffffff, 3.5, 20)
-    keyLight.position.set(0, 3.0, 3.0)
+    const keyLight = new THREE.PointLight(0xffffff, 2.5, 15)
+    keyLight.position.set(2.5, 3.2, 3.5)
     scene.add(keyLight)
 
-    // Soft rim light from below
-    const rimLight = new THREE.PointLight(0xd4d4d8, 2.0, 15)
-    rimLight.position.set(0, -3.0, 1.0)
-    scene.add(rimLight)
+    const fillLight = new THREE.PointLight(0xd4d4d8, 1.8, 15)
+    fillLight.position.set(-2.5, -2.5, 2.0)
+    scene.add(fillLight)
 
     // ResizeObserver
     const ro = new ResizeObserver((entries) => {
@@ -110,48 +171,64 @@ export function LiquidGlassHeroRefraction() {
     })
     ro.observe(container)
 
-    // Subtle cursor tracking
-    let targetX = 0
+    // Interactive mouse parallax (very subtle)
     let mouseX = 0
+    let mouseY = 0
+    let targetX = 0
+    let targetY = 0
+
     function handleMouseMove(e: MouseEvent) {
       mouseX = (e.clientX / window.innerWidth) * 2 - 1
+      mouseY = -(e.clientY / window.innerHeight) * 2 + 1
     }
+
     if (!isMobile) {
       window.addEventListener('mousemove', handleMouseMove, { passive: true })
     }
 
-    // Animation loop — gentle continuous liquid wave motion
+    // ─────────────────────────────────────────────────────────────────────────
+    // ANIMATION LOOP: Continuous Organic Breathing & Gentle Rotation
+    // Zero sudden movements, zero faceted jumps
+    // ─────────────────────────────────────────────────────────────────────────
     let animId: number
     const clock = new THREE.Clock()
     let lastTime = 0
-    const interval = isMobile ? 1 / 30 : 1 / 60
+    const frameInterval = isMobile ? 1 / 30 : 1 / 60
 
     function animate(now: number) {
       animId = requestAnimationFrame(animate)
       const delta = (now - lastTime) / 1000
-      if (isMobile && delta < interval) return
+      if (isMobile && delta < frameInterval) return
       lastTime = now
 
       const time = clock.getElapsedTime()
-      targetX += (mouseX - targetX) * 0.03
 
-      // Deform plane vertices with gentle sine/cosine liquid surface waves
-      const speed = isMobile ? 0.45 : 0.6
-      for (let i = 0; i < count; i++) {
-        const x = posAttr.getX(i)
-        const y = posAttr.getY(i)
-        const wave =
-          Math.sin(x * 1.2 + time * speed) * 0.12 +
-          Math.cos(y * 1.5 + time * (speed * 0.8)) * 0.08 +
-          Math.sin((x + y) * 0.8 + time * (speed * 0.5)) * 0.06
+      // Smooth mouse follow
+      targetX += (mouseX * 0.25 - targetX) * 0.02
+      targetY += (mouseY * 0.15 - targetY) * 0.02
 
-        posAttr.setZ(i, wave)
+      blobMesh.rotation.y = time * 0.08 + targetX
+      blobMesh.rotation.x = Math.sin(time * 0.06) * 0.08 + targetY
+
+      // Organic liquid surface breathing (smooth harmonic frequencies)
+      const t = time * 0.42
+      for (let i = 0; i < vertexCount; i++) {
+        const nx = normals[i * 3]
+        const ny = normals[i * 3 + 1]
+        const nz = normals[i * 3 + 2]
+
+        // Three harmonically blended spherical waves
+        const wave1 = Math.sin(nx * 2.2 + t) * Math.cos(ny * 2.2 + t * 0.85)
+        const wave2 = Math.sin(nz * 2.6 + t * 0.75) * 0.5
+        const wave3 = Math.cos((nx + nz) * 1.8 + t * 0.6) * 0.35
+
+        const displacement = (wave1 + wave2 + wave3) * 0.075 // Restrained 7.5% radius breathing
+        const r = baseRadius * (1.0 + displacement)
+
+        posAttr.setXYZ(i, nx * r, ny * r, nz * r)
       }
       posAttr.needsUpdate = true
-      planeGeo.computeVertexNormals()
-
-      // Subtle horizontal tilt with mouse
-      mesh.rotation.y = targetX * 0.15
+      sphereGeo.computeVertexNormals()
 
       renderer.render(scene, camera)
     }
@@ -167,8 +244,10 @@ export function LiquidGlassHeroRefraction() {
       if (container && renderer.domElement) {
         container.removeChild(renderer.domElement)
       }
-      planeGeo.dispose()
+      sphereGeo.dispose()
       glassMat.dispose()
+      envMap.dispose()
+      pmremGenerator.dispose()
       renderer.dispose()
     }
   }, [])
@@ -176,7 +255,7 @@ export function LiquidGlassHeroRefraction() {
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 pointer-events-none select-none z-[1] overflow-hidden opacity-40 mix-blend-screen"
+      className="absolute inset-0 pointer-events-none select-none z-[1] overflow-hidden flex items-center justify-center opacity-85"
       aria-hidden="true"
     />
   )
