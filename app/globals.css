@@ -158,8 +158,8 @@
 
   /* Editorial Section Headings */
   .heading-hero {
-    @apply font-fraunces font-light text-white tracking-[-0.035em] leading-[1.03];
-    font-size: clamp(2.75rem, 6.2vw, 6.25rem);
+    @apply font-fraunces font-light text-white tracking-[-0.03em] leading-[1.06];
+    font-size: clamp(2.15rem, 5.2vw, 4.75rem);
   }
 
   .heading-section {
@@ -197,4 +197,59 @@
   .nav-link-hover.active::after {
     @apply scale-x-100;
   }
+}
+
+/* ── Pure CSS Ambient Atmosphere & Liquid Bubble Keyframes ─────────────────── */
+@keyframes ambientDrift {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate(-48%, -53%) scale(1.1);
+    opacity: 0.95;
+  }
+}
+
+@keyframes ambientDriftAlt {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-20px, 15px) scale(1.15);
+    opacity: 0.85;
+  }
+}
+
+@keyframes liquidBubble {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(5px, -18px, 0);
+  }
+  50% {
+    transform: translate3d(-4px, -36px, 0);
+  }
+  75% {
+    transform: translate3d(6px, -18px, 0);
+  }
+}
+
+.animate-ambient-drift {
+  animation: ambientDrift 18s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-ambient-drift-alt {
+  animation: ambientDriftAlt 22s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-liquid-bubble {
+  animation-name: liquidBubble;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform;
 }

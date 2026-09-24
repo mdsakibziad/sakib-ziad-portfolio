@@ -3,7 +3,6 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import dynamic from 'next/dynamic'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import {
@@ -21,11 +20,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { TiltCard } from '@/components/ui/tilt-card'
 import { ParallaxLayer } from '@/components/parallax-layer'
 
-// Dynamically load Three.js 3D canvas on client-side only
-const Hero3D = dynamic(
-  () => import('@/components/hero-3d').then((mod) => mod.Hero3D),
-  { ssr: false }
-)
+import { AmbientHeroAtmosphere } from '@/components/ambient-hero-atmosphere'
 
 /* ── Animation Curve ──────────────────────────────────────────────────────── */
 const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
@@ -213,14 +208,8 @@ export default function HomePage() {
         className="relative min-h-[94vh] lg:min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-20"
         aria-label="Hero"
       >
-        {/* Ambient Subtle Radial Illumination (Zero photos/watermarks) */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,_rgba(255,255,255,0.045)_0%,_transparent_65%)] blur-3xl" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
-        </div>
-
-        {/* Procedural Liquid-Glass 3D Canvas (Three.js WebGL - Smooth Organic Droplet) */}
-        <Hero3D />
+        {/* Pure CSS Ambient Glow & Floating Liquid Particles (Zero 3D/WebGL) */}
+        <AmbientHeroAtmosphere />
 
         {/* Ambient Subtle Architectural Coordinate Guides */}
         <div className="absolute top-32 left-8 lg:left-16 hidden sm:block text-[10px] font-mono tracking-[0.25em] text-white/30 select-none">
@@ -231,7 +220,7 @@ export default function HomePage() {
         </div>
 
         <div className="container-luxury relative z-10">
-          <div className="max-w-5xl mx-auto text-center flex flex-col items-center">
+          <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
             
             {/* Eyebrow badge */}
             <motion.div
@@ -244,9 +233,9 @@ export default function HomePage() {
               <span className="eyebrow-luxury text-zinc-300">AI Creative Strategist for Beauty & Skincare</span>
             </motion.div>
 
-            {/* Main Dominant Headline Reveal */}
-            <h1 className="heading-hero text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] xl:text-[6.25rem] mb-10 max-w-5xl text-center leading-[1.03] tracking-[-0.035em]">
-              <span className="block overflow-hidden py-1">
+            {/* Main Dominant Headline Reveal — Fluid Responsive Clamp */}
+            <h1 className="heading-hero mb-8 sm:mb-10 w-full text-center">
+              <span className="block overflow-hidden py-1 px-4 -mx-4">
                 <motion.span
                   initial={{ y: '100%', opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -254,12 +243,12 @@ export default function HomePage() {
                   className="block"
                 >
                   The AI{' '}
-                  <span className="italic font-fraunces text-white font-light">
+                  <span className="italic font-fraunces text-white font-light pr-1">
                     Creative Edge
                   </span>
                 </motion.span>
               </span>
-              <span className="block overflow-hidden py-1">
+              <span className="block overflow-hidden py-1 px-4 -mx-4">
                 <motion.span
                   initial={{ y: '100%', opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -269,7 +258,7 @@ export default function HomePage() {
                   Beauty Brands
                 </motion.span>
               </span>
-              <span className="block overflow-hidden py-1">
+              <span className="block overflow-hidden py-1 px-4 -mx-4">
                 <motion.span
                   initial={{ y: '100%', opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -290,7 +279,7 @@ export default function HomePage() {
             >
               I help beauty, skincare, and cosmetics brands compound their growth
               through{' '}
-              <span className="inline-block px-3 py-0.5 my-0.5 rounded-full bg-white/[0.08] border border-white/20 text-white font-normal backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.22)] align-baseline">
+              <span className="inline-block px-3 py-0.5 my-0.5 rounded-full bg-white/[0.05] border border-white/10 text-white font-normal backdrop-blur-sm shadow-[0_0_12px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.15)] align-baseline">
                 AI-native creative systems
               </span>{' '}
               and autonomous brand intelligence.
