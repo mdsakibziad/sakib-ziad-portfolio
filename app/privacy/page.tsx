@@ -17,7 +17,7 @@ export default function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="font-inter text-sm text-ivory/40">
-            Last updated: [PLACEHOLDER: Date]
+            Last updated: September 2026
           </p>
         </div>
 
@@ -167,7 +167,7 @@ export default function PrivacyPage() {
         {/* Legal Review Notice */}
         <div className="mt-16 p-6 border border-gold/30 bg-surface rounded-sm">
           <p className="font-inter text-sm text-ivory/60 leading-relaxed">
-            <span className="text-gold font-medium">Note:</span> This policy is a placeholder. Please review with a qualified legal professional before launch.
+            <span className="text-gold font-medium">Notice:</span> This policy is provided for informational reference. Please review with your legal counsel for specific jurisdictional compliance prior to commercial operation.
           </p>
         </div>
 

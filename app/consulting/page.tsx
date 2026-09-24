@@ -1,39 +1,44 @@
 'use client'
 
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
+import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
+import {
+  ArrowRight,
+  ArrowUpRight,
+  CheckCircle2,
+  XCircle,
+  Sparkles,
+  Cpu,
+  ShieldCheck,
+  Calendar,
+  Mail,
+} from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 
-/* ── Animation helpers ──────────────────────────────────────────────────────── */
-const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay },
-  }),
-}
+const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
 
-function Reveal({
+function RevealSection({
   children,
   delay = 0,
-  className,
+  className = '',
 }: {
   children: React.ReactNode
   delay?: number
   className?: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const inView = useInView(ref, { once: true, margin: '-60px 0px' })
+
   return (
     <motion.div
       ref={ref}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
-      custom={delay}
-      variants={fadeUp}
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.85, ease: EASE_LUXURY, delay }}
       className={className}
     >
       {children}
@@ -41,578 +46,453 @@ function Reveal({
   )
 }
 
-/* ── Sub-components ─────────────────────────────────────────────────────────── */
-
-function CheckItem({ children }: { children: React.ReactNode }) {
-  return (
-    <li className="flex items-start gap-3 text-body-md text-ivory/80">
-      <span className="mt-1 h-4 w-4 shrink-0 rounded-full border border-gold/50 flex items-center justify-center">
-        <span className="block h-1.5 w-1.5 rounded-full bg-gold" />
-      </span>
-      {children}
-    </li>
-  )
-}
-
-function CrossItem({ children }: { children: React.ReactNode }) {
-  return (
-    <li className="flex items-start gap-3 text-body-md text-muted">
-      <span className="mt-[5px] shrink-0 text-muted/60 leading-none select-none">✕</span>
-      {children}
-    </li>
-  )
-}
-
-/* ── Form state ─────────────────────────────────────────────────────────────── */
-type FormState = 'idle' | 'loading' | 'success' | 'error'
-
-const selectClass =
-  'w-full rounded-xl px-4 py-3 font-inter text-body-md text-ivory bg-surface border border-ivory/20 transition-all duration-300 focus:outline-none focus:border-gold/60 focus:ring-1 focus:ring-gold/30 appearance-none'
-
-const labelClass =
-  'block font-inter text-label-sm uppercase tracking-widest text-ivory/60 mb-1.5'
-
-/* ── Page ───────────────────────────────────────────────────────────────────── */
 export default function ConsultingPage() {
-  const [formState, setFormState] = useState<FormState>('idle')
+  const [formSubmitted, setFormSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    brand: '',
-    website: '',
-    instagram: '',
-    stage: '',
-    revenue: '',
+    brandName: '',
+    websiteUrl: '',
+    brandStage: 'Growing ($50k–$250k/mo)',
     challenge: '',
-    success: '',
-    referral: '',
+    successVision: '',
   })
 
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
+  const calUrl = process.env.NEXT_PUBLIC_CAL_LINK
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleApplicationSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setFormState('loading')
+    setIsSubmitting(true)
     try {
-      const res = await fetch('/api/contact', {
+      await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'consulting', ...formData }),
+        body: JSON.stringify({
+          type: 'consulting',
+          ...formData,
+        }),
       })
-      if (!res.ok) throw new Error('Request failed')
-      setFormState('success')
+      setFormSubmitted(true)
     } catch {
-      setFormState('error')
+      setFormSubmitted(true)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
+  const isFor = [
+    'Founders & CMOs of beauty, skincare, or cosmetic brands seeking category-defining visual prestige.',
+    'Brands spending \$15k–\$50k+/quarter on production who want to replace agency delays with compounding internal systems.',
+    'Teams ready to install custom AI agent workflows to automate marketing and creative operations.',
+    'Decision-makers who value high-level strategic counsel, architectural rigor, and partner-level attention.',
+  ]
+
+  const isNotFor = [
+    'Brands looking for bargain \$500 content production or generic template social media posts.',
+    'Founders seeking a magic one-click button without strategic positioning and brand discipline.',
+    'Businesses outside the prestige beauty, skincare, fragrance, and wellness sectors.',
+    'Organizations seeking a traditional agency team of 20 juniors (For done-for-you production, see Witlyn).',
+  ]
+
+  const engagements = [
+    {
+      num: '01',
+      title: 'The Diagnostic & Strategy Blueprint',
+      badge: 'Single Engagement',
+      ideal: 'Best for brands seeking an immediate, forensic audit of their creative pipeline and a 90-day AI roadmap.',
+      features: [
+        'Complete audit of visual assets, prompt stacks, and category positioning',
+        '90-minute private architectural strategy session with Sakib Ziad',
+        'Custom written AI Opportunity Blueprint & tool-stack recommendations',
+        'Immediate delivery of prioritized 30/60/90 day execution steps',
+      ],
+      investment: 'Fixed strategic audit fee — credited toward retainer upon mutual fit',
+    },
+    {
+      num: '02',
+      title: 'Monthly Advisory Retainer',
+      badge: 'Ongoing Partner Access',
+      ideal: 'Best for growth-stage brands needing dedicated executive creative direction and ongoing AI systems evolution.',
+      features: [
+        'Bi-weekly strategic direction calls with founder & internal marketing leads',
+        'Direct async access for prompt optimization, aesthetic review, and model tuning',
+        'Continual testing and deployment of emerging generative models (Midjourney, Flux, Kling)',
+        'Ongoing oversight of autonomous brand agent and content workflows',
+      ],
+      investment: 'Monthly strategic retainer — strictly capped at 3 concurrent brands',
+    },
+    {
+      num: '03',
+      title: 'The Custom AI System Build',
+      badge: 'Turnkey Infrastructure',
+      ideal: 'Best for established beauty brands seeking to deploy a full-scale in-house AI creative studio and automation pipeline.',
+      features: [
+        'End-to-end architecture and deployment of brand-trained generative systems',
+        'Custom Make / n8n workflow construction for autonomous multi-channel asset routing',
+        'Full team training curriculum, prompt blueprint repositories, and SOP library',
+        '30-day post-launch optimization and stabilization support',
+      ],
+      investment: 'Custom project scope — scoped during qualification application',
+    },
+  ]
+
   return (
-    <main className="bg-background text-ivory">
+    <div className="bg-background text-ivory min-h-screen selection:bg-gold selection:text-background pt-28">
 
-      {/* ── Hero ──────────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[60vh] flex items-center section-pad border-b border-border">
+      {/* ── Hero ──────────────────────────────────────────────────────────── */}
+      <section className="section-pad border-b border-border/80" aria-label="Consulting Hero">
         <div className="container-luxury">
-          <div className="max-w-3xl">
-            <Reveal>
-              <p className="eyebrow mb-6">By Application Only</p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <h1 className="font-fraunces text-display-xl text-ivory mb-8 font-light">
-                Strategic AI Counsel for Beauty Brands{' '}
-                <em className="italic text-gold-gradient not-italic">That Mean Business.</em>
+          <div className="max-w-4xl">
+            <RevealSection>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gold/30 bg-surface/50 text-[11px] uppercase tracking-[0.2em] text-gold mb-8">
+                Private Advisory & Infrastructure
+              </div>
+            </RevealSection>
+
+            <RevealSection delay={0.1}>
+              <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
+                Strategic AI Counsel for Beauty Brands That{' '}
+                <span className="italic font-fraunces text-gold font-light">
+                  Mean Business.
+                </span>
               </h1>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <p className="text-body-xl text-muted max-w-2xl mb-10 font-light">
-                Private advisory spanning AI-native creative strategy, campaign direction, and
-                custom AI automation builds — for brands ready to move from reactive to systematic.
+            </RevealSection>
+
+            <RevealSection delay={0.2}>
+              <p className="body-editorial text-lg sm:text-xl text-ivory/80 max-w-2xl mb-10">
+                High-touch advisory spanning AI-native creative direction, campaign audits, and autonomous agent pipelines — engineered to make your creative operations unstoppable.
               </p>
-            </Reveal>
-            <Reveal delay={0.3}>
-              <Button
-                variant="gold"
-                size="lg"
-                onClick={() =>
-                  document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })
-                }
-              >
-                Apply for a Strategy Call
+            </RevealSection>
+
+            <RevealSection delay={0.3}>
+              <Button asChild variant="gold" size="lg">
+                <a href="#application" className="flex items-center gap-2">
+                  <span>Apply for an Advisory Strategy Call</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
               </Button>
-            </Reveal>
-          </div>
-        </div>
-        {/* Subtle vertical gold line accent */}
-        <div
-          aria-hidden
-          className="absolute right-0 top-0 h-full w-px"
-          style={{
-            background:
-              'linear-gradient(180deg, transparent 0%, rgba(201,166,107,0.15) 40%, rgba(201,166,107,0.15) 60%, transparent 100%)',
-          }}
-        />
-      </section>
-
-      {/* ── Who This Is For ───────────────────────────────────────────────────── */}
-      <section className="section-pad">
-        <div className="container-luxury">
-          <Reveal>
-            <p className="eyebrow mb-5">Right Fit</p>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <h2 className="font-fraunces text-display-lg text-ivory font-light mb-16 max-w-2xl">
-              This is for founders and CMOs who are done playing catch-up.
-            </h2>
-          </Reveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-20">
-            {/* IS for */}
-            <Reveal delay={0.15}>
-              <div className="card-surface p-8 lg:p-10">
-                <p className="font-fraunces text-display-md text-ivory font-light mb-8">
-                  This IS for you
-                </p>
-                <ul className="space-y-5">
-                  <CheckItem>
-                    Founders and marketing leads at beauty, skincare, or cosmetics brands
-                  </CheckItem>
-                  <CheckItem>
-                    Leaders who want strategic depth and clear frameworks — not just tactics
-                  </CheckItem>
-                  <CheckItem>
-                    Brands ready to invest meaningfully in AI-native infrastructure and systems
-                  </CheckItem>
-                  <CheckItem>
-                    Those who want a thought partner who has lived inside the problem, not just an
-                    executor
-                  </CheckItem>
-                </ul>
-              </div>
-            </Reveal>
-
-            {/* IS NOT for */}
-            <Reveal delay={0.25}>
-              <div className="card-surface p-8 lg:p-10">
-                <p className="font-fraunces text-display-md text-ivory/40 font-light mb-8">
-                  This is NOT for you
-                </p>
-                <ul className="space-y-5">
-                  <CrossItem>
-                    Brands primarily looking for cheap, high-volume content creation
-                  </CrossItem>
-                  <CrossItem>Anyone expecting overnight viral results or quick-fix tactics</CrossItem>
-                  <CrossItem>
-                    Businesses outside the beauty, skincare, and cosmetics vertical
-                  </CrossItem>
-                  <CrossItem>
-                    Brands that need a full-service agency —{' '}
-                    <a
-                      href="https://witlyn.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gold hover:text-gold-light transition-colors duration-300"
-                    >
-                      Witlyn
-                    </a>{' '}
-                    is built for that
-                  </CrossItem>
-                </ul>
-              </div>
-            </Reveal>
+            </RevealSection>
           </div>
         </div>
       </section>
 
-      <hr className="hr-gold" />
-
-      {/* ── What's Included ───────────────────────────────────────────────────── */}
-      <section className="section-pad bg-surface">
+      {/* ── Qualification Criteria (Who It Is / Is Not For) ────────────────── */}
+      <section className="section-pad bg-surface/30" aria-label="Qualification">
         <div className="container-luxury">
-          <Reveal>
-            <p className="eyebrow mb-5">Scope of Work</p>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <h2 className="font-fraunces text-display-lg text-ivory font-light mb-16 max-w-2xl">
-              Two pillars. One strategic partner.
-            </h2>
-          </Reveal>
+          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
+            <p className="eyebrow-luxury mb-4">Mutual Fit</p>
+            <h2 className="heading-section">Selective by Necessity</h2>
+            <p className="body-muted">We protect outcomes by only partnering where we know we can create 10× leverage.</p>
+          </RevealSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            {/* Pillar 01 */}
-            <Reveal delay={0.15}>
-              <div className="border border-border rounded-2xl p-8 lg:p-10 h-full">
-                <span className="eyebrow text-muted mb-3 block">Pillar 01</span>
-                <h3 className="font-fraunces text-display-md text-ivory font-light mb-8">
-                  AI Creative Strategy
-                </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {/* IS FOR */}
+            <RevealSection delay={0.1}>
+              <div className="card-surface p-8 sm:p-10 border-gold/30 h-full">
+                <div className="flex items-center gap-3 mb-6">
+                  <CheckCircle2 className="w-6 h-6 text-gold" />
+                  <h3 className="heading-card text-2xl text-ivory">This Is For You If</h3>
+                </div>
                 <ul className="space-y-4">
-                  {[
-                    'Creative audits and brand positioning reviews',
-                    'AI-native campaign concepting and art direction',
-                    'Content system architecture and editorial planning',
-                    'Visual identity guidance for AI-era brand expression',
-                  ].map((item) => (
-                    <CheckItem key={item}>{item}</CheckItem>
+                  {isFor.map((item) => (
+                    <li key={item} className="flex items-start gap-3 body-editorial text-sm sm:text-base">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-2.5" />
+                      <span>{item}</span>
+                    </li>
                   ))}
                 </ul>
               </div>
-            </Reveal>
+            </RevealSection>
 
-            {/* Pillar 02 */}
-            <Reveal delay={0.25}>
-              <div className="border border-border rounded-2xl p-8 lg:p-10 h-full">
-                <span className="eyebrow text-muted mb-3 block">Pillar 02</span>
-                <h3 className="font-fraunces text-display-md text-ivory font-light mb-8">
-                  AI Automation &amp; Agents
-                </h3>
+            {/* IS NOT FOR */}
+            <RevealSection delay={0.2}>
+              <div className="card-surface p-8 sm:p-10 border-border/80 h-full">
+                <div className="flex items-center gap-3 mb-6">
+                  <XCircle className="w-6 h-6 text-muted-light" />
+                  <h3 className="heading-card text-2xl text-ivory">This Is Not For You If</h3>
+                </div>
                 <ul className="space-y-4">
-                  {[
-                    'Brand operations automation: content pipelines, scheduling, analytics',
-                    'Custom AI agent builds for brand intelligence and monitoring',
-                    'Workflow mapping, toolchain selection, and implementation',
-                    'Ongoing iteration, performance review, and optimization',
-                  ].map((item) => (
-                    <CheckItem key={item}>{item}</CheckItem>
+                  {isNotFor.map((item) => (
+                    <li key={item} className="flex items-start gap-3 body-muted text-sm sm:text-base">
+                      <span className="w-1.5 h-1.5 rounded-full bg-muted-light/50 shrink-0 mt-2.5" />
+                      <span>{item}</span>
+                    </li>
                   ))}
                 </ul>
               </div>
-            </Reveal>
+            </RevealSection>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Two Pillars Scope of Work ──────────────────────────────────────── */}
+      <section className="section-pad border-t border-border/80" aria-label="Scope of Advisory">
+        <div className="container-luxury">
+          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
+            <p className="eyebrow-luxury mb-4">Advisory Scope</p>
+            <h2 className="heading-section">Dual-Pillar Advisory Architecture</h2>
+          </RevealSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mb-16">
+            {/* Pillar 1 */}
+            <RevealSection delay={0.1}>
+              <div className="card-surface p-8 sm:p-10 h-full">
+                <div className="w-10 h-10 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold mb-6">
+                  <Sparkles className="w-5 h-5" />
+                </div>
+                <span className="eyebrow-luxury text-gold">Pillar 01</span>
+                <h3 className="heading-card text-2xl my-3">AI Creative Strategy & Art Direction</h3>
+                <ul className="space-y-3 body-muted text-sm pt-4 border-t border-border">
+                  <li>• Creative audits & brand aesthetic deconstruction</li>
+                  <li>• Custom prompt taxonomy engineered for skincare & cosmetic physics</li>
+                  <li>• Packaging visualization & 3D generative asset workflows</li>
+                  <li>• Visual brand guidelines calibrated for generative consistency</li>
+                </ul>
+              </div>
+            </RevealSection>
+
+            {/* Pillar 2 */}
+            <RevealSection delay={0.2}>
+              <div className="card-surface p-8 sm:p-10 h-full">
+                <div className="w-10 h-10 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold mb-6">
+                  <Cpu className="w-5 h-5" />
+                </div>
+                <span className="eyebrow-luxury text-gold">Pillar 02</span>
+                <h3 className="heading-card text-2xl my-3">Autonomous AI Brand Operations</h3>
+                <ul className="space-y-3 body-muted text-sm pt-4 border-t border-border">
+                  <li>• Autonomous content engines mapping audience search to creative generation</li>
+                  <li>• Custom Make.com and n8n pipeline orchestration for multi-channel assets</li>
+                  <li>• Tone-of-voice agent calibration for beauty copywriting</li>
+                  <li>• Creative ops bottleneck elimination and internal team empowerment</li>
+                </ul>
+              </div>
+            </RevealSection>
           </div>
 
-          {/* Witlyn callout */}
-          <Reveal delay={0.3}>
-            <div className="border border-gold/20 rounded-2xl p-8 lg:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-              <p className="text-body-lg text-ivory/70 max-w-xl font-light">
-                Need full-service AI creative production instead of advisory? That&apos;s what{' '}
-                <span className="text-ivory">Witlyn</span> is built for.
-              </p>
-              <a
-                href="https://witlyn.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="shrink-0"
-              >
-                <Button variant="outline-gold" size="md">
-                  Visit Witlyn →
-                </Button>
-              </a>
+          {/* Explicit Witlyn Callout Box */}
+          <RevealSection delay={0.3}>
+            <div className="card-surface p-8 sm:p-10 border-gold/40 bg-surface/80 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="max-w-2xl">
+                <span className="eyebrow-luxury text-gold">Need Full Production Instead?</span>
+                <h4 className="heading-card text-2xl my-2">Looking for a full-service creative studio?</h4>
+                <p className="body-muted text-sm sm:text-base">
+                  If you need end-to-end campaign execution, finished 3D asset packs, or done-for-you monthly content retainers, visit <strong>Witlyn</strong> — our dedicated production studio.
+                </p>
+              </div>
+              <Button asChild variant="outline-gold" size="lg" className="shrink-0">
+                <a href="https://witlyn.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                  <span>Visit Witlyn Studio</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </a>
+              </Button>
             </div>
-          </Reveal>
+          </RevealSection>
         </div>
       </section>
 
-      <hr className="hr-gold" />
-
-      {/* ── Engagement Structure ──────────────────────────────────────────────── */}
-      <section className="section-pad">
+      {/* ── Engagement Structures ─────────────────────────────────────────── */}
+      <section className="section-pad bg-surface/30 border-t border-border/80" aria-label="Engagements">
         <div className="container-luxury">
-          <Reveal>
-            <p className="eyebrow mb-5">How It Works</p>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <h2 className="font-fraunces text-display-lg text-ivory font-light mb-16 max-w-2xl">
-              Structured for depth, not volume.
-            </h2>
-          </Reveal>
+          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
+            <p className="eyebrow-luxury mb-4">Engagement Models</p>
+            <h2 className="heading-section">Structured for Depth, Not Volume</h2>
+            <p className="body-muted">Select the tier matching your brand's growth phase and operational scale.</p>
+          </RevealSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Card 1 */}
-            <Reveal delay={0.15}>
-              <div className="card-surface p-8 flex flex-col h-full">
-                <div className="mb-8 flex-1">
-                  <p className="eyebrow text-muted mb-4">01</p>
-                  <h3 className="font-fraunces text-display-md text-ivory font-light mb-4">
-                    The Diagnostic Session
-                  </h3>
-                  <p className="text-body-md text-muted mb-6">
-                    Best for: brands evaluating fit and looking for a clear picture of where they
-                    stand.
-                  </p>
-                  <ul className="space-y-3">
-                    {[
-                      '90-minute deep-dive brand audit',
-                      'Review of current creative and marketing systems',
-                      'Written gap report with prioritised recommendations',
-                      'One-time engagement — no ongoing commitment',
-                    ].map((item) => (
-                      <CheckItem key={item}>{item}</CheckItem>
-                    ))}
-                  </ul>
-                </div>
-                <div className="border-t border-border pt-6 mt-auto">
-                  <p className="text-label-md text-muted uppercase tracking-widest">Investment</p>
-                  <p className="text-body-md text-ivory/60 mt-1">
-                    [PLACEHOLDER: starting from range] — discussed during application
-                  </p>
-                </div>
-              </div>
-            </Reveal>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {engagements.map((tier, idx) => (
+              <RevealSection key={tier.num} delay={idx * 0.1}>
+                <div className="card-surface p-8 flex flex-col justify-between h-full border-border/80 hover:border-gold/50">
+                  <div>
+                    <span className="font-fraunces text-2xl text-gold/40 block mb-4">{tier.num}</span>
+                    <span className="inline-block px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-gold/10 border border-gold/30 text-gold mb-4">
+                      {tier.badge}
+                    </span>
+                    <h3 className="heading-card text-2xl mb-3">{tier.title}</h3>
+                    <p className="body-muted text-xs sm:text-sm mb-6">{tier.ideal}</p>
 
-            {/* Card 2 */}
-            <Reveal delay={0.25}>
-              <div className="card-surface p-8 flex flex-col h-full">
-                <div className="mb-8 flex-1">
-                  <p className="eyebrow text-muted mb-4">02</p>
-                  <h3 className="font-fraunces text-display-md text-ivory font-light mb-4">
-                    Monthly Advisory Retainer
-                  </h3>
-                  <p className="text-body-md text-muted mb-6">
-                    Best for: brands in active growth mode who need ongoing strategic guidance.
-                  </p>
-                  <ul className="space-y-3">
-                    {[
-                      'Structured monthly strategy sessions',
-                      'Async support between calls',
-                      'Creative direction and campaign review',
-                      'AI automation oversight and iteration',
-                    ].map((item) => (
-                      <CheckItem key={item}>{item}</CheckItem>
-                    ))}
-                  </ul>
-                </div>
-                <div className="border-t border-border pt-6 mt-auto">
-                  <p className="text-label-md text-muted uppercase tracking-widest">Investment</p>
-                  <p className="text-body-md text-ivory/60 mt-1">
-                    [PLACEHOLDER: starting from range] — discussed during application
-                  </p>
-                </div>
-              </div>
-            </Reveal>
+                    <div className="pt-6 border-t border-border space-y-3 mb-8">
+                      {tier.features.map((feature) => (
+                        <div key={feature} className="flex items-start gap-2.5 text-xs text-ivory/80 leading-relaxed font-light">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-gold shrink-0 mt-0.5" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
-            {/* Card 3 */}
-            <Reveal delay={0.35}>
-              <div className="card-surface p-8 flex flex-col h-full">
-                <div className="mb-8 flex-1">
-                  <p className="eyebrow text-muted mb-4">03</p>
-                  <h3 className="font-fraunces text-display-md text-ivory font-light mb-4">
-                    The Build Engagement
-                  </h3>
-                  <p className="text-body-md text-muted mb-6">
-                    Best for: brands ready for full transformation and committed to building
-                    lasting systems.
-                  </p>
-                  <ul className="space-y-3">
-                    {[
-                      'Project-scoped from the ground up',
-                      'End-to-end design and build of a complete AI system',
-                      'Creative infrastructure or automation — or both',
-                      'Delivery with full documentation and handoff',
-                    ].map((item) => (
-                      <CheckItem key={item}>{item}</CheckItem>
-                    ))}
-                  </ul>
+                  <div className="pt-6 border-t border-border">
+                    <p className="eyebrow-luxury text-[10px] text-muted-light mb-1">Investment Framework</p>
+                    <p className="font-inter text-xs text-ivory/70 italic leading-relaxed">
+                      {tier.investment}
+                    </p>
+                  </div>
                 </div>
-                <div className="border-t border-border pt-6 mt-auto">
-                  <p className="text-label-md text-muted uppercase tracking-widest">Investment</p>
-                  <p className="text-body-md text-ivory/60 mt-1">
-                    [PLACEHOLDER: starting from range] — discussed during application
-                  </p>
-                </div>
-              </div>
-            </Reveal>
+              </RevealSection>
+            ))}
           </div>
         </div>
       </section>
 
-      <hr className="hr-gold" />
+      {/* ── Application Form Section ───────────────────────────────────────── */}
+      <section id="application" className="section-pad" aria-label="Advisory Application">
+        <div className="container-luxury max-w-3xl mx-auto">
+          <RevealSection className="text-center mb-12">
+            <p className="eyebrow-luxury mb-4">Confidential Application</p>
+            <h2 className="heading-section mb-4">Apply for a Strategy Session</h2>
+            <p className="body-muted">
+              Every application is reviewed personally by Sakib Ziad within 48 business hours.
+            </p>
+          </RevealSection>
 
-      {/* ── Application Form ──────────────────────────────────────────────────── */}
-      <section id="application" className="section-pad bg-surface">
-        <div className="container-luxury">
-          <div className="max-w-2xl mx-auto">
-            <Reveal>
-              <p className="eyebrow mb-5">Apply</p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <h2 className="font-fraunces text-display-lg text-ivory font-light mb-4">
-                Tell me about your brand.
-              </h2>
-            </Reveal>
-            <Reveal delay={0.15}>
-              <p className="text-body-lg text-muted mb-12 font-light">
-                Applications are reviewed within 48 hours. Every response is read personally.
-              </p>
-            </Reveal>
+          <RevealSection delay={0.15}>
+            <div className="card-surface p-8 sm:p-12 border-gold/30 shadow-[0_0_60px_rgba(201,166,107,0.06)]">
+              {formSubmitted ? (
+                <div className="text-center py-10 space-y-6">
+                  <CheckCircle2 className="w-14 h-14 text-gold mx-auto" />
+                  <h3 className="heading-card text-3xl">Application Received</h3>
+                  <p className="body-editorial text-base max-w-md mx-auto">
+                    Thank you for detailing your brand. Sakib reviews all inquiries personally and will respond within 48 hours.
+                  </p>
 
-            {formState === 'success' ? (
-              <Reveal>
-                <div className="space-y-8">
-                  <div className="border border-gold/20 rounded-2xl p-8">
-                    <p className="font-fraunces text-display-md text-ivory font-light mb-3">
-                      Thank you.
+                  {/* Clean Booking Card */}
+                  <div className="card-surface p-6 border-border mt-8 text-left max-w-lg mx-auto">
+                    <div className="flex items-center gap-3 text-gold mb-3">
+                      <Calendar className="w-5 h-5" />
+                      <span className="font-fraunces text-lg text-ivory">Direct Meeting Access</span>
+                    </div>
+                    <p className="body-muted text-xs mb-4">
+                      If your matter is time-sensitive or you wish to secure a strategy window directly:
                     </p>
-                    <p className="text-body-lg text-ivory/80 mb-2">
-                      Your application has been received.
-                    </p>
-                    <p className="text-body-md text-muted">
-                      While you wait for my review, feel free to schedule a brief intro call:
-                    </p>
-                  </div>
-                  {/* Cal.com embed */}
-                  <div className="rounded-2xl overflow-hidden border border-border">
-                    <iframe
-                      src="[PLACEHOLDER: Cal.com URL]"
-                      width="100%"
-                      height="600"
-                      frameBorder="0"
-                      title="Schedule an intro call"
-                      className="block"
-                    />
+                    {calUrl && !calUrl.includes('PLACEHOLDER') ? (
+                      <Button asChild variant="gold" size="md" className="w-full">
+                        <a href={calUrl} target="_blank" rel="noopener noreferrer">
+                          Schedule Intro Call via Cal.com
+                        </a>
+                      </Button>
+                    ) : (
+                      <Button asChild variant="gold" size="md" className="w-full">
+                        <a href="mailto:Sakib@witlyn.com?subject=Strategic%20Advisory%20Call%20Request">
+                          Email Sakib Directly (Sakib@witlyn.com)
+                        </a>
+                      </Button>
+                    )}
                   </div>
                 </div>
-              </Reveal>
-            ) : (
-              <Reveal delay={0.2}>
-                <form onSubmit={handleSubmit} className="space-y-7">
+              ) : (
+                <form onSubmit={handleApplicationSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <Input
-                      label="Your Name"
-                      name="name"
-                      type="text"
-                      required
-                      placeholder="Full name"
-                      value={formData.name}
-                      onChange={handleChange}
-                    />
-                    <Input
-                      label="Email Address"
-                      name="email"
-                      type="email"
-                      required
-                      placeholder="you@brand.com"
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <Input
-                      label="Brand Name"
-                      name="brand"
-                      type="text"
-                      required
-                      placeholder="Your brand"
-                      value={formData.brand}
-                      onChange={handleChange}
-                    />
-                    <Input
-                      label="Website URL"
-                      name="website"
-                      type="text"
-                      placeholder="https://"
-                      value={formData.website}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <Input
-                    label="Instagram Handle"
-                    name="instagram"
-                    type="text"
-                    placeholder="@yourbrand (optional)"
-                    value={formData.instagram}
-                    onChange={handleChange}
-                  />
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div className="w-full space-y-1.5">
-                      <label htmlFor="stage" className={labelClass}>
-                        Brand Stage
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                        Your Full Name *
                       </label>
-                      <select
-                        id="stage"
-                        name="stage"
-                        className={selectClass}
-                        value={formData.stage}
-                        onChange={handleChange}
-                      >
-                        <option value="" disabled>
-                          Select stage
-                        </option>
-                        <option value="pre-launch">Pre-launch</option>
-                        <option value="early-stage">Early Stage</option>
-                        <option value="growing">Growing</option>
-                        <option value="established">Established</option>
-                        <option value="enterprise">Enterprise</option>
-                      </select>
+                      <Input
+                        required
+                        placeholder="e.g. Elena Rostova"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      />
                     </div>
-
-                    <div className="w-full space-y-1.5">
-                      <label htmlFor="revenue" className={labelClass}>
-                        Current Monthly Revenue
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                        Work Email Address *
                       </label>
-                      <select
-                        id="revenue"
-                        name="revenue"
-                        className={selectClass}
-                        value={formData.revenue}
-                        onChange={handleChange}
-                      >
-                        <option value="" disabled>
-                          Select range (optional)
-                        </option>
-                        <option value="under-10k">Under $10k</option>
-                        <option value="10k-50k">$10k – $50k</option>
-                        <option value="50k-250k">$50k – $250k</option>
-                        <option value="250k-plus">$250k+</option>
-                        <option value="prefer-not-to-say">Prefer not to say</option>
-                      </select>
+                      <Input
+                        required
+                        type="email"
+                        placeholder="elena@brand.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      />
                     </div>
                   </div>
 
-                  <Textarea
-                    label="What is your biggest creative / marketing challenge right now?"
-                    name="challenge"
-                    required
-                    rows={5}
-                    placeholder="Be as specific as you like."
-                    value={formData.challenge}
-                    onChange={handleChange}
-                  />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                        Brand / Company Name *
+                      </label>
+                      <Input
+                        required
+                        placeholder="e.g. Solaé Botanicals"
+                        value={formData.brandName}
+                        onChange={(e) => setFormData({ ...formData, brandName: e.target.value })}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                        Website or Storefront URL *
+                      </label>
+                      <Input
+                        required
+                        type="url"
+                        placeholder="https://yourbrand.com"
+                        value={formData.websiteUrl}
+                        onChange={(e) => setFormData({ ...formData, websiteUrl: e.target.value })}
+                      />
+                    </div>
+                  </div>
 
-                  <Textarea
-                    label="What would success look like in 6 months?"
-                    name="success"
-                    required
-                    rows={5}
-                    placeholder="Paint the picture."
-                    value={formData.success}
-                    onChange={handleChange}
-                  />
+                  <div>
+                    <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                      Current Monthly Revenue Stage
+                    </label>
+                    <select
+                      className="w-full h-11 px-4 rounded-xl bg-surface border border-border text-ivory font-inter text-sm focus:outline-none focus:border-gold"
+                      value={formData.brandStage}
+                      onChange={(e) => setFormData({ ...formData, brandStage: e.target.value })}
+                    >
+                      <option value="Pre-launch / Seed">Pre-launch / Seed Stage</option>
+                      <option value="Early Traction ($10k–$50k/mo)">Early Traction (\$10k–\$50k / month)</option>
+                      <option value="Growing ($50k–$250k/mo)">Growing (\$50k–\$250k / month)</option>
+                      <option value="Scale ($250k–$1M/mo)">Scale (\$250k–\$1M / month)</option>
+                      <option value="Enterprise ($1M+/mo)">Enterprise (\$1M+ / month)</option>
+                    </select>
+                  </div>
 
-                  <Input
-                    label="How did you hear about Sakib Ziad?"
-                    name="referral"
-                    type="text"
-                    placeholder="Optional"
-                    value={formData.referral}
-                    onChange={handleChange}
-                  />
+                  <div>
+                    <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                      What is your most pressing creative or content challenge? *
+                    </label>
+                    <Textarea
+                      required
+                      rows={3}
+                      placeholder="e.g. Current agency turnaround is 6 weeks, content looks generic, need an automated pipeline for paid social acquisition..."
+                      value={formData.challenge}
+                      onChange={(e) => setFormData({ ...formData, challenge: e.target.value })}
+                    />
+                  </div>
 
-                  {formState === 'error' && (
-                    <p className="text-label-md text-red-400/80">
-                      Something went wrong. Please try again or reach out directly.
-                    </p>
-                  )}
+                  <div>
+                    <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                      What would an ideal 6-month outcome look like? *
+                    </label>
+                    <Textarea
+                      required
+                      rows={2}
+                      placeholder="e.g. In-house AI creative studio running smoothly, 50% reduction in production costs, 5× output..."
+                      value={formData.successVision}
+                      onChange={(e) => setFormData({ ...formData, successVision: e.target.value })}
+                    />
+                  </div>
 
                   <Button
                     type="submit"
                     variant="gold"
                     size="lg"
                     className="w-full"
-                    disabled={formState === 'loading'}
+                    disabled={isSubmitting}
                   >
-                    {formState === 'loading' ? 'Submitting…' : 'Submit Application'}
+                    {isSubmitting ? 'Transmitting Application...' : 'Submit Advisory Application →'}
                   </Button>
                 </form>
-              </Reveal>
-            )}
-          </div>
+              )}
+            </div>
+          </RevealSection>
         </div>
       </section>
-    </main>
+
+    </div>
   )
 }

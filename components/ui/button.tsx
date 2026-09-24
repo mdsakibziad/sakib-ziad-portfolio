@@ -8,11 +8,12 @@ const buttonVariants = cva(
   // Base styles shared across all variants
   [
     'inline-flex items-center justify-center gap-2',
-    'font-inter font-medium uppercase tracking-widest',
-    'rounded-full border transition-all duration-400',
+    'font-inter font-medium uppercase tracking-[0.14em]',
+    'rounded-full border transition-all duration-300 ease-luxury',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background',
     'disabled:pointer-events-none disabled:opacity-40',
     'select-none whitespace-nowrap',
+    'hover:scale-[1.02] active:scale-[0.98]',
   ],
   {
     variants: {
@@ -21,34 +22,29 @@ const buttonVariants = cva(
          * Default — ivory background, dark text. Primary CTA.
          */
         default: [
-          'bg-ivory text-background border-ivory',
-          'hover:bg-ivory/90 hover:border-ivory/90',
-          'active:scale-[0.98]',
+          'bg-ivory text-background border-ivory font-semibold',
+          'hover:bg-white hover:border-white hover:shadow-[0_0_30px_rgba(247,244,239,0.25)]',
         ],
         /**
          * Gold — warm gold background, dark text. Accent CTA.
          */
         gold: [
-          'bg-gold text-background border-gold',
-          'hover:bg-gold-light hover:border-gold-light',
-          'active:scale-[0.98]',
-          'shadow-gold-glow/30',
+          'bg-gold text-background border-gold font-semibold',
+          'hover:bg-gold-light hover:border-gold-light hover:shadow-[0_0_35px_rgba(201,166,107,0.4)]',
         ],
         /**
          * Outline — transparent with ivory border.
          */
         outline: [
           'bg-transparent text-ivory border-border-strong',
-          'hover:bg-ivory/5 hover:border-ivory/40',
-          'active:scale-[0.98]',
+          'hover:bg-ivory/10 hover:border-ivory/60 hover:shadow-[0_0_25px_rgba(247,244,239,0.08)]',
         ],
         /**
          * Outline Gold — transparent with gold border.
          */
         'outline-gold': [
           'bg-transparent text-gold border-gold/40',
-          'hover:bg-gold/8 hover:border-gold/70',
-          'active:scale-[0.98]',
+          'hover:bg-gold/10 hover:border-gold hover:shadow-[0_0_25px_rgba(201,166,107,0.25)]',
         ],
         /**
          * Ghost — no border, subtle hover fill.

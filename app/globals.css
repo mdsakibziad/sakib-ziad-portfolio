@@ -137,12 +137,61 @@
   /* Surface card */
   .card-surface {
     @apply bg-surface border border-border rounded-2xl;
-    transition: border-color 400ms var(--ease-luxury), box-shadow 400ms var(--ease-luxury);
+    transition: transform 400ms var(--ease-luxury), border-color 400ms var(--ease-luxury), box-shadow 400ms var(--ease-luxury);
   }
 
   .card-surface:hover {
     @apply border-border-strong;
-    box-shadow: 0 0 0 1px rgba(201, 166, 107, 0.12), 0 8px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 1px rgba(201, 166, 107, 0.15), 0 16px 48px rgba(0, 0, 0, 0.6);
+  }
+
+  /* ── Standardized Typography Scale ── */
+  .heading-hero {
+    @apply font-fraunces font-light text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.08] text-ivory;
+  }
+
+  .heading-section {
+    @apply font-fraunces font-light text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.15] text-ivory;
+  }
+
+  .heading-card {
+    @apply font-fraunces font-normal text-xl sm:text-2xl tracking-normal leading-snug text-ivory;
+  }
+
+  .heading-sub {
+    @apply font-fraunces font-normal text-lg sm:text-xl text-ivory;
+  }
+
+  .body-editorial {
+    @apply font-inter text-base sm:text-lg leading-relaxed text-ivory/80 font-light;
+  }
+
+  .body-muted {
+    @apply font-inter text-sm sm:text-base leading-relaxed text-muted-light font-light;
+  }
+
+  .eyebrow-luxury {
+    @apply font-inter text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-gold;
+  }
+
+  /* Interactive link hover underline */
+  .nav-link-hover {
+    @apply relative py-1 text-ivory/70 hover:text-ivory transition-colors duration-300 font-inter text-xs uppercase tracking-[0.16em];
+  }
+
+  .nav-link-hover::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-[1.5px] bg-gold transition-all duration-300 ease-out;
+  }
+
+  .nav-link-hover:hover::after,
+  .nav-link-hover.active::after {
+    @apply w-full;
+  }
+
+  /* Button micro-interaction */
+  .btn-hover-lux {
+    @apply transition-all duration-300 ease-luxury hover:scale-[1.02] active:scale-[0.98];
   }
 }
 

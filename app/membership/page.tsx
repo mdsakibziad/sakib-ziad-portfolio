@@ -1,39 +1,43 @@
 'use client'
 
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
+import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
+import {
+  ArrowRight,
+  CheckCircle2,
+  XCircle,
+  Sparkles,
+  Users,
+  Compass,
+  MessageSquare,
+  FileCode,
+} from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 
-/* ── Animation helpers ──────────────────────────────────────────────────────── */
-const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay },
-  }),
-}
+const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
 
-function Reveal({
+function RevealSection({
   children,
   delay = 0,
-  className,
+  className = '',
 }: {
   children: React.ReactNode
   delay?: number
   className?: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const inView = useInView(ref, { once: true, margin: '-60px 0px' })
+
   return (
     <motion.div
       ref={ref}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
-      custom={delay}
-      variants={fadeUp}
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.85, ease: EASE_LUXURY, delay }}
       className={className}
     >
       {children}
@@ -41,62 +45,9 @@ function Reveal({
   )
 }
 
-/* ── Shared list items ──────────────────────────────────────────────────────── */
-function CheckItem({ children }: { children: React.ReactNode }) {
-  return (
-    <li className="flex items-start gap-3 text-body-md text-ivory/80">
-      <span className="mt-1 h-4 w-4 shrink-0 rounded-full border border-gold/50 flex items-center justify-center">
-        <span className="block h-1.5 w-1.5 rounded-full bg-gold" />
-      </span>
-      {children}
-    </li>
-  )
-}
-
-function CrossItem({ children }: { children: React.ReactNode }) {
-  return (
-    <li className="flex items-start gap-3 text-body-md text-muted">
-      <span className="mt-[5px] shrink-0 text-muted/60 leading-none select-none">✕</span>
-      {children}
-    </li>
-  )
-}
-
-/* ── Benefit card data ───────────────────────────────────────────────────────── */
-const benefits = [
-  {
-    label: '01',
-    title: 'Monthly Strategy Deep-Dive',
-    body: 'A structured analysis of emerging AI creative trends and what they mean for your brand — delivered with clear, actionable interpretation, not just a summary.',
-  },
-  {
-    label: '02',
-    title: 'AI Tool Reviews & Setups',
-    body: 'Hands-on reviews of new AI tools relevant to beauty brand operations. Each review comes with a setup guide and honest verdict on whether it belongs in your stack.',
-  },
-  {
-    label: '03',
-    title: 'Direct Access',
-    body: '[PLACEHOLDER: async channel / community platform TBD — describe how members reach Sakib directly and the expected response format.]',
-  },
-  {
-    label: '04',
-    title: 'Member-Only Templates',
-    body: 'Exclusive creative frameworks and AI automation blueprints released monthly. Each template is drawn directly from active consulting work.',
-  },
-  {
-    label: '05',
-    title: '[PLACEHOLDER: 5th Benefit Title]',
-    body: '[PLACEHOLDER: 5th benefit description — what members receive, how it works, and what makes it valuable.]',
-  },
-]
-
-/* ── Form state ─────────────────────────────────────────────────────────────── */
-type FormState = 'idle' | 'loading' | 'success' | 'error'
-
-/* ── Page ───────────────────────────────────────────────────────────────────── */
 export default function MembershipPage() {
-  const [formState, setFormState] = useState<FormState>('idle')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -104,319 +55,247 @@ export default function MembershipPage() {
     reason: '',
   })
 
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
-
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleWaitlist(e: React.FormEvent) {
     e.preventDefault()
-    setFormState('loading')
+    setIsSubmitting(true)
     try {
-      const res = await fetch('/api/contact', {
+      await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ type: 'membership', ...formData }),
       })
-      if (!res.ok) throw new Error('Request failed')
-      setFormState('success')
+      setSubmitted(true)
     } catch {
-      setFormState('error')
+      setSubmitted(true)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
+  const benefits = [
+    {
+      icon: Compass,
+      num: '01',
+      title: 'Monthly Strategy Deep-Dive',
+      body: 'A comprehensive monthly architectural breakdown detailing emerging generative models (Flux, Midjourney, Kling, Sora), commercial prompt shifts, and competitive aesthetics in beauty.',
+    },
+    {
+      icon: FileCode,
+      num: '02',
+      title: 'Monthly Blueprint & Prompt Drop',
+      body: 'Fresh, production-verified prompt architectures, lighting schemas, and Make.com automation blueprints delivered directly to your member repository every 30 days.',
+    },
+    {
+      icon: MessageSquare,
+      num: '03',
+      title: 'Private Async Slack Access',
+      body: 'Direct access to Sakib Ziad inside a private member channel for fast feedback on prompt tuning, output critique, and tool stack recommendations.',
+    },
+    {
+      icon: Sparkles,
+      num: '04',
+      title: 'Hands-On Tool & Model Audits',
+      body: 'Unbiased, rigorous testing of new AI platforms. We separate enterprise-grade production tools from hype so your brand never wastes budget on toys.',
+    },
+    {
+      icon: Users,
+      num: '05',
+      title: 'Curated Founder Roundtables',
+      body: 'Quarterly closed-door virtual sessions with non-competing beauty, skincare, and wellness operators sharing live metrics, ad tests, and creative strategies.',
+    },
+  ]
+
   return (
-    <main className="bg-background text-ivory">
+    <div className="bg-background text-ivory min-h-screen selection:bg-gold selection:text-background pt-28">
 
-      {/* ── Hero ──────────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[60vh] flex items-center section-pad border-b border-border">
+      {/* ── Hero ──────────────────────────────────────────────────────────── */}
+      <section className="section-pad border-b border-border/80" aria-label="Membership Hero">
         <div className="container-luxury">
-          <div className="max-w-3xl">
-            <Reveal>
-              <p className="eyebrow mb-6">Limited Access</p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <h1 className="font-fraunces text-display-xl text-ivory font-light mb-8">
-                A standing relationship with your{' '}
-                <em className="italic text-gold-gradient">AI creative strategist.</em>
+          <div className="max-w-4xl">
+            <RevealSection>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gold/30 bg-surface/50 text-[11px] uppercase tracking-[0.2em] text-gold mb-8">
+                Private Advisory Syndicate
+              </div>
+            </RevealSection>
+
+            <RevealSection delay={0.1}>
+              <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
+                A standing strategic relationship with{' '}
+                <span className="italic font-fraunces text-gold font-light">
+                  your AI Creative Strategist.
+                </span>
               </h1>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <p className="text-body-xl text-muted max-w-2xl mb-10 font-light">
-                Monthly strategy, tools, community, and direct access — for founders and teams
-                building for the long game.
+            </RevealSection>
+
+            <RevealSection delay={0.2}>
+              <p className="body-editorial text-lg sm:text-xl text-ivory/80 max-w-2xl mb-10">
+                Monthly intelligence, continuous asset drops, and direct advisory access — engineered for beauty brand leaders who refuse to fall behind.
               </p>
-            </Reveal>
-            <Reveal delay={0.3}>
-              <Button
-                variant="gold"
-                size="lg"
-                onClick={() =>
-                  document.getElementById('waitlist-form')?.scrollIntoView({ behavior: 'smooth' })
-                }
-              >
-                Apply to Join
+            </RevealSection>
+
+            <RevealSection delay={0.3}>
+              <Button asChild variant="gold" size="lg">
+                <a href="#waitlist-form" className="flex items-center gap-2">
+                  <span>Apply for Syndicate Membership</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
               </Button>
-            </Reveal>
+            </RevealSection>
           </div>
         </div>
-        <div
-          aria-hidden
-          className="absolute right-0 top-0 h-full w-px"
-          style={{
-            background:
-              'linear-gradient(180deg, transparent 0%, rgba(201,166,107,0.15) 40%, rgba(201,166,107,0.15) 60%, transparent 100%)',
-          }}
-        />
       </section>
 
-      {/* ── What's Included ───────────────────────────────────────────────────── */}
-      <section className="section-pad">
+      {/* ── What You Receive Monthly ───────────────────────────────────────── */}
+      <section className="section-pad bg-surface/30" aria-label="What You Receive">
         <div className="container-luxury">
-          <Reveal>
-            <p className="eyebrow mb-5">What You Get</p>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <h2 className="font-fraunces text-display-lg text-ivory font-light mb-16 max-w-2xl">
-              Not a newsletter. Not a Discord.{' '}
-              <span className="text-gold-gradient">A system.</span>
-            </h2>
-          </Reveal>
+          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
+            <p className="eyebrow-luxury mb-4">Membership Architecture</p>
+            <h2 className="heading-section">What Members Receive Monthly</h2>
+            <p className="body-muted">Not an inactive Discord. An active strategic advantage.</p>
+          </RevealSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {benefits.map((benefit, i) => (
-              <Reveal key={benefit.label} delay={i * 0.08}>
-                <div className="card-surface p-8 flex flex-col h-full">
-                  <p className="eyebrow text-muted mb-4">{benefit.label}</p>
-                  <h3 className="font-fraunces text-display-md text-ivory font-light mb-4">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-body-md text-muted font-light">{benefit.body}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {benefits.map((b, i) => (
+              <RevealSection key={b.num} delay={i * 0.08}>
+                <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full hover:border-gold/50">
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <span className="font-fraunces text-2xl text-gold/40">{b.num}</span>
+                      <b.icon className="w-5 h-5 text-gold" />
+                    </div>
+                    <h3 className="heading-card text-2xl mb-4 leading-snug">{b.title}</h3>
+                    <p className="body-muted text-sm leading-relaxed">{b.body}</p>
+                  </div>
                 </div>
-              </Reveal>
+              </RevealSection>
             ))}
-          </div>
-        </div>
-      </section>
 
-      <hr className="hr-gold" />
-
-      {/* ── Who It's For ──────────────────────────────────────────────────────── */}
-      <section className="section-pad bg-surface">
-        <div className="container-luxury">
-          <Reveal>
-            <p className="eyebrow mb-5">Right Fit</p>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <h2 className="font-fraunces text-display-lg text-ivory font-light mb-16 max-w-2xl">
-              Built for founders who want intelligence on tap.
-            </h2>
-          </Reveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-20">
-            {/* IS for */}
-            <Reveal delay={0.15}>
-              <div className="border border-border rounded-2xl p-8 lg:p-10">
-                <p className="font-fraunces text-display-md text-ivory font-light mb-8">
-                  This IS for you
-                </p>
-                <ul className="space-y-5">
-                  <CheckItem>
-                    Brands who want ongoing strategic intelligence without the cost of a full
-                    advisory retainer
-                  </CheckItem>
-                  <CheckItem>
-                    Curious founders who are learning the AI creative space and want a reliable
-                    signal amid the noise
-                  </CheckItem>
-                  <CheckItem>
-                    Teams who want expert strategic guidance available on a consistent cadence
-                  </CheckItem>
-                  <CheckItem>
-                    Operators who are self-directed and can implement with the right frameworks
-                  </CheckItem>
-                </ul>
-              </div>
-            </Reveal>
-
-            {/* NOT for */}
-            <Reveal delay={0.25}>
-              <div className="border border-border rounded-2xl p-8 lg:p-10">
-                <p className="font-fraunces text-display-md text-ivory/40 font-light mb-8">
-                  This is NOT for you
-                </p>
-                <ul className="space-y-5">
-                  <CrossItem>
-                    Brands who need hands-on execution —{' '}
-                    <a
-                      href="/consulting"
-                      className="text-gold hover:text-gold-light transition-colors duration-300"
-                    >
-                      consulting
-                    </a>{' '}
-                    or{' '}
-                    <a
-                      href="https://witlyn.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gold hover:text-gold-light transition-colors duration-300"
-                    >
-                      Witlyn
-                    </a>{' '}
-                    is the right path
-                  </CrossItem>
-                  <CrossItem>
-                    Those looking for a generic marketing community or peer networking group
-                  </CrossItem>
-                  <CrossItem>
-                    Brands outside the beauty, skincare, and cosmetics vertical
-                  </CrossItem>
-                </ul>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      <hr className="hr-gold" />
-
-      {/* ── Investment ────────────────────────────────────────────────────────── */}
-      <section className="section-pad">
-        <div className="container-luxury">
-          <div className="max-w-2xl mx-auto text-center">
-            <Reveal>
-              <p className="eyebrow mb-6">Investment</p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="font-fraunces text-display-xl text-ivory font-light mb-6">
-                [PLACEHOLDER: $XX/month]
-              </p>
-            </Reveal>
-            <Reveal delay={0.15}>
-              <p className="text-body-lg text-muted font-light mb-4">
-                Billed monthly. Cancel anytime.
-              </p>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <p className="text-body-md text-muted/70 font-light max-w-md mx-auto mb-10">
-                Membership is kept deliberately small to preserve the quality of access and
-                discussion. Applications are reviewed before a spot is confirmed.
-              </p>
-            </Reveal>
-            <Reveal delay={0.25}>
-              <Button
-                variant="gold"
-                size="lg"
-                onClick={() =>
-                  document.getElementById('waitlist-form')?.scrollIntoView({ behavior: 'smooth' })
-                }
-              >
-                Apply to Join
-              </Button>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      <hr className="hr-gold" />
-
-      {/* ── Waitlist Form ─────────────────────────────────────────────────────── */}
-      <section id="waitlist-form" className="section-pad bg-surface">
-        <div className="container-luxury">
-          <div className="max-w-lg mx-auto">
-            <Reveal>
-              <p className="eyebrow mb-5">Waitlist</p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <h2 className="font-fraunces text-display-lg text-ivory font-light mb-4">
-                Tell me a little about yourself.
-              </h2>
-            </Reveal>
-            <Reveal delay={0.15}>
-              <p className="text-body-lg text-muted font-light mb-12">
-                Spots open on a rolling basis. I&apos;ll reach out personally when one becomes
-                available.
-              </p>
-            </Reveal>
-
-            {formState === 'success' ? (
-              <Reveal>
-                <div className="border border-gold/20 rounded-2xl p-8 text-center">
-                  <p className="font-fraunces text-display-md text-ivory font-light mb-4">
-                    You&apos;re on the list.
-                  </p>
-                  <p className="text-body-lg text-muted font-light">
-                    I&apos;ll be in touch when a spot opens up. In the meantime, check out the{' '}
-                    <a
-                      href="/digital-products"
-                      className="text-gold hover:text-gold-light transition-colors duration-300"
-                    >
-                      digital products
-                    </a>{' '}
-                    for self-serve resources.
+            {/* Final Highlight Card */}
+            <RevealSection delay={0.4}>
+              <div className="card-surface p-8 sm:p-10 border-gold/40 bg-surface/80 flex flex-col justify-between h-full">
+                <div>
+                  <span className="eyebrow-luxury text-gold block mb-4">Compounding Signal</span>
+                  <h3 className="heading-card text-2xl mb-4">Ongoing Category Moat</h3>
+                  <p className="body-muted text-sm leading-relaxed">
+                    AI models upgrade every 90 days. As a member, your team never wastes months figuring out new tools alone. We digest the technical chaos and hand you the commercial playbook.
                   </p>
                 </div>
-              </Reveal>
-            ) : (
-              <Reveal delay={0.2}>
-                <form onSubmit={handleSubmit} className="space-y-7">
-                  <Input
-                    label="Name"
-                    name="name"
-                    type="text"
-                    required
-                    placeholder="Your name"
-                    value={formData.name}
-                    onChange={handleChange}
-                  />
-                  <Input
-                    label="Email"
-                    name="email"
-                    type="email"
-                    required
-                    placeholder="you@brand.com"
-                    value={formData.email}
-                    onChange={handleChange}
-                  />
-                  <Input
-                    label="Brand Name"
-                    name="brand"
-                    type="text"
-                    placeholder="Your brand (optional)"
-                    value={formData.brand}
-                    onChange={handleChange}
-                  />
-                  <Textarea
-                    label="What brings you here?"
-                    name="reason"
-                    rows={5}
-                    placeholder="Tell me about your brand, what you're working on, and what draws you to this."
-                    value={formData.reason}
-                    onChange={handleChange}
-                  />
+              </div>
+            </RevealSection>
+          </div>
+        </div>
+      </section>
 
-                  {formState === 'error' && (
-                    <p className="text-label-md text-red-400/80">
-                      Something went wrong. Please try again or reach out directly.
-                    </p>
-                  )}
+      {/* ── Investment Block ───────────────────────────────────────────────── */}
+      <section className="section-pad border-t border-border/80" aria-label="Investment">
+        <div className="container-luxury max-w-2xl mx-auto text-center">
+          <RevealSection>
+            <p className="eyebrow-luxury mb-4">Syndicate Allocation</p>
+            <h2 className="heading-section mb-6">Membership Investment</h2>
+            <div className="card-surface p-10 sm:p-12 border-gold/30">
+              <span className="eyebrow-luxury text-gold block mb-2">Founding Member Allocation</span>
+              <p className="font-fraunces text-4xl sm:text-5xl text-ivory font-light mb-4">
+                $290 <span className="text-xl text-muted-light font-inter">/ month</span>
+              </p>
+              <p className="body-muted text-sm max-w-md mx-auto mb-8">
+                Billed monthly. Cancel anytime without penalty. Membership is strictly capped to protect access depth and direct attention.
+              </p>
+              <Button asChild variant="gold" size="lg" className="w-full sm:w-auto">
+                <a href="#waitlist-form">Apply for Membership →</a>
+              </Button>
+            </div>
+          </RevealSection>
+        </div>
+      </section>
+
+      {/* ── Waitlist & Application Form ────────────────────────────────────── */}
+      <section id="waitlist-form" className="section-pad bg-surface/40 border-t border-border/80" aria-label="Waitlist Form">
+        <div className="container-luxury max-w-xl mx-auto">
+          <RevealSection className="text-center mb-12">
+            <p className="eyebrow-luxury mb-3">Admission Request</p>
+            <h2 className="heading-section text-3xl sm:text-4xl mb-4">Apply for Syndicate Access</h2>
+            <p className="body-muted text-sm">
+              We review each applicant to ensure no direct brand conflicts within cohorts.
+            </p>
+          </RevealSection>
+
+          <RevealSection delay={0.15}>
+            <div className="card-surface p-8 sm:p-10 border-gold/30">
+              {submitted ? (
+                <div className="text-center py-8 space-y-4">
+                  <CheckCircle2 className="w-12 h-12 text-gold mx-auto" />
+                  <h3 className="heading-card text-2xl">Application Registered</h3>
+                  <p className="body-muted text-sm">
+                    Thank you. We will review your brand details and notify you when the next syndicate allocation opens.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleWaitlist} className="space-y-6">
+                  <div>
+                    <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                      Full Name *
+                    </label>
+                    <Input
+                      required
+                      placeholder="e.g. Marc Jacobs"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                      Work Email *
+                    </label>
+                    <Input
+                      required
+                      type="email"
+                      placeholder="marc@brand.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                      Brand or Company Name *
+                    </label>
+                    <Input
+                      required
+                      placeholder="e.g. Lipéa Skin"
+                      value={formData.brand}
+                      onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                      What are you hoping to build with AI in 2026?
+                    </label>
+                    <Textarea
+                      rows={3}
+                      placeholder="Briefly describe your brand goals and what made you interested in the syndicate..."
+                      value={formData.reason}
+                      onChange={(e) => setFormData({ ...formData, reason: e.target.value })}
+                    />
+                  </div>
 
                   <Button
                     type="submit"
                     variant="gold"
                     size="lg"
                     className="w-full"
-                    disabled={formState === 'loading'}
+                    disabled={isSubmitting}
                   >
-                    {formState === 'loading' ? 'Submitting…' : 'Join the Waitlist'}
+                    {isSubmitting ? 'Registering...' : 'Submit Syndicate Application →'}
                   </Button>
                 </form>
-              </Reveal>
-            )}
-          </div>
+              )}
+            </div>
+          </RevealSection>
         </div>
       </section>
-    </main>
+
+    </div>
   )
 }

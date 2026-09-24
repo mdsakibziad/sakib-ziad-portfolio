@@ -1,155 +1,50 @@
 'use client'
 
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Sparkles,
+  Layers,
+  Cpu,
+  CheckCircle2,
+  ChevronDown,
+  Compass,
+} from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 
-/* ── Animation Helpers ─────────────────────────────────────────────────────── */
-
+/* ── Animation Curve ──────────────────────────────────────────────────────── */
 const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
 
-/** Standard fade-up reveal variants */
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.9, ease: EASE_LUXURY },
-  },
-}
-
-/** Staggered container */
-const staggerContainer = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
-}
-
-/** Fade-up child for stagger */
-const staggerChild = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.85, ease: EASE_LUXURY },
-  },
-}
-
-/* ── Reusable animated section wrapper ─────────────────────────────────────── */
+/* ── Reusable Scroll Reveal Wrapper ────────────────────────────────────────── */
 function RevealSection({
   children,
-  className,
   delay = 0,
+  className = '',
 }: {
   children: React.ReactNode
-  className?: string
   delay?: number
+  className?: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, amount: 0.15 })
+  const inView = useInView(ref, { once: true, margin: '-60px 0px' })
 
   return (
     <motion.div
       ref={ref}
-      variants={fadeUp}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
-      transition={{ duration: 0.9, ease: EASE_LUXURY, delay }}
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.85, ease: EASE_LUXURY, delay }}
       className={className}
     >
       {children}
     </motion.div>
-  )
-}
-
-/* ── SVG Icons ─────────────────────────────────────────────────────────────── */
-
-function IconBrush({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.25"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M9.06 11.9l8.07-8.06a2.85 2.85 0 114.03 4.03l-8.06 8.08" />
-      <path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1 1 2.18 1 3.5 1 2.2 0 3.5-1.5 3.5-3.02 0-1.67-1.36-3.02-3-3.02z" />
-    </svg>
-  )
-}
-
-function IconCircuit({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.25"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect x="2" y="9" width="4" height="6" rx="1" />
-      <rect x="18" y="9" width="4" height="6" rx="1" />
-      <rect x="9" y="2" width="6" height="4" rx="1" />
-      <rect x="9" y="18" width="6" height="4" rx="1" />
-      <path d="M6 12h4M14 12h4M12 6v4M12 14v4" />
-      <circle cx="12" cy="12" r="2" />
-    </svg>
-  )
-}
-
-function IconArrowRight({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 16 16"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M3 8h10M9 4l4 4-4 4" />
-    </svg>
-  )
-}
-
-function IconChevronDown({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M6 9l6 6 6-6" />
-    </svg>
-  )
-}
-
-/* ── Placeholder Block ─────────────────────────────────────────────────────── */
-function Placeholder({
-  label,
-  className,
-}: {
-  label: string
-  className?: string
-}) {
-  return (
-    <div
-      className={`flex items-center justify-center bg-surface border border-dashed border-gold/30 rounded-xl text-gold/50 font-inter text-label-sm text-center px-4 py-3 ${className ?? ''}`}
-    >
-      <span>[PLACEHOLDER: {label}]</span>
-    </div>
   )
 }
 
@@ -158,30 +53,30 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="border-b border-border last:border-none">
+    <div className="border-b border-border/80 last:border-none">
       <button
-        className="w-full flex items-start justify-between gap-6 py-6 text-left group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold/50 rounded"
+        className="w-full flex items-start justify-between gap-6 py-7 text-left group focus-visible:outline-none"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
       >
-        <span className="font-fraunces text-body-lg text-ivory group-hover:text-gold transition-colors duration-300">
+        <span className="font-fraunces text-xl sm:text-2xl text-ivory font-light group-hover:text-gold transition-colors duration-300">
           {question}
         </span>
         <motion.span
           animate={{ rotate: open ? 180 : 0 }}
-          transition={{ duration: 0.35, ease: EASE_LUXURY }}
+          transition={{ duration: 0.3, ease: EASE_LUXURY }}
           className="shrink-0 mt-1 text-gold"
         >
-          <IconChevronDown className="w-5 h-5" />
+          <ChevronDown className="w-5 h-5" />
         </motion.span>
       </button>
       <motion.div
         initial={false}
         animate={{ height: open ? 'auto' : 0, opacity: open ? 1 : 0 }}
-        transition={{ duration: 0.45, ease: EASE_LUXURY }}
+        transition={{ duration: 0.4, ease: EASE_LUXURY }}
         className="overflow-hidden"
       >
-        <p className="font-inter text-body-md text-muted leading-relaxed pb-6 max-w-3xl">
+        <p className="font-inter text-base sm:text-lg text-ivory/70 leading-relaxed pb-8 max-w-3xl font-light">
           {answer}
         </p>
       </motion.div>
@@ -190,9 +85,8 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 }
 
 /* ══════════════════════════════════════════════════════════════════════════════
-   PAGE COMPONENT
+   HOME PAGE
 ══════════════════════════════════════════════════════════════════════════════ */
-
 export default function HomePage() {
   /* ── Diagnostic Form State ─────────────────────────────────────────────── */
   const [diagnosticForm, setDiagnosticForm] = useState({
@@ -200,6 +94,7 @@ export default function HomePage() {
     websiteUrl: '',
     instagramHandle: '',
     growthChallenge: '',
+    email: '',
   })
   const [diagnosticStatus, setDiagnosticStatus] = useState<
     'idle' | 'loading' | 'success' | 'error'
@@ -243,995 +138,866 @@ export default function HomePage() {
     }
   }
 
-  /* ── Credibility pillars ───────────────────────────────────────────────── */
+  /* ── Credibility Pillars ───────────────────────────────────────────────── */
   const credibilityPillars = [
     {
-      label: 'BSc in AI',
-      detail: 'Academic foundation in artificial intelligence systems.',
+      num: '01',
+      label: 'BSc in Artificial Intelligence',
+      detail: 'Rigorous computational foundation translated into commercial brand systems.',
     },
     {
+      num: '02',
       label: 'Beauty & Skincare Focus',
-      detail: 'Exclusively serving the beauty and cosmetics vertical.',
+      detail: 'Obsessive category specialization — understanding aesthetics, skin, and prestige codes.',
     },
     {
+      num: '03',
       label: 'Founder of Witlyn',
-      detail: 'AI-native creative studio built from the ground up.',
+      detail: 'Proof in production — built an AI-native creative studio delivering commercial campaigns.',
     },
     {
-      label: 'AI-Native Systems',
-      detail: 'Strategy and execution built around AI at the core.',
+      num: '04',
+      label: 'Autonomous Brand Systems',
+      detail: 'From prompt architecture to automated multi-channel operational intelligence.',
     },
   ]
 
-  /* ── Method steps ──────────────────────────────────────────────────────── */
+  /* ── Method Steps ──────────────────────────────────────────────────────── */
   const methodSteps = [
     {
       num: '01',
       name: 'We Talk',
-      desc: 'A focused discovery call to understand your brand, goals, and current gaps. We qualify the fit — no obligation, no pressure.',
+      desc: 'An intimate 30-minute discovery session to audit your current brand creative bottleneck, growth vectors, and AI readiness.',
     },
     {
       num: '02',
       name: 'We Diagnose',
-      desc: 'A structured audit of your creative operations, AI readiness, and growth opportunity. The gap becomes visible.',
+      desc: 'We map your aesthetic and operational gaps — comparing your current content engine with what AI-native infrastructure can unlock.',
     },
     {
       num: '03',
       name: 'We Design',
-      desc: 'We architect your AI creative system: strategy, campaign structure, automation blueprint, and roadmap.',
+      desc: 'We architect your bespoke AI Creative System: prompt libraries, visual style guides, and autonomous agent workflows.',
     },
     {
       num: '04',
       name: 'We Build',
-      desc: 'Execution, iteration, and measurement. Systems are deployed, tested, and refined until results compound.',
+      desc: 'Deployment, testing, and team handoff. Systems are put into live production until creative output compounds effortlessly.',
     },
   ]
 
-  /* ── FAQ data ──────────────────────────────────────────────────────────── */
+  /* ── Case Studies ──────────────────────────────────────────────────────── */
+  const caseStudies = [
+    {
+      id: 'solae',
+      num: '01',
+      brand: 'Solaé',
+      tag: 'AI Campaign Direction',
+      type: 'Concept & Spec Direction',
+      headline: 'AI-native skincare campaign from zero to launch.',
+      desc: 'Designed a complete visual world for a high-potency antioxidant serum. From fluid caustics to micro-droplet macro stills, generated entirely through structured prompt systems.',
+      image: 'https://images.unsplash.com/photo-1608248597359-009587424ca6?q=80&w=1600&auto=format&fit=crop',
+    },
+    {
+      id: 'vyraa',
+      num: '02',
+      brand: 'Vyraa',
+      tag: 'Brand Repositioning',
+      type: 'Creative Direction & Strategy',
+      headline: 'Repositioning a clean cosmetic line for the luxury market.',
+      desc: 'Transitioned a direct-to-consumer skincare line into high-end editorial positioning using architectural studio lighting and hyper-refined texture photography.',
+      image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1600&auto=format&fit=crop',
+    },
+    {
+      id: 'lipea',
+      num: '03',
+      brand: 'Lipéa',
+      tag: 'Content Engine & Automation',
+      type: 'Autonomous Brand Pipeline',
+      headline: 'Scaling 60+ on-brand assets per month with zero studio overhead.',
+      desc: 'Constructed an automated content pipeline mapping beauty consumer search queries directly into synthesized lifestyle and packaging renders.',
+      image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=1600&auto=format&fit=crop',
+    },
+  ]
+
+  /* ── FAQ Data ──────────────────────────────────────────────────────────── */
   const faqs = [
     {
       question: 'Is this AI-generated-looking work?',
       answer:
-        'AI is used as a system, not a shortcut. Every creative decision is strategically directed. The output is indistinguishable from — and often exceeds — traditionally produced campaigns.',
+        'Never. AI is treated as an instrument of execution under strict creative direction. Every render passes through high-fashion art direction, color grading, and category aesthetic standards. The output regularly outperforms traditional studio photography in both visual prestige and engagement.',
     },
     {
-      question: "What if I'm not ready for AI yet?",
+      question: "What if my brand isn't ready for AI yet?",
       answer:
-        "That's actually the best time to engage. We build the system before you need to scale, so when you're ready, you already have the infrastructure.",
+        'That is precisely when advisory is most valuable. We build the strategic foundation before you scale, so you avoid costly missteps, disjointed tools, and generic outputs. You get the blueprint before the market forces you to play catch-up.',
     },
     {
-      question: 'How exclusive is the consulting offering?',
+      question: 'How exclusive is your consulting practice?',
       answer:
-        'Deliberately so. I work with a small number of brands at a time to ensure the depth of attention that drives real results. Applications are reviewed personally.',
+        'Deliberately restricted. I work with a maximum of three advisory brands concurrently to guarantee deep strategic focus and direct partner access. Every engagement begins with an application process.',
     },
     {
-      question: "What's the difference between Sakib Ziad and Witlyn?",
+      question: "What's the relationship between Sakib Ziad and Witlyn?",
       answer:
-        "Witlyn is the full-service AI creative studio I founded — it handles production, content retainers, and done-for-you campaigns. This advisory practice is the strategic layer: audits, direction, and AI automation builds. Think of Witlyn as the hands; this as the mind.",
+        'Witlyn (witlyn.com) is the AI-native creative studio I founded — it provides full done-for-you campaign production and creative retainers. This personal advisory practice is the 1:1 strategic layer: audits, creative direction, and custom AI agent automation builds. Witlyn is the production arm; this is your dedicated strategist.',
     },
     {
-      question: 'What industries do you serve?',
-      answer: 'Exclusively beauty, skincare, and cosmetics. Depth over breadth.',
+      question: 'Do you work outside beauty and cosmetics?',
+      answer:
+        'Exclusively beauty, skincare, and prestige wellness. Deep category mastery creates an unbeatable moat. Depth over breadth, always.',
     },
   ]
 
-  /* ── Render ─────────────────────────────────────────────────────────────── */
   return (
-    <main className="bg-background text-ivory overflow-x-hidden">
+    <div className="bg-background text-ivory overflow-x-hidden selection:bg-gold selection:text-background">
 
       {/* ════════════════════════════════════════════════════════════════════
-          SECTION 1 · HERO
+          SECTION 1 · CINEMATIC HERO
       ════════════════════════════════════════════════════════════════════ */}
       <section
-        className="relative min-h-screen flex flex-col justify-center noise-overlay overflow-hidden"
+        className="relative min-h-[92vh] lg:min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-20"
         aria-label="Hero"
       >
-        {/* ── Background placeholder (replace with image if desired) ── */}
-        {/* <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(...)' }} /> */}
+        {/* Subtle Cinematic Background Image with dark luxury overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=2200&auto=format&fit=crop"
+            alt="Atmospheric luxury skincare aesthetic"
+            fill
+            priority
+            className="object-cover object-center opacity-20 scale-105 transition-transform duration-1000 ease-out"
+          />
+          {/* Multi-layer gradient overlays for seamless dark integration */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/50" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold/5 via-transparent to-transparent" />
+        </div>
 
-        {/* Subtle horizontal gold accent line */}
+        {/* Ambient Gold Horizontal Guide */}
         <div
-          className="absolute left-0 right-0 top-[38%] h-px pointer-events-none"
+          className="absolute left-0 right-0 top-[40%] h-px pointer-events-none"
           style={{
             background:
-              'linear-gradient(90deg, transparent 0%, rgba(201,166,107,0.18) 20%, rgba(201,166,107,0.18) 80%, transparent 100%)',
+              'linear-gradient(90deg, transparent 0%, rgba(201,166,107,0.2) 30%, rgba(201,166,107,0.2) 70%, transparent 100%)',
           }}
         />
 
-        <div className="container-luxury relative z-10 pt-32 pb-24">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="max-w-5xl"
-          >
-            {/* Eyebrow */}
-            <motion.p variants={staggerChild} className="eyebrow mb-8">
-              AI Creative Strategist
-            </motion.p>
+        <div className="container-luxury relative z-10">
+          <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
+            
+            {/* Eyebrow badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: EASE_LUXURY }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold/30 bg-surface/60 backdrop-blur-sm mb-8"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+              <span className="eyebrow-luxury">AI Creative Strategist for Beauty & Skincare</span>
+            </motion.div>
 
-            {/* Main headline */}
+            {/* Main Headline */}
             <motion.h1
-              variants={staggerChild}
-              className="font-fraunces text-display-2xl text-ivory mb-8 max-w-4xl"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.85, ease: EASE_LUXURY, delay: 0.1 }}
+              className="heading-hero mb-8 max-w-4xl"
             >
               The AI{' '}
-              <em className="font-fraunces not-italic italic text-gold">
+              <span className="italic font-fraunces text-gold-gradient font-light">
                 Creative
-              </em>{' '}
+              </span>{' '}
               Edge Beauty Brands Have Been Missing.
             </motion.h1>
 
             {/* Sub-headline */}
             <motion.p
-              variants={staggerChild}
-              className="font-inter text-body-xl text-muted max-w-2xl mb-12 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.85, ease: EASE_LUXURY, delay: 0.2 }}
+              className="body-editorial text-lg sm:text-xl max-w-2xl mb-12"
             >
-              I help beauty, skincare and cosmetics brands compound their growth
-              through AI-native creative systems and intelligent brand
-              automation.
+              I help beauty, skincare, and cosmetics brands compound their growth
+              through AI-native creative systems and autonomous brand intelligence.
             </motion.p>
 
             {/* CTAs */}
             <motion.div
-              variants={staggerChild}
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-14"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.85, ease: EASE_LUXURY, delay: 0.3 }}
+              className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-16 w-full sm:w-auto"
             >
-              <Button asChild variant="gold" size="lg">
-                <Link href="/contact">Apply for a Strategy Call</Link>
+              <Button asChild variant="gold" size="lg" className="w-full sm:w-auto group">
+                <Link href="/contact" className="flex items-center gap-2">
+                  <span>Apply for a Strategy Call</span>
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link href="/work" className="flex items-center gap-2.5">
-                  Explore the Work
-                  <IconArrowRight className="w-4 h-4" />
+              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto group">
+                <Link href="/work" className="flex items-center gap-2">
+                  <span>Explore Selected Work</span>
+                  <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
               </Button>
             </motion.div>
 
-            {/* Divider + credibility strip */}
-            <motion.div variants={staggerChild}>
-              <div className="hr-gold mb-6" />
-              <p className="font-inter text-label-sm text-muted uppercase tracking-widest">
-                AI Degree&ensp;·&ensp;Beauty & Skincare Specialist&ensp;·&ensp;Founder
-                of Witlyn&ensp;·&ensp;AI-Native Production
+            {/* Authority Strip */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.9, delay: 0.45 }}
+              className="w-full pt-8 border-t border-border/60"
+            >
+              <p className="font-inter text-xs uppercase tracking-[0.2em] text-muted-light flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+                <span>BSc in AI</span>
+                <span className="text-gold/50">·</span>
+                <span>Beauty & Skincare Specialist</span>
+                <span className="text-gold/50">·</span>
+                <span>Founder of Witlyn</span>
+                <span className="text-gold/50">·</span>
+                <span>AI-Native Creative Systems</span>
               </p>
             </motion.div>
-          </motion.div>
-        </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10">
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2.4, ease: 'easeInOut' }}
-            className="text-ivory/20"
-          >
-            <IconChevronDown className="w-5 h-5" />
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          SECTION 2 · CREDIBILITY BAR
+          SECTION 2 · CREDIBILITY PILLARS
       ════════════════════════════════════════════════════════════════════ */}
-      <section
-        className="bg-surface pt-16 pb-0 border-b border-border"
-        aria-label="Credibility pillars"
-      >
+      <section className="py-20 border-y border-border/80 bg-surface/40" aria-label="Credentials">
         <div className="container-luxury">
-          <RevealSection>
-            <div className="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-border">
-              {credibilityPillars.map((pillar) => (
-                <div
-                  key={pillar.label}
-                  className="px-0 lg:px-10 py-10 first:pl-0 last:pr-0"
-                >
-                  <div className="w-1.5 h-1.5 rounded-full bg-gold mb-4" />
-                  <p className="font-fraunces text-body-lg text-ivory mb-2 leading-snug">
-                    {pillar.label}
-                  </p>
-                  <p className="font-inter text-label-md text-muted leading-relaxed">
-                    {pillar.detail}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </RevealSection>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+            {credibilityPillars.map((item, i) => (
+              <RevealSection key={item.num} delay={i * 0.08} className="flex flex-col gap-3">
+                <span className="font-inter text-xs font-semibold text-gold tracking-widest">{item.num}</span>
+                <h3 className="font-fraunces text-xl text-ivory font-light leading-snug">{item.label}</h3>
+                <p className="body-muted text-sm leading-relaxed">{item.detail}</p>
+              </RevealSection>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          SECTION 3 · THE GAP
+          SECTION 3 · THE GAP (PROBLEM STATEMENT)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad bg-background" aria-label="The problem">
+      <section className="section-pad relative" aria-label="The Gap">
         <div className="container-luxury">
-          <RevealSection>
-            <div className="max-w-3xl mx-auto text-center">
-              <p className="eyebrow mb-6">The Problem</p>
-              <h2 className="font-fraunces text-display-lg text-ivory mb-12">
-                Most beauty brands are creating content. Few are building
-                creative systems.
+          <div className="max-w-3xl mx-auto text-center">
+            <RevealSection>
+              <p className="eyebrow-luxury mb-4">The Strategic Gap</p>
+              <h2 className="heading-section mb-8">
+                Most beauty brands are churning content.{' '}
+                <span className="italic font-fraunces text-gold font-light">
+                  Almost none are building creative systems.
+                </span>
               </h2>
+            </RevealSection>
 
-              <div className="space-y-8 text-left">
-                <p className="font-inter text-body-xl text-muted leading-relaxed">
-                  Generic content floods every channel — same formats, same
-                  hooks, same results. Without a systematic approach to AI
-                  creative, beauty brands blend into the noise rather than
-                  cut through it.
-                </p>
-                <p className="font-inter text-body-xl text-muted leading-relaxed">
-                  There is no compounding advantage in posting. The brands
-                  winning right now have built infrastructure: AI-native
-                  workflows that produce at scale, maintain brand consistency,
-                  and learn over time.
-                </p>
-                <p className="font-inter text-body-xl text-muted leading-relaxed">
-                  Every month without an AI creative system is a month your
-                  competitors use to widen the gap. The window to build
-                  first-mover advantage is closing — and it will not reopen.
-                </p>
-              </div>
-
-              <div className="hr-gold mt-16" />
-            </div>
-          </RevealSection>
+            <RevealSection delay={0.1} className="space-y-6 text-left sm:text-center">
+              <p className="body-editorial text-lg">
+                The traditional beauty playbook — relying on 6-week agency production cycles, expensive studio shoots, and disjointed freelance rosters — is collapsing under the velocity of modern consumer demand.
+              </p>
+              <p className="body-editorial text-lg">
+                Meanwhile, brands dabbling in off-the-shelf AI generate uninspired, plastic-looking visuals that dilute their brand equity. The true moat is not prompt generation; it is architecting an end-to-end AI-native creative infrastructure with human art direction at the helm.
+              </p>
+              <p className="body-editorial text-lg text-gold/90 font-normal">
+                When you systemize creative intelligence, output expands 10× while cost and turnaround shrink by 70%.
+              </p>
+            </RevealSection>
+          </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
           SECTION 4 · TWO PILLARS
       ════════════════════════════════════════════════════════════════════ */}
-      <section
-        className="section-pad bg-background"
-        aria-label="Two service pillars"
-      >
+      <section className="section-pad bg-surface/30 border-y border-border/80" aria-label="Two Pillars">
         <div className="container-luxury">
-          <RevealSection>
-            <div className="grid md:grid-cols-2 gap-6 mb-10">
-              {/* Card 1 */}
-              <div className="card-surface p-10 flex flex-col gap-6">
-                <div className="text-gold">
-                  <IconBrush className="w-8 h-8" />
-                </div>
+          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
+            <p className="eyebrow-luxury mb-4">Core Architecture</p>
+            <h2 className="heading-section mb-4">Two connected pillars of growth.</h2>
+            <p className="body-muted">Creative vision engineered with operational rigor.</p>
+          </RevealSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {/* Pillar 01 */}
+            <RevealSection delay={0.1}>
+              <div className="card-surface p-8 sm:p-12 flex flex-col justify-between h-full group hover:border-gold/40">
                 <div>
-                  <h3 className="font-fraunces text-display-md text-ivory mb-4">
-                    AI Creative Systems
+                  <div className="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold mb-8 transition-transform duration-300 group-hover:scale-110">
+                    <Sparkles className="w-6 h-6" />
+                  </div>
+                  <span className="eyebrow-luxury">Pillar 01 · Creative Direction</span>
+                  <h3 className="heading-card text-2xl sm:text-3xl mt-2 mb-4">
+                    AI-Native Creative Systems
                   </h3>
-                  <p className="font-inter text-body-md text-muted leading-relaxed">
-                    Proven through Witlyn — AI-native campaign concepting,
-                    creative direction, and content systems for beauty brands
-                    that want to stand apart.
+                  <p className="body-editorial text-base mb-6">
+                    Proven through Witlyn — campaign concepting, visual worldbuilding, and generative asset systems tailored for prestige skincare and cosmetics. High-fashion aesthetics executed without studio friction.
                   </p>
                 </div>
                 <Link
                   href="/work"
-                  className="inline-flex items-center gap-2 font-inter text-label-md text-gold hover:text-gold-light transition-colors duration-300 mt-auto"
+                  className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-gold hover:text-gold-light mt-4"
                 >
-                  See the Work
-                  <IconArrowRight className="w-4 h-4" />
+                  <span>Explore Case Studies</span>
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </div>
+            </RevealSection>
 
-              {/* Card 2 */}
-              <div className="card-surface p-10 flex flex-col gap-6">
-                <div className="text-gold">
-                  <IconCircuit className="w-8 h-8" />
-                </div>
+            {/* Pillar 02 */}
+            <RevealSection delay={0.2}>
+              <div className="card-surface p-8 sm:p-12 flex flex-col justify-between h-full group hover:border-gold/40">
                 <div>
-                  <h3 className="font-fraunces text-display-md text-ivory mb-4">
+                  <div className="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold mb-8 transition-transform duration-300 group-hover:scale-110">
+                    <Cpu className="w-6 h-6" />
+                  </div>
+                  <span className="eyebrow-luxury">Pillar 02 · Brand Operations</span>
+                  <h3 className="heading-card text-2xl sm:text-3xl mt-2 mb-4">
                     AI Automation & Agents
                   </h3>
-                  <p className="font-inter text-body-md text-muted leading-relaxed">
-                    Custom AI automation workflows and intelligent brand agents
-                    that systematize your operations — from content pipelines to
-                    customer intelligence.
+                  <p className="body-editorial text-base mb-6">
+                    Autonomous brand operations. Custom workflows that connect audience trend signals to asset generation, copy synthesis, and multi-channel asset routing — liberating founders from execution drag.
                   </p>
                 </div>
                 <Link
                   href="/consulting"
-                  className="inline-flex items-center gap-2 font-inter text-label-md text-gold hover:text-gold-light transition-colors duration-300 mt-auto"
+                  className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-gold hover:text-gold-light mt-4"
                 >
-                  Learn more
-                  <IconArrowRight className="w-4 h-4" />
+                  <span>View Consulting Scope</span>
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </div>
-            </div>
-
-            {/* Connector note */}
-            <p className="font-inter text-body-sm text-muted italic text-center max-w-2xl mx-auto">
-              Together, these form a complete AI growth system — from brand
-              storytelling to operational intelligence.
-            </p>
-          </RevealSection>
+            </RevealSection>
+          </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
           SECTION 5 · THREE WAYS TO WORK WITH ME
       ════════════════════════════════════════════════════════════════════ */}
-      <section
-        className="section-pad bg-surface"
-        aria-label="Ways to work together"
-      >
+      <section className="section-pad" aria-label="Offerings">
         <div className="container-luxury">
-          <RevealSection>
-            <p className="eyebrow mb-6">Engagement Options</p>
-            <h2 className="font-fraunces text-display-md text-ivory mb-14 max-w-2xl">
-              Three ways to work with me.
-            </h2>
+          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
+            <p className="eyebrow-luxury mb-4">Engagement Hub</p>
+            <h2 className="heading-section mb-4">Three Ways to Work With Me</h2>
+            <p className="body-muted">Engineered for depth, self-direction, and compounding partnership.</p>
           </RevealSection>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {/* Card: Consulting */}
-            <RevealSection delay={0}>
-              <div className="card-surface p-8 flex flex-col h-full gap-6">
-                <div>
-                  <span className="inline-block font-inter text-label-sm uppercase tracking-widest text-gold border border-gold/30 rounded-full px-3 py-1 mb-6">
-                    Application Only
-                  </span>
-                  <h3 className="font-fraunces text-body-xl text-ivory mb-3">
-                    1:1 Consulting & Advisory
-                  </h3>
-                  <p className="font-inter text-body-md text-muted leading-relaxed">
-                    Private, high-touch advisory spanning AI creative strategy,
-                    campaign direction, and custom AI automation builds for your
-                    brand operations.
-                  </p>
-                </div>
-                <Link
-                  href="/consulting"
-                  className="inline-flex items-center gap-2 font-inter text-label-md text-gold hover:text-gold-light transition-colors duration-300 mt-auto"
-                >
-                  Apply Now
-                  <IconArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </RevealSection>
-
-            {/* Card: Digital Products */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Card 1: Consulting */}
             <RevealSection delay={0.1}>
-              <div className="card-surface p-8 flex flex-col h-full gap-6">
+              <div className="card-surface p-8 flex flex-col justify-between h-full group hover:border-gold/50">
                 <div>
-                  <span className="inline-block font-inter text-label-sm uppercase tracking-widest text-gold border border-gold/30 rounded-full px-3 py-1 mb-6">
-                    Self-Serve
+                  <span className="inline-block px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-gold/10 border border-gold/30 text-gold mb-6">
+                    By Application Only
                   </span>
-                  <h3 className="font-fraunces text-body-xl text-ivory mb-3">
-                    Frameworks & Playbooks
-                  </h3>
-                  <p className="font-inter text-body-md text-muted leading-relaxed">
-                    Actionable AI creative frameworks, brand strategy playbooks,
-                    and ready-to-deploy AI agent kits — built for beauty brands.
+                  <h3 className="heading-card text-2xl mb-3">1:1 Consulting & Advisory</h3>
+                  <p className="body-muted mb-6">
+                    High-touch strategic counsel spanning creative direction, campaign audits, and custom AI automation pipelines built for your brand.
                   </p>
                 </div>
-                <Link
-                  href="/digital-products"
-                  className="inline-flex items-center gap-2 font-inter text-label-md text-gold hover:text-gold-light transition-colors duration-300 mt-auto"
-                >
-                  Browse Products
-                  <IconArrowRight className="w-4 h-4" />
-                </Link>
+                <div className="pt-6 border-t border-border">
+                  <Link
+                    href="/consulting"
+                    className="inline-flex items-center justify-between w-full text-xs font-inter uppercase tracking-[0.16em] text-ivory group-hover:text-gold transition-colors"
+                  >
+                    <span>Apply for Advisory</span>
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                </div>
               </div>
             </RevealSection>
 
-            {/* Card: Membership */}
+            {/* Card 2: Digital Products */}
             <RevealSection delay={0.2}>
-              <div className="card-surface p-8 flex flex-col h-full gap-6">
+              <div className="card-surface p-8 flex flex-col justify-between h-full group hover:border-gold/50">
                 <div>
-                  <span className="inline-block font-inter text-label-sm uppercase tracking-widest text-gold border border-gold/30 rounded-full px-3 py-1 mb-6">
-                    Limited Access
+                  <span className="inline-block px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-ivory/10 border border-ivory/20 text-ivory/80 mb-6">
+                    Self-Serve Systems
                   </span>
-                  <h3 className="font-fraunces text-body-xl text-ivory mb-3">
-                    The Inner Circle
-                  </h3>
-                  <p className="font-inter text-body-md text-muted leading-relaxed">
-                    Ongoing access to monthly strategy, tools, community, and
-                    direct guidance. A compounding relationship, not a one-time
-                    transaction.
+                  <h3 className="heading-card text-2xl mb-3">Digital Products & Kits</h3>
+                  <p className="body-muted mb-6">
+                    Battle-tested prompt architectures, creative director playbooks, and ready-to-deploy AI automation kits developed for beauty brands.
                   </p>
                 </div>
-                <Link
-                  href="/membership"
-                  className="inline-flex items-center gap-2 font-inter text-label-md text-gold hover:text-gold-light transition-colors duration-300 mt-auto"
-                >
-                  Learn More
-                  <IconArrowRight className="w-4 h-4" />
-                </Link>
+                <div className="pt-6 border-t border-border">
+                  <Link
+                    href="/digital-products"
+                    className="inline-flex items-center justify-between w-full text-xs font-inter uppercase tracking-[0.16em] text-ivory group-hover:text-gold transition-colors"
+                  >
+                    <span>Browse Frameworks</span>
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+            </RevealSection>
+
+            {/* Card 3: Membership */}
+            <RevealSection delay={0.3}>
+              <div className="card-surface p-8 flex flex-col justify-between h-full group hover:border-gold/50">
+                <div>
+                  <span className="inline-block px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-gold/10 border border-gold/30 text-gold mb-6">
+                    Private Syndicate
+                  </span>
+                  <h3 className="heading-card text-2xl mb-3">The Advisory Syndicate</h3>
+                  <p className="body-muted mb-6">
+                    Ongoing monthly intelligence, new model breakdowns, template drops, and direct async strategy counsel for long-term category leaders.
+                  </p>
+                </div>
+                <div className="pt-6 border-t border-border">
+                  <Link
+                    href="/membership"
+                    className="inline-flex items-center justify-between w-full text-xs font-inter uppercase tracking-[0.16em] text-ivory group-hover:text-gold transition-colors"
+                  >
+                    <span>View Membership</span>
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                </div>
               </div>
             </RevealSection>
           </div>
 
-          {/* Witlyn note */}
-          <RevealSection>
-            <p className="font-inter text-body-sm text-muted italic text-center mt-12">
-              Looking for full-service AI creative production?{' '}
+          {/* Explicit Witlyn Distinction Callout */}
+          <RevealSection delay={0.4} className="mt-14 text-center">
+            <div className="inline-flex items-center flex-wrap justify-center gap-2 px-6 py-3 rounded-full border border-border bg-surface/50 text-xs font-inter text-muted-light">
+              <span>Looking for full-service AI creative production or campaign execution?</span>
               <a
                 href="https://witlyn.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gold hover:text-gold-light transition-colors duration-300 not-italic"
+                className="text-gold font-medium hover:underline inline-flex items-center gap-1"
               >
-                Visit Witlyn →
+                <span>Visit Witlyn Studio</span>
+                <ArrowUpRight className="w-3 h-3" />
               </a>
-            </p>
+            </div>
           </RevealSection>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          SECTION 6 · SELECTED WORK
+          SECTION 6 · SELECTED WORK WITH CINEMATIC IMAGERY
       ════════════════════════════════════════════════════════════════════ */}
-      <section
-        className="section-pad bg-background"
-        aria-label="Selected work"
-      >
+      <section className="section-pad bg-surface/20 border-t border-border/80" aria-label="Selected Work">
         <div className="container-luxury">
-          <RevealSection>
-            <p className="eyebrow mb-6">Selected Work</p>
-            <h2 className="font-fraunces text-display-lg text-ivory mb-16">
-              Creative Systems in the Wild.
-            </h2>
+          <RevealSection className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
+            <div>
+              <p className="eyebrow-luxury mb-4">Proof of Work</p>
+              <h2 className="heading-section">Selected Campaign Work</h2>
+            </div>
+            <Button asChild variant="outline" size="sm">
+              <Link href="/work" className="flex items-center gap-2">
+                <span>View Full Archive</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </Button>
           </RevealSection>
 
-          <div className="space-y-6">
-            {/* Case Study 01 */}
-            <RevealSection>
-              <div className="card-surface overflow-hidden">
-                <div className="grid md:grid-cols-[1fr_2fr_1fr] gap-0 divide-y md:divide-y-0 md:divide-x divide-border">
-                  {/* Number */}
-                  <div className="p-8 flex flex-col justify-between gap-8">
-                    <span className="eyebrow text-gold/60">01</span>
-                    <div className="space-y-2">
-                      <span className="inline-block font-inter text-label-sm uppercase tracking-widest text-ivory/40 border border-border rounded-full px-3 py-1">
-                        Campaign Direction
-                      </span>
-                      <br />
-                      <span className="inline-block font-inter text-label-sm uppercase tracking-widest text-ivory/40 border border-border rounded-full px-3 py-1 mt-2">
-                        AI Creative System
-                      </span>
-                    </div>
-                  </div>
-                  {/* Center */}
-                  <div className="p-8 flex flex-col justify-center gap-4">
-                    <h3 className="font-fraunces text-display-md text-ivory">
-                      Solaé
-                    </h3>
-                    <p className="font-inter text-body-md text-muted italic">
-                      [PLACEHOLDER: specify] — *Concept / Spec Work
-                    </p>
-                    <p className="font-inter text-body-lg text-ivory/70">
-                      AI-native skincare campaign from zero to launch.
-                    </p>
-                    <Link
-                      href="/work/solae"
-                      className="inline-flex items-center gap-2 font-inter text-label-md text-gold hover:text-gold-light transition-colors duration-300 mt-2"
-                    >
-                      View Case Study
-                      <IconArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                  {/* Image placeholder */}
-                  <div className="p-4 flex items-center justify-center">
-                    <Placeholder
-                      label="Case Study Image — Solaé"
-                      className="w-full aspect-video"
-                    />
-                  </div>
-                </div>
-              </div>
-            </RevealSection>
+          <div className="space-y-12">
+            {caseStudies.map((study, i) => (
+              <RevealSection key={study.id} delay={i * 0.1}>
+                <div className="card-surface overflow-hidden group">
+                  <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] items-center">
+                    
+                    {/* Content */}
+                    <div className="p-8 sm:p-12 lg:p-14 flex flex-col justify-between h-full order-2 lg:order-1">
+                      <div>
+                        <div className="flex items-center gap-4 mb-6">
+                          <span className="font-inter text-xs font-semibold text-gold tracking-widest">{study.num}</span>
+                          <span className="w-4 h-px bg-border" />
+                          <span className="font-inter text-xs uppercase tracking-wider text-muted-light">{study.type}</span>
+                        </div>
+                        <h3 className="heading-card text-2xl sm:text-3xl mb-4 group-hover:text-gold transition-colors">
+                          {study.brand}
+                        </h3>
+                        <p className="font-fraunces text-lg text-ivory/90 mb-4 font-light italic">
+                          "{study.headline}"
+                        </p>
+                        <p className="body-muted mb-8">
+                          {study.desc}
+                        </p>
+                      </div>
 
-            {/* Case Study 02 */}
-            <RevealSection delay={0.08}>
-              <div className="card-surface overflow-hidden">
-                <div className="grid md:grid-cols-[1fr_2fr_1fr] gap-0 divide-y md:divide-y-0 md:divide-x divide-border">
-                  <div className="p-8 flex flex-col justify-between gap-8">
-                    <span className="eyebrow text-gold/60">02</span>
-                    <div className="space-y-2">
-                      <span className="inline-block font-inter text-label-sm uppercase tracking-widest text-ivory/40 border border-border rounded-full px-3 py-1">
-                        Brand Strategy
-                      </span>
-                      <br />
-                      <span className="inline-block font-inter text-label-sm uppercase tracking-widest text-ivory/40 border border-border rounded-full px-3 py-1 mt-2">
-                        Creative Direction
-                      </span>
+                      <div>
+                        <Link
+                          href={`/work#${study.id}`}
+                          className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-gold group-hover:text-gold-light"
+                        >
+                          <span>Read Case Breakdown</span>
+                          <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                  <div className="p-8 flex flex-col justify-center gap-4">
-                    <h3 className="font-fraunces text-display-md text-ivory">
-                      Vyraa
-                    </h3>
-                    <p className="font-inter text-body-md text-muted italic">
-                      [PLACEHOLDER: specify] — *Concept / Spec Work
-                    </p>
-                    <p className="font-inter text-body-lg text-ivory/70">
-                      Repositioning a premium beauty brand for the AI era.
-                    </p>
-                    <Link
-                      href="/work/vyraa"
-                      className="inline-flex items-center gap-2 font-inter text-label-md text-gold hover:text-gold-light transition-colors duration-300 mt-2"
-                    >
-                      View Case Study
-                      <IconArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                  <div className="p-4 flex items-center justify-center">
-                    <Placeholder
-                      label="Case Study Image — Vyraa"
-                      className="w-full aspect-video"
-                    />
-                  </div>
-                </div>
-              </div>
-            </RevealSection>
 
-            {/* Case Study 03 */}
-            <RevealSection delay={0.16}>
-              <div className="card-surface overflow-hidden">
-                <div className="grid md:grid-cols-[1fr_2fr_1fr] gap-0 divide-y md:divide-y-0 md:divide-x divide-border">
-                  <div className="p-8 flex flex-col justify-between gap-8">
-                    <span className="eyebrow text-gold/60">03</span>
-                    <div className="space-y-2">
-                      <span className="inline-block font-inter text-label-sm uppercase tracking-widest text-ivory/40 border border-border rounded-full px-3 py-1">
-                        Content System
-                      </span>
-                      <br />
-                      <span className="inline-block font-inter text-label-sm uppercase tracking-widest text-ivory/40 border border-border rounded-full px-3 py-1 mt-2">
-                        AI Automation
-                      </span>
+                    {/* Image with subtle zoom on hover */}
+                    <div className="relative aspect-[16/10] lg:aspect-auto lg:h-full min-h-[300px] overflow-hidden order-1 lg:order-2">
+                      <Image
+                        src={study.image}
+                        alt={`${study.brand} creative campaign preview`}
+                        fill
+                        className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-l from-background/40 to-transparent pointer-events-none" />
                     </div>
-                  </div>
-                  <div className="p-8 flex flex-col justify-center gap-4">
-                    <h3 className="font-fraunces text-display-md text-ivory">
-                      Lipéa
-                    </h3>
-                    <p className="font-inter text-body-md text-muted italic">
-                      [PLACEHOLDER: specify] — *Concept / Spec Work
-                    </p>
-                    <p className="font-inter text-body-lg text-ivory/70">
-                      Building a content engine that scales without a team.
-                    </p>
-                    <Link
-                      href="/work/lipea"
-                      className="inline-flex items-center gap-2 font-inter text-label-md text-gold hover:text-gold-light transition-colors duration-300 mt-2"
-                    >
-                      View Case Study
-                      <IconArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                  <div className="p-4 flex items-center justify-center">
-                    <Placeholder
-                      label="Case Study Image — Lipéa"
-                      className="w-full aspect-video"
-                    />
+
                   </div>
                 </div>
-              </div>
-            </RevealSection>
+              </RevealSection>
+            ))}
           </div>
-
-          {/* CTA */}
-          <RevealSection>
-            <div className="mt-14 flex justify-center">
-              <Button asChild variant="outline" size="lg">
-                <Link href="/work">View All Work</Link>
-              </Button>
-            </div>
-          </RevealSection>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          SECTION 7 · METHOD
+          SECTION 7 · THE METHOD
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad bg-surface" aria-label="The process">
+      <section className="section-pad border-y border-border/80 bg-surface" aria-label="Process">
         <div className="container-luxury">
-          <RevealSection>
-            <p className="eyebrow mb-6">The Process</p>
-            <h2 className="font-fraunces text-display-md text-ivory mb-16 max-w-2xl">
-              A clear path from first conversation to measurable growth.
-            </h2>
+          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
+            <p className="eyebrow-luxury mb-4">Methodology</p>
+            <h2 className="heading-section mb-4">How Engagement Works</h2>
+            <p className="body-muted">A clear, disciplined progression from initial audit to compounding asset generation.</p>
           </RevealSection>
 
-          <RevealSection>
-            <div className="relative">
-              {/* Connector line — desktop only */}
-              <div
-                className="absolute hidden lg:block top-7 left-0 right-0 h-px"
-                style={{
-                  background:
-                    'linear-gradient(90deg, transparent, rgba(201,166,107,0.25) 15%, rgba(201,166,107,0.25) 85%, transparent)',
-                }}
-              />
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 relative">
-                {methodSteps.map((step) => (
-                  <div key={step.num} className="flex flex-col gap-4">
-                    <span className="font-fraunces text-display-md text-gold-gradient font-light leading-none">
-                      {step.num}
-                    </span>
-                    <h3 className="font-fraunces text-body-xl text-ivory">
-                      {step.name}
-                    </h3>
-                    <p className="font-inter text-body-md text-muted leading-relaxed">
-                      {step.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </RevealSection>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {methodSteps.map((step, idx) => (
+              <RevealSection key={step.num} delay={idx * 0.08} className="flex flex-col gap-4 relative">
+                <span className="font-fraunces text-4xl text-gold/40 font-light">{step.num}</span>
+                <h3 className="heading-card text-xl">{step.name}</h3>
+                <p className="body-muted text-sm">{step.desc}</p>
+              </RevealSection>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          SECTION 8 · THE DIAGNOSTIC
+          SECTION 8 · THE DIAGNOSTIC (LEAD GENERATION ENGINE)
       ════════════════════════════════════════════════════════════════════ */}
-      <section
-        className="section-pad bg-background"
-        aria-label="Free diagnostic"
-      >
+      <section id="diagnostic" className="section-pad relative" aria-label="AI Diagnostic">
         <div className="container-luxury">
           <div className="max-w-2xl mx-auto">
-            <RevealSection>
-              <p className="eyebrow mb-6">Free Diagnostic</p>
-              <h2 className="font-fraunces text-display-md text-ivory mb-6">
-                Get a free AI-generated{' '}
-                <em className="italic text-gold">Gap & Opportunity</em>{' '}
-                Snapshot.
+            <RevealSection className="text-center mb-12">
+              <p className="eyebrow-luxury mb-4">Immediate Value</p>
+              <h2 className="heading-section mb-4">
+                Get an AI-Generated Gap & Opportunity Snapshot
               </h2>
-              <p className="font-inter text-body-lg text-muted mb-12 leading-relaxed">
-                A personalized analysis of your brand's AI creative readiness,
-                growth gaps, and quick-win opportunities — built specifically
-                for your brand in 60 seconds.
+              <p className="body-muted">
+                Input your brand details. Our specialized LLM engine analyzes your visual presence and returns 3 strategic creative opportunities within minutes.
               </p>
             </RevealSection>
 
-            <RevealSection delay={0.1}>
-              {diagnosticStatus === 'success' ? (
-                <div className="card-surface p-10 text-center">
-                  <div className="w-2 h-2 rounded-full bg-gold mx-auto mb-6" />
-                  <p className="font-fraunces text-body-xl text-ivory mb-3">
-                    Your Gap Report is on its way.
-                  </p>
-                  <p className="font-inter text-body-md text-muted">
-                    We'll email your report within minutes — no spam, no
-                    obligation.
-                  </p>
-                </div>
-              ) : (
-                <form
-                  onSubmit={handleDiagnosticSubmit}
-                  className="card-surface p-8 space-y-5"
-                >
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    <Input
-                      label="Brand Name"
-                      placeholder="e.g. Lumière Beauty"
-                      value={diagnosticForm.brandName}
-                      onChange={(e) =>
-                        setDiagnosticForm((f) => ({
-                          ...f,
-                          brandName: e.target.value,
-                        }))
-                      }
-                      required
-                    />
-                    <Input
-                      label="Website URL"
-                      type="url"
-                      placeholder="https://yourbrand.com"
-                      value={diagnosticForm.websiteUrl}
-                      onChange={(e) =>
-                        setDiagnosticForm((f) => ({
-                          ...f,
-                          websiteUrl: e.target.value,
-                        }))
-                      }
-                      required
-                    />
-                  </div>
-                  <Input
-                    label="Instagram Handle (optional)"
-                    placeholder="@yourbrand"
-                    value={diagnosticForm.instagramHandle}
-                    onChange={(e) =>
-                      setDiagnosticForm((f) => ({
-                        ...f,
-                        instagramHandle: e.target.value,
-                      }))
-                    }
-                  />
-                  <Textarea
-                    label="Primary Growth Challenge"
-                    placeholder="What's the biggest creative or growth challenge you're facing right now?"
-                    rows={3}
-                    value={diagnosticForm.growthChallenge}
-                    onChange={(e) =>
-                      setDiagnosticForm((f) => ({
-                        ...f,
-                        growthChallenge: e.target.value,
-                      }))
-                    }
-                    required
-                  />
-
-                  {diagnosticStatus === 'error' && (
-                    <p className="font-inter text-label-sm text-red-400/80">
-                      Something went wrong. Please try again.
-                    </p>
-                  )}
-
-                  <Button
-                    type="submit"
-                    variant="gold"
-                    size="lg"
-                    className="w-full"
-                    disabled={diagnosticStatus === 'loading'}
-                  >
-                    {diagnosticStatus === 'loading'
-                      ? 'Analyzing your brand…'
-                      : 'Generate My Report →'}
-                  </Button>
-
-                  <p className="font-inter text-label-sm text-muted text-center">
-                    We'll email your report within minutes — no spam, no
-                    obligation.
-                  </p>
-                </form>
-              )}
-            </RevealSection>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════════════
-          SECTION 9 · ABOUT TEASER
-      ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad bg-surface" aria-label="About Sakib">
-        <div className="container-luxury">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            {/* Text block */}
-            <RevealSection>
-              <p className="eyebrow mb-6">About Sakib</p>
-              <h2 className="font-fraunces text-display-md text-ivory mb-8">
-                AI isn't a tool I use. It's the lens I see through.
-              </h2>
-
-              <div className="space-y-6 mb-10">
-                <p className="font-inter text-body-lg text-muted leading-relaxed">
-                  <Placeholder
-                    label="2–3 sentence founder story — AI degree, why beauty/skincare, what drove you here"
-                    className="text-left text-body-sm"
-                  />
-                </p>
-                <p className="font-inter text-body-lg text-muted leading-relaxed">
-                  Witlyn, the studio I founded, has become proof that AI-native
-                  creative isn't a gimmick — it's a growth system.
-                </p>
-              </div>
-
-              <Button asChild variant="ghost">
-                <Link href="/about" className="flex items-center gap-2">
-                  Read the Full Story
-                  <IconArrowRight className="w-4 h-4" />
-                </Link>
-              </Button>
-            </RevealSection>
-
-            {/* Headshot placeholder */}
             <RevealSection delay={0.15}>
-              <Placeholder
-                label="Headshot image — Sakib Ziad"
-                className="w-full aspect-[4/5] rounded-2xl"
-              />
+              <div className="card-surface p-8 sm:p-12 border-gold/30 shadow-[0_0_50px_rgba(201,166,107,0.06)]">
+                {diagnosticStatus === 'success' ? (
+                  <div className="text-center py-8 space-y-6">
+                    <CheckCircle2 className="w-12 h-12 text-gold mx-auto" />
+                    <h3 className="heading-card text-2xl">Snapshot Initiated</h3>
+                    <p className="body-editorial text-base max-w-md mx-auto">
+                      We are processing your brand synthesis. A detailed overview is being dispatched to your email, and our strategy team will follow up directly.
+                    </p>
+                    <Button asChild variant="gold" size="md">
+                      <Link href="/contact">Book Strategy Call</Link>
+                    </Button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleDiagnosticSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                          Brand Name *
+                        </label>
+                        <Input
+                          required
+                          placeholder="e.g. Solaé Botanicals"
+                          value={diagnosticForm.brandName}
+                          onChange={(e) => setDiagnosticForm({ ...diagnosticForm, brandName: e.target.value })}
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                          Website URL *
+                        </label>
+                        <Input
+                          required
+                          type="url"
+                          placeholder="https://yourbrand.com"
+                          value={diagnosticForm.websiteUrl}
+                          onChange={(e) => setDiagnosticForm({ ...diagnosticForm, websiteUrl: e.target.value })}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                          Work Email *
+                        </label>
+                        <Input
+                          required
+                          type="email"
+                          placeholder="founder@yourbrand.com"
+                          value={diagnosticForm.email}
+                          onChange={(e) => setDiagnosticForm({ ...diagnosticForm, email: e.target.value })}
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                          Instagram Handle
+                        </label>
+                        <Input
+                          placeholder="@yourbrand"
+                          value={diagnosticForm.instagramHandle}
+                          onChange={(e) => setDiagnosticForm({ ...diagnosticForm, instagramHandle: e.target.value })}
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                        Primary Creative / Growth Bottleneck *
+                      </label>
+                      <Textarea
+                        required
+                        rows={3}
+                        placeholder="What is limiting your creative velocity right now? (e.g. agency turnaround too slow, generic visuals, ad fatigue)"
+                        value={diagnosticForm.growthChallenge}
+                        onChange={(e) => setDiagnosticForm({ ...diagnosticForm, growthChallenge: e.target.value })}
+                      />
+                    </div>
+
+                    <Button
+                      type="submit"
+                      variant="gold"
+                      size="lg"
+                      className="w-full"
+                      disabled={diagnosticStatus === 'loading'}
+                    >
+                      {diagnosticStatus === 'loading' ? 'Analyzing Brand System...' : 'Generate My Gap Snapshot →'}
+                    </Button>
+
+                    <p className="text-[11px] text-muted-light text-center font-inter">
+                      100% confidential. No spam. Reviewed by Sakib Ziad personally.
+                    </p>
+                  </form>
+                )}
+              </div>
             </RevealSection>
           </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          SECTION 10 · INSIGHTS TEASER
+          SECTION 9 · ABOUT TEASER (WITH REAL PORTRAIT PHOTO)
       ════════════════════════════════════════════════════════════════════ */}
-      <section
-        className="section-pad bg-background"
-        aria-label="Insights and articles"
-      >
+      <section className="section-pad bg-surface/40 border-y border-border/80" aria-label="About Sakib Ziad">
         <div className="container-luxury">
-          <RevealSection>
-            <p className="eyebrow mb-6">Insights</p>
-            <h2 className="font-fraunces text-display-md text-ivory mb-16 max-w-xl">
-              Thinking out loud on AI, beauty, and brand growth.
-            </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            {/* Real Executive Portrait Image */}
+            <RevealSection className="lg:col-span-5">
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-border shadow-2xl group">
+                <Image
+                  src="/images/sakib-ziad.jpg"
+                  alt="Sakib Ziad — AI Creative Strategist"
+                  fill
+                  className="object-cover object-top transition-transform duration-700 ease-luxury group-hover:scale-102"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <p className="font-fraunces text-xl text-ivory">Sakib Ziad</p>
+                  <p className="eyebrow-luxury text-gold">Founder of Witlyn · AI Strategist</p>
+                </div>
+              </div>
+            </RevealSection>
+
+            {/* Narrative */}
+            <div className="lg:col-span-7 flex flex-col gap-6">
+              <RevealSection>
+                <p className="eyebrow-luxury">Founder Philosophy</p>
+                <h2 className="heading-section my-4">
+                  "AI is not a tool I use. It is the architectural lens I design through."
+                </h2>
+              </RevealSection>
+
+              <RevealSection delay={0.1} className="space-y-4 body-editorial">
+                <p>
+                  With an academic degree in Artificial Intelligence and an obsession for prestige aesthetics, I founded Witlyn to prove that generative systems could exceed traditional studio campaigns in emotional depth and commercial conversion.
+                </p>
+                <p>
+                  Now, through this private advisory practice, I partner directly with founders and creative leaders to install these proprietary systems inside their brands — turning sporadic marketing into an autonomous, compounding creative asset.
+                </p>
+              </RevealSection>
+
+              <RevealSection delay={0.2} className="pt-4">
+                <Button asChild variant="outline" size="md">
+                  <Link href="/about" className="flex items-center gap-2">
+                    <span>Read Full Founder Story</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Button>
+              </RevealSection>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════════════
+          SECTION 10 · THOUGHT LEADERSHIP TEASER
+      ════════════════════════════════════════════════════════════════════ */}
+      <section className="section-pad" aria-label="Insights">
+        <div className="container-luxury">
+          <RevealSection className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
+            <div>
+              <p className="eyebrow-luxury mb-4">Strategic Perspectives</p>
+              <h2 className="heading-section">Thinking on AI & Beauty</h2>
+            </div>
+            <Button asChild variant="outline" size="sm">
+              <Link href="/insights" className="flex items-center gap-2">
+                <span>View All Essays</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </Button>
           </RevealSection>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
-            {/* Article 1 */}
-            <RevealSection delay={0}>
-              <div className="card-surface p-8 flex flex-col gap-5 h-full">
-                <span className="font-inter text-label-sm uppercase tracking-widest text-gold">
-                  AI Creative
-                </span>
-                <div className="flex-1">
-                  <Placeholder
-                    label="Article Title 1"
-                    className="mb-4 text-body-md"
-                  />
-                  <p className="font-inter text-label-md text-muted mb-3">
-                    Sep 2026
-                  </p>
-                  <p className="font-inter text-body-sm text-muted leading-relaxed">
-                    [PLACEHOLDER: 1-line article excerpt — Article 1]
-                  </p>
-                </div>
-                <Link
-                  href="/insights"
-                  className="inline-flex items-center gap-2 font-inter text-label-md text-gold hover:text-gold-light transition-colors duration-300"
-                >
-                  Read
-                  <IconArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </RevealSection>
-
-            {/* Article 2 */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <RevealSection delay={0.1}>
-              <div className="card-surface p-8 flex flex-col gap-5 h-full">
-                <span className="font-inter text-label-sm uppercase tracking-widest text-gold">
-                  Brand Strategy
-                </span>
-                <div className="flex-1">
-                  <Placeholder
-                    label="Article Title 2"
-                    className="mb-4 text-body-md"
-                  />
-                  <p className="font-inter text-label-md text-muted mb-3">
-                    Sep 2026
-                  </p>
-                  <p className="font-inter text-body-sm text-muted leading-relaxed">
-                    [PLACEHOLDER: 1-line article excerpt — Article 2]
+              <Link href="/insights" className="card-surface p-8 flex flex-col justify-between h-full group hover:border-gold/40">
+                <div>
+                  <span className="eyebrow-luxury text-gold">AI Creative</span>
+                  <h3 className="heading-card text-xl mt-3 mb-3 group-hover:text-gold transition-colors">
+                    Why Beauty Brands Need Creative Systems, Not Agencies
+                  </h3>
+                  <p className="body-muted text-sm">
+                    The 6-week agency turnaround is dead. How leading cosmetics brands are replacing bloated production with on-demand AI systems.
                   </p>
                 </div>
-                <Link
-                  href="/insights"
-                  className="inline-flex items-center gap-2 font-inter text-label-md text-gold hover:text-gold-light transition-colors duration-300"
-                >
-                  Read
-                  <IconArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
+                <span className="text-xs font-inter text-gold/70 mt-6 inline-flex items-center gap-1">
+                  Read Essay <ArrowRight className="w-3 h-3" />
+                </span>
+              </Link>
             </RevealSection>
 
-            {/* Article 3 */}
             <RevealSection delay={0.2}>
-              <div className="card-surface p-8 flex flex-col gap-5 h-full">
-                <span className="font-inter text-label-sm uppercase tracking-widest text-gold">
-                  AI Automation
-                </span>
-                <div className="flex-1">
-                  <Placeholder
-                    label="Article Title 3"
-                    className="mb-4 text-body-md"
-                  />
-                  <p className="font-inter text-label-md text-muted mb-3">
-                    Sep 2026
-                  </p>
-                  <p className="font-inter text-body-sm text-muted leading-relaxed">
-                    [PLACEHOLDER: 1-line article excerpt — Article 3]
+              <Link href="/insights" className="card-surface p-8 flex flex-col justify-between h-full group hover:border-gold/40">
+                <div>
+                  <span className="eyebrow-luxury text-gold">Brand Strategy</span>
+                  <h3 className="heading-card text-xl mt-3 mb-3 group-hover:text-gold transition-colors">
+                    The Prompt Is Not The Strategy: Aesthetics in 2026
+                  </h3>
+                  <p className="body-muted text-sm">
+                    Why generic Midjourney renders dilute luxury brand equity, and how true art direction creates uncopyable visual prestige.
                   </p>
                 </div>
-                <Link
-                  href="/insights"
-                  className="inline-flex items-center gap-2 font-inter text-label-md text-gold hover:text-gold-light transition-colors duration-300"
-                >
-                  Read
-                  <IconArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
+                <span className="text-xs font-inter text-gold/70 mt-6 inline-flex items-center gap-1">
+                  Read Essay <ArrowRight className="w-3 h-3" />
+                </span>
+              </Link>
+            </RevealSection>
+
+            <RevealSection delay={0.3}>
+              <Link href="/insights" className="card-surface p-8 flex flex-col justify-between h-full group hover:border-gold/40">
+                <div>
+                  <span className="eyebrow-luxury text-gold">AI Automation</span>
+                  <h3 className="heading-card text-xl mt-3 mb-3 group-hover:text-gold transition-colors">
+                    Autonomous Content Engines: Operational Breakdown
+                  </h3>
+                  <p className="body-muted text-sm">
+                    Step-by-step architecture of the agent pipeline that produces 60+ commercial beauty assets every month with single-operator oversight.
+                  </p>
+                </div>
+                <span className="text-xs font-inter text-gold/70 mt-6 inline-flex items-center gap-1">
+                  Read Essay <ArrowRight className="w-3 h-3" />
+                </span>
+              </Link>
             </RevealSection>
           </div>
 
-          {/* Newsletter */}
-          <RevealSection>
-            <div className="border-t border-border pt-12">
-              <p className="font-inter text-label-md text-muted text-center mb-6">
-                Join{' '}
-                <span className="text-ivory/60">
-                  [PLACEHOLDER: X] strategists
-                </span>{' '}
-                following the intersection of AI and beauty.
-              </p>
+          {/* Newsletter Box */}
+          <RevealSection delay={0.35} className="mt-16 card-surface p-8 sm:p-12 border-border/80">
+            <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 items-center">
+              <div>
+                <p className="eyebrow-luxury mb-2">Private Dispatches</p>
+                <h3 className="heading-card text-2xl mb-2">Curated Strategic Intelligence</h3>
+                <p className="body-muted">
+                  Join forward-thinking founders and creative directors receiving private breakdowns of generative technology in beauty.
+                </p>
+              </div>
 
               {newsletterStatus === 'success' ? (
-                <p className="font-fraunces text-body-lg text-gold text-center">
-                  You're in. We'll be in touch.
-                </p>
+                <div className="p-4 rounded-xl bg-gold/10 border border-gold/30 text-gold text-sm text-center">
+                  Confirmed. You are on the private dispatch list.
+                </div>
               ) : (
-                <form
-                  onSubmit={handleNewsletterSubmit}
-                  className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-                >
-                  <input
-                    type="email"
-                    placeholder="your@email.com"
+                <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3">
+                  <Input
                     required
+                    type="email"
+                    placeholder="Enter your work email"
                     value={newsletterEmail}
                     onChange={(e) => setNewsletterEmail(e.target.value)}
-                    className="flex-1 rounded-xl px-4 py-3 font-inter text-body-md text-ivory placeholder:text-ivory/25 bg-surface border border-ivory/20 focus:outline-none focus:border-gold/60 focus:ring-1 focus:ring-gold/30 transition-all duration-300"
+                    className="flex-1"
                   />
-                  <Button
-                    type="submit"
-                    variant="gold"
-                    size="md"
-                    disabled={newsletterStatus === 'loading'}
-                  >
-                    {newsletterStatus === 'loading' ? 'Subscribing…' : 'Subscribe'}
+                  <Button type="submit" variant="gold" size="md">
+                    Subscribe
                   </Button>
                 </form>
               )}
-
-              {newsletterStatus === 'error' && (
-                <p className="font-inter text-label-sm text-red-400/80 text-center mt-3">
-                  Something went wrong. Please try again.
-                </p>
-              )}
             </div>
           </RevealSection>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          SECTION 11 · FINAL CTA
+          SECTION 11 · FINAL CTA & APPLICATION INVITATION
       ════════════════════════════════════════════════════════════════════ */}
-      <section
-        className="section-pad bg-background border-t border-border"
-        aria-label="Final call to action"
-      >
-        <div className="container-luxury">
+      <section className="section-pad border-t border-border/80 bg-surface/50 text-center" aria-label="Final Invitation">
+        <div className="container-luxury max-w-3xl mx-auto">
           <RevealSection>
-            <div className="text-center max-w-3xl mx-auto">
-              <h2 className="font-fraunces text-display-lg text-ivory mb-6">
-                Ready to build your AI creative edge?
-              </h2>
-              <p className="font-inter text-body-lg text-muted mb-12">
-                Applications are reviewed personally. Limited spots available.
-              </p>
-              <Button asChild variant="gold" size="xl">
-                <Link href="/contact">Apply for a Strategy Call</Link>
-              </Button>
-            </div>
-          </RevealSection>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════════════
-          SECTION 12 · FAQ
-      ════════════════════════════════════════════════════════════════════ */}
-      <section
-        className="section-pad bg-surface border-t border-border"
-        aria-label="Frequently asked questions"
-      >
-        <div className="container-luxury">
-          <RevealSection>
-            <p className="eyebrow mb-6">Common Questions</p>
-            <h2 className="font-fraunces text-display-md text-ivory mb-14 max-w-xl">
-              Answered directly.
+            <p className="eyebrow-luxury mb-4">Exclusivity by Design</p>
+            <h2 className="heading-section text-4xl sm:text-5xl lg:text-6xl mb-6">
+              Ready to install your AI creative edge?
             </h2>
-          </RevealSection>
-
-          <RevealSection delay={0.1}>
-            <div className="max-w-3xl divide-y divide-border border-t border-border">
-              {faqs.map((faq) => (
-                <FaqItem
-                  key={faq.question}
-                  question={faq.question}
-                  answer={faq.answer}
-                />
-              ))}
-            </div>
+            <p className="body-editorial text-lg max-w-xl mx-auto mb-10">
+              Applications are reviewed personally. Limited advisory cohorts ensure deep immersion and measurable compounding growth.
+            </p>
+            <Button asChild variant="gold" size="xl">
+              <Link href="/contact" className="flex items-center gap-2">
+                <span>Apply for a Strategy Call</span>
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </Button>
           </RevealSection>
         </div>
       </section>
-    </main>
+
+      {/* ════════════════════════════════════════════════════════════════════
+          SECTION 12 · OBJECTION-HANDLING FAQ
+      ════════════════════════════════════════════════════════════════════ */}
+      <section className="section-pad border-t border-border/80" aria-label="FAQ">
+        <div className="container-luxury max-w-4xl mx-auto">
+          <RevealSection className="text-center mb-16">
+            <p className="eyebrow-luxury mb-4">Clarity</p>
+            <h2 className="heading-section mb-4">Frequently Asked Questions</h2>
+            <p className="body-muted">Direct answers to strategic questions before applying.</p>
+          </RevealSection>
+
+          <div className="space-y-2">
+            {faqs.map((faq) => (
+              <RevealSection key={faq.question}>
+                <FaqItem question={faq.question} answer={faq.answer} />
+              </RevealSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+    </div>
   )
 }

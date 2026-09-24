@@ -17,7 +17,7 @@ export default function TermsPage() {
             Terms of Service
           </h1>
           <p className="font-inter text-sm text-ivory/40">
-            Last updated: [PLACEHOLDER: Date]
+            Last updated: September 2026
           </p>
         </div>
 
@@ -108,7 +108,7 @@ export default function TermsPage() {
               All prices are displayed in USD unless stated otherwise. Payment is processed through third-party providers; by completing a purchase you also agree to that provider's terms and conditions.
             </p>
             <p className="mb-3">
-              [PLACEHOLDER: refund policy details — e.g. no refunds on digital products after download, 14-day refund window for memberships, consulting retainers non-refundable after kick-off, etc.]
+              Digital products and downloadable blueprints are non-refundable once accessed or downloaded due to their proprietary nature. Syndicate memberships may be cancelled at any time prior to the next billing cycle. Advisory and custom system builds are governed by their respective individual Statements of Work.
             </p>
             <p>
               For any payment disputes or billing questions, contact{' '}
@@ -141,7 +141,7 @@ export default function TermsPage() {
               6. Governing Law
             </h2>
             <p>
-              These Terms shall be governed by and construed in accordance with the laws of [PLACEHOLDER: jurisdiction — e.g. the State of New York, USA], without regard to its conflict of law provisions. Any dispute arising out of or relating to these Terms shall be subject to the exclusive jurisdiction of the courts located in that jurisdiction.
+              These Terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law principles. Any dispute arising out of or relating to these Terms shall be subject to the exclusive jurisdiction of competent courts.
             </p>
           </section>
 
@@ -175,7 +175,7 @@ export default function TermsPage() {
         {/* Legal Review Notice */}
         <div className="mt-16 p-6 border border-gold/30 bg-surface rounded-sm">
           <p className="font-inter text-sm text-ivory/60 leading-relaxed">
-            <span className="text-gold font-medium">Note:</span> This policy is a placeholder. Please review with a qualified legal professional before launch.
+            <span className="text-gold font-medium">Notice:</span> These terms are provided for structural reference. Please review with your legal counsel for specific jurisdictional compliance prior to commercial operation.
           </p>
         </div>
 

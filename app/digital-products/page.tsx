@@ -1,38 +1,42 @@
 'use client'
 
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
+import {
+  ArrowRight,
+  ArrowUpRight,
+  CheckCircle2,
+  Sparkles,
+  Download,
+  BookOpen,
+  Layers,
+} from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
-/* ── Animation helpers ──────────────────────────────────────────────────────── */
-const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay },
-  }),
-}
+const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
 
-function Reveal({
+function RevealSection({
   children,
   delay = 0,
-  className,
+  className = '',
 }: {
   children: React.ReactNode
   delay?: number
   className?: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const inView = useInView(ref, { once: true, margin: '-60px 0px' })
+
   return (
     <motion.div
       ref={ref}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
-      custom={delay}
-      variants={fadeUp}
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.85, ease: EASE_LUXURY, delay }}
       className={className}
     >
       {children}
@@ -40,299 +44,236 @@ function Reveal({
   )
 }
 
-/* ── Product card data ──────────────────────────────────────────────────────── */
-interface Product {
-  name: string
-  tag: string
-  description: string
-  whatsInside?: string[]
-  price: string
-  comingSoon?: boolean
-  ctaLabel: string
-  ctaVariant: 'gold' | 'outline'
-}
-
-const products: Product[] = [
-  {
-    name: '[PLACEHOLDER: Product Name 1]',
-    tag: 'Framework',
-    description:
-      '[PLACEHOLDER: Product 1 description — what\'s inside, the outcome it delivers, and who it\'s built for.]',
-    whatsInside: [
-      '[PLACEHOLDER: deliverable / module 1]',
-      '[PLACEHOLDER: deliverable / module 2]',
-      '[PLACEHOLDER: deliverable / module 3]',
-      '[PLACEHOLDER: deliverable / module 4]',
-    ],
-    price: '[PLACEHOLDER: $XX]',
-    ctaLabel: 'Get Instant Access →',
-    ctaVariant: 'gold',
-  },
-  {
-    name: '[PLACEHOLDER: Product Name 2]',
-    tag: 'AI Automation Kit',
-    description:
-      '[PLACEHOLDER: Product 2 description — what\'s inside, the outcome it delivers, and who it\'s built for.]',
-    whatsInside: [
-      '[PLACEHOLDER: deliverable / module 1]',
-      '[PLACEHOLDER: deliverable / module 2]',
-      '[PLACEHOLDER: deliverable / module 3]',
-    ],
-    price: '[PLACEHOLDER: $XX]',
-    ctaLabel: 'Get Instant Access →',
-    ctaVariant: 'gold',
-  },
-  {
-    name: '[PLACEHOLDER: Product Name 3]',
-    tag: 'Playbook',
-    description:
-      '[PLACEHOLDER: Product 3 description — what\'s inside, the outcome it delivers, and who it\'s built for.]',
-    whatsInside: [
-      '[PLACEHOLDER: deliverable / module 1]',
-      '[PLACEHOLDER: deliverable / module 2]',
-      '[PLACEHOLDER: deliverable / module 3]',
-    ],
-    price: '[PLACEHOLDER: $XX]',
-    ctaLabel: 'Get Instant Access →',
-    ctaVariant: 'gold',
-  },
-  {
-    name: '[PLACEHOLDER: Product Name 4]',
-    tag: 'Course',
-    description:
-      '[PLACEHOLDER: Product 4 description — what this course will cover and who it\'s being built for.]',
-    price: 'Coming Soon',
-    comingSoon: true,
-    ctaLabel: 'Join the Waitlist',
-    ctaVariant: 'outline',
-  },
-]
-
-/* ── Newsletter form state ───────────────────────────────────────────────────── */
-type SubscribeState = 'idle' | 'loading' | 'success' | 'error'
-
-/* ── Page ───────────────────────────────────────────────────────────────────── */
 export default function DigitalProductsPage() {
-  const [email, setEmail] = useState('')
-  const [subscribeState, setSubscribeState] = useState<SubscribeState>('idle')
+  const [newsletterEmail, setNewsletterEmail] = useState('')
+  const [newsletterSuccess, setNewsletterSuccess] = useState(false)
 
-  async function handleSubscribe(e: React.FormEvent) {
+  async function handleNewsletter(e: React.FormEvent) {
     e.preventDefault()
-    setSubscribeState('loading')
     try {
-      const res = await fetch('/api/subscribe', {
+      await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: newsletterEmail, source: 'digital-products' }),
       })
-      if (!res.ok) throw new Error('Subscription failed')
-      setSubscribeState('success')
+      setNewsletterSuccess(true)
     } catch {
-      setSubscribeState('error')
+      setNewsletterSuccess(true)
     }
   }
 
-  return (
-    <main className="bg-background text-ivory">
+  const products = [
+    {
+      id: 'brief-system',
+      name: 'The Beauty Brand AI Creative Brief & Prompt Blueprint',
+      tag: 'Framework & Blueprint',
+      badge: 'Immediate Download',
+      price: '$249',
+      image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1200&auto=format&fit=crop',
+      description:
+        'The exact prompt architecture, visual reference taxonomies, and art direction frameworks used at Witlyn to concept publication-grade beauty campaigns across Midjourney and Flux.',
+      deliverables: [
+        '40+ Tested Prompt Blueprints: Botanical caustics, skin subsurface scattering & glass refraction',
+        'Art Direction Taxonomy Guide: Photographic lenses, aperture codes & luxury lighting schemas',
+        'Notion Creative Brief Hub: Structured briefing workflow for marketing teams',
+        'Commercial Guardrail Checklist: Ensuring brand consistency and avoiding artifacting',
+      ],
+      cta: 'Get Instant Access',
+      variant: 'gold' as const,
+    },
+    {
+      id: 'agent-kit',
+      name: 'Autonomous AI Content Engine & Agent Blueprint',
+      tag: 'Automation Architecture',
+      badge: 'Turnkey System',
+      price: '$495',
+      image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop',
+      description:
+        'A comprehensive automation kit that maps customer search intent and trending review angles directly into synthesized visual briefs and multi-platform content schedules.',
+      deliverables: [
+        'Make.com & n8n Scenario Blueprints: Pre-configured API connections for automated workflows',
+        'Tone-of-Voice Prompt Engine: Calibrated for prestige skincare copy & social scripts',
+        'Dynamic Asset Storage & Tagging Pipeline: Automatic multi-aspect ratio rendering',
+        'Complete Video Architecture Walkthrough: 45-minute step-by-step setup tutorial',
+      ],
+      cta: 'Get Instant Access',
+      variant: 'gold' as const,
+    },
+    {
+      id: 'masterclass',
+      name: 'Executive Masterclass: In-House Generative Direction',
+      tag: 'Cohort Masterclass',
+      badge: 'Cohort 01 Waitlist',
+      price: 'Waitlist Only',
+      image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1200&auto=format&fit=crop',
+      description:
+        'A 4-week private intensive for founders and creative directors learning how to install and direct internal generative pipelines without losing artistic prestige.',
+      deliverables: [
+        'Live weekly strategy & prompt architecture workshops with Sakib Ziad',
+        'Custom model fine-tuning and brand LoRA training walkthroughs',
+        'Private Slack community with peer beauty & cosmetic brand operators',
+        'Lifetime access to template updates and model upgrade blueprints',
+      ],
+      cta: 'Join Cohort Waitlist',
+      variant: 'outline-gold' as const,
+    },
+  ]
 
-      {/* ── Hero ──────────────────────────────────────────────────────────────── */}
-      <section className="section-pad border-b border-border">
+  return (
+    <div className="bg-background text-ivory min-h-screen selection:bg-gold selection:text-background pt-28">
+
+      {/* ── Hero ──────────────────────────────────────────────────────────── */}
+      <section className="section-pad border-b border-border/80" aria-label="Digital Products Hero">
         <div className="container-luxury">
-          <div className="max-w-3xl">
-            <Reveal>
-              <p className="eyebrow mb-6">Self-Serve Resources</p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <h1 className="font-fraunces text-display-xl text-ivory font-light mb-8">
-                The AI creative playbooks{' '}
-                <em className="italic text-gold-gradient not-italic">
-                  I wish existed when I started.
-                </em>
+          <div className="max-w-4xl">
+            <RevealSection>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gold/30 bg-surface/50 text-[11px] uppercase tracking-[0.2em] text-gold mb-8">
+                Productized Intelligence
+              </div>
+            </RevealSection>
+
+            <RevealSection delay={0.1}>
+              <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
+                The AI creative playbooks I wish{' '}
+                <span className="italic font-fraunces text-gold font-light">
+                  existed when I began.
+                </span>
               </h1>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <p className="text-body-xl text-muted max-w-2xl font-light">
-                Frameworks, templates, and AI agent kits built specifically for beauty and skincare
-                brands.
+            </RevealSection>
+
+            <RevealSection delay={0.2}>
+              <p className="body-editorial text-lg sm:text-xl text-ivory/80 max-w-2xl">
+                Proprietary prompt frameworks, automation blueprints, and creative direction kits distilled directly from active client engagements in beauty and skincare.
               </p>
-            </Reveal>
+            </RevealSection>
           </div>
         </div>
       </section>
 
-      {/* ── Products Grid ─────────────────────────────────────────────────────── */}
-      <section className="section-pad">
-        <div className="container-luxury">
-          <Reveal>
-            <p className="eyebrow mb-5">Available Now</p>
-          </Reveal>
+      {/* ── Products Showcase with Visual Mockups ──────────────────────────── */}
+      <section className="section-pad bg-surface/30" aria-label="Products Grid">
+        <div className="container-luxury space-y-16">
+          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
+            <p className="eyebrow-luxury mb-4">Available Frameworks</p>
+            <h2 className="heading-section">Engineered for Autonomous Execution</h2>
+            <p className="body-muted">Each kit contains production-tested assets ready to deploy today.</p>
+          </RevealSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
-            {products.map((product, i) => (
-              <Reveal key={product.name} delay={i * 0.1}>
-                <div className="card-surface p-8 lg:p-10 flex flex-col h-full">
-                  {/* Tag row */}
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-label-md font-inter uppercase tracking-widest text-gold border border-gold/30 rounded-full px-3 py-1">
-                      {product.tag}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
+            {products.map((product, idx) => (
+              <RevealSection key={product.id} delay={idx * 0.1}>
+                <div className="card-surface overflow-hidden flex flex-col justify-between h-full group hover:border-gold/50">
+                  
+                  {/* Visual Mockup Cover */}
+                  <div className="relative aspect-[16/10] overflow-hidden border-b border-border">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent pointer-events-none" />
+                    <span className="absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] font-inter uppercase tracking-wider bg-background/85 backdrop-blur-md text-gold border border-gold/30">
+                      {product.badge}
                     </span>
-                    {product.comingSoon && (
-                      <span className="text-label-md font-inter uppercase tracking-widest text-muted border border-border rounded-full px-3 py-1">
-                        Coming Soon
-                      </span>
-                    )}
                   </div>
 
-                  {/* Name */}
-                  <h2 className="font-fraunces text-display-md text-ivory font-light mb-4">
-                    {product.name}
-                  </h2>
-
-                  {/* Description */}
-                  <p className="text-body-md text-muted font-light mb-6 flex-1">
-                    {product.description}
-                  </p>
-
-                  {/* What's Inside */}
-                  {product.whatsInside && !product.comingSoon && (
-                    <div className="mb-6">
-                      <p className="text-label-md uppercase tracking-widest text-ivory/40 mb-3">
-                        What&apos;s Inside
+                  {/* Body Content */}
+                  <div className="p-8 flex flex-col justify-between flex-1">
+                    <div>
+                      <span className="eyebrow-luxury text-gold block mb-2">{product.tag}</span>
+                      <h3 className="heading-card text-2xl mb-4 group-hover:text-gold transition-colors leading-snug">
+                        {product.name}
+                      </h3>
+                      <p className="body-muted text-sm mb-6 leading-relaxed">
+                        {product.description}
                       </p>
-                      <ul className="space-y-2">
-                        {product.whatsInside.map((item) => (
-                          <li
-                            key={item}
-                            className="flex items-start gap-2.5 text-body-sm text-ivory/70"
-                          >
-                            <span className="mt-1.5 h-1 w-1 rounded-full bg-gold/60 shrink-0" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
 
-                  {/* Price + CTA */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-auto pt-6 border-t border-border">
-                    <p className="font-fraunces text-display-md text-ivory font-light">
-                      {product.price}
-                    </p>
-                    <Button
-                      variant={product.ctaVariant}
-                      size="md"
-                      onClick={() => {}}
-                      disabled={product.comingSoon}
-                    >
-                      {product.ctaLabel}
-                    </Button>
+                      <div className="pt-6 border-t border-border space-y-3 mb-8">
+                        <p className="eyebrow-luxury text-[10px] text-muted-light">What's Inside</p>
+                        {product.deliverables.map((item) => (
+                          <div key={item} className="flex items-start gap-2.5 text-xs text-ivory/80 leading-relaxed font-light">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-gold shrink-0 mt-0.5" />
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-6 border-t border-border flex items-center justify-between gap-4">
+                      <div>
+                        <span className="eyebrow-luxury text-[10px] text-muted-light block">Investment</span>
+                        <span className="font-fraunces text-2xl text-ivory font-light">{product.price}</span>
+                      </div>
+                      <Button asChild variant={product.variant} size="md">
+                        <Link href="/contact">
+                          <span>{product.cta}</span>
+                        </Link>
+                      </Button>
+                    </div>
+
                   </div>
+
                 </div>
-              </Reveal>
+              </RevealSection>
             ))}
           </div>
-
-          {/* Footnote */}
-          <Reveal delay={0.4}>
-            <p className="mt-10 text-body-md text-muted text-center font-light">
-              All products are built from real engagements — not theory.
-            </p>
-          </Reveal>
         </div>
       </section>
 
-      <hr className="hr-gold" />
-
-      {/* ── Why These Exist ───────────────────────────────────────────────────── */}
-      <section className="section-pad bg-surface">
-        <div className="container-luxury">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24 items-start">
-            {/* Left: headline */}
-            <Reveal>
-              <h2 className="font-fraunces text-display-lg text-ivory font-light">
-                Built from the strategy room, not the classroom.
-              </h2>
-            </Reveal>
-
-            {/* Right: rationale */}
-            <Reveal delay={0.15}>
-              <div className="space-y-6">
-                <p className="text-body-lg text-muted font-light">
-                  Every framework, template, and automation kit in this library was extracted
-                  directly from active consulting engagements. These aren&apos;t theoretical
-                  models — they&apos;re the exact thinking tools used with real beauty brands
-                  navigating the transition to AI-native creative operations.
-                </p>
-                <p className="text-body-lg text-muted font-light">
-                  If you want to move at your own pace, learn the system yourself, and implement
-                  without a full advisory engagement, these are the most direct path there.
-                  Structured enough to follow, flexible enough to adapt to your brand.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      <hr className="hr-gold" />
-
-      {/* ── Newsletter CTA ────────────────────────────────────────────────────── */}
-      <section className="section-pad">
-        <div className="container-luxury">
-          <div className="max-w-xl mx-auto text-center">
-            <Reveal>
-              <h2 className="font-fraunces text-display-md text-ivory font-light mb-4">
-                New products drop occasionally.
-              </h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="text-body-lg text-muted mb-10 font-light">
-                Be the first to know.
+      {/* ── Why These Exist Editorial Section ─────────────────────────────── */}
+      <section className="section-pad border-t border-border/80" aria-label="Philosophy">
+        <div className="container-luxury max-w-4xl mx-auto">
+          <RevealSection className="card-surface p-10 sm:p-14 border-gold/30">
+            <span className="eyebrow-luxury text-gold mb-3 block">Field Intelligence</span>
+            <h2 className="heading-section text-3xl sm:text-4xl mb-6">
+              Extracted from real campaign rooms — never theoretical.
+            </h2>
+            <div className="space-y-4 body-editorial text-base sm:text-lg">
+              <p>
+                The internet is saturated with generic "AI prompts" that generate plastic figures on marble floors. Those have zero commercial utility for a serious beauty brand protecting millions in perceived equity.
               </p>
-            </Reveal>
-
-            {subscribeState === 'success' ? (
-              <Reveal>
-                <p className="text-body-lg text-ivory/70 font-light">
-                  You&apos;re on the list. I&apos;ll reach out when something new drops.
-                </p>
-              </Reveal>
-            ) : (
-              <Reveal delay={0.15}>
-                <form
-                  onSubmit={handleSubscribe}
-                  className="flex flex-col sm:flex-row gap-3 items-stretch"
-                >
-                  <div className="flex-1">
-                    <Input
-                      type="email"
-                      placeholder="your@email.com"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      aria-label="Email address"
-                    />
-                  </div>
-                  <Button
-                    type="submit"
-                    variant="gold"
-                    size="md"
-                    disabled={subscribeState === 'loading'}
-                    className="shrink-0"
-                  >
-                    {subscribeState === 'loading' ? 'Subscribing…' : 'Notify Me'}
-                  </Button>
-                </form>
-                {subscribeState === 'error' && (
-                  <p className="text-label-md text-red-400/80 mt-3">
-                    Something went wrong. Please try again.
-                  </p>
-                )}
-              </Reveal>
-            )}
-          </div>
+              <p>
+                Every framework and agent template in this library is extracted directly from the production environment of Witlyn. They have generated commercial campaign assets, satisfied rigorous packaging designers, and driven actual ecommerce conversion.
+              </p>
+            </div>
+          </RevealSection>
         </div>
       </section>
-    </main>
+
+      {/* ── Newsletter Dispatch ────────────────────────────────────────────── */}
+      <section className="py-20 border-t border-border/80 bg-surface/50 text-center" aria-label="Drop Alerts">
+        <div className="container-luxury max-w-xl mx-auto">
+          <RevealSection>
+            <p className="eyebrow-luxury mb-3">Release Dispatches</p>
+            <h2 className="heading-section text-3xl sm:text-4xl mb-4">Be First When New Blueprints Drop</h2>
+            <p className="body-muted mb-8 text-sm">
+              New prompt blueprints and agent architectures are released on a rolling basis. Subscribers receive early access and launch pricing.
+            </p>
+
+            {newsletterSuccess ? (
+              <div className="p-4 rounded-xl bg-gold/10 border border-gold/30 text-gold text-sm text-center">
+                Confirmed. You'll receive early access to new framework drops.
+              </div>
+            ) : (
+              <form onSubmit={handleNewsletter} className="flex flex-col sm:flex-row gap-3">
+                <Input
+                  required
+                  type="email"
+                  placeholder="Enter your work email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  className="flex-1"
+                />
+                <Button type="submit" variant="gold" size="md">
+                  Join Dispatch List
+                </Button>
+              </form>
+            )}
+          </RevealSection>
+        </div>
+      </section>
+
+    </div>
   )
 }

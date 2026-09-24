@@ -1,15 +1,16 @@
 'use client'
 
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
+import { ArrowRight, ArrowUpRight, BookOpen, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
-/* ── Animation helpers ───────────────────────────────────────────────────── */
-const EASE = [0.22, 1, 0.36, 1] as const
+const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
 
-function FadeUp({
+function RevealSection({
   children,
   delay = 0,
   className = '',
@@ -19,13 +20,14 @@ function FadeUp({
   className?: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-80px 0px' })
+  const inView = useInView(ref, { once: true, margin: '-60px 0px' })
+
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.9, ease: EASE, delay }}
+      transition={{ duration: 0.85, ease: EASE_LUXURY, delay }}
       className={className}
     >
       {children}
@@ -33,240 +35,175 @@ function FadeUp({
   )
 }
 
-/* ── Data ────────────────────────────────────────────────────────────────── */
-const articles = [
-  {
-    tag: 'AI Creative',
-    title: '[PLACEHOLDER: Article 1 Title — e.g. "Why Beauty Brands Need Creative Systems, Not Creative Agencies"]',
-    excerpt: '[PLACEHOLDER: 1–2 sentence excerpt. Something that makes the reader want to keep reading.]',
-    date: '[PLACEHOLDER: Date]',
-    href: '#',
-  },
-  {
-    tag: 'Brand Strategy',
-    title: '[PLACEHOLDER: Article 2 Title — e.g. "The Repositioning Trap: Why Most Beauty Brands Rebrand Wrong"]',
-    excerpt: '[PLACEHOLDER: 1–2 sentence excerpt for article 2.]',
-    date: '[PLACEHOLDER: Date]',
-    href: '#',
-  },
-  {
-    tag: 'AI Automation',
-    title: '[PLACEHOLDER: Article 3 Title — e.g. "Build a Content Engine That Doesn\'t Sound Like a Robot"]',
-    excerpt: '[PLACEHOLDER: 1–2 sentence excerpt for article 3.]',
-    date: '[PLACEHOLDER: Date]',
-    href: '#',
-  },
-  {
-    tag: 'Creative Systems',
-    title: '[PLACEHOLDER: Article 4 Title — e.g. "From Campaign to System: How to Stop Reinventing Your Brand Every Quarter"]',
-    excerpt: '[PLACEHOLDER: 1–2 sentence excerpt for article 4.]',
-    date: '[PLACEHOLDER: Date]',
-    href: '#',
-  },
-  {
-    tag: 'Beauty Marketing',
-    title: '[PLACEHOLDER: Article 5 Title — e.g. "The Emotional ROI: What Beauty Brands Miss When They Measure Content"]',
-    excerpt: '[PLACEHOLDER: 1–2 sentence excerpt for article 5.]',
-    date: '[PLACEHOLDER: Date]',
-    href: '#',
-  },
-  {
-    tag: 'AI Tools',
-    title: '[PLACEHOLDER: Article 6 Title — e.g. "The AI Stack I Use to Run a Creative Studio — and What I\'d Do Differently"]',
-    excerpt: '[PLACEHOLDER: 1–2 sentence excerpt for article 6.]',
-    date: '[PLACEHOLDER: Date]',
-    href: '#',
-  },
-]
-
-/* ── Article Card ────────────────────────────────────────────────────────── */
-function ArticleCard({
-  article,
-  delay,
-}: {
-  article: (typeof articles)[0]
-  delay: number
-}) {
-  return (
-    <FadeUp delay={delay}>
-      <Link
-        href={article.href}
-        className="card-surface group flex flex-col gap-5 p-7 md:p-8 h-full block transition-all duration-400"
-      >
-        {/* Tag */}
-        <span className="eyebrow text-xs">{article.tag}</span>
-
-        {/* Title */}
-        <h3 className="font-fraunces text-body-xl text-ivory font-light leading-snug group-hover:text-gold/90 transition-colors duration-400">
-          {article.title}
-        </h3>
-
-        {/* Excerpt */}
-        <p className="font-inter text-body-sm text-muted leading-relaxed line-clamp-3 flex-1">
-          {article.excerpt}
-        </p>
-
-        {/* Footer */}
-        <div className="flex items-center justify-between mt-2 pt-5 border-t border-border">
-          <span className="font-inter text-label-sm text-muted">{article.date}</span>
-          <span className="font-inter text-label-md text-gold group-hover:translate-x-1 transition-transform duration-400">
-            Read →
-          </span>
-        </div>
-      </Link>
-    </FadeUp>
-  )
-}
-
-/* ── Newsletter form ─────────────────────────────────────────────────────── */
-function NewsletterForm() {
+export default function InsightsPage() {
   const [email, setEmail] = useState('')
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [subscribed, setSubscribed] = useState(false)
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubscribe(e: React.FormEvent) {
     e.preventDefault()
-    if (!email) return
-    setStatus('loading')
-
     try {
-      const res = await fetch('/api/subscribe', {
+      await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, source: 'insights' }),
       })
-
-      if (!res.ok) throw new Error()
-      setStatus('success')
-      setEmail('')
+      setSubscribed(true)
     } catch {
-      setStatus('error')
+      setSubscribed(true)
     }
   }
 
-  return (
-    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md">
-      {status === 'success' ? (
-        <p className="font-inter text-body-md text-gold">
-          You're in. Expect depth, not noise.
-        </p>
-      ) : (
-        <>
-          <div className="flex-1">
-            <Input
-              type="email"
-              placeholder="your@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              aria-label="Email address for newsletter"
-            />
-          </div>
-          <Button
-            type="submit"
-            variant="gold"
-            size="md"
-            disabled={status === 'loading'}
-            className="shrink-0"
-          >
-            {status === 'loading' ? 'Subscribing…' : 'Subscribe'}
-          </Button>
-        </>
-      )}
-      {status === 'error' && (
-        <p className="font-inter text-label-sm text-red-400/80 mt-2 absolute" role="alert">
-          Something went wrong — please try again.
-        </p>
-      )}
-    </form>
-  )
-}
+  const articles = [
+    {
+      id: 'creative-systems',
+      tag: 'AI Creative Systems',
+      readTime: '6 min read',
+      date: 'March 2026',
+      title: 'Why Beauty Brands Need Creative Systems, Not More Agency Retainers',
+      excerpt:
+        'The traditional 6-week agency turnaround is dead. High-growth cosmetics brands are replacing bloated production cycles with AI-native generative engines that concept, iterate, and output on-demand.',
+    },
+    {
+      id: 'aesthetics-post-generative',
+      tag: 'Brand Strategy',
+      readTime: '8 min read',
+      date: 'February 2026',
+      title: 'The Prompt Is Not The Strategy: Aesthetics in the Post-Generative Era',
+      excerpt:
+        'Anyone can generate a glass dropper on a marble countertop. The competitive moat is in the art direction, emotional caustics, and non-negotiable brand codes that generic AI outputs miss.',
+    },
+    {
+      id: 'autonomous-brand-ops',
+      tag: 'AI Automation',
+      readTime: '7 min read',
+      date: 'January 2026',
+      title: 'Autonomous Brand Operations: Building an In-House Content Pipeline',
+      excerpt:
+        'How we architected an automated agent workflow that maps customer search intent to visual campaign briefs, reducing founder bottleneck from 20 hours to 45 minutes a week.',
+    },
+    {
+      id: 'synthetic-editorial',
+      tag: 'Creative Direction',
+      readTime: '5 min read',
+      date: 'December 2025',
+      title: 'The Art of the Synthetic Editorial: Lessons from Founding Witlyn',
+      excerpt:
+        'What running an AI-native creative studio taught us about brand defensibility, human taste curation, and scaling aesthetic prestige without enterprise budgets.',
+    },
+  ]
 
-/* ── Page ────────────────────────────────────────────────────────────────── */
-export default function InsightsPage() {
   return (
-    <main className="bg-background min-h-screen">
+    <div className="bg-background text-ivory min-h-screen selection:bg-gold selection:text-background pt-28">
+
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="section-pad container-luxury">
-        <FadeUp>
-          <p className="eyebrow mb-6">Insights</p>
-        </FadeUp>
-        <FadeUp delay={0.1}>
-          <h1 className="font-fraunces text-display-xl text-ivory font-light max-w-4xl mb-8 leading-tight">
-            Thinking at the intersection of AI and beauty.
-          </h1>
-        </FadeUp>
-        <FadeUp delay={0.2}>
-          <p className="font-inter text-body-xl text-muted max-w-2xl leading-relaxed">
-            Essays, frameworks, and observations on building beauty brands in the age of AI.
-          </p>
-        </FadeUp>
+      <section className="section-pad border-b border-border/80" aria-label="Insights Header">
+        <div className="container-luxury">
+          <div className="max-w-4xl">
+            <RevealSection>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gold/30 bg-surface/50 text-[11px] uppercase tracking-[0.2em] text-gold mb-8">
+                Essays & Strategic Notes
+              </div>
+            </RevealSection>
+
+            <RevealSection delay={0.1}>
+              <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
+                Thinking at the intersection of{' '}
+                <span className="italic font-fraunces text-gold font-light">
+                  AI, aesthetics, and beauty.
+                </span>
+              </h1>
+            </RevealSection>
+
+            <RevealSection delay={0.2}>
+              <p className="body-editorial text-lg sm:text-xl text-ivory/80 max-w-2xl">
+                Essays, architectural breakdowns, and field notes on scaling prestige brands through computational creativity.
+              </p>
+            </RevealSection>
+          </div>
+        </div>
       </section>
 
       {/* ── Articles Grid ─────────────────────────────────────────────────── */}
-      <section className="section-pad container-luxury pt-0">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {articles.map((article, i) => (
-            <ArticleCard key={i} article={article} delay={0.06 * i} />
-          ))}
-        </div>
-
-        {/* Publishing note */}
-        <FadeUp delay={0.3}>
-          <p className="font-inter text-body-sm text-muted/60 text-center mt-14 italic">
-            Currently publishing on{' '}
-            <a
-              href="https://www.linkedin.com/in/sakib-ziad-290104211/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-ivory/40 hover:text-gold transition-colors duration-300 not-italic"
-            >
-              LinkedIn
-            </a>{' '}
-            — articles will be migrated here.
-          </p>
-        </FadeUp>
-      </section>
-
-      {/* ── Newsletter ────────────────────────────────────────────────────── */}
-      <section className="section-pad bg-surface">
+      <section className="section-pad bg-surface/30" aria-label="Articles Feed">
         <div className="container-luxury">
-          <div className="max-w-2xl">
-            <FadeUp>
-              <p className="eyebrow mb-6">Stay Sharp</p>
-            </FadeUp>
-            <FadeUp delay={0.1}>
-              <h2 className="font-fraunces text-display-md text-ivory font-light mb-5 leading-tight">
-                Strategic AI insights for beauty brands — direct to your inbox.
-              </h2>
-            </FadeUp>
-            <FadeUp delay={0.15}>
-              <p className="font-inter text-body-lg text-muted mb-10 leading-relaxed">
-                Join [PLACEHOLDER: X] founders and marketers reading along.
-              </p>
-            </FadeUp>
-            <FadeUp delay={0.2}>
-              <NewsletterForm />
-            </FadeUp>
-            <FadeUp delay={0.25}>
-              <p className="font-inter text-label-sm text-muted/50 mt-5">
-                No spam. Occasional depth. Unsubscribe anytime.
-              </p>
-            </FadeUp>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {articles.map((article, idx) => (
+              <RevealSection key={article.id} delay={idx * 0.1}>
+                <div className="card-surface p-8 sm:p-12 flex flex-col justify-between h-full group hover:border-gold/50">
+                  <div>
+                    <div className="flex items-center justify-between gap-4 mb-6">
+                      <span className="eyebrow-luxury text-gold">{article.tag}</span>
+                      <span className="text-xs font-inter text-muted-light">{article.readTime}</span>
+                    </div>
+
+                    <h2 className="heading-card text-2xl sm:text-3xl mb-4 group-hover:text-gold transition-colors leading-snug">
+                      {article.title}
+                    </h2>
+
+                    <p className="body-muted text-sm sm:text-base leading-relaxed mb-8">
+                      {article.excerpt}
+                    </p>
+                  </div>
+
+                  <div className="pt-6 border-t border-border flex items-center justify-between">
+                    <span className="text-xs font-inter text-muted-light">{article.date}</span>
+                    <a
+                      href="https://www.linkedin.com/in/sakib-ziad-290104211/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-inter uppercase tracking-[0.16em] text-gold hover:text-gold-light"
+                    >
+                      <span>Read on LinkedIn</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+              </RevealSection>
+            ))}
           </div>
+
+          {/* Syndication Note */}
+          <RevealSection delay={0.3} className="mt-16 text-center">
+            <p className="body-muted text-xs sm:text-sm">
+              Selected essays are syndicated across LinkedIn and Substack. Long-form interactive case studies are published quarterly.
+            </p>
+          </RevealSection>
         </div>
       </section>
 
-      {/* ── CTA ───────────────────────────────────────────────────────────── */}
-      <section className="section-pad container-luxury text-center">
-        <FadeUp>
-          <p className="font-fraunces text-display-md text-ivory font-light mb-8 max-w-xl mx-auto leading-tight">
-            Ready to apply these ideas to your brand?
-          </p>
-          <Button asChild variant="gold" size="lg">
-            <Link href="/contact">Apply for a Strategy Call</Link>
-          </Button>
-        </FadeUp>
+      {/* ── Newsletter Dispatch ────────────────────────────────────────────── */}
+      <section className="section-pad border-t border-border/80 bg-surface/50 text-center" aria-label="Newsletter">
+        <div className="container-luxury max-w-xl mx-auto">
+          <RevealSection>
+            <p className="eyebrow-luxury mb-3">Private Briefing</p>
+            <h2 className="heading-section text-3xl sm:text-4xl mb-4">Stay Ahead of the Aesthetic Curve</h2>
+            <p className="body-muted mb-8 text-sm">
+              Receive confidential briefings on prompt engineering, model breakthroughs, and beauty creative strategy. No spam. Only depth.
+            </p>
+
+            {subscribed ? (
+              <div className="p-4 rounded-xl bg-gold/10 border border-gold/30 text-gold text-sm text-center">
+                You are confirmed for the private dispatch list.
+              </div>
+            ) : (
+              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
+                <Input
+                  required
+                  type="email"
+                  placeholder="Enter your work email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="flex-1"
+                />
+                <Button type="submit" variant="gold" size="md">
+                  Subscribe
+                </Button>
+              </form>
+            )}
+          </RevealSection>
+        </div>
       </section>
-    </main>
+
+    </div>
   )
 }

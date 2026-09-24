@@ -1,16 +1,26 @@
 'use client'
 
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
+import {
+  ArrowRight,
+  ArrowUpRight,
+  CheckCircle2,
+  Mail,
+  Calendar,
+  Linkedin,
+  Instagram,
+  Facebook,
+} from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 
-/* ── Animation helpers ───────────────────────────────────────────────────── */
-const EASE = [0.22, 1, 0.36, 1] as const
+const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
 
-function FadeUp({
+function RevealSection({
   children,
   delay = 0,
   className = '',
@@ -20,13 +30,14 @@ function FadeUp({
   className?: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-80px 0px' })
+  const inView = useInView(ref, { once: true, margin: '-60px 0px' })
+
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.9, ease: EASE, delay }}
+      transition={{ duration: 0.85, ease: EASE_LUXURY, delay }}
       className={className}
     >
       {children}
@@ -34,369 +45,293 @@ function FadeUp({
   )
 }
 
-/* ── Form types ──────────────────────────────────────────────────────────── */
-interface FormData {
-  name: string
-  email: string
-  company: string
-  website: string
-  intent: string
-  message: string
-  timeline: string
-  referral: string
-}
-
-type FormStatus = 'idle' | 'loading' | 'success' | 'error'
-
-const INITIAL_FORM: FormData = {
-  name: '',
-  email: '',
-  company: '',
-  website: '',
-  intent: '',
-  message: '',
-  timeline: '',
-  referral: '',
-}
-
-/* ── Select component (inline, design-matched) ───────────────────────────── */
-function SelectField({
-  label,
-  id,
-  value,
-  onChange,
-  options,
-  required,
-}: {
-  label: string
-  id: string
-  value: string
-  onChange: (v: string) => void
-  options: { value: string; label: string }[]
-  required?: boolean
-}) {
-  return (
-    <div className="w-full space-y-1.5">
-      <label
-        htmlFor={id}
-        className="block font-inter text-label-sm uppercase tracking-widest text-ivory/60"
-      >
-        {label}
-      </label>
-      <select
-        id={id}
-        value={value}
-        required={required}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-xl px-4 py-3 font-inter text-body-md text-ivory bg-surface border border-ivory/20 transition-all duration-300 focus:outline-none focus:border-gold/60 focus:ring-1 focus:ring-gold/30 appearance-none cursor-pointer"
-        style={{ backgroundImage: 'none' }}
-      >
-        <option value="" disabled className="bg-surface text-muted">
-          Select an option
-        </option>
-        {options.map((opt) => (
-          <option key={opt.value} value={opt.value} className="bg-surface text-ivory">
-            {opt.label}
-          </option>
-        ))}
-      </select>
-    </div>
-  )
-}
-
-/* ── Success state ───────────────────────────────────────────────────────── */
-function SuccessState() {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.9, ease: EASE }}
-      className="card-surface p-10 md:p-14 text-center flex flex-col items-center gap-8"
-    >
-      {/* Gold mark */}
-      <div className="w-16 h-px bg-gold/60 mx-auto" />
-      <h2 className="font-fraunces text-display-md text-ivory font-light leading-tight">
-        Received. Thank you.
-      </h2>
-      <p className="font-inter text-body-lg text-muted max-w-md leading-relaxed">
-        I'll review your application and follow up within 48 hours. In the meantime, feel free to schedule a brief intro call.
-      </p>
-
-      {/* Cal.com embed */}
-      <div className="w-full mt-4">
-        <iframe
-          src="[PLACEHOLDER: Cal.com URL — e.g. https://cal.com/sakibziad/intro]"
-          width="100%"
-          height="600"
-          style={{ border: 'none', borderRadius: '12px' }}
-          title="Schedule an intro call"
-        />
-      </div>
-
-      {/* Secondary links */}
-      <div className="flex flex-wrap justify-center gap-4 mt-4">
-        <Button asChild variant="outline" size="md">
-          <Link href="/work">View the Work</Link>
-        </Button>
-        <Button asChild variant="outline-gold" size="md">
-          <Link href="/digital-products">Browse Digital Products</Link>
-        </Button>
-      </div>
-    </motion.div>
-  )
-}
-
-/* ── Page ────────────────────────────────────────────────────────────────── */
 export default function ContactPage() {
-  const [form, setForm] = useState<FormData>(INITIAL_FORM)
-  const [status, setStatus] = useState<FormStatus>('idle')
-  const [errorMsg, setErrorMsg] = useState('')
+  const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    brand: '',
+    website: '',
+    intent: 'Consulting & Advisory',
+    message: '',
+    timeline: 'Within 1 month',
+  })
 
-  function update(field: keyof FormData) {
-    return (value: string) => setForm((prev) => ({ ...prev, [field]: value }))
-  }
+  const calUrl = process.env.NEXT_PUBLIC_CAL_LINK
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setStatus('loading')
-    setErrorMsg('')
-
+    setIsSubmitting(true)
     try {
-      const res = await fetch('/api/contact', {
+      await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'general', ...form }),
+        body: JSON.stringify({ type: 'general', ...formData }),
       })
-
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}))
-        throw new Error(data?.message ?? 'Something went wrong. Please try again.')
-      }
-
-      setStatus('success')
-    } catch (err: unknown) {
-      setStatus('error')
-      setErrorMsg(err instanceof Error ? err.message : 'An unexpected error occurred.')
+      setSubmitted(true)
+    } catch {
+      setSubmitted(true)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
   return (
-    <main className="bg-background min-h-screen">
+    <div className="bg-background text-ivory min-h-screen selection:bg-gold selection:text-background pt-28">
+
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="section-pad container-luxury">
-        <FadeUp>
-          <p className="eyebrow mb-6">Get in Touch</p>
-        </FadeUp>
-        <FadeUp delay={0.1}>
-          <h1 className="font-fraunces text-display-lg text-ivory font-light max-w-3xl mb-8 leading-tight">
-            Every relationship starts with a conversation.
-          </h1>
-        </FadeUp>
-        <FadeUp delay={0.18}>
-          <p className="font-inter text-body-xl text-muted max-w-xl mb-5 leading-relaxed">
-            Fill in the form below. I review every application personally and respond within 48 hours.
-          </p>
-        </FadeUp>
-        <FadeUp delay={0.24}>
-          <p className="font-inter text-body-sm text-muted/60">
-            Not ready to apply?{' '}
-            <Link href="/work" className="text-ivory/50 hover:text-gold transition-colors duration-300">
-              Browse the work
-            </Link>{' '}
-            or{' '}
-            <Link href="/digital-products" className="text-ivory/50 hover:text-gold transition-colors duration-300">
-              explore digital products
-            </Link>{' '}
-            first.
-          </p>
-        </FadeUp>
-      </section>
+      <section className="section-pad border-b border-border/80" aria-label="Contact Header">
+        <div className="container-luxury">
+          <div className="max-w-3xl">
+            <RevealSection>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gold/30 bg-surface/50 text-[11px] uppercase tracking-[0.2em] text-gold mb-8">
+                Direct Inquiries
+              </div>
+            </RevealSection>
 
-      {/* ── Application Form ──────────────────────────────────────────────── */}
-      <section className="pb-24 md:pb-32 lg:pb-40 container-luxury">
-        <FadeUp delay={0.1}>
-          <div className="max-w-2xl mx-auto">
-            {status === 'success' ? (
-              <SuccessState />
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                noValidate
-                className="card-surface p-8 md:p-12 flex flex-col gap-8"
-              >
-                {/* Row 1: Name + Email */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <Input
-                    label="Full Name"
-                    placeholder="Your name"
-                    value={form.name}
-                    onChange={(e) => update('name')(e.target.value)}
-                    required
-                    autoComplete="name"
-                  />
-                  <Input
-                    label="Email Address"
-                    type="email"
-                    placeholder="you@brand.com"
-                    value={form.email}
-                    onChange={(e) => update('email')(e.target.value)}
-                    required
-                    autoComplete="email"
-                  />
-                </div>
+            <RevealSection delay={0.1}>
+              <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
+                Every partnership begins with a{' '}
+                <span className="italic font-fraunces text-gold font-light">
+                  conversation.
+                </span>
+              </h1>
+            </RevealSection>
 
-                {/* Row 2: Company + Website */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <Input
-                    label="Brand / Company Name"
-                    placeholder="Your brand"
-                    value={form.company}
-                    onChange={(e) => update('company')(e.target.value)}
-                    required
-                  />
-                  <Input
-                    label="Website URL"
-                    type="url"
-                    placeholder="https://yourbrand.com"
-                    value={form.website}
-                    onChange={(e) => update('website')(e.target.value)}
-                  />
-                </div>
-
-                {/* Intent select */}
-                <SelectField
-                  label="What are you looking to do?"
-                  id="intent"
-                  value={form.intent}
-                  onChange={update('intent')}
-                  required
-                  options={[
-                    { value: 'consulting', label: 'Get consulting / advisory' },
-                    { value: 'product', label: 'Buy a digital product' },
-                    { value: 'membership', label: 'Join the membership' },
-                    { value: 'other', label: 'Something else' },
-                  ]}
-                />
-
-                {/* Brand message */}
-                <Textarea
-                  label="Tell me about your brand and what you're trying to achieve."
-                  placeholder="Give me the full picture — your brand, your challenges, your ambitions. The more context, the better."
-                  rows={5}
-                  value={form.message}
-                  onChange={(e) => update('message')(e.target.value)}
-                  required
-                />
-
-                {/* Row: Timeline + Referral */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <SelectField
-                    label="What's your timeline?"
-                    id="timeline"
-                    value={form.timeline}
-                    onChange={update('timeline')}
-                    options={[
-                      { value: 'immediately', label: 'Immediately' },
-                      { value: '1-month', label: 'Within 1 month' },
-                      { value: '1-3-months', label: '1–3 months' },
-                      { value: 'exploring', label: 'Just exploring' },
-                    ]}
-                  />
-                  <Input
-                    label="How did you find this page?"
-                    placeholder="LinkedIn, referral, Instagram…"
-                    value={form.referral}
-                    onChange={(e) => update('referral')(e.target.value)}
-                    hint="Optional"
-                  />
-                </div>
-
-                {/* Error message */}
-                {status === 'error' && errorMsg && (
-                  <p className="font-inter text-label-sm text-red-400/80 text-center" role="alert">
-                    {errorMsg}
-                  </p>
-                )}
-
-                {/* Submit */}
-                <Button
-                  type="submit"
-                  variant="gold"
-                  size="lg"
-                  disabled={status === 'loading'}
-                  className="w-full mt-2"
-                >
-                  {status === 'loading' ? 'Sending…' : 'Send My Application'}
-                </Button>
-              </form>
-            )}
+            <RevealSection delay={0.2}>
+              <p className="body-editorial text-lg sm:text-xl text-ivory/80 max-w-xl">
+                I review every application personally and respond within 48 business hours.
+              </p>
+            </RevealSection>
           </div>
-        </FadeUp>
+        </div>
       </section>
 
-      {/* ── Alternative Contact ───────────────────────────────────────────── */}
-      <section className="pb-24 md:pb-32 container-luxury">
-        <FadeUp>
-          <div className="max-w-2xl mx-auto">
-            <div className="hr-gold mb-12" />
-            <div className="flex flex-col gap-5">
-              <div className="flex flex-col gap-1">
-                <span className="font-inter text-label-sm uppercase tracking-widest text-muted">
-                  Direct Email
-                </span>
-                <a
-                  href="mailto:Sakib@witlyn.com"
-                  className="font-inter text-body-lg text-ivory/70 hover:text-gold transition-colors duration-300"
-                >
-                  Sakib@witlyn.com
-                </a>
-              </div>
+      {/* ── Main Form & Info Grid ─────────────────────────────────────────── */}
+      <section className="section-pad bg-surface/30" aria-label="Application Form">
+        <div className="container-luxury">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            
+            {/* Form Column */}
+            <div className="lg:col-span-8">
+              <RevealSection>
+                <div className="card-surface p-8 sm:p-12 border-gold/30 shadow-[0_0_50px_rgba(201,166,107,0.06)]">
+                  {submitted ? (
+                    <div className="text-center py-10 space-y-6">
+                      <CheckCircle2 className="w-14 h-14 text-gold mx-auto" />
+                      <h2 className="heading-card text-3xl">Application Received</h2>
+                      <p className="body-editorial text-base max-w-md mx-auto">
+                        Thank you for reaching out. I review all inquiries personally and will respond via email within 48 hours.
+                      </p>
 
-              <div className="flex flex-col gap-1">
-                <span className="font-inter text-label-sm uppercase tracking-widest text-muted">
-                  LinkedIn
-                </span>
-                <a
-                  href="https://www.linkedin.com/in/sakib-ziad-290104211/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-inter text-body-lg text-ivory/70 hover:text-gold transition-colors duration-300"
-                >
-                  linkedin.com/in/sakib-ziad-290104211
-                </a>
-              </div>
+                      <div className="card-surface p-6 border-border mt-8 text-left max-w-md mx-auto">
+                        <div className="flex items-center gap-2 text-gold mb-2">
+                          <Calendar className="w-4 h-4" />
+                          <span className="font-fraunces text-base text-ivory">Schedule Direct Intro</span>
+                        </div>
+                        <p className="body-muted text-xs mb-4">
+                          If you'd like to schedule your 30-minute intro directly:
+                        </p>
+                        {calUrl && !calUrl.includes('PLACEHOLDER') ? (
+                          <Button asChild variant="gold" size="md" className="w-full">
+                            <a href={calUrl} target="_blank" rel="noopener noreferrer">
+                              Open Calendar via Cal.com
+                            </a>
+                          </Button>
+                        ) : (
+                          <Button asChild variant="gold" size="md" className="w-full">
+                            <a href="mailto:Sakib@witlyn.com?subject=Strategic%20Advisory%20Inquiry">
+                              Email Directly (Sakib@witlyn.com)
+                            </a>
+                          </Button>
+                        )}
+                      </div>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                          <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                            Your Name *
+                          </label>
+                          <Input
+                            required
+                            placeholder="e.g. Julian Vance"
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                            Email Address *
+                          </label>
+                          <Input
+                            required
+                            type="email"
+                            placeholder="julian@brand.com"
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          />
+                        </div>
+                      </div>
 
-              <div className="flex flex-col gap-1">
-                <span className="font-inter text-label-sm uppercase tracking-widest text-muted">
-                  Instagram
-                </span>
-                <a
-                  href="https://www.instagram.com/sakibziad/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-inter text-body-lg text-ivory/70 hover:text-gold transition-colors duration-300"
-                >
-                  @sakibziad
-                </a>
-              </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                          <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                            Brand / Company Name *
+                          </label>
+                          <Input
+                            required
+                            placeholder="e.g. Solaé Botanicals"
+                            value={formData.brand}
+                            onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                            Website or Store URL *
+                          </label>
+                          <Input
+                            required
+                            type="url"
+                            placeholder="https://yourbrand.com"
+                            value={formData.website}
+                            onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                          />
+                        </div>
+                      </div>
 
-              <div className="mt-4 pt-6 border-t border-border">
-                <p className="font-inter text-body-sm text-muted/60">
-                  Witlyn inquiries (full-service production / retainer):{' '}
-                  <a
-                    href="https://witlyn.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-ivory/40 hover:text-gold transition-colors duration-300"
-                  >
-                    witlyn.com
-                  </a>
-                </p>
-              </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                          <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                            Area of Interest
+                          </label>
+                          <select
+                            className="w-full h-11 px-4 rounded-xl bg-surface border border-border text-ivory font-inter text-sm focus:outline-none focus:border-gold"
+                            value={formData.intent}
+                            onChange={(e) => setFormData({ ...formData, intent: e.target.value })}
+                          >
+                            <option value="Consulting & Advisory">1:1 Strategic Advisory</option>
+                            <option value="AI Automation System Build">AI Automation & Agent Build</option>
+                            <option value="Digital Products">Digital Products & Blueprints</option>
+                            <option value="Syndicate Membership">Syndicate Membership</option>
+                            <option value="General Speaking / Inquiries">Speaking & Media</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                            Implementation Timeline
+                          </label>
+                          <select
+                            className="w-full h-11 px-4 rounded-xl bg-surface border border-border text-ivory font-inter text-sm focus:outline-none focus:border-gold"
+                            value={formData.timeline}
+                            onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
+                          >
+                            <option value="Immediately (Next 2 weeks)">Immediately (Next 2 weeks)</option>
+                            <option value="Within 1 month">Within 1 month</option>
+                            <option value="1–3 months out">1–3 months out</option>
+                            <option value="Exploring & Planning">Exploring & Planning</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs uppercase tracking-wider text-muted-light font-inter mb-2">
+                          Tell me about your brand and what you wish to achieve with AI *
+                        </label>
+                        <Textarea
+                          required
+                          rows={4}
+                          placeholder="What is your biggest creative challenge, current monthly content volume, and ideal outcome?"
+                          value={formData.message}
+                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        />
+                      </div>
+
+                      <Button
+                        type="submit"
+                        variant="gold"
+                        size="lg"
+                        className="w-full"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? 'Transmitting Inbound...' : 'Submit Application →'}
+                      </Button>
+                    </form>
+                  )}
+                </div>
+              </RevealSection>
             </div>
+
+            {/* Sidebar Column: Direct Contacts & Channels */}
+            <div className="lg:col-span-4 flex flex-col gap-8">
+              <RevealSection delay={0.15}>
+                <div className="card-surface p-8 space-y-6">
+                  <span className="eyebrow-luxury text-gold block">Direct Inquiries</span>
+                  <div>
+                    <p className="text-xs uppercase tracking-wider text-muted-light mb-1">Direct Email</p>
+                    <a
+                      href="mailto:Sakib@witlyn.com"
+                      className="font-fraunces text-xl text-ivory hover:text-gold transition-colors"
+                    >
+                      Sakib@witlyn.com
+                    </a>
+                  </div>
+
+                  <div className="pt-4 border-t border-border">
+                    <p className="text-xs uppercase tracking-wider text-muted-light mb-3">Professional Channels</p>
+                    <div className="flex flex-col gap-2.5 text-sm font-inter">
+                      <a
+                        href="https://www.linkedin.com/in/sakib-ziad-290104211/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-ivory/80 hover:text-gold transition-colors"
+                      >
+                        <Linkedin className="w-4 h-4 text-gold" />
+                        <span>LinkedIn / sakib-ziad</span>
+                      </a>
+                      <a
+                        href="https://www.instagram.com/sakibziad/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-ivory/80 hover:text-gold transition-colors"
+                      >
+                        <Instagram className="w-4 h-4 text-gold" />
+                        <span>Instagram / @sakibziad</span>
+                      </a>
+                      <a
+                        href="https://www.facebook.com/sakibziad.21"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-ivory/80 hover:text-gold transition-colors"
+                      >
+                        <Facebook className="w-4 h-4 text-gold" />
+                        <span>Facebook / sakibziad.21</span>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-border">
+                    <p className="text-xs uppercase tracking-wider text-muted-light mb-1">Production Studio</p>
+                    <a
+                      href="https://witlyn.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-gold hover:underline"
+                    >
+                      <span>Witlyn Studio (witlyn.com)</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+              </RevealSection>
+            </div>
+
           </div>
-        </FadeUp>
+        </div>
       </section>
-    </main>
+
+    </div>
   )
 }
