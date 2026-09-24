@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
@@ -13,6 +12,8 @@ import {
   Download,
   BookOpen,
   Layers,
+  Cpu,
+  Compass,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -64,12 +65,15 @@ export default function DigitalProductsPage() {
 
   const products = [
     {
+      // TODO: confirm product name/contents/price with owner before launch
       id: 'brief-system',
       name: 'The Beauty Brand AI Creative Brief & Prompt Blueprint',
       tag: 'Framework & Blueprint',
       badge: 'Immediate Download',
       price: '$249',
-      image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1200&auto=format&fit=crop',
+      schemaCode: 'SYS.01 // PROMPT ARCHITECTURE',
+      icon: BookOpen,
+      metric: '40+ BLUEPRINTS',
       description:
         'The exact prompt architecture, visual reference taxonomies, and art direction frameworks used at Witlyn to concept publication-grade beauty campaigns across Midjourney and Flux.',
       deliverables: [
@@ -82,12 +86,15 @@ export default function DigitalProductsPage() {
       variant: 'gold' as const,
     },
     {
+      // TODO: confirm product name/contents/price with owner before launch
       id: 'agent-kit',
       name: 'Autonomous AI Content Engine & Agent Blueprint',
       tag: 'Automation Architecture',
       badge: 'Turnkey System',
       price: '$495',
-      image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop',
+      schemaCode: 'AUT.02 // PIPELINE ORCHESTRATION',
+      icon: Cpu,
+      metric: 'TURNKEY WORKFLOW',
       description:
         'A comprehensive automation kit that maps customer search intent and trending review angles directly into synthesized visual briefs and multi-platform content schedules.',
       deliverables: [
@@ -100,12 +107,15 @@ export default function DigitalProductsPage() {
       variant: 'gold' as const,
     },
     {
+      // TODO: confirm product name/contents/price with owner before launch
       id: 'masterclass',
       name: 'Executive Masterclass: In-House Generative Direction',
       tag: 'Cohort Masterclass',
       badge: 'Cohort 01 Waitlist',
       price: 'Waitlist Only',
-      image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1200&auto=format&fit=crop',
+      schemaCode: 'EXE.03 // PRIVATE COHORT',
+      icon: Compass,
+      metric: '4-WEEK INTENSIVE',
       description:
         'A 4-week private intensive for founders and creative directors learning how to install and direct internal generative pipelines without losing artistic prestige.',
       deliverables: [
@@ -164,28 +174,58 @@ export default function DigitalProductsPage() {
               <RevealSection key={product.id} delay={idx * 0.1}>
                 <div className="card-surface overflow-hidden flex flex-col justify-between h-full group hover:border-gold/50">
                   
-                  {/* Visual Mockup Cover */}
-                  <div className="relative aspect-[16/10] overflow-hidden border-b border-border">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
+                  {/* Abstract Luxury Graphic Treatment (Not Stock Photography) */}
+                  <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-[#0E0E0D] p-6 flex flex-col justify-between group-hover:border-gold/40 transition-colors">
+                    {/* Precision dot matrix overlay */}
+                    <div 
+                      className="absolute inset-0 opacity-[0.08] pointer-events-none"
+                      style={{
+                        backgroundImage: `radial-gradient(circle at 1px 1px, rgba(201, 166, 107, 0.7) 1px, transparent 0)`,
+                        backgroundSize: '20px 20px'
+                      }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent pointer-events-none" />
-                    <span className="absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] font-inter uppercase tracking-wider bg-background/85 backdrop-blur-md text-gold border border-gold/30">
-                      {product.badge}
-                    </span>
+
+                    {/* Ambient gold radial glow */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-gold/10 blur-3xl pointer-events-none group-hover:bg-gold/20 transition-all duration-700" />
+
+                    {/* Luxury geometric concentric circles */}
+                    <div className="absolute -right-8 -bottom-8 w-44 h-44 rounded-full border border-gold/10 pointer-events-none group-hover:border-gold/25 transition-colors duration-500" />
+                    <div className="absolute -right-2 -bottom-2 w-32 h-32 rounded-full border border-gold/15 pointer-events-none" />
+
+                    {/* Top Row: System Code & Badge */}
+                    <div className="relative z-10 flex items-center justify-between w-full">
+                      <span className="font-mono text-[10px] tracking-[0.2em] text-gold/70 uppercase">
+                        {product.schemaCode}
+                      </span>
+                      <span className="px-3 py-1 rounded-full text-[10px] font-inter uppercase tracking-wider bg-background/85 backdrop-blur-md text-gold border border-gold/30">
+                        {product.badge}
+                      </span>
+                    </div>
+
+                    {/* Central Emblem / Luxury Icon */}
+                    <div className="relative z-10 my-auto flex items-center gap-4">
+                      <div className="w-14 h-14 rounded-2xl bg-surface/90 border border-gold/40 flex items-center justify-center text-gold shadow-[0_0_24px_rgba(201,166,107,0.15)] group-hover:border-gold group-hover:scale-105 group-hover:shadow-[0_0_32px_rgba(201,166,107,0.3)] transition-all duration-500">
+                        <product.icon className="w-6 h-6 stroke-[1.5]" />
+                      </div>
+                      <div>
+                        <span className="font-fraunces text-xs uppercase tracking-[0.2em] text-ivory/50 block">Digital System</span>
+                        <span className="font-inter text-xs text-ivory/80 font-medium">{product.tag}</span>
+                      </div>
+                    </div>
+
+                    {/* Bottom Bar: Abstract Specification / Status */}
+                    <div className="relative z-10 flex items-center justify-between text-[11px] text-muted-light font-mono pt-3 border-t border-border/40">
+                      <span className="text-ivory/60 tracking-wider">{product.metric}</span>
+                      <span className="text-gold/80 flex items-center gap-1.5 tracking-wider">
+                        <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block animate-pulse" />
+                        ACTIVE BLUEPRINT
+                      </span>
+                    </div>
                   </div>
 
                   {/* Body Content */}
                   <div className="p-8 flex flex-col justify-between flex-1">
                     <div>
-                      {/* Internal Confirmation Tag */}
-                      <div className="mb-5 p-3 rounded-lg border border-gold/40 bg-gold/10 text-gold text-xs font-mono leading-relaxed">
-                        [CONFIRM: is this a real, ready-to-sell product? Confirm name, contents, and price before launch]
-                      </div>
-
                       <span className="eyebrow-luxury text-gold block mb-2">{product.tag}</span>
                       <h3 className="heading-card text-2xl mb-4 group-hover:text-gold transition-colors leading-snug">
                         {product.name}
