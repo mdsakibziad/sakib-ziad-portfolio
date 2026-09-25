@@ -67,17 +67,24 @@ export function Navigation() {
 
   return (
     <>
-      {/* ── Main Nav Bar ─────────────────────────────────────────────────── */}
+      {/* ── Main Nav Bar (Frosted Cold Glass Treatment) ─────────────────── */}
       <header
         className={cn(
           'fixed top-0 inset-x-0 z-50 transition-all duration-500 ease-luxury',
           scrolled
-            ? 'bg-black/75 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.8)]'
+            ? 'bg-[#070708]/80 backdrop-blur-2xl border-b border-white/[0.12] shadow-[0_4px_30px_rgba(0,0,0,0.85),inset_0_-1px_0_rgba(255,255,255,0.06)]'
             : 'bg-transparent border-b border-transparent'
         )}
         role="banner"
       >
-        <div className="container-luxury">
+        {/* Frosted Micro-Noise Grain Overlay */}
+        {scrolled && (
+          <div
+            className="absolute inset-0 pointer-events-none frost-noise opacity-30 mix-blend-overlay"
+            aria-hidden="true"
+          />
+        )}
+        <div className="container-luxury relative z-10">
           <nav
             className="grid grid-cols-2 lg:grid-cols-[1fr_auto_1fr] items-center h-[72px] md:h-[84px]"
             aria-label="Primary navigation"
@@ -231,12 +238,18 @@ export function Navigation() {
               className={cn(
                 'fixed top-0 right-0 bottom-0 z-50',
                 'w-full max-w-xs sm:max-w-sm',
-                'bg-[#0D0D0D]/95 backdrop-blur-2xl border-l border-white/10',
+                'bg-[#09090b]/95 backdrop-blur-2xl border-l border-white/12',
+                'shadow-[-20px_0_60px_rgba(0,0,0,0.95)]',
                 'flex flex-col justify-between',
                 'p-6 sm:p-8 pt-20 sm:pt-24',
-                'lg:hidden'
+                'lg:hidden overflow-hidden'
               )}
             >
+              {/* Frosted Grain Texture Overlay inside Drawer */}
+              <div
+                className="absolute inset-0 pointer-events-none frost-noise opacity-30 mix-blend-overlay"
+                aria-hidden="true"
+              />
               {/* Close Button Inside Drawer */}
               <button
                 type="button"

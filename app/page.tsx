@@ -21,6 +21,8 @@ import { TiltCard } from '@/components/ui/tilt-card'
 import { ParallaxLayer } from '@/components/parallax-layer'
 
 import { AmbientHeroAtmosphere } from '@/components/ambient-hero-atmosphere'
+import { CondensationDroplet } from '@/components/condensation-droplet'
+import { CondensationDivider } from '@/components/condensation-divider'
 
 /* ── Animation Curve ──────────────────────────────────────────────────────── */
 const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
@@ -217,6 +219,8 @@ export default function HomePage() {
         </div>
         <div className="absolute top-32 right-8 lg:right-16 hidden sm:block text-[10px] font-mono tracking-[0.25em] text-zinc-500 select-none">
           ED. 2026 // BEAUTY & PRESTIGE
+          {/* Subtle slow-moving condensation droplet on cold glass horizon */}
+          <CondensationDroplet className="top-6 right-3" delay={2} duration={19} />
         </div>
 
         <div className="container-luxury relative z-10">
@@ -310,10 +314,13 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Cold Frosted Condensation Seam (Section Boundary 01) ─────────── */}
+      <CondensationDivider dropletPosition="72%" dropletDelay={6} />
+
       {/* ════════════════════════════════════════════════════════════════════
           SECTION 2 · THE STRATEGIC GAP (ASYMMETRIC 2-COLUMN SPLIT)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad relative border-t border-white/[0.08] bg-[#0A0A0A]" aria-label="The Gap">
+      <section className="section-pad relative bg-[#0A0A0A]" aria-label="The Gap">
         <div className="container-luxury">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
@@ -901,10 +908,13 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Cold Frosted Condensation Seam (Section Boundary 02) ─────────── */}
+      <CondensationDivider dropletPosition="28%" dropletDelay={11} />
+
       {/* ════════════════════════════════════════════════════════════════════
           SECTION 6 · METHODOLOGY (CONNECTED VISUAL TIMELINE)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad border-t border-white/[0.08] bg-[#0E0E0D]" aria-label="Methodology">
+      <section className="section-pad bg-[#0E0E0D]" aria-label="Methodology">
         <div className="container-luxury">
           <RevealSection className="text-center max-w-2xl mx-auto mb-20">
             <p className="eyebrow-luxury text-zinc-400 mb-3">Architectural Sequence</p>
