@@ -198,7 +198,7 @@ export default function WorkPage() {
                     <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
                       <Image
                         src={study.image}
-                        alt={`${study.brand} campaign visual`}
+                        alt={`${study.brand} — ${study.headline} AI Campaign Production`}
                         fill
                         sizes="(max-width: 1024px) 100vw, 66vw"
                         className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-102"

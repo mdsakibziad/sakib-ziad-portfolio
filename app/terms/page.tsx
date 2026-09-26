@@ -1,14 +1,25 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { StructuredData } from '@/components/structured-data';
+import { generateBreadcrumbSchema } from '@/lib/seo-schemas';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service — Sakib Ziad',
-  description: 'Terms of service for sakibziad.com',
+  title: 'Terms of Service | Sakib Ziad',
+  description: 'Terms of service and advisory engagement terms for sakibziad.com.',
+  alternates: {
+    canonical: 'https://sakibziad.com/terms',
+  },
 };
 
 export default function TermsPage() {
+  const breadcrumbs = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Terms of Service', url: '/terms' },
+  ]);
+
   return (
     <main className="section-pad bg-background">
+      <StructuredData data={breadcrumbs} />
       <div className="container-luxury max-w-3xl">
         {/* Header */}
         <div className="mb-12">

@@ -117,7 +117,7 @@ export default function AboutPage() {
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 shadow-[0_16px_48px_rgba(0,0,0,0.9)] group">
                 <Image
                   src="/images/sakib-ziad.jpg"
-                  alt="Sakib Ziad — Portrait"
+                  alt="Sakib Ziad — AI Creative Strategist and Founder of Witlyn"
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 40vw"

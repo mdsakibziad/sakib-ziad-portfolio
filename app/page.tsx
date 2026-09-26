@@ -768,7 +768,7 @@ export default function HomePage() {
                   <ParallaxLayer offset={30} className="w-full h-full">
                     <Image
                       src="https://witlyn.com/work/solae/01-solae-campaign-hero.jpg.jpg"
-                      alt="SOLAÉ sun care campaign editorial"
+                      alt="SOLAÉ AIRVEIL sun care campaign editorial directed by Sakib Ziad"
                       fill
                       sizes="(max-width: 1024px) 100vw, 60vw"
                       className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
@@ -847,7 +847,7 @@ export default function HomePage() {
                   <ParallaxLayer offset={30} className="w-full h-full">
                     <Image
                       src="https://witlyn.com/work/vyraa/vyraa%20product.jpg"
-                      alt="VYRAA skincare luxury packaging campaign"
+                      alt="VYRAA 5-Peptide Neck Complex luxury skincare campaign"
                       fill
                       sizes="(max-width: 1024px) 100vw, 60vw"
                       className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
@@ -892,7 +892,7 @@ export default function HomePage() {
                   <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto lg:h-[440px] overflow-hidden">
                     <Image
                       src="https://witlyn.com/work/lipea/6.jpg"
-                      alt="LIPÉA Pink World campaign asset"
+                      alt="LIPÉA Peptide Glass Lip Serum AI campaign system"
                       fill
                       sizes="(max-width: 1024px) 100vw, 60vw"
                       className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"

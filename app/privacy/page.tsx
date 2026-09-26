@@ -1,14 +1,25 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { StructuredData } from '@/components/structured-data';
+import { generateBreadcrumbSchema } from '@/lib/seo-schemas';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — Sakib Ziad',
-  description: 'Privacy policy for sakibziad.com',
+  title: 'Privacy Policy | Sakib Ziad',
+  description: 'Privacy policy and data governance practices for sakibziad.com.',
+  alternates: {
+    canonical: 'https://sakibziad.com/privacy',
+  },
 };
 
 export default function PrivacyPage() {
+  const breadcrumbs = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Privacy Policy', url: '/privacy' },
+  ]);
+
   return (
     <main className="section-pad bg-background">
+      <StructuredData data={breadcrumbs} />
       <div className="container-luxury max-w-3xl">
         {/* Header */}
         <div className="mb-12">
