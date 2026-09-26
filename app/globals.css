@@ -242,7 +242,7 @@
 
   /* Refined Eyebrow Text */
   .eyebrow-luxury, .eyebrow {
-    @apply font-inter text-[11px] uppercase tracking-[0.2em] font-medium text-zinc-600 dark:text-white/70;
+    @apply font-inter text-[11px] uppercase tracking-[0.2em] font-medium text-zinc-600 dark:text-zinc-400;
   }
 
   /* Editorial Section Headings */
@@ -259,9 +259,9 @@
     @apply font-fraunces font-normal text-[#141416] dark:text-white tracking-[-0.015em];
   }
 
-  /* High-Contrast Legible Body Styles */
+  /* High-Contrast Legible Body Styles (WCAG AAA calibrated) */
   .body-editorial {
-    @apply font-inter text-zinc-700 dark:text-zinc-300 font-light leading-relaxed;
+    @apply font-inter text-zinc-800 dark:text-zinc-200 font-light leading-relaxed;
   }
 
   .body-muted {
