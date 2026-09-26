@@ -5,9 +5,9 @@ import { generateBreadcrumbSchema } from '@/lib/seo-schemas';
 
 export const metadata: Metadata = {
   title: 'Terms of Service | Sakib Ziad',
-  description: 'Terms of service and advisory engagement terms for sakibziad.com.',
+  description: 'Terms of service and advisory engagement terms for sakibziad.my.',
   alternates: {
-    canonical: 'https://sakibziad.com/terms',
+    canonical: 'https://sakibziad.my/terms',
   },
 };
 
@@ -43,7 +43,7 @@ export default function TermsPage() {
               1. Acceptance of Terms
             </h2>
             <p>
-              By accessing or using sakibziad.com (the "Site"), purchasing any digital product, enrolling in any membership tier, or engaging Sakib Ziad for consulting services, you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms in their entirety, you must not use this Site or its associated services.
+              By accessing or using sakibziad.my (the "Site"), purchasing any digital product, enrolling in any membership tier, or engaging Sakib Ziad for consulting services, you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms in their entirety, you must not use this Site or its associated services.
             </p>
           </section>
 

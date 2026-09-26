@@ -5,9 +5,9 @@ import { generateBreadcrumbSchema } from '@/lib/seo-schemas';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Sakib Ziad',
-  description: 'Privacy policy and data governance practices for sakibziad.com.',
+  description: 'Privacy policy and data governance practices for sakibziad.my.',
   alternates: {
-    canonical: 'https://sakibziad.com/privacy',
+    canonical: 'https://sakibziad.my/privacy',
   },
 };
 

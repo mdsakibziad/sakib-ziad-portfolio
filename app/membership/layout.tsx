@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   description:
     'Standing relationship with your AI creative strategist. Monthly strategy deep-dives, proprietary agent templates, tool reviews, and direct advisory.',
   alternates: {
-    canonical: 'https://sakibziad.com/membership',
+    canonical: 'https://sakibziad.my/membership',
   },
   openGraph: {
     title: 'The Advisory Syndicate — Ongoing AI Strategy for Beauty Brand Leaders | Sakib Ziad',
     description:
       'Ongoing access to monthly strategy, tools, and direct guidance for beauty brand founders and creative directors.',
-    url: 'https://sakibziad.com/membership',
+    url: 'https://sakibziad.my/membership',
   },
 }
 

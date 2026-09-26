@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   description:
     'Selected case studies across luxury beauty, skincare, and cosmetics. Creative systems, campaign direction, and automation builds for Solaé, Vyraa, Lipéa, and Nuécera.',
   alternates: {
-    canonical: 'https://sakibziad.com/work',
+    canonical: 'https://sakibziad.my/work',
   },
   openGraph: {
     title: 'Selected AI-Native Campaign Work | Sakib Ziad',
     description:
       'Selected case studies across luxury beauty, skincare, and cosmetics. Creative systems and campaign direction built without stock imagery.',
-    url: 'https://sakibziad.com/work',
+    url: 'https://sakibziad.my/work',
   },
 }
 

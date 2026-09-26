@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   description:
     'Thinking out loud on AI, luxury beauty, and brand growth. Strategic frameworks and observations on building high-growth beauty brands in the AI era.',
   alternates: {
-    canonical: 'https://sakibziad.com/insights',
+    canonical: 'https://sakibziad.my/insights',
   },
   openGraph: {
     title: 'Insights & Essays on AI-Native Beauty Brand Growth | Sakib Ziad',
     description:
       'Strategic frameworks and essays on building high-growth beauty and skincare brands in the AI era.',
-    url: 'https://sakibziad.com/insights',
+    url: 'https://sakibziad.my/insights',
   },
 }
 

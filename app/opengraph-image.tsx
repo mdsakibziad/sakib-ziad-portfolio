@@ -148,7 +148,7 @@ export default async function Image() {
               fontWeight: 500,
             }}
           >
-            sakibziad.com
+            sakibziad.my
           </span>
         </div>
       </div>

@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   description:
     'Actionable AI creative frameworks, brand strategy playbooks, and ready-to-deploy AI agent kits built specifically for beauty, skincare, and cosmetics brands.',
   alternates: {
-    canonical: 'https://sakibziad.com/digital-products',
+    canonical: 'https://sakibziad.my/digital-products',
   },
   openGraph: {
     title: 'AI Prompt Systems & Automation Kits for Beauty Brands | Sakib Ziad',
     description:
       'Actionable AI creative frameworks, brand strategy playbooks, and ready-to-deploy AI agent kits built specifically for beauty and cosmetics brands.',
-    url: 'https://sakibziad.com/digital-products',
+    url: 'https://sakibziad.my/digital-products',
   },
 }
 

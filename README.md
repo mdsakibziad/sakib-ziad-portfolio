@@ -45,7 +45,7 @@ Open `.env.local` and populate the required keys (see Environment Variables tabl
 1. Create a project at [supabase.com](https://supabase.com).
 2. Navigate to **SQL Editor** in your Supabase Dashboard.
 3. Paste and run the contents of [`supabase/schema.sql`](supabase/schema.sql).
-4. In **Authentication -> URL Configuration**, add your site URL (e.g. `http://localhost:3000` and `https://sakibziad.com`) and redirect URL: `http://localhost:3000/auth/callback`.
+4. In **Authentication -> URL Configuration**, add your site URL (e.g. `http://localhost:3000` and `https://sakibziad.my`) and redirect URL: `http://localhost:3000/auth/callback`.
 
 ### 4. Set up Stripe Payments (Test Mode)
 

@@ -25,7 +25,7 @@ const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Sakib Ziad — AI Creative Strategist',
-  url: 'https://sakibziad.com',
+  url: 'https://sakibziad.my',
   description:
     'Helping beauty & skincare brands grow through AI-native creative systems and intelligent brand automation.',
   author: {
@@ -38,7 +38,7 @@ const GA_ID = process.env.NEXT_PUBLIC_GA_ID
 
 /* ── Metadata ──────────────────────────────────────────────────────────────── */
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sakibziad.com'),
+  metadataBase: new URL('https://sakibziad.my'),
   title: {
     default: 'Sakib Ziad — AI Creative Strategist for Beauty & Skincare Brands',
     template: '%s',
@@ -54,10 +54,10 @@ export const metadata: Metadata = {
     'Sakib Ziad',
     'Witlyn',
   ],
-  authors: [{ name: 'Sakib Ziad', url: 'https://sakibziad.com' }],
+  authors: [{ name: 'Sakib Ziad', url: 'https://sakibziad.my' }],
   creator: 'Sakib Ziad',
   alternates: {
-    canonical: 'https://sakibziad.com',
+    canonical: 'https://sakibziad.my',
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || 'google-site-verification-token',
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://sakibziad.com',
+    url: 'https://sakibziad.my',
     siteName: 'Sakib Ziad',
     title: 'Sakib Ziad — AI Creative Strategist for Beauty & Skincare Brands',
     description:

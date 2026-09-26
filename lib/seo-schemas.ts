@@ -3,7 +3,7 @@
  * Conforms to Schema.org standards for Person, Service, BreadcrumbList, and CollectionPage.
  */
 
-const SITE_URL = 'https://sakibziad.com'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://sakibziad.my'
 
 export const personSchema = {
   '@context': 'https://schema.org',

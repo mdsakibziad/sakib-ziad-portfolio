@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   description:
     'Private advisory spanning AI-native creative strategy, campaign direction, and custom AI automation builds for beauty and skincare brands ready to scale.',
   alternates: {
-    canonical: 'https://sakibziad.com/consulting',
+    canonical: 'https://sakibziad.my/consulting',
   },
   openGraph: {
     title: '1:1 AI Creative & Automation Advisory for Beauty Brands | Sakib Ziad',
     description:
       'Private advisory spanning AI-native creative strategy, campaign direction, and custom AI automation builds for beauty brands ready to scale.',
-    url: 'https://sakibziad.com/consulting',
+    url: 'https://sakibziad.my/consulting',
   },
 }
 
