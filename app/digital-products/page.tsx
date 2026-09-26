@@ -9,6 +9,7 @@ import {
   BookOpen,
   Cpu,
   Compass,
+  Loader2,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -43,6 +44,28 @@ function RevealSection({
 export default function DigitalProductsPage() {
   const [newsletterEmail, setNewsletterEmail] = useState('')
   const [newsletterSuccess, setNewsletterSuccess] = useState(false)
+  const [checkoutLoading, setCheckoutLoading] = useState<string | null>(null)
+
+  async function handleCheckout(productId: string) {
+    setCheckoutLoading(productId)
+    try {
+      const res = await fetch('/api/stripe/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productId, cancelPath: '/digital-products' }),
+      })
+      const data = await res.json()
+      if (data.url) {
+        window.location.href = data.url
+      } else {
+        alert(data.error || 'Failed to initiate checkout session')
+      }
+    } catch {
+      alert('Network error communicating with payment service')
+    } finally {
+      setCheckoutLoading(null)
+    }
+  }
 
   async function handleNewsletter(e: React.FormEvent) {
     e.preventDefault()
@@ -245,12 +268,34 @@ export default function DigitalProductsPage() {
                         </p>
                       </div>
 
-                      <Button asChild variant="default" size="md">
-                        <Link href="/contact" className="flex items-center gap-2">
-                          <span>{product.cta}</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </Link>
-                      </Button>
+                      {product.id === 'masterclass' ? (
+                        <Button asChild variant="outline" size="md">
+                          <Link href="/contact" className="flex items-center gap-2">
+                            <span>{product.cta}</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </Link>
+                        </Button>
+                      ) : (
+                        <Button
+                          variant="default"
+                          size="md"
+                          disabled={checkoutLoading === product.id}
+                          onClick={() => handleCheckout(product.id)}
+                          className="flex items-center gap-2"
+                        >
+                          {checkoutLoading === product.id ? (
+                            <>
+                              <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                              <span>Redirecting...</span>
+                            </>
+                          ) : (
+                            <>
+                              <span>Purchase Blueprint</span>
+                              <ArrowRight className="w-3.5 h-3.5" />
+                            </>
+                          )}
+                        </Button>
+                      )}
                     </div>
                   </div>
 

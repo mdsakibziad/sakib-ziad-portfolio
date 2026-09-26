@@ -1,9 +1,8 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
 import {
   ArrowRight,
   CheckCircle2,
@@ -13,6 +12,8 @@ import {
   Compass,
   MessageSquare,
   FileCode,
+  Loader2,
+  CreditCard,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ApplicationForm } from '@/components/application-form'
@@ -45,6 +46,29 @@ function RevealSection({
 }
 
 export default function MembershipPage() {
+  const [subscribing, setSubscribing] = useState(false)
+
+  async function handleSubscribe() {
+    setSubscribing(true)
+    try {
+      const res = await fetch('/api/stripe/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productId: 'membership', cancelPath: '/membership' }),
+      })
+      const data = await res.json()
+      if (data.url) {
+        window.location.href = data.url
+      } else {
+        alert(data.error || 'Failed to start subscription checkout')
+      }
+    } catch {
+      alert('Network error communicating with payment service')
+    } finally {
+      setSubscribing(false)
+    }
+  }
+
   const benefits = [
     {
       icon: Compass,
@@ -174,9 +198,31 @@ export default function MembershipPage() {
               <p className="body-muted text-sm max-w-md mx-auto mb-8">
                 Billed monthly. Cancel anytime without penalty. Membership is strictly capped to protect access depth and direct attention.
               </p>
-              <Button asChild variant="gold" size="lg" className="w-full sm:w-auto">
-                <a href="#waitlist-form">Apply for Membership →</a>
-              </Button>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Button
+                  variant="gold"
+                  size="lg"
+                  disabled={subscribing}
+                  onClick={handleSubscribe}
+                  className="w-full sm:w-auto flex items-center justify-center gap-2"
+                >
+                  {subscribing ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Redirecting to Stripe...</span>
+                    </>
+                  ) : (
+                    <>
+                      <CreditCard className="w-4 h-4 mr-1" />
+                      <span>Join Syndicate ($290/mo)</span>
+                      <ArrowRight className="w-4 h-4 ml-1" />
+                    </>
+                  )}
+                </Button>
+                <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
+                  <a href="#waitlist-form">Submit Application Instead</a>
+                </Button>
+              </div>
             </div>
           </RevealSection>
         </div>

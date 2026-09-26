@@ -1,6 +1,6 @@
-# Sakib Ziad — Portfolio Website
+# Sakib Ziad — Portfolio Website & Client Portal
 
-A luxury personal portfolio for **Sakib Ziad**, AI Creative Strategist, built with Next.js 14 App Router, TypeScript, Tailwind CSS, shadcn/ui primitives, and Framer Motion.
+A luxury personal portfolio and access-gated client portal for **Sakib Ziad**, AI Creative Strategist. Built with Next.js 14 App Router, TypeScript, Tailwind CSS, Framer Motion, Supabase Auth & Database, and Stripe Payments.
 
 ---
 
@@ -10,13 +10,16 @@ A luxury personal portfolio for **Sakib Ziad**, AI Creative Strategist, built wi
 |---|---|
 | Framework | Next.js 14+ (App Router) |
 | Language | TypeScript 5 |
-| Styling | Tailwind CSS 3 + custom design system |
-| Animation | Framer Motion 11 |
+| Styling | Tailwind CSS 3 + Pure Monochromatic Liquid-Glass Design System |
+| Animation | Framer Motion 11 + Pure GPU CSS Keyframes |
+| Authentication | Supabase Auth (Email/Password, Email Verification, Google OAuth) |
+| Database | Supabase Postgres (Profiles, Purchases, Memberships with RLS) |
+| Payments | Stripe Checkout (One-time digital products + monthly subscriptions) |
+| Customer Portal | Stripe Hosted Customer Billing Portal |
 | UI Primitives | Radix UI (Dialog, Accordion, Tabs, Label, Slot) |
 | Icons | Lucide React |
-| Email | Resend |
-| Validation | Zod |
-| Fonts | Fraunces (serif) + Inter (sans) via Google Fonts |
+| Transactional Email | Resend |
+| AI Diagnostic | OpenAI GPT-4o / Anthropic Claude fallback |
 | Deployment | Vercel |
 
 ---
@@ -35,9 +38,29 @@ npm install
 cp .env.local.example .env.local
 ```
 
-Then open `.env.local` and fill in each variable (see table below).
+Open `.env.local` and populate the required keys (see Environment Variables table below).
 
-### 3. Run the development server
+### 3. Initialize Supabase Database
+
+1. Create a project at [supabase.com](https://supabase.com).
+2. Navigate to **SQL Editor** in your Supabase Dashboard.
+3. Paste and run the contents of [`supabase/schema.sql`](supabase/schema.sql).
+4. In **Authentication -> URL Configuration**, add your site URL (e.g. `http://localhost:3000` and `https://sakibziad.com`) and redirect URL: `http://localhost:3000/auth/callback`.
+
+### 4. Set up Stripe Payments (Test Mode)
+
+1. Get your test API keys from **Stripe Dashboard -> Developers -> API Keys**:
+   - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` (`pk_test_...`)
+   - `STRIPE_SECRET_KEY` (`sk_test_...`)
+2. To test webhooks locally, install the [Stripe CLI](https://stripe.com/docs/stripe-cli) and run:
+   ```bash
+   stripe login
+   stripe listen --forward-to localhost:3000/api/stripe/webhook
+   ```
+3. Copy the outputted webhook signing secret (`whsec_...`) into `STRIPE_WEBHOOK_SECRET` in `.env.local`.
+4. In **Stripe Dashboard -> Settings -> Customer Portal**, enable the portal so members can manage or cancel their subscriptions self-serve.
+
+### 5. Run the development server
 
 ```bash
 npm run dev
@@ -45,114 +68,61 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### 4. Build for production
-
-```bash
-npm run build
-npm run start
-```
-
 ---
 
 ## Environment Variables
 
 | Variable | Required | Description |
 |---|---|---|
-| `RESEND_API_KEY` | ✅ Yes | API key from [resend.com](https://resend.com) for sending contact form emails |
-| `NOTIFICATION_EMAIL` | ✅ Yes | Email address that receives contact form notifications (e.g. `Sakib@witlyn.com`) |
-| `OPENAI_API_KEY` | Optional | OpenAI API key for the Gap & Opportunity Report generation feature |
-| `ANTHROPIC_API_KEY` | Optional | Anthropic Claude API key (alternative to OpenAI) |
-| `SLACK_WEBHOOK_URL` | Optional | Slack incoming webhook URL for real-time lead notifications |
-| `NEXT_PUBLIC_CAL_LINK` | ✅ Yes | Public Cal.com booking URL (e.g. `https://cal.com/sakib-ziad/strategy-call`) |
-
-> **Important:** Never commit `.env.local` to version control. It is already listed in `.gitignore`.
-
----
-
-## Deploying to Vercel
-
-1. Push your repository to GitHub (or GitLab / Bitbucket).
-2. Go to [vercel.com/new](https://vercel.com/new) and import the repository.
-3. Under **Environment Variables**, add each variable from the table above.
-4. Click **Deploy**. Vercel will auto-detect Next.js and configure the build.
-5. Set up your custom domain under **Project → Settings → Domains**.
-
-For production, set `metadataBase` in `app/layout.tsx` to your live domain:
-
-```ts
-metadataBase: new URL('https://yourdomain.com'),
-```
+| `NEXT_PUBLIC_SITE_URL` | Recommended | Base URL of the website (e.g. `http://localhost:3000` or production URL) |
+| `NEXT_PUBLIC_SUPABASE_URL` | Yes | Supabase Project URL (`https://your-project.supabase.co`) |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Yes | Supabase Anon Public Key |
+| `SUPABASE_SERVICE_ROLE_KEY` | Yes | Supabase Service Role Secret (used strictly in backend webhook handler) |
+| `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Yes | Stripe Publishable Key (`pk_test_...`) |
+| `STRIPE_SECRET_KEY` | Yes | Stripe Secret Key (`sk_test_...`) |
+| `STRIPE_WEBHOOK_SECRET` | Yes | Stripe Webhook Secret (`whsec_...`) |
+| `RESEND_API_KEY` | Yes | API key from [resend.com](https://resend.com) |
+| `NOTIFICATION_EMAIL` | Optional | Inbound notification destination (default: `Sakib@witlyn.com`) |
+| `OPENAI_API_KEY` | Optional | For AI Gap & Opportunity Diagnostic Report generation |
+| `ANTHROPIC_API_KEY` | Optional | Alternative LLM fallback for diagnostic report |
+| `SLACK_WEBHOOK_URL` | Optional | Inbound webhook URL for Slack notifications |
+| `NEXT_PUBLIC_CAL_LINK` | Optional | Cal.com booking link |
 
 ---
 
-## Content Replacement Guide
+## Database Architecture & Row Level Security
 
-Search the codebase for the following placeholders and replace them with real content before launch:
+The application uses three dedicated tables in Supabase Postgres:
 
-| Placeholder | Location | Description |
-|---|---|---|
-| `[HERO_HEADLINE]` | `app/page.tsx` | Main hero headline copy |
-| `[HERO_SUBHEAD]` | `app/page.tsx` | Hero supporting sentence |
-| `[HERO_IMAGE]` | `app/page.tsx` | Hero section background or portrait image path |
-| `[CASE_STUDY_1_TITLE]` | `app/work/page.tsx` | First case study headline |
-| `[CASE_STUDY_1_RESULT]` | `app/work/page.tsx` | Key result metric |
-| `[CASE_STUDY_1_IMAGE]` | `app/work/page.tsx` | Case study cover image |
-| `[SERVICE_1_TITLE]` | `app/consulting/page.tsx` | First consulting offer name |
-| `[SERVICE_1_DESC]` | `app/consulting/page.tsx` | Service description |
-| `[PRODUCT_1_TITLE]` | `app/digital-products/page.tsx` | First digital product name |
-| `[PRODUCT_1_PRICE]` | `app/digital-products/page.tsx` | Product price |
-| `[TESTIMONIAL_1_QUOTE]` | Various | Client quote text |
-| `[TESTIMONIAL_1_NAME]` | Various | Client name and title |
-| `[ABOUT_BIO]` | `app/about/page.tsx` | Full biography copy |
-| `[ABOUT_IMAGE]` | `app/about/page.tsx` | Portrait photograph path |
-| `[OG_IMAGE]` | `public/og-image.jpg` | OpenGraph social share image (1200×630px) |
+1. **`profiles`**:
+   - Linked 1:1 with `auth.users` on cascade delete.
+   - Automatically created via trigger when a new user signs up.
+   - Protected with RLS: Users can only select and update their own profile.
+2. **`purchases`**:
+   - Tracks one-time purchases of digital prompt frameworks and AI kits.
+   - Contains `user_id`, `product_id`, `product_name`, `amount_paid`, `stripe_session_id`, and `download_ref`.
+   - Protected with RLS: Users can only read their own purchase records.
+3. **`memberships`**:
+   - Tracks ongoing subscriptions for The Advisory Syndicate.
+   - Contains `user_id`, `status` (`active`, `canceled`, `past_due`), `stripe_customer_id`, `stripe_subscription_id`, and `current_period_end`.
+   - Protected with RLS: Users can only read their own membership status.
+   - Fulfillments and updates are performed securely by the Stripe webhook route via the Supabase Service Role client.
 
 ---
 
-## Cal.com Setup
+## Account & Offer Architecture
 
-1. Create an account at [cal.com](https://cal.com).
-2. Set up an event type named **"Strategy Call"** (or similar).
-3. Copy your booking link (e.g. `https://cal.com/sakib-ziad/strategy-call`).
-4. Set it as `NEXT_PUBLIC_CAL_LINK` in `.env.local`.
-5. The "Apply for a Call" buttons throughout the site will link directly to this URL.
-
-For embedded Cal.com widgets, install the embed:
-
-```bash
-npm install @calcom/embed-react
-```
-
-Then use `<Cal calLink="sakib-ziad/strategy-call" />` in your contact or hero sections.
-
----
-
-## Project Structure
-
-```
-├── app/
-│   ├── globals.css          # Base styles, fonts, CSS variables
-│   ├── layout.tsx           # Root layout — Nav + Footer
-│   └── page.tsx             # Homepage (scaffold)
-├── components/
-│   ├── navigation.tsx       # Scroll-aware site nav
-│   ├── footer.tsx           # Full site footer
-│   └── ui/
-│       ├── button.tsx       # CVA button variants
-│       ├── input.tsx        # Styled input
-│       ├── textarea.tsx     # Styled textarea
-│       └── badge.tsx        # Tag/badge component
-├── lib/
-│   └── utils.ts             # cn() helper
-├── public/                  # Static assets
-├── tailwind.config.ts       # Full luxury design tokens
-├── next.config.ts           # Next.js config
-├── tsconfig.json            # TypeScript config
-└── .env.local.example       # Environment variable template
-```
-
----
-
-## License
-
-Private — all rights reserved. © 2024 Sakib Ziad / Witlyn.
+* **Authentication Pages**:
+  * `/sign-in`: Password authentication, Google OAuth, and redirect handling.
+  * `/sign-up`: Account creation with email confirmation support.
+  * `/forgot-password`: Password reset dispatch via Supabase Auth.
+  * `/auth/callback`: Session exchange for OAuth and email verification links.
+* **Protected Dashboard (`/account`)**:
+  * Automatically gated by Next.js middleware.
+  * Displays licensed digital blueprints with immediate asset download links.
+  * Displays Advisory Syndicate membership tier, renewal date, and a direct button to the self-serve Stripe Customer Billing Portal.
+  * Allows password updates and account sign out.
+* **Offers**:
+  * **Digital Products (`/digital-products`)**: Gated via Stripe Checkout for one-time purchases. Instant access unlocked in `/account`.
+  * **Membership (`/membership`)**: Gated via Stripe Checkout recurring subscriptions.
+  * **Consulting (`/consulting`)**: Application-gated (no account required) to preserve high conversion and zero friction for enterprise founders.

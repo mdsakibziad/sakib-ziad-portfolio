@@ -4,8 +4,9 @@ import React, { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ArrowUpRight } from 'lucide-react'
+import { Menu, X, ArrowUpRight, User } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { createClient } from '@/lib/supabase/client'
 
 /* ── Split Nav Links for Centered-Logo Studio Header ──────────────────────── */
 const NAV_LEFT = [
@@ -46,6 +47,23 @@ export function Navigation() {
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [currentUser, setCurrentUser] = useState<any>(null)
+
+  // Auth listener
+  useEffect(() => {
+    const supabase = createClient()
+    supabase.auth.getUser().then(({ data }) => {
+      setCurrentUser(data.user)
+    })
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setCurrentUser(session?.user ?? null)
+    })
+
+    return () => subscription.unsubscribe()
+  }, [])
 
   // Scroll listener — frosted glass backdrop blur & border after 30px
   useEffect(() => {
@@ -143,6 +161,31 @@ export function Navigation() {
                   </Link>
                 )
               })}
+
+              {/* Auth Link: Sign In or My Account */}
+              {currentUser ? (
+                <Link
+                  href="/account"
+                  className={cn(
+                    'inline-flex items-center gap-1.5 py-1 px-3 rounded-full border border-white/20 bg-white/[0.05] text-xs font-inter uppercase tracking-wider text-white hover:bg-white/10 hover:border-white/30 transition-all',
+                    pathname.startsWith('/account') && 'bg-white/15 border-white'
+                  )}
+                  aria-label="My Account Dashboard"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  <span>{currentUser.user_metadata?.full_name?.split(' ')[0] || 'Account'}</span>
+                </Link>
+              ) : (
+                <Link
+                  href="/sign-in"
+                  className={cn(
+                    'nav-link-hover',
+                    pathname === '/sign-in' && 'active text-white'
+                  )}
+                >
+                  Sign In
+                </Link>
+              )}
 
               {/* Primary Header CTA — Liquid Glass White Pill */}
               <Link
@@ -283,6 +326,28 @@ export function Navigation() {
                       </li>
                     )
                   })}
+
+                  {/* Auth Mobile Item */}
+                  <li className="pt-3 border-t border-white/10">
+                    {currentUser ? (
+                      <Link
+                        href="/account"
+                        onClick={() => setMenuOpen(false)}
+                        className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-white/20 bg-white/10 text-xs font-inter uppercase tracking-wider text-white"
+                      >
+                        <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                        <span>My Account ({currentUser.user_metadata?.full_name?.split(' ')[0] || 'Client'})</span>
+                      </Link>
+                    ) : (
+                      <Link
+                        href="/sign-in"
+                        onClick={() => setMenuOpen(false)}
+                        className="block py-2 text-base font-fraunces text-white/80 hover:text-white"
+                      >
+                        Sign In →
+                      </Link>
+                    )}
+                  </li>
                 </ul>
               </nav>
 
