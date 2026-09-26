@@ -90,15 +90,38 @@ function SignInContent() {
 
     try {
       const supabase = createClient()
-      const { error } = await supabase.auth.signInWithOAuth({
+      const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
           redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(redirectTo)}`,
+          skipBrowserRedirect: true,
         },
       })
+
       if (error) {
         setErrorMessage(error.message)
         setGoogleLoading(false)
+        return
+      }
+
+      if (data?.url) {
+        try {
+          const res = await fetch(data.url)
+          if (res.status === 400) {
+            const body = await res.json().catch(() => null)
+            if (body?.msg?.includes('Unsupported provider') || body?.error_code === 'validation_failed') {
+              setErrorMessage(
+                'Google Sign-In is not enabled in your Supabase project yet. Please enable it in Supabase under Authentication → Providers → Google, or sign in with Email & Password.'
+              )
+              setGoogleLoading(false)
+              return
+            }
+          }
+        } catch {
+          // If fetch fails or CORS, proceed to redirect
+        }
+
+        window.location.href = data.url
       }
     } catch (err: any) {
       setErrorMessage(err.message || 'Failed to authenticate with Google.')
