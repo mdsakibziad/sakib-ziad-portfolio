@@ -1,5 +1,8 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { cookies } from 'next/headers'
+import { isSupabaseConfigured } from './config'
+
+export { isSupabaseConfigured }
 
 /**
  * Creates a Supabase client for Server Components, Server Actions, and Route Handlers.

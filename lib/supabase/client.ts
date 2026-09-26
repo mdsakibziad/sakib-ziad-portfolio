@@ -1,4 +1,7 @@
 import { createBrowserClient } from '@supabase/ssr'
+import { isSupabaseConfigured } from './config'
+
+export { isSupabaseConfigured }
 
 /**
  * Creates a Supabase client for use in browser client components.
@@ -9,3 +12,4 @@ export function createClient() {
 
   return createBrowserClient(supabaseUrl, supabaseAnonKey)
 }
+

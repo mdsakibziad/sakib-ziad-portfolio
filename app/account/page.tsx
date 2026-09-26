@@ -19,7 +19,7 @@ import {
   ArrowRight,
   Package,
 } from 'lucide-react'
-import { createClient } from '@/lib/supabase/client'
+import { createClient, isSupabaseConfigured } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { PRODUCTS_CATALOG } from '@/lib/stripe'
@@ -42,7 +42,6 @@ interface MembershipData {
 
 export default function AccountPage() {
   const router = useRouter()
-  const supabase = createClient()
 
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState<any>(null)
@@ -60,6 +59,13 @@ export default function AccountPage() {
   const [portalLoading, setPortalLoading] = useState(false)
 
   useEffect(() => {
+    if (!isSupabaseConfigured()) {
+      router.push('/sign-in')
+      return
+    }
+
+    const supabase = createClient()
+
     async function loadUserData() {
       setLoading(true)
       const {
@@ -101,9 +107,10 @@ export default function AccountPage() {
     }
 
     loadUserData()
-  }, [router, supabase])
+  }, [router])
 
   async function handleSignOut() {
+    const supabase = createClient()
     await supabase.auth.signOut()
     router.push('/')
     router.refresh()
@@ -122,6 +129,7 @@ export default function AccountPage() {
     }
 
     try {
+      const supabase = createClient()
       const { error } = await supabase.auth.updateUser({ password: newPassword })
       if (error) {
         setPasswordError(error.message)

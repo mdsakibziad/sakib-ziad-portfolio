@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowUpRight, User } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { createClient } from '@/lib/supabase/client'
+import { createClient, isSupabaseConfigured } from '@/lib/supabase/client'
 
 /* ── Split Nav Links for Centered-Logo Studio Header ──────────────────────── */
 const NAV_LEFT = [
@@ -51,6 +51,8 @@ export function Navigation() {
 
   // Auth listener
   useEffect(() => {
+    if (!isSupabaseConfigured()) return
+
     const supabase = createClient()
     supabase.auth.getUser().then(({ data }) => {
       setCurrentUser(data.user)

@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Loader2, AlertCircle, CheckCircle2 } from 'lucide-react'
-import { createClient } from '@/lib/supabase/client'
+import { createClient, isSupabaseConfigured } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
@@ -14,7 +14,7 @@ export default function ForgotPasswordPage() {
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
 
-  const supabase = createClient()
+  const configured = isSupabaseConfigured()
 
   async function handleResetPassword(e: React.FormEvent) {
     e.preventDefault()
@@ -22,7 +22,14 @@ export default function ForgotPasswordPage() {
     setErrorMessage('')
     setSuccessMessage('')
 
+    if (!configured) {
+      setErrorMessage('Supabase is not configured yet. Please add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to your .env.local file to enable password resets.')
+      setLoading(false)
+      return
+    }
+
     try {
+      const supabase = createClient()
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
         redirectTo: `${window.location.origin}/account`,
       })
@@ -78,6 +85,14 @@ export default function ForgotPasswordPage() {
               Enter your registered email address and we will dispatch secure instructions to reset your password.
             </p>
           </div>
+
+          {/* Configuration Notice if Supabase is unconfigured */}
+          {!configured && (
+            <div className="mb-6 p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200/90 leading-relaxed">
+              <span className="font-medium text-amber-300 block mb-1">Setup Required</span>
+              Supabase credentials (<code className="text-amber-100 bg-black/40 px-1 py-0.5 rounded">NEXT_PUBLIC_SUPABASE_URL</code> &amp; <code className="text-amber-100 bg-black/40 px-1 py-0.5 rounded">NEXT_PUBLIC_SUPABASE_ANON_KEY</code>) are not yet configured in <code className="text-amber-100 bg-black/40 px-1 py-0.5 rounded">.env.local</code>. Please connect your Supabase project to activate password resets.
+            </div>
+          )}
 
           {/* Success Callout */}
           {successMessage && (

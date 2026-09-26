@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { ArrowRight, Loader2, AlertCircle, CheckCircle2 } from 'lucide-react'
-import { createClient } from '@/lib/supabase/client'
+import { createClient, isSupabaseConfigured } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
@@ -22,13 +22,19 @@ function SignUpContent() {
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
 
-  const supabase = createClient()
+  const configured = isSupabaseConfigured()
 
   async function handleSignUp(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
     setErrorMessage('')
     setSuccessMessage('')
+
+    if (!configured) {
+      setErrorMessage('Supabase is not configured yet. Please add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to your .env.local file to enable account registration.')
+      setLoading(false)
+      return
+    }
 
     if (password.length < 6) {
       setErrorMessage('Password must be at least 6 characters.')
@@ -37,6 +43,7 @@ function SignUpContent() {
     }
 
     try {
+      const supabase = createClient()
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
@@ -74,7 +81,14 @@ function SignUpContent() {
     setGoogleLoading(true)
     setErrorMessage('')
 
+    if (!configured) {
+      setErrorMessage('Supabase is not configured yet. Please add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to your .env.local file to enable Google sign-up.')
+      setGoogleLoading(false)
+      return
+    }
+
     try {
+      const supabase = createClient()
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
@@ -121,6 +135,14 @@ function SignUpContent() {
             </p>
           </div>
 
+          {/* Configuration Notice if Supabase is unconfigured */}
+          {!configured && (
+            <div className="mb-6 p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200/90 leading-relaxed">
+              <span className="font-medium text-amber-300 block mb-1">Setup Required</span>
+              Supabase credentials (<code className="text-amber-100 bg-black/40 px-1 py-0.5 rounded">NEXT_PUBLIC_SUPABASE_URL</code> &amp; <code className="text-amber-100 bg-black/40 px-1 py-0.5 rounded">NEXT_PUBLIC_SUPABASE_ANON_KEY</code>) are not yet configured in <code className="text-amber-100 bg-black/40 px-1 py-0.5 rounded">.env.local</code>. Please connect your Supabase project to activate live authentication.
+            </div>
+          )}
+
           {/* Success Message */}
           {successMessage && (
             <div className="mb-6 p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/30 flex items-start gap-3 text-xs text-emerald-200">
@@ -131,6 +153,7 @@ function SignUpContent() {
               </div>
             </div>
           )}
+
 
           {/* Error Callout */}
           {errorMessage && (
