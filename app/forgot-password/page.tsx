@@ -65,11 +65,11 @@ export default function ForgotPasswordPage() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="w-full max-w-md relative z-10"
       >
-        <div className="card-surface p-8 sm:p-10 border-white/10 shadow-[0_16px_48px_rgba(0,0,0,0.9)]">
+        <div className="card-surface p-8 sm:p-10">
           {/* Back link */}
           <Link
             href="/sign-in"
-            className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-white transition-colors mb-6"
+            className="inline-flex items-center gap-1.5 text-xs text-muted hover:text-ivory transition-colors mb-6"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to Sign In</span>
@@ -77,29 +77,29 @@ export default function ForgotPasswordPage() {
 
           {/* Header */}
           <div className="mb-6">
-            <span className="eyebrow-luxury text-white/50 block mb-2">Account Recovery</span>
-            <h1 className="font-fraunces text-2xl sm:text-3xl text-white font-light tracking-tight mb-2">
+            <span className="eyebrow-luxury block mb-2">Account Recovery</span>
+            <h1 className="font-fraunces text-2xl sm:text-3xl text-ivory font-light tracking-tight mb-2">
               Reset Your Password
             </h1>
-            <p className="font-inter text-xs text-zinc-400">
+            <p className="font-inter text-xs text-muted">
               Enter your registered email address and we will dispatch secure instructions to reset your password.
             </p>
           </div>
 
           {/* Configuration Notice if Supabase is unconfigured */}
           {!configured && (
-            <div className="mb-6 p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200/90 leading-relaxed">
-              <span className="font-medium text-amber-300 block mb-1">Setup Required</span>
-              Supabase credentials (<code className="text-amber-100 bg-black/40 px-1 py-0.5 rounded">NEXT_PUBLIC_SUPABASE_URL</code> &amp; <code className="text-amber-100 bg-black/40 px-1 py-0.5 rounded">NEXT_PUBLIC_SUPABASE_ANON_KEY</code>) are not yet configured in <code className="text-amber-100 bg-black/40 px-1 py-0.5 rounded">.env.local</code>. Please connect your Supabase project to activate password resets.
+            <div className="mb-6 p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-700 dark:text-amber-200/90 leading-relaxed">
+              <span className="font-medium text-amber-800 dark:text-amber-300 block mb-1">Setup Required</span>
+              Supabase credentials (<code className="text-amber-900 dark:text-amber-100 bg-surface px-1 py-0.5 rounded border border-border">NEXT_PUBLIC_SUPABASE_URL</code> &amp; <code className="text-amber-900 dark:text-amber-100 bg-surface px-1 py-0.5 rounded border border-border">NEXT_PUBLIC_SUPABASE_ANON_KEY</code>) are not yet configured in <code className="text-amber-900 dark:text-amber-100 bg-surface px-1 py-0.5 rounded border border-border">.env.local</code>. Please connect your Supabase project to activate password resets.
             </div>
           )}
 
           {/* Success Callout */}
           {successMessage && (
-            <div className="mb-6 p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/30 flex items-start gap-3 text-xs text-emerald-200">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+            <div className="mb-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-start gap-3 text-xs text-emerald-600 dark:text-emerald-200">
+              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
               <div>
-                <p className="font-medium text-emerald-100">Instructions Sent</p>
+                <p className="font-medium text-emerald-700 dark:text-emerald-100">Instructions Sent</p>
                 <p>{successMessage}</p>
               </div>
             </div>
@@ -107,8 +107,8 @@ export default function ForgotPasswordPage() {
 
           {/* Error Callout */}
           {errorMessage && (
-            <div className="mb-6 p-3 rounded-lg bg-red-950/40 border border-red-500/30 flex items-start gap-2.5 text-xs text-red-200">
-              <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+            <div className="mb-6 p-3 rounded-lg bg-red-500/10 border border-red-500/30 flex items-start gap-2.5 text-xs text-red-500 dark:text-red-200">
+              <AlertCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
               <span>{errorMessage}</span>
             </div>
           )}
@@ -116,7 +116,7 @@ export default function ForgotPasswordPage() {
           {/* Form */}
           <form onSubmit={handleResetPassword} className="space-y-4">
             <div>
-              <label className="block text-[11px] font-mono uppercase tracking-wider text-zinc-400 mb-1.5">
+              <label className="block text-[11px] font-mono uppercase tracking-wider text-muted mb-1.5">
                 Registered Email Address
               </label>
               <Input
@@ -125,7 +125,6 @@ export default function ForgotPasswordPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="founder@brand.com"
-                className="bg-black/40 border-white/15 focus:border-white"
               />
             </div>
 

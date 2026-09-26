@@ -106,24 +106,24 @@ export function ApplicationForm({
 
   if (isSubmitted) {
     return (
-      <div className={`card-surface p-8 sm:p-12 border-white/20 text-center animate-fade-in ${className}`}>
-        <div className="w-14 h-14 rounded-full bg-white/10 border border-white/25 flex items-center justify-center text-white mx-auto mb-6">
-          <CheckCircle2 className="w-7 h-7" />
+      <div className={`card-surface p-8 sm:p-12 text-center animate-fade-in ${className}`}>
+        <div className="w-14 h-14 rounded-full bg-surface-elevated border border-border-strong flex items-center justify-center text-ivory mx-auto mb-6">
+          <CheckCircle2 className="w-7 h-7 text-emerald-500" />
         </div>
-        <h3 className="heading-card text-2xl sm:text-3xl mb-3 text-white">
+        <h3 className="heading-card text-2xl sm:text-3xl mb-3 text-ivory">
           Application Received
         </h3>
-        <p className="body-editorial text-sm sm:text-base text-zinc-300 max-w-md mx-auto mb-8 leading-relaxed">
+        <p className="body-editorial text-sm sm:text-base text-muted-light max-w-md mx-auto mb-8 leading-relaxed">
           Thank you for detailing your brand. Sakib reviews all inquiries personally and will respond via email within 48 business hours.
         </p>
 
         {/* Fast-Track Direct Meeting Window */}
-        <div className="card-surface p-6 border-white/10 text-left max-w-md mx-auto bg-surface-elevated/90">
-          <div className="flex items-center gap-2.5 text-white mb-2">
-            <Calendar className="w-4 h-4 text-zinc-400" />
-            <span className="font-fraunces text-base text-white">Direct Meeting Access</span>
+        <div className="card-surface p-6 text-left max-w-md mx-auto bg-surface-elevated/90">
+          <div className="flex items-center gap-2.5 text-ivory mb-2">
+            <Calendar className="w-4 h-4 text-muted" />
+            <span className="font-fraunces text-base text-ivory">Direct Meeting Access</span>
           </div>
-          <p className="body-muted text-xs mb-4 leading-relaxed text-zinc-400">
+          <p className="body-muted text-xs mb-4 leading-relaxed">
             If your timing is urgent and you wish to reserve a strategic window directly on the calendar:
           </p>
           {calUrl && !calUrl.includes('PLACEHOLDER') ? (
@@ -145,16 +145,16 @@ export function ApplicationForm({
   }
 
   return (
-    <div className={`card-surface p-6 sm:p-10 md:p-12 border-white/10 ${className}`}>
+    <div className={`card-surface p-6 sm:p-10 md:p-12 ${className}`}>
       {title && (
         <div className="mb-8">
           <h3 className="heading-card text-2xl sm:text-3xl mb-2">{title}</h3>
-          {subtitle && <p className="body-muted text-sm text-zinc-400">{subtitle}</p>}
+          {subtitle && <p className="body-muted text-sm">{subtitle}</p>}
         </div>
       )}
 
       {errorMessage && (
-        <div className="mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-sm font-inter">
+        <div className="mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-500 dark:text-red-300 text-sm font-inter">
           {errorMessage}
         </div>
       )}
@@ -162,7 +162,7 @@ export function ApplicationForm({
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
           <div>
-            <label className="block text-xs uppercase tracking-wider text-zinc-400 font-inter mb-2">
+            <label className="block text-xs uppercase tracking-wider text-muted font-inter mb-2">
               Full Name *
             </label>
             <Input
@@ -170,11 +170,10 @@ export function ApplicationForm({
               placeholder="e.g. Julian Vance"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="bg-surface border-white/10 text-white focus:border-white/40 focus:ring-1 focus:ring-white/20"
             />
           </div>
           <div>
-            <label className="block text-xs uppercase tracking-wider text-zinc-400 font-inter mb-2">
+            <label className="block text-xs uppercase tracking-wider text-muted font-inter mb-2">
               Work Email *
             </label>
             <Input
@@ -183,14 +182,13 @@ export function ApplicationForm({
               placeholder="julian@brand.com"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="bg-surface border-white/10 text-white focus:border-white/40 focus:ring-1 focus:ring-white/20"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
           <div>
-            <label className="block text-xs uppercase tracking-wider text-zinc-400 font-inter mb-2">
+            <label className="block text-xs uppercase tracking-wider text-muted font-inter mb-2">
               Brand / Company Name *
             </label>
             <Input
@@ -198,11 +196,10 @@ export function ApplicationForm({
               placeholder="e.g. Solaé Botanicals"
               value={formData.brand}
               onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
-              className="bg-surface border-white/10 text-white focus:border-white/40 focus:ring-1 focus:ring-white/20"
             />
           </div>
           <div>
-            <label className="block text-xs uppercase tracking-wider text-zinc-400 font-inter mb-2">
+            <label className="block text-xs uppercase tracking-wider text-muted font-inter mb-2">
               Website or Storefront URL *
             </label>
             <Input
@@ -211,47 +208,46 @@ export function ApplicationForm({
               placeholder="https://yourbrand.com"
               value={formData.website}
               onChange={(e) => setFormData({ ...formData, website: e.target.value })}
-              className="bg-surface border-white/10 text-white focus:border-white/40 focus:ring-1 focus:ring-white/20"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
           <div>
-            <label className="block text-xs uppercase tracking-wider text-zinc-400 font-inter mb-2">
+            <label className="block text-xs uppercase tracking-wider text-muted font-inter mb-2">
               Area of Interest
             </label>
             <select
-              className="w-full h-11 px-4 rounded-xl bg-surface border border-white/10 text-white font-inter text-sm focus:outline-none focus:border-white/40 focus:ring-1 focus:ring-white/20 transition-colors"
+              className="w-full h-11 px-4 rounded-xl bg-surface border border-border text-ivory font-inter text-sm focus:outline-none focus:border-border-strong focus:ring-1 focus:ring-border-strong transition-colors"
               value={formData.interest}
               onChange={(e) => setFormData({ ...formData, interest: e.target.value as AreaOfInterest })}
             >
               {INTEREST_OPTIONS.map((opt) => (
-                <option key={opt.value} value={opt.value} className="bg-surface text-white">
+                <option key={opt.value} value={opt.value} className="bg-surface text-ivory">
                   {opt.label}
                 </option>
               ))}
             </select>
           </div>
           <div>
-            <label className="block text-xs uppercase tracking-wider text-zinc-400 font-inter mb-2">
+            <label className="block text-xs uppercase tracking-wider text-muted font-inter mb-2">
               Implementation Timeline
             </label>
             <select
-              className="w-full h-11 px-4 rounded-xl bg-surface border border-white/10 text-white font-inter text-sm focus:outline-none focus:border-white/40 focus:ring-1 focus:ring-white/20 transition-colors"
+              className="w-full h-11 px-4 rounded-xl bg-surface border border-border text-ivory font-inter text-sm focus:outline-none focus:border-border-strong focus:ring-1 focus:ring-border-strong transition-colors"
               value={formData.timeline}
               onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
             >
-              <option value="Immediately (Next 2–4 weeks)" className="bg-surface text-white">Immediately (Next 2–4 weeks)</option>
-              <option value="Within 1–2 months" className="bg-surface text-white">Within 1–2 months</option>
-              <option value="1–3 months out" className="bg-surface text-white">1–3 months out</option>
-              <option value="Exploring & Planning" className="bg-surface text-white">Exploring & Planning</option>
+              <option value="Immediately (Next 2–4 weeks)" className="bg-surface text-ivory">Immediately (Next 2–4 weeks)</option>
+              <option value="Within 1–2 months" className="bg-surface text-ivory">Within 1–2 months</option>
+              <option value="1–3 months out" className="bg-surface text-ivory">1–3 months out</option>
+              <option value="Exploring & Planning" className="bg-surface text-ivory">Exploring & Planning</option>
             </select>
           </div>
         </div>
 
         <div>
-          <label className="block text-xs uppercase tracking-wider text-zinc-400 font-inter mb-2">
+          <label className="block text-xs uppercase tracking-wider text-muted font-inter mb-2">
             Tell us about your brand and what you wish to achieve *
           </label>
           <Textarea
@@ -260,7 +256,6 @@ export function ApplicationForm({
             placeholder="What is your biggest creative or automation bottleneck, current monthly volume, and ideal outcome?"
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-            className="bg-surface border-white/10 text-white focus:border-white/40 focus:ring-1 focus:ring-white/20"
           />
         </div>
 

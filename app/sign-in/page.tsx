@@ -108,22 +108,22 @@ function SignInContent() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="w-full max-w-md relative z-10"
       >
-        <div className="card-surface p-8 sm:p-10 border-white/10 shadow-[0_16px_48px_rgba(0,0,0,0.9)]">
+        <div className="card-surface p-8 sm:p-10">
           {/* Header */}
           <div className="text-center mb-8">
-            <span className="eyebrow-luxury text-white/50 block mb-2">Client & Member Access</span>
-            <h1 className="font-fraunces text-2xl sm:text-3xl text-white font-light tracking-tight mb-2">
+            <span className="eyebrow-luxury block mb-2">Client & Member Access</span>
+            <h1 className="font-fraunces text-2xl sm:text-3xl text-ivory font-light tracking-tight mb-2">
               Sign In to Your Account
             </h1>
-            <p className="font-inter text-xs text-zinc-400">
+            <p className="font-inter text-xs text-muted">
               Access your digital products, blueprints, and Syndicate membership.
             </p>
           </div>
 
           {/* Error Callout */}
           {errorMessage && (
-            <div className="mb-6 p-3 rounded-lg bg-red-950/40 border border-red-500/30 flex items-start gap-2.5 text-xs text-red-200">
-              <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+            <div className="mb-6 p-3 rounded-lg bg-red-500/10 border border-red-500/30 flex items-start gap-2.5 text-xs text-red-500 dark:text-red-200">
+              <AlertCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
               <span>{errorMessage}</span>
             </div>
           )}
@@ -133,10 +133,10 @@ function SignInContent() {
             type="button"
             onClick={handleGoogleSignIn}
             disabled={googleLoading || loading}
-            className="w-full flex items-center justify-center gap-3 py-2.5 px-4 rounded-xl border border-white/15 bg-white/[0.03] hover:bg-white/[0.08] hover:border-white/30 text-white font-inter text-xs uppercase tracking-wider transition-all duration-300 mb-6 disabled:opacity-50"
+            className="w-full flex items-center justify-center gap-3 py-2.5 px-4 rounded-xl border border-border bg-surface hover:bg-surface-elevated hover:border-border-strong text-ivory font-inter text-xs uppercase tracking-wider transition-all duration-300 mb-6 disabled:opacity-50"
           >
             {googleLoading ? (
-              <Loader2 className="w-4 h-4 animate-spin text-white" />
+              <Loader2 className="w-4 h-4 animate-spin text-ivory" />
             ) : (
               <svg className="w-4 h-4" viewBox="0 0 24 24">
                 <path
@@ -163,17 +163,17 @@ function SignInContent() {
           {/* Divider */}
           <div className="relative mb-6">
             <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-white/10" />
+              <span className="w-full border-t border-border" />
             </div>
             <div className="relative flex justify-center text-[10px] uppercase font-mono tracking-widest">
-              <span className="bg-[#121214] px-3 text-zinc-500">Or email</span>
+              <span className="bg-surface px-3 text-muted">Or email</span>
             </div>
           </div>
 
           {/* Email / Password Form */}
           <form onSubmit={handleEmailSignIn} className="space-y-4">
             <div>
-              <label className="block text-[11px] font-mono uppercase tracking-wider text-zinc-400 mb-1.5">
+              <label className="block text-[11px] font-mono uppercase tracking-wider text-muted mb-1.5">
                 Email Address
               </label>
               <Input
@@ -182,18 +182,17 @@ function SignInContent() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="founder@brand.com"
-                className="bg-black/40 border-white/15 focus:border-white"
               />
             </div>
 
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="text-[11px] font-mono uppercase tracking-wider text-zinc-400">
+                <label className="text-[11px] font-mono uppercase tracking-wider text-muted">
                   Password
                 </label>
                 <Link
                   href="/forgot-password"
-                  className="text-[11px] text-zinc-400 hover:text-white transition-colors"
+                  className="text-[11px] text-muted hover:text-ivory transition-colors"
                 >
                   Forgot password?
                 </Link>
@@ -204,7 +203,6 @@ function SignInContent() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••••••"
-                className="bg-black/40 border-white/15 focus:border-white"
               />
             </div>
 
@@ -230,12 +228,12 @@ function SignInContent() {
           </form>
 
           {/* Footer link */}
-          <div className="mt-8 pt-6 border-t border-white/10 text-center">
-            <p className="text-xs text-zinc-400 font-inter">
+          <div className="mt-8 pt-6 border-t border-border text-center">
+            <p className="text-xs text-muted font-inter">
               Don&apos;t have an account?{' '}
               <Link
                 href={`/sign-up?redirectTo=${encodeURIComponent(redirectTo)}`}
-                className="text-white font-medium hover:underline underline-offset-4"
+                className="text-ivory font-medium hover:underline underline-offset-4"
               >
                 Sign Up
               </Link>

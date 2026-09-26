@@ -77,14 +77,14 @@ export default function AboutPage() {
   ]
 
   return (
-    <div className="bg-background text-ivory min-h-screen selection:bg-white selection:text-black pt-28">
+    <div className="bg-background text-ivory min-h-screen selection:bg-[#141416] selection:text-white dark:selection:bg-white dark:selection:text-black pt-28">
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="section-pad border-b border-white/[0.08]" aria-label="About Hero">
+      <section className="section-pad border-b border-black/[0.08] dark:border-white/[0.08]" aria-label="About Hero">
         <div className="container-luxury">
           <div className="max-w-4xl">
             <RevealSection>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full liquid-glass-pill text-[11px] uppercase tracking-[0.2em] text-white/80 mb-8">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full liquid-glass-pill text-[11px] uppercase tracking-[0.2em] text-zinc-700 dark:text-white/80 mb-8">
                 Founder Story & Philosophy
               </div>
             </RevealSection>
@@ -92,14 +92,14 @@ export default function AboutPage() {
             <RevealSection delay={0.1}>
               <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
                 “I built Witlyn to prove AI-native creative works.{' '}
-                <span className="italic font-fraunces font-light text-zinc-300">
+                <span className="italic font-fraunces font-light text-zinc-600 dark:text-zinc-300">
                   I built this advisory to teach brands how to think in it.”
                 </span>
               </h1>
             </RevealSection>
 
             <RevealSection delay={0.2}>
-              <p className="body-editorial text-lg sm:text-xl text-zinc-300 max-w-2xl">
+              <p className="body-editorial text-lg sm:text-xl text-zinc-700 dark:text-zinc-300 max-w-2xl">
                 Bridging the gap between computational artificial intelligence and prestige beauty storytelling.
               </p>
             </RevealSection>
@@ -114,7 +114,7 @@ export default function AboutPage() {
             
             {/* Real Executive Headshot — Large & Editorial */}
             <RevealSection className="lg:col-span-5 lg:sticky lg:top-28">
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 shadow-[0_16px_48px_rgba(0,0,0,0.9)] group">
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 shadow-[0_16px_48px_rgba(0,0,0,0.12)] dark:shadow-[0_16px_48px_rgba(0,0,0,0.9)] group">
                 <Image
                   src="/images/sakib-ziad.jpg"
                   alt="Sakib Ziad — AI Creative Strategist and Founder of Witlyn"
@@ -125,8 +125,8 @@ export default function AboutPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute bottom-6 left-6 right-6">
-                  <p className="font-fraunces text-2xl text-white">Sakib Ziad</p>
-                  <p className="eyebrow-luxury text-white/70">AI Creative Strategist & Founder</p>
+                  <p className="font-fraunces text-2xl text-zinc-900 dark:text-white">Sakib Ziad</p>
+                  <p className="eyebrow-luxury text-zinc-600 dark:text-white/70">AI Creative Strategist & Founder</p>
                 </div>
               </div>
             </RevealSection>
@@ -134,13 +134,13 @@ export default function AboutPage() {
             {/* Narrative Body */}
             <div className="lg:col-span-7 flex flex-col gap-10">
               <RevealSection>
-                <p className="eyebrow-luxury mb-3">Origin & Purpose</p>
-                <h2 className="heading-section text-3xl sm:text-4xl text-white">
+                <p className="eyebrow-luxury mb-3 text-zinc-500 dark:text-zinc-400">Origin & Purpose</p>
+                <h2 className="heading-section text-3xl sm:text-4xl text-[#141416] dark:text-white">
                   From machine intelligence to brand emotion.
                 </h2>
               </RevealSection>
 
-              <RevealSection delay={0.1} className="space-y-6 body-editorial text-base sm:text-lg">
+              <RevealSection delay={0.1} className="space-y-6 body-editorial text-base sm:text-lg text-zinc-700 dark:text-zinc-300">
                 <p>
                   My journey began inside an academic degree in Artificial Intelligence. While the technology world was fascinated by theoretical benchmarks, I was captivated by how neural networks interpret visual aesthetics, light refraction, and brand emotion.
                 </p>
@@ -148,15 +148,15 @@ export default function AboutPage() {
                   Looking closely at the beauty and cosmetics landscape, the disparity was striking: founders routinely invest tens of thousands per quarter on traditional studio shoots that yield static, quickly exhausted assets. When brands attempted to use early AI tools, the results looked plastic, synthetic, and completely detached from the sensory luxury beauty consumers demand.
                 </p>
                 <p>
-                  To solve this, I founded <a href="https://witlyn.com" target="_blank" rel="noopener noreferrer" className="text-white font-medium underline underline-offset-4 hover:text-zinc-300">Witlyn</a> — a full-service AI-native creative studio. Witlyn proved that when computational prompt systems are guided by high-fashion art direction, the resulting creative not only equals traditional studio photography, but delivers radical aesthetic consistency at 10× speed.
+                  To solve this, I founded <a href="https://witlyn.com" target="_blank" rel="noopener noreferrer" className="text-zinc-950 dark:text-white font-medium underline underline-offset-4 hover:text-zinc-600 dark:hover:text-zinc-300">Witlyn</a> — a full-service AI-native creative studio. Witlyn proved that when computational prompt systems are guided by high-fashion art direction, the resulting creative not only equals traditional studio photography, but delivers radical aesthetic consistency at 10× speed.
                 </p>
                 <p>
                   This personal advisory practice was created for founders and marketing executives who don’t just want to outsource content; they want to master the intelligence themselves. Here, we build custom AI creative infrastructure, train internal teams, and deploy autonomous brand agents that turn creative velocity into an enduring moat.
                 </p>
               </RevealSection>
 
-              <RevealSection delay={0.2} className="pt-6 border-t border-white/10 flex flex-wrap gap-4 sm:gap-6 items-center">
-                <Button asChild variant="default" size="lg">
+              <RevealSection delay={0.2} className="pt-6 border-t border-black/10 dark:border-white/10 flex flex-wrap gap-4 sm:gap-6 items-center">
+                <Button asChild variant="gold" size="lg">
                   <Link href="/consulting" className="flex items-center gap-2">
                     <span>Explore Advisory Engagements</span>
                     <ArrowRight className="w-4 h-4" />
@@ -166,7 +166,7 @@ export default function AboutPage() {
                   href="https://witlyn.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-inter uppercase tracking-[0.16em] text-white/70 hover:text-white transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-inter uppercase tracking-[0.16em] text-zinc-600 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors"
                 >
                   <span>Visit Witlyn Studio</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -179,21 +179,21 @@ export default function AboutPage() {
       </section>
 
       {/* ── Philosophy Section ─────────────────────────────────────────────── */}
-      <section className="section-pad border-t border-white/[0.08]" aria-label="Core Philosophy">
+      <section className="section-pad border-t border-black/[0.08] dark:border-white/[0.08]" aria-label="Core Philosophy">
         <div className="container-luxury">
           <RevealSection className="text-center max-w-2xl mx-auto mb-16">
-            <p className="eyebrow-luxury mb-4">Core Principles</p>
-            <h2 className="heading-section">Three Beliefs That Shape Everything</h2>
+            <p className="eyebrow-luxury mb-4 text-zinc-500 dark:text-zinc-400">Core Principles</p>
+            <h2 className="heading-section text-[#141416] dark:text-white">Three Beliefs That Shape Everything</h2>
           </RevealSection>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {beliefs.map((belief, i) => (
               <RevealSection key={belief.num} delay={i * 0.1}>
-                <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full">
+                <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-black/10 dark:border-white/10">
                   <div>
-                    <span className="font-fraunces text-3xl text-white/30 mb-6 block">{belief.num}</span>
-                    <h3 className="heading-card text-xl sm:text-2xl mb-4 leading-snug">{belief.title}</h3>
-                    <p className="body-muted text-base text-zinc-400">{belief.body}</p>
+                    <span className="font-fraunces text-3xl text-zinc-300 dark:text-white/30 mb-6 block">{belief.num}</span>
+                    <h3 className="heading-card text-xl sm:text-2xl mb-4 leading-snug text-[#141416] dark:text-white">{belief.title}</h3>
+                    <p className="body-muted text-base text-zinc-600 dark:text-zinc-400">{belief.body}</p>
                   </div>
                 </div>
               </RevealSection>
@@ -203,23 +203,23 @@ export default function AboutPage() {
       </section>
 
       {/* ── Verified Trajectory ─────────────────────────────────────────────── */}
-      <section className="section-pad bg-surface/30 border-y border-white/[0.08]" aria-label="Background Timeline">
+      <section className="section-pad bg-surface/30 border-y border-black/[0.08] dark:border-white/[0.08]" aria-label="Background Timeline">
         <div className="container-luxury max-w-4xl mx-auto">
           <RevealSection className="text-center mb-16">
-            <p className="eyebrow-luxury mb-4">Pedigree</p>
-            <h2 className="heading-section">The Trajectory</h2>
+            <p className="eyebrow-luxury mb-4 text-zinc-500 dark:text-zinc-400">Pedigree</p>
+            <h2 className="heading-section text-[#141416] dark:text-white">The Trajectory</h2>
           </RevealSection>
 
-          <div className="space-y-10 relative before:absolute before:inset-0 before:left-[19px] before:w-px before:bg-white/10">
+          <div className="space-y-10 relative before:absolute before:inset-0 before:left-[19px] before:w-px before:bg-black/10 dark:before:bg-white/10">
             {timeline.map((item, i) => (
               <RevealSection key={item.title} delay={i * 0.1} className="flex gap-6 sm:gap-8 relative">
-                <div className="w-10 h-10 rounded-full bg-background border border-white/20 flex items-center justify-center shrink-0 z-10 text-white text-xs font-semibold shadow-md">
+                <div className="w-10 h-10 rounded-full bg-white dark:bg-background border border-black/15 dark:border-white/20 flex items-center justify-center shrink-0 z-10 text-zinc-900 dark:text-white text-xs font-semibold shadow-md">
                   0{i + 1}
                 </div>
-                <div className="card-surface p-6 sm:p-8 flex-1">
-                  <span className="eyebrow-luxury mb-2 block">{item.year}</span>
-                  <h3 className="heading-card text-xl sm:text-2xl mb-3">{item.title}</h3>
-                  <p className="body-muted text-base text-zinc-400">{item.desc}</p>
+                <div className="card-surface p-6 sm:p-8 flex-1 border-black/10 dark:border-white/10">
+                  <span className="eyebrow-luxury mb-2 block text-zinc-500 dark:text-zinc-400">{item.year}</span>
+                  <h3 className="heading-card text-xl sm:text-2xl mb-3 text-[#141416] dark:text-white">{item.title}</h3>
+                  <p className="body-muted text-base text-zinc-600 dark:text-zinc-400">{item.desc}</p>
                 </div>
               </RevealSection>
             ))}
@@ -230,19 +230,19 @@ export default function AboutPage() {
       {/* ── Speaking & Executive Workshops ───────────────────────────────────── */}
       <section className="section-pad" aria-label="Speaking & Workshops">
         <div className="container-luxury max-w-4xl mx-auto">
-          <div className="card-surface p-8 sm:p-12 md:p-14 border-white/10 text-center flex flex-col items-center">
+          <div className="card-surface p-8 sm:p-12 md:p-14 border-black/10 dark:border-white/10 text-center flex flex-col items-center">
             <RevealSection>
-              <div className="w-12 h-12 rounded-full bg-white/[0.05] border border-white/15 flex items-center justify-center text-white mb-6 mx-auto">
+              <div className="w-12 h-12 rounded-full bg-black/[0.04] dark:bg-white/[0.05] border border-black/10 dark:border-white/15 flex items-center justify-center text-zinc-900 dark:text-white mb-6 mx-auto">
                 <BookOpen className="w-5 h-5" />
               </div>
-              <p className="eyebrow-luxury mb-3">Executive Briefings</p>
-              <h2 className="heading-section text-3xl sm:text-4xl mb-4">
+              <p className="eyebrow-luxury mb-3 text-zinc-500 dark:text-zinc-400">Executive Briefings</p>
+              <h2 className="heading-section text-3xl sm:text-4xl mb-4 text-[#141416] dark:text-white">
                 Keynotes, Podcasts & Brand Workshops
               </h2>
-              <p className="body-editorial text-base sm:text-lg max-w-xl mx-auto mb-8 text-zinc-300">
+              <p className="body-editorial text-base sm:text-lg max-w-xl mx-auto mb-8 text-zinc-700 dark:text-zinc-300">
                 Available for executive briefings, beauty industry summits, and podcast conversations on the commercial future of generative AI in luxury aesthetics.
               </p>
-              <Button asChild variant="default" size="lg">
+              <Button asChild variant="gold" size="lg">
                 <a href="mailto:Sakib@witlyn.com?subject=Speaking%20or%20Press%20Inquiry" className="flex items-center gap-2">
                   <span>Inquire for Speaking</span>
                   <ArrowRight className="w-4 h-4" />
@@ -254,11 +254,11 @@ export default function AboutPage() {
       </section>
 
       {/* ── Final Call to Action ───────────────────────────────────────────── */}
-      <section className="py-20 border-t border-white/[0.08] bg-surface/50 text-center">
+      <section className="py-20 border-t border-black/[0.08] dark:border-white/[0.08] bg-surface/50 text-center">
         <div className="container-luxury max-w-2xl mx-auto">
           <RevealSection>
-            <h2 className="heading-section text-3xl sm:text-4xl mb-6">Let’s discuss your brand's AI roadmap.</h2>
-            <Button asChild variant="default" size="lg">
+            <h2 className="heading-section text-3xl sm:text-4xl mb-6 text-[#141416] dark:text-white">Let’s discuss your brand's AI roadmap.</h2>
+            <Button asChild variant="gold" size="lg">
               <Link href="/contact" className="flex items-center gap-2">
                 <span>Apply for Strategy Call</span>
                 <ArrowRight className="w-4 h-4" />

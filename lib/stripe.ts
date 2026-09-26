@@ -19,7 +19,8 @@ export const PRODUCTS_CATALOG: Record<
     price: 24900, // $249.00
     priceFormatted: '$249',
     type: 'one_time',
-    description: '40+ tested prompt blueprints, art direction taxonomies, and Notion briefing workflows.',
+    // Flagged claim pending owner verification: 40+ tested prompt blueprints
+    description: 'Curated prompt blueprints, art direction taxonomies, and Notion briefing workflows.',
     downloadRef: 'https://witlyn.com/access/brief-blueprint-v1.zip',
   },
   'agent-kit': {

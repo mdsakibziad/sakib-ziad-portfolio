@@ -6,6 +6,7 @@ import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
 import { StructuredData } from '@/components/structured-data'
 import { personSchema } from '@/lib/seo-schemas'
+import { ThemeProvider } from '@/components/theme-provider'
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -59,9 +60,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://sakibziad.my',
   },
-  verification: {
-    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || 'google-site-verification-token',
-  },
+  verification: process.env.NEXT_PUBLIC_GSC_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION }
+    : undefined,
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -110,58 +111,78 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${fraunces.variable} ${inter.variable}`} suppressHydrationWarning>
-      <body className="min-h-screen bg-background text-ivory antialiased selection:bg-white selection:text-black overflow-x-hidden">
-        {/* Global JSON-LD Schema (Person & WebSite) */}
-        <StructuredData data={[personSchema, websiteSchema]} />
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var stored = localStorage.getItem('theme');
+                  if (stored === 'dark') {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (_) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="min-h-screen bg-background text-ivory antialiased selection:bg-[#141416] selection:text-white dark:selection:bg-white dark:selection:text-black overflow-x-hidden">
+        <ThemeProvider>
+          {/* Global JSON-LD Schema (Person & WebSite) */}
+          <StructuredData data={[personSchema, websiteSchema]} />
 
-        {/* Deferred Google Analytics 4 (Zero impact on Core Web Vitals) */}
-        {GA_ID && (
-          <>
-            <Script
-              strategy="afterInteractive"
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-            />
-            <Script
-              id="google-analytics-init"
-              strategy="afterInteractive"
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${GA_ID}', {
-                    page_path: window.location.pathname,
-                  });
-                `,
-              }}
-            />
-          </>
-        )}
+          {/* Deferred Google Analytics 4 (Zero impact on Core Web Vitals) */}
+          {GA_ID && (
+            <>
+              <Script
+                strategy="afterInteractive"
+                src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              />
+              <Script
+                id="google-analytics-init"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                  __html: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '${GA_ID}', {
+                      page_path: window.location.pathname,
+                    });
+                  `,
+                }}
+              />
+            </>
+          )}
 
-        {/* Skip to main content (accessibility) */}
-        <a
-          href="#main-content"
-          className="
-            sr-only focus:not-sr-only
-            fixed top-4 left-4 z-[9999]
-            bg-white text-black text-sm font-semibold
-            px-4 py-2 rounded-full shadow-lg
-            focus:outline-none
-          "
-        >
-          Skip to main content
-        </a>
+          {/* Skip to main content (accessibility) */}
+          <a
+            href="#main-content"
+            className="
+              sr-only focus:not-sr-only
+              fixed top-4 left-4 z-[9999]
+              bg-[#141416] text-white dark:bg-white dark:text-black text-sm font-semibold
+              px-4 py-2 rounded-full shadow-lg
+              focus:outline-none
+            "
+          >
+            Skip to main content
+          </a>
 
-        {/* Site navigation */}
-        <Navigation />
+          {/* Site navigation */}
+          <Navigation />
 
-        {/* Page content */}
-        <main id="main-content" className="relative">
-          {children}
-        </main>
+          {/* Page content */}
+          <main id="main-content" className="relative">
+            {children}
+          </main>
 
-        {/* Site footer */}
-        <Footer />
+          {/* Site footer */}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowUpRight, User } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { createClient, isSupabaseConfigured } from '@/lib/supabase/client'
+import { ThemeToggle } from './theme-toggle'
 
 /* ── Split Nav Links for Centered-Logo Studio Header ──────────────────────── */
 const NAV_LEFT = [
@@ -94,7 +95,7 @@ export function Navigation() {
         className={cn(
           'fixed top-0 inset-x-0 z-50 transition-all duration-500 ease-luxury',
           scrolled
-            ? 'bg-[#070708]/80 backdrop-blur-2xl border-b border-white/[0.12] shadow-[0_4px_30px_rgba(0,0,0,0.85),inset_0_-1px_0_rgba(255,255,255,0.06)]'
+            ? 'bg-[#F7F6F2]/85 dark:bg-[#070708]/85 backdrop-blur-2xl border-b border-black/[0.08] dark:border-white/[0.12] shadow-[0_4px_30px_rgba(0,0,0,0.04),inset_0_-1px_0_rgba(255,255,255,0.8)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.85),inset_0_-1px_0_rgba(255,255,255,0.06)]'
             : 'bg-transparent border-b border-transparent'
         )}
         role="banner"
@@ -102,7 +103,7 @@ export function Navigation() {
         {/* Frosted Micro-Noise Grain Overlay */}
         {scrolled && (
           <div
-            className="absolute inset-0 pointer-events-none frost-noise opacity-30 mix-blend-overlay"
+            className="absolute inset-0 pointer-events-none frost-noise opacity-20 dark:opacity-30 mix-blend-overlay"
             aria-hidden="true"
           />
         )}
@@ -121,7 +122,7 @@ export function Navigation() {
                     href={href}
                     className={cn(
                       'nav-link-hover',
-                      isActive && 'active text-white'
+                      isActive && 'active text-zinc-950 dark:text-white'
                     )}
                     aria-current={isActive ? 'page' : undefined}
                   >
@@ -138,17 +139,17 @@ export function Navigation() {
                 className="group flex flex-col items-start lg:items-center focus-visible:outline-none"
                 aria-label="Sakib Ziad — home"
               >
-                <span className="font-fraunces font-light text-white text-xl md:text-2xl tracking-[-0.01em] transition-opacity duration-300 group-hover:opacity-80">
+                <span className="font-fraunces font-light text-zinc-900 dark:text-white text-xl md:text-2xl tracking-[-0.01em] transition-opacity duration-300 group-hover:opacity-80">
                   Sakib Ziad
                 </span>
-                <span className="font-inter text-[9px] uppercase tracking-[0.24em] text-white/50 -mt-0.5 transition-colors duration-300 group-hover:text-white/80">
+                <span className="font-inter text-[9px] uppercase tracking-[0.24em] text-zinc-500 dark:text-white/50 -mt-0.5 transition-colors duration-300 group-hover:text-zinc-800 dark:group-hover:text-white/80">
                   Creative Strategy & AI
                 </span>
               </Link>
             </div>
 
             {/* ── Desktop Right Nav Links + Far-Right CTA ─────────────────── */}
-            <div className="hidden lg:flex items-center justify-end gap-8 xl:gap-10">
+            <div className="hidden lg:flex items-center justify-end gap-6 xl:gap-8">
               {NAV_RIGHT.map(({ label, href }) => {
                 const isActive = pathname === href || pathname.startsWith(href + '/')
                 return (
@@ -157,7 +158,7 @@ export function Navigation() {
                     href={href}
                     className={cn(
                       'nav-link-hover',
-                      isActive && 'active text-white'
+                      isActive && 'active text-zinc-950 dark:text-white'
                     )}
                     aria-current={isActive ? 'page' : undefined}
                   >
@@ -171,12 +172,12 @@ export function Navigation() {
                 <Link
                   href="/account"
                   className={cn(
-                    'inline-flex items-center gap-1.5 py-1 px-3 rounded-full border border-white/20 bg-white/[0.05] text-xs font-inter uppercase tracking-wider text-white hover:bg-white/10 hover:border-white/30 transition-all',
-                    pathname.startsWith('/account') && 'bg-white/15 border-white'
+                    'inline-flex items-center gap-1.5 py-1 px-3 rounded-full border border-black/15 dark:border-white/20 bg-black/[0.04] dark:bg-white/[0.05] text-xs font-inter uppercase tracking-wider text-zinc-900 dark:text-white hover:bg-black/[0.08] dark:hover:bg-white/10 hover:border-black/30 dark:hover:border-white/30 transition-all',
+                    pathname.startsWith('/account') && 'bg-black/[0.08] dark:bg-white/15 border-black/30 dark:border-white'
                   )}
                   aria-label="My Account Dashboard"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400" />
                   <span>{currentUser.user_metadata?.full_name?.split(' ')[0] || 'Account'}</span>
                 </Link>
               ) : (
@@ -184,24 +185,27 @@ export function Navigation() {
                   href="/sign-in"
                   className={cn(
                     'nav-link-hover',
-                    pathname === '/sign-in' && 'active text-white'
+                    pathname === '/sign-in' && 'active text-zinc-950 dark:text-white'
                   )}
                 >
                   Sign In
                 </Link>
               )}
 
-              {/* Primary Header CTA — Liquid Glass White Pill */}
+              {/* Luxury Theme Toggle */}
+              <ThemeToggle />
+
+              {/* Primary Header CTA */}
               <Link
                 href="/contact"
                 className={cn(
                   'inline-flex items-center justify-center gap-2',
                   'font-inter text-[11px] font-semibold uppercase tracking-[0.14em]',
-                  'text-black bg-white rounded-full',
+                  'text-[#F7F6F2] bg-[#141416] dark:text-black dark:bg-white rounded-full',
                   'px-5 py-2.5',
-                  'shadow-[0_0_20px_rgba(255,255,255,0.18)]',
+                  'shadow-[0_4px_16px_rgba(0,0,0,0.12)] dark:shadow-[0_0_20px_rgba(255,255,255,0.18)]',
                   'transition-all duration-300 ease-luxury',
-                  'hover:bg-zinc-200 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]',
+                  'hover:bg-zinc-800 dark:hover:bg-zinc-200 hover:scale-[1.03] hover:shadow-[0_6px_20px_rgba(0,0,0,0.16)] dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]',
                   'active:scale-[0.98]'
                 )}
               >
@@ -210,8 +214,9 @@ export function Navigation() {
               </Link>
             </div>
 
-            {/* ── Mobile Hamburger Button ──────────────────────────────────── */}
-            <div className="flex items-center justify-end lg:hidden">
+            {/* ── Mobile Hamburger Button & Theme Toggle ──────────────────── */}
+            <div className="flex items-center justify-end gap-2.5 lg:hidden">
+              <ThemeToggle />
               <button
                 type="button"
                 onClick={toggleMenu}
@@ -220,10 +225,10 @@ export function Navigation() {
                 aria-label={menuOpen ? 'Close menu' : 'Open menu'}
                 className={cn(
                   'relative h-10 w-10 flex items-center justify-center rounded-full',
-                  'bg-white/[0.04] backdrop-blur-md border border-white/10',
-                  'text-white transition-all duration-300',
-                  'hover:bg-white/10 hover:border-white/20',
-                  'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white'
+                  'bg-black/[0.04] dark:bg-white/[0.04] backdrop-blur-md border border-black/10 dark:border-white/10',
+                  'text-zinc-900 dark:text-white transition-all duration-300',
+                  'hover:bg-black/[0.08] dark:hover:bg-white/10 hover:border-black/20 dark:hover:border-white/20',
+                  'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black dark:focus-visible:ring-white'
                 )}
               >
                 <AnimatePresence mode="wait" initial={false}>
@@ -285,8 +290,8 @@ export function Navigation() {
               className={cn(
                 'fixed top-0 right-0 bottom-0 z-50',
                 'w-full max-w-xs sm:max-w-sm',
-                'bg-[#09090b]/95 backdrop-blur-2xl border-l border-white/12',
-                'shadow-[-20px_0_60px_rgba(0,0,0,0.95)]',
+                'bg-[#F7F6F2]/95 dark:bg-[#09090b]/95 backdrop-blur-2xl border-l border-black/10 dark:border-white/12',
+                'shadow-[-20px_0_60px_rgba(0,0,0,0.15)] dark:shadow-[-20px_0_60px_rgba(0,0,0,0.95)]',
                 'flex flex-col justify-between',
                 'p-6 sm:p-8 pt-20 sm:pt-24',
                 'lg:hidden overflow-hidden'
@@ -294,7 +299,7 @@ export function Navigation() {
             >
               {/* Frosted Grain Texture Overlay inside Drawer */}
               <div
-                className="absolute inset-0 pointer-events-none frost-noise opacity-30 mix-blend-overlay"
+                className="absolute inset-0 pointer-events-none frost-noise opacity-20 dark:opacity-30 mix-blend-overlay"
                 aria-hidden="true"
               />
               {/* Close Button Inside Drawer */}
@@ -302,14 +307,14 @@ export function Navigation() {
                 type="button"
                 onClick={toggleMenu}
                 aria-label="Close menu"
-                className="absolute top-5 right-5 h-10 w-10 flex items-center justify-center rounded-full border border-white/10 text-white hover:border-white/30 transition-colors"
+                className="absolute top-5 right-5 h-10 w-10 flex items-center justify-center rounded-full border border-black/10 dark:border-white/10 text-zinc-900 dark:text-white hover:border-black/30 dark:hover:border-white/30 transition-colors"
               >
                 <X className="h-5 w-5" />
               </button>
 
               {/* Navigation Items */}
               <nav aria-label="Mobile navigation" className="space-y-4">
-                <p className="font-inter text-[10px] uppercase tracking-[0.24em] text-white/40 mb-4">
+                <p className="font-inter text-[10px] uppercase tracking-[0.24em] text-zinc-500 dark:text-white/40 mb-4">
                   Navigation
                 </p>
                 <ul className="space-y-2">
@@ -322,7 +327,9 @@ export function Navigation() {
                           onClick={() => setMenuOpen(false)}
                           className={cn(
                             'block py-2.5 text-base sm:text-lg font-fraunces transition-colors duration-200',
-                            isActive ? 'text-white pl-2 border-l border-white font-normal' : 'text-zinc-400 hover:text-white'
+                            isActive
+                              ? 'text-zinc-950 dark:text-white pl-2 border-l border-zinc-950 dark:border-white font-normal'
+                              : 'text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white'
                           )}
                         >
                           {label}
@@ -332,21 +339,21 @@ export function Navigation() {
                   })}
 
                   {/* Auth Mobile Item */}
-                  <li className="pt-3 border-t border-white/10">
+                  <li className="pt-3 border-t border-black/10 dark:border-white/10">
                     {currentUser ? (
                       <Link
                         href="/account"
                         onClick={() => setMenuOpen(false)}
-                        className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-white/20 bg-white/10 text-xs font-inter uppercase tracking-wider text-white"
+                        className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-black/15 dark:border-white/20 bg-black/[0.04] dark:bg-white/10 text-xs font-inter uppercase tracking-wider text-zinc-900 dark:text-white"
                       >
-                        <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                        <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400" />
                         <span>My Account ({currentUser.user_metadata?.full_name?.split(' ')[0] || 'Client'})</span>
                       </Link>
                     ) : (
                       <Link
                         href="/sign-in"
                         onClick={() => setMenuOpen(false)}
-                        className="block py-2 text-base font-fraunces text-white/80 hover:text-white"
+                        className="block py-2 text-base font-fraunces text-zinc-800 dark:text-white/80 hover:text-black dark:hover:text-white"
                       >
                         Sign In →
                       </Link>
@@ -355,18 +362,25 @@ export function Navigation() {
                 </ul>
               </nav>
 
-              {/* Mobile Drawer Footer CTA */}
-              <div className="pt-6 border-t border-white/10 space-y-4">
+              {/* Mobile Drawer Footer CTA & Theme Switcher */}
+              <div className="pt-6 border-t border-black/10 dark:border-white/10 space-y-4">
+                <div className="flex items-center justify-between px-1">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
+                    Appearance
+                  </span>
+                  <ThemeToggle showLabel />
+                </div>
+
                 <Link
                   href="/contact"
                   onClick={() => setMenuOpen(false)}
                   className={cn(
                     'w-full flex items-center justify-center gap-2',
                     'font-inter text-xs font-semibold uppercase tracking-[0.14em]',
-                    'text-black bg-white rounded-full',
+                    'text-[#F7F6F2] bg-[#141416] dark:text-black dark:bg-white rounded-full',
                     'py-3 px-6 text-center leading-snug',
-                    'shadow-[0_0_24px_rgba(255,255,255,0.18)]',
-                    'transition-all duration-300 hover:bg-zinc-200'
+                    'shadow-[0_4px_16px_rgba(0,0,0,0.12)] dark:shadow-[0_0_24px_rgba(255,255,255,0.18)]',
+                    'transition-all duration-300 hover:bg-zinc-800 dark:hover:bg-zinc-200'
                   )}
                 >
                   <span>Apply for a Strategy Call</span>

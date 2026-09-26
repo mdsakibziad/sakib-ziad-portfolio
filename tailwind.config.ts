@@ -12,17 +12,17 @@ const config: Config = {
     extend: {
       // ── Pure Monochromatic Liquid-Glass Palette (Black, White, Zinc) ───────────
       colors: {
-        background: '#070707',
-        surface:    '#111111',
-        'surface-elevated': '#171717',
-        ivory:      '#FFFFFF',
-        muted:      '#A1A1AA', // zinc-400: High contrast, WCAG AA compliant
-        'muted-light': '#D4D4D8', // zinc-300: Crisp secondary body
-        border:     'rgba(255, 255, 255, 0.08)',
-        'border-strong': 'rgba(255, 255, 255, 0.16)',
-        glass:      'rgba(255, 255, 255, 0.03)',
-        'glass-border': 'rgba(255, 255, 255, 0.12)',
-        'glass-highlight': 'rgba(255, 255, 255, 0.22)',
+        background: 'var(--color-background)',
+        surface:    'var(--color-surface)',
+        'surface-elevated': 'var(--color-surface-elevated)',
+        ivory:      'var(--color-ivory)',
+        muted:      'var(--color-muted)',
+        'muted-light': 'var(--color-muted-light)',
+        border:     'var(--color-border)',
+        'border-strong': 'var(--color-border-strong)',
+        glass:      'var(--color-glass)',
+        'glass-border': 'var(--color-glass-border)',
+        'glass-highlight': 'var(--color-glass-highlight)',
       },
 
       // ── Typography ────────────────────────────────────────────────────────────

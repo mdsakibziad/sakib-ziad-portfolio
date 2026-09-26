@@ -48,13 +48,13 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
             // Layout & shape
             'w-full rounded-xl px-4 py-3',
             // Typography
-            'font-inter text-body-md text-ivory placeholder:text-ivory/25',
+            'font-inter text-body-md text-ivory placeholder:text-muted',
             // Background & border — matches Input component exactly
-            'bg-surface border border-ivory/20',
+            'bg-surface border border-border',
             // Resize behaviour — vertical only
             'resize-y min-h-[120px]',
             // Focus state — monochrome liquid-glass ring
-            'focus:outline-none focus:border-white/50 focus:ring-1 focus:ring-white/20',
+            'focus:outline-none focus:border-border-strong focus:ring-1 focus:ring-border-strong',
             // Error state
             error && 'border-red-400/50 focus:border-red-400/70 focus:ring-red-400/20',
             // Disabled state

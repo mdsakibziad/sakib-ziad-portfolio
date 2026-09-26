@@ -99,14 +99,14 @@ export default function ConsultingPage() {
   ]
 
   return (
-    <div className="bg-background text-ivory min-h-screen selection:bg-white selection:text-black pt-28">
+    <div className="bg-background text-ivory min-h-screen selection:bg-[#141416] selection:text-white dark:selection:bg-white dark:selection:text-black pt-28">
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="section-pad border-b border-white/[0.08]" aria-label="Consulting Hero">
+      <section className="section-pad border-b border-black/[0.08] dark:border-white/[0.08]" aria-label="Consulting Hero">
         <div className="container-luxury">
           <div className="max-w-4xl">
             <RevealSection>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full liquid-glass-pill text-[11px] uppercase tracking-[0.2em] text-white/80 mb-8">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full liquid-glass-pill text-[11px] uppercase tracking-[0.2em] text-zinc-700 dark:text-white/80 mb-8">
                 Private Advisory & Infrastructure
               </div>
             </RevealSection>
@@ -114,20 +114,20 @@ export default function ConsultingPage() {
             <RevealSection delay={0.1}>
               <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
                 Strategic AI Counsel for Beauty Brands That{' '}
-                <span className="italic font-fraunces font-light text-zinc-300">
+                <span className="italic font-fraunces font-light text-zinc-600 dark:text-zinc-300">
                   Mean Business.
                 </span>
               </h1>
             </RevealSection>
 
             <RevealSection delay={0.2}>
-              <p className="body-editorial text-lg sm:text-xl text-zinc-300 max-w-2xl mb-10">
+              <p className="body-editorial text-lg sm:text-xl text-zinc-700 dark:text-zinc-300 max-w-2xl mb-10">
                 High-touch advisory spanning AI-native creative direction, campaign audits, and autonomous agent pipelines — engineered to make your creative operations unstoppable.
               </p>
             </RevealSection>
 
             <RevealSection delay={0.3}>
-              <Button asChild variant="default" size="lg" className="w-full sm:w-auto">
+              <Button asChild variant="gold" size="lg" className="w-full sm:w-auto">
                 <a href="#application" className="flex items-center justify-center gap-2">
                   <span>Apply for Advisory Call</span>
                   <ArrowRight className="w-4 h-4" />
@@ -142,23 +142,23 @@ export default function ConsultingPage() {
       <section className="section-pad bg-surface/30" aria-label="Qualification">
         <div className="container-luxury">
           <RevealSection className="text-center max-w-2xl mx-auto mb-16">
-            <p className="eyebrow-luxury mb-4">Mutual Fit</p>
-            <h2 className="heading-section">Selective by Necessity</h2>
-            <p className="body-muted text-zinc-400">We protect outcomes by only partnering where we know we can create 10× leverage.</p>
+            <p className="eyebrow-luxury mb-4 text-zinc-500 dark:text-zinc-400">Mutual Fit</p>
+            <h2 className="heading-section text-[#141416] dark:text-white">Selective by Necessity</h2>
+            <p className="body-muted text-zinc-600 dark:text-zinc-400">We protect outcomes by only partnering where we know we can create 10× leverage.</p>
           </RevealSection>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
             {/* IS FOR */}
             <RevealSection delay={0.1}>
-              <div className="card-surface p-6 sm:p-10 h-full border-white/10">
+              <div className="card-surface p-6 sm:p-10 h-full border-black/10 dark:border-white/10">
                 <div className="flex items-center gap-3 mb-6">
-                  <CheckCircle2 className="w-6 h-6 text-white" />
-                  <h3 className="heading-card text-2xl text-white">This Is For You If</h3>
+                  <CheckCircle2 className="w-6 h-6 text-emerald-600 dark:text-white" />
+                  <h3 className="heading-card text-2xl text-[#141416] dark:text-white">This Is For You If</h3>
                 </div>
                 <ul className="space-y-4">
                   {isFor.map((item) => (
-                    <li key={item} className="flex items-start gap-3 body-editorial text-sm sm:text-base text-zinc-300">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/60 shrink-0 mt-2.5" />
+                    <li key={item} className="flex items-start gap-3 body-editorial text-sm sm:text-base text-zinc-700 dark:text-zinc-300">
+                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/60 dark:bg-white/60 shrink-0 mt-2.5" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -168,15 +168,15 @@ export default function ConsultingPage() {
 
             {/* IS NOT FOR */}
             <RevealSection delay={0.2}>
-              <div className="card-surface p-6 sm:p-10 h-full border-white/10">
+              <div className="card-surface p-6 sm:p-10 h-full border-black/10 dark:border-white/10">
                 <div className="flex items-center gap-3 mb-6">
-                  <XCircle className="w-6 h-6 text-zinc-500" />
-                  <h3 className="heading-card text-2xl text-white">This Is Not For You If</h3>
+                  <XCircle className="w-6 h-6 text-zinc-400 dark:text-zinc-500" />
+                  <h3 className="heading-card text-2xl text-[#141416] dark:text-white">This Is Not For You If</h3>
                 </div>
                 <ul className="space-y-4">
                   {isNotFor.map((item) => (
-                    <li key={item} className="flex items-start gap-3 body-editorial text-sm sm:text-base text-zinc-400">
-                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-600 shrink-0 mt-2.5" />
+                    <li key={item} className="flex items-start gap-3 body-editorial text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600 shrink-0 mt-2.5" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -188,43 +188,43 @@ export default function ConsultingPage() {
       </section>
 
       {/* ── Scope of Work (The Two Pillars) ─────────────────────────────────── */}
-      <section className="section-pad border-t border-white/[0.08]" aria-label="Scope of Work">
+      <section className="section-pad border-t border-black/[0.08] dark:border-white/[0.08]" aria-label="Scope of Work">
         <div className="container-luxury">
           <RevealSection className="text-center max-w-2xl mx-auto mb-16">
-            <p className="eyebrow-luxury mb-4">Advisory Scope</p>
-            <h2 className="heading-section">Two Pillars. One Strategic Partner.</h2>
-            <p className="body-muted text-zinc-400">Artistic direction engineered with computational leverage.</p>
+            <p className="eyebrow-luxury mb-4 text-zinc-500 dark:text-zinc-400">Advisory Scope</p>
+            <h2 className="heading-section text-[#141416] dark:text-white">Two Pillars. One Strategic Partner.</h2>
+            <p className="body-muted text-zinc-600 dark:text-zinc-400">Artistic direction engineered with computational leverage.</p>
           </RevealSection>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
             {/* PILLAR 1 */}
             <RevealSection delay={0.1}>
-              <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-white/10">
+              <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-black/10 dark:border-white/10">
                 <div>
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/15 flex items-center justify-center text-white">
+                    <div className="w-12 h-12 rounded-xl bg-black/[0.04] dark:bg-white/[0.05] border border-black/10 dark:border-white/15 flex items-center justify-center text-zinc-900 dark:text-white">
                       <Sparkles className="w-6 h-6 stroke-[1.5]" />
                     </div>
                     <div>
-                      <span className="eyebrow-luxury text-[10px]">Pillar 01</span>
-                      <h3 className="heading-card text-xl sm:text-2xl">AI Creative Strategy & Direction</h3>
+                      <span className="eyebrow-luxury text-[10px] text-zinc-500 dark:text-zinc-400">Pillar 01</span>
+                      <h3 className="heading-card text-xl sm:text-2xl text-[#141416] dark:text-white">AI Creative Strategy & Direction</h3>
                     </div>
                   </div>
-                  <ul className="space-y-3.5 body-editorial text-sm sm:text-base text-zinc-300">
+                  <ul className="space-y-3.5 body-editorial text-sm sm:text-base text-zinc-700 dark:text-zinc-300">
                     <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/50 shrink-0 mt-2" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
                       <span>Proprietary prompt taxonomies calibrated to cosmetic physics and packaging caustics</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/50 shrink-0 mt-2" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
                       <span>High-fashion visual worldbuilding and editorial moodboard synthesis</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/50 shrink-0 mt-2" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
                       <span>Internal team training on diffusion models (Midjourney, Flux, Stable Diffusion)</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/50 shrink-0 mt-2" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
                       <span>Creative audits ensuring brand defensibility and eliminating synthetic artifacting</span>
                     </li>
                   </ul>
@@ -234,32 +234,32 @@ export default function ConsultingPage() {
 
             {/* PILLAR 2 */}
             <RevealSection delay={0.2}>
-              <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-white/10">
+              <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-black/10 dark:border-white/10">
                 <div>
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/15 flex items-center justify-center text-white">
+                    <div className="w-12 h-12 rounded-xl bg-black/[0.04] dark:bg-white/[0.05] border border-black/10 dark:border-white/15 flex items-center justify-center text-zinc-900 dark:text-white">
                       <Bot className="w-6 h-6 stroke-[1.5]" />
                     </div>
                     <div>
-                      <span className="eyebrow-luxury text-[10px]">Pillar 02</span>
-                      <h3 className="heading-card text-xl sm:text-2xl">Autonomous Agents & Brand Systems</h3>
+                      <span className="eyebrow-luxury text-[10px] text-zinc-500 dark:text-zinc-400">Pillar 02</span>
+                      <h3 className="heading-card text-xl sm:text-2xl text-[#141416] dark:text-white">Autonomous Agents & Brand Systems</h3>
                     </div>
                   </div>
-                  <ul className="space-y-3.5 body-editorial text-sm sm:text-base text-zinc-300">
+                  <ul className="space-y-3.5 body-editorial text-sm sm:text-base text-zinc-700 dark:text-zinc-300">
                     <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/50 shrink-0 mt-2" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
                       <span>Automated customer review & sentiment ingestion mapped directly to visual briefs</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/50 shrink-0 mt-2" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
                       <span>Custom Make.com and n8n orchestration connecting APIs and diffusion pipelines</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/50 shrink-0 mt-2" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
                       <span>Prestige skincare tone-of-voice copy models for ad scripts and retention copy</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/50 shrink-0 mt-2" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
                       <span>Autonomous multi-aspect ratio rendering pipelines for seamless omnichannel distribution</span>
                     </li>
                   </ul>
@@ -270,11 +270,11 @@ export default function ConsultingPage() {
 
           {/* Studio Production Callout */}
           <RevealSection>
-            <div className="card-surface p-8 sm:p-12 border-white/15 bg-surface-elevated/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="card-surface p-8 sm:p-12 border-black/10 dark:border-white/15 bg-white/80 dark:bg-surface-elevated/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[0_4px_24px_rgba(0,0,0,0.04)] dark:shadow-none">
               <div className="max-w-2xl">
-                <span className="eyebrow-luxury mb-2 block">Production Alternative</span>
-                <h4 className="heading-card text-2xl text-white mb-2">Looking for Done-For-You Campaign Production?</h4>
-                <p className="body-muted text-zinc-300">
+                <span className="eyebrow-luxury mb-2 block text-zinc-500 dark:text-zinc-400">Production Alternative</span>
+                <h4 className="heading-card text-2xl text-[#141416] dark:text-white mb-2">Looking for Done-For-You Campaign Production?</h4>
+                <p className="body-muted text-zinc-600 dark:text-zinc-300">
                   If you need a full creative studio to concept and execute complete campaigns rather than advisory guidance, visit Witlyn — my full-service AI-native creative studio.
                 </p>
               </div>
@@ -290,42 +290,42 @@ export default function ConsultingPage() {
       </section>
 
       {/* ── Engagement Structures ───────────────────────────────────────────── */}
-      <section className="section-pad bg-surface/30 border-t border-white/[0.08]" aria-label="Engagements">
+      <section className="section-pad bg-surface/30 border-t border-black/[0.08] dark:border-white/[0.08]" aria-label="Engagements">
         <div className="container-luxury">
           <RevealSection className="text-center max-w-2xl mx-auto mb-16">
-            <p className="eyebrow-luxury mb-4">Structure</p>
-            <h2 className="heading-section">How We Work Together</h2>
-            <p className="body-muted text-zinc-400">Structured for depth and partner-level attention.</p>
+            <p className="eyebrow-luxury mb-4 text-zinc-500 dark:text-zinc-400">Structure</p>
+            <h2 className="heading-section text-[#141416] dark:text-white">How We Work Together</h2>
+            <p className="body-muted text-zinc-600 dark:text-zinc-400">Structured for depth and partner-level attention.</p>
           </RevealSection>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
             {engagements.map((eng, idx) => (
               <RevealSection key={eng.num} delay={idx * 0.1}>
-                <div className="card-surface p-6 sm:p-8 flex flex-col justify-between h-full border-white/10">
+                <div className="card-surface p-6 sm:p-8 flex flex-col justify-between h-full border-black/10 dark:border-white/10">
                   <div>
                     <div className="flex items-center justify-between mb-6">
-                      <span className="font-fraunces text-2xl text-white/40">{eng.num}</span>
-                      <span className="px-3 py-1 rounded-full text-[10px] font-inter uppercase tracking-wider bg-white/10 border border-white/15 text-white">
+                      <span className="font-fraunces text-2xl text-zinc-400 dark:text-white/40">{eng.num}</span>
+                      <span className="px-3 py-1 rounded-full text-[10px] font-inter uppercase tracking-wider bg-black/[0.04] dark:bg-white/10 border border-black/10 dark:border-white/15 text-zinc-900 dark:text-white">
                         {eng.badge}
                       </span>
                     </div>
 
-                    <h3 className="heading-card text-xl sm:text-2xl mb-3 text-white">{eng.title}</h3>
-                    <p className="body-muted text-xs sm:text-sm text-zinc-400 mb-6">{eng.ideal}</p>
+                    <h3 className="heading-card text-xl sm:text-2xl mb-3 text-[#141416] dark:text-white">{eng.title}</h3>
+                    <p className="body-muted text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mb-6">{eng.ideal}</p>
 
-                    <ul className="space-y-3 pt-6 border-t border-white/10 mb-8 body-editorial text-xs sm:text-sm text-zinc-300">
+                    <ul className="space-y-3 pt-6 border-t border-black/[0.08] dark:border-white/10 mb-8 body-editorial text-xs sm:text-sm text-zinc-700 dark:text-zinc-300">
                       {eng.features.map((feat) => (
                         <li key={feat} className="flex items-start gap-2.5">
-                          <CheckCircle2 className="w-4 h-4 text-white/70 shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-4 h-4 text-zinc-700 dark:text-white/70 shrink-0 mt-0.5" />
                           <span>{feat}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="pt-6 border-t border-white/10">
-                    <span className="eyebrow-luxury text-[10px] text-zinc-400 block mb-1">Pricing Model</span>
-                    <p className="font-inter text-xs text-zinc-300 font-medium">{eng.investment}</p>
+                  <div className="pt-6 border-t border-black/[0.08] dark:border-white/10">
+                    <span className="eyebrow-luxury text-[10px] text-zinc-500 dark:text-zinc-400 block mb-1">Pricing Model</span>
+                    <p className="font-inter text-xs text-zinc-700 dark:text-zinc-300 font-medium">{eng.investment}</p>
                   </div>
                 </div>
               </RevealSection>

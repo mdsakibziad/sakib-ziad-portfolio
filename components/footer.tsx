@@ -55,7 +55,7 @@ export function Footer() {
   return (
     <footer
       className={cn(
-        'relative bg-background border-t border-white/[0.08]',
+        'relative bg-background border-t border-black/[0.08] dark:border-white/[0.08]',
         'overflow-hidden'
       )}
       role="contentinfo"
@@ -64,10 +64,10 @@ export function Footer() {
       {/* Subtle liquid-glass background light sheen */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-40"
+        className="pointer-events-none absolute inset-0 opacity-40 dark:opacity-40"
         style={{
           background:
-            'radial-gradient(ellipse 70% 30% at 50% 0%, rgba(255,255,255,0.04) 0%, transparent 70%)',
+            'radial-gradient(ellipse 70% 30% at 50% 0%, rgba(20,20,22,0.02) 0%, transparent 70%)',
         }}
       />
 
@@ -81,7 +81,7 @@ export function Footer() {
             <Link
               href="/"
               className={cn(
-                'inline-block font-fraunces font-light text-white text-3xl lg:text-4xl',
+                'inline-block font-fraunces font-light text-zinc-900 dark:text-white text-3xl lg:text-4xl',
                 'tracking-tight leading-none',
                 'transition-opacity duration-300 hover:opacity-75'
               )}
@@ -91,7 +91,7 @@ export function Footer() {
             </Link>
 
             {/* Positioning tagline */}
-            <p className="font-inter text-sm text-zinc-400 max-w-xs leading-relaxed">
+            <p className="font-inter text-sm text-zinc-600 dark:text-zinc-400 max-w-xs leading-relaxed">
               Helping beauty &amp; skincare brands compound their growth through AI-native creative systems and intelligent automation.
             </p>
 
@@ -101,8 +101,8 @@ export function Footer() {
               className={cn(
                 'inline-flex items-center gap-2',
                 'font-inter text-xs uppercase tracking-widest',
-                'text-white/80 transition-all duration-300',
-                'hover:text-white hover:gap-3',
+                'text-zinc-700 dark:text-white/80 transition-all duration-300',
+                'hover:text-black dark:hover:text-white hover:gap-3',
                 'group'
               )}
               aria-label={`Email Sakib at ${CONTACT_EMAIL}`}
@@ -123,11 +123,11 @@ export function Footer() {
                   aria-label={`${label}: ${handle}`}
                   className={cn(
                     'flex items-center justify-center',
-                    'h-10 w-10 rounded-full border border-white/10 bg-white/[0.03]',
-                    'text-zinc-400',
+                    'h-10 w-10 rounded-full border border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.03]',
+                    'text-zinc-600 dark:text-zinc-400',
                     'transition-all duration-300',
-                    'hover:text-white hover:border-white/30 hover:bg-white/[0.08]',
-                    'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white'
+                    'hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 hover:bg-black/[0.06] dark:hover:bg-white/[0.08]',
+                    'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black dark:focus-visible:ring-white'
                   )}
                 >
                   <Icon className="h-4 w-4" aria-hidden="true" />
@@ -140,7 +140,7 @@ export function Footer() {
           <div className="md:col-span-5 lg:col-span-4 grid grid-cols-2 gap-8">
             {NAV_GROUPS.map(({ heading, links }) => (
               <div key={heading} className="space-y-4">
-                <p className="font-inter text-[11px] uppercase tracking-widest text-zinc-400 font-medium">
+                <p className="font-inter text-[11px] uppercase tracking-widest text-zinc-500 dark:text-zinc-400 font-medium">
                   {heading}
                 </p>
                 <ul className="space-y-2.5" role="list">
@@ -153,7 +153,7 @@ export function Footer() {
                             href={href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="font-inter text-sm text-zinc-400 transition-colors duration-200 hover:text-white inline-flex items-center gap-1"
+                            className="font-inter text-sm text-zinc-600 dark:text-zinc-400 transition-colors duration-200 hover:text-black dark:hover:text-white inline-flex items-center gap-1"
                           >
                             <span>{label}</span>
                             <ArrowUpRight className="h-3 w-3 opacity-60" />
@@ -161,7 +161,7 @@ export function Footer() {
                         ) : (
                           <Link
                             href={href}
-                            className="font-inter text-sm text-zinc-400 transition-colors duration-200 hover:text-white"
+                            className="font-inter text-sm text-zinc-600 dark:text-zinc-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
                           >
                             {label}
                           </Link>
@@ -176,10 +176,10 @@ export function Footer() {
 
           {/* ── Col 3: CTA Block ───────────────────────────────────────── */}
           <div className="md:col-span-3 lg:col-span-3 space-y-4">
-            <p className="font-inter text-[11px] uppercase tracking-widest text-zinc-400 font-medium">
+            <p className="font-inter text-[11px] uppercase tracking-widest text-zinc-500 dark:text-zinc-400 font-medium">
               Work Together
             </p>
-            <p className="font-fraunces font-light text-white text-xl lg:text-2xl leading-snug tracking-tight">
+            <p className="font-fraunces font-light text-zinc-900 dark:text-white text-xl lg:text-2xl leading-snug tracking-tight">
               Ready to build an AI-native brand system?
             </p>
             <Link
@@ -187,11 +187,11 @@ export function Footer() {
               className={cn(
                 'inline-flex items-center justify-center gap-2',
                 'font-inter text-xs font-semibold uppercase tracking-[0.14em]',
-                'text-black bg-white rounded-full',
+                'text-[#F7F6F2] bg-[#141416] dark:text-black dark:bg-white rounded-full',
                 'px-6 py-3 text-center leading-snug',
-                'shadow-[0_0_24px_rgba(255,255,255,0.18)]',
+                'shadow-[0_4px_16px_rgba(0,0,0,0.12)] dark:shadow-[0_0_24px_rgba(255,255,255,0.18)]',
                 'transition-all duration-300 ease-luxury group',
-                'hover:bg-zinc-200 hover:scale-[1.02] hover:shadow-[0_0_36px_rgba(255,255,255,0.3)]',
+                'hover:bg-zinc-800 dark:hover:bg-zinc-200 hover:scale-[1.02] hover:shadow-[0_6px_22px_rgba(0,0,0,0.18)] dark:hover:shadow-[0_0_36px_rgba(255,255,255,0.3)]',
                 'active:scale-[0.98]'
               )}
             >
@@ -224,7 +224,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/privacy"
-                  className="font-inter text-xs text-zinc-500 transition-colors duration-300 hover:text-white"
+                  className="font-inter text-xs text-zinc-500 transition-colors duration-300 hover:text-black dark:hover:text-white"
                 >
                   Privacy Policy
                 </Link>
@@ -232,7 +232,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/terms"
-                  className="font-inter text-xs text-zinc-500 transition-colors duration-300 hover:text-white"
+                  className="font-inter text-xs text-zinc-500 transition-colors duration-300 hover:text-black dark:hover:text-white"
                 >
                   Terms of Use
                 </Link>
@@ -244,7 +244,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className={cn(
                     'inline-flex items-center gap-1',
-                    'font-inter text-xs text-zinc-400 transition-colors duration-300 hover:text-white',
+                    'font-inter text-xs text-zinc-500 dark:text-zinc-400 transition-colors duration-300 hover:text-black dark:hover:text-white',
                     'group'
                   )}
                   aria-label="Visit Witlyn (opens in new tab)"

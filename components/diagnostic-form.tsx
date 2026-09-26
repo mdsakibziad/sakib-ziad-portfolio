@@ -37,11 +37,11 @@ function FieldLabel({
   return (
     <label
       htmlFor={htmlFor}
-      className="block font-inter text-xs font-medium tracking-widest uppercase text-ivory/40 mb-2"
+      className="block font-inter text-xs font-medium tracking-widest uppercase text-muted mb-2"
     >
       {children}
       {optional && (
-        <span className="ml-2 normal-case tracking-normal text-ivory/25 font-normal">
+        <span className="ml-2 normal-case tracking-normal text-muted/60 font-normal">
           (optional)
         </span>
       )}
@@ -50,13 +50,13 @@ function FieldLabel({
 }
 
 const sharedInputClass = `
-  w-full bg-white/[0.03] border border-white/10
-  font-inter text-sm text-ivory placeholder:text-ivory/20
+  w-full bg-surface border border-border
+  font-inter text-sm text-ivory placeholder:text-muted
   px-4 py-3.5 rounded-xl
   outline-none
   transition-all duration-300
-  focus:border-white/50 focus:ring-1 focus:ring-white/20
-  hover:border-white/20
+  focus:border-border-strong focus:ring-1 focus:ring-border-strong
+  hover:border-border-strong
 `.trim();
 
 /* ─────────────────────────────────────────────

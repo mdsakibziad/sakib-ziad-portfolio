@@ -32,34 +32,25 @@ export function CondensationDivider({
       {/* ── Base Frosted Glass Seam ────────────────────────────────────────── */}
       <div className="relative w-full h-[1px]">
         {/* Hairline gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/18 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 dark:via-white/18 to-transparent" />
         
         {/* Subtle Frosted Moisture Band along center */}
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 max-w-2xl h-[3px] rounded-full pointer-events-none"
-          style={{
-            background:
-              'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.08) 50%, transparent 100%)',
-            filter: 'blur(1px)',
-          }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 max-w-2xl h-[3px] rounded-full pointer-events-none bg-gradient-to-r from-transparent via-black/[0.03] dark:via-white/[0.08] to-transparent blur-[1px]"
         />
 
         {/* ── Static Micro-Condensation Beads (Chilled Glass Texture) ──────── */}
         <span
-          className="absolute -top-[1px] left-[32%] w-[2px] h-[2px] rounded-full bg-white/50"
-          style={{ boxShadow: '0 0 3px rgba(255, 255, 255, 0.6)' }}
+          className="absolute -top-[1px] left-[32%] w-[2px] h-[2px] rounded-full bg-white dark:bg-white/50 shadow-[0_1px_2px_rgba(0,0,0,0.15)] dark:shadow-[0_0_3px_rgba(255,255,255,0.6)]"
         />
         <span
-          className="absolute -top-[1.5px] left-[45%] w-[3px] h-[3px] rounded-full bg-white/40"
-          style={{ boxShadow: '0 0 4px rgba(255, 255, 255, 0.5)' }}
+          className="absolute -top-[1.5px] left-[45%] w-[3px] h-[3px] rounded-full bg-white dark:bg-white/40 shadow-[0_1px_2px_rgba(0,0,0,0.15)] dark:shadow-[0_0_4px_rgba(255,255,255,0.5)]"
         />
         <span
-          className="absolute -top-[1px] left-[58%] w-[2px] h-[2px] rounded-full bg-white/45"
-          style={{ boxShadow: '0 0 3px rgba(255, 255, 255, 0.5)' }}
+          className="absolute -top-[1px] left-[58%] w-[2px] h-[2px] rounded-full bg-white dark:bg-white/45 shadow-[0_1px_2px_rgba(0,0,0,0.15)] dark:shadow-[0_0_3px_rgba(255,255,255,0.5)]"
         />
         <span
-          className="absolute -top-[1.5px] left-[78%] w-[2.5px] h-[2.5px] rounded-full bg-white/40"
-          style={{ boxShadow: '0 0 4px rgba(255, 255, 255, 0.4)' }}
+          className="absolute -top-[1.5px] left-[78%] w-[2.5px] h-[2.5px] rounded-full bg-white dark:bg-white/40 shadow-[0_1px_2px_rgba(0,0,0,0.15)] dark:shadow-[0_0_4px_rgba(255,255,255,0.4)]"
         />
 
         {/* ── Single Rare Active Condensation Droplet ──────────────────────── */}

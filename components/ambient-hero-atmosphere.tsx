@@ -57,32 +57,42 @@ export function AmbientHeroAtmosphere() {
       className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0"
       aria-hidden="true"
     >
-      {/* ── Cold Studio Horizon Specular Rim Light ─────────────────────────── */}
+      {/* ── Horizon Specular Rim Light (Tactile Refraction on Light, Specular Rim on Dark) ── */}
       <div
-        className="absolute top-[26%] left-1/2 -translate-x-1/2 w-[720px] sm:w-[950px] lg:w-[1200px] h-[1px] pointer-events-none"
-        style={{
-          background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.18) 50%, transparent 100%)',
-          filter: 'blur(1px)',
-        }}
+        className="absolute top-[26%] left-1/2 -translate-x-1/2 w-[720px] sm:w-[950px] lg:w-[1200px] h-[1px] pointer-events-none bg-gradient-to-r from-transparent via-black/[0.07] dark:via-white/[0.18] to-transparent blur-[0.5px]"
       />
 
-      {/* ── Cold Specular Ambient Core Glow (Centered) ────────────────────── */}
+      {/* ── Ambient Core Glow (Centered) ─────────────────────────────────── */}
+      {/* Light Mode Diffuse Warm Glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] sm:w-[650px] sm:h-[650px] lg:w-[850px] lg:h-[850px] rounded-full pointer-events-none animate-ambient-drift"
+        className="dark:hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] sm:w-[650px] sm:h-[650px] lg:w-[850px] lg:h-[850px] rounded-full pointer-events-none animate-ambient-drift blur-[60px]"
+        style={{
+          background:
+            'radial-gradient(circle, rgba(255, 255, 255, 0.85) 0%, rgba(235, 232, 224, 0.35) 45%, transparent 70%)',
+        }}
+      />
+      {/* Dark Mode Cold Specular Core */}
+      <div
+        className="hidden dark:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] sm:w-[650px] sm:h-[650px] lg:w-[850px] lg:h-[850px] rounded-full pointer-events-none animate-ambient-drift blur-[55px]"
         style={{
           background:
             'radial-gradient(circle, rgba(255, 255, 255, 0.075) 0%, rgba(240, 240, 248, 0.02) 38%, transparent 68%)',
-          filter: 'blur(55px)',
         }}
       />
 
       {/* ── Secondary Ambient Diffusion (Upper-Right Accent) ───────────────── */}
       <div
-        className="absolute top-[18%] right-[14%] w-[320px] h-[320px] sm:w-[450px] sm:h-[450px] rounded-full pointer-events-none animate-ambient-drift-alt"
+        className="dark:hidden absolute top-[18%] right-[14%] w-[320px] h-[320px] sm:w-[450px] sm:h-[450px] rounded-full pointer-events-none animate-ambient-drift-alt blur-[75px]"
+        style={{
+          background:
+            'radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(240, 238, 230, 0.2) 48%, transparent 70%)',
+        }}
+      />
+      <div
+        className="hidden dark:block absolute top-[18%] right-[14%] w-[320px] h-[320px] sm:w-[450px] sm:h-[450px] rounded-full pointer-events-none animate-ambient-drift-alt blur-[75px]"
         style={{
           background:
             'radial-gradient(circle, rgba(255, 255, 255, 0.045) 0%, rgba(240, 240, 248, 0.01) 48%, transparent 70%)',
-          filter: 'blur(75px)',
         }}
       />
 
@@ -103,46 +113,40 @@ export function AmbientHeroAtmosphere() {
             >
               {/* Faint trailing condensation streak above droplet */}
               <span
-                className="absolute left-1/2 -translate-x-1/2 pointer-events-none"
+                className="absolute left-1/2 -translate-x-1/2 pointer-events-none bg-gradient-to-t from-black/[0.08] dark:from-white/40 via-transparent to-transparent"
                 style={{
                   bottom: `${p.size - 1}px`,
                   width: '1px',
                   height: `${p.streakLength || 16}px`,
-                  background:
-                    'linear-gradient(to top, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.12) 60%, transparent 100%)',
                   opacity: p.opacity * 1.2,
                 }}
               />
-              {/* Droplet head with specular reflection */}
+              {/* Droplet head with dual-theme refraction and shadow depth */}
               <span
-                className="block rounded-full pointer-events-none"
+                className="block rounded-full pointer-events-none bg-white/95 dark:bg-white/[0.92] border border-black/10 dark:border-white/20 shadow-[0_2px_4px_rgba(0,0,0,0.12),inset_0_1px_1px_#ffffff] dark:shadow-[0_1px_3px_rgba(0,0,0,0.6),0_0_8px_rgba(255,255,255,0.45)]"
                 style={{
                   width: `${p.size}px`,
                   height: `${p.size * 1.15}px`,
-                  backgroundColor: 'rgba(255, 255, 255, 0.92)',
-                  opacity: p.opacity,
-                  filter: `blur(${p.blur}px)`,
-                  boxShadow: `0 1px 3px rgba(0, 0, 0, 0.6), 0 0 ${p.size * 2}px rgba(255, 255, 255, 0.45)`,
+                  opacity: p.opacity * 1.1,
+                  filter: `blur(${Math.max(0.3, p.blur * 0.6)}px)`,
                 }}
               />
             </div>
           )
         }
 
-        // Standard liquid bubble floating slowly upward
+        // Standard liquid bubble floating slowly upward (Tactile glass orb on light, luminous particle on dark)
         return (
           <span
             key={p.id}
-            className="absolute rounded-full pointer-events-none animate-liquid-bubble"
+            className="absolute rounded-full pointer-events-none animate-liquid-bubble bg-white/80 dark:bg-white/[0.85] border border-black/[0.08] dark:border-transparent shadow-[0_1px_4px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.9)] dark:shadow-[0_0_8px_rgba(255,255,255,0.35)]"
             style={{
               left: p.left,
               top: p.top,
               width: `${p.size}px`,
               height: `${p.size}px`,
-              backgroundColor: 'rgba(255, 255, 255, 0.85)',
               opacity: p.opacity,
-              filter: `blur(${p.blur}px)`,
-              boxShadow: `0 0 ${p.size * 2}px rgba(255, 255, 255, 0.35)`,
+              filter: `blur(${p.blur * 0.7}px)`,
               animationDuration: `${p.duration}s`,
               animationDelay: `-${p.delay}s`,
             }}

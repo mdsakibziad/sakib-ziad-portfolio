@@ -214,7 +214,7 @@ export default function HomePage() {
         <AmbientHeroAtmosphere />
 
         {/* Ambient Subtle Architectural Coordinate Guides */}
-        <div className="absolute top-32 left-8 lg:left-16 hidden sm:block text-[10px] font-mono tracking-[0.25em] text-white/30 select-none">
+        <div className="absolute top-32 left-8 lg:left-16 hidden sm:block text-[10px] font-mono tracking-[0.25em] text-zinc-400 dark:text-white/30 select-none">
           SYSTEM: AI-NATIVE CREATIVE ARCHITECTURE
         </div>
         <div className="absolute top-32 right-8 lg:right-16 hidden sm:block text-[10px] font-mono tracking-[0.25em] text-zinc-500 select-none">
@@ -231,10 +231,10 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: EASE_LUXURY }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/[0.04] backdrop-blur-md mb-8 shadow-[0_0_20px_rgba(255,255,255,0.05)]"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-black/10 dark:border-white/20 bg-black/[0.03] dark:bg-white/[0.04] backdrop-blur-md mb-8 shadow-[0_2px_12px_rgba(0,0,0,0.03)] dark:shadow-[0_0_20px_rgba(255,255,255,0.05)]"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-              <span className="eyebrow-luxury text-zinc-300">AI Creative Strategist for Beauty & Skincare</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white animate-pulse" />
+              <span className="eyebrow-luxury text-zinc-700 dark:text-zinc-300">AI Creative Strategist for Beauty & Skincare</span>
             </motion.div>
 
             {/* Main Dominant Headline Reveal — Fluid Responsive Clamp */}
@@ -247,7 +247,7 @@ export default function HomePage() {
                   className="block"
                 >
                   The AI{' '}
-                  <span className="italic font-fraunces text-white font-light pr-1">
+                  <span className="italic font-fraunces text-[#141416] dark:text-white font-light pr-1">
                     Creative Edge
                   </span>
                 </motion.span>
@@ -267,7 +267,7 @@ export default function HomePage() {
                   initial={{ y: '100%', opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.95, ease: EASE_LUXURY, delay: 0.45 }}
-                  className="block text-zinc-300 font-light"
+                  className="block text-zinc-600 dark:text-zinc-300 font-light"
                 >
                   Have Been Missing.
                 </motion.span>
@@ -279,11 +279,11 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, ease: EASE_LUXURY, delay: 0.6 }}
-              className="text-base sm:text-xl md:text-2xl text-zinc-300 font-light max-w-3xl mb-12 leading-[1.75] tracking-wide text-center"
+              className="text-base sm:text-xl md:text-2xl text-zinc-700 dark:text-zinc-300 font-light max-w-3xl mb-12 leading-[1.75] tracking-wide text-center"
             >
               I help beauty, skincare, and cosmetics brands compound their growth
               through{' '}
-              <span className="inline-block px-3 py-0.5 my-0.5 rounded-full bg-white/[0.05] border border-white/10 text-white font-normal backdrop-blur-sm shadow-[0_0_12px_rgba(255,255,255,0.06),inset_0_1px_0_rgba(255,255,255,0.15)] align-baseline">
+              <span className="inline-block px-3 py-0.5 my-0.5 rounded-full bg-black/[0.04] dark:bg-white/[0.05] border border-black/10 dark:border-white/10 text-zinc-900 dark:text-white font-normal backdrop-blur-sm shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_0_12px_rgba(255,255,255,0.06)] align-baseline">
                 AI-native creative systems
               </span>{' '}
               and autonomous brand intelligence.
@@ -320,25 +320,25 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════════
           SECTION 2 · THE STRATEGIC GAP (ASYMMETRIC 2-COLUMN SPLIT)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad relative bg-[#0A0A0A]" aria-label="The Gap">
+      <section className="section-pad relative bg-[#F7F6F2] dark:bg-[#0A0A0A]" aria-label="The Gap">
         <div className="container-luxury">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
             {/* Left Column: Bold Editorial Narrative Statement */}
             <div className="lg:col-span-7">
               <RevealSection>
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-white/20 bg-white/[0.04] text-[11px] uppercase tracking-[0.2em] text-zinc-300 mb-6 backdrop-blur-md">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-black/10 dark:border-white/20 bg-black/[0.03] dark:bg-white/[0.04] text-[11px] uppercase tracking-[0.2em] text-zinc-700 dark:text-zinc-300 mb-6 backdrop-blur-md">
                   The Structural Dilemma
                 </div>
                 <h2 className="heading-section text-3xl sm:text-4xl lg:text-5xl mb-8 leading-tight">
                   Most beauty brands are churning content.{' '}
-                  <span className="italic font-fraunces text-white font-light">
+                  <span className="italic font-fraunces text-zinc-900 dark:text-white font-light">
                     Almost none are architecting creative systems.
                   </span>
                 </h2>
               </RevealSection>
 
-              <RevealSection delay={0.1} className="space-y-6 body-editorial text-base sm:text-lg text-zinc-300 font-light">
+              <RevealSection delay={0.1} className="space-y-6 body-editorial text-base sm:text-lg text-zinc-700 dark:text-zinc-300 font-light">
                 <p>
                   The legacy beauty playbook — relying on 6-week agency production cycles, fragile retainer agreements, and disjointed creative rosters — is collapsing under the velocity of modern consumer attention.
                 </p>
@@ -351,39 +351,39 @@ export default function HomePage() {
             {/* Right Column: Architectural Paradigm Contrast Card */}
             <div className="lg:col-span-5">
               <RevealSection delay={0.2}>
-                <TiltCard className="card-surface p-8 sm:p-10 border-white/20 bg-surface/90 shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
-                  <div className="flex items-center justify-between border-b border-white/[0.08] pb-4 mb-6">
-                    <span className="eyebrow-luxury text-zinc-300">Operating Paradigm</span>
-                    <span className="font-mono text-xs text-muted-light">SHIFT ANALYSIS</span>
+                <TiltCard className="card-surface p-8 sm:p-10 border-black/10 dark:border-white/20 bg-white/90 dark:bg-surface/90 shadow-[0_8px_32px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
+                  <div className="flex items-center justify-between border-b border-black/[0.08] dark:border-white/[0.08] pb-4 mb-6">
+                    <span className="eyebrow-luxury text-zinc-700 dark:text-zinc-300">Operating Paradigm</span>
+                    <span className="font-mono text-xs text-zinc-500 dark:text-muted-light">SHIFT ANALYSIS</span>
                   </div>
 
                   <div className="space-y-6">
                     {/* Legacy Box */}
-                    <div className="p-4 rounded-xl bg-background/60 border border-white/[0.08]">
-                      <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-muted-light mb-2">
+                    <div className="p-4 rounded-xl bg-black/[0.03] dark:bg-background/60 border border-black/10 dark:border-white/[0.08]">
+                      <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-zinc-500 dark:text-muted-light mb-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-red-400/80" />
                         <span>Legacy Agency Production</span>
                       </div>
-                      <p className="font-inter text-xs sm:text-sm text-zinc-400 leading-relaxed font-light">
+                      <p className="font-inter text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-light">
                         6–8 week lead times, escalating per-asset costs, manual retouching bottlenecks, and generic ad creative that burns paid spend.
                       </p>
                     </div>
 
                     {/* AI-Native System Box */}
-                    <div className="p-4 rounded-xl bg-white/[0.06] border border-white/25">
-                      <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-white mb-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                    <div className="p-4 rounded-xl bg-black/[0.05] dark:bg-white/[0.06] border border-black/15 dark:border-white/25">
+                      <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-zinc-900 dark:text-white mb-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white animate-pulse" />
                         <span>AI-Native Creative System</span>
                       </div>
-                      <p className="font-inter text-xs sm:text-sm text-zinc-200 leading-relaxed font-light">
+                      <p className="font-inter text-xs sm:text-sm text-zinc-800 dark:text-zinc-200 leading-relaxed font-light">
                         Rapid concepting velocity, brand-calibrated prompt taxonomies, autonomous multi-format diffusion, and compounding creative equity owned entirely in-house.
                       </p>
                     </div>
                   </div>
 
-                  <div className="mt-8 pt-4 border-t border-white/[0.08] flex items-center justify-between text-[11px] font-mono text-muted-light">
-                    <span>STATUS: REVOLUTIONARY</span>
-                    <span className="text-zinc-300">WITLYN PROVEN</span>
+                  <div className="mt-8 pt-4 border-t border-black/[0.08] dark:border-white/[0.08] flex items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-muted-light">
+                    <span>APPROACH: COMPREHENSIVE</span>
+                    <span className="text-zinc-800 dark:text-zinc-300">WITLYN PROVEN</span>
                   </div>
                 </TiltCard>
               </RevealSection>
@@ -469,19 +469,20 @@ export default function HomePage() {
                           <span>Bespoke brand LoRAs & style guards</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-zinc-300 shrink-0" />
+                          <CheckCircle2 className="w-4 h-4 text-zinc-700 dark:text-zinc-300 shrink-0" />
                           <span>Packaging visualization & 3D renders</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-zinc-300 shrink-0" />
-                          <span>40+ commercial prompt blueprint repositories</span>
+                          <CheckCircle2 className="w-4 h-4 text-zinc-700 dark:text-zinc-300 shrink-0" />
+                          {/* Claim flagged pending owner verification: 40+ commercial prompt blueprint repositories */}
+                          <span>Curated commercial prompt blueprint repositories</span>
                         </div>
                       </div>
                     </div>
 
                     <Link
                       href="/work"
-                      className="inline-flex items-center justify-center gap-2 self-start h-11 px-7 rounded-full bg-white text-black font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury shadow-[0_0_24px_rgba(255,255,255,0.18)] hover:bg-zinc-200 hover:scale-[1.03] group/btn"
+                      className="inline-flex items-center justify-center gap-2 self-start h-11 px-7 rounded-full text-[#F7F6F2] bg-[#141416] dark:text-black dark:bg-white font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury shadow-[0_4px_16px_rgba(0,0,0,0.12)] dark:shadow-[0_0_24px_rgba(255,255,255,0.18)] hover:bg-zinc-800 dark:hover:bg-zinc-200 hover:scale-[1.03] group/btn"
                     >
                       <span>Explore Campaign Proof</span>
                       <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
@@ -494,35 +495,35 @@ export default function HomePage() {
 
             {/* PILLAR 2: CODE & SYSTEMS-LED ARCHITECTURAL BLOCK */}
             <RevealSection delay={0.2}>
-              <TiltCard className="card-surface p-8 sm:p-12 border-white/[0.08] bg-[#0E0E0D]">
+              <TiltCard className="card-surface p-8 sm:p-12 border-black/10 dark:border-white/[0.08] bg-[#FAF9F6] dark:bg-[#0E0E0D]">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                   
                   {/* Left: Editorial Narrative */}
                   <div className="lg:col-span-6 flex flex-col justify-between order-2 lg:order-1">
                     <div>
-                      <span className="eyebrow-luxury text-zinc-400 block mb-2">Operational Infrastructure</span>
-                      <h3 className="heading-card text-2xl sm:text-3xl mb-4 text-ivory">
+                      <span className="eyebrow-luxury text-zinc-500 dark:text-zinc-400 block mb-2">Operational Infrastructure</span>
+                      <h3 className="heading-card text-2xl sm:text-3xl mb-4 text-[#141416] dark:text-white">
                         Autonomous AI Brand Operations & Agent Pipelines
                       </h3>
-                      <p className="body-editorial text-base sm:text-lg mb-6 leading-relaxed text-zinc-300 font-light">
+                      <p className="body-editorial text-base sm:text-lg mb-6 leading-relaxed text-zinc-700 dark:text-zinc-300 font-light">
                         Transform your marketing department from a bottleneck into an autonomous generative studio. Custom agent pipelines that ingest customer sentiment, draft ad hooks, orchestrate diffusion engines, and output multi-channel campaigns with minimal human oversight.
                       </p>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 text-xs text-zinc-400 font-light">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 text-xs text-zinc-600 dark:text-zinc-400 font-light">
                         <div className="flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-zinc-300 shrink-0" />
+                          <CheckCircle2 className="w-4 h-4 text-zinc-700 dark:text-zinc-300 shrink-0" />
                           <span>Automated search intent ➔ visual brief synthesis</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-zinc-300 shrink-0" />
+                          <CheckCircle2 className="w-4 h-4 text-zinc-700 dark:text-zinc-300 shrink-0" />
                           <span>Make.com & n8n multi-model orchestration</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-zinc-300 shrink-0" />
+                          <CheckCircle2 className="w-4 h-4 text-zinc-700 dark:text-zinc-300 shrink-0" />
                           <span>Prestige skincare tone-of-voice copy models</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-zinc-300 shrink-0" />
+                          <CheckCircle2 className="w-4 h-4 text-zinc-700 dark:text-zinc-300 shrink-0" />
                           <span>Autonomous multi-aspect ratio rendering</span>
                         </div>
                       </div>
@@ -530,47 +531,47 @@ export default function HomePage() {
 
                     <Link
                       href="/consulting"
-                      className="inline-flex items-center justify-center gap-2 self-start h-11 px-7 rounded-full bg-white/[0.04] border border-white/20 text-white font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury hover:bg-white/10 hover:border-white/35 hover:scale-[1.03] group/btn"
+                      className="inline-flex items-center justify-center gap-2 self-start h-11 px-7 rounded-full bg-black/[0.04] dark:bg-white/[0.04] border border-black/15 dark:border-white/20 text-zinc-900 dark:text-white font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury hover:bg-black/[0.08] dark:hover:bg-white/10 hover:border-black/30 dark:hover:border-white/35 hover:scale-[1.03] group/btn"
                     >
                       <span>View Systems Scope</span>
                       <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
                     </Link>
                   </div>
 
-                  {/* Right: Interactive Pipeline Visual Schema */}
+                  {/* Right: Honest Agent Workflow Architecture Schema */}
                   <div className="lg:col-span-6 order-1 lg:order-2">
-                    <div className="p-6 rounded-2xl bg-[#090908] border border-white/[0.08] font-mono text-xs space-y-4">
-                      <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
-                        <div className="flex items-center gap-2 text-zinc-300">
-                          <Activity className="w-4 h-4 animate-pulse text-emerald-400" />
-                          <span className="font-semibold tracking-wider">PIPELINE TELEMETRY</span>
+                    <div className="p-6 rounded-2xl bg-white dark:bg-[#090908] border border-black/10 dark:border-white/[0.08] font-mono text-xs space-y-4 shadow-[0_4px_20px_rgba(0,0,0,0.04)] dark:shadow-none">
+                      <div className="flex items-center justify-between border-b border-black/[0.08] dark:border-white/[0.08] pb-3">
+                        <div className="flex items-center gap-2 text-zinc-900 dark:text-zinc-300">
+                          <Activity className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                          <span className="font-semibold tracking-wider">AGENT WORKFLOW ARCHITECTURE</span>
                         </div>
-                        <span className="text-[10px] text-muted-light">NODE 4/4 ACTIVE</span>
+                        <span className="text-[10px] text-zinc-500 dark:text-muted-light">STAGES 01–04</span>
                       </div>
 
                       {/* Pipeline steps */}
                       <div className="space-y-3">
-                        <div className="p-3 rounded-lg bg-surface/60 border border-white/[0.08] flex items-center justify-between">
-                          <span className="text-zinc-300">01 // Sentiment & Review Ingestion</span>
-                          <span className="text-emerald-400 text-[10px]">CONNECTED</span>
+                        <div className="p-3 rounded-lg bg-black/[0.02] dark:bg-surface/60 border border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between">
+                          <span className="text-zinc-800 dark:text-zinc-300 font-sans sm:font-mono text-xs">01 // Sentiment & Review Ingestion</span>
+                          <span className="text-emerald-600 dark:text-emerald-400 text-[10px] font-mono">CONNECTED</span>
                         </div>
-                        <div className="p-3 rounded-lg bg-surface/60 border border-white/[0.08] flex items-center justify-between">
-                          <span className="text-zinc-300">02 // Dynamic Prompt Formulation</span>
-                          <span className="text-zinc-300 text-[10px]">CALIBRATED</span>
+                        <div className="p-3 rounded-lg bg-black/[0.02] dark:bg-surface/60 border border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between">
+                          <span className="text-zinc-800 dark:text-zinc-300 font-sans sm:font-mono text-xs">02 // Dynamic Prompt Formulation</span>
+                          <span className="text-zinc-700 dark:text-zinc-300 text-[10px] font-mono">CALIBRATED</span>
                         </div>
-                        <div className="p-3 rounded-lg bg-surface/60 border border-white/[0.08] flex items-center justify-between">
-                          <span className="text-zinc-300">03 // Multi-Model Diffusion Render</span>
-                          <span className="text-zinc-300 text-[10px]">FLUX / MIDJOURNEY</span>
+                        <div className="p-3 rounded-lg bg-black/[0.02] dark:bg-surface/60 border border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between">
+                          <span className="text-zinc-800 dark:text-zinc-300 font-sans sm:font-mono text-xs">03 // Multi-Model Diffusion Render</span>
+                          <span className="text-zinc-700 dark:text-zinc-300 text-[10px] font-mono">FLUX / MIDJOURNEY</span>
                         </div>
-                        <div className="p-3 rounded-lg bg-white/[0.08] border border-white/20 flex items-center justify-between text-white">
-                          <span>04 // Multi-Channel Asset Dispatch</span>
-                          <span className="text-[10px] font-semibold text-emerald-400">AUTONOMOUS</span>
+                        <div className="p-3 rounded-lg bg-black/[0.05] dark:bg-white/[0.08] border border-black/15 dark:border-white/20 flex items-center justify-between text-zinc-950 dark:text-white">
+                          <span className="font-sans sm:font-mono text-xs">04 // Multi-Channel Asset Dispatch</span>
+                          <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 font-mono">AUTOMATED</span>
                         </div>
                       </div>
 
-                      <div className="pt-2 flex items-center justify-between text-[10px] text-muted-light border-t border-white/[0.08]">
-                        <span>LATENCY: ZERO BOTTLENECK</span>
-                        <span className="text-zinc-300">COMPOSITE ARCHITECTURE</span>
+                      <div className="pt-2 flex items-center justify-between text-[10px] text-zinc-500 dark:text-muted-light border-t border-black/[0.08] dark:border-white/[0.08]">
+                        <span>INTEGRATION: REST API / N8N</span>
+                        <span className="text-zinc-700 dark:text-zinc-300">CUSTOM BRAND ENGINE</span>
                       </div>
                     </div>
                   </div>
@@ -629,7 +630,7 @@ export default function HomePage() {
 
                 <Link
                   href="/consulting"
-                  className="inline-flex items-center justify-center gap-2 w-full h-12 px-6 rounded-full bg-white text-black font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury shadow-[0_0_24px_rgba(255,255,255,0.18)] hover:bg-zinc-200 hover:scale-[1.02] group/btn"
+                  className="inline-flex items-center justify-center gap-2 w-full h-12 px-6 rounded-full text-[#F7F6F2] bg-[#141416] dark:text-black dark:bg-white font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury shadow-[0_4px_16px_rgba(0,0,0,0.12)] dark:shadow-[0_0_24px_rgba(255,255,255,0.18)] hover:bg-zinc-800 dark:hover:bg-zinc-200 hover:scale-[1.02] group/btn"
                 >
                   <span>Apply for Advisory</span>
                   <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
@@ -639,38 +640,40 @@ export default function HomePage() {
 
             {/* Card 2: Digital Products (Technical Blueprint Model) */}
             <RevealSection delay={0.2}>
-              <TiltCard className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-white/[0.08] hover:border-white/30">
+              <TiltCard className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-black/10 dark:border-white/[0.08] hover:border-black/25 dark:hover:border-white/30">
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-surface border border-white/20 text-ivory/80">
+                    <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-black/[0.04] dark:bg-surface border border-black/10 dark:border-white/20 text-zinc-800 dark:text-ivory/80">
                       Self-Serve Systems
                     </span>
-                    <BookOpen className="w-4 h-4 text-zinc-400" />
+                    <BookOpen className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
                   </div>
-                  <h3 className="heading-card text-2xl mb-3 text-ivory">Digital Products & Kits</h3>
-                  <p className="body-muted text-sm mb-6 leading-relaxed">
+                  <h3 className="heading-card text-2xl mb-3 text-[#141416] dark:text-white">Digital Products & Kits</h3>
+                  <p className="body-muted text-sm mb-6 leading-relaxed text-zinc-600 dark:text-zinc-400">
                     Battle-tested prompt frameworks, art direction taxonomies, and ready-to-deploy Make/n8n automation blueprints developed directly for beauty brands.
                   </p>
 
-                  <div className="space-y-2.5 pt-4 border-t border-white/[0.08] mb-8 text-xs text-zinc-300 font-light">
+                  <div className="space-y-2.5 pt-4 border-t border-black/[0.08] dark:border-white/[0.08] mb-8 text-xs text-zinc-700 dark:text-zinc-300 font-light">
                     <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white" />
-                      <span>40+ tested prompt blueprints (Flux / Midjourney)</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white" />
+                      {/* Flagged claim pending owner verification: 40+ tested prompt blueprints */}
+                      <span>Tested prompt blueprints (Flux / Midjourney)</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white" />
                       <span>Turnkey agent scenario blueprints</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white" />
-                      <span>Immediate Notion repository access</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white" />
+                      {/* Flagged claim pending owner verification: Immediate Notion repository access */}
+                      <span>Structured resource repository access</span>
                     </div>
                   </div>
                 </div>
 
                 <Link
                   href="/digital-products"
-                  className="inline-flex items-center justify-center gap-2 w-full h-12 px-6 rounded-full bg-surface border border-white/20 text-ivory font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury hover:bg-white hover:text-black hover:scale-[1.02] group/btn"
+                  className="inline-flex items-center justify-center gap-2 w-full h-12 px-6 rounded-full bg-black/[0.04] dark:bg-surface border border-black/15 dark:border-white/20 text-zinc-900 dark:text-ivory font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury hover:bg-[#141416] hover:text-white dark:hover:bg-white dark:hover:text-black hover:scale-[1.02] group/btn"
                 >
                   <span>Enquire About Kits</span>
                   <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
@@ -680,30 +683,30 @@ export default function HomePage() {
 
             {/* Card 3: Membership (Syndicate Cohort Model) */}
             <RevealSection delay={0.3}>
-              <TiltCard className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-white/[0.08] hover:border-white/30">
+              <TiltCard className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-black/10 dark:border-white/[0.08] hover:border-black/25 dark:hover:border-white/30">
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-white/10 border border-white/20 text-zinc-200">
+                    <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-black/[0.04] dark:bg-white/10 border border-black/10 dark:border-white/20 text-zinc-800 dark:text-zinc-200">
                       Syndicate Access
                     </span>
-                    <Compass className="w-4 h-4 text-zinc-400" />
+                    <Compass className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
                   </div>
-                  <h3 className="heading-card text-2xl mb-3 text-ivory">The Advisory Syndicate</h3>
-                  <p className="body-muted text-sm mb-6 leading-relaxed">
+                  <h3 className="heading-card text-2xl mb-3 text-[#141416] dark:text-white">The Advisory Syndicate</h3>
+                  <p className="body-muted text-sm mb-6 leading-relaxed text-zinc-600 dark:text-zinc-400">
                     Ongoing monthly intelligence, emerging model setups, private template releases, and direct async guidance for brand leaders playing the long game.
                   </p>
 
-                  <div className="space-y-2.5 pt-4 border-t border-white/[0.08] mb-8 text-xs text-zinc-300 font-light">
+                  <div className="space-y-2.5 pt-4 border-t border-black/[0.08] dark:border-white/[0.08] mb-8 text-xs text-zinc-700 dark:text-zinc-300 font-light">
                     <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white" />
                       <span>Monthly strategic intelligence monographs</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white" />
                       <span>Curated founder roundtables & ad reviews</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white" />
                       <span>Direct async advisory channel access</span>
                     </div>
                   </div>
@@ -711,7 +714,7 @@ export default function HomePage() {
 
                 <Link
                   href="/membership"
-                  className="inline-flex items-center justify-center gap-2 w-full h-12 px-6 rounded-full bg-surface border border-white/20 text-zinc-200 font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury hover:bg-white hover:text-black hover:scale-[1.02] group/btn"
+                  className="inline-flex items-center justify-center gap-2 w-full h-12 px-6 rounded-full bg-black/[0.04] dark:bg-surface border border-black/15 dark:border-white/20 text-zinc-900 dark:text-zinc-200 font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury hover:bg-[#141416] hover:text-white dark:hover:bg-white dark:hover:text-black hover:scale-[1.02] group/btn"
                 >
                   <span>Explore Membership</span>
                   <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
@@ -723,13 +726,13 @@ export default function HomePage() {
 
           {/* Explicit Witlyn Distinction Callout */}
           <RevealSection delay={0.4} className="mt-14 text-center">
-            <div className="inline-flex items-center flex-wrap justify-center gap-2 px-6 py-3 rounded-full border border-white/[0.08] bg-surface/50 text-xs font-inter text-muted-light">
+            <div className="inline-flex items-center flex-wrap justify-center gap-2 px-6 py-3 rounded-full border border-black/10 dark:border-white/[0.08] bg-black/[0.02] dark:bg-surface/50 text-xs font-inter text-zinc-600 dark:text-muted-light">
               <span>Looking for full-service AI creative production or done-for-you monthly retainers?</span>
               <a
                 href="https://witlyn.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white font-medium hover:underline inline-flex items-center gap-1"
+                className="text-zinc-950 dark:text-white font-medium hover:underline inline-flex items-center gap-1"
               >
                 <span>Visit Witlyn Studio</span>
                 <ArrowUpRight className="w-3 h-3" />
@@ -914,44 +917,44 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════════
           SECTION 6 · METHODOLOGY (CONNECTED VISUAL TIMELINE)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad bg-[#0E0E0D]" aria-label="Methodology">
+      <section className="section-pad bg-[#F7F6F2] dark:bg-[#0E0E0D]" aria-label="Methodology">
         <div className="container-luxury">
           <RevealSection className="text-center max-w-2xl mx-auto mb-20">
-            <p className="eyebrow-luxury text-zinc-400 mb-3">Architectural Sequence</p>
-            <h2 className="heading-section text-3xl sm:text-4xl">The Path to Compounding Leverage</h2>
-            <p className="body-muted text-sm sm:text-base">A disciplined sequence moving from forensic diagnosis to automated production.</p>
+            <p className="eyebrow-luxury text-zinc-500 dark:text-zinc-400 mb-3">Architectural Sequence</p>
+            <h2 className="heading-section text-3xl sm:text-4xl text-[#141416] dark:text-white">The Path to Compounding Leverage</h2>
+            <p className="body-muted text-sm sm:text-base text-zinc-600 dark:text-zinc-400">A disciplined sequence moving from forensic diagnosis to automated production.</p>
           </RevealSection>
 
           {/* Connected Sequence Flow with Liquid-Glass Progress Track */}
           <div className="relative">
             {/* Horizontal Connecting Line (Desktop) */}
-            <div className="hidden lg:block absolute top-[44px] left-[5%] right-[5%] h-px bg-gradient-to-r from-white/5 via-white/20 to-white/5 z-0" />
+            <div className="hidden lg:block absolute top-[44px] left-[5%] right-[5%] h-px bg-gradient-to-r from-black/5 via-black/15 to-black/5 dark:from-white/5 dark:via-white/20 dark:to-white/5 z-0" />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
               {methodSteps.map((step, idx) => (
                 <RevealSection key={step.num} delay={idx * 0.1}>
-                  <div className="card-surface p-8 flex flex-col justify-between h-full border-white/[0.08] group hover:border-white/30">
+                  <div className="card-surface p-8 flex flex-col justify-between h-full border-black/10 dark:border-white/[0.08] group hover:border-black/25 dark:hover:border-white/30">
                     <div>
                       {/* Step Node Marker */}
                       <div className="flex items-center justify-between mb-8">
-                        <div className="w-11 h-11 rounded-full bg-surface border border-white/30 flex items-center justify-center font-fraunces text-base text-white shadow-[0_0_16px_rgba(255,255,255,0.08)] group-hover:scale-110 transition-transform">
+                        <div className="w-11 h-11 rounded-full bg-white dark:bg-surface border border-black/15 dark:border-white/30 flex items-center justify-center font-fraunces text-base text-zinc-950 dark:text-white shadow-[0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_0_16px_rgba(255,255,255,0.08)] group-hover:scale-110 transition-transform">
                           {step.num}
                         </div>
-                        <span className="font-mono text-[10px] text-muted-light tracking-widest uppercase">
+                        <span className="font-mono text-[10px] text-zinc-500 dark:text-muted-light tracking-widest uppercase">
                           {step.role}
                         </span>
                       </div>
 
-                      <h3 className="heading-card text-xl mb-3 text-ivory group-hover:text-white transition-colors">
+                      <h3 className="heading-card text-xl mb-3 text-[#141416] dark:text-white group-hover:text-black dark:group-hover:text-white transition-colors">
                         {step.title}
                       </h3>
-                      <p className="body-muted text-xs sm:text-sm leading-relaxed">
+                      <p className="body-muted text-xs sm:text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                         {step.desc}
                       </p>
                     </div>
 
-                    <div className="pt-6 mt-6 border-t border-white/[0.08] text-[10px] font-mono text-zinc-400">
-                      MILESTONE {step.num} · VERIFIED
+                    <div className="pt-6 mt-6 border-t border-black/[0.08] dark:border-white/[0.08] text-[10px] font-mono text-zinc-500 dark:text-zinc-400">
+                      PHASE {step.num} // ARCHITECTURAL STAGE
                     </div>
                   </div>
                 </RevealSection>
