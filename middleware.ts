@@ -9,12 +9,15 @@ export async function middleware(request: NextRequest) {
     },
   })
 
-  // If Supabase credentials are not configured, bypass auth lookup safely
+  // If Supabase credentials are not configured, allow demo session for preview
   if (!isSupabaseConfigured()) {
     if (request.nextUrl.pathname.startsWith('/account')) {
-      const redirectUrl = new URL('/sign-in', request.url)
-      redirectUrl.searchParams.set('redirectTo', request.nextUrl.pathname)
-      return NextResponse.redirect(redirectUrl)
+      const demoUser = request.cookies.get('demo_user')?.value
+      if (!demoUser) {
+        const redirectUrl = new URL('/sign-in', request.url)
+        redirectUrl.searchParams.set('redirectTo', request.nextUrl.pathname)
+        return NextResponse.redirect(redirectUrl)
+      }
     }
     return response
   }

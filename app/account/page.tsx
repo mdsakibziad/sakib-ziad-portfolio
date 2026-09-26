@@ -20,6 +20,7 @@ import {
   Package,
 } from 'lucide-react'
 import { createClient, isSupabaseConfigured } from '@/lib/supabase/client'
+import { getDemoUser, clearDemoUser } from '@/lib/auth/demo-auth'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { PRODUCTS_CATALOG } from '@/lib/stripe'
@@ -59,8 +60,41 @@ export default function AccountPage() {
   const [portalLoading, setPortalLoading] = useState(false)
 
   useEffect(() => {
+    // ── Preview Sandbox Mode (Instant testing without Supabase cloud) ──
     if (!isSupabaseConfigured()) {
-      router.push('/sign-in')
+      const demo = getDemoUser() || {
+        id: 'demo-user-1',
+        email: 'Witlynai@gmail.com',
+        user_metadata: { full_name: 'Sakib Ziad' },
+      }
+      setUser(demo)
+      setProfile({ full_name: demo.user_metadata?.full_name || 'Sakib Ziad' })
+      setPurchases([
+        {
+          id: 'demo-p-1',
+          product_id: 'prod_brief_system',
+          product_name: 'The AI Creative Brief Architecture',
+          amount_paid: 19000,
+          currency: 'usd',
+          download_ref: '/downloads/ai-creative-brief-architecture.zip',
+          created_at: new Date().toISOString(),
+        },
+        {
+          id: 'demo-p-2',
+          product_id: 'prod_agent_system',
+          product_name: 'Beauty Brand Autonomous Agent Stack',
+          amount_paid: 49000,
+          currency: 'usd',
+          download_ref: '/downloads/autonomous-agent-stack.zip',
+          created_at: new Date(Date.now() - 86400000 * 7).toISOString(),
+        },
+      ])
+      setMembership({
+        status: 'active',
+        current_period_end: new Date(Date.now() + 86400000 * 30).toISOString(),
+        stripe_customer_id: 'cus_demo_sakib',
+      })
+      setLoading(false)
       return
     }
 
@@ -110,8 +144,11 @@ export default function AccountPage() {
   }, [router])
 
   async function handleSignOut() {
-    const supabase = createClient()
-    await supabase.auth.signOut()
+    clearDemoUser()
+    if (isSupabaseConfigured()) {
+      const supabase = createClient()
+      await supabase.auth.signOut()
+    }
     router.push('/')
     router.refresh()
   }
@@ -124,6 +161,13 @@ export default function AccountPage() {
 
     if (newPassword.length < 6) {
       setPasswordError('Password must be at least 6 characters.')
+      setUpdatingPassword(false)
+      return
+    }
+
+    if (!isSupabaseConfigured()) {
+      setPasswordSuccess(true)
+      setNewPassword('')
       setUpdatingPassword(false)
       return
     }
@@ -179,6 +223,19 @@ export default function AccountPage() {
   return (
     <div className="min-h-screen bg-background text-ivory pt-32 pb-24 selection:bg-white selection:text-black">
       <div className="container-luxury max-w-6xl">
+
+        {/* Sandbox Preview Notification */}
+        {!isSupabaseConfigured() && (
+          <div className="mb-6 p-4 rounded-xl border border-emerald-500/20 bg-zinc-900/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-zinc-300">
+            <div className="flex items-center gap-2.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+              <span>
+                <strong className="text-white font-medium">Sandbox Preview Mode:</strong> You are currently testing the account dashboard in preview mode. All downloads and features are simulated and fully interactive.
+              </span>
+            </div>
+            <span className="text-[11px] text-zinc-500 font-mono shrink-0">Supabase: Not Connected</span>
+          </div>
+        )}
         
         {/* Header / Identity Bar */}
         <div className="card-surface p-8 sm:p-10 mb-10 flex flex-col md:flex-row md:items-center justify-between gap-6 border-white/10">
