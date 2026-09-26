@@ -151,34 +151,54 @@ export default function MembershipPage() {
             <p className="body-muted">Not an inactive Discord. An active strategic advantage.</p>
           </RevealSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((b, i) => (
-              <RevealSection key={b.num} delay={i * 0.08}>
-                <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full hover:border-border-strong">
-                  <div>
-                    <div className="flex items-center justify-between mb-6">
-                      <span className="font-fraunces text-2xl text-muted/40 dark:text-white/40">{b.num}</span>
-                      <b.icon className="w-5 h-5 text-muted-light" />
+          <div className="relative">
+            {/* Ambient luminous glow behind membership cards */}
+            <div
+              className="absolute -top-12 left-1/4 w-96 h-96 rounded-full pointer-events-none -z-0 opacity-40 dark:opacity-20"
+              style={{
+                background: 'radial-gradient(circle, rgba(230, 200, 160, 0.45) 0%, rgba(200, 180, 240, 0.25) 50%, transparent 70%)',
+                filter: 'blur(70px)',
+              }}
+              aria-hidden="true"
+            />
+            <div
+              className="absolute -bottom-10 right-1/4 w-96 h-96 rounded-full pointer-events-none -z-0 opacity-30 dark:opacity-15"
+              style={{
+                background: 'radial-gradient(circle, rgba(180, 210, 240, 0.4) 0%, rgba(240, 190, 180, 0.2) 50%, transparent 70%)',
+                filter: 'blur(80px)',
+              }}
+              aria-hidden="true"
+            />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+              {benefits.map((b, i) => (
+                <RevealSection key={b.num} delay={i * 0.08}>
+                  <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full hover:border-border-strong">
+                    <div>
+                      <div className="flex items-center justify-between mb-6">
+                        <span className="font-fraunces text-2xl text-muted/40 dark:text-white/40">{b.num}</span>
+                        <b.icon className="w-5 h-5 text-muted-light" />
+                      </div>
+                      <h3 className="heading-card text-2xl mb-4 leading-snug">{b.title}</h3>
+                      <p className="body-muted text-sm leading-relaxed">{b.body}</p>
                     </div>
-                    <h3 className="heading-card text-2xl mb-4 leading-snug">{b.title}</h3>
-                    <p className="body-muted text-sm leading-relaxed">{b.body}</p>
+                  </div>
+                </RevealSection>
+              ))}
+
+              {/* Final Highlight Card */}
+              <RevealSection delay={0.4}>
+                <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full">
+                  <div>
+                    <span className="eyebrow-luxury block mb-4">Compounding Signal</span>
+                    <h3 className="heading-card text-2xl mb-4">Ongoing Category Moat</h3>
+                    <p className="body-muted text-sm leading-relaxed">
+                      AI models upgrade every 90 days. As a member, your team never wastes months figuring out new tools alone. We digest the technical chaos and hand you the commercial playbook.
+                    </p>
                   </div>
                 </div>
               </RevealSection>
-            ))}
-
-            {/* Final Highlight Card */}
-            <RevealSection delay={0.4}>
-              <div className="card-surface p-8 sm:p-10 bg-surface/80 flex flex-col justify-between h-full">
-                <div>
-                  <span className="eyebrow-luxury block mb-4">Compounding Signal</span>
-                  <h3 className="heading-card text-2xl mb-4">Ongoing Category Moat</h3>
-                  <p className="body-muted text-sm leading-relaxed">
-                    AI models upgrade every 90 days. As a member, your team never wastes months figuring out new tools alone. We digest the technical chaos and hand you the commercial playbook.
-                  </p>
-                </div>
-              </div>
-            </RevealSection>
+            </div>
           </div>
         </div>
       </section>

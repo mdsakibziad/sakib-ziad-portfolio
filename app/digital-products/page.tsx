@@ -188,7 +188,7 @@ export default function DigitalProductsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
             {products.map((product, idx) => (
               <RevealSection key={product.id} delay={idx * 0.1}>
-                <div className="card-surface overflow-hidden flex flex-col justify-between h-full group border-black/10 dark:border-white/10">
+                <div className="card-surface overflow-hidden flex flex-col justify-between h-full group">
                   
                   {/* Abstract Monochrome Liquid-Glass Graphic Treatment */}
                   <div className="relative aspect-[16/10] overflow-hidden border-b border-black/10 dark:border-white/10 bg-[#FAF9F6] dark:bg-[#0C0C0C] p-6 flex flex-col justify-between group-hover:border-black/20 dark:group-hover:border-white/20 transition-colors">
@@ -311,7 +311,7 @@ export default function DigitalProductsPage() {
       {/* ── Why These Exist Editorial Section ─────────────────────────────── */}
       <section className="section-pad border-t border-black/[0.08] dark:border-white/[0.08]" aria-label="Philosophy">
         <div className="container-luxury max-w-4xl mx-auto">
-          <RevealSection className="card-surface p-8 sm:p-12 md:p-14 border-black/10 dark:border-white/10">
+          <RevealSection className="card-surface p-8 sm:p-12 md:p-14">
             <span className="eyebrow-luxury mb-3 block text-zinc-500 dark:text-zinc-400">Field Intelligence</span>
             <h2 className="heading-section text-3xl sm:text-4xl mb-6 text-[#141416] dark:text-white">
               Extracted from real campaign rooms — never theoretical.
@@ -339,7 +339,7 @@ export default function DigitalProductsPage() {
             </p>
 
             {newsletterSuccess ? (
-              <div className="card-surface p-6 border-black/15 dark:border-white/20 inline-flex items-center gap-3 text-zinc-900 dark:text-white text-sm">
+              <div className="card-surface p-6 inline-flex items-center gap-3 text-zinc-900 dark:text-white text-sm">
                 <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-white shrink-0" />
                 <span>Confirmed. You'll receive early access to new framework drops.</span>
               </div>

@@ -118,7 +118,7 @@ export function ApplicationForm({
         </p>
 
         {/* Fast-Track Direct Meeting Window */}
-        <div className="card-surface p-6 text-left max-w-md mx-auto bg-surface-elevated/90">
+        <div className="card-surface p-6 text-left max-w-md mx-auto">
           <div className="flex items-center gap-2.5 text-ivory mb-2">
             <Calendar className="w-4 h-4 text-muted" />
             <span className="font-fraunces text-base text-ivory">Direct Meeting Access</span>

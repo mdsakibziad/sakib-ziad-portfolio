@@ -121,7 +121,7 @@ export default function AboutPage() {
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover object-top transition-transform duration-700 ease-luxury group-hover:scale-102"
+                  className="object-cover object-[50%_22%] scale-105 transition-transform duration-700 ease-luxury group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute bottom-6 left-6 right-6">
@@ -189,7 +189,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {beliefs.map((belief, i) => (
               <RevealSection key={belief.num} delay={i * 0.1}>
-                <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-black/10 dark:border-white/10">
+                <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full">
                   <div>
                     <span className="font-fraunces text-3xl text-zinc-300 dark:text-white/30 mb-6 block">{belief.num}</span>
                     <h3 className="heading-card text-xl sm:text-2xl mb-4 leading-snug text-[#141416] dark:text-white">{belief.title}</h3>
@@ -216,7 +216,7 @@ export default function AboutPage() {
                 <div className="w-10 h-10 rounded-full bg-white dark:bg-background border border-black/15 dark:border-white/20 flex items-center justify-center shrink-0 z-10 text-zinc-900 dark:text-white text-xs font-semibold shadow-md">
                   0{i + 1}
                 </div>
-                <div className="card-surface p-6 sm:p-8 flex-1 border-black/10 dark:border-white/10">
+                <div className="card-surface p-6 sm:p-8 flex-1">
                   <span className="eyebrow-luxury mb-2 block text-zinc-500 dark:text-zinc-400">{item.year}</span>
                   <h3 className="heading-card text-xl sm:text-2xl mb-3 text-[#141416] dark:text-white">{item.title}</h3>
                   <p className="body-muted text-base text-zinc-600 dark:text-zinc-400">{item.desc}</p>
@@ -230,7 +230,7 @@ export default function AboutPage() {
       {/* ── Speaking & Executive Workshops ───────────────────────────────────── */}
       <section className="section-pad" aria-label="Speaking & Workshops">
         <div className="container-luxury max-w-4xl mx-auto">
-          <div className="card-surface p-8 sm:p-12 md:p-14 border-black/10 dark:border-white/10 text-center flex flex-col items-center">
+          <div className="card-surface p-8 sm:p-12 md:p-14 text-center flex flex-col items-center">
             <RevealSection>
               <div className="w-12 h-12 rounded-full bg-black/[0.04] dark:bg-white/[0.05] border border-black/10 dark:border-white/15 flex items-center justify-center text-zinc-900 dark:text-white mb-6 mx-auto">
                 <BookOpen className="w-5 h-5" />

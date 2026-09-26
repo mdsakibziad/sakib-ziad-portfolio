@@ -183,7 +183,7 @@ export default function WorkPage() {
                     </div>
 
                     {/* Metric Callout Card */}
-                    <div className="card-surface p-6 border-black/10 dark:border-white/10 mt-2">
+                    <div className="card-surface p-6 mt-2">
                       <p className="eyebrow-luxury text-[10px] text-zinc-500 dark:text-zinc-400 mb-2">Scope Delivered</p>
                       <p className="font-fraunces text-base sm:text-lg text-zinc-900 dark:text-white font-light leading-snug">
                         {study.metric}
@@ -262,7 +262,7 @@ export default function WorkPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {servicePillars.map((service, i) => (
               <RevealSection key={service} delay={i * 0.05}>
-                <div className="card-surface p-6 sm:p-8 flex items-center justify-between border-black/10 dark:border-white/10">
+                <div className="card-surface p-6 sm:p-8 flex items-center justify-between">
                   <span className="font-fraunces text-base sm:text-lg text-zinc-900 dark:text-white font-normal">{service}</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/40 dark:bg-white/40 shrink-0 ml-4" />
                 </div>

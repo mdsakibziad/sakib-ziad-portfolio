@@ -150,7 +150,7 @@ export default function ConsultingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
             {/* IS FOR */}
             <RevealSection delay={0.1}>
-              <div className="card-surface p-6 sm:p-10 h-full border-black/10 dark:border-white/10">
+              <div className="card-surface p-6 sm:p-10 h-full">
                 <div className="flex items-center gap-3 mb-6">
                   <CheckCircle2 className="w-6 h-6 text-emerald-600 dark:text-white" />
                   <h3 className="heading-card text-2xl text-[#141416] dark:text-white">This Is For You If</h3>
@@ -168,7 +168,7 @@ export default function ConsultingPage() {
 
             {/* IS NOT FOR */}
             <RevealSection delay={0.2}>
-              <div className="card-surface p-6 sm:p-10 h-full border-black/10 dark:border-white/10">
+              <div className="card-surface p-6 sm:p-10 h-full">
                 <div className="flex items-center gap-3 mb-6">
                   <XCircle className="w-6 h-6 text-zinc-400 dark:text-zinc-500" />
                   <h3 className="heading-card text-2xl text-[#141416] dark:text-white">This Is Not For You If</h3>
@@ -199,7 +199,7 @@ export default function ConsultingPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
             {/* PILLAR 1 */}
             <RevealSection delay={0.1}>
-              <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-black/10 dark:border-white/10">
+              <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full">
                 <div>
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-12 h-12 rounded-xl bg-black/[0.04] dark:bg-white/[0.05] border border-black/10 dark:border-white/15 flex items-center justify-center text-zinc-900 dark:text-white">
@@ -234,7 +234,7 @@ export default function ConsultingPage() {
 
             {/* PILLAR 2 */}
             <RevealSection delay={0.2}>
-              <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-black/10 dark:border-white/10">
+              <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full">
                 <div>
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-12 h-12 rounded-xl bg-black/[0.04] dark:bg-white/[0.05] border border-black/10 dark:border-white/15 flex items-center justify-center text-zinc-900 dark:text-white">
@@ -270,7 +270,7 @@ export default function ConsultingPage() {
 
           {/* Studio Production Callout */}
           <RevealSection>
-            <div className="card-surface p-8 sm:p-12 border-black/10 dark:border-white/15 bg-white/80 dark:bg-surface-elevated/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[0_4px_24px_rgba(0,0,0,0.04)] dark:shadow-none">
+            <div className="card-surface p-8 sm:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div className="max-w-2xl">
                 <span className="eyebrow-luxury mb-2 block text-zinc-500 dark:text-zinc-400">Production Alternative</span>
                 <h4 className="heading-card text-2xl text-[#141416] dark:text-white mb-2">Looking for Done-For-You Campaign Production?</h4>
@@ -301,7 +301,7 @@ export default function ConsultingPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
             {engagements.map((eng, idx) => (
               <RevealSection key={eng.num} delay={idx * 0.1}>
-                <div className="card-surface p-6 sm:p-8 flex flex-col justify-between h-full border-black/10 dark:border-white/10">
+                <div className="card-surface p-6 sm:p-8 flex flex-col justify-between h-full">
                   <div>
                     <div className="flex items-center justify-between mb-6">
                       <span className="font-fraunces text-2xl text-zinc-400 dark:text-white/40">{eng.num}</span>

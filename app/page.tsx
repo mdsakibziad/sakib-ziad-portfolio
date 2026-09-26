@@ -349,9 +349,11 @@ export default function HomePage() {
             </div>
 
             {/* Right Column: Architectural Paradigm Contrast Card */}
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-5 relative">
+              {/* Ambient Glass Glow */}
+              <div className="absolute -top-10 -right-10 w-72 h-72 rounded-full bg-amber-200/30 dark:bg-white/[0.05] blur-3xl pointer-events-none" />
               <RevealSection delay={0.2}>
-                <TiltCard className="card-surface p-8 sm:p-10 border-black/10 dark:border-white/20 bg-white/90 dark:bg-[#0E0E10]/90 shadow-[0_8px_32px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
+                <TiltCard className="card-surface p-8 sm:p-10">
                   <div className="flex items-center justify-between border-b border-black/[0.08] dark:border-white/[0.08] pb-4 mb-6">
                     <span className="eyebrow-luxury text-zinc-700 dark:text-zinc-300">Operating Paradigm</span>
                     <span className="font-mono text-xs text-zinc-500 dark:text-muted-light">SHIFT ANALYSIS</span>
@@ -414,8 +416,13 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════════
           SECTION 3 · TWO PILLARS (VISUALLY CONTRASTING BLOCKS)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad bg-black/[0.015] dark:bg-white/[0.015] border-t border-black/[0.08] dark:border-white/[0.08]" aria-label="Two Pillars">
-        <div className="container-luxury">
+      <section className="section-pad relative overflow-hidden bg-black/[0.015] dark:bg-white/[0.015] border-t border-black/[0.08] dark:border-white/[0.08]" aria-label="Two Pillars">
+        {/* Ambient Glass Luminous Atmosphere Behind Cards */}
+        <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-amber-200/40 via-orange-100/30 to-transparent dark:from-white/[0.08] dark:via-zinc-500/[0.05] dark:to-transparent blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 -right-20 w-[580px] h-[580px] rounded-full bg-gradient-to-bl from-amber-100/45 via-rose-100/30 to-transparent dark:from-zinc-700/[0.1] dark:to-transparent blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[360px] bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0.03)_0%,_transparent_70%)] dark:bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.04)_0%,_transparent_70%)] pointer-events-none" />
+
+        <div className="container-luxury relative z-10">
           
           <RevealSection className="max-w-2xl mb-16">
             <p className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 mb-3">Two Pillars of Growth</p>
@@ -428,7 +435,7 @@ export default function HomePage() {
             
             {/* PILLAR 1: IMAGE-LED LUXURY EDITORIAL SHOWCASE */}
             <RevealSection delay={0.1}>
-              <TiltCard className="card-surface p-8 sm:p-12 border-black/10 dark:border-white/20 bg-white/80 dark:bg-[#0E0E10]/80">
+              <TiltCard className="card-surface p-8 sm:p-12">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                   
                   {/* Left: Real Campaign Image with Parallax */}
@@ -495,7 +502,7 @@ export default function HomePage() {
 
             {/* PILLAR 2: CODE & SYSTEMS-LED ARCHITECTURAL BLOCK */}
             <RevealSection delay={0.2}>
-              <TiltCard className="card-surface p-8 sm:p-12 border-black/10 dark:border-white/[0.08] bg-[#FAF9F6] dark:bg-[#0E0E0D]">
+              <TiltCard className="card-surface p-8 sm:p-12">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                   
                   {/* Left: Editorial Narrative */}
@@ -587,8 +594,13 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════════
           SECTION 4 · THREE WAYS TO WORK WITH ME (HIERARCHICAL HUB)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad border-t border-black/[0.08] dark:border-white/[0.08] bg-background" aria-label="Offerings">
-        <div className="container-luxury">
+      <section className="section-pad relative overflow-hidden border-t border-black/[0.08] dark:border-white/[0.08] bg-background" aria-label="Offerings">
+        {/* Ambient Glass Luminous Atmosphere Behind Offer Cards */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[850px] h-[450px] rounded-full bg-gradient-to-r from-amber-200/35 via-rose-100/25 to-stone-200/35 dark:from-white/[0.07] dark:via-zinc-600/[0.05] dark:to-transparent blur-3xl pointer-events-none" />
+        <div className="absolute bottom-12 -left-20 w-[400px] h-[400px] rounded-full bg-amber-100/30 dark:bg-white/[0.04] blur-3xl pointer-events-none" />
+        <div className="absolute top-20 -right-20 w-[450px] h-[450px] rounded-full bg-orange-100/25 dark:bg-zinc-700/[0.06] blur-3xl pointer-events-none" />
+
+        <div className="container-luxury relative z-10">
           <RevealSection className="text-center max-w-2xl mx-auto mb-16">
             <p className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 mb-3">Engagement Hub</p>
             <h2 className="heading-section text-3xl sm:text-4xl text-[#141416] dark:text-white">Three Ways to Partner</h2>
@@ -599,7 +611,7 @@ export default function HomePage() {
             
             {/* Card 1: Consulting / Advisory (Flagship - Elevated) */}
             <RevealSection delay={0.1}>
-              <TiltCard className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-black/15 dark:border-white/30 shadow-[0_12px_36px_rgba(0,0,0,0.08)] dark:shadow-[0_0_40px_rgba(255,255,255,0.08)] relative ring-1 ring-black/10 dark:ring-white/20">
+              <TiltCard className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full relative ring-1 ring-black/10 dark:ring-white/20">
                 <div>
                   <div className="flex items-center justify-between mb-6">
                     <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-black/[0.06] dark:bg-white/10 border border-black/15 dark:border-white/20 text-zinc-900 dark:text-white">
@@ -640,7 +652,7 @@ export default function HomePage() {
 
             {/* Card 2: Digital Products (Technical Blueprint Model) */}
             <RevealSection delay={0.2}>
-              <TiltCard className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-black/10 dark:border-white/[0.08] hover:border-black/25 dark:hover:border-white/30">
+              <TiltCard className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full">
                 <div>
                   <div className="flex items-center justify-between mb-6">
                     <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-black/[0.04] dark:bg-surface border border-black/10 dark:border-white/20 text-zinc-800 dark:text-zinc-200">
@@ -683,7 +695,7 @@ export default function HomePage() {
 
             {/* Card 3: Membership (Syndicate Cohort Model) */}
             <RevealSection delay={0.3}>
-              <TiltCard className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full border-black/10 dark:border-white/[0.08] hover:border-black/25 dark:hover:border-white/30">
+              <TiltCard className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full">
                 <div>
                   <div className="flex items-center justify-between mb-6">
                     <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-black/[0.04] dark:bg-white/10 border border-black/10 dark:border-white/20 text-zinc-800 dark:text-zinc-200">
@@ -745,8 +757,12 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════════
           SECTION 5 · PROOF OF WORK (MAGAZINE EDITORIAL SPREAD LAYOUT)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad bg-background border-t border-black/[0.08] dark:border-white/[0.08]" aria-label="Selected Work">
-        <div className="container-luxury">
+      <section className="section-pad relative overflow-hidden bg-background border-t border-black/[0.08] dark:border-white/[0.08]" aria-label="Selected Work">
+        {/* Ambient Glass Luminous Atmosphere Behind Case Studies */}
+        <div className="absolute top-1/4 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-amber-200/30 via-stone-200/20 to-transparent dark:from-white/[0.06] dark:to-transparent blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/3 -left-20 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-rose-100/25 to-transparent dark:from-zinc-800/[0.1] dark:to-transparent blur-3xl pointer-events-none" />
+
+        <div className="container-luxury relative z-10">
           
           <RevealSection className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-20 border-b border-black/[0.08] dark:border-white/[0.08] pb-8">
             <div>
@@ -796,7 +812,7 @@ export default function HomePage() {
                     <p className="body-editorial text-base text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed font-light">
                       A cinematic sun-care campaign shaped around sunlight, skin refraction, and sensorial fluidity. Constructed 12 distinct art-directed scenes including liquid dispersion and warm architectural stills.
                     </p>
-                    <div className="p-4 rounded-xl card-surface border border-black/10 dark:border-white/[0.12] dark:bg-white/[0.04] mb-8">
+                    <div className="p-4 card-surface mb-8">
                       <span className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block mb-1">Delivered Systems</span>
                       <span className="text-xs font-inter text-zinc-800 dark:text-zinc-200 font-medium">Hero Campaign Film + 48 High-Resolution Assets</span>
                     </div>
@@ -830,7 +846,7 @@ export default function HomePage() {
                     <p className="body-editorial text-base text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed font-light">
                       A deep-emerald product universe built around brushed silver, tactile formula smears, and architectural lighting. Reimagined clinical skincare positioning to establish uncompromising category prestige.
                     </p>
-                    <div className="p-4 rounded-xl card-surface border border-black/10 dark:border-white/[0.12] dark:bg-white/[0.04] mb-8">
+                    <div className="p-4 card-surface mb-8">
                       <span className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block mb-1">Delivered Systems</span>
                       <span className="text-xs font-inter text-zinc-800 dark:text-zinc-200 font-medium">Complete Visual Identity Overhaul & Editorial Asset Suite</span>
                     </div>
@@ -867,7 +883,7 @@ export default function HomePage() {
 
             {/* SPREAD 03: Lipéa (CINEMATIC WIDE HORIZONTAL BANNER) */}
             <RevealSection delay={0.2}>
-              <div className="relative rounded-2xl overflow-hidden card-surface border-black/10 dark:border-white/10 group">
+              <div className="relative rounded-2xl overflow-hidden card-surface group">
                 <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
                   
                   <div className="lg:col-span-5 p-8 sm:p-12 lg:p-14 z-10">
@@ -933,7 +949,7 @@ export default function HomePage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
               {methodSteps.map((step, idx) => (
                 <RevealSection key={step.num} delay={idx * 0.1}>
-                  <div className="card-surface p-8 flex flex-col justify-between h-full border-black/10 dark:border-white/[0.08] group hover:border-black/25 dark:hover:border-white/30">
+                  <div className="card-surface p-8 flex flex-col justify-between h-full group">
                     <div>
                       {/* Step Node Marker */}
                       <div className="flex items-center justify-between mb-8">
@@ -967,8 +983,11 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════════
           SECTION 7 · THE DIAGNOSTIC (ASYMMETRIC INTERACTIVE LEAD ENGINE)
       ════════════════════════════════════════════════════════════════════ */}
-      <section id="diagnostic" className="section-pad relative border-t border-black/[0.08] dark:border-white/[0.08] bg-background" aria-label="AI Diagnostic">
-        <div className="container-luxury">
+      <section id="diagnostic" className="section-pad relative overflow-hidden border-t border-black/[0.08] dark:border-white/[0.08] bg-background" aria-label="AI Diagnostic">
+        {/* Ambient Glass Glow */}
+        <div className="absolute top-1/2 right-10 -translate-y-1/2 w-[550px] h-[550px] rounded-full bg-gradient-to-tr from-amber-200/35 via-rose-100/25 to-transparent dark:from-white/[0.06] dark:to-transparent blur-3xl pointer-events-none" />
+
+        <div className="container-luxury relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
             {/* Left Column: Context & Strategic Value */}
@@ -1003,7 +1022,7 @@ export default function HomePage() {
             {/* Right Column: Diagnostic Form Card */}
             <div className="lg:col-span-7">
               <RevealSection delay={0.15}>
-                <TiltCard className="card-surface p-8 sm:p-12 border-black/10 dark:border-white/20 shadow-[0_12px_36px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
+                <TiltCard className="card-surface p-8 sm:p-12">
                   {diagnosticStatus === 'success' ? (
                     <div className="text-center py-8 space-y-6">
                       <CheckCircle2 className="w-12 h-12 text-zinc-900 dark:text-white mx-auto" />
@@ -1166,8 +1185,11 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════════
           SECTION 9 · STRATEGIC PERSPECTIVES (ASYMMETRIC EDITORIAL INDEX)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad border-t border-black/[0.08] dark:border-white/[0.08] bg-background" aria-label="Insights">
-        <div className="container-luxury">
+      <section className="section-pad relative overflow-hidden border-t border-black/[0.08] dark:border-white/[0.08] bg-background" aria-label="Insights">
+        {/* Ambient Glass Glow */}
+        <div className="absolute top-1/3 right-10 w-[600px] h-[500px] rounded-full bg-gradient-to-bl from-amber-200/30 via-orange-100/20 to-transparent dark:from-white/[0.06] dark:to-transparent blur-3xl pointer-events-none" />
+
+        <div className="container-luxury relative z-10">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-16">
             
@@ -1192,7 +1214,7 @@ export default function HomePage() {
             <div className="lg:col-span-7 space-y-6">
               
               <RevealSection delay={0.1}>
-                <Link href="/insights" className="card-surface p-6 sm:p-8 block group border-black/10 dark:border-white/[0.08] hover:border-black/25 dark:hover:border-white/30 transition-colors">
+                <Link href="/insights" className="card-surface p-6 sm:p-8 block group transition-colors">
                   <div className="flex items-center justify-between gap-4 mb-2">
                     <span className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 text-[10px]">AI Creative Systems</span>
                     <span className="text-xs font-mono text-zinc-500 dark:text-zinc-400">Strategic Essay</span>
@@ -1210,7 +1232,7 @@ export default function HomePage() {
               </RevealSection>
 
               <RevealSection delay={0.2}>
-                <Link href="/insights" className="card-surface p-6 sm:p-8 block group border-black/10 dark:border-white/[0.08] hover:border-black/25 dark:hover:border-white/30 transition-colors">
+                <Link href="/insights" className="card-surface p-6 sm:p-8 block group transition-colors">
                   <div className="flex items-center justify-between gap-4 mb-2">
                     <span className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 text-[10px]">Brand Strategy</span>
                     <span className="text-xs font-mono text-zinc-500 dark:text-zinc-400">Design Theory</span>
@@ -1228,7 +1250,7 @@ export default function HomePage() {
               </RevealSection>
 
               <RevealSection delay={0.3}>
-                <Link href="/insights" className="card-surface p-6 sm:p-8 block group border-black/10 dark:border-white/[0.08] hover:border-black/25 dark:hover:border-white/30 transition-colors">
+                <Link href="/insights" className="card-surface p-6 sm:p-8 block group transition-colors">
                   <div className="flex items-center justify-between gap-4 mb-2">
                     <span className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 text-[10px]">AI Automation</span>
                     <span className="text-xs font-mono text-zinc-500 dark:text-zinc-400">Systems Blueprint</span>
@@ -1250,7 +1272,7 @@ export default function HomePage() {
           </div>
 
           {/* Newsletter Box */}
-          <RevealSection delay={0.35} className="card-surface p-8 sm:p-12 border-black/10 dark:border-white/[0.08]">
+          <RevealSection delay={0.35} className="card-surface p-8 sm:p-12">
             <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 items-center">
               <div>
                 <p className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 mb-2">Private Dispatches</p>

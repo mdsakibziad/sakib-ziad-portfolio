@@ -144,38 +144,49 @@
     @apply py-12 sm:py-16 lg:py-20;
   }
 
-  /* Liquid Glass Surface (Cards & Panels) — Tactile Glass on Light, Glowing Frost on Dark */
+  /* Liquid Glass Surface (Cards & Panels) — Exact Multi-Layered Physical Glass Spec */
   .card-surface {
     position: relative;
-    background: rgba(255, 255, 255, 0.72);
-    backdrop-filter: blur(28px) saturate(140%);
-    -webkit-backdrop-filter: blur(28px) saturate(140%);
-    border: 1px solid rgba(0, 0, 0, 0.07);
-    border-top-color: rgba(255, 255, 255, 0.95);
-    border-radius: 1.25rem;
-    box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.55) !important;
+    backdrop-filter: blur(20px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.9) !important;
+    border-radius: 24px !important;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
     transition: all 400ms var(--ease-luxury);
   }
 
   .card-surface:hover {
-    background: rgba(255, 255, 255, 0.85);
-    border-color: rgba(0, 0, 0, 0.12);
-    border-top-color: #FFFFFF;
-    box-shadow: 0 16px 40px -4px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.04), inset 0 1px 0 #FFFFFF;
+    background: rgba(255, 255, 255, 0.68) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    border-top: 1px solid #FFFFFF !important;
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.75) !important;
   }
 
   .dark .card-surface {
-    background: rgba(14, 14, 16, 0.72);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-top-color: rgba(255, 255, 255, 0.18);
-    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    background: rgba(20, 20, 20, 0.55) !important;
+    backdrop-filter: blur(20px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.18) !important;
+    border-radius: 24px !important;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
   }
 
   .dark .card-surface:hover {
-    background: rgba(18, 18, 22, 0.82);
-    border-color: rgba(255, 255, 255, 0.18);
-    border-top-color: rgba(255, 255, 255, 0.38);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 0 24px rgba(255, 255, 255, 0.035);
+    background: rgba(26, 26, 28, 0.68) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.32) !important;
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
   }
 
   /* Frosted Glass Pane */
