@@ -223,19 +223,6 @@ export default function AccountPage() {
   return (
     <div className="min-h-screen bg-background text-ivory pt-32 pb-24 selection:bg-white selection:text-black">
       <div className="container-luxury max-w-6xl">
-
-        {/* Sandbox Preview Notification */}
-        {!isSupabaseConfigured() && (
-          <div className="mb-6 p-4 rounded-xl border border-emerald-500/20 bg-zinc-900/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-zinc-300">
-            <div className="flex items-center gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-              <span>
-                <strong className="text-white font-medium">Sandbox Preview Mode:</strong> You are currently testing the account dashboard in preview mode. All downloads and features are simulated and fully interactive.
-              </span>
-            </div>
-            <span className="text-[11px] text-zinc-500 font-mono shrink-0">Supabase: Not Connected</span>
-          </div>
-        )}
         
         {/* Header / Identity Bar */}
         <div className="card-surface p-8 sm:p-10 mb-10 flex flex-col md:flex-row md:items-center justify-between gap-6 border-white/10">

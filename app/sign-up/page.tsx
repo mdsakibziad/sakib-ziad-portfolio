@@ -180,19 +180,6 @@ function SignUpContent() {
             </p>
           </div>
 
-          {/* Sandbox Preview Mode Notice */}
-          {!configured && (
-            <div className="mb-6 p-3.5 rounded-xl bg-zinc-900/90 border border-emerald-500/20 text-xs text-zinc-300 leading-relaxed">
-              <div className="flex items-center gap-1.5 mb-1 text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-semibold">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                Preview Sandbox Mode
-              </div>
-              <p className="text-[11.5px] text-zinc-400">
-                Direct account access is active for sandbox testing. Enter your name and email to explore the live dashboard.
-              </p>
-            </div>
-          )}
-
           {/* Success Message */}
           {successMessage && (
             <div className="mb-6 p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/30 flex items-start gap-3 text-xs text-emerald-200">
