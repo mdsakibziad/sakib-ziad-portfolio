@@ -20,7 +20,6 @@ import {
   Package,
 } from 'lucide-react'
 import { createClient, isSupabaseConfigured } from '@/lib/supabase/client'
-import { getDemoUser, clearDemoUser } from '@/lib/auth/demo-auth'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { PRODUCTS_CATALOG } from '@/lib/stripe'
@@ -60,41 +59,8 @@ export default function AccountPage() {
   const [portalLoading, setPortalLoading] = useState(false)
 
   useEffect(() => {
-    // ── Preview Sandbox Mode (Instant testing without Supabase cloud) ──
     if (!isSupabaseConfigured()) {
-      const demo = getDemoUser() || {
-        id: 'demo-user-1',
-        email: 'Witlynai@gmail.com',
-        user_metadata: { full_name: 'Sakib Ziad' },
-      }
-      setUser(demo)
-      setProfile({ full_name: demo.user_metadata?.full_name || 'Sakib Ziad' })
-      setPurchases([
-        {
-          id: 'demo-p-1',
-          product_id: 'prod_brief_system',
-          product_name: 'The AI Creative Brief Architecture',
-          amount_paid: 19000,
-          currency: 'usd',
-          download_ref: '/downloads/ai-creative-brief-architecture.zip',
-          created_at: new Date().toISOString(),
-        },
-        {
-          id: 'demo-p-2',
-          product_id: 'prod_agent_system',
-          product_name: 'Beauty Brand Autonomous Agent Stack',
-          amount_paid: 49000,
-          currency: 'usd',
-          download_ref: '/downloads/autonomous-agent-stack.zip',
-          created_at: new Date(Date.now() - 86400000 * 7).toISOString(),
-        },
-      ])
-      setMembership({
-        status: 'active',
-        current_period_end: new Date(Date.now() + 86400000 * 30).toISOString(),
-        stripe_customer_id: 'cus_demo_sakib',
-      })
-      setLoading(false)
+      router.push('/sign-in?redirectTo=/account')
       return
     }
 
@@ -144,11 +110,8 @@ export default function AccountPage() {
   }, [router])
 
   async function handleSignOut() {
-    clearDemoUser()
-    if (isSupabaseConfigured()) {
-      const supabase = createClient()
-      await supabase.auth.signOut()
-    }
+    const supabase = createClient()
+    await supabase.auth.signOut()
     router.push('/')
     router.refresh()
   }
@@ -161,13 +124,6 @@ export default function AccountPage() {
 
     if (newPassword.length < 6) {
       setPasswordError('Password must be at least 6 characters.')
-      setUpdatingPassword(false)
-      return
-    }
-
-    if (!isSupabaseConfigured()) {
-      setPasswordSuccess(true)
-      setNewPassword('')
       setUpdatingPassword(false)
       return
     }

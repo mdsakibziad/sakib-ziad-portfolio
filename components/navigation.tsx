@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowUpRight, User } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { createClient, isSupabaseConfigured } from '@/lib/supabase/client'
-import { getDemoUser } from '@/lib/auth/demo-auth'
 
 /* ── Split Nav Links for Centered-Logo Studio Header ──────────────────────── */
 const NAV_LEFT = [
@@ -53,10 +52,6 @@ export function Navigation() {
   // Auth listener
   useEffect(() => {
     if (!isSupabaseConfigured()) {
-      const demo = getDemoUser()
-      if (demo) {
-        setCurrentUser(demo)
-      }
       return
     }
 

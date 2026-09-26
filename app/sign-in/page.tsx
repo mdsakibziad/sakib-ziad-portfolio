@@ -6,7 +6,6 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { ArrowRight, Loader2, AlertCircle } from 'lucide-react'
 import { createClient, isSupabaseConfigured } from '@/lib/supabase/client'
-import { setDemoUser } from '@/lib/auth/demo-auth'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
@@ -28,17 +27,9 @@ function SignInContent() {
     setLoading(true)
     setErrorMessage('')
 
-    // ── Preview Sandbox Mode ──
     if (!configured) {
-      setDemoUser({
-        id: 'demo-' + Date.now(),
-        email: email || 'Witlynai@gmail.com',
-        user_metadata: {
-          full_name: email.split('@')[0] || 'Sakib Ziad',
-        },
-      })
-      router.push(redirectTo)
-      router.refresh()
+      setErrorMessage('Database connection is not configured on this deployment. Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in Vercel.')
+      setLoading(false)
       return
     }
 
@@ -61,7 +52,7 @@ function SignInContent() {
     } catch (err: any) {
       const msg = err.message || ''
       if (msg.includes('Failed to fetch')) {
-        setErrorMessage('Unable to reach Supabase. Check your connection or .env.local configuration.')
+        setErrorMessage('Unable to reach Supabase. Check your connection or configuration.')
       } else {
         setErrorMessage(msg || 'An unexpected error occurred.')
       }
@@ -74,54 +65,24 @@ function SignInContent() {
     setGoogleLoading(true)
     setErrorMessage('')
 
-    // ── Preview Sandbox Mode ──
     if (!configured) {
-      setDemoUser({
-        id: 'demo-google-' + Date.now(),
-        email: 'Witlynai@gmail.com',
-        user_metadata: {
-          full_name: 'Sakib Ziad',
-        },
-      })
-      router.push(redirectTo)
-      router.refresh()
+      setErrorMessage('Supabase is not configured on this deployment. Please add environment variables in Vercel.')
+      setGoogleLoading(false)
       return
     }
 
     try {
       const supabase = createClient()
-      const { data, error } = await supabase.auth.signInWithOAuth({
+      const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
           redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(redirectTo)}`,
-          skipBrowserRedirect: true,
         },
       })
 
       if (error) {
         setErrorMessage(error.message)
         setGoogleLoading(false)
-        return
-      }
-
-      if (data?.url) {
-        try {
-          const res = await fetch(data.url)
-          if (res.status === 400) {
-            const body = await res.json().catch(() => null)
-            if (body?.msg?.includes('Unsupported provider') || body?.error_code === 'validation_failed') {
-              setErrorMessage(
-                'Google Sign-In is not enabled in your Supabase project yet. Please enable it in Supabase under Authentication → Providers → Google, or sign in with Email & Password.'
-              )
-              setGoogleLoading(false)
-              return
-            }
-          }
-        } catch {
-          // If fetch fails or CORS, proceed to redirect
-        }
-
-        window.location.href = data.url
       }
     } catch (err: any) {
       setErrorMessage(err.message || 'Failed to authenticate with Google.')
