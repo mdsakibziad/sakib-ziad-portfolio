@@ -528,40 +528,31 @@ export default function HomePage() {
                     </Link>
                   </div>
 
-                  {/* Right: Honest Agent Workflow Architecture Schema */}
+                  {/* Right: Agent Workflow Pipeline List */}
                   <div className="lg:col-span-6 order-1 lg:order-2">
-                    <div className="p-6 rounded-2xl bg-white dark:bg-[#090908] border border-black/10 dark:border-white/[0.08] font-mono text-xs space-y-4 shadow-[0_4px_20px_rgba(0,0,0,0.04)] dark:shadow-none">
-                      <div className="flex items-center justify-between border-b border-black/[0.08] dark:border-white/[0.08] pb-3">
-                        <div className="flex items-center gap-2 text-zinc-900 dark:text-zinc-300">
-                          <Activity className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                          <span className="font-semibold tracking-wider">AGENT WORKFLOW ARCHITECTURE</span>
-                        </div>
-                        <span className="text-[10px] text-zinc-500 dark:text-muted-light">STAGES 01–04</span>
+                    <div className="p-6 sm:p-8 rounded-2xl bg-white/60 dark:bg-white/[0.03] border border-black/10 dark:border-white/[0.08] space-y-4">
+                      <div className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100 font-fraunces text-base mb-2">
+                        <Activity className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
+                        <span>Autonomous Pipeline Workflow</span>
                       </div>
 
-                      {/* Pipeline steps */}
-                      <div className="space-y-3">
-                        <div className="p-3 rounded-lg bg-black/[0.02] dark:bg-white/[0.04] border border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between">
-                          <span className="text-zinc-800 dark:text-zinc-300 font-sans sm:font-mono text-xs">01 // Sentiment & Review Ingestion</span>
-                          <span className="text-emerald-600 dark:text-emerald-400 text-[10px] font-mono">CONNECTED</span>
+                      <div className="space-y-2.5 font-inter text-xs text-zinc-700 dark:text-zinc-300">
+                        <div className="p-3 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-black/[0.04] dark:border-white/[0.06] flex items-center gap-3">
+                          <span className="font-mono text-zinc-400">01</span>
+                          <span>Sentiment & Customer Review Ingestion</span>
                         </div>
-                        <div className="p-3 rounded-lg bg-black/[0.02] dark:bg-white/[0.04] border border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between">
-                          <span className="text-zinc-800 dark:text-zinc-300 font-sans sm:font-mono text-xs">02 // Dynamic Prompt Formulation</span>
-                          <span className="text-zinc-700 dark:text-zinc-300 text-[10px] font-mono">CALIBRATED</span>
+                        <div className="p-3 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-black/[0.04] dark:border-white/[0.06] flex items-center gap-3">
+                          <span className="font-mono text-zinc-400">02</span>
+                          <span>Dynamic Creative Brief & Prompt Formulation</span>
                         </div>
-                        <div className="p-3 rounded-lg bg-black/[0.02] dark:bg-white/[0.04] border border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between">
-                          <span className="text-zinc-800 dark:text-zinc-300 font-sans sm:font-mono text-xs">03 // Multi-Model Diffusion Render</span>
-                          <span className="text-zinc-700 dark:text-zinc-300 text-[10px] font-mono">FLUX / MIDJOURNEY</span>
+                        <div className="p-3 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-black/[0.04] dark:border-white/[0.06] flex items-center gap-3">
+                          <span className="font-mono text-zinc-400">03</span>
+                          <span>Multi-Model Diffusion Campaign Rendering</span>
                         </div>
-                        <div className="p-3 rounded-lg bg-black/[0.05] dark:bg-white/[0.08] border border-black/15 dark:border-white/20 flex items-center justify-between text-zinc-950 dark:text-white">
-                          <span className="font-sans sm:font-mono text-xs">04 // Multi-Channel Asset Dispatch</span>
-                          <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 font-mono">AUTOMATED</span>
+                        <div className="p-3 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-black/[0.04] dark:border-white/[0.06] flex items-center gap-3">
+                          <span className="font-mono text-zinc-400">04</span>
+                          <span>Multi-Channel Cross-Platform Asset Dispatch</span>
                         </div>
-                      </div>
-
-                      <div className="pt-2 flex items-center justify-between text-[10px] text-zinc-500 dark:text-muted-light border-t border-black/[0.08] dark:border-white/[0.08]">
-                        <span>INTEGRATION: REST API / N8N</span>
-                        <span className="text-zinc-700 dark:text-zinc-300">CUSTOM BRAND ENGINE</span>
                       </div>
                     </div>
                   </div>
