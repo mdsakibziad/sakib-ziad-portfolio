@@ -902,6 +902,56 @@ export default function HomePage() {
               </div>
             </RevealSection>
 
+            {/* SPREAD 04: Nuécera (NEW DEEP CASE STUDY LINK) */}
+            <RevealSection delay={0.25}>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+                {/* Large Left Image */}
+                <div className="lg:col-span-7 relative aspect-[16/10] rounded-2xl overflow-hidden border border-black/10 dark:border-white/20 group">
+                  <ParallaxLayer offset={30} className="w-full h-full">
+                    <Image
+                      src="/images/nuecera/meta/meta-product-02.jpg"
+                      alt="NUÉCERA Moisturizing Cream visual world directed by Sakib Ziad"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                      className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
+                    />
+                  </ParallaxLayer>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                  <span className="absolute bottom-6 left-6 font-mono text-xs uppercase tracking-widest text-white bg-black/65 px-3 py-1 rounded backdrop-blur-md border border-white/20 shadow-md">
+                    04 // OMNICHANNEL VAULT (35 ASSETS)
+                  </span>
+                </div>
+
+                {/* Right Narrative */}
+                <div className="lg:col-span-5 flex flex-col justify-between">
+                  <div>
+                    <span className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 block mb-2">Spec Concept · Witlyn Production</span>
+                    <h3 className="heading-card text-3xl sm:text-4xl text-[#141416] dark:text-white mb-4">
+                      NUÉCERA
+                    </h3>
+                    <p className="font-fraunces text-xl text-zinc-800 dark:text-zinc-200 mb-4 font-light italic">
+                      Moisturizing Cream — A Complete Visual World
+                    </p>
+                    <p className="body-editorial text-base text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed font-light">
+                      A full omnichannel asset system constructed around a single flagship moisturizing cream — spanning Meta square ads, vertical TikTok reels, Instagram stories, and a wide desktop hero banner.
+                    </p>
+                    <div className="p-4 card-surface mb-8">
+                      <span className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block mb-1">Delivered Systems</span>
+                      <span className="text-xs font-inter text-zinc-800 dark:text-zinc-200 font-medium">35-Asset Curated Omnichannel Vault (Meta, IG, TikTok, Web)</span>
+                    </div>
+                  </div>
+
+                  <Link
+                    href="/work/nuecera"
+                    className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-zinc-900 dark:text-white font-semibold hover:text-emerald-600 dark:hover:text-emerald-400 group/link"
+                  >
+                    <span>Explore Nuécera Deep Case Study</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+            </RevealSection>
+
           </div>
         </div>
       </section>

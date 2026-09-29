@@ -95,14 +95,14 @@ export default function WorkPage() {
       status: 'Spec Concept · Witlyn Production',
       category: 'Botanical Moisturizing Cream',
       headline: 'Moisturizing Cream — A Complete Visual World',
-      image: 'https://witlyn.com/work/nuecera/nuecera%20cream%201.jpg',
+      image: '/images/nuecera/meta/meta-product-02.jpg',
       objective:
         'Nuécera needed to create a complete visual ecosystem around a single flagship moisturizing cream — expanding beyond standard white-background e-commerce shots into everyday rituals and rich editorial atmosphere.',
       approach:
         'Constructed a multi-scene generative world spanning reflective green surfaces, micro-texture fingertip studies, application moments in warm window light, and sunlit bathroom counter lifestyle setups.',
       outcome:
-        'Created 30 high-cohesion campaign assets under one creative direction without commissioning physical sets, delivering a complete brand identity world ready for retail pitch decks.',
-      metric: '30-Scene Complete Visual World Built Around 1 SKU',
+        'Created 35 high-cohesion campaign assets under one creative direction without commissioning physical sets, delivering a complete brand identity world ready for retail pitch decks.',
+      metric: '35-Asset Curated Omnichannel Vault (Meta, IG, TikTok, Web)',
     },
   ]
 
@@ -230,8 +230,17 @@ export default function WorkPage() {
                       </div>
                     </div>
 
-                    {/* Bottom Link out to Witlyn studio */}
-                    <div className="pt-2">
+                    {/* Bottom Link out to Witlyn studio or individual case study */}
+                    <div className="pt-2 flex flex-wrap items-center gap-4">
+                      {study.id === 'nuecera' && (
+                        <Link
+                          href="/work/nuecera"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-black text-white dark:bg-white dark:text-black text-xs font-inter uppercase tracking-[0.16em] font-semibold hover:opacity-90 transition-opacity"
+                        >
+                          <span>Explore Nuécera Campaign Vault (35 Assets)</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                      )}
                       <a
                         href="https://witlyn.com"
                         target="_blank"
