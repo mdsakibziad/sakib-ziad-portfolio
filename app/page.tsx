@@ -23,6 +23,7 @@ import { ParallaxLayer } from '@/components/parallax-layer'
 import { AmbientHeroAtmosphere } from '@/components/ambient-hero-atmosphere'
 import { CondensationDroplet } from '@/components/condensation-droplet'
 import { CondensationDivider } from '@/components/condensation-divider'
+import { ChannelMultiplication } from '@/components/channel-multiplication'
 
 /* ── Animation Curve ──────────────────────────────────────────────────────── */
 const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
@@ -396,24 +397,6 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          PACING MOMENT 1 · SPARSE FULL-WIDTH EDITORIAL BREATHER
-      ════════════════════════════════════════════════════════════════════ */}
-      <section className="py-28 lg:py-36 border-t border-white/[0.08] bg-background relative overflow-hidden" aria-label="Philosophy Quote">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.03)_0%,_transparent_70%)] pointer-events-none" />
-        <div className="container-luxury max-w-4xl mx-auto text-center relative z-10">
-          <RevealSection>
-            <span className="text-black/15 dark:text-white/20 font-fraunces text-6xl lg:text-7xl block mb-4 leading-none">“</span>
-            <blockquote className="font-fraunces text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-ivory font-light italic leading-snug mb-8">
-              In the generative era, prestige will not be measured by the volume of content you produce. It will be determined by the precision of the systems you command.
-            </blockquote>
-            <cite className="font-inter text-xs sm:text-sm uppercase tracking-[0.25em] text-zinc-600 dark:text-zinc-400 font-medium not-italic block">
-              Sakib Ziad · Founder of Witlyn
-            </cite>
-          </RevealSection>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════════════
           SECTION 3 · TWO PILLARS (VISUALLY CONTRASTING BLOCKS)
       ════════════════════════════════════════════════════════════════════ */}
       <section className="section-pad relative overflow-hidden bg-black/[0.015] dark:bg-white/[0.015] border-t border-black/[0.08] dark:border-white/[0.08]" aria-label="Two Pillars">
@@ -590,6 +573,11 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ════════════════════════════════════════════════════════════════════
+          CREATIVE MULTIPLICATION · ONE PRODUCT, EVERY CHANNEL (DIAGRAM)
+      ════════════════════════════════════════════════════════════════════ */}
+      <ChannelMultiplication />
 
       {/* ════════════════════════════════════════════════════════════════════
           SECTION 4 · THREE WAYS TO WORK WITH ME (HIERARCHICAL HUB)
