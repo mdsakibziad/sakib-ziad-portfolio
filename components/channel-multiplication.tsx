@@ -28,8 +28,8 @@ const CHANNELS: ChannelOutput[] = [
     id: 'meta-feed',
     channel: 'Meta Feed Ad',
     format: '1:1 Square Feed',
-    annotation: 'Scroll-stopping first-frame hook',
-    imageSrc: '/images/aura-purify/aura.jpg',
+    annotation: 'Scroll-stopping zero-cast hook',
+    imageSrc: '/images/solae/meta/meta-still-01.jpg',
     frameType: 'feed',
     delay: 0.2,
   },
@@ -37,8 +37,8 @@ const CHANNELS: ChannelOutput[] = [
     id: 'ig-story',
     channel: 'Instagram Story',
     format: '9:16 Story',
-    annotation: '9:16 crop, CTA-safe zone',
-    imageSrc: '/images/aura-purify/aura-purify-3rd-image.jpeg',
+    annotation: '9:16 vertical crop, CTA-safe zone',
+    imageSrc: '/images/solae/instagram/instagram-story-01.jpg',
     frameType: 'phone-story',
     delay: 0.3,
   },
@@ -46,9 +46,9 @@ const CHANNELS: ChannelOutput[] = [
     id: 'ig-reel',
     channel: 'Instagram Reel',
     format: '9:16 Reel',
-    annotation: 'Dynamic kinetic pace, sound-on hook',
-    imageSrc: '/images/aura-purify/aura-purify-2nd-image.jpeg',
-    videoSrc: '/images/aura-purify/aura-purify-peoduct-video.mp4',
+    annotation: 'Dynamic water velocity, sound-on hook',
+    imageSrc: '/images/solae/instagram/instagram-still-01.jpg',
+    videoSrc: '/images/solae/instagram/instagram-video-01.mp4',
     frameType: 'phone-reel',
     delay: 0.4,
   },
@@ -56,8 +56,9 @@ const CHANNELS: ChannelOutput[] = [
     id: 'tiktok-video',
     channel: 'TikTok Video',
     format: '9:16 Feed',
-    annotation: 'Native, low-polish framing for feed blend-in',
-    imageSrc: '/images/aura-purify/aura-purify-6th-image.jpeg',
+    annotation: 'Native 3-second absorption proof',
+    imageSrc: '/images/solae/instagram/instagram-still-03.jpg',
+    videoSrc: '/images/solae/meta/meta-video-01.mp4',
     frameType: 'phone-tiktok',
     delay: 0.5,
   },
@@ -66,7 +67,7 @@ const CHANNELS: ChannelOutput[] = [
     channel: 'Website Hero Banner',
     format: 'Wide-Format Web',
     annotation: 'Wide-format hero crop, no CTA overlap',
-    imageSrc: '/images/aura-purify/aura-purify-4th-image.jpeg',
+    imageSrc: '/images/solae/editorial/solae-photo-05.jpg',
     frameType: 'desktop',
     delay: 0.6,
   },
@@ -130,7 +131,7 @@ export function ChannelMultiplication() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* ════════════════════════════════════════════════════════════════
-              LEFT SIDE: HERO PRODUCT ANCHOR (CLEAN, NO READOUT CLUTTER)
+              LEFT SIDE: HERO PRODUCT ANCHOR (SOLAÉ AIRVEIL STUDIO MASTER)
           ════════════════════════════════════════════════════════════════ */}
           <div className="lg:col-span-5 lg:sticky lg:top-28">
             <motion.div
@@ -141,8 +142,8 @@ export function ChannelMultiplication() {
             >
               {/* Clean Minimal Title */}
               <div className="flex items-center justify-between mb-4 pb-3 border-b border-black/[0.08] dark:border-white/[0.08]">
-                <span className="font-fraunces text-lg text-[#141416] dark:text-white">
-                  AURA PURIFY
+                <span className="font-fraunces text-lg text-[#141416] dark:text-white font-medium">
+                  SOLAÉ
                 </span>
                 <span className="text-[11px] font-inter text-zinc-500 dark:text-zinc-400">
                   Studio Master
@@ -152,10 +153,11 @@ export function ChannelMultiplication() {
               {/* Master Studio Image */}
               <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-black/[0.02] dark:bg-black/40 border border-black/10 dark:border-white/10 shadow-[0_12px_36px_rgba(0,0,0,0.08)]">
                 <Image
-                  src="/images/aura-purify/aura-purify-1st-product.jpeg"
-                  alt="AURA Purify Clean Studio Master Shot on Dark Basalt Pedestal"
+                  src="/images/solae/editorial/solae-photo-01.jpg"
+                  alt="SOLAÉ AIRVEIL Clean Studio Master Capture"
                   fill
                   priority
+                  unoptimized
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover transition-transform duration-1000 ease-luxury group-hover:scale-105"
                 />
@@ -164,8 +166,8 @@ export function ChannelMultiplication() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <p className="font-fraunces text-base tracking-wide">Barrier Gel-to-Milk Cleanser</p>
-                  <p className="text-[11px] font-inter text-white/70 font-light">Root asset for all platform derivatives</p>
+                  <p className="font-fraunces text-base tracking-wide">AIRVEIL Invisible Sun Serum</p>
+                  <p className="text-[11px] font-inter text-white/80 font-light">Root asset for all platform derivatives · SPF50+ PA++++</p>
                 </div>
               </div>
             </motion.div>
@@ -214,6 +216,7 @@ export function ChannelMultiplication() {
                             alt={`${item.channel} campaign visual`}
                             fill
                             priority
+                            unoptimized
                             sizes="(max-width: 768px) 100vw, 320px"
                             className="object-cover"
                           />
@@ -223,11 +226,11 @@ export function ChannelMultiplication() {
                             <div className="h-0.5 flex-1 bg-white/40 rounded-full" />
                           </div>
                           <div className="absolute top-4 left-3 right-3 flex items-center justify-between text-white text-[9px] font-medium z-10">
-                            <span className="drop-shadow">aura.skincare</span>
+                            <span className="drop-shadow">solae.skin</span>
                             <span className="drop-shadow">14h</span>
                           </div>
                           <div className="absolute bottom-3 left-3 right-3 py-1.5 px-3 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] text-center font-medium">
-                            Swipe to Experience →
+                            Swipe to Protect →
                           </div>
                         </div>
                       ) : item.frameType === 'phone-reel' ? (
@@ -249,6 +252,7 @@ export function ChannelMultiplication() {
                               alt={`${item.channel} campaign visual`}
                               fill
                               priority
+                              unoptimized
                               sizes="(max-width: 768px) 100vw, 320px"
                               className="object-cover"
                             />
@@ -260,29 +264,42 @@ export function ChannelMultiplication() {
                           </div>
                           <div className="absolute bottom-3 left-3 text-white text-[9px] font-light z-10 flex items-center gap-1.5 drop-shadow">
                             <Volume2 className="w-3 h-3" />
-                            <span>Original Audio</span>
+                            <span>Original Audio · Solaé</span>
                           </div>
                         </div>
                       ) : item.frameType === 'phone-tiktok' ? (
                         /* Phone Frame: TikTok */
                         <div className="relative aspect-[9/16] max-h-80 w-auto mx-auto rounded-2xl overflow-hidden border-[3px] border-zinc-800/80 dark:border-zinc-700/80 bg-black shadow-lg">
-                          <Image
-                            src={item.imageSrc}
-                            alt={`${item.channel} campaign visual`}
-                            fill
-                            priority
-                            sizes="(max-width: 768px) 100vw, 320px"
-                            className="object-cover"
-                          />
+                          {item.videoSrc ? (
+                            <video
+                              src={item.videoSrc}
+                              poster={item.imageSrc}
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <Image
+                              src={item.imageSrc}
+                              alt={`${item.channel} campaign visual`}
+                              fill
+                              priority
+                              unoptimized
+                              sizes="(max-width: 768px) 100vw, 320px"
+                              className="object-cover"
+                            />
+                          )}
                           <div className="absolute top-3 left-0 right-0 flex justify-center text-[10px] text-white/90 font-medium z-10">
                             <span className="font-bold underline decoration-2">Following</span>
                             <span className="mx-2 opacity-50">|</span>
                             <span>For You</span>
                           </div>
                           <div className="absolute bottom-3 left-3 right-10 text-white z-10 drop-shadow">
-                            <p className="text-[10px] font-bold">@auraskin</p>
+                            <p className="text-[10px] font-bold">@solaeskin</p>
                             <p className="text-[9px] font-light line-clamp-2 text-white/90">
-                              barrier gel-to-milk formula swatch ✨ #skincaretok
+                              feels like water, zero white cast ✨ #ClearSunscreen #SPF50
                             </p>
                           </div>
                         </div>
@@ -294,7 +311,7 @@ export function ChannelMultiplication() {
                             <div className="w-1.5 h-1.5 rounded-full bg-yellow-400/80" />
                             <div className="w-1.5 h-1.5 rounded-full bg-green-400/80" />
                             <div className="mx-auto text-[8px] font-mono text-zinc-500 dark:text-zinc-400 opacity-80">
-                              auraskin.com/purify
+                              solaeskin.com/airveil
                             </div>
                           </div>
                           <div className="relative h-full min-h-[160px] sm:min-h-[200px] w-full">
@@ -303,12 +320,13 @@ export function ChannelMultiplication() {
                               alt={`${item.channel} campaign visual`}
                               fill
                               priority
+                              unoptimized
                               sizes="(max-width: 1024px) 100vw, 650px"
                               className="object-cover"
                             />
                             <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent pointer-events-none" />
                             <div className="absolute top-4 left-4 text-white font-fraunces text-sm sm:text-base font-light drop-shadow">
-                              Purify Barrier Cleanser
+                              AIRVEIL Invisible Sun Serum
                             </div>
                           </div>
                         </div>
@@ -317,8 +335,8 @@ export function ChannelMultiplication() {
                         <div className="relative aspect-square max-h-80 w-auto mx-auto rounded-xl overflow-hidden border border-black/15 dark:border-white/20 bg-black/[0.04] dark:bg-black/40 shadow-lg">
                           <div className="p-2 bg-black/[0.04] dark:bg-white/[0.04] flex items-center justify-between text-[10px] font-inter border-b border-black/[0.05] dark:border-white/[0.05]">
                             <div className="flex items-center gap-1.5">
-                              <div className="w-3.5 h-3.5 rounded-full bg-amber-600/80" />
-                              <span className="font-semibold text-zinc-900 dark:text-white">Aura Skincare</span>
+                              <div className="w-3.5 h-3.5 rounded-full bg-amber-500/80" />
+                              <span className="font-semibold text-zinc-900 dark:text-white">SOLAÉ Skincare</span>
                             </div>
                             <span className="text-[9px] text-zinc-500 uppercase tracking-widest font-mono">Sponsored</span>
                           </div>
@@ -328,19 +346,20 @@ export function ChannelMultiplication() {
                               alt={`${item.channel} campaign visual`}
                               fill
                               priority
+                              unoptimized
                               sizes="(max-width: 768px) 100vw, 360px"
                               className="object-cover"
                             />
                           </div>
                           <div className="p-2 bg-black/[0.06] dark:bg-white/[0.06] flex items-center justify-between text-[10px] text-zinc-800 dark:text-zinc-200">
-                            <span className="font-medium">Shop Barrier Cleanser</span>
+                            <span className="font-medium">Shop Invisible Sun Serum</span>
                             <span className="text-[9px] font-mono uppercase underline">Learn More</span>
                           </div>
                         </div>
                       )}
                     </div>
 
-                    {/* Short Micro-Annotation Caption Only (2-5 words) */}
+                    {/* Short Micro-Annotation Caption Only */}
                     <div className="mt-3 pt-2.5 border-t border-black/[0.05] dark:border-white/[0.05] text-center">
                       <p className="text-xs font-inter text-zinc-600 dark:text-zinc-300 font-medium">
                         {item.annotation}
