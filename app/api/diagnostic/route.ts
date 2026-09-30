@@ -61,11 +61,22 @@ async function sendOwnerAcknowledgement(
   }
 }
 
+import { checkRateLimit, isHoneypotTriggered, sanitizeString } from '@/lib/security'
+
 // ---------------------------------------------------------------------------
 // Route handler
 // ---------------------------------------------------------------------------
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
+  // 0. Rate limiting (max 4 diagnostic submissions per 60s per IP)
+  const rateLimit = checkRateLimit(req, 4, 60 * 1000)
+  if (!rateLimit.allowed) {
+    return NextResponse.json(
+      { success: false, error: 'Too many analysis requests. Please wait a minute and try again.' },
+      { status: 429 }
+    )
+  }
+
   // 1. Parse body
   let body: Record<string, unknown>
   try {
@@ -77,6 +88,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     )
   }
 
+  // 1b. Honeypot check
+  if (isHoneypotTriggered(body)) {
+    return NextResponse.json({ success: true, message: 'Report generated and sent.' })
+  }
+
   // 2. Validate
   const parsed = DiagnosticSchema.safeParse(body)
   if (!parsed.success) {
@@ -85,8 +101,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     return NextResponse.json({ success: false, error: message }, { status: 400 })
   }
 
-  const { brandName, websiteUrl, instagramHandle, primaryChallenge, email } =
-    parsed.data
+  const brandName = sanitizeString(parsed.data.brandName)
+  const websiteUrl = parsed.data.websiteUrl.trim()
+  const instagramHandle = parsed.data.instagramHandle ? sanitizeString(parsed.data.instagramHandle) : undefined
+  const primaryChallenge = sanitizeString(parsed.data.primaryChallenge)
+  const email = parsed.data.email.trim().toLowerCase()
 
   const apiKey = process.env.RESEND_API_KEY
   const resend = apiKey ? new Resend(apiKey) : null

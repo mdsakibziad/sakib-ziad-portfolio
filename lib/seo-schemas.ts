@@ -9,11 +9,26 @@ export const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Sakib Ziad',
-  jobTitle: 'AI Creative Strategist & Automation Architect',
+  alternateName: [
+    'Creative Strategist',
+    'Beauty Creative Strategist',
+    'Commercial Creative Director',
+    'Sakib Ziad Creative Strategist',
+  ],
+  jobTitle: 'Creative Strategist & Commercial Director',
+  hasOccupation: {
+    '@type': 'Occupation',
+    name: 'Creative Strategist',
+    occupationalCategory: '27-1011.00',
+    description:
+      'High-velocity creative direction, sensory texture architecture, and direct-response performance systems for beauty and skincare brands.',
+    skills:
+      'Creative Strategy, Direct Response Advertising, Beauty Marketing, Sensory Art Direction, Paid Social Creative Systems, Hook Architecture, Conversion Rate Optimization',
+  },
   url: SITE_URL,
   image: `${SITE_URL}/images/sakib-ziad.jpg`,
   description:
-    'AI Creative Strategist helping beauty, skincare, and cosmetics brands compound growth through AI-native creative systems and intelligent brand automation.',
+    'Creative Strategist and Commercial Director helping beauty, skincare, and cosmetics brands compound revenue through high-velocity creative architecture and rapid 72-hour studio production.',
   worksFor: {
     '@type': 'Organization',
     name: 'Witlyn',
@@ -25,11 +40,15 @@ export const personSchema = {
     'https://www.facebook.com/sakibziad.21',
   ],
   knowsAbout: [
-    'Artificial Intelligence in Beauty',
-    'AI Creative Systems',
-    'Brand Operations Automation',
-    'Creative Direction',
-    'Skincare Brand Strategy',
+    'Creative Strategy',
+    'Direct-Response Creative Direction',
+    'Beauty & Skincare Advertising',
+    'Prestige Brand Architecture',
+    'Paid Social Creative Systems (Meta, TikTok, Instagram)',
+    'Thumb-Stop Rate Engineering',
+    'ROAS Optimization & CPA Reduction',
+    'Sensory Visual Directing & Formula Caustics',
+    'Rapid Commercial Production Pipelines',
   ],
 }
 

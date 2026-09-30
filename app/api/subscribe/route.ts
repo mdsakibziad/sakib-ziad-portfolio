@@ -73,11 +73,22 @@ function escHtml(str: unknown): string {
     .replace(/"/g, '&quot;')
 }
 
+import { checkRateLimit, isHoneypotTriggered } from '@/lib/security'
+
 // ---------------------------------------------------------------------------
 // Route handler
 // ---------------------------------------------------------------------------
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
+  // 0. Rate limiting (max 5 subscriptions / min per IP)
+  const rateLimit = checkRateLimit(req, 5, 60 * 1000)
+  if (!rateLimit.allowed) {
+    return NextResponse.json(
+      { success: false, error: 'Too many requests. Please wait a minute and try again.' },
+      { status: 429 }
+    )
+  }
+
   // 1. Parse body
   let body: Record<string, unknown>
   try {
@@ -87,6 +98,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       { success: false, error: 'Invalid JSON body.' },
       { status: 400 }
     )
+  }
+
+  // 1b. Honeypot check
+  if (isHoneypotTriggered(body)) {
+    return NextResponse.json({ success: true }, { status: 200 })
   }
 
   // 2. Validate

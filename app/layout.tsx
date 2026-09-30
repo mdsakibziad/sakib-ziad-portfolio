@@ -4,6 +4,8 @@ import { Fraunces, Inter } from 'next/font/google'
 import './globals.css'
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
+import { TopGuaranteeBanner } from '@/components/top-guarantee-banner'
+import { FloatingLeadTrigger } from '@/components/floating-lead-trigger'
 import { StructuredData } from '@/components/structured-data'
 import { personSchema } from '@/lib/seo-schemas'
 import { ThemeProvider } from '@/components/theme-provider'
@@ -41,18 +43,23 @@ const GA_ID = process.env.NEXT_PUBLIC_GA_ID
 export const metadata: Metadata = {
   metadataBase: new URL('https://sakibziad.my'),
   title: {
-    default: 'Sakib Ziad — Creative Strategist & Commercial Director for Beauty & Skincare',
-    template: '%s',
+    default: 'Sakib Ziad — Creative Strategist & Commercial Director for Beauty & Skincare Brands',
+    template: '%s · Sakib Ziad',
   },
   description:
-    'Helping beauty & skincare brands compound revenue through high-performance creative direction, sensory systems, and rapid commercial production.',
+    'Senior Creative Strategist & Commercial Director. Helping beauty, skincare, and cosmetics brands scale profitably with high-velocity creative architecture, thumb-stop hook design, and rapid 72-hour studio production.',
   keywords: [
     'Creative Strategist',
+    'Senior Creative Strategist',
+    'Beauty Creative Strategist',
+    'Skincare Creative Strategist',
     'Commercial Director',
-    'Beauty Brand Creative',
-    'Skincare Marketing',
+    'Beauty Brand Creative Director',
+    'Direct-Response Creative Strategist',
+    'Paid Social Creative Director',
+    'E-commerce Creative Strategist',
+    'Thumb-Stop Rate Optimization',
     'High-Performance Creative Systems',
-    'Direct-Response Creative',
     'Sakib Ziad',
     'Witlyn',
   ],
@@ -173,6 +180,9 @@ export default function RootLayout({
             Skip to main content
           </a>
 
+          {/* Top Alex Hormozi Style Outcome Guarantee Offer */}
+          <TopGuaranteeBanner />
+
           {/* Site navigation */}
           <Navigation />
 
@@ -180,6 +190,9 @@ export default function RootLayout({
           <main id="main-content" className="relative">
             {children}
           </main>
+
+          {/* High-Converting Floating Lead Capture */}
+          <FloatingLeadTrigger />
 
           {/* Site footer */}
           <Footer />

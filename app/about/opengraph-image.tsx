@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = 'About Sakib Ziad — AI Creative Strategist & Founder of Witlyn'
+export const alt = 'About Sakib Ziad — Creative Direction & Strategy for Beauty Brands'
 export const size = {
   width: 1200,
   height: 630,
@@ -91,7 +91,7 @@ export default async function Image() {
               margin: 0,
             }}
           >
-            AI Isn&apos;t a Tool I Use. It&apos;s the Lens I See Through.
+            High-Performance Creative Systems for Prestige Beauty Brands.
           </h1>
           <p
             style={{

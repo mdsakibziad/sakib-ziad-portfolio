@@ -76,6 +76,59 @@ export default function AboutPage() {
     },
   ]
 
+  const expertisePoints = [
+    {
+      num: '01',
+      title: 'Direct-Response Creative Architecture',
+      desc: 'Translating abstract cosmetic benefits into scroll-stopping paid-social video hooks and visual proof demonstrations that consistently cut CPA by 30%–45%.',
+    },
+    {
+      num: '02',
+      title: 'Sensory Cosmetic Directing & Texture Physics',
+      desc: 'Engineering studio lighting caustics, optical bottle reflections, and tactile formula dispersion (gel-to-milk blooms, peptide matrix cushion, clear water-veils) so consumers instantly feel the formula on skin.',
+    },
+    {
+      num: '03',
+      title: 'First-Frame Hook Engineering (1.5s Thumb-Stop)',
+      desc: 'Confronting consumer category friction head-on with contrarian truth angles ("Sunscreen shouldn’t look like white paint", "Cellular tension. Zero collar grease") that drive 48%+ 3-second hold rates.',
+    },
+    {
+      num: '04',
+      title: 'Omnichannel Derivative Scaling',
+      desc: 'Structuring master visual captures that branch natively into Meta 1:1 square feeds, 4:5 sponsored portraits, 9:16 Instagram Reels, TikTok video feeds, and e-commerce hero banners with zero awkward cropping.',
+    },
+    {
+      num: '05',
+      title: 'Rapid 72-Hour Commercial Studio Turnaround',
+      desc: 'Replacing antiquated 6–8 week agency shoot bottlenecks and $50k+ overhead with agile 72-hour studio workflows delivering 25+ publication-grade commercial assets under the Witlyn standard.',
+    },
+    {
+      num: '06',
+      title: 'Paid-Social Forensic Ad Account Auditing',
+      desc: 'Dissecting historical Meta & TikTok ad data to pinpoint creative fatigue drop-offs, hook decay rates, and ad spend leakage across top-of-funnel prospecting vs middle-of-funnel retargeting.',
+    },
+    {
+      num: '07',
+      title: 'Prestige Brand Equity Defense',
+      desc: 'Ensuring aggressive direct-response conversion never compromises luxury prestige. We balance high-performance copywriting with refined editorial art direction and typographic rigor.',
+    },
+    {
+      num: '08',
+      title: 'Cosmetic Sensory Friction Diagnostics',
+      desc: 'Diagnosing the hidden friction points that stop beauty buyers (chalky white casts, foundation pilling, midday shine breakthrough, sticky hair gloss traps) and scripting undeniable visual counters.',
+    },
+    {
+      num: '09',
+      title: 'DTC E-Commerce Conversion Alignment',
+      desc: 'Synchronizing paid social ad creative hooks directly with Product Detail Page (PDP) hero copy, driving higher first-visit cart conversion and increasing Average Order Value (AOV) via routine bundles.',
+    },
+    {
+      num: '10',
+      title: 'Executive Advisory & In-House Team Enablement',
+      desc: 'Working 1:1 with beauty founders and CMOs to build and install sustainable in-house creative pipelines—turning creative velocity into a compounding competitive moat.',
+    },
+  ]
+
   return (
     <div className="bg-background text-ivory min-h-screen selection:bg-[#141416] selection:text-white dark:selection:bg-white dark:selection:text-black pt-28">
 
@@ -174,6 +227,47 @@ export default function AboutPage() {
               </RevealSection>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* ── 10 Core Strategic Expertise & Competencies Section ────────────── */}
+      <section className="section-pad border-t border-black/[0.08] dark:border-white/[0.08] bg-[#F7F6F2] dark:bg-[#0E0E0D]" aria-label="Core Expertise">
+        <div className="container-luxury">
+          <RevealSection className="max-w-3xl mb-16">
+            <p className="eyebrow-luxury mb-3 text-zinc-500 dark:text-zinc-400">02 // Core Strategic Expertise</p>
+            <h2 className="heading-section text-3xl sm:text-4xl lg:text-5xl text-[#141416] dark:text-white mb-4">
+              Ten Master Competencies Behind Top 1% Creative Strategy
+            </h2>
+            <p className="body-muted text-base sm:text-lg text-zinc-600 dark:text-zinc-400">
+              A comprehensive breakdown of the direct-response psychology, sensory art direction, and rapid production frameworks I deploy for category-leading beauty brands.
+            </p>
+          </RevealSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            {expertisePoints.map((item, idx) => (
+              <RevealSection key={item.num} delay={idx * 0.05}>
+                <div className="card-surface p-7 sm:p-8 flex flex-col justify-between h-full group hover:border-black/30 dark:hover:border-white/30 transition-all duration-300">
+                  <div>
+                    <div className="flex items-center justify-between mb-4 pb-3 border-b border-black/[0.06] dark:border-white/[0.08]">
+                      <span className="font-mono text-xs uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+                        Pillar // {item.num}
+                      </span>
+                      <span className="w-2 h-2 rounded-full bg-emerald-500/80 animate-pulse" />
+                    </div>
+                    <h3 className="font-fraunces text-xl sm:text-2xl text-zinc-950 dark:text-white font-medium mb-3 group-hover:text-black dark:group-hover:text-white transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="font-inter text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed font-light">
+                      {item.desc}
+                    </p>
+                  </div>
+                  <div className="pt-4 mt-6 border-t border-black/[0.05] dark:border-white/[0.05] text-[10px] font-mono text-zinc-400 uppercase tracking-wider">
+                    Executive Deliverable · Witlyn Standard
+                  </div>
+                </div>
+              </RevealSection>
+            ))}
           </div>
         </div>
       </section>

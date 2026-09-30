@@ -45,7 +45,7 @@ export default function ConsultingPage() {
   const isFor = [
     'Founders & CMOs of beauty, skincare, or cosmetic brands seeking category-defining visual prestige.',
     'Brands spending $15k–$50k+/quarter on production who want to replace agency delays with compounding internal systems.',
-    'Teams ready to install custom AI agent workflows to automate marketing and creative operations.',
+    'Teams ready to install high-velocity creative workflows to accelerate marketing and creative operations.',
     'Decision-makers who value high-level strategic counsel, architectural rigor, and partner-level attention.',
   ]
 
@@ -275,7 +275,7 @@ export default function ConsultingPage() {
                 <span className="eyebrow-luxury mb-2 block text-zinc-500 dark:text-zinc-400">Production Alternative</span>
                 <h4 className="heading-card text-2xl text-[#141416] dark:text-white mb-2">Looking for Done-For-You Campaign Production?</h4>
                 <p className="body-muted text-zinc-600 dark:text-zinc-300">
-                  If you need a full creative studio to concept and execute complete campaigns rather than advisory guidance, visit Witlyn — my full-service AI-native creative studio.
+                  If you need a full creative studio to concept and execute complete campaigns rather than advisory guidance, visit Witlyn — my commercial creative studio.
                 </p>
               </div>
               <Button asChild variant="outline" size="lg" className="shrink-0 w-full sm:w-auto">

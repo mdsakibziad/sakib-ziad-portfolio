@@ -143,7 +143,7 @@ export function Navigation() {
                   Sakib Ziad
                 </span>
                 <span className="font-inter text-[9px] uppercase tracking-[0.24em] text-zinc-500 dark:text-white/50 -mt-0.5 transition-colors duration-300 group-hover:text-zinc-800 dark:group-hover:text-white/80">
-                  Creative Strategy & AI
+                  Creative Direction & Strategy
                 </span>
               </Link>
             </div>

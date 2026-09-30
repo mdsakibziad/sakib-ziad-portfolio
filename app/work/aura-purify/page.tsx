@@ -55,30 +55,48 @@ const AURA_PURIFY_DATA: CaseStudyData = {
         angle: 'The Squeaky-Clean Misconception',
         channelFit: 'Meta 4:5 Feed & Instagram Reels',
         quote: "Squeaky-clean skin isn't healthy—it’s damaged.",
+        whyChosen:
+          'Consumers are conditioned to associate skin squeakiness with purity, even though it signals severe lipid-barrier destruction. Subverting this misconception instantly polarizes attention and positions the brand as a dermatological ally.',
         rationale:
           'Dismantles the cultural conditioning that cleansers should leave skin feeling tight, educating consumers that squeakiness is the feeling of stripped lipids.',
+        projectedRoas: '4.4x – 5.0x Target ROAS',
+        thumbStopRate: '45%+ (3s View)',
+        cpaImpact: '-35% Lower CPA',
         commercialBenefit:
           'Drives category re-education, unlocking skeptical shoppers who avoid foaming cleansers and establishing premium scientific authority.',
+        expectedOutcome: 'Positions AURA PURIFY as the daily non-stripping cleanser for chronic barrier redness, driving repeat orders every 45 days.',
       },
       {
         id: 2,
         angle: 'The 1-Second Optical Phase Shift',
         channelFit: 'Paid Video Reels & Stories',
         quote: 'Gel to Milk in 1 Second.',
+        whyChosen:
+          'In social feeds, visual transformation consistently outperforms static product claims. The golden translucent gel blooming into rich white milk delivers immediate thumb-stopping tactile satisfaction.',
         rationale:
           'Leverages the visual appeal of golden translucent gel blooming into rich white milk the exact millisecond water touches the face.',
+        projectedRoas: '4.6x – 5.2x Target ROAS',
+        thumbStopRate: '51%+ (3s View)',
+        cpaImpact: '-39% Lower CPA',
         commercialBenefit:
           'Delivers an instant 1.2-second thumb-stop on paid feeds, lowering CPA by up to 34% through sensory transformation proof.',
+        expectedOutcome: 'Generates rapid direct-to-cart clicks from viewers intrigued by the real-time emulsification proof.',
       },
       {
         id: 3,
         angle: 'Double-Cleanse Fatigue Solution',
         channelFit: 'Meta Carousels & Conversion Ads',
         quote: 'Never Strip. Just Clean.',
+        whyChosen:
+          'Modern skincare buyers are tired of buying both an oil balm and a foaming cleanser. Consolidating two steps into a single 200ml ritual dramatically lowers buying friction.',
         rationale:
           'Positions AURA PURIFY as the definitive single-step answer that melts waterproof makeup and cleanses pores without requiring two separate products.',
+        projectedRoas: '4.1x – 4.7x Target ROAS',
+        thumbStopRate: '42%+ (3s View)',
+        cpaImpact: '-30% Blended CPA',
         commercialBenefit:
           'Simplifies buying friction by consolidating two expensive SKUs into one daily luxury ritual, boosting AOV and repeat rate.',
+        expectedOutcome: 'High customer lifetime value (LTV) due to daily ritual habituation and bathroom vanity essentiality.',
       },
     ],
   },
@@ -158,16 +176,6 @@ const AURA_PURIFY_DATA: CaseStudyData = {
       aspectRatio: 'aspect-[4/5]',
       caption: 'Clear water sheeting cleanly off skin leaving natural barrier moisture intact.',
     },
-    {
-      id: 'aura-std-v01',
-      title: 'Studio Master Motion Feature',
-      platform: 'studio',
-      type: 'video',
-      src: '/images/aura-purify/studio/aura-product-video.mp4',
-      formatLabel: 'Studio Reel · 9:16',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Full cinematic studio reel showcasing the complete three-phase transformation.',
-    },
 
     // Meta Platform Assets (11)
     {
@@ -231,6 +239,16 @@ const AURA_PURIFY_DATA: CaseStudyData = {
       caption: 'Direct-response visual proving quick emulsification with zero oily film.',
     },
     {
+      id: 'aura-meta-v02',
+      title: 'Meta Motion Reel: SPF & Waterproof Dissolve',
+      platform: 'meta',
+      type: 'video',
+      src: '/images/aura-purify/meta/meta-video-02.mp4',
+      formatLabel: '9:16 Vertical Video',
+      aspectRatio: 'aspect-[9/16]',
+      caption: 'Waterproof makeup and mineral sunscreen melting cleanly under dry gel friction.',
+    },
+    {
       id: 'aura-meta-v01',
       title: 'Meta Motion Reel: Gel-to-Milk Blooming',
       platform: 'meta',
@@ -239,16 +257,6 @@ const AURA_PURIFY_DATA: CaseStudyData = {
       formatLabel: '9:16 Vertical Video',
       aspectRatio: 'aspect-[9/16]',
       caption: 'One-second optical transformation from thick amber gel to creamy white milk.',
-    },
-    {
-      id: 'aura-meta-v02',
-      title: 'Meta Motion Reel: SPF Dissolve Power',
-      platform: 'meta',
-      type: 'video',
-      src: '/images/aura-purify/meta/meta-video-02.mp4',
-      formatLabel: '9:16 Vertical Video',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Waterproof makeup and mineral sunscreen melting cleanly under dry gel friction.',
     },
     {
       id: 'aura-meta-v03',

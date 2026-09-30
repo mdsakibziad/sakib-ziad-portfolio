@@ -20,6 +20,9 @@ import {
   Clock,
   TrendingUp,
   Zap,
+  Volume2,
+  VolumeX,
+  Pause,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -58,6 +61,95 @@ function RevealSection({
     >
       {children}
     </motion.div>
+  )
+}
+
+/* ── Interactive Video Player with Audio Controls ─────────────────────────── */
+function HomepageVideoPlayer({ src, brand }: { src: string; brand: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isPlaying, setIsPlaying] = useState(true)
+  const [isMuted, setIsMuted] = useState(true)
+
+  const togglePlay = () => {
+    if (!videoRef.current) return
+    if (isPlaying) {
+      videoRef.current.pause()
+      setIsPlaying(false)
+    } else {
+      videoRef.current.play()
+      setIsPlaying(true)
+    }
+  }
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    if (!videoRef.current) return
+    const nextMuted = !isMuted
+    videoRef.current.muted = nextMuted
+    setIsMuted(nextMuted)
+  }
+
+  return (
+    <div
+      onClick={togglePlay}
+      className="sm:col-span-5 relative aspect-[9/16] rounded-2xl overflow-hidden border border-black/10 dark:border-white/20 bg-black group flex flex-col justify-end cursor-pointer shadow-lg"
+    >
+      <video
+        ref={videoRef}
+        src={src}
+        autoPlay
+        loop
+        muted={isMuted}
+        playsInline
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+        className="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-700 ease-luxury group-hover:scale-105"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+
+      {/* Audio Sound Toggle Button */}
+      <button
+        onClick={toggleMute}
+        aria-label={isMuted ? 'Unmute audio' : 'Mute audio'}
+        title={isMuted ? 'Click to unmute' : 'Click to mute'}
+        className="absolute top-3 right-3 z-20 p-2 rounded-full bg-black/75 backdrop-blur-md text-white border border-white/20 hover:bg-black hover:scale-110 active:scale-95 transition-all shadow-md group/sound"
+      >
+        {isMuted ? (
+          <VolumeX className="w-3.5 h-3.5 text-zinc-300 group-hover/sound:text-white" />
+        ) : (
+          <Volume2 className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+        )}
+      </button>
+
+      {/* Play/Pause Indicator Overlay */}
+      <div className="absolute inset-0 bg-black/20 flex items-center justify-center transition-opacity pointer-events-none">
+        <div
+          className={`w-10 h-10 rounded-full bg-white/95 text-black flex items-center justify-center shadow-xl transition-all duration-300 ${
+            isPlaying ? 'opacity-0 group-hover:opacity-85 scale-90' : 'opacity-100 scale-100'
+          }`}
+        >
+          {isPlaying ? (
+            <Pause className="w-4 h-4 fill-current" />
+          ) : (
+            <Play className="w-4 h-4 ml-0.5 fill-current" />
+          )}
+        </div>
+      </div>
+
+      <div className="relative z-10 p-4">
+        <div className="flex items-center justify-between mb-1">
+          <span className="text-[10px] font-mono uppercase tracking-wider text-white/90 bg-black/70 px-2.5 py-0.5 rounded backdrop-blur-md border border-white/20">
+            Motion Deliverable · 9:16
+          </span>
+          <span className="text-[9px] font-mono text-white/80 bg-black/60 px-1.5 py-0.5 rounded">
+            {isMuted ? 'Muted' : 'Sound On'}
+          </span>
+        </div>
+        <p className="text-[11px] text-white/80 line-clamp-1 font-inter">
+          {brand} First-Frame Hook
+        </p>
+      </div>
+    </div>
   )
 }
 
@@ -210,7 +302,7 @@ export default function HomePage() {
       },
       deliverables: '29 Master Production Assets · Meta, IG & Editorial',
       heroImage: '/images/solae/editorial/solae-photo-01.jpg',
-      previewVideo: '/images/solae/videos/solae-video-01.mp4',
+      previewVideo: '/images/solae/instagram/instagram-video-01.mp4',
       link: '/work/solae',
     },
     {
@@ -226,7 +318,7 @@ export default function HomePage() {
       },
       deliverables: '27 Master Production Assets · Tactile Macro & Reels',
       heroImage: '/images/lipea/editorial/lipea-photo-01.jpg',
-      previewVideo: '/images/lipea/videos/lipea-video-01.mp4',
+      previewVideo: '/images/lipea/instagram/instagram-video-01.mp4',
       link: '/work/lipea',
     },
     {
@@ -258,7 +350,7 @@ export default function HomePage() {
       },
       deliverables: '27 Master Production Assets · Macro Phase Shift & Studio',
       heroImage: '/images/aura-purify/studio/aura-product-01.jpg',
-      previewVideo: '/images/aura-purify/videos/aura-video-01.mp4',
+      previewVideo: '/images/aura-purify/meta/meta-video-02.mp4',
       link: '/work/aura-purify',
     },
     {
@@ -274,7 +366,7 @@ export default function HomePage() {
       },
       deliverables: '17 Master Production Assets · Tech-Neck Performance Suite',
       heroImage: '/images/vyraa/studio/vyraa-hero-01.jpg',
-      previewVideo: '/images/vyraa/videos/vyraa-video-01.mp4',
+      previewVideo: '/images/vyraa/meta/meta-video-01.mp4',
       link: '/work/vyraa',
     },
   ]
@@ -425,12 +517,15 @@ export default function HomePage() {
               transition={{ duration: 0.85, ease: EASE_LUXURY, delay: 0.7 }}
               className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto"
             >
-              <Button asChild variant="gold" size="lg" className="w-full sm:w-auto group">
-                <Link href="/contact" className="flex items-center gap-2">
-                  <span>Apply for a Strategy Call</span>
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
-                </Link>
-              </Button>
+              <div className="relative group w-full sm:w-auto">
+                <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-zinc-400/25 via-zinc-200/50 to-zinc-400/25 blur-sm opacity-70 group-hover:opacity-100 transition duration-500 animate-pulse pointer-events-none" />
+                <Button asChild variant="gold" size="lg" className="relative w-full sm:w-auto">
+                  <Link href="/contact" className="flex items-center gap-2">
+                    <span>Apply for a Strategy Call</span>
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+                  </Link>
+                </Button>
+              </div>
               <Button asChild variant="outline" size="lg" className="w-full sm:w-auto group">
                 <Link href="#selected-work" className="flex items-center gap-2">
                   <span>Explore Selected Work</span>
@@ -726,26 +821,8 @@ export default function HomePage() {
                       </div>
                     </div>
 
-                    {/* Motion Deliverable Preview */}
-                    <div className="sm:col-span-5 relative aspect-[9/16] rounded-2xl overflow-hidden border border-black/10 dark:border-white/20 bg-black group flex flex-col justify-end">
-                      <video
-                        src={study.previewVideo}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-700 ease-luxury group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-                      <div className="relative z-10 p-4">
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-white/90 bg-black/70 px-2.5 py-1 rounded backdrop-blur-md border border-white/20 block mb-1">
-                          Motion Deliverable · 9:16
-                        </span>
-                        <p className="text-[11px] text-white/80 line-clamp-1 font-inter">
-                          {study.brand} First-Frame Hook
-                        </p>
-                      </div>
-                    </div>
+                    {/* Motion Deliverable Preview with Audio Controls */}
+                    <HomepageVideoPlayer src={study.previewVideo} brand={study.brand} />
                   </div>
 
                 </div>
@@ -1151,12 +1228,15 @@ export default function HomePage() {
             <p className="font-inter text-sm sm:text-base text-zinc-300 dark:text-zinc-700 max-w-xl mx-auto mb-10 leading-relaxed font-light">
               We review every application personally. Strictly capped cohorts ensure deep focus, rapid delivery, and direct strategic access.
             </p>
-            <Button asChild variant="gold" size="xl">
-              <Link href="/contact" className="flex items-center gap-2">
-                <span>Apply for a Strategy Call</span>
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </Button>
+            <div className="inline-block relative group">
+              <div className="absolute -inset-1.5 rounded-full bg-gradient-to-r from-zinc-300/30 via-white/50 to-zinc-300/30 dark:from-zinc-400/30 dark:via-black/20 dark:to-zinc-400/30 blur-md opacity-60 group-hover:opacity-100 transition duration-500 animate-pulse pointer-events-none" />
+              <Button asChild variant="gold" size="xl" className="relative shadow-2xl">
+                <Link href="/contact" className="flex items-center gap-2">
+                  <span>Apply for a Strategy Call</span>
+                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+                </Link>
+              </Button>
+            </div>
           </RevealSection>
 
         </div>

@@ -85,11 +85,22 @@ async function notifySlack(data: Record<string, unknown>): Promise<void> {
   }
 }
 
+import { checkRateLimit, isHoneypotTriggered, sanitizeString } from '@/lib/security'
+
 // ---------------------------------------------------------------------------
 // Route handler
 // ---------------------------------------------------------------------------
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
+  // 0. Security: Rate limiting check (max 5 requests / min per IP)
+  const rateLimit = checkRateLimit(req, 5, 60 * 1000)
+  if (!rateLimit.allowed) {
+    return NextResponse.json(
+      { success: false, error: 'Too many requests. Please wait a minute and try again.' },
+      { status: 429 }
+    )
+  }
+
   // 1. Parse body
   let body: Record<string, unknown>
   try {
@@ -101,6 +112,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     )
   }
 
+  // 1b. Security: Honeypot check (silently drop bot submissions)
+  if (isHoneypotTriggered(body)) {
+    return NextResponse.json({ success: true, message: 'Application received.' })
+  }
+
   // 2. Validate required fields
   const parsed = ContactSchema.safeParse(body)
   if (!parsed.success) {
@@ -109,7 +125,9 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     return NextResponse.json({ success: false, error: message }, { status: 400 })
   }
 
-  const { type, name, email } = parsed.data
+  const { type } = parsed.data
+  const name = sanitizeString(parsed.data.name)
+  const email = parsed.data.email.trim().toLowerCase()
   const apiKey = process.env.RESEND_API_KEY
   const resend = apiKey ? new Resend(apiKey) : null
 
