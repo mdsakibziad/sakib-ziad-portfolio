@@ -466,12 +466,12 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
         <div className="container-luxury max-w-4xl space-y-10">
           
           <div>
-            <p className="eyebrow-luxury text-zinc-500 dark:text-zinc-400 mb-2">01 // Creative Strategist Rationale</p>
+            <p className="eyebrow-luxury text-zinc-500 dark:text-zinc-400 mb-2">01 · Strategic Rationale</p>
             <h2 className="heading-section text-2xl sm:text-3xl lg:text-4xl text-[#141416] dark:text-white">
-              Why These Hooks & Visuals Were Chosen
+              Creative Strategy &amp; Hook Architecture
             </h2>
             <p className="body-muted text-sm sm:text-base text-zinc-600 dark:text-zinc-400 mt-1">
-              Top 1% creative direction is not aesthetics for the sake of decoration. Every angle attacks a real consumer tension point to maximize thumb-stop rate and paid-social conversion.
+              Every creative angle targets consumer friction points to maximize thumb-stop rate and paid-social conversion.
             </p>
           </div>
 

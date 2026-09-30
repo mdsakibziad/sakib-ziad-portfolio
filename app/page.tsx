@@ -413,14 +413,7 @@ export default function HomePage() {
         {/* Ambient Subtle Atmosphere */}
         <AmbientHeroAtmosphere />
 
-        {/* Ambient Spatial Guides */}
-        <div className="absolute top-32 left-8 lg:left-16 hidden sm:block text-[10px] font-mono tracking-[0.25em] text-zinc-600 dark:text-white/40 select-none">
-          SYSTEM: HIGH-PERFORMANCE CREATIVE DIRECTION
-        </div>
-        <div className="absolute top-32 right-8 lg:right-16 hidden sm:block text-[10px] font-mono tracking-[0.25em] text-zinc-500 select-none">
-          ED. 2026 // BEAUTY & PRESTIGE
-          <CondensationDroplet className="top-6 right-3" delay={2} duration={19} />
-        </div>
+
 
         <div className="container-luxury relative z-10">
           <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
@@ -609,12 +602,12 @@ export default function HomePage() {
                 </h2>
               </RevealSection>
 
-              <RevealSection delay={0.1} className="space-y-6 body-editorial text-base sm:text-lg text-zinc-700 dark:text-zinc-300 font-light">
+              <RevealSection delay={0.1} className="space-y-5 body-editorial text-base sm:text-lg text-zinc-700 dark:text-zinc-300 font-light">
                 <p>
-                  In the beauty vertical, consumer attention is brutally fast. An ad that converts today burns out within two weeks. Yet traditional studio production still demands \$40k–\$60k, contracts, physical shoot sets, and 6 to 8 weeks of waiting.
+                  Beauty ad creative fatigues in two weeks, yet traditional studio production still demands $40k–$60k overhead and 6 to 8 weeks of waiting.
                 </p>
                 <p>
-                  Meanwhile, brands that attempt shortcuts using generic freelance content or cheap filters end up with plastic, synthetic visuals that destroy luxury customer trust. The winning brands don’t need more random content—they need high-fashion creative systems that produce high-converting commercial assets on demand.
+                  Cheap freelance shortcuts produce synthetic visuals that destroy luxury customer trust. The fastest-scaling beauty brands deploy high-converting commercial creative systems that deliver studio-grade assets on demand.
                 </p>
               </RevealSection>
             </div>
@@ -702,8 +695,8 @@ export default function HomePage() {
                     </p>
                   </div>
 
-                  <div className="pt-4 mt-6 border-t border-black/[0.06] dark:border-white/[0.06] text-[10px] font-mono text-zinc-500">
-                    PHASE {step.num} // ACTIVE SYSTEM
+                  <div className="pt-4 mt-6 border-t border-black/[0.06] dark:border-white/[0.06] text-[10px] font-mono text-zinc-500 uppercase">
+                    Phase {step.num}
                   </div>
                 </div>
               </RevealSection>
@@ -747,10 +740,9 @@ export default function HomePage() {
                   <div className={`lg:col-span-5 flex flex-col justify-between ${idx % 2 === 1 ? 'order-1 lg:order-2' : ''}`}>
                     <div>
                       <div className="flex items-center gap-3 mb-3">
-                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-widest bg-black/[0.05] dark:bg-white/10 text-zinc-800 dark:text-zinc-200">
-                          {study.num} // SPEC COMMERCIAL
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-black/[0.05] dark:bg-white/10 text-zinc-800 dark:text-zinc-200">
+                          Case Study {study.num}
                         </span>
-                        <span className="text-xs font-mono text-zinc-500">WITLYN VAULT</span>
                       </div>
 
                       <h3 className="heading-card text-3xl sm:text-4xl text-[#141416] dark:text-white mb-2">
@@ -788,7 +780,7 @@ export default function HomePage() {
                       </div>
 
                       <div className="text-xs font-mono text-zinc-500 mb-6">
-                        DELIVERABLES: {study.deliverables}
+                        {study.deliverables}
                       </div>
                     </div>
 
@@ -796,7 +788,7 @@ export default function HomePage() {
                       href={study.link}
                       className="inline-flex items-center gap-2 self-start text-xs font-inter uppercase tracking-[0.16em] text-zinc-950 dark:text-white font-semibold hover:underline group/link"
                     >
-                      <span>Explore {study.brand} Deliverables & Stills</span>
+                      <span>Explore {study.brand} Campaign Vault</span>
                       <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
                     </Link>
                   </div>

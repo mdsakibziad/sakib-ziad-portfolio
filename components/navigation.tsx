@@ -91,16 +91,13 @@ export function Navigation() {
 
   return (
     <>
-      {/* ── Fixed Top Bar (Unified Banner + Navigation Stack) ───────────── */}
+      {/* ── Fixed Top Bar (Unified Navigation + Banner Stack) ───────────── */}
       <div className="fixed top-0 inset-x-0 z-50 flex flex-col pointer-events-none">
-        <div className="pointer-events-auto w-full">
-          <TopGuaranteeBanner />
-        </div>
         <header
           className={cn(
             'w-full pointer-events-auto transition-all duration-500 ease-luxury',
             scrolled
-              ? 'bg-white/80 dark:bg-[#0E0E10]/85 backdrop-blur-[20px] backdrop-saturate-[160%] border-b border-black/10 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.06)]'
+              ? 'bg-white/85 dark:bg-[#0E0E10]/90 backdrop-blur-[20px] backdrop-saturate-[160%] border-b border-black/10 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.06)]'
               : 'bg-transparent border-b border-transparent'
           )}
           role="banner"
@@ -264,6 +261,11 @@ export function Navigation() {
           </nav>
         </div>
       </header>
+
+      {/* Luminous Animated Offer Banner Below Header */}
+      <div className="pointer-events-auto w-full">
+        <TopGuaranteeBanner />
+      </div>
     </div>
 
       {/* ── Mobile Drawer ────────────────────────────────────────────────── */}
