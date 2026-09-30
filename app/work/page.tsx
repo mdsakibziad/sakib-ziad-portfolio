@@ -40,79 +40,106 @@ export default function WorkPage() {
       id: 'solae',
       num: '01',
       brand: 'SOLAÉ',
-      tag: 'AI Campaign Direction',
-      status: 'Spec Commercial · Witlyn Production',
-      category: 'Clinical Botanical Sun Care',
+      tag: 'Invisible Sun Protection',
+      status: 'Spec Commercial · Witlyn Vault',
+      category: 'Sun Care & Hydrating Serum',
       headline: 'AIRVEIL — SPF50+ PA++++ Invisible Sun Serum',
-      image: 'https://witlyn.com/work/solae/01-solae-campaign-hero.jpg.jpg',
+      image: '/images/solae/editorial/solae-photo-01.jpg',
+      link: '/work/solae',
+      assetCount: '29 Curated Assets',
       objective:
-        'Solaé required a luminous, hyper-tactile commercial campaign for an invisible sun serum. Traditional studio shooting projected a 7-week delay and heavy budget overhead for fluid-rig photography and architectural lighting sets.',
+        'Eliminate the sensory and visual friction of traditional daily sunscreens—addressing chalky white cast, greasy film in high humidity, and foundation pilling.',
       approach:
-        'Developed a proprietary prompt architecture calibrated to botanical cell morphology and warm architectural sunlight. Constructed 12 distinct art-directed scenes including liquid dispersion, macro dropper textures, and golden-hour lifestyle stills.',
+        'Engineered a 100% clear water-veil formulation visual system, contrasting thick white creams with an instantaneous 3-second absorption aesthetic across diverse skin tones.',
       outcome:
-        'Delivered publication-grade campaign assets in 5 days. Established the permanent visual brand playbook now deployed across product packaging, digital paid acquisition, and wholesale retail merchandising.',
-      metric: 'Hero Campaign Film + 48 High-Resolution Assets Delivered in 5 Days',
-    },
-    {
-      id: 'vyraa',
-      num: '02',
-      brand: 'VYRAA',
-      tag: 'Brand Repositioning',
-      status: 'Spec Commercial · Witlyn Production',
-      category: 'Prestige Clinical Skincare',
-      headline: '5-Peptide Neck Complex — Emerald Precision',
-      image: 'https://witlyn.com/work/vyraa/vyraa%20product.jpg',
-      objective:
-        'Vyraa needed an immediate aesthetic elevation to establish prestige category authority and position seamlessly alongside luxury boutique skincare brands.',
-      approach:
-        'Rebuilt the creative direction around deep emerald glass, brushed silver accents, and controlled architectural lighting. Used multi-model diffusion workflows to concept frosted vessels, micro-pigment smears, and tactile formula details.',
-      outcome:
-        'Dramatically elevated brand perception and visual defensibility, establishing a cohesive luxury aesthetic suitable for high-end boutique retail placement.',
-      metric: 'Complete Visual Identity Overhaul & Editorial Asset Suite',
+        'Delivered 29 publication-grade paid social assets spanning Meta feeds, vertical Reels, and editorial daylight textures ready for conversion campaigns.',
+      metric: '29 Master Assets · 100% Zero-Cast Water Veil · Meta & IG Suite',
     },
     {
       id: 'lipea',
-      num: '03',
+      num: '02',
       brand: 'LIPÉA',
-      tag: 'Autonomous Content Engine',
-      status: 'Spec Commercial · Witlyn Production',
-      category: 'Lip Care & Serum Cosmetics',
-      headline: 'Peptide Glass Lip Serum — The Pink World',
-      image: 'https://witlyn.com/work/lipea/6.jpg',
+      tag: 'Cellular Lip Barrier Care',
+      status: 'Spec Commercial · Witlyn Vault',
+      category: 'Peptide Cosmetics & Treatment',
+      headline: 'Peptide Glass Lip Serum — High Shine with Zero Glue Drag',
+      image: '/images/lipea/editorial/lipea-photo-01.jpg',
+      link: '/work/lipea',
+      assetCount: '27 Curated Assets',
       objective:
-        'Lipéa needed to feed paid social and email acquisition channels with fresh, high-aesthetic creative while eliminating manual production bottlenecks.',
+        'Solve the age-old contradiction between short-lived sticky glosses and hydrating balms, positioning a high-gloss rose glaze that actively restores the lip barrier.',
       approach:
-        'Engineered an integrated AI agent pipeline that ingests customer sentiment, extracts emotional hook angles, drafts ad scripts, and pairs them with synthetically rendered product lifestyle assets in a blush-pink reflective world.',
+        'Conducted the visual "Non-Sticky Hair Test" alongside macro vertical line crease-filling demonstrations to prove mirror shine without tack or painful chemical plumpers.',
       outcome:
-        'Streamlined weekly asset creation into an autonomous creative pipeline, allowing in-house marketing to produce cohesive campaign variants without traditional studio delays.',
-      metric: 'Multi-Angle Campaign Suite & Automated Briefing System',
+        'Built a 27-asset campaign vault across transparent cylindrical glass vessels, sheer blush-pink swatches, and high-conversion vertical motion ads.',
+      metric: '27 Master Assets · Non-Sticky Hair Test Proof · 8-Hour Barrier Recovery',
     },
     {
       id: 'nuecera',
-      num: '04',
+      num: '03',
       brand: 'NUÉCERA',
-      tag: 'Visual Identity & Generative Worldbuilding',
-      status: 'Spec Concept · Witlyn Production',
-      category: 'Botanical Moisturizing Cream',
-      headline: 'Moisturizing Cream — A Complete Visual World',
-      image: '/images/nuecera/meta/meta-product-02.jpg',
+      tag: 'Clinical Barrier Restoration',
+      status: 'Spec Commercial · Witlyn Vault',
+      category: 'Dermatological Moisturizer',
+      headline: 'Moisturizing Cream — Whipped Cloud Texture, 24h Barrier Seal',
+      image: '/images/nuecera/meta/meta-product-01.jpg',
+      link: '/work/nuecera',
+      assetCount: '35 Curated Assets',
       objective:
-        'Nuécera needed to create a complete visual ecosystem around a single flagship moisturizing cream — expanding beyond standard white-background e-commerce shots into everyday rituals and rich editorial atmosphere.',
+        'Position an oversized 16 OZ dermatologist-developed cream to combat rapid lotion evaporation, freezing office AC dryness, and multi-step routine fatigue.',
       approach:
-        'Constructed a multi-scene generative world spanning reflective green surfaces, micro-texture fingertip studies, application moments in warm window light, and sunlit bathroom counter lifestyle setups.',
+        'Crafted a multi-platform visual identity system demonstrating dense whipped spatula peaks that melt into weightless velvet-matte protection on skin.',
       outcome:
-        'Created 35 high-cohesion campaign assets under one creative direction without commissioning physical sets, delivering a complete brand identity world ready for retail pitch decks.',
-      metric: '35-Asset Curated Omnichannel Vault (Meta, IG, TikTok, Web)',
+        'Deployed 35 multi-channel assets engineered across Meta square feeds, 4:5 portraits, TikTok fullscreen verticals, and direct-to-consumer store banners.',
+      metric: '35 Master Assets · 16 OZ Value Proposition · Meta, IG, TikTok & Web',
+    },
+    {
+      id: 'aura-purify',
+      num: '04',
+      brand: 'AURA PURIFY',
+      tag: 'Phase-Transforming Cleanser',
+      status: 'Spec Commercial · Witlyn Vault',
+      category: 'Barrier Defense & Cleansing',
+      headline: 'Barrier Gel-to-Milk Cleanser — Never Strip. Just Clean.',
+      image: '/images/aura-purify/studio/aura-product-01.jpg',
+      link: '/work/aura-purify',
+      assetCount: '27 Curated Assets',
+      objective:
+        'Overcome double-cleanse fatigue and post-wash "tight plastic" sulfate strip, providing a single restorative cleanse that melts waterproof makeup without drying skin.',
+      approach:
+        'Showcased the optical 1-second phase-shift from dense honey-golden plant glycerin into silky white milk upon water contact, captured in high-definition macro video.',
+      outcome:
+        'Constructed a 27-asset suite featuring frosted amber apothecary packaging, lipid-safe rinse demonstrations, and sponsored paid-social conversion ads.',
+      metric: '27 Master Assets · 1-Second Optical Phase Shift · 50% Glycerin Base',
+    },
+    {
+      id: 'vyraa',
+      num: '05',
+      brand: 'VYRAA',
+      tag: 'Targeted Dermal Tension',
+      status: 'Spec Commercial · Witlyn Vault',
+      category: 'Prestige Clinical Neck Care',
+      headline: '5-Peptide Neck Complex — Cellular Tension. Zero Collar Grease.',
+      image: '/images/vyraa/studio/vyraa-hero-01.jpg',
+      link: '/work/vyraa',
+      assetCount: '17 Curated Assets',
+      objective:
+        'Confront the universal digital posture issue ("Tech-Neck") with a specialized firming cream that will not slide, clog pores, or stain dress shirt collars.',
+      approach:
+        'Visualized high-tensile peptide chains contracting thin horizontal neck creases, contrasted with heavy facial creams that fail on the throat and collar line.',
+      outcome:
+        'Delivered 17 luxury editorial and performance assets centered on frosted deep emerald-green glass and brushed gunmetal silver hardware.',
+      metric: '17 Master Assets · Tech-Neck Direct Response · Zero Collar Grease',
     },
   ]
 
   const servicePillars = [
     'AI-Native Campaign Direction',
     'Computational Brand Worldbuilding',
-    'Autonomous Content Engines',
-    'Custom Generative Pipeline Architecture',
+    'Direct-Response Asset Systems',
     'Prestige Packaging Visualization',
-    'Multi-Platform Diffusion Deployment',
+    'Multi-Platform Creative Multiplication',
+    'Visual Identity & Art Direction',
   ]
 
   return (
@@ -124,7 +151,7 @@ export default function WorkPage() {
           <div className="max-w-4xl">
             <RevealSection>
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full liquid-glass-pill text-[11px] uppercase tracking-[0.2em] text-zinc-700 dark:text-white/80 mb-8">
-                Portfolio & Systems Archive
+                Portfolio & Systems Archive · 5 Flagship Campaigns
               </div>
             </RevealSection>
 
@@ -139,10 +166,10 @@ export default function WorkPage() {
 
             <RevealSection delay={0.2}>
               <p className="body-editorial text-lg sm:text-xl text-zinc-700 dark:text-zinc-300 max-w-2xl mb-8">
-                High-fashion art direction meets neural computation. Each project represents a proprietary generative pipeline crafted for category-defining visual defensibility.
+                High-fashion art direction meets neural computation. Five flagship spec-commercial campaigns engineered around consumer friction points, sensory texture hooks, and paid-social conversion architecture.
               </p>
               <div className="inline-block px-3 py-1 rounded-full text-xs font-inter text-zinc-600 dark:text-zinc-400 border border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02]">
-                *All works clearly labeled as Live Client Engagements or Spec Commercials produced via Witlyn.
+                *All works produced under the Witlyn commercial standard for paid-social acquisition and portfolio case studies.
               </div>
             </RevealSection>
           </div>
@@ -189,25 +216,41 @@ export default function WorkPage() {
                         {study.metric}
                       </p>
                     </div>
+
+                    {/* Direct Button to Case Study */}
+                    <Link
+                      href={study.link}
+                      className="inline-flex items-center justify-between w-full px-5 py-3 rounded-2xl bg-black text-white dark:bg-white dark:text-black text-xs font-inter uppercase tracking-[0.16em] font-semibold hover:opacity-90 transition-opacity shadow-md"
+                    >
+                      <span>Explore {study.brand} Vault ({study.assetCount})</span>
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
                   </div>
 
                   {/* Right Column: Imagery & Strategic Breakdown */}
                   <div className="lg:col-span-8 flex flex-col gap-8 sm:gap-10">
                     
                     {/* Full-bleed Case Visual */}
-                    <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 shadow-2xl group">
-                      <Image
-                        src={study.image}
-                        alt={`${study.brand} — ${study.headline} AI Campaign Production`}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 66vw"
-                        className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-102"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent pointer-events-none" />
-                      <div className="absolute bottom-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1 rounded-md text-[10px] font-inter uppercase tracking-widest text-white/80 border border-white/10">
-                        AI-Native Production
+                    <Link href={study.link} className="block group">
+                      <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 shadow-2xl">
+                        <Image
+                          src={study.image}
+                          alt={`${study.brand} — ${study.headline}`}
+                          fill
+                          unoptimized
+                          sizes="(max-width: 1024px) 100vw, 66vw"
+                          className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-103"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                        <div className="absolute bottom-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1 rounded-md text-[10px] font-inter uppercase tracking-widest text-white/90 border border-white/20">
+                          {study.assetCount}
+                        </div>
+                        <div className="absolute bottom-4 left-4 text-white text-xs font-inter font-medium opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5">
+                          <span>Open Case Study</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </div>
                       </div>
-                    </div>
+                    </Link>
 
                     {/* Headline */}
                     <p className="font-fraunces text-2xl sm:text-3xl text-zinc-900 dark:text-white font-light italic leading-tight">
@@ -230,27 +273,17 @@ export default function WorkPage() {
                       </div>
                     </div>
 
-                    {/* Bottom Link out to Witlyn studio or individual case study */}
+                    {/* Bottom Link */}
                     <div className="pt-2 flex flex-wrap items-center gap-4">
-                      {study.id === 'nuecera' && (
-                        <Link
-                          href="/work/nuecera"
-                          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-black text-white dark:bg-white dark:text-black text-xs font-inter uppercase tracking-[0.16em] font-semibold hover:opacity-90 transition-opacity"
-                        >
-                          <span>Explore Nuécera Campaign Vault (35 Assets)</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </Link>
-                      )}
-                      <a
-                        href="https://witlyn.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-inter uppercase tracking-[0.16em] text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
+                      <Link
+                        href={study.link}
+                        className="inline-flex items-center gap-2 text-xs font-inter font-semibold uppercase tracking-[0.16em] text-zinc-900 dark:text-white hover:underline"
                       >
-                        <span>View complete production archive on Witlyn</span>
+                        <span>View complete {study.brand} case breakdown</span>
                         <ArrowUpRight className="w-3.5 h-3.5" />
-                      </a>
+                      </Link>
                     </div>
+
                   </div>
 
                 </div>
@@ -260,38 +293,63 @@ export default function WorkPage() {
         </div>
       </section>
 
-      {/* ── Services Architectural Taxonomy ─────────────────────────────────── */}
-      <section className="section-pad border-t border-black/[0.08] dark:border-white/[0.08] bg-surface/30" aria-label="Capabilities">
+      {/* ── Services Cross-Reference ──────────────────────────────────────── */}
+      <section className="section-pad border-t border-black/[0.08] dark:border-white/[0.08]" aria-label="Capabilities">
         <div className="container-luxury">
-          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
-            <p className="eyebrow-luxury mb-4 text-zinc-500 dark:text-zinc-400">Capabilities</p>
-            <h2 className="heading-section text-[#141416] dark:text-white">Systems Architecture Deployed Across Work</h2>
-          </RevealSection>
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <RevealSection>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full liquid-glass-pill text-[11px] uppercase tracking-[0.2em] text-zinc-700 dark:text-white/80 mb-2">
+                Capabilities Across All 5 Vaults
+              </div>
+              <h2 className="heading-section text-3xl sm:text-4xl text-[#141416] dark:text-white">
+                Systems, not one-off shoots.
+              </h2>
+              <p className="body-muted text-base max-w-xl mx-auto text-zinc-700 dark:text-zinc-300">
+                Every project is architected as an interconnected content infrastructure—not an isolated set of assets that decays once a sprint closes.
+              </p>
+            </RevealSection>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {servicePillars.map((service, i) => (
-              <RevealSection key={service} delay={i * 0.05}>
-                <div className="card-surface p-6 sm:p-8 flex items-center justify-between">
-                  <span className="font-fraunces text-base sm:text-lg text-zinc-900 dark:text-white font-normal">{service}</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/40 dark:bg-white/40 shrink-0 ml-4" />
-                </div>
-              </RevealSection>
-            ))}
+            <RevealSection delay={0.2}>
+              <div className="flex flex-wrap justify-center gap-3 pt-6">
+                {servicePillars.map((pillar) => (
+                  <span
+                    key={pillar}
+                    className="px-4 py-2 rounded-xl text-xs font-inter text-zinc-800 dark:text-zinc-200 border border-black/10 dark:border-white/10 liquid-glass font-medium"
+                  >
+                    {pillar}
+                  </span>
+                ))}
+              </div>
+            </RevealSection>
           </div>
         </div>
       </section>
 
-      {/* ── Bottom Call to Action ───────────────────────────────────────────── */}
-      <section className="py-20 sm:py-24 border-t border-black/[0.08] dark:border-white/[0.08] bg-surface/50 text-center">
-        <div className="container-luxury max-w-2xl mx-auto">
+      {/* ── Bottom CTA ────────────────────────────────────────────────────── */}
+      <section className="section-pad bg-surface border-t border-black/[0.08] dark:border-white/[0.08]" aria-label="Work CTA">
+        <div className="container-luxury text-center max-w-3xl space-y-6">
           <RevealSection>
-            <h2 className="heading-section text-3xl sm:text-4xl mb-6 text-[#141416] dark:text-white">Ready to engineer your brand's AI edge?</h2>
-            <Button asChild variant="gold" size="lg">
-              <Link href="/contact" className="flex items-center gap-2">
-                <span>Apply for Strategy Call</span>
-                <ArrowRight className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full liquid-glass-pill text-[11px] uppercase tracking-[0.2em] text-zinc-700 dark:text-white/80 mb-4">
+              Private Advisory & Direction
+            </div>
+            <h2 className="heading-section text-4xl sm:text-5xl text-[#141416] dark:text-white">
+              Ready to construct your brand's AI creative system?
+            </h2>
+            <p className="body-editorial text-lg text-zinc-700 dark:text-zinc-300">
+              Applications are reviewed personally. I take on a limited number of beauty and skincare brands each quarter for 1:1 advisory and creative direction.
+            </p>
+            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link href="/contact">
+                <Button size="lg" className="w-full sm:w-auto font-inter text-xs tracking-[0.2em] uppercase font-semibold">
+                  Apply for a Strategy Call
+                </Button>
               </Link>
-            </Button>
+              <Link href="/consulting">
+                <Button variant="outline" size="lg" className="w-full sm:w-auto font-inter text-xs tracking-[0.2em] uppercase font-semibold">
+                  Learn About Advisory
+                </Button>
+              </Link>
+            </div>
           </RevealSection>
         </div>
       </section>

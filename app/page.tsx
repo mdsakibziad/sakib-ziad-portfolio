@@ -756,196 +756,248 @@ export default function HomePage() {
             </Button>
           </RevealSection>
 
-          {/* SPREAD 01: Solaé (Large Image Bleed Left, Editorial Narrative Right) */}
+          {/* SPREAD STREAM: 5 Flagship Case Studies in Exact Order */}
           <div className="space-y-24">
             
+            {/* SPREAD 01: SOLAÉ (Image Left, Narrative Right) */}
             <RevealSection>
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-                {/* Large Left Image */}
                 <div className="lg:col-span-7 relative aspect-[16/10] rounded-2xl overflow-hidden border border-black/10 dark:border-white/20 group">
                   <ParallaxLayer offset={30} className="w-full h-full">
                     <Image
-                      src="https://witlyn.com/work/solae/01-solae-campaign-hero.jpg.jpg"
-                      alt="SOLAÉ AIRVEIL sun care campaign editorial directed by Sakib Ziad"
+                      src="/images/solae/editorial/solae-photo-01.jpg"
+                      alt="SOLAÉ AIRVEIL sun care campaign directed by Sakib Ziad"
                       fill
+                      unoptimized
                       sizes="(max-width: 1024px) 100vw, 60vw"
                       className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
                     />
                   </ParallaxLayer>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                   <span className="absolute bottom-6 left-6 font-mono text-xs uppercase tracking-widest text-white bg-black/65 px-3 py-1 rounded backdrop-blur-md border border-white/20 shadow-md">
-                    01 // CAMPAIGN DIRECTION
+                    01 // INVISIBLE SUN PROTECTION (29 ASSETS)
                   </span>
                 </div>
 
-                {/* Right Narrative */}
                 <div className="lg:col-span-5 flex flex-col justify-between">
                   <div>
-                    <span className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 block mb-2">Spec Commercial · Witlyn Production</span>
+                    <span className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 block mb-2">Spec Commercial · Witlyn Vault</span>
                     <h3 className="heading-card text-3xl sm:text-4xl text-[#141416] dark:text-white mb-4">
                       SOLAÉ
                     </h3>
                     <p className="font-fraunces text-xl text-zinc-800 dark:text-zinc-200 mb-4 font-light italic">
-                      AIRVEIL — SPF50+ Invisible Sun Serum
+                      AIRVEIL — SPF50+ PA++++ Invisible Sun Serum
                     </p>
                     <p className="body-editorial text-base text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed font-light">
-                      A cinematic sun-care campaign shaped around sunlight, skin refraction, and sensorial fluidity. Constructed 12 distinct art-directed scenes including liquid dispersion and warm architectural stills.
+                      Eliminates every sensory friction of daily sunscreen: chalky white cast, heavy grease in humidity, and foundation pilling. Engineered around a 100% clear water-veil texture that absorbs in 3 seconds across all skin tones.
                     </p>
                     <div className="p-4 card-surface mb-8">
                       <span className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block mb-1">Delivered Systems</span>
-                      <span className="text-xs font-inter text-zinc-800 dark:text-zinc-200 font-medium">Hero Campaign Film + 48 High-Resolution Assets</span>
+                      <span className="text-xs font-inter text-zinc-800 dark:text-zinc-200 font-medium">29 Curated Assets · Zero White Cast · Meta & IG Suite</span>
                     </div>
                   </div>
 
                   <Link
-                    href="/work#solae"
-                    className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-zinc-800 dark:text-zinc-300 hover:text-black dark:hover:text-white group/link"
+                    href="/work/solae"
+                    className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-zinc-900 dark:text-white font-semibold hover:underline group/link"
                   >
-                    <span>Read Solaé Breakdown</span>
+                    <span>Explore SOLAÉ Vault (29 Assets)</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
                   </Link>
                 </div>
               </div>
             </RevealSection>
 
-            {/* SPREAD 02: Vyraa (REVERSE LAYOUT: Narrative Left, Emerald Visual Bleed Right) */}
+            {/* SPREAD 02: LIPÉA (Reverse: Narrative Left, Visual Bleed Right) */}
             <RevealSection delay={0.1}>
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-                
-                {/* Left Narrative */}
                 <div className="lg:col-span-5 flex flex-col justify-between order-2 lg:order-1">
                   <div>
-                    <span className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 block mb-2">Spec Commercial · Witlyn Production</span>
+                    <span className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 block mb-2">Spec Commercial · Witlyn Vault</span>
                     <h3 className="heading-card text-3xl sm:text-4xl text-[#141416] dark:text-white mb-4">
-                      VYRAA
+                      LIPÉA
                     </h3>
                     <p className="font-fraunces text-xl text-zinc-800 dark:text-zinc-200 mb-4 font-light italic">
-                      5-Peptide Neck Complex — Emerald Precision
+                      Peptide Glass Lip Serum — High Shine with Zero Glue Drag
                     </p>
                     <p className="body-editorial text-base text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed font-light">
-                      A deep-emerald product universe built around brushed silver, tactile formula smears, and architectural lighting. Reimagined clinical skincare positioning to establish uncompromising category prestige.
+                      A cellular lip barrier recovery treatment disguised as a mirror-shine rose glaze. Solves the sticky hair trap dilemma with an active peptide cushion proven via tactile physical tests.
                     </p>
                     <div className="p-4 card-surface mb-8">
                       <span className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block mb-1">Delivered Systems</span>
-                      <span className="text-xs font-inter text-zinc-800 dark:text-zinc-200 font-medium">Complete Visual Identity Overhaul & Editorial Asset Suite</span>
+                      <span className="text-xs font-inter text-zinc-800 dark:text-zinc-200 font-medium">27 Curated Assets · Non-Sticky Hair Test · 8-Hour Hydration</span>
                     </div>
                   </div>
 
                   <Link
-                    href="/work#vyraa"
-                    className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-zinc-800 dark:text-zinc-300 hover:text-black dark:hover:text-white group/link"
+                    href="/work/lipea"
+                    className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-zinc-900 dark:text-white font-semibold hover:underline group/link"
                   >
-                    <span>Read Vyraa Breakdown</span>
+                    <span>Explore LIPÉA Vault (27 Assets)</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
                   </Link>
                 </div>
 
-                {/* Right Image */}
                 <div className="lg:col-span-7 relative aspect-[16/10] rounded-2xl overflow-hidden border border-black/10 dark:border-white/20 order-1 lg:order-2 group">
                   <ParallaxLayer offset={30} className="w-full h-full">
                     <Image
-                      src="https://witlyn.com/work/vyraa/vyraa%20product.jpg"
-                      alt="VYRAA 5-Peptide Neck Complex luxury skincare campaign"
+                      src="/images/lipea/editorial/lipea-photo-01.jpg"
+                      alt="LIPÉA Peptide Glass Lip Serum campaign directed by Sakib Ziad"
                       fill
+                      unoptimized
                       sizes="(max-width: 1024px) 100vw, 60vw"
                       className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
                     />
                   </ParallaxLayer>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                   <span className="absolute bottom-6 right-6 font-mono text-xs uppercase tracking-widest text-white bg-black/65 px-3 py-1 rounded backdrop-blur-md border border-white/20 shadow-md">
-                    02 // BRAND REPOSITIONING
+                    02 // CELLULAR BARRIER RECOVERY (27 ASSETS)
                   </span>
                 </div>
-
               </div>
             </RevealSection>
 
-            {/* SPREAD 03: Lipéa (CINEMATIC WIDE HORIZONTAL BANNER) */}
-            <RevealSection delay={0.2}>
-              <div className="relative rounded-2xl overflow-hidden card-surface group">
-                <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
-                  
-                  <div className="lg:col-span-5 p-8 sm:p-12 lg:p-14 z-10">
-                    <span className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 block mb-2">Spec Commercial · Witlyn Production</span>
-                    <h3 className="heading-card text-3xl sm:text-4xl text-[#141416] dark:text-white mb-2">LIPÉA</h3>
-                    <p className="font-fraunces text-xl text-zinc-800 dark:text-zinc-200 mb-4 font-light italic">
-                      Peptide Glass Lip Serum — The Pink World
-                    </p>
-                    <p className="body-muted text-sm sm:text-base text-zinc-600 dark:text-zinc-400 mb-6 leading-relaxed">
-                      A translucent beauty campaign built around liquid shine, chrome reflection, and blush-pink caustics. Replaced manual production coordination with an automated pipeline for paid social acquisition.
-                    </p>
-                    <div className="p-3.5 rounded-xl bg-black/[0.04] dark:bg-white/[0.05] border border-black/10 dark:border-white/[0.1] mb-6">
-                      <span className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block mb-1">Delivered Systems</span>
-                      <span className="text-xs font-inter text-zinc-800 dark:text-zinc-200 font-medium">Multi-Angle Campaign Suite & Automated Briefing System</span>
-                    </div>
-                    <Link
-                      href="/work#lipea"
-                      className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-zinc-800 dark:text-zinc-300 hover:text-black dark:hover:text-white group/link"
-                    >
-                      <span>Read Lipéa Breakdown</span>
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-                    </Link>
-                  </div>
-
-                  <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto lg:h-[440px] overflow-hidden">
-                    <Image
-                      src="https://witlyn.com/work/lipea/6.jpg"
-                      alt="LIPÉA Peptide Glass Lip Serum AI campaign system"
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 60vw"
-                      className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-white/90 dark:from-[#0E0E10]/95 via-transparent to-transparent pointer-events-none" />
-                  </div>
-
-                </div>
-              </div>
-            </RevealSection>
-
-            {/* SPREAD 04: Nuécera (NEW DEEP CASE STUDY LINK) */}
-            <RevealSection delay={0.25}>
+            {/* SPREAD 03: NUÉCERA (Image Left, Narrative Right) */}
+            <RevealSection delay={0.15}>
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-                {/* Large Left Image */}
                 <div className="lg:col-span-7 relative aspect-[16/10] rounded-2xl overflow-hidden border border-black/10 dark:border-white/20 group">
                   <ParallaxLayer offset={30} className="w-full h-full">
                     <Image
-                      src="/images/nuecera/meta/meta-product-02.jpg"
+                      src="/images/nuecera/meta/meta-product-01.jpg"
                       alt="NUÉCERA Moisturizing Cream visual world directed by Sakib Ziad"
                       fill
+                      unoptimized
                       sizes="(max-width: 1024px) 100vw, 60vw"
                       className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
                     />
                   </ParallaxLayer>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                   <span className="absolute bottom-6 left-6 font-mono text-xs uppercase tracking-widest text-white bg-black/65 px-3 py-1 rounded backdrop-blur-md border border-white/20 shadow-md">
-                    04 // OMNICHANNEL VAULT (35 ASSETS)
+                    03 // OMNICHANNEL VAULT (35 ASSETS)
                   </span>
                 </div>
 
-                {/* Right Narrative */}
                 <div className="lg:col-span-5 flex flex-col justify-between">
                   <div>
-                    <span className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 block mb-2">Spec Concept · Witlyn Production</span>
+                    <span className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 block mb-2">Spec Commercial · Witlyn Vault</span>
                     <h3 className="heading-card text-3xl sm:text-4xl text-[#141416] dark:text-white mb-4">
                       NUÉCERA
                     </h3>
                     <p className="font-fraunces text-xl text-zinc-800 dark:text-zinc-200 mb-4 font-light italic">
-                      Moisturizing Cream — A Complete Visual World
+                      Moisturizing Cream — Whipped Cloud Texture, 24h Barrier Seal
                     </p>
                     <p className="body-editorial text-base text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed font-light">
-                      A full omnichannel asset system constructed around a single flagship moisturizing cream — spanning Meta square ads, vertical TikTok reels, Instagram stories, and a wide desktop hero banner.
+                      A clinical barrier reset formulated with 3 essential ceramides and hyaluronic acid in a generous 16 OZ tub. Solves rapid lotion evaporation and freezing corporate air conditioning dryness.
                     </p>
                     <div className="p-4 card-surface mb-8">
                       <span className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block mb-1">Delivered Systems</span>
-                      <span className="text-xs font-inter text-zinc-800 dark:text-zinc-200 font-medium">35-Asset Curated Omnichannel Vault (Meta, IG, TikTok, Web)</span>
+                      <span className="text-xs font-inter text-zinc-800 dark:text-zinc-200 font-medium">35 Curated Assets · Meta, IG, TikTok & Website Banner</span>
                     </div>
                   </div>
 
                   <Link
                     href="/work/nuecera"
-                    className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-zinc-900 dark:text-white font-semibold hover:text-emerald-600 dark:hover:text-emerald-400 group/link"
+                    className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-zinc-900 dark:text-white font-semibold hover:underline group/link"
                   >
-                    <span>Explore Nuécera Deep Case Study</span>
+                    <span>Explore NUÉCERA Vault (35 Assets)</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+            </RevealSection>
+
+            {/* SPREAD 04: AURA PURIFY (Reverse: Narrative Left, Amber Visual Bleed Right) */}
+            <RevealSection delay={0.2}>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+                <div className="lg:col-span-5 flex flex-col justify-between order-2 lg:order-1">
+                  <div>
+                    <span className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 block mb-2">Spec Commercial · Witlyn Vault</span>
+                    <h3 className="heading-card text-3xl sm:text-4xl text-[#141416] dark:text-white mb-4">
+                      AURA PURIFY
+                    </h3>
+                    <p className="font-fraunces text-xl text-zinc-800 dark:text-zinc-200 mb-4 font-light italic">
+                      Barrier Gel-to-Milk Cleanser — Never Strip. Just Clean.
+                    </p>
+                    <p className="body-editorial text-base text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed font-light">
+                      Formulated with a 50% plant-glycerin and oat kernel base that blooms from thick amber gel to silky milk in 1 second. Overcomes sulfate stripping and double-cleanse fatigue in a single non-foaming rinse.
+                    </p>
+                    <div className="p-4 card-surface mb-8">
+                      <span className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block mb-1">Delivered Systems</span>
+                      <span className="text-xs font-inter text-zinc-800 dark:text-zinc-200 font-medium">27 Curated Assets · 1s Optical Phase Shift · Studio & Motion</span>
+                    </div>
+                  </div>
+
+                  <Link
+                    href="/work/aura-purify"
+                    className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-zinc-900 dark:text-white font-semibold hover:underline group/link"
+                  >
+                    <span>Explore AURA PURIFY Vault (27 Assets)</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                  </Link>
+                </div>
+
+                <div className="lg:col-span-7 relative aspect-[16/10] rounded-2xl overflow-hidden border border-black/10 dark:border-white/20 order-1 lg:order-2 group">
+                  <ParallaxLayer offset={30} className="w-full h-full">
+                    <Image
+                      src="/images/aura-purify/studio/aura-product-01.jpg"
+                      alt="AURA PURIFY Barrier Cleanser campaign directed by Sakib Ziad"
+                      fill
+                      unoptimized
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                      className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
+                    />
+                  </ParallaxLayer>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                  <span className="absolute bottom-6 right-6 font-mono text-xs uppercase tracking-widest text-white bg-black/65 px-3 py-1 rounded backdrop-blur-md border border-white/20 shadow-md">
+                    04 // PHASE-TRANSFORMING CLEANSER (27 ASSETS)
+                  </span>
+                </div>
+              </div>
+            </RevealSection>
+
+            {/* SPREAD 05: VYRAA (Image Left, Narrative Right) */}
+            <RevealSection delay={0.25}>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+                <div className="lg:col-span-7 relative aspect-[16/10] rounded-2xl overflow-hidden border border-black/10 dark:border-white/20 group">
+                  <ParallaxLayer offset={30} className="w-full h-full">
+                    <Image
+                      src="/images/vyraa/studio/vyraa-hero-01.jpg"
+                      alt="VYRAA 5-Peptide Neck Complex campaign directed by Sakib Ziad"
+                      fill
+                      unoptimized
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                      className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
+                    />
+                  </ParallaxLayer>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                  <span className="absolute bottom-6 left-6 font-mono text-xs uppercase tracking-widest text-white bg-black/65 px-3 py-1 rounded backdrop-blur-md border border-white/20 shadow-md">
+                    05 // STRUCTURAL NECK COMPLEX (17 ASSETS)
+                  </span>
+                </div>
+
+                <div className="lg:col-span-5 flex flex-col justify-between">
+                  <div>
+                    <span className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 block mb-2">Spec Commercial · Witlyn Vault</span>
+                    <h3 className="heading-card text-3xl sm:text-4xl text-[#141416] dark:text-white mb-4">
+                      VYRAA
+                    </h3>
+                    <p className="font-fraunces text-xl text-zinc-800 dark:text-zinc-200 mb-4 font-light italic">
+                      5-Peptide Neck Complex — Cellular Tension. Zero Collar Grease.
+                    </p>
+                    <p className="body-editorial text-base text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed font-light">
+                      Targeted dermal lifting specifically engineered for horizontal "Tech-Neck" creases. Penetrates thin cervical skin with high-tensile peptides, absorbing matte with zero greasy collar staining.
+                    </p>
+                    <div className="p-4 card-surface mb-8">
+                      <span className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block mb-1">Delivered Systems</span>
+                      <span className="text-xs font-inter text-zinc-800 dark:text-zinc-200 font-medium">17 Curated Assets · Tech-Neck Performance · Frosted Emerald Glass</span>
+                    </div>
+                  </div>
+
+                  <Link
+                    href="/work/vyraa"
+                    className="inline-flex items-center gap-2 text-xs font-inter uppercase tracking-[0.16em] text-zinc-900 dark:text-white font-semibold hover:underline group/link"
+                  >
+                    <span>Explore VYRAA Vault (17 Assets)</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
                   </Link>
                 </div>
