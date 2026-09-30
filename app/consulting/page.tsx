@@ -59,14 +59,14 @@ export default function ConsultingPage() {
   const engagements = [
     {
       num: '01',
-      title: 'The AI Creative & Systems Audit',
+      title: 'The Creative & Conversion Architecture Audit',
       badge: '90-Min Intensive + Blueprint',
-      ideal: 'Best for founders and executives seeking an objective, forensic evaluation of their brand’s generative readiness.',
+      ideal: 'Best for founders and executives seeking an objective, forensic evaluation of their brand’s creative bottlenecks and conversion leaks.',
       features: [
         '90-minute private strategy session with Sakib Ziad',
-        'Deep-dive audit of your visual identity, content pipelines, and creative tech stack',
+        'Deep-dive audit of your visual identity, content pipelines, and creative velocity',
         'Custom Gap & Opportunity Synthesis with immediate 30-day action items',
-        'Direct identification of high-leverage generative workflows for your vertical',
+        'Direct identification of high-leverage creative opportunities for your vertical',
       ],
       investment: 'Investment discussed during qualification application',
     },
@@ -74,24 +74,24 @@ export default function ConsultingPage() {
       num: '02',
       title: 'Monthly Advisory Retainer',
       badge: 'Ongoing Strategic Partnership',
-      ideal: 'Best for growth-stage beauty brands actively deploying generative creative and scaling multi-channel output.',
+      ideal: 'Best for growth-stage beauty brands actively scaling ad spend and multi-channel creative output.',
       features: [
-        'Bi-weekly strategic direction and prompt architecture reviews',
+        'Bi-weekly strategic direction and creative hook reviews',
         'Asynchronous executive counsel via private communication channel',
         'Creative direction oversight across campaigns and launch assets',
-        'Ongoing AI toolstack evaluations, LoRA model guidance, and prompt repositories',
+        'Performance asset guidance and commercial brief repositories',
       ],
       investment: 'Selective retainer — strictly limited to 3 concurrent brand partners',
     },
     {
       num: '03',
-      title: 'The Custom AI System Build',
+      title: 'The Custom Creative Production System',
       badge: 'Turnkey Infrastructure',
-      ideal: 'Best for established beauty brands seeking to deploy a full-scale in-house AI creative studio and automation pipeline.',
+      ideal: 'Best for established beauty brands seeking to deploy a full-scale in-house creative studio and rapid asset pipeline.',
       features: [
-        'End-to-end architecture and deployment of brand-trained generative systems',
-        'Custom Make / n8n workflow construction for autonomous multi-channel asset routing',
-        'Full team training curriculum, prompt blueprint repositories, and SOP library',
+        'End-to-end architecture and deployment of brand-specific creative systems',
+        'Streamlined workflow construction for omnichannel asset routing',
+        'Full team training curriculum, creative blueprint repositories, and SOP library',
         '30-day post-launch optimization and stabilization support',
       ],
       investment: 'Custom project scope — scoped during qualification application',
@@ -113,7 +113,7 @@ export default function ConsultingPage() {
 
             <RevealSection delay={0.1}>
               <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
-                Strategic AI Counsel for Beauty Brands That{' '}
+                Strategic Creative Counsel for Beauty Brands That{' '}
                 <span className="italic font-fraunces font-light text-zinc-600 dark:text-zinc-300">
                   Mean Business.
                 </span>
@@ -122,7 +122,7 @@ export default function ConsultingPage() {
 
             <RevealSection delay={0.2}>
               <p className="body-editorial text-lg sm:text-xl text-zinc-700 dark:text-zinc-300 max-w-2xl mb-10">
-                High-touch advisory spanning AI-native creative direction, campaign audits, and autonomous agent pipelines — engineered to make your creative operations unstoppable.
+                High-touch advisory spanning commercial creative direction, direct-response audits, and rapid asset production pipelines — engineered to make your creative operations unstoppable.
               </p>
             </RevealSection>
 
@@ -207,13 +207,13 @@ export default function ConsultingPage() {
                     </div>
                     <div>
                       <span className="eyebrow-luxury text-[10px] text-zinc-500 dark:text-zinc-400">Pillar 01</span>
-                      <h3 className="heading-card text-xl sm:text-2xl text-[#141416] dark:text-white">AI Creative Strategy & Direction</h3>
+                      <h3 className="heading-card text-xl sm:text-2xl text-[#141416] dark:text-white">Commercial Creative Strategy & Direction</h3>
                     </div>
                   </div>
                   <ul className="space-y-3.5 body-editorial text-sm sm:text-base text-zinc-700 dark:text-zinc-300">
                     <li className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
-                      <span>Proprietary prompt taxonomies calibrated to cosmetic physics and packaging caustics</span>
+                      <span>Proprietary art direction guidelines calibrated to cosmetic physics and packaging caustics</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
@@ -221,11 +221,11 @@ export default function ConsultingPage() {
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
-                      <span>Internal team training on diffusion models (Midjourney, Flux, Stable Diffusion)</span>
+                      <span>Internal team training on high-velocity commercial production workflows</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
-                      <span>Creative audits ensuring brand defensibility and eliminating synthetic artifacting</span>
+                      <span>Creative audits ensuring brand defensibility and high-converting asset standards</span>
                     </li>
                   </ul>
                 </div>
@@ -238,11 +238,11 @@ export default function ConsultingPage() {
                 <div>
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-12 h-12 rounded-xl bg-black/[0.04] dark:bg-white/[0.05] border border-black/10 dark:border-white/15 flex items-center justify-center text-zinc-900 dark:text-white">
-                      <Bot className="w-6 h-6 stroke-[1.5]" />
+                      <Layers className="w-6 h-6 stroke-[1.5]" />
                     </div>
                     <div>
                       <span className="eyebrow-luxury text-[10px] text-zinc-500 dark:text-zinc-400">Pillar 02</span>
-                      <h3 className="heading-card text-xl sm:text-2xl text-[#141416] dark:text-white">Autonomous Agents & Brand Systems</h3>
+                      <h3 className="heading-card text-xl sm:text-2xl text-[#141416] dark:text-white">Performance Creative Architecture & Pipelines</h3>
                     </div>
                   </div>
                   <ul className="space-y-3.5 body-editorial text-sm sm:text-base text-zinc-700 dark:text-zinc-300">
@@ -252,15 +252,15 @@ export default function ConsultingPage() {
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
-                      <span>Custom Make.com and n8n orchestration connecting APIs and diffusion pipelines</span>
+                      <span>Streamlined production orchestration connecting direct-response asset pipelines</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
-                      <span>Prestige skincare tone-of-voice copy models for ad scripts and retention copy</span>
+                      <span>Prestige skincare tone-of-voice frameworks for ad scripts and retention copy</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
-                      <span>Autonomous multi-aspect ratio rendering pipelines for seamless omnichannel distribution</span>
+                      <span>Multi-aspect ratio rendering pipelines for seamless omnichannel distribution</span>
                     </li>
                   </ul>
                 </div>

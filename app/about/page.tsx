@@ -38,26 +38,26 @@ export default function AboutPage() {
   const beliefs = [
     {
       num: '01',
-      title: 'AI is an amplifier, not a replacement.',
-      body: 'The beauty brands that will dominate are not replacing human creative direction with automated shortcuts. They are empowering taste with computational leverage — achieving visual scale previously restricted to conglomerate budgets.',
+      title: 'Creative direction is an amplifier, not decoration.',
+      body: 'The beauty brands that will dominate are not replacing human creative direction with automated shortcuts. They are empowering taste with technical systems — achieving visual scale and velocity previously restricted to conglomerate budgets.',
     },
     {
       num: '02',
       title: 'Prestige aesthetics demand vertical specialization.',
-      body: 'Generalist prompt engineers create plastic, synthetic caricatures. Beauty and cosmetics require deep category intuition: botanical caustics, skin subsurface scattering, packaging refraction, and emotional luxury positioning.',
+      body: 'Generalist creators produce plastic, uninspired caricatures. Beauty and cosmetics require deep category intuition: botanical caustics, skin subsurface scattering, packaging refraction, and emotional luxury positioning.',
     },
     {
       num: '03',
       title: 'Tactics expire. Proprietary systems compound.',
-      body: 'A viral video trend delivers temporary traffic and vanishes. An internal AI creative architecture and autonomous content pipeline compounds in velocity, consistency, and margin every single month.',
+      body: 'A viral video trend delivers temporary traffic and vanishes. An internal creative architecture and rapid commercial production pipeline compounds in velocity, consistency, and margin every single month.',
     },
   ]
 
   const timeline = [
     {
-      year: 'Academic Foundation',
-      title: 'BSc in Artificial Intelligence',
-      desc: 'Rigorous engineering training in neural network architectures, computer vision, and computational modeling, establishing an engineering-first understanding of generative algorithms.',
+      year: 'Technical Foundation',
+      title: 'Computing & Visual Systems Background',
+      desc: 'Rigorous technical training in visual computing systems, digital image processing, and cognitive modeling, establishing deep analytical precision.',
     },
     {
       year: 'Category Immersion',
@@ -67,12 +67,12 @@ export default function AboutPage() {
     {
       year: 'Venture Creation',
       title: 'Founded Witlyn Studio',
-      desc: 'Launched Witlyn (witlyn.com) to provide full-service generative campaign production, establishing proven commercial case studies for innovative skincare and cosmetics brands.',
+      desc: 'Launched Witlyn (witlyn.com) to provide full-service commercial campaign production, establishing proven commercial case studies for innovative skincare and cosmetics brands.',
     },
     {
       year: 'Advisory Expansion',
       title: 'Executive Strategic Advisory',
-      desc: 'Initiated 1:1 strategic advisory and autonomous brand agent builds for beauty founders seeking to master internal AI infrastructure and escape traditional agency overhead.',
+      desc: 'Initiated 1:1 strategic advisory and direct-response creative builds for beauty founders seeking to master internal creative infrastructure and escape traditional agency overhead.',
     },
   ]
 
@@ -91,16 +91,16 @@ export default function AboutPage() {
 
             <RevealSection delay={0.1}>
               <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
-                “I built Witlyn to prove AI-native creative works.{' '}
+                “I built Witlyn to prove high-performance creative transforms brands.{' '}
                 <span className="italic font-fraunces font-light text-zinc-600 dark:text-zinc-300">
-                  I built this advisory to teach brands how to think in it.”
+                  I built this advisory to teach brands how to think in systems.”
                 </span>
               </h1>
             </RevealSection>
 
             <RevealSection delay={0.2}>
               <p className="body-editorial text-lg sm:text-xl text-zinc-700 dark:text-zinc-300 max-w-2xl">
-                Bridging the gap between computational artificial intelligence and prestige beauty storytelling.
+                Bridging the gap between computational systems and prestige beauty storytelling.
               </p>
             </RevealSection>
           </div>
@@ -117,7 +117,7 @@ export default function AboutPage() {
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 shadow-[0_16px_48px_rgba(0,0,0,0.12)] dark:shadow-[0_16px_48px_rgba(0,0,0,0.9)] group">
                 <Image
                   src="/images/sakib-ziad.jpg"
-                  alt="Sakib Ziad — AI Creative Strategist and Founder of Witlyn"
+                  alt="Sakib Ziad — Creative Strategist & Commercial Director"
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 40vw"
@@ -126,7 +126,7 @@ export default function AboutPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute bottom-6 left-6 right-6">
                   <p className="font-fraunces text-2xl text-zinc-900 dark:text-white">Sakib Ziad</p>
-                  <p className="eyebrow-luxury text-zinc-600 dark:text-white/70">AI Creative Strategist & Founder</p>
+                  <p className="eyebrow-luxury text-zinc-600 dark:text-white/70">Creative Strategist & Commercial Director</p>
                 </div>
               </div>
             </RevealSection>
@@ -136,22 +136,22 @@ export default function AboutPage() {
               <RevealSection>
                 <p className="eyebrow-luxury mb-3 text-zinc-500 dark:text-zinc-400">Origin & Purpose</p>
                 <h2 className="heading-section text-3xl sm:text-4xl text-[#141416] dark:text-white">
-                  From machine intelligence to brand emotion.
+                  From analytical systems to brand emotion.
                 </h2>
               </RevealSection>
 
               <RevealSection delay={0.1} className="space-y-6 body-editorial text-base sm:text-lg text-zinc-700 dark:text-zinc-300">
                 <p>
-                  My journey began inside an academic degree in Artificial Intelligence. While the technology world was fascinated by theoretical benchmarks, I was captivated by how neural networks interpret visual aesthetics, light refraction, and brand emotion.
+                  My journey began at the intersection of computing systems and visual aesthetics. While most were fascinated by pure software benchmarks, I was captivated by how digital systems interpret visual lighting, light refraction, and brand emotion.
                 </p>
                 <p>
-                  Looking closely at the beauty and cosmetics landscape, the disparity was striking: founders routinely invest tens of thousands per quarter on traditional studio shoots that yield static, quickly exhausted assets. When brands attempted to use early AI tools, the results looked plastic, synthetic, and completely detached from the sensory luxury beauty consumers demand.
+                  Looking closely at the beauty and cosmetics landscape, the disparity was striking: founders routinely invest tens of thousands per quarter on traditional studio shoots that yield static, quickly exhausted assets. When brands attempted to use generic digital tools, the results looked plastic, synthetic, and completely detached from the sensory luxury beauty consumers demand.
                 </p>
                 <p>
-                  To solve this, I founded <a href="https://witlyn.com" target="_blank" rel="noopener noreferrer" className="text-zinc-950 dark:text-white font-medium underline underline-offset-4 hover:text-zinc-600 dark:hover:text-zinc-300">Witlyn</a> — a full-service AI-native creative studio. Witlyn proved that when computational prompt systems are guided by high-fashion art direction, the resulting creative not only equals traditional studio photography, but delivers radical aesthetic consistency at 10× speed.
+                  To solve this, I founded <a href="https://witlyn.com" target="_blank" rel="noopener noreferrer" className="text-zinc-950 dark:text-white font-medium underline underline-offset-4 hover:text-zinc-600 dark:hover:text-zinc-300">Witlyn</a> — a specialized commercial production studio. Witlyn proved that when technical systems are guided by high-fashion art direction, the resulting creative not only equals traditional studio photography, but delivers radical aesthetic consistency at 10× speed.
                 </p>
                 <p>
-                  This personal advisory practice was created for founders and marketing executives who don’t just want to outsource content; they want to master the intelligence themselves. Here, we build custom AI creative infrastructure, train internal teams, and deploy autonomous brand agents that turn creative velocity into an enduring moat.
+                  This personal advisory practice was created for founders and marketing executives who don’t just want to outsource content; they want to master the intelligence themselves. Here, we build custom creative infrastructure, train internal teams, and deploy high-converting creative pipelines that turn creative velocity into an enduring moat.
                 </p>
               </RevealSection>
 
@@ -240,7 +240,7 @@ export default function AboutPage() {
                 Keynotes, Podcasts & Brand Workshops
               </h2>
               <p className="body-editorial text-base sm:text-lg max-w-xl mx-auto mb-8 text-zinc-700 dark:text-zinc-300">
-                Available for executive briefings, beauty industry summits, and podcast conversations on the commercial future of generative AI in luxury aesthetics.
+                Available for executive briefings, beauty industry summits, and podcast conversations on high-performance creative direction, direct-response psychology, and luxury aesthetics.
               </p>
               <Button asChild variant="gold" size="lg">
                 <a href="mailto:Sakib@witlyn.com?subject=Speaking%20or%20Press%20Inquiry" className="flex items-center gap-2">
@@ -257,7 +257,7 @@ export default function AboutPage() {
       <section className="py-20 border-t border-black/[0.08] dark:border-white/[0.08] bg-surface/50 text-center">
         <div className="container-luxury max-w-2xl mx-auto">
           <RevealSection>
-            <h2 className="heading-section text-3xl sm:text-4xl mb-6 text-[#141416] dark:text-white">Let’s discuss your brand's AI roadmap.</h2>
+            <h2 className="heading-section text-3xl sm:text-4xl mb-6 text-[#141416] dark:text-white">Let’s discuss your brand's creative growth architecture.</h2>
             <Button asChild variant="gold" size="lg">
               <Link href="/contact" className="flex items-center gap-2">
                 <span>Apply for Strategy Call</span>

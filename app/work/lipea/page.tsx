@@ -57,6 +57,7 @@ const LIPEA_DATA: CaseStudyData = {
         quote: 'Love the high-shine glass look, but hate the sticky glue feeling?',
         rationale:
           'Visually exposes the daily irritation of wind blowing hair onto sticky lip gloss, immediately contrasted with LIPÉA non-tack peptide glide.',
+        commercialBenefit: 'Drives high click-through rate from beauty buyers frustrated with traditional tacky lip glosses.',
       },
       {
         id: 2,
@@ -65,6 +66,7 @@ const LIPEA_DATA: CaseStudyData = {
         quote: 'A treatment serum disguised as pure glass.',
         rationale:
           'Elevates the product beyond temporary decorative makeup to a medical-grade barrier repair serum that happens to look like liquid glass.',
+        commercialBenefit: 'Justifies prestige \$32+ price tier over cheap drugstore gloss competitors.',
       },
       {
         id: 3,
@@ -73,6 +75,7 @@ const LIPEA_DATA: CaseStudyData = {
         quote: 'Skip the lip filler burn.',
         rationale:
           'Attacks painful irritating chemical plumpers by showcasing how gentle moisture-binding peptides naturally smooth fine vertical lip creases.',
+        commercialBenefit: 'Captures customers searching for non-invasive lip plumping alternatives.',
       },
     ],
   },

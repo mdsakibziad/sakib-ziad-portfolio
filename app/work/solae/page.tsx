@@ -57,6 +57,7 @@ const SOLAE_DATA: CaseStudyData = {
         quote: "Sunscreen shouldn't look like white paint.",
         rationale:
           'Visually confronts the universal frustration of chalky mineral casts by opening with a side-by-side comparison of opaque white cream versus SOLAÉ crystal-clear water veil.',
+        commercialBenefit: 'Halts passive scroll within 1.2s; unlocks higher ROAS across diverse skin tone demographics.',
       },
       {
         id: 2,
@@ -65,6 +66,7 @@ const SOLAE_DATA: CaseStudyData = {
         quote: 'Feels like water. Shields like SPF50+.',
         rationale:
           'Highlights the high-spreadability micro-fluid texture that absorbs in under three seconds, proving high protection does not require thick greasy occlusives.',
+        commercialBenefit: 'Converts skincare purists who historically reject daily sunscreens due to pore congestion.',
       },
       {
         id: 3,
@@ -73,6 +75,7 @@ const SOLAE_DATA: CaseStudyData = {
         quote: "If your SPF pills under foundation, you're wearing the wrong formula.",
         rationale:
           'Calls out the friction caused when skincare actives ball up under makeup, positioning AIRVEIL as an invisible cosmetic grip layer.',
+        commercialBenefit: 'Expands market reach into daily makeup buyers, doubling repeat purchase frequency.',
       },
     ],
   },

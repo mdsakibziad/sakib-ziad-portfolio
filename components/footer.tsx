@@ -92,7 +92,7 @@ export function Footer() {
 
             {/* Positioning tagline */}
             <p className="font-inter text-sm text-zinc-600 dark:text-zinc-400 max-w-xs leading-relaxed">
-              Helping beauty &amp; skincare brands compound their growth through AI-native creative systems and intelligent automation.
+              Helping beauty &amp; skincare brands compound revenue through high-performance creative direction, sensory systems, and rapid commercial production.
             </p>
 
             {/* Email */}

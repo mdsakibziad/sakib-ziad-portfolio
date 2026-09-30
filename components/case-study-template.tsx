@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -9,6 +9,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Play,
+  Pause,
   X,
   ChevronLeft,
   ChevronRight,
@@ -21,6 +22,9 @@ import {
   CheckCircle2,
   Eye,
   ShieldCheck,
+  Video,
+  Camera,
+  Compass,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
@@ -66,6 +70,7 @@ export interface CaseStudyData {
       channelFit: string
       quote: string
       rationale: string
+      commercialBenefit?: string
     }[]
   }
   assets: CaseStudyAsset[]
@@ -74,52 +79,242 @@ export interface CaseStudyData {
   nextLink: { href: string; label: string }
 }
 
+// ── Horizontal Swipeable Row Component for Stills ─────────────────────────
+function SwipeableStillsRow({
+  title,
+  subtitle,
+  assets,
+  badgeText,
+}: {
+  title: string
+  subtitle: string
+  assets: CaseStudyAsset[]
+  badgeText: string
+}) {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(true)
+
+  const checkScroll = () => {
+    if (!scrollRef.current) return
+    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current
+    setCanScrollLeft(scrollLeft > 10)
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10)
+  }
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (!scrollRef.current) return
+    const offset = direction === 'left' ? -360 : 360
+    scrollRef.current.scrollBy({ left: offset, behavior: 'smooth' })
+  }
+
+  if (assets.length === 0) return null
+
+  return (
+    <div className="space-y-4 pt-8 border-t border-black/[0.08] dark:border-white/[0.08] first:border-none first:pt-0">
+      {/* Row Header */}
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+        <div>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
+              {badgeText}
+            </span>
+            <span className="text-[10px] font-mono px-2 py-0.2 rounded-full bg-black/[0.05] dark:bg-white/[0.08] text-zinc-600 dark:text-zinc-300">
+              {assets.length} Stills · Swipe ➔
+            </span>
+          </div>
+          <h3 className="font-fraunces text-xl sm:text-2xl text-zinc-900 dark:text-white font-medium">
+            {title}
+          </h3>
+          <p className="text-xs text-zinc-600 dark:text-zinc-400 font-light">
+            {subtitle}
+          </p>
+        </div>
+
+        {/* Scroll Arrows */}
+        <div className="flex items-center gap-2 self-end sm:self-auto">
+          <button
+            onClick={() => scroll('left')}
+            disabled={!canScrollLeft}
+            aria-label="Scroll left"
+            className="w-8 h-8 rounded-full liquid-glass border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-700 dark:text-zinc-300 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button
+            onClick={() => scroll('right')}
+            disabled={!canScrollRight}
+            aria-label="Scroll right"
+            className="w-8 h-8 rounded-full liquid-glass border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-700 dark:text-zinc-300 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+
+      {/* Swipeable Scroll Container */}
+      <div
+        ref={scrollRef}
+        onScroll={checkScroll}
+        className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 pt-1 scroll-smooth snap-x snap-mandatory scrollbar-none"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        {assets.map((asset, idx) => (
+          <div
+            key={asset.id}
+            className="snap-start shrink-0 w-[280px] sm:w-[320px] rounded-2xl liquid-glass border border-black/10 dark:border-white/15 p-3 flex flex-col justify-between group hover:border-black/25 dark:hover:border-white/30 transition-all duration-300 shadow-md"
+          >
+            {/* Full Image Container — Strictly Preserved & Uncropped */}
+            <div className="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-black/[0.03] dark:bg-black/40">
+              <Image
+                src={asset.src}
+                alt={asset.title}
+                fill
+                unoptimized
+                sizes="320px"
+                className="object-contain p-1 transition-transform duration-500 ease-luxury group-hover:scale-102"
+              />
+              <div className="absolute top-2 left-2 z-10">
+                <span className="px-2 py-0.5 rounded text-[9px] font-mono uppercase bg-black/70 backdrop-blur-md text-white border border-white/20">
+                  Still 0{idx + 1}
+                </span>
+              </div>
+            </div>
+
+            {/* 1 Short Sentence Caption directly visible up front */}
+            <div className="pt-3 px-1 space-y-1">
+              <div className="flex items-center justify-between text-[11px] font-inter">
+                <span className="font-semibold text-zinc-900 dark:text-zinc-100 truncate">
+                  {asset.title}
+                </span>
+                <span className="text-[10px] font-mono text-zinc-500 shrink-0 ml-1">
+                  {asset.formatLabel.split(' ')[0]}
+                </span>
+              </div>
+              <p className="text-[11px] font-inter text-zinc-600 dark:text-zinc-400 font-light leading-snug">
+                {asset.caption}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ── Interactive Video Player Card Component ───────────────────────────────
+function VideoCard({
+  video,
+  index,
+}: {
+  video: CaseStudyAsset
+  index: number
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+
+  const togglePlay = () => {
+    if (!videoRef.current) return
+    if (isPlaying) {
+      videoRef.current.pause()
+      setIsPlaying(false)
+    } else {
+      videoRef.current.play()
+      setIsPlaying(true)
+    }
+  }
+
+  return (
+    <div className="rounded-2xl liquid-glass border border-black/10 dark:border-white/15 p-3 sm:p-4 flex flex-col justify-between group hover:border-black/25 dark:hover:border-white/30 transition-all duration-300 shadow-lg">
+      {/* Video Container */}
+      <div className="relative aspect-[9/16] w-full rounded-xl overflow-hidden bg-black shadow-inner cursor-pointer" onClick={togglePlay}>
+        <video
+          ref={videoRef}
+          src={video.src}
+          preload="metadata"
+          loop
+          muted
+          playsInline
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+          className="w-full h-full object-cover"
+        />
+
+        {/* Video Overlay Badge */}
+        <div className="absolute top-2 left-2 z-10">
+          <span className="px-2 py-0.5 rounded text-[9px] font-mono uppercase bg-black/75 backdrop-blur-md text-white border border-white/20 flex items-center gap-1">
+            <Video className="w-3 h-3 text-emerald-400" />
+            <span>Motion 0{index + 1}</span>
+          </span>
+        </div>
+
+        {/* Play/Pause Button Overlay */}
+        <div className="absolute inset-0 bg-black/20 flex items-center justify-center transition-opacity pointer-events-none">
+          <div className={`w-12 h-12 rounded-full bg-white/95 text-black flex items-center justify-center shadow-xl transition-transform ${isPlaying ? 'opacity-0 group-hover:opacity-90 scale-90' : 'opacity-100 scale-100'}`}>
+            {isPlaying ? (
+              <Pause className="w-5 h-5 fill-current" />
+            ) : (
+              <Play className="w-5 h-5 ml-0.5 fill-current" />
+            )}
+          </div>
+        </div>
+
+        <div className="absolute bottom-2 right-2 z-10 text-[9px] font-mono text-white/80 bg-black/60 px-1.5 py-0.5 rounded">
+          {isPlaying ? 'Playing' : 'Tap to Play'}
+        </div>
+      </div>
+
+      {/* 1 Short Sentence Caption directly underneath */}
+      <div className="pt-3 px-1 space-y-1">
+        <div className="flex items-center justify-between text-xs font-inter">
+          <span className="font-semibold text-zinc-900 dark:text-zinc-100 truncate">
+            {video.title}
+          </span>
+          <span className="text-[10px] font-mono text-zinc-500 uppercase">
+            9:16 Vertical
+          </span>
+        </div>
+        <p className="text-xs font-inter text-zinc-600 dark:text-zinc-400 font-light leading-snug">
+          {video.caption}
+        </p>
+      </div>
+    </div>
+  )
+}
+
 export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
-  const [activeTab, setActiveTab] = useState<string>('all')
-  const [selectedAssetIndex, setSelectedAssetIndex] = useState<number | null>(null)
   const [openHookIndex, setOpenHookIndex] = useState<number | null>(0)
 
-  // Filter assets
-  const filteredAssets =
-    activeTab === 'all'
-      ? data.assets
-      : data.assets.filter((a) => a.platform === activeTab)
+  // Separate Videos and Stills
+  const videoAssets = data.assets.filter((a) => a.type === 'video')
+  const stillAssets = data.assets.filter((a) => a.type === 'image')
 
-  // Keyboard navigation for lightbox
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (selectedAssetIndex === null) return
-      if (e.key === 'Escape') setSelectedAssetIndex(null)
-      if (e.key === 'ArrowRight') {
-        setSelectedAssetIndex((prev) =>
-          prev !== null ? (prev + 1) % filteredAssets.length : 0
-        )
-      }
-      if (e.key === 'ArrowLeft') {
-        setSelectedAssetIndex((prev) =>
-          prev !== null ? (prev - 1 + filteredAssets.length) % filteredAssets.length : 0
-        )
-      }
-    }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [selectedAssetIndex, filteredAssets.length])
-
-  const activeAsset =
-    selectedAssetIndex !== null ? filteredAssets[selectedAssetIndex] : null
+  // Group Stills by Platform
+  const metaStills = stillAssets.filter((a) => a.platform === 'meta')
+  const instagramStills = stillAssets.filter((a) => a.platform === 'instagram')
+  const editorialStills = stillAssets.filter(
+    (a) => a.platform === 'editorial' || a.platform === 'studio'
+  )
+  const otherStills = stillAssets.filter(
+    (a) =>
+      a.platform !== 'meta' &&
+      a.platform !== 'instagram' &&
+      a.platform !== 'editorial' &&
+      a.platform !== 'studio'
+  )
 
   return (
     <div className="bg-background text-ivory min-h-screen selection:bg-[#141416] selection:text-white dark:selection:bg-white dark:selection:text-black">
       
-      {/* ── Top Navigation / Breadcrumb Header ─────────────────────────── */}
-      <div className="fixed top-20 left-0 right-0 z-40 backdrop-blur-md bg-white/70 dark:bg-black/60 border-b border-black/[0.06] dark:border-white/[0.08] transition-colors">
+      {/* ── Top Breadcrumb Header ──────────────────────────────────────── */}
+      <div className="fixed top-20 left-0 right-0 z-40 backdrop-blur-md bg-white/75 dark:bg-black/65 border-b border-black/[0.06] dark:border-white/[0.08] transition-colors">
         <div className="container-luxury py-3 flex items-center justify-between text-xs font-inter">
           <Link
             href="/work"
             className="inline-flex items-center gap-2 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Back to Work Archive</span>
+            <span>Work Archive</span>
           </Link>
 
           <div className="flex items-center gap-3">
@@ -134,10 +329,9 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
       </div>
 
       {/* ════════════════════════════════════════════════════════════════════
-          1. HERO SECTION
+          1. HERO SECTION: PRODUCT HERO WITH 1 SHORT SENTENCE
       ════════════════════════════════════════════════════════════════════ */}
       <section className="relative pt-36 pb-20 sm:pt-44 sm:pb-28 border-b border-black/[0.08] dark:border-white/[0.08] overflow-hidden" aria-label={`${data.name} Hero`}>
-        {/* Ambient atmospheric backdrop */}
         <div className="absolute top-0 right-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-b from-amber-200/20 to-transparent dark:from-white/[0.03] blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-10 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-rose-100/20 to-transparent dark:from-zinc-800/[0.1] blur-3xl pointer-events-none" />
 
@@ -153,17 +347,17 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
               >
                 <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full liquid-glass-pill text-[11px] uppercase tracking-[0.2em] text-zinc-700 dark:text-white/80 mb-6">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  {data.heroBadge || 'Flagship Spec Commercial · Witlyn Vault'}
+                  {data.heroBadge || 'Flagship Commercial Direction · Witlyn Standard'}
                 </div>
 
                 <h1 className="heading-hero text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-[#141416] dark:text-white mb-6">
                   {data.name}
                 </h1>
 
-                {/* Positioning Tagline */}
+                {/* 1 Short Sentence Positioning */}
                 <div className="mb-8 p-5 rounded-2xl liquid-glass border border-black/10 dark:border-white/10">
                   <span className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-widest block mb-1.5">
-                    Positioning Architecture
+                    Creative Strategy Rationale
                   </span>
                   <p className="font-fraunces text-xl sm:text-2xl text-zinc-800 dark:text-zinc-200 font-light italic leading-snug">
                     {data.tagline}
@@ -208,7 +402,7 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white drop-shadow">
                   <div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-white/70 block">Anchor Studio Capture</span>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-white/70 block">Hero Product</span>
                     <p className="font-fraunces text-sm sm:text-base font-light">{data.heroCaption}</p>
                   </div>
                   <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-mono uppercase border border-white/30 shrink-0 ml-2">
@@ -223,123 +417,22 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          2. THE BRIEF (PRODUCT CONTEXT — FULL PROFESSIONAL EDITORIAL TEXT)
-      ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad border-b border-black/[0.08] dark:border-white/[0.08]" aria-label="The Product Brief">
-        <div className="container-luxury max-w-4xl space-y-12">
-          
-          <div>
-            <p className="eyebrow-luxury text-zinc-500 dark:text-zinc-400 mb-2">01 // Formulation & Purpose</p>
-            <h2 className="heading-section text-2xl sm:text-3xl lg:text-4xl text-[#141416] dark:text-white">
-              The Product Brief
-            </h2>
-          </div>
-
-          {/* What It Is & Why It Exists */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-6 sm:p-8 rounded-2xl liquid-glass border border-black/10 dark:border-white/10 space-y-3">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-                Formula Definition
-              </span>
-              <h3 className="font-fraunces text-xl text-zinc-900 dark:text-white font-medium">What It Is</h3>
-              <p className="body-editorial text-sm sm:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed font-light">
-                {data.brief.whatItIs}
-              </p>
-            </div>
-
-            <div className="p-6 sm:p-8 rounded-2xl liquid-glass border border-black/10 dark:border-white/10 space-y-3">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400">
-                Market Friction
-              </span>
-              <h3 className="font-fraunces text-xl text-zinc-900 dark:text-white font-medium">Why It Exists</h3>
-              <p className="body-editorial text-sm sm:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed font-light">
-                {data.brief.whyItExists}
-              </p>
-            </div>
-          </div>
-
-          {/* Why It Is Different (Key Differentiators) */}
-          <div className="p-6 sm:p-8 rounded-2xl liquid-glass border border-black/10 dark:border-white/10 space-y-6">
-            <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-              Formulation & Utility Moat
-            </span>
-            <h3 className="font-fraunces text-2xl text-zinc-900 dark:text-white font-medium">Why It Is Different</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {data.brief.whyDifferent.map((diff, idx) => (
-                <div key={idx} className="space-y-2 border-l-2 border-black/15 dark:border-white/20 pl-4">
-                  <h4 className="font-inter text-sm font-semibold text-zinc-900 dark:text-white">
-                    {diff.title}
-                  </h4>
-                  <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed font-light">
-                    {diff.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Market Angles (If applicable, e.g. USA vs Malaysia for Nuecera) */}
-          {data.brief.marketAngles && data.brief.marketAngles.length > 0 && (
-            <div className="p-6 rounded-2xl liquid-glass border border-black/10 dark:border-white/10 space-y-4">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-                Geographic & Audience Positioning
-              </span>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {data.brief.marketAngles.map((m, i) => (
-                  <div key={i} className="p-4 rounded-xl bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 space-y-1">
-                    <h5 className="font-inter text-xs font-semibold text-zinc-900 dark:text-white">{m.title}</h5>
-                    <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">{m.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Packaging & Label Specs + Target Audience */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-2xl liquid-glass border border-black/10 dark:border-white/10 space-y-3">
-              <div className="flex items-center gap-2 text-zinc-900 dark:text-white font-inter text-xs font-semibold">
-                <Target className="w-4 h-4 text-zinc-500" />
-                <span>Target Audience</span>
-              </div>
-              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed font-light">
-                {data.brief.targetAudience}
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl liquid-glass border border-black/10 dark:border-white/10 space-y-3">
-              <div className="flex items-center gap-2 text-zinc-900 dark:text-white font-inter text-xs font-semibold">
-                <Package className="w-4 h-4 text-zinc-500" />
-                <span>Packaging & Label Specs</span>
-              </div>
-              <p className="text-xs text-zinc-600 dark:text-zinc-300 font-light leading-relaxed">
-                <strong className="text-zinc-900 dark:text-white font-medium">Container:</strong> {data.brief.packagingSpecs.container}
-              </p>
-              <div className="p-2.5 rounded-lg bg-black/[0.04] dark:bg-white/[0.04] text-[11px] font-mono text-zinc-700 dark:text-zinc-300">
-                {data.brief.packagingSpecs.labelTypography}
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════════════
-          3. CREATIVE STRATEGY & HOOK RATIONALE
+          2. CREATIVE STRATEGIST DIRECT-RESPONSE ARCHITECTURE & HOOKS
       ════════════════════════════════════════════════════════════════════ */}
       <section className="section-pad border-b border-black/[0.08] dark:border-white/[0.08] bg-surface/30" aria-label="Creative Strategy">
-        <div className="container-luxury max-w-4xl space-y-8">
+        <div className="container-luxury max-w-4xl space-y-10">
           
           <div>
-            <p className="eyebrow-luxury text-zinc-500 dark:text-zinc-400 mb-2">02 // Direct-Response Architecture</p>
+            <p className="eyebrow-luxury text-zinc-500 dark:text-zinc-400 mb-2">01 // Creative Strategist Rationale</p>
             <h2 className="heading-section text-2xl sm:text-3xl lg:text-4xl text-[#141416] dark:text-white">
-              Creative Strategy & Hook Rationale
+              Why These Hooks & Visuals Were Chosen
             </h2>
             <p className="body-muted text-sm sm:text-base text-zinc-600 dark:text-zinc-400 mt-1">
-              Engineered around consumer tension points and physical formula behaviors to arrest feed scroll.
+              Top 1% creative direction is not aesthetics for the sake of decoration. Every angle attacks a real consumer tension point to maximize thumb-stop rate and paid-social conversion.
             </p>
           </div>
 
+          {/* Hook Accordion */}
           <div className="space-y-3">
             {data.strategy.hooks.map((item, index) => {
               const isOpen = openHookIndex === index
@@ -359,7 +452,7 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
                           {item.angle}
                         </h4>
                         <span className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400">
-                          Channel Deployment: {item.channelFit}
+                          Channel Fit: {item.channelFit}
                         </span>
                       </div>
                     </div>
@@ -381,15 +474,28 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
                       >
                         <div className="p-3.5 rounded-xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/5 dark:border-white/10">
                           <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 block mb-1">
-                            Primary Hook Line
+                            Script Hook Line
                           </span>
                           <p className="font-fraunces text-base sm:text-lg italic text-zinc-900 dark:text-white">
                             "{item.quote}"
                           </p>
                         </div>
-                        <p className="text-xs sm:text-sm font-inter text-zinc-600 dark:text-zinc-300 leading-relaxed font-light">
-                          {item.rationale}
-                        </p>
+                        
+                        <div className="space-y-2">
+                          <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 block">
+                            Strategist Psychological Rationale
+                          </span>
+                          <p className="text-xs sm:text-sm font-inter text-zinc-600 dark:text-zinc-300 leading-relaxed font-light">
+                            {item.rationale}
+                          </p>
+                        </div>
+
+                        {item.commercialBenefit && (
+                          <div className="pt-2 flex items-center gap-2 text-xs font-inter text-emerald-600 dark:text-emerald-400">
+                            <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+                            <span><strong>Commercial Benefit:</strong> {item.commercialBenefit}</span>
+                          </div>
+                        )}
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -398,139 +504,123 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
             })}
           </div>
 
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════════════
-          4. THE WORK — CURATED ASSET VAULT WITH 1-SENTENCE CAPTIONS
-      ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad" aria-label={`${data.name} Asset Vault`}>
-        <div className="container-luxury">
-          
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 border-b border-black/[0.08] dark:border-white/[0.08] pb-6">
-            <div>
-              <p className="eyebrow-luxury text-zinc-500 dark:text-zinc-400 mb-2">03 // Curated Deliverables</p>
-              <h2 className="heading-section text-3xl sm:text-4xl text-[#141416] dark:text-white">
-                The Campaign Vault
-              </h2>
-              <p className="body-muted text-sm sm:text-base text-zinc-600 dark:text-zinc-400 mt-1">
-                Full production archive spanning feed stills, vertical motion reels, and architectural setups.
+          {/* Product Brief Details */}
+          <div className="pt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-6 rounded-2xl liquid-glass border border-black/10 dark:border-white/10 space-y-2">
+              <span className="text-[10px] font-mono uppercase text-emerald-600 dark:text-emerald-400">Formula Definition</span>
+              <h4 className="font-fraunces text-lg text-zinc-900 dark:text-white font-medium">What It Is</h4>
+              <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 font-light leading-relaxed">
+                {data.brief.whatItIs}
               </p>
             </div>
 
-            {/* Tab Controls */}
-            <div className="flex items-center gap-1.5 p-1 rounded-2xl liquid-glass border border-black/10 dark:border-white/10 self-start sm:self-auto overflow-x-auto max-w-full">
-              {data.tabs.map((tab) => {
-                const count = tab.id === 'all'
-                  ? data.assets.length
-                  : data.assets.filter((a) => a.platform === tab.id).length
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`px-3.5 py-1.5 rounded-xl text-xs font-inter transition-all whitespace-nowrap flex items-center gap-1.5 ${
-                      activeTab === tab.id
-                        ? 'bg-[#141416] text-white dark:bg-white dark:text-black font-semibold shadow-sm'
-                        : 'text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white'
-                    }`}
-                  >
-                    <span>{tab.label}</span>
-                    <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
-                      activeTab === tab.id
-                        ? 'bg-white/20 text-white dark:bg-black/20 dark:text-black'
-                        : 'bg-black/5 dark:bg-white/10 text-zinc-500 dark:text-zinc-400'
-                    }`}>
-                      {count}
-                    </span>
-                  </button>
-                )
-              })}
+            <div className="p-6 rounded-2xl liquid-glass border border-black/10 dark:border-white/10 space-y-2">
+              <span className="text-[10px] font-mono uppercase text-amber-600 dark:text-amber-400">Consumer Pain Point</span>
+              <h4 className="font-fraunces text-lg text-zinc-900 dark:text-white font-medium">Why It Exists</h4>
+              <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 font-light leading-relaxed">
+                {data.brief.whyItExists}
+              </p>
             </div>
-          </div>
-
-          {/* Asset Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-            {filteredAssets.map((asset, idx) => (
-              <motion.div
-                key={asset.id}
-                layout
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4, delay: Math.min(idx * 0.02, 0.3) }}
-                className="group cursor-pointer flex flex-col"
-                onClick={() => setSelectedAssetIndex(idx)}
-              >
-                <div className="rounded-2xl liquid-glass overflow-hidden border border-black/10 dark:border-white/15 p-2 sm:p-2.5 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-black/25 dark:group-hover:border-white/30 group-hover:shadow-xl flex-1 flex flex-col justify-between">
-                  
-                  {/* Media Container */}
-                  <div className={`relative ${asset.aspectRatio} w-full rounded-xl overflow-hidden bg-black/[0.04] dark:bg-black/40`}>
-                    {asset.type === 'image' ? (
-                      <Image
-                        src={asset.src}
-                        alt={asset.title}
-                        fill
-                        unoptimized
-                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                        className="object-cover transition-transform duration-500 ease-luxury group-hover:scale-105"
-                      />
-                    ) : (
-                      <div className="w-full h-full relative bg-zinc-900">
-                        <video
-                          src={`${asset.src}#t=0.5`}
-                          preload="metadata"
-                          muted
-                          playsInline
-                          className="w-full h-full object-cover opacity-85 group-hover:opacity-100 transition-opacity"
-                        />
-                        <div className="absolute inset-0 bg-black/30 flex items-center justify-center pointer-events-none group-hover:bg-black/10 transition-colors">
-                          <div className="w-10 h-10 rounded-full bg-white/90 text-black flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                            <Play className="w-4 h-4 ml-0.5 fill-current" />
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Platform Tag Badge Overlay */}
-                    <div className="absolute top-2 left-2 z-10">
-                      <span className="px-2 py-0.5 rounded-md text-[9px] font-mono uppercase bg-black/60 backdrop-blur-md text-white border border-white/20">
-                        {asset.platform}
-                      </span>
-                    </div>
-
-                    {/* Hover Prompt */}
-                    <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
-                      <span className="p-1 rounded-md bg-black/70 backdrop-blur text-white flex items-center justify-center">
-                        <Eye className="w-3.5 h-3.5" />
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* 1 Short Sentence Caption under every photo/video */}
-                  <div className="pt-2.5 px-1 space-y-1">
-                    <div className="flex items-center justify-between text-[11px] font-inter">
-                      <span className="font-semibold text-zinc-900 dark:text-zinc-100 truncate">
-                        {asset.title}
-                      </span>
-                      <span className="text-[10px] font-mono text-zinc-400 dark:text-zinc-500 shrink-0 ml-1">
-                        {asset.formatLabel.split(' ')[0]}
-                      </span>
-                    </div>
-                    <p className="text-[11px] font-inter text-zinc-600 dark:text-zinc-400 font-light leading-snug line-clamp-2">
-                      {asset.caption}
-                    </p>
-                  </div>
-
-                </div>
-              </motion.div>
-            ))}
           </div>
 
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          5. CASE STUDY PAGINATION & STRATEGY CTA
+          3. THE DELIVERABLES: VIDEOS FIRST, THEN SWIPEABLE STILLS
+      ════════════════════════════════════════════════════════════════════ */}
+      <section className="section-pad" aria-label={`${data.name} Campaign Vault`}>
+        <div className="container-luxury space-y-16">
+          
+          {/* Section Introduction */}
+          <div className="border-b border-black/[0.08] dark:border-white/[0.08] pb-6">
+            <p className="eyebrow-luxury text-zinc-500 dark:text-zinc-400 mb-2">02 // Campaign Deliverables</p>
+            <h2 className="heading-section text-3xl sm:text-4xl text-[#141416] dark:text-white">
+              The Production Vault
+            </h2>
+            <p className="body-muted text-sm sm:text-base text-zinc-600 dark:text-zinc-400 mt-1">
+              Performance video creatives followed by swipeable still suites. All assets fully visible up front.
+            </p>
+          </div>
+
+          {/* ── PART A: MOTION & PERFORMANCE VIDEOS (FIRST!) ─────────────── */}
+          {videoAssets.length > 0 && (
+            <div className="space-y-6">
+              <div className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <h3 className="font-fraunces text-2xl text-zinc-900 dark:text-white font-medium">
+                  Part 1 · Motion & Paid-Social Videos ({videoAssets.length})
+                </h3>
+              </div>
+              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-light -mt-3">
+                Calibrated for high thumb-stop rate in the first 3 seconds with sensory formula textures and sound-on cues.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                {videoAssets.map((video, idx) => (
+                  <VideoCard key={video.id} video={video} index={idx} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* ── PART B: STILL ASSET SUITES (SWIPEABLE 1, 2, 3, 4) ────────── */}
+          <div className="space-y-12">
+            <div>
+              <h3 className="font-fraunces text-2xl text-zinc-900 dark:text-white font-medium mb-1">
+                Part 2 · Omnichannel Stills & Swatches ({stillAssets.length})
+              </h3>
+              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-light">
+                Swipe right to inspect each creative variant. Complete uncropped view without opening modals.
+              </p>
+            </div>
+
+            {/* Meta Platform Stills Row */}
+            {metaStills.length > 0 && (
+              <SwipeableStillsRow
+                badgeText="Meta Platform Suite"
+                title="Meta Feed & Sponsored Stills"
+                subtitle="Engineered for high conversion across 1:1 square feeds and 4:5 sponsored portraits."
+                assets={metaStills}
+              />
+            )}
+
+            {/* Instagram Suite Stills Row */}
+            {instagramStills.length > 0 && (
+              <SwipeableStillsRow
+                badgeText="Instagram Architecture"
+                title="Instagram Organic & Stories"
+                subtitle="High-aesthetic beauty curation tailored for luxury feed algorithms and swipe-up stories."
+                assets={instagramStills}
+              />
+            )}
+
+            {/* Editorial & Master Studio Stills Row */}
+            {editorialStills.length > 0 && (
+              <SwipeableStillsRow
+                badgeText="Studio Master Archives"
+                title="Editorial Macro & Texture Captures"
+                subtitle="Directional lighting studies focusing on packaging caustics, dropper dispense, and formula physics."
+                assets={editorialStills}
+              />
+            )}
+
+            {/* Other Stills (TikTok / Website) */}
+            {otherStills.length > 0 && (
+              <SwipeableStillsRow
+                badgeText="Omnichannel Variants"
+                title="TikTok Verticals & E-Commerce Banners"
+                subtitle="Rapid vertical creator framing and wide-format e-commerce store headers."
+                assets={otherStills}
+              />
+            )}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════════════
+          4. PAGINATION & DIRECT ADVISORY CTA
       ════════════════════════════════════════════════════════════════════ */}
       <section className="section-pad border-t border-black/[0.08] dark:border-white/[0.08]">
         <div className="container-luxury max-w-4xl space-y-12">
@@ -556,140 +646,38 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
               href={data.nextLink.href}
               className="p-5 rounded-2xl liquid-glass border border-black/10 dark:border-white/10 hover:border-black/25 dark:hover:border-white/30 transition-all group flex items-center justify-between text-right"
             >
-              <div className="flex items-center gap-3 justify-end w-full">
-                <div>
-                  <span className="text-[10px] font-mono uppercase text-zinc-400 block">Next Case</span>
-                  <span className="font-fraunces text-base text-zinc-900 dark:text-white font-medium">
-                    {data.nextLink.label}
-                  </span>
-                </div>
-                <ChevronRight className="w-5 h-5 text-zinc-400 group-hover:translate-x-1 transition-transform" />
+              <div className="ml-auto">
+                <span className="text-[10px] font-mono uppercase text-zinc-400 block">Next Case</span>
+                <span className="font-fraunces text-base text-zinc-900 dark:text-white font-medium">
+                  {data.nextLink.label}
+                </span>
               </div>
+              <ChevronRight className="w-5 h-5 text-zinc-400 group-hover:translate-x-1 transition-transform ml-3" />
             </Link>
           </div>
 
-          {/* Bottom Strategy Call CTA */}
-          <div className="p-8 sm:p-12 rounded-3xl liquid-glass border border-black/10 dark:border-white/10 text-center space-y-6">
-            <p className="eyebrow-luxury text-zinc-500 dark:text-zinc-400">Autonomous Creative Direction</p>
-            <h2 className="heading-section text-2xl sm:text-3xl lg:text-4xl text-[#141416] dark:text-white">
-              Ready to Engineer Your Brand's Creative Systems?
-            </h2>
-            <p className="body-muted text-sm sm:text-base max-w-xl mx-auto text-zinc-600 dark:text-zinc-400 font-light leading-relaxed">
-              We eliminate traditional studio shoot fatigue by building unified, multi-channel asset engines around verified 3D and generative brand models.
+          {/* Direct CTA */}
+          <div className="p-8 sm:p-10 rounded-3xl liquid-glass border border-black/10 dark:border-white/20 text-center space-y-4">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
+              Commercial Direction & Advisory
+            </span>
+            <h3 className="font-fraunces text-2xl sm:text-3xl text-zinc-900 dark:text-white font-medium">
+              Want category-defining creative systems for your brand?
+            </h3>
+            <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 font-light max-w-lg mx-auto leading-relaxed">
+              I partner with a small roster of beauty and skincare founders each quarter for full commercial direction, creative audits, and paid-social asset systems.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-              <Button asChild size="lg" className="w-full sm:w-auto">
-                <Link href="/contact" className="flex items-center gap-2">
-                  <span>Apply for Strategy Advisory</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-                <Link href="/work" className="flex items-center gap-2">
-                  <span>Explore Full Archive</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </Link>
-              </Button>
+            <div className="pt-2">
+              <Link href="/contact">
+                <Button size="lg" className="font-inter text-xs tracking-[0.2em] uppercase font-semibold">
+                  Apply for a Strategy Call
+                </Button>
+              </Link>
             </div>
           </div>
 
         </div>
       </section>
-
-      {/* ════════════════════════════════════════════════════════════════════
-          6. LIGHTBOX MODAL WITH 1-SENTENCE CAPTIONS
-      ════════════════════════════════════════════════════════════════════ */}
-      <AnimatePresence>
-        {activeAsset && selectedAssetIndex !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/92 backdrop-blur-xl p-4 sm:p-6"
-            onClick={() => setSelectedAssetIndex(null)}
-          >
-            <div
-              className="relative max-w-5xl max-h-[92vh] w-full flex flex-col items-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Close Button */}
-              <button
-                onClick={() => setSelectedAssetIndex(null)}
-                className="absolute -top-12 right-0 p-2 text-white/70 hover:text-white transition-colors bg-white/10 hover:bg-white/20 rounded-full"
-                aria-label="Close Lightbox"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              {/* Prev / Next Buttons */}
-              <button
-                onClick={() =>
-                  setSelectedAssetIndex((prev) =>
-                    prev !== null ? (prev - 1 + filteredAssets.length) % filteredAssets.length : 0
-                  )
-                }
-                className="absolute left-2 sm:-left-12 top-1/2 -translate-y-1/2 p-2.5 text-white/80 hover:text-white bg-black/60 hover:bg-black/90 rounded-full backdrop-blur-md transition-all z-20"
-                aria-label="Previous Asset"
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-
-              <button
-                onClick={() =>
-                  setSelectedAssetIndex((prev) =>
-                    prev !== null ? (prev + 1) % filteredAssets.length : 0
-                  )
-                }
-                className="absolute right-2 sm:-right-12 top-1/2 -translate-y-1/2 p-2.5 text-white/80 hover:text-white bg-black/60 hover:bg-black/90 rounded-full backdrop-blur-md transition-all z-20"
-                aria-label="Next Asset"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-
-              {/* Media Display */}
-              <div className="relative w-full max-h-[75vh] flex items-center justify-center overflow-hidden rounded-2xl border border-white/15 bg-black/50 shadow-2xl">
-                {activeAsset.type === 'image' ? (
-                  <div className="relative w-full h-[65vh] max-h-[75vh]">
-                    <Image
-                      src={activeAsset.src}
-                      alt={activeAsset.title}
-                      fill
-                      unoptimized
-                      sizes="90vw"
-                      className="object-contain"
-                    />
-                  </div>
-                ) : (
-                  <video
-                    src={activeAsset.src}
-                    controls
-                    autoPlay
-                    playsInline
-                    className="max-h-[75vh] max-w-full rounded-2xl object-contain"
-                  />
-                )}
-              </div>
-
-              {/* Lightbox Caption: 1 Simple Short Sentence */}
-              <div className="mt-4 px-6 py-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center max-w-2xl space-y-1">
-                <div className="flex items-center justify-center gap-3 text-xs font-mono uppercase text-white/70">
-                  <span>{activeAsset.title}</span>
-                  <span className="w-1 h-1 rounded-full bg-white/40" />
-                  <span>{activeAsset.platform}</span>
-                  <span className="w-1 h-1 rounded-full bg-white/40" />
-                  <span>{activeAsset.formatLabel}</span>
-                  <span className="w-1 h-1 rounded-full bg-white/40" />
-                  <span>{selectedAssetIndex + 1} / {filteredAssets.length}</span>
-                </div>
-                <p className="text-xs sm:text-sm font-inter text-white font-light">
-                  {activeAsset.caption}
-                </p>
-              </div>
-
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
     </div>
   )

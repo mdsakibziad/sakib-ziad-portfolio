@@ -25,10 +25,10 @@ const inter = Inter({
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'Sakib Ziad — AI Creative Strategist',
+  name: 'Sakib Ziad — Creative Strategist & Commercial Director',
   url: 'https://sakibziad.my',
   description:
-    'Helping beauty & skincare brands grow through AI-native creative systems and intelligent brand automation.',
+    'Helping beauty & skincare brands compound revenue through high-performance creative direction, sensory systems, and rapid commercial production.',
   author: {
     '@type': 'Person',
     name: 'Sakib Ziad',
@@ -41,17 +41,18 @@ const GA_ID = process.env.NEXT_PUBLIC_GA_ID
 export const metadata: Metadata = {
   metadataBase: new URL('https://sakibziad.my'),
   title: {
-    default: 'Sakib Ziad — AI Creative Strategist for Beauty & Skincare Brands',
+    default: 'Sakib Ziad — Creative Strategist & Commercial Director for Beauty & Skincare',
     template: '%s',
   },
   description:
-    'Helping beauty & skincare brands grow through AI-native creative systems and intelligent brand automation.',
+    'Helping beauty & skincare brands compound revenue through high-performance creative direction, sensory systems, and rapid commercial production.',
   keywords: [
-    'AI Creative Strategist',
-    'AI automation',
-    'beauty brand strategy',
-    'skincare marketing',
-    'AI content systems',
+    'Creative Strategist',
+    'Commercial Director',
+    'Beauty Brand Creative',
+    'Skincare Marketing',
+    'High-Performance Creative Systems',
+    'Direct-Response Creative',
     'Sakib Ziad',
     'Witlyn',
   ],
@@ -68,23 +69,23 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://sakibziad.my',
     siteName: 'Sakib Ziad',
-    title: 'Sakib Ziad — AI Creative Strategist for Beauty & Skincare Brands',
+    title: 'Sakib Ziad — Creative Strategist & Commercial Director for Beauty & Skincare',
     description:
-      'Helping beauty & skincare brands grow through AI-native creative systems and intelligent brand automation.',
+      'Helping beauty & skincare brands compound revenue through high-performance creative direction, sensory systems, and rapid commercial production.',
     images: [
       {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'Sakib Ziad — AI Creative Strategist for Beauty & Skincare Brands',
+        alt: 'Sakib Ziad — Creative Strategist & Commercial Director for Beauty & Skincare',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sakib Ziad — AI Creative Strategist for Beauty & Skincare Brands',
+    title: 'Sakib Ziad — Creative Strategist & Commercial Director for Beauty & Skincare',
     description:
-      'Helping beauty & skincare brands grow through AI-native creative systems and intelligent brand automation.',
+      'Helping beauty & skincare brands compound revenue through high-performance creative direction, sensory systems, and rapid commercial production.',
     images: ['/opengraph-image'],
   },
   robots: {

@@ -134,8 +134,8 @@ export default function WorkPage() {
   ]
 
   const servicePillars = [
-    'AI-Native Campaign Direction',
-    'Computational Brand Worldbuilding',
+    'Commercial Campaign Direction',
+    'Sensory Brand Worldbuilding',
     'Direct-Response Asset Systems',
     'Prestige Packaging Visualization',
     'Multi-Platform Creative Multiplication',
@@ -166,7 +166,7 @@ export default function WorkPage() {
 
             <RevealSection delay={0.2}>
               <p className="body-editorial text-lg sm:text-xl text-zinc-700 dark:text-zinc-300 max-w-2xl mb-8">
-                High-fashion art direction meets neural computation. Five flagship spec-commercial campaigns engineered around consumer friction points, sensory texture hooks, and paid-social conversion architecture.
+                High-fashion art direction meets direct-response psychology. Five flagship spec-commercial campaigns engineered around consumer friction points, sensory texture hooks, and paid-social conversion architecture.
               </p>
               <div className="inline-block px-3 py-1 rounded-full text-xs font-inter text-zinc-600 dark:text-zinc-400 border border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02]">
                 *All works produced under the Witlyn commercial standard for paid-social acquisition and portfolio case studies.

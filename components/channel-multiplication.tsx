@@ -331,16 +331,16 @@ export function ChannelMultiplication() {
                           </div>
                         </div>
                       ) : (
-                        /* Feed Card: Meta Feed Ad (1:1) */
-                        <div className="relative aspect-square max-h-80 w-auto mx-auto rounded-xl overflow-hidden border border-black/15 dark:border-white/20 bg-black/[0.04] dark:bg-black/40 shadow-lg">
-                          <div className="p-2 bg-black/[0.04] dark:bg-white/[0.04] flex items-center justify-between text-[10px] font-inter border-b border-black/[0.05] dark:border-white/[0.05]">
+                        /* Feed Card: Meta Feed Ad (1:1 Complete View) */
+                        <div className="flex flex-col w-full max-w-[320px] mx-auto rounded-xl overflow-hidden border border-black/15 dark:border-white/20 bg-black/[0.04] dark:bg-black/40 shadow-lg">
+                          <div className="p-2.5 bg-black/[0.04] dark:bg-white/[0.04] flex items-center justify-between text-[10px] font-inter border-b border-black/[0.05] dark:border-white/[0.05]">
                             <div className="flex items-center gap-1.5">
                               <div className="w-3.5 h-3.5 rounded-full bg-amber-500/80" />
                               <span className="font-semibold text-zinc-900 dark:text-white">SOLAÉ Skincare</span>
                             </div>
                             <span className="text-[9px] text-zinc-500 uppercase tracking-widest font-mono">Sponsored</span>
                           </div>
-                          <div className="relative aspect-square w-full">
+                          <div className="relative aspect-square w-full bg-[#FAF7F2] dark:bg-zinc-900">
                             <Image
                               src={item.imageSrc}
                               alt={`${item.channel} campaign visual`}
@@ -348,10 +348,10 @@ export function ChannelMultiplication() {
                               priority
                               unoptimized
                               sizes="(max-width: 768px) 100vw, 360px"
-                              className="object-cover"
+                              className="object-contain"
                             />
                           </div>
-                          <div className="p-2 bg-black/[0.06] dark:bg-white/[0.06] flex items-center justify-between text-[10px] text-zinc-800 dark:text-zinc-200">
+                          <div className="p-2.5 bg-black/[0.06] dark:bg-white/[0.06] flex items-center justify-between text-[10px] text-zinc-800 dark:text-zinc-200 border-t border-black/[0.05] dark:border-white/[0.05]">
                             <span className="font-medium">Shop Invisible Sun Serum</span>
                             <span className="text-[9px] font-mono uppercase underline">Learn More</span>
                           </div>

@@ -57,6 +57,8 @@ const NUECERA_DATA: CaseStudyData = {
         quote: "Moisturizing daily, but still dry? It's about a stronger barrier.",
         rationale:
           'Addresses the common frustration where skin feels parched 20 minutes after moisturizing due to weak barrier lipid integrity.',
+        commercialBenefit:
+          'Disrupts habitual moisturizer repurchasing by reframing the core problem from hydration to lipid retention, driving higher initial conversion.',
       },
       {
         id: 2,
@@ -65,6 +67,8 @@ const NUECERA_DATA: CaseStudyData = {
         quote: 'Stop destroying your skin with 10 steps.',
         rationale:
           'Appeals to consumers overwhelmed by multi-step regimens, offering a single dermatologist-tested tub that replaces elaborate layering routines.',
+        commercialBenefit:
+          'Positions Nuécera as the cost-effective hero SKU, increasing cart conversion among fatigued skincare buyers.',
       },
       {
         id: 3,
@@ -73,6 +77,8 @@ const NUECERA_DATA: CaseStudyData = {
         quote: 'Rich cloud hydration. Zero sticky residue.',
         rationale:
           'Proves visually that a heavy-duty ceramide cream can absorb completely matte without clogging pores or staining collars.',
+        commercialBenefit:
+          'Eliminates the top refund and bounce driver for rich creams (greasiness), boosting customer lifetime retention.',
       },
     ],
   },

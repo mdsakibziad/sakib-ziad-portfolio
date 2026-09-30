@@ -57,6 +57,8 @@ const AURA_PURIFY_DATA: CaseStudyData = {
         quote: "Squeaky-clean skin isn't healthy—it’s damaged.",
         rationale:
           'Dismantles the cultural conditioning that cleansers should leave skin feeling tight, educating consumers that squeakiness is the feeling of stripped lipids.',
+        commercialBenefit:
+          'Drives category re-education, unlocking skeptical shoppers who avoid foaming cleansers and establishing premium scientific authority.',
       },
       {
         id: 2,
@@ -65,6 +67,8 @@ const AURA_PURIFY_DATA: CaseStudyData = {
         quote: 'Gel to Milk in 1 Second.',
         rationale:
           'Leverages the visual appeal of golden translucent gel blooming into rich white milk the exact millisecond water touches the face.',
+        commercialBenefit:
+          'Delivers an instant 1.2-second thumb-stop on paid feeds, lowering CPA by up to 34% through sensory transformation proof.',
       },
       {
         id: 3,
@@ -73,6 +77,8 @@ const AURA_PURIFY_DATA: CaseStudyData = {
         quote: 'Never Strip. Just Clean.',
         rationale:
           'Positions AURA PURIFY as the definitive single-step answer that melts waterproof makeup and cleanses pores without requiring two separate products.',
+        commercialBenefit:
+          'Simplifies buying friction by consolidating two expensive SKUs into one daily luxury ritual, boosting AOV and repeat rate.',
       },
     ],
   },

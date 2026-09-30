@@ -57,6 +57,8 @@ const VYRAA_DATA: CaseStudyData = {
         quote: 'Why does your neck look 5 years older than your face?',
         rationale:
           'Directly confronts daily screen time habits by showing how downward neck angles fold thin skin into permanent horizontal bands.',
+        commercialBenefit:
+          'Instantly creates a new self-care category for tech workers, unlocking net-new customer acquisition outside general skincare.',
       },
       {
         id: 2,
@@ -65,6 +67,8 @@ const VYRAA_DATA: CaseStudyData = {
         quote: 'Your $100 face cream stops working the moment it touches your neck.',
         rationale:
           'Calls out the habit of dragging heavy facial oils down onto the neck, proving that thinner neck tissue requires peptides over heavy grease.',
+        commercialBenefit:
+          'Disrupts common user habits to justify high-ticket specialized price points ($85+), increasing gross margins.',
       },
       {
         id: 3,
@@ -73,6 +77,8 @@ const VYRAA_DATA: CaseStudyData = {
         quote: 'Cellular tension. Zero collar grease.',
         rationale:
           'Visually demonstrates a crisp white dress shirt buttoned directly against freshly moisturized neck skin with zero transfer or yellow staining.',
+        commercialBenefit:
+          'Addresses the primary reason customers abandon neck treatments, converting professional daytime buyers and reducing returns to under 1.2%.',
       },
     ],
   },

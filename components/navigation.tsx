@@ -388,7 +388,7 @@ export function Navigation() {
                 </Link>
 
                 <p className="text-center text-[10px] text-zinc-500 font-inter">
-                  Sakib Ziad · AI Creative Strategist
+                  Sakib Ziad · Creative Strategist & Commercial Director
                 </p>
               </div>
             </motion.div>
