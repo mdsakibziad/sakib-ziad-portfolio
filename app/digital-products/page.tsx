@@ -147,7 +147,7 @@ export default function DigitalProductsPage() {
   ]
 
   return (
-    <div className="bg-background text-ivory min-h-screen selection:bg-[#141416] selection:text-white dark:selection:bg-white dark:selection:text-black pt-28">
+    <div className="bg-background text-ivory min-h-screen selection:bg-[#141416] selection:text-white dark:selection:bg-white dark:selection:text-black pt-36 sm:pt-40">
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section className="section-pad border-b border-black/[0.08] dark:border-white/[0.08]" aria-label="Digital Products Hero">

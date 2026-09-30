@@ -31,7 +31,7 @@ export default function InsightsPage() {
   }
 
   return (
-    <div className="bg-background text-ivory min-h-screen selection:bg-white selection:text-black pt-28">
+    <div className="bg-background text-ivory min-h-screen selection:bg-white selection:text-black pt-36 sm:pt-40">
 
       {/* ── Header ──────────────────────────────────────────────────────────── */}
       <section className="section-pad border-b border-border" aria-label="Insights Header">

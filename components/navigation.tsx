@@ -8,6 +8,7 @@ import { Menu, X, ArrowUpRight, User } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { createClient, isSupabaseConfigured } from '@/lib/supabase/client'
 import { ThemeToggle } from './theme-toggle'
+import { TopGuaranteeBanner } from './top-guarantee-banner'
 
 /* ── Split Nav Links for Centered-Logo Studio Header ──────────────────────── */
 const NAV_LEFT = [
@@ -90,16 +91,20 @@ export function Navigation() {
 
   return (
     <>
-      {/* ── Main Nav Bar (Frosted Cold Glass Treatment) ─────────────────── */}
-      <header
-        className={cn(
-          'fixed top-0 inset-x-0 z-50 transition-all duration-500 ease-luxury',
-          scrolled
-            ? 'bg-white/60 dark:bg-[#0E0E10]/60 backdrop-blur-[20px] backdrop-saturate-[160%] border-b border-white/80 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.8)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.08)]'
-            : 'bg-transparent border-b border-transparent'
-        )}
-        role="banner"
-      >
+      {/* ── Fixed Top Bar (Unified Banner + Navigation Stack) ───────────── */}
+      <div className="fixed top-0 inset-x-0 z-50 flex flex-col pointer-events-none">
+        <div className="pointer-events-auto w-full">
+          <TopGuaranteeBanner />
+        </div>
+        <header
+          className={cn(
+            'w-full pointer-events-auto transition-all duration-500 ease-luxury',
+            scrolled
+              ? 'bg-white/80 dark:bg-[#0E0E10]/85 backdrop-blur-[20px] backdrop-saturate-[160%] border-b border-black/10 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.06)]'
+              : 'bg-transparent border-b border-transparent'
+          )}
+          role="banner"
+        >
         {/* Frosted Micro-Noise Grain Overlay */}
         {scrolled && (
           <div
@@ -259,6 +264,7 @@ export function Navigation() {
           </nav>
         </div>
       </header>
+    </div>
 
       {/* ── Mobile Drawer ────────────────────────────────────────────────── */}
       <AnimatePresence>

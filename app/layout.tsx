@@ -4,7 +4,6 @@ import { Fraunces, Inter } from 'next/font/google'
 import './globals.css'
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
-import { TopGuaranteeBanner } from '@/components/top-guarantee-banner'
 import { FloatingLeadTrigger } from '@/components/floating-lead-trigger'
 import { StructuredData } from '@/components/structured-data'
 import { personSchema } from '@/lib/seo-schemas'
@@ -180,10 +179,7 @@ export default function RootLayout({
             Skip to main content
           </a>
 
-          {/* Top Alex Hormozi Style Outcome Guarantee Offer */}
-          <TopGuaranteeBanner />
-
-          {/* Site navigation */}
+          {/* Site navigation with unified top guarantee banner */}
           <Navigation />
 
           {/* Page content */}

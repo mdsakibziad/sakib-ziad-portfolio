@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -218,8 +218,18 @@ function VideoCard({
   index: number
 }) {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(true)
   const [isMuted, setIsMuted] = useState(true)
+
+  useEffect(() => {
+    const el = videoRef.current
+    if (el) {
+      el.muted = isMuted
+      el.play().catch(() => {
+        // Fallback if browser enforces user gesture
+      })
+    }
+  }, [isMuted])
 
   const togglePlay = () => {
     if (!videoRef.current) return
@@ -247,6 +257,7 @@ function VideoCard({
         <video
           ref={videoRef}
           src={video.src}
+          autoPlay
           preload="metadata"
           loop
           muted={isMuted}
@@ -339,7 +350,7 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
     <div className="bg-background text-ivory min-h-screen selection:bg-[#141416] selection:text-white dark:selection:bg-white dark:selection:text-black">
       
       {/* ── Top Breadcrumb Header ──────────────────────────────────────── */}
-      <div className="fixed top-20 left-0 right-0 z-40 backdrop-blur-md bg-white/75 dark:bg-black/65 border-b border-black/[0.06] dark:border-white/[0.08] transition-colors">
+      <div className="pt-28 sm:pt-36 border-b border-black/[0.06] dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.02]">
         <div className="container-luxury py-3 flex items-center justify-between text-xs font-inter">
           <Link
             href="/work"
@@ -363,7 +374,7 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
       {/* ════════════════════════════════════════════════════════════════════
           1. HERO SECTION: PRODUCT HERO WITH 1 SHORT SENTENCE
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="relative pt-36 pb-20 sm:pt-44 sm:pb-28 border-b border-black/[0.08] dark:border-white/[0.08] overflow-hidden" aria-label={`${data.name} Hero`}>
+      <section className="relative pt-12 pb-20 sm:pt-16 sm:pb-28 border-b border-black/[0.08] dark:border-white/[0.08] overflow-hidden" aria-label={`${data.name} Hero`}>
         <div className="absolute top-0 right-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-b from-amber-200/20 to-transparent dark:from-white/[0.03] blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-10 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-rose-100/20 to-transparent dark:from-zinc-800/[0.1] blur-3xl pointer-events-none" />
 

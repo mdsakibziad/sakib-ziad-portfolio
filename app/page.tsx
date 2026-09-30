@@ -407,7 +407,7 @@ export default function HomePage() {
           STEP 1 · THE COMMERCIAL HERO (OUTCOME & TIME-SAVINGS FIRST)
       ════════════════════════════════════════════════════════════════════ */}
       <section
-        className="relative min-h-[94vh] lg:min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-20"
+        className="relative min-h-[94vh] lg:min-h-screen flex items-center justify-center overflow-hidden pt-36 sm:pt-40 pb-20"
         aria-label="Commercial Hero"
       >
         {/* Ambient Subtle Atmosphere */}
