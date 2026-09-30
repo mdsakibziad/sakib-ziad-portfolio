@@ -8,30 +8,17 @@ import { ShieldCheck, ArrowRight, X, Sparkles } from 'lucide-react'
 export function TopGuaranteeBanner() {
   const [isVisible, setIsVisible] = useState(true)
 
-  useEffect(() => {
-    const dismissed = sessionStorage.getItem('sz_guarantee_dismissed')
-    if (dismissed === 'true') {
-      setIsVisible(false)
-    }
-  }, [])
-
   const handleDismiss = () => {
     setIsVisible(false)
-    sessionStorage.setItem('sz_guarantee_dismissed', 'true')
   }
 
   if (!isVisible) return null
 
   return (
-    <AnimatePresence>
-      <motion.aside
-        initial={{ height: 0, opacity: 0 }}
-        animate={{ height: 'auto', opacity: 1 }}
-        exit={{ height: 0, opacity: 0 }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-50 bg-[#121214] text-[#F9F8F6] border-b border-white/10 overflow-hidden shadow-lg"
-        aria-label="Outcome Guarantee Offer"
-      >
+    <aside
+      className="relative z-50 bg-[#121214] text-[#F9F8F6] border-b border-amber-400/30 overflow-hidden shadow-xl"
+      aria-label="Outcome Guarantee Offer"
+    >
         {/* Subtle moving amber/gold gradient accent line */}
         <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-amber-400/20 via-amber-300 to-amber-400/20 animate-pulse" />
 
@@ -75,7 +62,6 @@ export function TopGuaranteeBanner() {
 
           </div>
         </div>
-      </motion.aside>
-    </AnimatePresence>
+      </aside>
   )
 }
