@@ -404,56 +404,54 @@ export default function HomePage() {
     <div className="bg-background text-ivory overflow-x-hidden selection:bg-white selection:text-black">
 
       {/* ════════════════════════════════════════════════════════════════════
-          STEP 1 · SELORA-STYLE EDITORIAL HERO
+          STEP 1 · EXACT SELORA HERO PARITY (SCREENSHOT 1:1)
       ════════════════════════════════════════════════════════════════════ */}
       <section
-        className="relative min-h-[100svh] flex flex-col justify-between overflow-hidden pt-28 sm:pt-32 pb-8 border-b border-[#292929]"
+        id="hero"
+        className="relative isolate flex min-h-[100svh] flex-col justify-between overflow-hidden bg-[#050609] text-[#ece8e1] select-none"
         aria-label="Commercial Hero"
       >
         {/* Background Portrait with dark film grain & gradient mask */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none">
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-luminosity scale-105 filter grayscale contrast-125"
+            className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-luminosity scale-105 filter grayscale contrast-125"
             style={{ backgroundImage: `url('/images/sakib-ziad.jpg')` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050609] via-[#050609]/80 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#050609] via-transparent to-[#050609]" />
-          <div className="absolute inset-0 grain" />
+          <div className="absolute inset-0 bg-[linear-gradient(98deg,#050609_6%,rgba(5,6,9,0.78)_34%,rgba(5,6,9,0.18)_66%,rgba(5,6,9,0.5)_100%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-[56%] bg-gradient-to-t from-[#050609] via-[#050609]/85 to-transparent" />
+          <div className="absolute inset-0 grain opacity-20" />
         </div>
 
-        {/* ── Top Meta Row ── */}
-        <div className="container-luxury relative z-10 w-full mb-8">
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#292929] pb-4">
-            <span className="label-mono !text-[#f4521c] flex items-center gap-2">
-              <span className="inline-block w-2 h-2 bg-[#f4521c]" />
-              SZ / 2026 — DIRECT RESPONSE STRATEGY
-            </span>
-            <span className="label-mono">
-              BEAUTY · SKINCARE · HIGH-VELOCITY PRODUCTION
-            </span>
+        {/* ── Top Meta Row (Exact Selora Layout) ── */}
+        <div className="relative z-10 flex items-start justify-between gap-6 container-luxury pt-[14vh] md:pt-[16vh]">
+          <div>
+            <p className="label-mono !text-[#ece8e1]/70">IDX/SZ — 2026</p>
+          </div>
+          <div>
+            <p className="label-mono text-right !text-[#ece8e1]/70 uppercase">
+              AI CREATIVE STRATEGIST / COMMERCIAL DIRECTOR
+            </p>
           </div>
         </div>
 
-        {/* ── Main Hero Editorial Content ── */}
-        <div className="container-luxury relative z-10 w-full my-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
+        {/* ── Main Hero Editorial Statement & Phase Meters ── */}
+        <div className="relative z-10 flex flex-1 items-center container-luxury py-8 my-auto">
+          <div className="grid w-full grid-cols-1 items-center gap-10 md:grid-cols-12">
             
-            {/* Left 8 Cols: Display Statement + Copy */}
-            <div className="lg:col-span-8 space-y-6">
-              <h1 className="font-inter font-black uppercase tracking-[-0.05em] leading-[0.92] text-[#ece8e1] m-0">
+            {/* Left 7 Cols: Statement with Orange Dot */}
+            <div className="md:col-span-7 space-y-4">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#f4521c] block" />
+              </div>
+
+              <h1 className="font-inter font-black uppercase text-[clamp(28px,5.4vw,74px)] leading-[1.02] tracking-[-0.05em] text-[#ece8e1] m-0">
                 <MaskText
                   immediate
-                  delay={0.15}
+                  delay={0.1}
                   lines={[
-                    <span key="1" className="block text-2xl sm:text-4xl md:text-5xl font-black text-[#8a8a8a] tracking-tight uppercase mb-1">
-                      I KILL 8-WEEK SHOOTS
-                    </span>,
-                    <span key="2" className="block text-[clamp(2.4rem,5.8vw,5.6rem)] uppercase font-black text-[#ece8e1]">
-                      TO BUILD <span className="text-[#f4521c]">WHAT</span>
-                    </span>,
-                    <span key="3" className="block text-[clamp(2.8rem,7vw,6.5rem)] uppercase font-black text-[#ece8e1]">
-                      ACTUALLY CONVERTS.
-                    </span>,
+                    <span key="1">I BREAK THINGS</span>,
+                    <span key="2">TO SEE WHAT</span>,
+                    <span key="3">THEY ARE MADE OF</span>,
                   ]}
                 />
               </h1>
@@ -461,119 +459,102 @@ export default function HomePage() {
               <motion.p
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
-                className="font-inter text-base sm:text-lg md:text-xl font-medium text-[#bdb8b0] max-w-2xl leading-relaxed tracking-tight uppercase"
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
+                className="font-inter text-sm sm:text-base font-semibold text-[#8a8a8a] max-w-xl leading-relaxed uppercase pt-2"
               >
-                72-HOUR HIGH-PERFORMANCE COMMERCIAL CREATIVE DIRECTION FOR BEAUTY &amp; SKINCARE BRANDS. SAVING{' '}
-                <span className="text-[#ece8e1] underline decoration-[#f4521c] decoration-2">
-                  60+ HOURS OF FOUNDER TIME
-                </span>{' '}
-                WHILE CUTTING PRODUCTION OVERHEAD BY 70%.
+                72-HOUR COMMERCIAL CREATIVE SYSTEMS FOR HIGH-GROWTH BEAUTY &amp; SKINCARE BRANDS.
               </motion.p>
-
-              {/* Action Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.65 }}
-                className="pt-4 flex flex-wrap items-center gap-4"
-              >
-                <Button asChild variant="gold" size="lg" className="h-12 px-8">
-                  <Link href="/contact" className="flex items-center gap-2">
-                    <span>APPLY FOR A STRATEGY CALL</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </Button>
-
-                <Button asChild variant="outline" size="lg" className="h-12 px-8">
-                  <Link href="#selected-work" className="flex items-center gap-2">
-                    <span>EXPLORE SELECTED WORK</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </Button>
-              </motion.div>
             </div>
 
-            {/* Right 4 Cols: Phase Progression Meters (Selora Characteristic) */}
-            <div className="lg:col-span-4 border-t lg:border-t-0 lg:border-l border-[#292929] pt-6 lg:pt-0 lg:pl-8 space-y-4">
-              <p className="label-mono !text-[#8a8a8a]">// EXECUTION METRICS</p>
+            {/* Right 4 Cols: Phase Meters (col-start-9) */}
+            <div className="md:col-span-4 md:col-start-9 space-y-0">
               
-              <div className="space-y-3">
-                <div className="space-y-1">
-                  <div className="flex justify-between label-mono text-[10px]">
-                    <span>001 / AUDIT &amp; FRICTION MAPPING</span>
-                    <span className="text-[#f4521c]">72H TURN</span>
-                  </div>
-                  <div className="h-[2px] w-full bg-[#292929] overflow-hidden">
-                    <div className="h-full w-full bg-[#f4521c]" />
-                  </div>
+              <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 border-t border-[#292929] py-[10px]">
+                <span className="label-mono text-[#ece8e1]/45 text-[11px]">001</span>
+                <div aria-hidden="true" className="relative h-px w-full bg-[#292929] overflow-hidden">
+                  <span className="absolute inset-y-0 left-0 block w-full origin-left bg-[#f4521c]" />
                 </div>
-
-                <div className="space-y-1">
-                  <div className="flex justify-between label-mono text-[10px]">
-                    <span>002 / SENSORY TEXTURE DIRECTION</span>
-                    <span className="text-[#f4521c]">4K MACRO</span>
-                  </div>
-                  <div className="h-[2px] w-full bg-[#292929] overflow-hidden">
-                    <div className="h-full w-[85%] bg-[#f4521c]" />
-                  </div>
-                </div>
-
-                <div className="space-y-1">
-                  <div className="flex justify-between label-mono text-[10px]">
-                    <span>003 / RAPID COMMERCIAL STUDIO</span>
-                    <span className="text-[#f4521c]">25+ ASSETS</span>
-                  </div>
-                  <div className="h-[2px] w-full bg-[#292929] overflow-hidden">
-                    <div className="h-full w-full bg-[#f4521c]" />
-                  </div>
-                </div>
-
-                <div className="space-y-1">
-                  <div className="flex justify-between label-mono text-[10px]">
-                    <span>004 / CROSS-CHANNEL DEPLOYMENT</span>
-                    <span className="text-[#f4521c]">META · IG · TIKTOK</span>
-                  </div>
-                  <div className="h-[2px] w-full bg-[#292929] overflow-hidden">
-                    <div className="h-full w-[90%] bg-[#f4521c]" />
-                  </div>
-                </div>
+                <span className="label-mono text-[#ece8e1]/70 text-[11px]">
+                  PHASE/<span className="text-[#f4521c]">BREAK</span>
+                </span>
               </div>
+
+              <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 border-t border-[#292929] py-[10px]">
+                <span className="label-mono text-[#ece8e1]/45 text-[11px]">002</span>
+                <div aria-hidden="true" className="relative h-px w-full bg-[#292929] overflow-hidden">
+                  <span className="absolute inset-y-0 left-0 block w-[85%] origin-left bg-[#f4521c]" />
+                </div>
+                <span className="label-mono text-[#ece8e1]/70 text-[11px]">
+                  PHASE/<span className="text-[#f4521c]">BUILD</span>
+                </span>
+              </div>
+
+              <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 border-t border-[#292929] py-[10px]">
+                <span className="label-mono text-[#ece8e1]/45 text-[11px]">003</span>
+                <div aria-hidden="true" className="relative h-px w-full bg-[#292929] overflow-hidden">
+                  <span className="absolute inset-y-0 left-0 block w-full origin-left bg-[#f4521c]" />
+                </div>
+                <span className="label-mono text-[#ece8e1]/70 text-[11px]">
+                  PHASE/<span className="text-[#f4521c]">BEND</span>
+                </span>
+              </div>
+
+              <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 border-t border-[#292929] py-[10px]">
+                <span className="label-mono text-[#ece8e1]/45 text-[11px]">004</span>
+                <div aria-hidden="true" className="relative h-px w-full bg-[#292929] overflow-hidden">
+                  <span className="absolute inset-y-0 left-0 block w-[60%] origin-left bg-[#f4521c]" />
+                </div>
+                <span className="label-mono text-[#ece8e1]/70 text-[11px]">
+                  PHASE/<span className="text-[#f4521c]">RELEASE</span>
+                </span>
+              </div>
+
             </div>
 
           </div>
         </div>
 
-        {/* ── Giant Footer Wordmark & Marquee Strip ── */}
-        <div className="relative z-10 w-full mt-12">
-          {/* Acid hairline accent */}
-          <div className="w-full h-[2px] bg-[#f4521c]" />
-
-          {/* Huge Display Wordmark */}
-          <div className="w-full overflow-hidden select-none pointer-events-none py-2 border-b border-[#292929]">
-            <h2 className="font-inter font-black uppercase text-[17vw] leading-[0.76] tracking-[-0.06em] text-[#ece8e1] text-center m-0 p-0">
+        {/* ── Giant Edge-To-Edge Display Mark (Exact Selora Characteristic) ── */}
+        <div className="relative z-10 w-full">
+          
+          <div className="w-full overflow-hidden select-none pointer-events-none px-4 sm:px-8">
+            <p className="block font-inter font-black uppercase text-[clamp(3.5rem,15vw,22rem)] leading-[0.76] text-[#ece8e1] tracking-[-0.06em] whitespace-nowrap text-left m-0 p-0">
               SAKIB ZIAD
-            </h2>
+            </p>
           </div>
 
-          {/* Services Mono Marquee Strip */}
-          <div className="overflow-hidden border-b border-[#292929] bg-[#0b0c10] py-2.5">
+          {/* 3px Solid Acid Orange Line */}
+          <div className="shrink-0 h-[3px] w-full bg-[#f4521c]" />
+
+          {/* Explore Cue Row */}
+          <div className="container-luxury flex items-end justify-between gap-6 pb-6 pt-4">
+            <div>
+              <p className="text-[clamp(14px,1.4vw,20px)] font-bold tracking-[-0.03em] uppercase text-[#ece8e1]">
+                Sakib Ziad
+              </p>
+            </div>
+            <div className="flex items-end gap-3">
+              <span className="label-mono text-[#f4521c] uppercase text-xs">explore</span>
+              <div className="w-[1px] h-[34px] bg-[#f4521c]" />
+            </div>
+          </div>
+
+          {/* Ticker / Marquee Strip (Exact Selora Marquee) */}
+          <div className="border-t border-[#292929] py-3 overflow-hidden bg-[#050609]">
             <div className="flex w-max animate-marquee items-center">
               {[0, 1].map((dup) => (
                 <div key={dup} className="flex items-center" aria-hidden={dup === 1}>
-                  {['CREATIVE STRATEGY', 'DIRECT-RESPONSE HOOKS', 'COMMERCIAL DIRECTION', 'SENSORY MACRO TEXTURE', '72-HOUR DELIVERY', 'BEAUTY & SKINCARE ONLY', 'META & REELS ASSETS'].map((svc, i) => (
-                    <span
-                      key={i}
-                      className="flex items-center gap-4 px-6 label-mono !text-[#ece8e1] whitespace-nowrap"
-                    >
-                      <span>{svc}</span>
-                      <span className="inline-block w-1.5 h-1.5 bg-[#f4521c]" />
+                  {['VISUAL EXPERIMENTS', 'FORM & FUNCTION', 'SOUND & MOTION', 'WRITTEN FRAGMENTS', 'THINGS I CAN’T EXPLAIN', 'COMMERCIAL CREATIVE SYSTEMS'].map((text, i) => (
+                    <span key={i} className="label-mono flex items-center whitespace-nowrap px-6 text-[#8a8a8a] text-[11px]">
+                      {text}
+                      <span className="ml-6 block w-[3px] h-[3px] bg-[#f4521c]" />
                     </span>
                   ))}
                 </div>
               ))}
             </div>
           </div>
+
         </div>
       </section>
 

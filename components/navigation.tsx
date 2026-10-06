@@ -55,23 +55,17 @@ export function Navigation() {
 
   return (
     <>
-      {/* ── Fixed Top Bar (Banner + Navigation Stack) ───────────── */}
-      <div className="fixed top-0 inset-x-0 z-50 flex flex-col pointer-events-none">
-        {/* Top Guarantee Banner at very top */}
-        <div className="pointer-events-auto w-full">
-          <TopGuaranteeBanner />
-        </div>
-
-        <header
-          className={cn(
-            'w-full pointer-events-auto transition-colors duration-400',
-            scrolled
-              ? 'bg-[#050609]/90 backdrop-blur-md border-b border-[#292929]'
-              : 'bg-transparent border-b border-transparent'
-          )}
-          role="banner"
-        >
-          <div className="container-luxury">
+      {/* ── Fixed Top Bar (Selora Exact Top Navigation) ───────────── */}
+      <header
+        className={cn(
+          'fixed top-0 inset-x-0 z-50 transition-colors duration-400',
+          scrolled
+            ? 'bg-[#050609]/95 backdrop-blur-md border-b border-[#292929]'
+            : 'bg-transparent border-b border-transparent'
+        )}
+        role="banner"
+      >
+        <div className="container-luxury">
             <nav
               className="flex items-center justify-between h-16 sm:h-20"
               aria-label="Primary navigation"
@@ -164,7 +158,6 @@ export function Navigation() {
             </nav>
           </div>
         </header>
-      </div>
 
       {/* ── Mobile Full-Screen Overlay Menu (Selora Style) ─────────────── */}
       <AnimatePresence>
