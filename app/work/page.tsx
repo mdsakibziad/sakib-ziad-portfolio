@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { SplitRevealImage } from '@/components/split-reveal-image'
+import { MaskText } from '@/components/mask-text'
+import { motion } from 'framer-motion'
 
 export default function WorkPage() {
   const caseStudies = [
@@ -135,14 +137,25 @@ export default function WorkPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
           <div className="lg:col-span-8 space-y-6">
             <h1 className="font-inter font-black uppercase text-[clamp(2.5rem,6.5vw,5.5rem)] leading-[0.92] tracking-[-0.05em] text-[#ece8e1]">
-              CREATIVE SYSTEMS <br />
-              <span className="text-[#f4521c]">ENGINEERED FOR</span> <br />
-              BEAUTY &amp; SKINCARE.
+              <MaskText
+                immediate
+                delay={0.1}
+                lines={[
+                  <span key="1">CREATIVE SYSTEMS</span>,
+                  <span key="2" className="text-[#f4521c]">ENGINEERED FOR</span>,
+                  <span key="3">BEAUTY &amp; SKINCARE.</span>,
+                ]}
+              />
             </h1>
 
-            <p className="font-inter text-base sm:text-lg md:text-xl font-medium text-[#bdb8b0] max-w-2xl leading-relaxed tracking-tight">
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+              className="font-inter text-base sm:text-lg md:text-xl font-medium text-[#bdb8b0] max-w-2xl leading-relaxed tracking-tight"
+            >
               Five category-defining skincare and beauty campaigns engineered around consumer friction points, sensory texture hooks, and paid-social conversion architecture.
-            </p>
+            </motion.p>
           </div>
 
           <div className="lg:col-span-4 border-t lg:border-t-0 lg:border-l border-[#292929] pt-6 lg:pt-0 lg:pl-8 space-y-4">

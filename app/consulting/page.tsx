@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ApplicationForm } from '@/components/application-form'
+import { MaskText } from '@/components/mask-text'
+import { motion } from 'framer-motion'
 
 export default function ConsultingPage() {
   const isFor = [
@@ -84,14 +86,25 @@ export default function ConsultingPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
           <div className="lg:col-span-8 space-y-6">
             <h1 className="font-inter font-black uppercase text-[clamp(2.5rem,6.2vw,5.5rem)] leading-[0.92] tracking-[-0.05em] text-[#ece8e1]">
-              STRATEGIC CREATIVE <br />
-              <span className="text-[#f4521c]">COUNSEL FOR BEAUTY</span> <br />
-              BRANDS THAT SCALE.
+              <MaskText
+                immediate
+                delay={0.1}
+                lines={[
+                  <span key="1">STRATEGIC CREATIVE</span>,
+                  <span key="2" className="text-[#f4521c]">COUNSEL FOR BEAUTY</span>,
+                  <span key="3">BRANDS THAT SCALE.</span>,
+                ]}
+              />
             </h1>
 
-            <p className="font-inter text-base sm:text-lg md:text-xl font-medium text-[#bdb8b0] max-w-2xl leading-relaxed tracking-tight">
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+              className="font-inter text-base sm:text-lg md:text-xl font-medium text-[#bdb8b0] max-w-2xl leading-relaxed tracking-tight"
+            >
               High-touch advisory spanning commercial creative direction, direct-response friction audits, and rapid asset production pipelines — engineered to make your creative operations unstoppable.
-            </p>
+            </motion.p>
 
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <Button asChild className="btn-acid h-12 px-8 rounded-none">

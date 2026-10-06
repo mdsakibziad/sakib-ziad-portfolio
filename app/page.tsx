@@ -440,42 +440,58 @@ export default function HomePage() {
             
             {/* Left 8 Cols: Display Statement + Copy */}
             <div className="lg:col-span-8 space-y-6">
-              <h1 className="font-inter font-black tracking-[-0.05em] leading-[0.92] text-[#ece8e1] m-0">
-                <span className="block text-2xl sm:text-4xl md:text-5xl font-medium text-[#8a8a8a] tracking-tight lowercase italic font-sans mb-1">
-                  i kill 8-week shoots
-                </span>
-                <span className="block text-[clamp(2.4rem,5.8vw,5.6rem)] uppercase font-black text-[#ece8e1]">
-                  to build <span className="text-[#f4521c]">WHAT</span>
-                </span>
-                <span className="block text-[clamp(2.8rem,7vw,6.5rem)] uppercase font-black text-[#ece8e1]">
-                  ACTUALLY CONVERTS.
-                </span>
+              <h1 className="font-inter font-black uppercase tracking-[-0.05em] leading-[0.92] text-[#ece8e1] m-0">
+                <MaskText
+                  immediate
+                  delay={0.15}
+                  lines={[
+                    <span key="1" className="block text-2xl sm:text-4xl md:text-5xl font-black text-[#8a8a8a] tracking-tight uppercase mb-1">
+                      I KILL 8-WEEK SHOOTS
+                    </span>,
+                    <span key="2" className="block text-[clamp(2.4rem,5.8vw,5.6rem)] uppercase font-black text-[#ece8e1]">
+                      TO BUILD <span className="text-[#f4521c]">WHAT</span>
+                    </span>,
+                    <span key="3" className="block text-[clamp(2.8rem,7vw,6.5rem)] uppercase font-black text-[#ece8e1]">
+                      ACTUALLY CONVERTS.
+                    </span>,
+                  ]}
+                />
               </h1>
 
-              <p className="font-inter text-base sm:text-lg md:text-xl font-medium text-[#bdb8b0] max-w-2xl leading-relaxed tracking-tight">
-                72-hour high-performance commercial creative direction for beauty &amp; skincare brands. Saving{' '}
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+                className="font-inter text-base sm:text-lg md:text-xl font-medium text-[#bdb8b0] max-w-2xl leading-relaxed tracking-tight uppercase"
+              >
+                72-HOUR HIGH-PERFORMANCE COMMERCIAL CREATIVE DIRECTION FOR BEAUTY &amp; SKINCARE BRANDS. SAVING{' '}
                 <span className="text-[#ece8e1] underline decoration-[#f4521c] decoration-2">
-                  60+ hours of founder time
+                  60+ HOURS OF FOUNDER TIME
                 </span>{' '}
-                while cutting production overhead by 70%.
-              </p>
+                WHILE CUTTING PRODUCTION OVERHEAD BY 70%.
+              </motion.p>
 
               {/* Action Buttons */}
-              <div className="pt-4 flex flex-wrap items-center gap-4">
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.65 }}
+                className="pt-4 flex flex-wrap items-center gap-4"
+              >
                 <Button asChild variant="gold" size="lg" className="h-12 px-8">
                   <Link href="/contact" className="flex items-center gap-2">
-                    <span>Apply for a Strategy Call</span>
+                    <span>APPLY FOR A STRATEGY CALL</span>
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </Button>
 
                 <Button asChild variant="outline" size="lg" className="h-12 px-8">
                   <Link href="#selected-work" className="flex items-center gap-2">
-                    <span>Explore Selected Work</span>
+                    <span>EXPLORE SELECTED WORK</span>
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </Button>
-              </div>
+              </motion.div>
             </div>
 
             {/* Right 4 Cols: Phase Progression Meters (Selora Characteristic) */}
@@ -622,8 +638,13 @@ export default function HomePage() {
           {/* Large Split Header */}
           <div className="my-10">
             <h2 className="text-right font-inter font-black uppercase text-[clamp(28px,5.8vw,82px)] tracking-[-0.05em] leading-[0.98] text-[#ece8e1]">
-              <span className="block overflow-hidden"><span className="block">TRADITIONAL SHOOTS ARE SLOW.</span></span>
-              <span className="block overflow-hidden"><span className="block text-[#f4521c]">COMMERCIAL CREATIVE CANNOT WAIT.</span></span>
+              <MaskText
+                align="right"
+                lines={[
+                  <span key="1">TRADITIONAL SHOOTS ARE SLOW.</span>,
+                  <span key="2" className="text-[#f4521c]">COMMERCIAL CREATIVE CANNOT WAIT.</span>,
+                ]}
+              />
             </h2>
           </div>
 
@@ -682,8 +703,12 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16">
             <div className="lg:col-span-8">
               <h2 className="font-inter font-black uppercase text-[clamp(32px,5.4vw,76px)] tracking-[-0.05em] leading-[0.95] text-[#ece8e1]">
-                <span className="block overflow-hidden"><span className="block">A PREDICTABLE ENGINE</span></span>
-                <span className="block overflow-hidden"><span className="block text-[#f4521c]">FOR COMMERCIAL GROWTH.</span></span>
+                <MaskText
+                  lines={[
+                    <span key="1">A PREDICTABLE ENGINE</span>,
+                    <span key="2" className="text-[#f4521c]">FOR COMMERCIAL GROWTH.</span>,
+                  ]}
+                />
               </h2>
             </div>
             <div className="lg:col-span-4">
@@ -746,7 +771,7 @@ export default function HomePage() {
                 FIELD PROOF · 05 FLAGSHIP VAULTS
               </span>
               <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl text-[#ece8e1] leading-tight">
-                SELECTED CAMPAIGN SYSTEMS
+                <MaskText lines={['SELECTED CAMPAIGN SYSTEMS']} />
               </h2>
               <p className="font-inter text-xs sm:text-sm text-[#8a8a8a] max-w-xl">
                 Five category-defining skincare and beauty campaigns engineered for high conversion and luxury prestige.
@@ -884,7 +909,7 @@ export default function HomePage() {
                 // STUDY — 04.13 · CONVERSION LOGIC
               </span>
               <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl leading-[0.95] tracking-[-0.05em] text-[#050609]">
-                SENSORY PROOF OUTPERFORMS EMPTY CLAIMS.
+                <MaskText lines={['SENSORY PROOF OUTPERFORMS EMPTY CLAIMS.']} />
               </h2>
               <p className="font-inter text-sm sm:text-base font-semibold text-[#050609]/80 leading-relaxed">
                 We design refractive lighting caustics, liquid flow physics, and real texture micro-zooms that allow consumers to visually feel the formula before checkout.
@@ -952,7 +977,12 @@ export default function HomePage() {
               <div className="space-y-4">
                 <span className="label-mono !text-[#f4521c] block">DIRECTOR MANIFESTO</span>
                 <h2 className="font-inter font-black uppercase text-2xl sm:text-4xl lg:text-5xl text-[#ece8e1] leading-tight">
-                  “CREATIVE DIRECTION IS NOT DECORATION. IT IS COMMERCIAL LEVERAGE.”
+                  <MaskText
+                    lines={[
+                      '“CREATIVE DIRECTION IS NOT DECORATION.',
+                      'IT IS COMMERCIAL LEVERAGE.”',
+                    ]}
+                  />
                 </h2>
               </div>
 
@@ -996,7 +1026,7 @@ export default function HomePage() {
 
           <div className="max-w-2xl mb-14 space-y-3">
             <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl text-[#ece8e1]">
-              THREE WAYS TO PARTNER
+              <MaskText lines={['THREE WAYS TO PARTNER']} />
             </h2>
             <p className="font-inter text-xs sm:text-sm text-[#8a8a8a]">
               Structured for hands-on 1:1 counsel, self-serve playbooks, or ongoing strategic syndicate access.
