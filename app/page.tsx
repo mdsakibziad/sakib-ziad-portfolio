@@ -31,9 +31,9 @@ import { TiltCard } from '@/components/ui/tilt-card'
 import { ParallaxLayer } from '@/components/parallax-layer'
 
 import { AmbientHeroAtmosphere } from '@/components/ambient-hero-atmosphere'
-import { CondensationDroplet } from '@/components/condensation-droplet'
-import { CondensationDivider } from '@/components/condensation-divider'
 import { ChannelMultiplication } from '@/components/channel-multiplication'
+import { MaskText } from '@/components/mask-text'
+import { SplitRevealImage } from '@/components/split-reveal-image'
 
 /* ── Animation Curve ──────────────────────────────────────────────────────── */
 const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
@@ -604,125 +604,124 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          STEP 3 · WHY BEAUTY & SKINCARE? (THE CATEGORY FRICTION & GAP)
+          STEP 3 · CATEGORY FRICTION (SELORA EDITORIAL INTRO SPEC)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad relative bg-[#F7F6F2] dark:bg-[#0A0A0A]" aria-label="Category Friction">
+      <section className="relative overflow-hidden bg-[#050609] pt-24 pb-20 border-b border-[#292929]" aria-label="Category Friction">
         <div className="container-luxury">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
-            {/* Left Column: Bold Problem Narrative */}
-            <div className="lg:col-span-7">
-              <RevealSection>
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-black/10 dark:border-white/20 bg-black/[0.03] dark:bg-white/[0.04] text-[11px] uppercase tracking-[0.2em] text-zinc-700 dark:text-zinc-300 mb-6 backdrop-blur-md">
-                  Category Friction & Market Gap
+          {/* Top Label Row */}
+          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-8">
+            <span className="label-mono !text-[#f4521c]">COMMERCIAL LEVERAGE</span>
+            <span className="label-mono">// CATEGORY BOTTLENECK</span>
+          </div>
+
+          {/* Large Split Header */}
+          <div className="my-12">
+            <MaskText
+              align="right"
+              lines={['TRADITIONAL SHOOTS ARE SLOW.', 'COMMERCIAL CREATIVE CANNOT WAIT.']}
+              className="text-[clamp(28px,5.8vw,82px)] font-black uppercase tracking-[-0.05em] leading-[0.98] text-[#ece8e1]"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start my-12">
+            <div className="md:col-span-4 space-y-4">
+              <p className="label-mono !text-[#f4521c]">// CAT — 1.07</p>
+              <p className="font-inter text-base font-semibold leading-snug tracking-tight text-[#ece8e1]">
+                Beauty ad creative fatigues in 14 days, yet legacy agency production still demands 6 to 8 weeks of waiting and $50k+ in friction overhead.
+              </p>
+              <p className="label-mono text-[#8a8a8a]">
+                High-growth cosmetics brands win by deploying high-velocity commercial systems that generate studio-grade assets in days.
+              </p>
+            </div>
+
+            <div className="md:col-span-7 md:col-start-6">
+              <div className="border border-[#292929] bg-[#0b0c10] p-6 sm:p-8 space-y-6">
+                <div className="flex items-center justify-between border-b border-[#292929] pb-4">
+                  <span className="label-mono !text-[#ece8e1]">DIRECT PARADIGM COMPARISON</span>
+                  <span className="label-mono !text-[#f4521c]">STUDIO PROTOCOL</span>
                 </div>
-                <h2 className="heading-section text-3xl sm:text-4xl lg:text-5xl mb-8 leading-tight">
-                  Why beauty brands are trapped in 6-week shoot cycles{' '}
-                  <span className="italic font-fraunces text-zinc-900 dark:text-white font-light">
-                    while their ad creative dies in 14 days.
-                  </span>
-                </h2>
-              </RevealSection>
 
-              <RevealSection delay={0.1} className="space-y-5 body-editorial text-base sm:text-lg text-zinc-700 dark:text-zinc-300 font-light">
-                <p>
-                  Beauty ad creative fatigues in two weeks, yet traditional studio production still demands $40k–$60k overhead and 6 to 8 weeks of waiting.
-                </p>
-                <p>
-                  Cheap freelance shortcuts produce synthetic visuals that destroy luxury customer trust. The fastest-scaling beauty brands deploy high-converting commercial creative systems that deliver studio-grade assets on demand.
-                </p>
-              </RevealSection>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+                  <div className="border-l-2 border-[#292929] pl-4 space-y-2">
+                    <span className="label-mono text-[#8a8a8a]">01 / LEGACY AGENCY</span>
+                    <p className="font-inter text-xs text-[#8a8a8a] leading-relaxed">
+                      6–8 week turnaround, heavy set rental costs, limited asset variants, and rapid feed fatigue within two weeks of launch.
+                    </p>
+                  </div>
+
+                  <div className="border-l-2 border-[#f4521c] pl-4 space-y-2">
+                    <span className="label-mono !text-[#f4521c]">02 / SAKIB ZIAD SYSTEM</span>
+                    <p className="font-inter text-xs text-[#ece8e1] font-medium leading-relaxed">
+                      72-hour turnaround, hyper-realistic formula caustics, direct-response hook architecture, and omnichannel assets pre-formatted for conversion.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-
-            {/* Right Column: Contrast Card */}
-            <div className="lg:col-span-5 relative">
-              <div className="absolute -top-10 -right-10 w-72 h-72 rounded-full bg-amber-200/30 dark:bg-white/[0.05] blur-3xl pointer-events-none" />
-              <RevealSection delay={0.2}>
-                <TiltCard className="card-surface p-8 sm:p-10">
-                  <div className="flex items-center justify-between border-b border-black/[0.08] dark:border-white/[0.08] pb-4 mb-6">
-                    <span className="eyebrow-luxury text-zinc-700 dark:text-zinc-300">Production Paradigm</span>
-                    <span className="font-mono text-xs text-zinc-500 dark:text-muted-light">DIRECT COMPARISON</span>
-                  </div>
-
-                  <div className="space-y-6">
-                    {/* The Slow Traditional Model */}
-                    <div className="p-4 rounded-xl bg-black/[0.03] dark:bg-background/60 border border-black/10 dark:border-white/[0.08]">
-                      <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-zinc-500 dark:text-muted-light mb-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-red-400/80" />
-                        <span>Traditional Agency Shoot</span>
-                      </div>
-                      <p className="font-inter text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-light">
-                        6–8 week delays, \$50k+ overhead, endless reshoots, and a small batch of assets that fatigue in paid feeds within two weeks.
-                      </p>
-                    </div>
-
-                    {/* The Sakib Ziad System */}
-                    <div className="p-4 rounded-xl bg-black/[0.05] dark:bg-white/[0.06] border border-black/15 dark:border-white/25">
-                      <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-zinc-900 dark:text-white mb-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white animate-pulse" />
-                        <span>High-Performance Creative System</span>
-                      </div>
-                      <p className="font-inter text-xs sm:text-sm text-zinc-800 dark:text-zinc-200 leading-relaxed font-light">
-                        72-hour turnaround, hyper-realistic formula caustics, direct-response hook architecture, and omnichannel assets pre-formatted for conversion.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="mt-8 pt-4 border-t border-black/[0.08] dark:border-white/[0.08] flex items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-muted-light">
-                    <span>APPROACH: COMMERCIAL DIRECTING</span>
-                    <span className="text-zinc-800 dark:text-zinc-300">WITLYN STANDARD</span>
-                  </div>
-                </TiltCard>
-              </RevealSection>
-            </div>
-
           </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          STEP 4 · THE 5-STEP STRATEGIC SYSTEM
+          STEP 4 · THE 5-STEP STRATEGIC SYSTEM (SELORA PROCESS MODULES)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad bg-background border-t border-black/[0.08] dark:border-white/[0.08]" aria-label="Strategic System">
+      <section className="relative overflow-hidden bg-[#050609] py-24 border-b border-[#292929]" aria-label="Strategic System">
         <div className="container-luxury">
-          <RevealSection className="text-center max-w-3xl mx-auto mb-20">
-            <p className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 mb-3">The 5-Step Strategic System</p>
-            <h2 className="heading-section text-3xl sm:text-4xl lg:text-5xl text-[#141416] dark:text-white mb-4">
-              How We Turn Creative Into a Predictable Growth Engine
-            </h2>
-            <p className="body-muted text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-              A disciplined, high-velocity methodology moving from forensic friction audits to studio-grade omnichannel deployment.
-            </p>
-          </RevealSection>
+          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">
+            <span className="label-mono !text-[#f4521c]">SYSTEM ARCHITECTURE</span>
+            <span className="label-mono">05 MODULAR PHASES</span>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {strategicSteps.map((step, idx) => (
-              <RevealSection key={step.num} delay={idx * 0.08}>
-                <div className="card-surface p-6 sm:p-7 flex flex-col justify-between h-full group hover:border-black/30 dark:hover:border-white/30 transition-all">
-                  <div>
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="w-10 h-10 rounded-full bg-black/[0.04] dark:bg-white/[0.06] border border-black/10 dark:border-white/15 flex items-center justify-center font-fraunces text-base text-zinc-950 dark:text-white">
-                        {step.num}
-                      </div>
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-zinc-500">
-                        {step.phase}
-                      </span>
-                    </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16">
+            <div className="lg:col-span-8">
+              <MaskText
+                align="left"
+                lines={['A PREDICTABLE ENGINE', 'FOR COMMERCIAL GROWTH.']}
+                className="text-[clamp(32px,5.4vw,76px)] font-black uppercase tracking-[-0.05em] leading-[0.95] text-[#ece8e1]"
+              />
+            </div>
+            <div className="lg:col-span-4">
+              <p className="label-mono text-[#bdb8b0] leading-relaxed">
+                A disciplined methodology moving from forensic friction audits to studio-grade omnichannel deployment.
+              </p>
+            </div>
+          </div>
 
-                    <h3 className="heading-card text-lg sm:text-xl mb-3 text-[#141416] dark:text-white group-hover:text-black dark:group-hover:text-white transition-colors">
-                      {step.title}
-                    </h3>
-                    <p className="font-inter text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-light">
-                      {step.desc}
-                    </p>
+          {/* Selora Process Module Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {strategicSteps.map((step) => (
+              <article
+                key={step.num}
+                className="group relative flex flex-col justify-between border border-[#292929] bg-[#0b0c10] p-6 hover:border-[#f4521c] transition-colors duration-500"
+              >
+                <div>
+                  <div className="flex items-start justify-between gap-4 mb-8">
+                    <span className="label-mono !text-[#f4521c]">MODULE — {step.num}</span>
+                    <span className="label-mono text-[#8a8a8a]">{step.num}/05</span>
                   </div>
 
-                  <div className="pt-4 mt-6 border-t border-black/[0.06] dark:border-white/[0.06] text-[10px] font-mono text-zinc-500 uppercase">
-                    Phase {step.num}
-                  </div>
+                  <div className="h-px w-full bg-[#292929] group-hover:bg-[#f4521c] transition-colors duration-500 mb-6" />
+
+                  <h3 className="font-inter text-base font-bold uppercase tracking-tight text-[#ece8e1] mb-3 group-hover:text-[#f4521c] transition-colors">
+                    {step.title}
+                  </h3>
+
+                  <p className="font-inter text-xs text-[#8a8a8a] leading-relaxed">
+                    {step.desc}
+                  </p>
                 </div>
-              </RevealSection>
+
+                <div className="pt-6 mt-6 border-t border-[#292929] flex items-center justify-between label-mono text-[10px]">
+                  <span>PROTOCOL</span>
+                  <span className="text-[#f4521c]">ACTIVE</span>
+                </div>
+              </article>
             ))}
+          </div>
+
+          {/* Horizontal Acid Tracker Seam */}
+          <div className="mt-8 h-[2px] w-full bg-[#292929] overflow-hidden">
+            <div className="h-full w-full bg-[#f4521c]" />
           </div>
         </div>
       </section>
@@ -815,21 +814,19 @@ export default function HomePage() {
 
                   {/* Right Column (7 Cols): Split Preview of Hero Product + Video Highlight */}
                   <div className={`lg:col-span-7 grid grid-cols-1 sm:grid-cols-12 gap-4 ${idx % 2 === 1 ? 'order-2 lg:order-1' : ''}`}>
-                    {/* Primary Hero Still */}
-                    <div className="sm:col-span-7 relative aspect-[4/5] rounded-2xl overflow-hidden border border-black/10 dark:border-white/20 group">
-                      <Image
+                    {/* Primary Hero Still with Selora Split-Shutter Reveal */}
+                    <div className="sm:col-span-7 group">
+                      <SplitRevealImage
                         src={study.heroImage}
                         alt={`${study.brand} campaign visual directed by Sakib Ziad`}
-                        fill
-                        unoptimized
-                        sizes="(max-width: 1024px) 100vw, 40vw"
-                        className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-105"
+                        aspect="aspect-[4/5]"
+                        className="border border-[#292929]"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-white/90 bg-black/60 px-2.5 py-1 rounded backdrop-blur-md border border-white/20">
-                          Master Studio Still
+                      <div className="mt-2 flex items-center justify-between label-mono text-[10px]">
+                        <span className="text-[#ece8e1] group-hover:text-[#f4521c] transition-colors">
+                          {study.brand} // HERO PLATE
                         </span>
+                        <span className="text-[#8a8a8a]">4K STILL</span>
                       </div>
                     </div>
 
@@ -846,7 +843,61 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          STEP 6 · CREATIVE MULTIPLICATION · ONE PRODUCT, EVERY CHANNEL
+          STEP 6 · SELORA-STYLE FEATURED ACID BREAK SECTION
+      ════════════════════════════════════════════════════════════════════ */}
+      <section className="relative overflow-hidden bg-[#f4521c] text-[#050609] py-20 my-12" aria-label="Commercial Velocity">
+        {/* Giant Outlined Marquee Strip */}
+        <div className="border-y border-[#050609]/20 py-4 mb-12">
+          <div className="overflow-hidden w-full">
+            <div className="flex w-max animate-marquee items-center">
+              {[0, 1].map((dup) => (
+                <div key={dup} className="flex items-center" aria-hidden={dup === 1}>
+                  {['HIGH-PERFORMANCE DIRECTION', '72-HOUR COMMERCIAL ASSETS', 'HIGH-VELOCITY CREATIVE', 'DIRECT-RESPONSE CONVERSION'].map((text, i) => (
+                    <span key={i} className="flex items-center gap-8 px-6 font-inter font-black uppercase text-4xl sm:text-6xl md:text-7xl tracking-[-0.05em] whitespace-nowrap">
+                      <span>{text}</span>
+                      <span className="text-transparent" style={{ WebkitTextStroke: '1.5px #050609' }}>{text}</span>
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="container-luxury">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-5 space-y-4">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#050609]/70 font-semibold">
+                // STUDY — 04.13 · CONVERSION LOGIC
+              </span>
+              <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl leading-[0.95] tracking-[-0.05em] text-[#050609]">
+                SENSORY PROOF OUTPERFORMS EMPTY CLAIMS.
+              </h2>
+              <p className="font-inter text-sm sm:text-base font-semibold text-[#050609]/80 leading-relaxed">
+                We design refractive lighting caustics, liquid flow physics, and real texture micro-zooms that allow consumers to visually feel the formula before checkout.
+              </p>
+            </div>
+
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="border border-[#050609]/25 bg-[#050609]/5 p-5 space-y-2">
+                <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#050609]">01 / HOOK STOP</span>
+                <p className="font-inter text-xs font-semibold text-[#050609]/80">Thumb-stop friction engineered in the first 1.5 seconds.</p>
+              </div>
+              <div className="border border-[#050609]/25 bg-[#050609]/5 p-5 space-y-2">
+                <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#050609]">02 / SENSORY TEXTURE</span>
+                <p className="font-inter text-xs font-semibold text-[#050609]/80">Physical demonstration over generic talking heads.</p>
+              </div>
+              <div className="border border-[#050609]/25 bg-[#050609]/5 p-5 space-y-2">
+                <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#050609]">03 / RAPID SCALING</span>
+                <p className="font-inter text-xs font-semibold text-[#050609]/80">Cross-channel 1:1, 9:16 and 4:5 ratios pre-formatted.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════════════
+          STEP 7 · CREATIVE MULTIPLICATION · ONE PRODUCT, EVERY CHANNEL
       ════════════════════════════════════════════════════════════════════ */}
       <ChannelMultiplication />
 
