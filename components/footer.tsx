@@ -134,10 +134,10 @@ export function Footer() {
 
         </div>
 
-        {/* ── Giant Wordmark (Selora 25vw Characteristic) ── */}
+        {/* ── Giant Wordmark (Selora 12vw Single Line) ── */}
         <div className="pt-16 sm:pt-24 select-none pointer-events-none">
-          <div className="w-full text-center overflow-hidden border-t border-[#050609]/20 pt-8 sm:pt-12">
-            <h1 className="font-inter font-black uppercase text-[15vw] sm:text-[18vw] leading-[0.78] tracking-[-0.06em] text-[#050609] m-0 p-0 text-center">
+          <div className="w-full flex justify-center items-center overflow-hidden border-t border-[#050609]/20 pt-8 sm:pt-12">
+            <h1 className="font-inter font-black uppercase text-[clamp(2.5rem,11.5vw,14rem)] leading-[0.85] tracking-[-0.05em] text-[#050609] m-0 p-0 whitespace-nowrap text-center select-none">
               SAKIB ZIAD
             </h1>
           </div>

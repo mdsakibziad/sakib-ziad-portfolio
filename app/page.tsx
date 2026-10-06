@@ -259,31 +259,31 @@ export default function HomePage() {
       num: '01',
       title: 'Forensic Creative Audit',
       phase: 'Step 01 · Diagnostic',
-      desc: 'We dissect your historical ad accounts, identifying creative fatigue points, hook drop-offs within the first 2 seconds, and where high CPA is eating your margin.',
+      desc: 'Dissecting ad accounts to identify creative fatigue, 2-second drop-offs, and margin bleed.',
     },
     {
       num: '02',
       title: 'Sensory Texture Architecture',
       phase: 'Step 02 · Art Direction',
-      desc: 'Cosmetics sell through sensory conviction. We engineer lighting, refractive glass caustics, and macro formula spreads so customers instantly feel the product on skin.',
+      desc: 'Refractive lighting and macro formula caustics so customers visually feel the texture on skin.',
     },
     {
       num: '03',
       title: 'Direct-Response Hook Scripting',
       phase: 'Step 03 · Psychology',
-      desc: 'We script counter-intuitive angles and consumer friction hooks that stop thumbs in 1.5 seconds, without resorting to cheap gimmicks that degrade brand equity.',
+      desc: 'Thumb-stopping consumer friction hooks scripted to arrest scroll in 1.5 seconds without brand degradation.',
     },
     {
       num: '04',
-      title: 'Rapid Commercial Studio Production',
+      title: 'Rapid Studio Production',
       phase: 'Step 04 · Execution',
-      desc: 'Turnaround in 72 hours instead of 8 weeks. We produce high-resolution 4K motion deliverables and studio stills calibrated for high-fashion elegance.',
+      desc: 'High-fashion 4K motion deliverables and studio stills engineered in 72 hours instead of 8 weeks.',
     },
     {
       num: '05',
-      title: 'Cross-Channel Modular Deployment',
+      title: 'Cross-Channel Deployment',
       phase: 'Step 05 · Distribution',
-      desc: 'Pre-formatted master creative deployed seamlessly across Meta 1:1, Instagram Reels 9:16, TikTok, and E-commerce banners with zero awkward cropping.',
+      desc: 'Master assets pre-formatted for Meta 1:1, Instagram Reels 9:16, TikTok, and e-commerce stores.',
     },
   ]
 
@@ -440,14 +440,20 @@ export default function HomePage() {
             
             {/* Left 8 Cols: Display Statement + Copy */}
             <div className="lg:col-span-8 space-y-6">
-              <h1 className="font-inter font-black uppercase text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.92] tracking-[-0.05em] text-[#ece8e1] m-0">
-                HIGH-PERFORMANCE <br />
-                <span className="text-[#f4521c]">CREATIVE DIRECTION</span> <br />
-                FOR BEAUTY &amp; SKINCARE.
+              <h1 className="font-inter font-black tracking-[-0.05em] leading-[0.92] text-[#ece8e1] m-0">
+                <span className="block text-2xl sm:text-4xl md:text-5xl font-medium text-[#8a8a8a] tracking-tight lowercase italic font-sans mb-1">
+                  i kill 8-week shoots
+                </span>
+                <span className="block text-[clamp(2.4rem,5.8vw,5.6rem)] uppercase font-black text-[#ece8e1]">
+                  to build <span className="text-[#f4521c]">WHAT</span>
+                </span>
+                <span className="block text-[clamp(2.8rem,7vw,6.5rem)] uppercase font-black text-[#ece8e1]">
+                  ACTUALLY CONVERTS.
+                </span>
               </h1>
 
               <p className="font-inter text-base sm:text-lg md:text-xl font-medium text-[#bdb8b0] max-w-2xl leading-relaxed tracking-tight">
-                We replace 8-week agency shoot bottlenecks with high-converting commercial campaign systems delivered in days—saving{' '}
+                72-hour high-performance commercial creative direction for beauty &amp; skincare brands. Saving{' '}
                 <span className="text-[#ece8e1] underline decoration-[#f4521c] decoration-2">
                   60+ hours of founder time
                 </span>{' '}
@@ -623,12 +629,12 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start my-12">
             <div className="md:col-span-4 space-y-4">
-              <p className="label-mono !text-[#f4521c]">// CAT — 1.07</p>
-              <p className="font-inter text-base font-semibold leading-snug tracking-tight text-[#ece8e1]">
-                Beauty ad creative fatigues in 14 days, yet legacy agency production still demands 6 to 8 weeks of waiting and $50k+ in friction overhead.
+              <p className="label-mono !text-[#f4521c]">// CAT — 1.07 · THE REALITY</p>
+              <p className="font-inter text-base font-bold leading-snug tracking-tight text-[#ece8e1]">
+                Ad creative fatigues in 14 days. Legacy agency shoots demand 8 weeks and burn $50k+ in friction overhead.
               </p>
-              <p className="label-mono text-[#8a8a8a]">
-                High-growth cosmetics brands win by deploying high-velocity commercial systems that generate studio-grade assets in days.
+              <p className="font-inter text-xs text-[#8a8a8a] leading-relaxed">
+                We solve the bottleneck with rapid commercial studio systems engineered to deliver in 72 hours.
               </p>
             </div>
 
@@ -643,14 +649,14 @@ export default function HomePage() {
                   <div className="border-l-2 border-[#292929] pl-4 space-y-2">
                     <span className="label-mono text-[#8a8a8a]">01 / LEGACY AGENCY</span>
                     <p className="font-inter text-xs text-[#8a8a8a] leading-relaxed">
-                      6–8 week turnaround, heavy set rental costs, limited asset variants, and rapid feed fatigue within two weeks of launch.
+                      6–8 week wait, high set rentals, limited variants, rapid creative fatigue within 14 days.
                     </p>
                   </div>
 
                   <div className="border-l-2 border-[#f4521c] pl-4 space-y-2">
                     <span className="label-mono !text-[#f4521c]">02 / SAKIB ZIAD SYSTEM</span>
                     <p className="font-inter text-xs text-[#ece8e1] font-medium leading-relaxed">
-                      72-hour turnaround, hyper-realistic formula caustics, direct-response hook architecture, and omnichannel assets pre-formatted for conversion.
+                      72-hour turnaround, 25+ studio assets, sensory formula caustics, and multi-ratio conversion architecture.
                     </p>
                   </div>
                 </div>
@@ -787,22 +793,16 @@ export default function HomePage() {
                       </p>
 
                       {/* Creative Strategist Rationale Card */}
-                      <div className="border border-[#292929] bg-[#0b0c10] p-5 space-y-3">
+                      <div className="border border-[#292929] bg-[#0b0c10] p-4 space-y-3">
                         <div>
-                          <span className="label-mono text-[10px] text-[#8a8a8a] block mb-1">
-                            01 // DIRECTION STRATEGY
-                          </span>
-                          <p className="font-inter text-xs text-[#bdb8b0] leading-relaxed">{study.strategistThinking.whyChosen}</p>
-                        </div>
-                        <div className="pt-2 border-t border-[#292929]">
                           <span className="label-mono text-[10px] text-[#f4521c] block mb-1">
-                            02 // PRIMARY HOOK ANGLE
+                            01 // PRIMARY HOOK ANGLE
                           </span>
                           <p className="font-inter text-xs text-[#ece8e1] font-bold">{study.strategistThinking.hookAngle}</p>
                         </div>
                         <div className="pt-2 border-t border-[#292929]">
                           <span className="label-mono text-[10px] text-[#8a8a8a] block mb-1">
-                            03 // COMMERCIAL ADVANTAGE
+                            02 // COMMERCIAL OUTCOME
                           </span>
                           <p className="font-inter text-xs text-[#bdb8b0] leading-relaxed">{study.strategistThinking.commercialBenefit}</p>
                         </div>
@@ -956,12 +956,12 @@ export default function HomePage() {
                 </h2>
               </div>
 
-              <div className="space-y-4 font-inter text-sm sm:text-base text-[#bdb8b0] leading-relaxed">
+              <div className="space-y-3 font-inter text-sm sm:text-base text-[#bdb8b0] leading-relaxed">
                 <p>
-                  With an academic background in computational systems and an obsession for prestige cosmetics aesthetics, I founded Witlyn to prove that modern digital production could match and exceed traditional film sets in emotional depth and conversion velocity.
+                  I founded Witlyn to prove that high-velocity digital production can match traditional film sets in emotional prestige—at a fraction of the time and cost.
                 </p>
-                <p>
-                  Through this advisory practice, I partner directly with founders and CMOs to build and install high-performing creative architecture—transforming erratic marketing campaigns into predictable, compounding commercial growth.
+                <p className="text-[#ece8e1] font-semibold">
+                  Through this advisory practice, I partner directly with founders to install predictable creative systems that scale conversion without agency bloat.
                 </p>
               </div>
 
@@ -1017,7 +1017,7 @@ export default function HomePage() {
                   1:1 CREATIVE ADVISORY
                 </h3>
                 <p className="font-inter text-xs text-[#8a8a8a] mb-6 leading-relaxed">
-                  Private executive direction covering creative audits, high-converting campaign concepts, and rapid commercial production systems for scaling beauty brands.
+                  Private high-touch counsel covering ad audits, campaign concepting, and rapid 72h commercial pipelines.
                 </p>
                 
                 <div className="space-y-3 pt-6 border-t border-[#292929] mb-8 font-inter text-xs text-[#bdb8b0]">
@@ -1056,7 +1056,7 @@ export default function HomePage() {
                   SYSTEMS &amp; PLAYBOOKS
                 </h3>
                 <p className="font-inter text-xs text-[#8a8a8a] mb-6 leading-relaxed">
-                  Field-tested creative frameworks, art direction templates, and direct-response hook databases built specifically for skincare and cosmetics founders.
+                  Battle-tested creative frameworks, commercial brief templates, and skincare hook matrices.
                 </p>
 
                 <div className="space-y-3 pt-6 border-t border-[#292929] mb-8 font-inter text-xs text-[#bdb8b0]">
@@ -1095,7 +1095,7 @@ export default function HomePage() {
                   THE ADVISORY SYNDICATE
                 </h3>
                 <p className="font-inter text-xs text-[#8a8a8a] mb-6 leading-relaxed">
-                  Ongoing monthly creative intelligence, live campaign teardowns, private templates, and direct async guidance for brand operators playing the long game.
+                  Monthly beauty creative strategy dispatches, live campaign teardowns, and direct async feedback.
                 </p>
 
                 <div className="space-y-3 pt-6 border-t border-[#292929] mb-8 font-inter text-xs text-[#bdb8b0]">
