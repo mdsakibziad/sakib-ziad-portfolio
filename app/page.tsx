@@ -411,18 +411,24 @@ export default function HomePage() {
         className="relative isolate flex min-h-[100svh] flex-col justify-between overflow-hidden bg-[#050609] text-[#ece8e1] select-none"
         aria-label="Commercial Hero"
       >
-        {/* Background Portrait with exact Selora low-light artistic grade & gradient mask */}
-        <div data-hero-portrait="true" className="absolute inset-0 z-0 will-change-transform pointer-events-none select-none overflow-hidden">
-          <div className="relative overflow-hidden size-full">
+        {/* Background Portrait: High-Definition, Sharp Studio Black & White (No heavy grain, no blur) */}
+        <div data-hero-portrait="true" className="absolute inset-0 z-0 will-change-transform pointer-events-none select-none overflow-hidden bg-[#050609]">
+          {/* Sharp High-Res Portrait Container placed on right side */}
+          <div className="absolute right-0 top-0 w-full sm:w-[65vw] md:w-[50vw] lg:w-[44vw] max-w-[850px] h-[95vh] overflow-hidden">
             <img
               src="/images/sakib-ziad.jpg"
-              alt="Sakib Ziad photographed in low light"
-              className="size-full object-cover object-[64%_20%] md:object-[68%_26%] opacity-70 md:opacity-85 filter grayscale contrast-125"
+              alt="Sakib Ziad — Creative Strategist"
+              className="w-full h-full object-cover object-[52%_16%] filter grayscale contrast-110 brightness-105"
             />
+            {/* Seamless Left Edge Fade into pure dark ink */}
+            <div className="absolute inset-y-0 left-0 w-32 sm:w-48 bg-gradient-to-r from-[#050609] via-[#050609]/80 to-transparent pointer-events-none" />
+            {/* Seamless Bottom Edge Fade */}
+            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#050609] via-[#050609]/90 to-transparent pointer-events-none" />
           </div>
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(98deg,#050609_6%,rgba(5,6,9,0.78)_34%,rgba(5,6,9,0.18)_66%,rgba(5,6,9,0.5)_100%)]" />
-          <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-[56%] bg-gradient-to-t from-[#050609] via-[#050609]/85 to-transparent" />
-          <div aria-hidden="true" className="grain opacity-20 pointer-events-none absolute inset-0 z-[1]" />
+
+          {/* Solid dark protective gradient keeping the left typography completely unobstructed */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(98deg,#050609_12%,rgba(5,6,9,0.92)_38%,rgba(5,6,9,0.3)_68%,rgba(5,6,9,0.15)_100%)]" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-[#050609] to-transparent" />
         </div>
 
         {/* ── Top Meta Row (Exact Selora Layout) ── */}
@@ -463,9 +469,10 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
-                className="font-inter text-xs sm:text-sm font-semibold text-[#8a8a8a] max-w-xl leading-relaxed uppercase pt-2"
+                className="font-inter text-xs sm:text-sm md:text-base font-bold text-[#f5f2eb] max-w-xl leading-relaxed uppercase pt-3 tracking-wide"
               >
-                72-HOUR HIGH-PERFORMANCE COMMERCIAL CREATIVE DIRECTION FOR BEAUTY &amp; SKINCARE BRANDS.
+                <span className="text-[#f4521c] font-black mr-2">72-HOUR</span>
+                HIGH-PERFORMANCE COMMERCIAL CREATIVE DIRECTION FOR BEAUTY &amp; SKINCARE BRANDS.
               </motion.p>
             </div>
 

@@ -126,7 +126,7 @@ export function Navigation() {
                 ) : (
                   <Link
                     href="/sign-in"
-                    className="label-mono hover:!text-[#f4521c] transition-colors"
+                    className="text-xs font-mono uppercase font-bold text-[#ece8e1] px-4 py-2 border border-[#383838] bg-[#111216]/90 hover:border-[#f4521c] hover:text-[#f4521c] transition-all tracking-wider"
                   >
                     Sign In
                   </Link>
