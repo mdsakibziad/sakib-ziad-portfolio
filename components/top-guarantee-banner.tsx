@@ -2,18 +2,18 @@
 
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ShieldCheck, ArrowRight, X, Sparkles, CheckCircle2, Clock, Zap } from 'lucide-react'
+import { ArrowRight, X, CheckCircle2, AlertCircle } from 'lucide-react'
+
+const OFFER_LINE = '72-Hour Commercial Offer — 25+ campaign assets in 72 hours, or you pay $0'
+
+const inputCls =
+  'w-full px-3.5 py-3 bg-transparent border border-[#292929] text-sm text-[#ece8e1] placeholder:text-[#5a5a5a] focus:outline-none focus:border-[#f4521c] transition-colors'
 
 export function TopGuaranteeBanner() {
   const [isVisible, setIsVisible] = useState(true)
   const [modalOpen, setModalOpen] = useState(false)
-  const [formData, setFormData] = useState({
-    brandName: '',
-    email: '',
-    website: '',
-    primaryGoal: '',
-  })
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle')
+  const [formData, setFormData] = useState({ brandName: '', email: '', website: '', primaryGoal: '' })
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
 
   const handleDismiss = (e: React.MouseEvent) => {
     e.stopPropagation()
@@ -24,7 +24,7 @@ export function TopGuaranteeBanner() {
     e.preventDefault()
     setStatus('submitting')
     try {
-      await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -33,153 +33,116 @@ export function TopGuaranteeBanner() {
           email: formData.email,
           brandName: formData.brandName,
           websiteUrl: formData.website,
-          message: `[72-Hour Outcome Guarantee Claimed] Primary Goal: ${formData.primaryGoal || 'High-Converting Skincare Campaign'}`,
+          message: `[72-Hour Offer Claimed] Primary goal: ${formData.primaryGoal || 'Not specified'}`,
         }),
       })
-      setStatus('success')
+      const json = await res.json().catch(() => ({}))
+      setStatus(res.ok && json?.success ? 'success' : 'error')
     } catch {
-      setStatus('success')
+      setStatus('error')
     }
   }
 
   if (!isVisible) return null
 
+  const items = Array.from({ length: 6 })
+
   return (
     <>
-      {/* ── Luminous Animated Banner (Positioned Below Main Navbar) ──────── */}
       <motion.aside
-        initial={{ y: -20, opacity: 0 }}
+        initial={{ y: -16, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        exit={{ y: -20, opacity: 0 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full bg-gradient-to-r from-[#2A2008] via-[#3D2C0A] to-[#2A2008] text-white border-y border-amber-400/50 shadow-[0_4px_24px_rgba(217,119,6,0.3)] backdrop-blur-xl relative overflow-hidden select-none shrink-0 z-40"
-        aria-label="Outcome Guarantee Offer"
+        transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        className="relative w-full bg-[#f4521c] text-[#050609] overflow-hidden select-none"
+        aria-label="72-hour commercial offer"
       >
-        {/* Shimmering Top Accent Beam */}
-        <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-amber-300 to-transparent animate-pulse" />
-
-        <div className="container-luxury py-2 sm:py-2.5 px-3 sm:px-6">
-          {/* Mobile View (< sm) */}
-          <div className="flex sm:hidden items-center justify-between gap-2">
-            <div className="flex items-center gap-1.5 min-w-0 flex-1">
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-400 text-black font-mono text-[9px] uppercase font-bold shrink-0 shadow-sm animate-pulse">
-                <Zap className="w-2.5 h-2.5 fill-black" />
-                <span>72H Offer</span>
-              </span>
-              <span className="text-[11px] font-inter text-amber-100 font-medium truncate">
-                25+ Campaign Assets in 72h or $0
-              </span>
+        <div className="flex items-stretch h-9 sm:h-10">
+          {/* Marquee */}
+          <button
+            type="button"
+            onClick={() => setModalOpen(true)}
+            className="relative flex-1 min-w-0 overflow-hidden text-left"
+            aria-label="Open the 72-hour offer"
+          >
+            <div className="flex w-max animate-marquee items-center h-full">
+              {[0, 1].map((dup) => (
+                <div key={dup} className="flex items-center" aria-hidden={dup === 1}>
+                  {items.map((_, i) => (
+                    <span
+                      key={i}
+                      className="flex items-center gap-4 px-4 font-mono text-[11px] sm:text-[12px] uppercase tracking-[0.06em] font-medium whitespace-nowrap text-[#050609]"
+                    >
+                      {OFFER_LINE}
+                      <span className="inline-block h-[7px] w-[7px] bg-[#050609]" />
+                    </span>
+                  ))}
+                </div>
+              ))}
             </div>
+          </button>
 
-            <div className="flex items-center gap-1.5 shrink-0">
-              <button
-                type="button"
-                onClick={() => setModalOpen(true)}
-                className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-amber-300 to-amber-400 hover:from-amber-200 hover:to-amber-300 text-black text-[11px] font-inter font-bold uppercase tracking-wider shadow-[0_0_12px_rgba(251,191,36,0.8)] active:scale-95 transition-all"
-              >
-                <span>Claim</span>
-                <ArrowRight className="w-3 h-3 stroke-[2.5]" />
-              </button>
-              <button
-                type="button"
-                onClick={handleDismiss}
-                aria-label="Dismiss banner"
-                className="p-1 rounded text-amber-200 hover:text-white transition-colors"
-              >
-                <X className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          </div>
-
-          {/* Desktop View (>= sm) */}
-          <div className="hidden sm:flex items-center justify-between gap-4 text-xs">
-            <div className="flex items-center gap-3 flex-1 min-w-0">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-400 text-black font-mono text-[10px] uppercase tracking-wider shrink-0 font-bold shadow-[0_0_14px_rgba(251,191,36,0.6)] animate-pulse">
-                <ShieldCheck className="w-3.5 h-3.5" />
-                <span>Outcome Guarantee</span>
-              </span>
-
-              <p className="font-inter text-amber-50 text-xs truncate font-normal">
-                <strong className="font-bold text-amber-300 tracking-wide uppercase">The 72-Hour Commercial Offer:</strong>{' '}
-                We direct &amp; deliver a 25+ asset high-converting campaign in 72 hours—or you pay $0.{' '}
-                <span className="text-amber-200/80 font-light">
-                  (Strictly 2 brand slots reserved for Q4)
-                </span>
-              </p>
-            </div>
-
-            <div className="flex items-center gap-3 shrink-0 ml-auto">
-              <button
-                type="button"
-                onClick={() => setModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-300 via-amber-200 to-amber-400 hover:from-white hover:to-amber-300 text-black text-xs font-inter font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 shadow-[0_0_20px_rgba(251,191,36,0.7)] active:scale-95 cursor-pointer"
-              >
-                <span>Claim 72H Slot</span>
-                <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
-              </button>
-
-              <button
-                type="button"
-                onClick={handleDismiss}
-                aria-label="Dismiss banner"
-                className="p-1 rounded text-amber-200 hover:text-white transition-colors"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
+          {/* Claim + dismiss */}
+          <div className="flex items-stretch shrink-0">
+            <button
+              type="button"
+              onClick={() => setModalOpen(true)}
+              className="group relative flex items-center gap-2 px-4 sm:px-6 bg-[#050609] text-[#f4521c] font-inter text-[11px] sm:text-[12px] font-bold uppercase tracking-[0.02em] overflow-hidden"
+            >
+              <span className="absolute inset-0 bg-[#ece8e1] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]" />
+              <span className="relative group-hover:text-[#050609] transition-colors duration-500">Claim Offer</span>
+              <ArrowRight className="relative w-3.5 h-3.5 group-hover:text-[#050609] transition-all duration-500 group-hover:translate-x-0.5" />
+            </button>
+            <button
+              type="button"
+              onClick={handleDismiss}
+              aria-label="Dismiss offer banner"
+              className="px-2.5 sm:px-3 bg-[#050609] text-[#8a8a8a] hover:text-[#ece8e1] border-l border-[#292929] transition-colors"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
           </div>
         </div>
       </motion.aside>
 
-      {/* ── Smart Instant Claim Modal (No Contact Redirect!) ──────────────── */}
+      {/* ── Claim Modal ─────────────────────────────────────────────────── */}
       <AnimatePresence>
         {modalOpen && (
-          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
-            {/* Backdrop */}
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Claim the 72-hour offer">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setModalOpen(false)}
-              className="absolute inset-0 bg-black/80 backdrop-blur-md"
+              className="absolute inset-0 bg-[#050609]/90"
             />
 
-            {/* Modal Dialog Card */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-lg rounded-3xl bg-[#121214] text-white border border-amber-400/40 p-6 sm:p-8 shadow-[0_24px_80px_rgba(217,119,6,0.25)] overflow-hidden"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 24 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-[#0b0c10] text-[#ece8e1] border border-[#292929] p-6 sm:p-8"
             >
-              {/* Gold Top Light */}
-              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-amber-500 via-amber-300 to-amber-500" />
+              <div className="absolute top-0 inset-x-0 h-[3px] bg-[#f4521c]" />
 
               <button
                 onClick={() => setModalOpen(false)}
-                className="absolute top-5 right-5 p-1.5 rounded-full text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"
-                aria-label="Close modal"
+                className="absolute top-5 right-5 p-1.5 text-[#8a8a8a] hover:text-[#f4521c] transition-colors"
+                aria-label="Close"
               >
                 <X className="w-5 h-5" />
               </button>
 
               {status === 'success' ? (
                 <div className="py-8 text-center space-y-4">
-                  <div className="w-14 h-14 rounded-full bg-amber-400/20 border border-amber-400 text-amber-300 flex items-center justify-center mx-auto">
-                    <CheckCircle2 className="w-8 h-8" />
-                  </div>
-                  <h3 className="font-fraunces text-2xl text-white">
-                    72-Hour Guarantee Slot Locked!
-                  </h3>
-                  <p className="font-inter text-sm text-zinc-300 max-w-sm mx-auto leading-relaxed">
-                    Thank you. We review your brand details within 24 hours. If admitted, your 25+ campaign assets will be scheduled for 72-hour delivery under our zero-risk outcome guarantee.
+                  <CheckCircle2 className="w-10 h-10 mx-auto text-[#f4521c]" />
+                  <h3 className="text-2xl font-black uppercase tracking-[-0.04em]">Request received</h3>
+                  <p className="text-sm text-[#bdb8b0] max-w-sm mx-auto leading-relaxed">
+                    I review every brand personally and reply within 24 hours with next steps for your 72-hour campaign.
                   </p>
                   <button
-                    onClick={() => {
-                      setModalOpen(false)
-                      setStatus('idle')
-                    }}
-                    className="px-6 py-2 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-zinc-200 transition-colors mt-4"
+                    onClick={() => { setModalOpen(false); setStatus('idle') }}
+                    className="btn-acid px-6 py-2.5 text-xs mt-4"
                   >
                     Done
                   </button>
@@ -187,84 +150,57 @@ export function TopGuaranteeBanner() {
               ) : (
                 <div className="space-y-6">
                   <div>
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-400/15 border border-amber-400/30 text-amber-300 font-mono text-[10px] uppercase font-semibold mb-3">
-                      <Clock className="w-3.5 h-3.5 text-amber-400" />
-                      <span>Strictly 2 Brand Slots for Q4</span>
-                    </div>
-                    <h3 className="font-fraunces text-2xl sm:text-3xl text-white font-medium leading-tight">
-                      Claim Your 72-Hour Commercial Offer
+                    <p className="label-mono !text-[#f4521c] mb-3">// 72-Hour Offer</p>
+                    <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-[-0.045em] leading-[0.95]">
+                      Claim your 72-hour campaign
                     </h3>
-                    <p className="font-inter text-xs sm:text-sm text-zinc-400 mt-1.5 leading-relaxed">
-                      We direct &amp; deliver a 25+ asset high-converting campaign in 72 hours—or you pay $0. Reserve your priority review below.
+                    <p className="text-sm text-[#8a8a8a] mt-3 leading-relaxed">
+                      25+ ready-to-run campaign assets in 72 hours — or you pay $0.
                     </p>
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                      <label className="block text-[11px] font-mono uppercase text-zinc-400 mb-1">
-                        Brand Name *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={formData.brandName}
+                      <label className="label-mono block mb-1.5">Brand name *</label>
+                      <input type="text" required value={formData.brandName}
                         onChange={(e) => setFormData({ ...formData, brandName: e.target.value })}
-                        placeholder="e.g. Solaé Skincare"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.05] border border-white/15 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition-colors"
-                      />
+                        placeholder="e.g. Solaé Skincare" className={inputCls} />
                     </div>
-
                     <div>
-                      <label className="block text-[11px] font-mono uppercase text-zinc-400 mb-1">
-                        Founder / Marketing Lead Email *
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        value={formData.email}
+                      <label className="label-mono block mb-1.5">Email *</label>
+                      <input type="email" required value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="founder@yourbrand.com"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.05] border border-white/15 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition-colors"
-                      />
+                        placeholder="founder@yourbrand.com" className={inputCls} />
                     </div>
-
                     <div>
-                      <label className="block text-[11px] font-mono uppercase text-zinc-400 mb-1">
-                        Website or Instagram (Optional)
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.website}
+                      <label className="label-mono block mb-1.5">Website or Instagram</label>
+                      <input type="text" value={formData.website}
                         onChange={(e) => setFormData({ ...formData, website: e.target.value })}
-                        placeholder="yourbrand.com or @yourbrand"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.05] border border-white/15 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition-colors"
-                      />
+                        placeholder="yourbrand.com or @yourbrand" className={inputCls} />
                     </div>
-
                     <div>
-                      <label className="block text-[11px] font-mono uppercase text-zinc-400 mb-1">
-                        Primary SKU or Campaign Goal
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.primaryGoal}
+                      <label className="label-mono block mb-1.5">Hero product or campaign goal</label>
+                      <input type="text" value={formData.primaryGoal}
                         onChange={(e) => setFormData({ ...formData, primaryGoal: e.target.value })}
-                        placeholder="e.g. Hydrating Cleanser Q4 Meta Ads"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.05] border border-white/15 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition-colors"
-                      />
+                        placeholder="e.g. Hydrating cleanser, Q4 Meta ads" className={inputCls} />
                     </div>
 
-                    <button
-                      type="submit"
-                      disabled={status === 'submitting'}
-                      className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-amber-300 via-amber-200 to-amber-400 hover:from-white hover:to-amber-300 text-black font-inter font-bold text-xs uppercase tracking-wider transition-all duration-300 hover:scale-[1.02] shadow-[0_0_24px_rgba(251,191,36,0.6)] cursor-pointer disabled:opacity-50 mt-2"
-                    >
-                      {status === 'submitting' ? 'Reserving...' : 'Lock In 72-Hour Guarantee Slot →'}
+                    {status === 'error' && (
+                      <div className="flex items-start gap-2 border border-[#f4521c]/50 p-3 text-xs text-[#ece8e1]">
+                        <AlertCircle className="w-4 h-4 shrink-0 text-[#f4521c]" />
+                        <span>
+                          Couldn&apos;t send right now. Email me directly at{' '}
+                          <a href="mailto:Sakib@witlyn.com" className="underline text-[#f4521c]">Sakib@witlyn.com</a>.
+                        </span>
+                      </div>
+                    )}
+
+                    <button type="submit" disabled={status === 'submitting'}
+                      className="btn-acid w-full py-3.5 text-sm disabled:opacity-50 mt-2">
+                      {status === 'submitting' ? 'Sending…' : 'Claim the 72-hour offer'}
+                      <ArrowRight className="w-4 h-4" />
                     </button>
-                    
-                    <p className="text-[10px] text-center text-zinc-400">
-                      Zero upfront commitment · Underwritten by the 72-hour outcome guarantee.
-                    </p>
+                    <p className="text-[11px] text-center text-[#8a8a8a]">No upfront payment. Reply within 24 hours.</p>
                   </form>
                 </div>
               )}

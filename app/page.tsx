@@ -404,129 +404,153 @@ export default function HomePage() {
     <div className="bg-background text-ivory overflow-x-hidden selection:bg-white selection:text-black">
 
       {/* ════════════════════════════════════════════════════════════════════
-          STEP 1 · THE COMMERCIAL HERO (OUTCOME & TIME-SAVINGS FIRST)
+          STEP 1 · SELORA-STYLE EDITORIAL HERO
       ════════════════════════════════════════════════════════════════════ */}
       <section
-        className="relative min-h-[94vh] lg:min-h-screen flex items-center justify-center overflow-hidden pt-36 sm:pt-40 pb-20"
+        className="relative min-h-[100svh] flex flex-col justify-between overflow-hidden pt-28 sm:pt-32 pb-8 border-b border-[#292929]"
         aria-label="Commercial Hero"
       >
-        {/* Ambient Subtle Atmosphere */}
-        <AmbientHeroAtmosphere />
+        {/* Background Portrait with dark film grain & gradient mask */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none">
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-luminosity scale-105 filter grayscale contrast-125"
+            style={{ backgroundImage: `url('/images/sakib-ziad.jpg')` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050609] via-[#050609]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050609] via-transparent to-[#050609]" />
+          <div className="absolute inset-0 grain" />
+        </div>
 
+        {/* ── Top Meta Row ── */}
+        <div className="container-luxury relative z-10 w-full mb-8">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#292929] pb-4">
+            <span className="label-mono !text-[#f4521c] flex items-center gap-2">
+              <span className="inline-block w-2 h-2 bg-[#f4521c]" />
+              SZ / 2026 — DIRECT RESPONSE STRATEGY
+            </span>
+            <span className="label-mono">
+              BEAUTY · SKINCARE · HIGH-VELOCITY PRODUCTION
+            </span>
+          </div>
+        </div>
 
-
-        <div className="container-luxury relative z-10">
-          <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
+        {/* ── Main Hero Editorial Content ── */}
+        <div className="container-luxury relative z-10 w-full my-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
             
-            {/* Eyebrow badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: EASE_LUXURY }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-black/10 dark:border-white/20 bg-black/[0.03] dark:bg-white/[0.04] backdrop-blur-md mb-8 shadow-[0_2px_12px_rgba(0,0,0,0.03)] dark:shadow-[0_0_20px_rgba(255,255,255,0.05)]"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white animate-pulse" />
-              <span className="eyebrow-luxury text-zinc-700 dark:text-zinc-300">
-                Creative Strategist & Commercial Director for Beauty & Skincare
-              </span>
-            </motion.div>
+            {/* Left 8 Cols: Display Statement + Copy */}
+            <div className="lg:col-span-8 space-y-6">
+              <h1 className="font-inter font-black uppercase text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.92] tracking-[-0.05em] text-[#ece8e1] m-0">
+                HIGH-PERFORMANCE <br />
+                <span className="text-[#f4521c]">CREATIVE DIRECTION</span> <br />
+                FOR BEAUTY &amp; SKINCARE.
+              </h1>
 
-            {/* Dominant Headline Reveal */}
-            <h1 className="heading-hero mb-8 sm:mb-10 w-full text-center">
-              <span className="block overflow-hidden py-1 px-4 -mx-4">
-                <motion.span
-                  initial={{ y: '100%', opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.95, ease: EASE_LUXURY, delay: 0.15 }}
-                  className="block"
-                >
-                  High-Performance{' '}
-                  <span className="italic font-fraunces text-[#141416] dark:text-white font-light pr-1">
-                    Creative Direction
-                  </span>
-                </motion.span>
-              </span>
-              <span className="block overflow-hidden py-1 px-4 -mx-4">
-                <motion.span
-                  initial={{ y: '100%', opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.95, ease: EASE_LUXURY, delay: 0.3 }}
-                  className="block"
-                >
-                  For Beauty & Skincare Brands
-                </motion.span>
-              </span>
-              <span className="block overflow-hidden py-1 px-4 -mx-4">
-                <motion.span
-                  initial={{ y: '100%', opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.95, ease: EASE_LUXURY, delay: 0.45 }}
-                  className="block text-zinc-600 dark:text-zinc-300 font-light"
-                >
-                  That Refuse to Blend In.
-                </motion.span>
-              </span>
-            </h1>
+              <p className="font-inter text-base sm:text-lg md:text-xl font-medium text-[#bdb8b0] max-w-2xl leading-relaxed tracking-tight">
+                We replace 8-week agency shoot bottlenecks with high-converting commercial campaign systems delivered in days—saving{' '}
+                <span className="text-[#ece8e1] underline decoration-[#f4521c] decoration-2">
+                  60+ hours of founder time
+                </span>{' '}
+                while cutting production overhead by 70%.
+              </p>
 
-            {/* Outcome, Value & Time-Savings Statement */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, ease: EASE_LUXURY, delay: 0.6 }}
-              className="text-base sm:text-xl md:text-2xl text-zinc-700 dark:text-zinc-300 font-light max-w-3xl mb-10 leading-[1.7] tracking-wide text-center"
-            >
-              We replace 8-week agency shoot bottlenecks with high-converting commercial campaign systems delivered in days—saving{' '}
-              <span className="text-zinc-950 dark:text-white font-medium underline underline-offset-4 decoration-black/20 dark:decoration-white/30">
-                60+ hours of founder time
-              </span>{' '}
-              while cutting production overhead by 70%.
-            </motion.p>
-
-            {/* Value Badges */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, ease: EASE_LUXURY, delay: 0.65 }}
-              className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mb-12 text-xs sm:text-sm font-inter text-zinc-600 dark:text-zinc-300"
-            >
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10">
-                <Clock className="w-3.5 h-3.5 text-zinc-800 dark:text-zinc-200" />
-                <span>72-Hour Rapid Asset Delivery</span>
-              </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10">
-                <TrendingUp className="w-3.5 h-3.5 text-zinc-800 dark:text-zinc-200" />
-                <span>70% Lower Production Costs</span>
-              </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10">
-                <ShieldCheck className="w-3.5 h-3.5 text-zinc-800 dark:text-zinc-200" />
-                <span>100% Luxury Brand Equity</span>
-              </div>
-            </motion.div>
-
-            {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, ease: EASE_LUXURY, delay: 0.7 }}
-              className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto"
-            >
-              <div className="relative group w-full sm:w-auto">
-                <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-zinc-400/25 via-zinc-200/50 to-zinc-400/25 blur-sm opacity-70 group-hover:opacity-100 transition duration-500 animate-pulse pointer-events-none" />
-                <Button asChild variant="gold" size="lg" className="relative w-full sm:w-auto">
+              {/* Action Buttons */}
+              <div className="pt-4 flex flex-wrap items-center gap-4">
+                <Button asChild variant="gold" size="lg" className="h-12 px-8">
                   <Link href="/contact" className="flex items-center gap-2">
                     <span>Apply for a Strategy Call</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Button>
+
+                <Button asChild variant="outline" size="lg" className="h-12 px-8">
+                  <Link href="#selected-work" className="flex items-center gap-2">
+                    <span>Explore Selected Work</span>
+                    <ArrowRight className="w-4 h-4" />
                   </Link>
                 </Button>
               </div>
-              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto group">
-                <Link href="#selected-work" className="flex items-center gap-2">
-                  <span>Explore Selected Work</span>
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </Link>
-              </Button>
-            </motion.div>
+            </div>
 
+            {/* Right 4 Cols: Phase Progression Meters (Selora Characteristic) */}
+            <div className="lg:col-span-4 border-t lg:border-t-0 lg:border-l border-[#292929] pt-6 lg:pt-0 lg:pl-8 space-y-4">
+              <p className="label-mono !text-[#8a8a8a]">// EXECUTION METRICS</p>
+              
+              <div className="space-y-3">
+                <div className="space-y-1">
+                  <div className="flex justify-between label-mono text-[10px]">
+                    <span>001 / AUDIT &amp; FRICTION MAPPING</span>
+                    <span className="text-[#f4521c]">72H TURN</span>
+                  </div>
+                  <div className="h-[2px] w-full bg-[#292929] overflow-hidden">
+                    <div className="h-full w-full bg-[#f4521c]" />
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <div className="flex justify-between label-mono text-[10px]">
+                    <span>002 / SENSORY TEXTURE DIRECTION</span>
+                    <span className="text-[#f4521c]">4K MACRO</span>
+                  </div>
+                  <div className="h-[2px] w-full bg-[#292929] overflow-hidden">
+                    <div className="h-full w-[85%] bg-[#f4521c]" />
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <div className="flex justify-between label-mono text-[10px]">
+                    <span>003 / RAPID COMMERCIAL STUDIO</span>
+                    <span className="text-[#f4521c]">25+ ASSETS</span>
+                  </div>
+                  <div className="h-[2px] w-full bg-[#292929] overflow-hidden">
+                    <div className="h-full w-full bg-[#f4521c]" />
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <div className="flex justify-between label-mono text-[10px]">
+                    <span>004 / CROSS-CHANNEL DEPLOYMENT</span>
+                    <span className="text-[#f4521c]">META · IG · TIKTOK</span>
+                  </div>
+                  <div className="h-[2px] w-full bg-[#292929] overflow-hidden">
+                    <div className="h-full w-[90%] bg-[#f4521c]" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* ── Giant Footer Wordmark & Marquee Strip ── */}
+        <div className="relative z-10 w-full mt-12">
+          {/* Acid hairline accent */}
+          <div className="w-full h-[2px] bg-[#f4521c]" />
+
+          {/* Huge Display Wordmark */}
+          <div className="w-full overflow-hidden select-none pointer-events-none py-2 border-b border-[#292929]">
+            <h2 className="font-inter font-black uppercase text-[17vw] leading-[0.76] tracking-[-0.06em] text-[#ece8e1] text-center m-0 p-0">
+              SAKIB ZIAD
+            </h2>
+          </div>
+
+          {/* Services Mono Marquee Strip */}
+          <div className="overflow-hidden border-b border-[#292929] bg-[#0b0c10] py-2.5">
+            <div className="flex w-max animate-marquee items-center">
+              {[0, 1].map((dup) => (
+                <div key={dup} className="flex items-center" aria-hidden={dup === 1}>
+                  {['CREATIVE STRATEGY', 'DIRECT-RESPONSE HOOKS', 'COMMERCIAL DIRECTION', 'SENSORY MACRO TEXTURE', '72-HOUR DELIVERY', 'BEAUTY & SKINCARE ONLY', 'META & REELS ASSETS'].map((svc, i) => (
+                    <span
+                      key={i}
+                      className="flex items-center gap-4 px-6 label-mono !text-[#ece8e1] whitespace-nowrap"
+                    >
+                      <span>{svc}</span>
+                      <span className="inline-block w-1.5 h-1.5 bg-[#f4521c]" />
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

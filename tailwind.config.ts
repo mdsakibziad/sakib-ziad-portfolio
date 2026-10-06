@@ -23,12 +23,19 @@ const config: Config = {
         glass:      'var(--color-glass)',
         'glass-border': 'var(--color-glass-border)',
         'glass-highlight': 'var(--color-glass-highlight)',
+        acid:     '#f4521c',
+        ink:      '#050609',
+        bone:     '#ece8e1',
+        smoke:    '#bdb8b0',
+        dust:     '#8a8a8a',
+        hairline: '#292929',
       },
 
       // ── Typography ────────────────────────────────────────────────────────────
       fontFamily: {
-        fraunces: ['var(--font-fraunces)', 'Georgia', 'serif'],
+        fraunces: ['var(--font-inter)', 'system-ui', 'sans-serif'],
         inter:    ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        mono:     ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       fontSize: {
         // Display / hero scale

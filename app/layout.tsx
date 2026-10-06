@@ -1,26 +1,25 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { Fraunces, Inter } from 'next/font/google'
+import { Inter, IBM_Plex_Mono } from 'next/font/google'
 import './globals.css'
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
 import { FloatingLeadTrigger } from '@/components/floating-lead-trigger'
 import { StructuredData } from '@/components/structured-data'
 import { personSchema } from '@/lib/seo-schemas'
-import { ThemeProvider } from '@/components/theme-provider'
-
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  variable: '--font-fraunces',
-  display: 'swap',
-  weight: ['300', '400', '500', '600'],
-})
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
-  weight: ['300', '400', '500', '600'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+})
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+  weight: ['400', '500'],
 })
 
 const websiteSchema = {
@@ -117,27 +116,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable}`} suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var stored = localStorage.getItem('theme');
-                  if (stored === 'dark') {
-                    document.documentElement.classList.add('dark');
-                  } else {
-                    document.documentElement.classList.remove('dark');
-                  }
-                } catch (_) {}
-              })();
-            `,
-          }}
-        />
-      </head>
-      <body className="min-h-screen bg-background text-ivory antialiased selection:bg-[#141416] selection:text-white dark:selection:bg-white dark:selection:text-black overflow-x-hidden">
-        <ThemeProvider>
+    <html lang="en" className={`dark ${inter.variable} ${plexMono.variable}`} style={{ colorScheme: 'dark' }}>
+      <body className="min-h-screen bg-background text-ivory antialiased overflow-x-hidden">
+        <>
           {/* Global JSON-LD Schema (Person & WebSite) */}
           <StructuredData data={[personSchema, websiteSchema]} />
 
@@ -171,8 +152,8 @@ export default function RootLayout({
             className="
               sr-only focus:not-sr-only
               fixed top-4 left-4 z-[9999]
-              bg-[#141416] text-white dark:bg-white dark:text-black text-sm font-semibold
-              px-4 py-2 rounded-full shadow-lg
+              bg-[#f4521c] text-[#050609] text-sm font-semibold
+              px-4 py-2 shadow-lg
               focus:outline-none
             "
           >
@@ -192,7 +173,7 @@ export default function RootLayout({
 
           {/* Site footer */}
           <Footer />
-        </ThemeProvider>
+        </>
       </body>
     </html>
   )
