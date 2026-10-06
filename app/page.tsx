@@ -411,19 +411,13 @@ export default function HomePage() {
         className="relative isolate flex min-h-[100svh] flex-col justify-between overflow-hidden bg-[#050609] text-[#ece8e1] select-none"
         aria-label="Commercial Hero"
       >
-        {/* Background Portrait (Shifted to Right Half in High-Fashion Low Light - Exact Selora Placement) */}
+        {/* Background Film Grain Texture & Ambient Radial Depth (Clean Luxury Minimalist Canvas) */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
-          <div className="absolute right-0 top-0 w-full md:w-[60%] lg:w-[50%] h-full overflow-hidden">
-            <img
-              src="/images/sakib-ziad.jpg"
-              alt="Sakib Ziad"
-              className="w-full h-full object-cover object-[55%_18%] md:object-[65%_22%] opacity-45 md:opacity-70 filter grayscale contrast-125"
-            />
-          </div>
-          {/* Deep dark gradient protecting the left side headline */}
-          <div className="absolute inset-0 bg-[linear-gradient(98deg,#050609_0%,#050609_42%,rgba(5,6,9,0.85)_65%,rgba(5,6,9,0.4)_85%,rgba(5,6,9,0.6)_100%)]" />
-          <div className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-[#050609] via-[#050609]/85 to-transparent" />
-          <div className="absolute inset-0 grain opacity-20" />
+          <div className="absolute inset-0 bg-[#050609]" />
+          {/* Subtle warm ambient radial highlight on right side */}
+          <div className="absolute -right-24 top-1/4 w-[600px] h-[600px] bg-[#f4521c]/[0.04] rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute inset-0 grain opacity-25" />
+          <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-[#050609] to-transparent" />
         </div>
 
         {/* ── Top Meta Row (Exact Selora Layout) ── */}
@@ -453,9 +447,9 @@ export default function HomePage() {
                   immediate
                   delay={0.1}
                   lines={[
-                    <span key="1">I BREAK THINGS</span>,
-                    <span key="2">TO SEE WHAT</span>,
-                    <span key="3">THEY ARE MADE OF</span>,
+                    <span key="1">I KILL 8-WEEK SHOOTS</span>,
+                    <span key="2">TO BUILD WHAT</span>,
+                    <span key="3">ACTUALLY CONVERTS.</span>,
                   ]}
                 />
               </h1>
@@ -464,9 +458,9 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
-                className="font-inter text-sm sm:text-base font-semibold text-[#8a8a8a] max-w-xl leading-relaxed uppercase pt-2"
+                className="font-inter text-xs sm:text-sm font-semibold text-[#8a8a8a] max-w-xl leading-relaxed uppercase pt-2"
               >
-                72-HOUR COMMERCIAL CREATIVE SYSTEMS FOR HIGH-GROWTH BEAUTY &amp; SKINCARE BRANDS.
+                72-HOUR HIGH-PERFORMANCE COMMERCIAL CREATIVE DIRECTION FOR BEAUTY &amp; SKINCARE BRANDS.
               </motion.p>
             </div>
 
