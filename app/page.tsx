@@ -525,12 +525,7 @@ export default function HomePage() {
           <div className="shrink-0 h-[3px] w-full bg-[#f4521c]" />
 
           {/* Explore Cue Row */}
-          <div className="container-luxury flex items-end justify-between gap-6 pb-6 pt-4">
-            <div>
-              <p className="text-[clamp(14px,1.4vw,20px)] font-bold tracking-[-0.03em] uppercase text-[#ece8e1]">
-                Sakib Ziad
-              </p>
-            </div>
+          <div className="container-luxury flex items-end justify-end pb-6 pt-4">
             <div className="flex items-end gap-3">
               <span className="label-mono text-[#f4521c] uppercase text-xs">explore</span>
               <div className="w-[1px] h-[34px] bg-[#f4521c]" />
@@ -649,9 +644,6 @@ export default function HomePage() {
               <p className="label-mono !text-[#f4521c]">// CAT — 1.07 · THE REALITY</p>
               <p className="font-inter text-base sm:text-lg font-bold leading-snug tracking-tight text-[#ece8e1]">
                 Ad creative fatigues in 14 days. Legacy agency shoots demand 8 weeks and burn $50k+ in friction overhead.
-              </p>
-              <p className="font-inter text-xs text-[#8a8a8a] leading-relaxed">
-                We solve the bottleneck with rapid commercial studio systems engineered to deliver in 72 hours.
               </p>
             </div>
 
@@ -804,34 +796,24 @@ export default function HomePage() {
                         <h3 className="font-inter font-black uppercase text-3xl sm:text-4xl text-[#ece8e1] hover:text-[#f4521c] transition-colors mb-1">
                           <Link href={study.link}>{study.brand}</Link>
                         </h3>
-                        <p className="label-mono text-xs text-[#bdb8b0]">
+                        <p className="label-mono text-xs text-[#f4521c] font-bold">
                           {study.tagline}
                         </p>
                       </div>
 
-                      {/* 1 Short Sentence Summary */}
-                      <p className="font-inter text-xs sm:text-sm font-semibold text-[#ece8e1] leading-relaxed">
+                      {/* Core Product Hook */}
+                      <p className="font-inter text-sm sm:text-base font-semibold text-[#ece8e1] leading-relaxed">
                         {study.oneLiner}
                       </p>
 
-                      {/* Creative Strategist Rationale Card */}
-                      <div className="border border-[#292929] bg-[#0b0c10] p-4 space-y-3">
-                        <div>
-                          <span className="label-mono text-[10px] text-[#f4521c] block mb-1">
-                            01 // PRIMARY HOOK ANGLE
-                          </span>
-                          <p className="font-inter text-xs text-[#ece8e1] font-bold">{study.strategistThinking.hookAngle}</p>
-                        </div>
-                        <div className="pt-2 border-t border-[#292929]">
-                          <span className="label-mono text-[10px] text-[#8a8a8a] block mb-1">
-                            02 // COMMERCIAL OUTCOME
-                          </span>
-                          <p className="font-inter text-xs text-[#bdb8b0] leading-relaxed">{study.strategistThinking.commercialBenefit}</p>
-                        </div>
-                      </div>
-
-                      <div className="label-mono text-[10px] text-[#8a8a8a]">
-                        {study.deliverables}
+                      {/* Strategic Commercial Result & Deliverables */}
+                      <div className="border-l-2 border-[#f4521c] pl-3 py-1.5 space-y-1 bg-[#0b0c10] border-y border-r border-[#292929]">
+                        <span className="label-mono text-[10px] text-[#8a8a8a] block">
+                          IMPACT // {study.deliverables}
+                        </span>
+                        <p className="font-inter text-xs text-[#ece8e1] font-medium leading-relaxed">
+                          {study.strategistThinking.commercialBenefit}
+                        </p>
                       </div>
                     </div>
 
