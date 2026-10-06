@@ -3,16 +3,16 @@ import { StructuredData } from '@/components/structured-data'
 import { generateBreadcrumbSchema, generateCollectionPageSchema } from '@/lib/seo-schemas'
 
 export const metadata: Metadata = {
-  title: 'Selected AI-Native Campaign Work | Sakib Ziad',
+  title: 'Selected Commercial Campaigns & Systems | Sakib Ziad',
   description:
-    'Selected case studies across luxury beauty, skincare, and cosmetics. Creative systems, campaign direction, and automation builds for Solaé, Vyraa, Lipéa, and Nuécera.',
+    'Selected case studies across luxury beauty, skincare, and cosmetics. Creative direction, high-velocity commercial systems, and direct-response architectures for Solaé, Vyraa, Lipéa, and Nuécera.',
   alternates: {
     canonical: 'https://sakibziad.my/work',
   },
   openGraph: {
-    title: 'Selected AI-Native Campaign Work | Sakib Ziad',
+    title: 'Selected Commercial Campaigns & Systems | Sakib Ziad',
     description:
-      'Selected case studies across luxury beauty, skincare, and cosmetics. Creative systems and campaign direction built without stock imagery.',
+      'Selected case studies across luxury beauty, skincare, and cosmetics. High-performance creative systems and commercial campaign direction.',
     url: 'https://sakibziad.my/work',
   },
 }
@@ -23,26 +23,26 @@ export default function WorkLayout({
   children: React.ReactNode
 }) {
   const collectionSchema = generateCollectionPageSchema({
-    name: 'Selected AI-Native Campaign Work',
+    name: 'Selected Commercial Campaigns & Creative Systems',
     description:
-      'Archive of luxury beauty and skincare campaign systems and brand automation architectures directed by Sakib Ziad.',
+      'Archive of luxury beauty and skincare campaign systems and commercial directing architectures by Sakib Ziad.',
     url: '/work',
     hasPart: [
       {
         title: 'Solaé Skincare Campaign System',
-        description: 'AI-native skincare campaign direction and 48-asset visual world from concept to launch.',
+        description: 'Commercial skincare campaign direction and 29-asset visual world from concept to launch.',
       },
       {
         title: 'Vyraa Cosmetics Repositioning',
-        description: 'Brand strategy and creative direction repositioning a premium cosmetics brand for the AI era.',
+        description: 'Brand strategy and creative direction repositioning a premium cosmetics brand.',
       },
       {
         title: 'Lipéa Content Engine Build',
-        description: 'Scalable autonomous AI content engine and multi-channel asset generation pipeline.',
+        description: 'Scalable commercial content system and multi-channel asset generation pipeline.',
       },
       {
         title: 'Nuécera Fragrance Visual World',
-        description: 'High-concept olfactory visual universe built using custom prompt architectures.',
+        description: 'High-concept olfactory visual universe built with custom studio cinematography.',
       },
     ],
   })

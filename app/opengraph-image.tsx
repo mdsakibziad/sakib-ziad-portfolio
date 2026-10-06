@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = 'Sakib Ziad — AI Creative Strategist for Beauty & Skincare Brands'
+export const alt = 'Sakib Ziad — Creative Strategist & Commercial Director for Beauty & Skincare'
 export const size = {
   width: 1200,
   height: 630,
@@ -19,12 +19,10 @@ export default async function Image() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          backgroundColor: '#0B0B0A',
-          backgroundImage:
-            'radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.08) 0%, transparent 60%)',
+          backgroundColor: '#050609',
           padding: '64px 72px',
           fontFamily: 'sans-serif',
-          border: '1px solid rgba(255, 255, 255, 0.12)',
+          border: '1px solid #292929',
         }}
       >
         {/* Top bar */}
@@ -46,9 +44,7 @@ export default async function Image() {
               style={{
                 width: '10px',
                 height: '10px',
-                borderRadius: '50%',
-                backgroundColor: '#ffffff',
-                boxShadow: '0 0 12px rgba(255, 255, 255, 0.8)',
+                backgroundColor: '#f4521c',
               }}
             />
             <span
@@ -56,24 +52,24 @@ export default async function Image() {
                 fontSize: '15px',
                 letterSpacing: '0.25em',
                 textTransform: 'uppercase',
-                color: 'rgba(255, 255, 255, 0.7)',
-                fontWeight: 600,
+                color: '#ece8e1',
+                fontWeight: 700,
               }}
             >
-              Sakib Ziad // AI Creative Strategist
+              Sakib Ziad // Creative Strategist
             </span>
           </div>
 
           <div
             style={{
               padding: '6px 16px',
-              borderRadius: '999px',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              backgroundColor: 'rgba(255, 255, 255, 0.04)',
-              color: 'rgba(255, 255, 255, 0.8)',
+              border: '1px solid #292929',
+              backgroundColor: '#0b0c10',
+              color: '#f4521c',
               fontSize: '13px',
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
+              fontWeight: 600,
             }}
           >
             Beauty & Skincare
@@ -91,25 +87,26 @@ export default async function Image() {
         >
           <h1
             style={{
-              fontSize: '56px',
-              lineHeight: 1.1,
-              color: '#ffffff',
-              fontWeight: 400,
-              letterSpacing: '-0.02em',
+              fontSize: '60px',
+              lineHeight: 1.0,
+              color: '#ece8e1',
+              fontWeight: 800,
+              letterSpacing: '-0.04em',
+              textTransform: 'uppercase',
               margin: 0,
             }}
           >
-            The AI Creative Edge Beauty Brands Have Been Missing.
+            High-Performance Creative Direction For Beauty Brands.
           </h1>
           <p
             style={{
               fontSize: '22px',
               lineHeight: 1.4,
-              color: 'rgba(255, 255, 255, 0.65)',
+              color: '#8a8a8a',
               margin: 0,
             }}
           >
-            Compounding growth through AI-native creative systems and intelligent brand automation.
+            Direct-response creative architecture, sensory hook design, and rapid 72-hour studio production.
           </p>
         </div>
 
@@ -119,7 +116,7 @@ export default async function Image() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+            borderTop: '1px solid #292929',
             paddingTop: '24px',
           }}
         >
@@ -127,7 +124,7 @@ export default async function Image() {
             style={{
               display: 'flex',
               gap: '24px',
-              color: 'rgba(255, 255, 255, 0.5)',
+              color: '#8a8a8a',
               fontSize: '14px',
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
@@ -135,7 +132,7 @@ export default async function Image() {
           >
             <span>Witlyn Founder</span>
             <span>·</span>
-            <span>BSc Artificial Intelligence</span>
+            <span>Commercial Director</span>
             <span>·</span>
             <span>Campaign Systems</span>
           </div>

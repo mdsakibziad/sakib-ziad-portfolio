@@ -555,8 +555,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Cold Frosted Condensation Seam ─────────────────────────────────── */}
-      <CondensationDivider dropletPosition="72%" dropletDelay={6} />
 
       {/* ════════════════════════════════════════════════════════════════════
           STEP 2 · CREDIBILITY & PRODUCTION STANDARD BAR
@@ -729,8 +727,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Cold Frosted Condensation Seam ─────────────────────────────────── */}
-      <CondensationDivider dropletPosition="28%" dropletDelay={11} />
 
       {/* ════════════════════════════════════════════════════════════════════
           STEP 5 · SELECTED WORK (5 FLAGSHIP CASE STUDIES · BEFORE PARTNER!)

@@ -119,14 +119,14 @@ export default function MembershipPage() {
               <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
                 A standing strategic relationship with{' '}
                 <span className="italic font-fraunces text-ivory font-light">
-                  your AI Creative Strategist.
+                  your Creative Strategist.
                 </span>
               </h1>
             </RevealSection>
 
             <RevealSection delay={0.2}>
               <p className="body-editorial text-lg sm:text-xl text-ivory/80 max-w-2xl mb-10">
-                Monthly intelligence, continuous asset drops, and direct advisory access — engineered for beauty brand leaders who refuse to fall behind.
+                Monthly direct-response teardowns, continuous asset frameworks, and direct advisory access — engineered for beauty brand leaders who refuse to fall behind.
               </p>
             </RevealSection>
 

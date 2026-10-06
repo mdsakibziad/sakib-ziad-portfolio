@@ -161,16 +161,16 @@ export default function DigitalProductsPage() {
 
             <RevealSection delay={0.1}>
               <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
-                The AI creative playbooks I wish{' '}
+                Commercial creative playbooks built for{' '}
                 <span className="italic font-fraunces font-light text-zinc-600 dark:text-zinc-300">
-                  existed when I began.
+                  serious brand growth.
                 </span>
               </h1>
             </RevealSection>
 
             <RevealSection delay={0.2}>
               <p className="body-editorial text-lg sm:text-xl text-zinc-700 dark:text-zinc-300 max-w-2xl">
-                Proprietary prompt frameworks, automation blueprints, and creative direction kits distilled directly from active client engagements in beauty and skincare.
+                Proprietary art direction frameworks, sensory hook matrices, and creative direction kits distilled directly from active client engagements in beauty and skincare.
               </p>
             </RevealSection>
           </div>
@@ -318,10 +318,10 @@ export default function DigitalProductsPage() {
             </h2>
             <div className="space-y-4 body-editorial text-base sm:text-lg text-zinc-700 dark:text-zinc-300">
               <p>
-                The internet is saturated with generic "AI prompts" that generate plastic figures on marble floors. Those have zero commercial utility for a serious beauty brand protecting millions in perceived equity.
+                Generic templates and uncalibrated tools fail because they lack category context. Cosmetics sell on tactile nuances—subsurface scattering on skin, accurate formula viscosity, and emotional prestige.
               </p>
               <p>
-                Every framework and agent template in this library is extracted directly from the active production environment of Witlyn. They have generated publication-grade campaign assets, satisfied rigorous packaging designers, and established permanent visual brand systems for innovative cosmetic brands.
+                Every framework and creative system in this library is extracted directly from the active commercial production environment of Witlyn. They have delivered publication-grade campaign assets, satisfied rigorous packaging standards, and established compounding visual authority for leading cosmetic brands.
               </p>
             </div>
           </RevealSection>
