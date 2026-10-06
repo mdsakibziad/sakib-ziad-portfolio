@@ -411,13 +411,18 @@ export default function HomePage() {
         className="relative isolate flex min-h-[100svh] flex-col justify-between overflow-hidden bg-[#050609] text-[#ece8e1] select-none"
         aria-label="Commercial Hero"
       >
-        {/* Background Film Grain Texture & Ambient Radial Depth (Clean Luxury Minimalist Canvas) */}
-        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
-          <div className="absolute inset-0 bg-[#050609]" />
-          {/* Subtle warm ambient radial highlight on right side */}
-          <div className="absolute -right-24 top-1/4 w-[600px] h-[600px] bg-[#f4521c]/[0.04] rounded-full blur-[140px] pointer-events-none" />
-          <div className="absolute inset-0 grain opacity-25" />
-          <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-[#050609] to-transparent" />
+        {/* Background Portrait with exact Selora low-light artistic grade & gradient mask */}
+        <div data-hero-portrait="true" className="absolute inset-0 z-0 will-change-transform pointer-events-none select-none overflow-hidden">
+          <div className="relative overflow-hidden size-full">
+            <img
+              src="/images/sakib-ziad.jpg"
+              alt="Sakib Ziad photographed in low light"
+              className="size-full object-cover object-[64%_20%] md:object-[68%_26%] opacity-70 md:opacity-85 filter grayscale contrast-125"
+            />
+          </div>
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(98deg,#050609_6%,rgba(5,6,9,0.78)_34%,rgba(5,6,9,0.18)_66%,rgba(5,6,9,0.5)_100%)]" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-[56%] bg-gradient-to-t from-[#050609] via-[#050609]/85 to-transparent" />
+          <div aria-hidden="true" className="grain opacity-20 pointer-events-none absolute inset-0 z-[1]" />
         </div>
 
         {/* ── Top Meta Row (Exact Selora Layout) ── */}
@@ -1025,23 +1030,12 @@ export default function HomePage() {
                 <h3 className="font-inter font-black uppercase text-2xl text-[#ece8e1] mb-3 leading-snug">
                   1:1 CREATIVE ADVISORY
                 </h3>
-                <p className="font-inter text-xs text-[#8a8a8a] mb-6 leading-relaxed">
+                <p className="font-inter text-xs text-[#8a8a8a] mb-8 leading-relaxed">
                   Private high-touch counsel covering ad audits, campaign concepting, and rapid 72h commercial pipelines.
                 </p>
                 
-                <div className="space-y-3 pt-6 border-t border-[#292929] mb-8 font-inter text-xs text-[#bdb8b0]">
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-1.5 h-1.5 bg-[#f4521c]" />
-                    <span>Bi-weekly commercial strategy sessions</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-1.5 h-1.5 bg-[#f4521c]" />
-                    <span>Direct async review of all visual and copy hooks</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-1.5 h-1.5 bg-[#f4521c]" />
-                    <span>Strictly capped at 3 concurrent brands</span>
-                  </div>
+                <div className="pt-4 border-t border-[#292929] mb-8 label-mono text-[11px] !text-[#f4521c]">
+                  // STRICTLY CAPPED AT 3 CONCURRENT BRANDS
                 </div>
               </div>
 
@@ -1064,23 +1058,12 @@ export default function HomePage() {
                 <h3 className="font-inter font-black uppercase text-2xl text-[#ece8e1] mb-3 leading-snug">
                   SYSTEMS &amp; PLAYBOOKS
                 </h3>
-                <p className="font-inter text-xs text-[#8a8a8a] mb-6 leading-relaxed">
+                <p className="font-inter text-xs text-[#8a8a8a] mb-8 leading-relaxed">
                   Battle-tested creative frameworks, commercial brief templates, and skincare hook matrices.
                 </p>
 
-                <div className="space-y-3 pt-6 border-t border-[#292929] mb-8 font-inter text-xs text-[#bdb8b0]">
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-1.5 h-1.5 bg-[#f4521c]" />
-                    <span>Commercial creative brief templates</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-1.5 h-1.5 bg-[#f4521c]" />
-                    <span>Skincare direct-response hook matrix</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-1.5 h-1.5 bg-[#f4521c]" />
-                    <span>Immediate access via digital portal</span>
-                  </div>
+                <div className="pt-4 border-t border-[#292929] mb-8 label-mono text-[11px] !text-[#f4521c]">
+                  // INSTANT ACCESS DIGITAL VAULT
                 </div>
               </div>
 
@@ -1103,23 +1086,12 @@ export default function HomePage() {
                 <h3 className="font-inter font-black uppercase text-2xl text-[#ece8e1] mb-3 leading-snug">
                   THE ADVISORY SYNDICATE
                 </h3>
-                <p className="font-inter text-xs text-[#8a8a8a] mb-6 leading-relaxed">
+                <p className="font-inter text-xs text-[#8a8a8a] mb-8 leading-relaxed">
                   Monthly beauty creative strategy dispatches, live campaign teardowns, and direct async feedback.
                 </p>
 
-                <div className="space-y-3 pt-6 border-t border-[#292929] mb-8 font-inter text-xs text-[#bdb8b0]">
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-1.5 h-1.5 bg-[#f4521c]" />
-                    <span>Monthly beauty creative strategy dispatches</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-1.5 h-1.5 bg-[#f4521c]" />
-                    <span>Curated founder roundtables &amp; ad reviews</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-1.5 h-1.5 bg-[#f4521c]" />
-                    <span>Direct async channel access for ad critiques</span>
-                  </div>
+                <div className="pt-4 border-t border-[#292929] mb-8 label-mono text-[11px] !text-[#f4521c]">
+                  // CURATED FOUNDER COHORT
                 </div>
               </div>
 
@@ -1208,23 +1180,11 @@ export default function HomePage() {
                     </Button>
                   </div>
                 ) : (
-                  <form onSubmit={handleDiagnosticSubmit} className="space-y-5">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <form onSubmit={handleDiagnosticSubmit} className="space-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
-                          BRAND NAME *
-                        </label>
-                        <input
-                          required
-                          placeholder="e.g. Solaé Botanicals"
-                          value={diagnosticForm.brandName}
-                          onChange={(e) => setDiagnosticForm({ ...diagnosticForm, brandName: e.target.value })}
-                          className="w-full px-4 py-2.5 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
-                        />
-                      </div>
-                      <div>
-                        <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
-                          WEBSITE URL *
+                          BRAND WEBSITE URL *
                         </label>
                         <input
                           required
@@ -1232,12 +1192,9 @@ export default function HomePage() {
                           placeholder="https://yourbrand.com"
                           value={diagnosticForm.websiteUrl}
                           onChange={(e) => setDiagnosticForm({ ...diagnosticForm, websiteUrl: e.target.value })}
-                          className="w-full px-4 py-2.5 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
+                          className="w-full px-4 py-3 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
                         />
                       </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
                           WORK EMAIL *
@@ -1248,34 +1205,9 @@ export default function HomePage() {
                           placeholder="founder@yourbrand.com"
                           value={diagnosticForm.email}
                           onChange={(e) => setDiagnosticForm({ ...diagnosticForm, email: e.target.value })}
-                          className="w-full px-4 py-2.5 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
+                          className="w-full px-4 py-3 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
                         />
                       </div>
-                      <div>
-                        <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
-                          INSTAGRAM HANDLE
-                        </label>
-                        <input
-                          placeholder="@yourbrand"
-                          value={diagnosticForm.instagramHandle}
-                          onChange={(e) => setDiagnosticForm({ ...diagnosticForm, instagramHandle: e.target.value })}
-                          className="w-full px-4 py-2.5 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
-                        PRIMARY CREATIVE / GROWTH BOTTLENECK *
-                      </label>
-                      <textarea
-                        required
-                        rows={3}
-                        placeholder="What is limiting your creative velocity right now? (e.g. agency turnaround too slow, generic visuals, ad fatigue)"
-                        value={diagnosticForm.growthChallenge}
-                        onChange={(e) => setDiagnosticForm({ ...diagnosticForm, growthChallenge: e.target.value })}
-                        className="w-full p-4 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
-                      />
                     </div>
 
                     <Button

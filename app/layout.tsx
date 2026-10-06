@@ -168,9 +168,6 @@ export default function RootLayout({
             {children}
           </main>
 
-          {/* High-Converting Floating Lead Capture */}
-          <FloatingLeadTrigger />
-
           {/* Site footer */}
           <Footer />
         </>
