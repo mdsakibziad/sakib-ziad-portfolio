@@ -104,16 +104,18 @@ export function Footer() {
           </div>
 
         </div>
+      </div>
 
-        {/* ── Giant Wordmark (Exact Selora 24vw Black Display Characteristic) ── */}
-        <div className="w-full text-center overflow-hidden select-none pointer-events-none border-t border-[#050609]/15 pt-8 sm:pt-12">
-          <p className="font-inter font-black uppercase text-[clamp(3.5rem,15vw,22rem)] leading-[0.76] tracking-[-0.06em] text-[#050609] m-0 p-0 whitespace-nowrap text-center">
-            SAKIB ZIAD
-          </p>
-        </div>
+      {/* ── Colossal Full-Bleed Wordmark (Edge-to-Edge Selora Parity) ── */}
+      <div className="w-full overflow-hidden select-none pointer-events-none border-t border-[#050609]/20 pt-8 sm:pt-14 pb-1">
+        <p className="font-inter font-black uppercase text-[clamp(2.6rem,18.8vw,32rem)] leading-[0.74] tracking-[-0.065em] text-[#050609] m-0 p-0 whitespace-nowrap text-center w-full">
+          SAKIB ZIAD
+        </p>
+      </div>
 
-        {/* ── Bottom Bar (Exact Selora Layout) ── */}
-        <div className="pt-8 sm:pt-10 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] uppercase tracking-wider text-[#050609]/85 font-medium border-t border-[#050609]/20">
+      {/* ── Bottom Bar ── */}
+      <div className="container-luxury pb-8">
+        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] uppercase tracking-wider text-[#050609]/85 font-medium border-t border-[#050609]/20">
           <p>© {CURRENT_YEAR} Sakib Ziad. All work, all rights.</p>
 
           <button
@@ -125,7 +127,6 @@ export function Footer() {
             <span>BACK TO TOP</span>
           </button>
         </div>
-
       </div>
     </footer>
   )

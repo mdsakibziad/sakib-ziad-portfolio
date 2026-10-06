@@ -411,14 +411,18 @@ export default function HomePage() {
         className="relative isolate flex min-h-[100svh] flex-col justify-between overflow-hidden bg-[#050609] text-[#ece8e1] select-none"
         aria-label="Commercial Hero"
       >
-        {/* Background Portrait with dark film grain & gradient mask */}
-        <div className="absolute inset-0 z-0 pointer-events-none select-none">
-          <div
-            className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-luminosity scale-105 filter grayscale contrast-125"
-            style={{ backgroundImage: `url('/images/sakib-ziad.jpg')` }}
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(98deg,#050609_6%,rgba(5,6,9,0.78)_34%,rgba(5,6,9,0.18)_66%,rgba(5,6,9,0.5)_100%)]" />
-          <div className="absolute inset-x-0 bottom-0 h-[56%] bg-gradient-to-t from-[#050609] via-[#050609]/85 to-transparent" />
+        {/* Background Portrait (Shifted to Right Half in High-Fashion Low Light - Exact Selora Placement) */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          <div className="absolute right-0 top-0 w-full md:w-[60%] lg:w-[50%] h-full overflow-hidden">
+            <img
+              src="/images/sakib-ziad.jpg"
+              alt="Sakib Ziad"
+              className="w-full h-full object-cover object-[55%_18%] md:object-[65%_22%] opacity-45 md:opacity-70 filter grayscale contrast-125"
+            />
+          </div>
+          {/* Deep dark gradient protecting the left side headline */}
+          <div className="absolute inset-0 bg-[linear-gradient(98deg,#050609_0%,#050609_42%,rgba(5,6,9,0.85)_65%,rgba(5,6,9,0.4)_85%,rgba(5,6,9,0.6)_100%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-[#050609] via-[#050609]/85 to-transparent" />
           <div className="absolute inset-0 grain opacity-20" />
         </div>
 
@@ -518,7 +522,7 @@ export default function HomePage() {
         <div className="relative z-10 w-full">
           
           <div className="w-full overflow-hidden select-none pointer-events-none px-4 sm:px-8">
-            <p className="block font-inter font-black uppercase text-[clamp(3.5rem,15vw,22rem)] leading-[0.76] text-[#ece8e1] tracking-[-0.06em] whitespace-nowrap text-left m-0 p-0">
+            <p className="block font-inter font-black uppercase text-[clamp(2.4rem,14vw,22rem)] leading-[0.76] text-[#ece8e1] tracking-[-0.06em] whitespace-nowrap text-left m-0 p-0">
               SAKIB ZIAD
             </p>
           </div>
@@ -605,20 +609,36 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════════
           STEP 3 · CATEGORY FRICTION (SELORA EDITORIAL INTRO SPEC)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-[#050609] pt-20 pb-20 border-b border-[#292929]" aria-label="Category Friction">
+      <section className="relative overflow-hidden bg-[#050609] pt-16 pb-24 border-b border-[#292929]" aria-label="Category Friction">
         <div className="container-luxury">
-          {/* Top Label Row */}
+          {/* Top Meta Bar */}
           <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-8">
             <span className="label-mono !text-[#f4521c] flex items-center gap-2">
               <span className="w-2 h-2 bg-[#f4521c]" />
-              COMMERCIAL LEVERAGE
+              RELEASE WITHOUT RESTRAINT
             </span>
-            <span className="label-mono text-[#8a8a8a]">// CATEGORY BOTTLENECK</span>
+            <span className="label-mono text-[#8a8a8a]">// CATEGORY REALITY</span>
           </div>
 
-          {/* Large Split Header */}
-          <div className="my-10">
-            <h2 className="text-right font-inter font-black uppercase text-[clamp(28px,5.8vw,82px)] tracking-[-0.05em] leading-[0.98] text-[#ece8e1]">
+          {/* Centered High-Fashion Study Image Plate (Exact Selora Intro Plate) */}
+          <div className="flex justify-center my-8">
+            <div className="relative overflow-hidden w-full max-w-4xl h-[42vh] md:h-[62vh] border border-[#292929] bg-[#0b0c10]">
+              <img
+                src="/images/solae/editorial/solae-photo-01.jpg"
+                alt="Solaé Clear Serum Sensory Macro Study"
+                className="w-full h-full object-cover object-center filter contrast-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050609]/80 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between label-mono text-[10px] text-[#ece8e1]/80">
+                <span>PLATE — 01 // REFRACTIVE FORMULA CAUSTICS</span>
+                <span className="text-[#f4521c]">STUDIO ARCHIVE</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Colossal Right-Aligned Headline (Exact Selora Editorial Split) */}
+          <div className="mt-14 mb-12">
+            <h2 className="text-right font-inter font-black uppercase text-[clamp(32px,6.5vw,94px)] tracking-[-0.05em] leading-[0.98] text-[#ece8e1]">
               <MaskText
                 align="right"
                 lines={[
@@ -629,10 +649,11 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start my-12">
+          {/* Editorial Problem & Paradigm Comparison Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start my-10">
             <div className="md:col-span-4 space-y-4">
               <p className="label-mono !text-[#f4521c]">// CAT — 1.07 · THE REALITY</p>
-              <p className="font-inter text-base font-bold leading-snug tracking-tight text-[#ece8e1]">
+              <p className="font-inter text-base sm:text-lg font-bold leading-snug tracking-tight text-[#ece8e1]">
                 Ad creative fatigues in 14 days. Legacy agency shoots demand 8 weeks and burn $50k+ in friction overhead.
               </p>
               <p className="font-inter text-xs text-[#8a8a8a] leading-relaxed">
@@ -640,7 +661,11 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="md:col-span-7 md:col-start-6">
+            <div className="md:col-span-8 space-y-6">
+              <p className="font-inter text-lg sm:text-2xl font-bold uppercase tracking-tight text-[#ece8e1] leading-tight border-b border-[#292929] pb-6">
+                A PRACTICE OF SOLVING AD FATIGUE BEFORE IT DRAINS MARGINS. WE ENGINEER STUDIO-GRADE VISUALS DESIGNED TO CONVERT IN 72 HOURS.
+              </p>
+
               <div className="border border-[#292929] bg-[#0b0c10] p-6 sm:p-8 space-y-6">
                 <div className="flex items-center justify-between border-b border-[#292929] pb-4">
                   <span className="label-mono !text-[#ece8e1]">DIRECT PARADIGM COMPARISON</span>
@@ -681,22 +706,19 @@ export default function HomePage() {
             <span className="label-mono text-[#8a8a8a]">05 MODULAR PHASES</span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16">
-            <div className="lg:col-span-8">
-              <h2 className="font-inter font-black uppercase text-[clamp(32px,5.4vw,76px)] tracking-[-0.05em] leading-[0.95] text-[#ece8e1]">
-                <MaskText
-                  lines={[
-                    <span key="1">A PREDICTABLE ENGINE</span>,
-                    <span key="2" className="text-[#f4521c]">FOR COMMERCIAL GROWTH.</span>,
-                  ]}
-                />
-              </h2>
-            </div>
-            <div className="lg:col-span-4">
-              <p className="label-mono text-[#bdb8b0] leading-relaxed">
-                A disciplined methodology moving from forensic friction audits to studio-grade omnichannel deployment.
-              </p>
-            </div>
+          <div className="mb-14">
+            <h2 className="font-inter font-black uppercase text-[clamp(28px,5.2vw,78px)] tracking-[-0.05em] leading-[0.98] text-[#ece8e1]">
+              <MaskText
+                lines={[
+                  <span key="1">A DISCIPLINED METHODOLOGY</span>,
+                  <span key="2">MOVING FROM FORENSIC FRICTION AUDITS</span>,
+                  <span key="3" className="text-[#f4521c]">TO STUDIO-GRADE OMNICHANNEL DEPLOYMENT.</span>,
+                ]}
+              />
+            </h2>
+            <p className="font-inter text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#8a8a8a] max-w-2xl mt-6">
+              Engineered to replace 8-week agency friction with 72-hour omnichannel commercial performance.
+            </p>
           </div>
 
           {/* Selora Process Module Cards Grid */}

@@ -27,23 +27,23 @@ export function MaskText({
         <span key={i} className={`block overflow-hidden ${alignCls} py-[2px]`}>
           <motion.span
             className="block will-change-transform"
-            initial={{ y: '110%', opacity: 0 }}
+            initial={{ y: '100%', opacity: 0 }}
             {...(immediate
               ? {
                   animate: { y: '0%', opacity: 1 },
                   transition: {
-                    duration: 0.85,
+                    duration: 0.8,
                     ease: [0.16, 1, 0.3, 1],
-                    delay: delay + i * 0.12,
+                    delay: delay + i * 0.1,
                   },
                 }
               : {
                   whileInView: { y: '0%', opacity: 1 },
-                  viewport: { once: true, margin: '-40px' },
+                  viewport: { once: true, amount: 0.02 },
                   transition: {
-                    duration: 0.85,
+                    duration: 0.8,
                     ease: [0.16, 1, 0.3, 1],
-                    delay: delay + i * 0.1,
+                    delay: delay + i * 0.08,
                   },
                 })}
           >
