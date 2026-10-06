@@ -1,271 +1,201 @@
 'use client'
 
-import React, { useState, useRef } from 'react'
+import React from 'react'
 import Link from 'next/link'
-import { motion, useInView } from 'framer-motion'
-import {
-  ArrowRight,
-  CheckCircle2,
-  XCircle,
-  Sparkles,
-  Users,
-  Compass,
-  MessageSquare,
-  FileCode,
-  Loader2,
-  CreditCard,
-} from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ApplicationForm } from '@/components/application-form'
 
-const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
-
-function RevealSection({
-  children,
-  delay = 0,
-  className = '',
-}: {
-  children: React.ReactNode
-  delay?: number
-  className?: string
-}) {
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-60px 0px' })
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.85, ease: EASE_LUXURY, delay }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
-
 export default function MembershipPage() {
-  const [subscribing, setSubscribing] = useState(false)
-
-  async function handleSubscribe() {
-    setSubscribing(true)
-    try {
-      const res = await fetch('/api/stripe/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ productId: 'membership', cancelPath: '/membership' }),
-      })
-      const data = await res.json()
-      if (data.url) {
-        window.location.href = data.url
-      } else {
-        alert(data.error || 'Failed to start subscription checkout')
-      }
-    } catch {
-      alert('Network error communicating with payment service')
-    } finally {
-      setSubscribing(false)
-    }
-  }
-
   const benefits = [
     {
-      icon: Compass,
       num: '01',
-      title: 'Monthly Strategy Deep-Dive',
-      body: 'A comprehensive monthly architectural breakdown detailing emerging generative models (Flux, Midjourney, Kling, Sora), commercial prompt shifts, and competitive aesthetics in beauty.',
+      title: 'MONTHLY STRATEGY DEEP-DIVE',
+      body: 'A comprehensive monthly architectural breakdown detailing emerging generative systems, commercial prompt shifts, and competitive aesthetics in beauty.',
     },
     {
-      icon: FileCode,
       num: '02',
-      title: 'Monthly Blueprint & Prompt Drop',
+      title: 'MONTHLY BLUEPRINT & PROMPT DROP',
       body: 'Fresh, production-verified prompt architectures, lighting schemas, and Make.com automation blueprints delivered directly to your member repository every 30 days.',
     },
     {
-      icon: MessageSquare,
       num: '03',
-      title: 'Private Async Slack Access',
+      title: 'DIRECT ASYNC STRATEGIC ADVISORY',
       body: 'Direct access to Sakib Ziad inside a private member channel for fast feedback on prompt tuning, output critique, and tool stack recommendations.',
     },
     {
-      icon: Sparkles,
       num: '04',
-      title: 'Hands-On Tool & Model Audits',
-      body: 'Unbiased, rigorous testing of new AI platforms. We separate enterprise-grade production tools from hype so your brand never wastes budget on toys.',
+      title: 'HANDS-ON TOOL & MODEL AUDITS',
+      body: 'Unbiased, rigorous testing of new commercial AI platforms. We separate enterprise-grade production tools from hype so your brand never wastes budget.',
     },
     {
-      icon: Users,
       num: '05',
-      title: 'Curated Founder Roundtables',
-      body: 'Quarterly closed-door virtual sessions with non-competing beauty, skincare, and wellness operators sharing live metrics, ad tests, and creative strategies.',
+      title: 'CURATED FOUNDER ROUNDTABLES',
+      body: 'Bi-monthly confidential strategy roundtables with non-competing cosmetics and skincare operators sharing live acquisition metrics and performance wins.',
     },
   ]
 
+  const isFor = [
+    'Founders and CMOs building in-house creative capacity and seeking an ongoing strategic compass.',
+    'Marketing teams requiring monthly access to verified prompt blueprints and automation assets.',
+    'Brands that value strategic depth, continuous innovation, and early competitive intelligence.',
+  ]
+
+  const isNotFor = [
+    'Brands looking for complete done-for-you production (For full production retainers, see Witlyn).',
+    'Casual spectators looking for generic marketing discussions or community small-talk.',
+    'Teams expecting immediate overnight results without committing to rigorous internal practice.',
+  ]
+
   return (
-    <div className="bg-background text-ivory min-h-screen selection:bg-white selection:text-black pt-36 sm:pt-40">
+    <div className="bg-[#050609] text-[#ece8e1] min-h-screen selection:bg-[#f4521c] selection:text-[#050609] pt-28 sm:pt-36">
+
+      {/* ── Top Meta Bar ── */}
+      <div className="container-luxury border-b border-[#292929] pb-4 mb-12">
+        <div className="flex items-center justify-between">
+          <span className="label-mono !text-[#f4521c] flex items-center gap-2">
+            <span className="w-2 h-2 bg-[#f4521c]" />
+            IDX/05 — MEMBERSHIP
+          </span>
+          <span className="label-mono text-[#8a8a8a]">
+            LIMITED ACCESS · PRIVATE SYNDICATE
+          </span>
+        </div>
+      </div>
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="section-pad border-b border-border" aria-label="Membership Hero">
-        <div className="container-luxury">
-          <div className="max-w-4xl">
-            <RevealSection>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full liquid-glass-pill text-[11px] uppercase tracking-[0.2em] text-muted-light mb-8">
-                Private Advisory Syndicate
-              </div>
-            </RevealSection>
+      <section className="container-luxury pb-16 border-b border-[#292929]" aria-label="Membership Hero">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+          <div className="lg:col-span-8 space-y-6">
+            <h1 className="font-inter font-black uppercase text-[clamp(2.5rem,6.2vw,5.5rem)] leading-[0.92] tracking-[-0.05em] text-[#ece8e1]">
+              A STANDING PARTNERSHIP <br />
+              <span className="text-[#f4521c]">WITH YOUR CREATIVE</span> <br />
+              STRATEGIST.
+            </h1>
 
-            <RevealSection delay={0.1}>
-              <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
-                A standing strategic relationship with{' '}
-                <span className="italic font-fraunces text-ivory font-light">
-                  your Creative Strategist.
-                </span>
-              </h1>
-            </RevealSection>
+            <p className="font-inter text-base sm:text-lg md:text-xl font-medium text-[#bdb8b0] max-w-2xl leading-relaxed tracking-tight">
+              Monthly strategy, prompt blueprints, tool intelligence, and direct async access — designed for beauty founders building internal creative leverage for the long game.
+            </p>
 
-            <RevealSection delay={0.2}>
-              <p className="body-editorial text-lg sm:text-xl text-ivory/80 max-w-2xl mb-10">
-                Monthly direct-response teardowns, continuous asset frameworks, and direct advisory access — engineered for beauty brand leaders who refuse to fall behind.
-              </p>
-            </RevealSection>
-
-            <RevealSection delay={0.3}>
-              <Button asChild variant="gold" size="lg">
-                <a href="#waitlist-form" className="flex items-center gap-2">
-                  <span>Apply for Syndicate Membership</span>
+            <div className="pt-2 flex flex-wrap items-center gap-4">
+              <Button asChild className="btn-acid h-12 px-8 rounded-none">
+                <a href="#apply" className="flex items-center gap-2">
+                  <span>APPLY FOR MEMBERSHIP</span>
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </Button>
-            </RevealSection>
-          </div>
-        </div>
-      </section>
-
-      {/* ── What You Receive Monthly ───────────────────────────────────────── */}
-      <section className="section-pad bg-surface/30" aria-label="What You Receive">
-        <div className="container-luxury">
-          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
-            <p className="eyebrow-luxury mb-4">Membership Architecture</p>
-            <h2 className="heading-section">What Members Receive Monthly</h2>
-            <p className="body-muted">Not an inactive Discord. An active strategic advantage.</p>
-          </RevealSection>
-
-          <div className="relative">
-            {/* Ambient luminous glow behind membership cards */}
-            <div
-              className="absolute -top-12 left-1/4 w-96 h-96 rounded-full pointer-events-none -z-0 opacity-40 dark:opacity-20"
-              style={{
-                background: 'radial-gradient(circle, rgba(230, 200, 160, 0.45) 0%, rgba(200, 180, 240, 0.25) 50%, transparent 70%)',
-                filter: 'blur(70px)',
-              }}
-              aria-hidden="true"
-            />
-            <div
-              className="absolute -bottom-10 right-1/4 w-96 h-96 rounded-full pointer-events-none -z-0 opacity-30 dark:opacity-15"
-              style={{
-                background: 'radial-gradient(circle, rgba(180, 210, 240, 0.4) 0%, rgba(240, 190, 180, 0.2) 50%, transparent 70%)',
-                filter: 'blur(80px)',
-              }}
-              aria-hidden="true"
-            />
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
-              {benefits.map((b, i) => (
-                <RevealSection key={b.num} delay={i * 0.08}>
-                  <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full hover:border-border-strong">
-                    <div>
-                      <div className="flex items-center justify-between mb-6">
-                        <span className="font-fraunces text-2xl text-muted/40 dark:text-white/40">{b.num}</span>
-                        <b.icon className="w-5 h-5 text-muted-light" />
-                      </div>
-                      <h3 className="heading-card text-2xl mb-4 leading-snug">{b.title}</h3>
-                      <p className="body-muted text-sm leading-relaxed">{b.body}</p>
-                    </div>
-                  </div>
-                </RevealSection>
-              ))}
-
-              {/* Final Highlight Card */}
-              <RevealSection delay={0.4}>
-                <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full">
-                  <div>
-                    <span className="eyebrow-luxury block mb-4">Compounding Signal</span>
-                    <h3 className="heading-card text-2xl mb-4">Ongoing Category Moat</h3>
-                    <p className="body-muted text-sm leading-relaxed">
-                      AI models upgrade every 90 days. As a member, your team never wastes months figuring out new tools alone. We digest the technical chaos and hand you the commercial playbook.
-                    </p>
-                  </div>
-                </div>
-              </RevealSection>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ── Investment Block ───────────────────────────────────────────────── */}
-      <section className="section-pad border-t border-border/80" aria-label="Investment">
-        <div className="container-luxury max-w-2xl mx-auto text-center">
-          <RevealSection>
-            <p className="eyebrow-luxury mb-4">Syndicate Allocation</p>
-            <h2 className="heading-section mb-6">Membership Investment</h2>
-            <div className="card-surface p-10 sm:p-12">
-              <span className="eyebrow-luxury block mb-2">Founding Member Allocation</span>
-              {/* TODO: confirm membership pricing ($290/month) and billing cadence with owner before launch */}
-              <p className="font-fraunces text-4xl sm:text-5xl text-ivory font-light mb-4">
-                $290 <span className="text-xl text-muted-light font-inter">/ month</span>
-              </p>
-              <p className="body-muted text-sm max-w-md mx-auto mb-8">
-                Billed monthly. Cancel anytime without penalty. Membership is strictly capped to protect access depth and direct attention.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button
-                  variant="gold"
-                  size="lg"
-                  disabled={subscribing}
-                  onClick={handleSubscribe}
-                  className="w-full sm:w-auto flex items-center justify-center gap-2"
-                >
-                  {subscribing ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Redirecting to Stripe...</span>
-                    </>
-                  ) : (
-                    <>
-                      <CreditCard className="w-4 h-4 mr-1" />
-                      <span>Join Syndicate ($290/mo)</span>
-                      <ArrowRight className="w-4 h-4 ml-1" />
-                    </>
-                  )}
-                </Button>
-                <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-                  <a href="#waitlist-form">Submit Application Instead</a>
-                </Button>
-              </div>
-            </div>
-          </RevealSection>
-        </div>
-      </section>
-
-      {/* ── Waitlist & Application Form ────────────────────────────────────── */}
-      <section id="waitlist-form" className="section-pad bg-surface/40 border-t border-border/80" aria-label="Waitlist Form">
-        <div className="container-luxury max-w-2xl mx-auto">
-          <RevealSection className="text-center mb-12">
-            <p className="eyebrow-luxury mb-3">Admission Request</p>
-            <h2 className="heading-section text-3xl sm:text-4xl mb-4">Apply for Syndicate Access</h2>
-            <p className="body-muted text-sm">
-              We review each applicant to ensure no direct brand conflicts within cohorts.
+          <div className="lg:col-span-4 border-t lg:border-t-0 lg:border-l border-[#292929] pt-6 lg:pt-0 lg:pl-8 space-y-4">
+            <span className="label-mono text-[#8a8a8a] block">// MEMBERSHIP ALLOCATION</span>
+            <p className="label-mono text-xs text-[#bdb8b0] leading-relaxed">
+              Deliberately limited to 15 active brand members to ensure high-bandwidth feedback, direct strategic attention, and candid peer exchange.
             </p>
-          </RevealSection>
+            <div className="pt-2">
+              <span className="label-mono !text-[#f4521c] text-xs">
+                MAX 15 BRANDS CONCURRENTLY
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <RevealSection delay={0.15}>
+      {/* ── Benefits Modules ──────────────────────────────────────────────── */}
+      <section className="py-20 border-b border-[#292929]" aria-label="Membership Modules">
+        <div className="container-luxury">
+          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">
+            <span className="label-mono !text-[#f4521c]">MEMBERSHIP SYSTEM</span>
+            <span className="label-mono text-[#8a8a8a]">05 CORE DELIVERABLES</span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {benefits.map((b) => (
+              <div
+                key={b.num}
+                className="border border-[#292929] bg-[#0b0c10] p-8 flex flex-col justify-between hover:border-[#f4521c] transition-colors"
+              >
+                <div>
+                  <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-6">
+                    <span className="label-mono !text-[#f4521c]">MODULE — {b.num}</span>
+                    <span className="label-mono text-[#8a8a8a]">MONTHLY</span>
+                  </div>
+
+                  <h3 className="font-inter font-black uppercase text-xl text-[#ece8e1] mb-4 leading-snug">
+                    {b.title}
+                  </h3>
+                  <p className="font-inter text-xs text-[#8a8a8a] leading-relaxed">
+                    {b.body}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Who It Is For vs Not For ───────────────────────────────────────── */}
+      <section className="py-20 border-b border-[#292929] bg-[#0b0c10]" aria-label="Mutual Fit">
+        <div className="container-luxury">
+          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">
+            <span className="label-mono !text-[#f4521c]">MUTUAL FIT</span>
+            <span className="label-mono text-[#8a8a8a]">QUALIFIED CRITERIA</span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="border border-[#292929] bg-[#050609] p-8 space-y-6">
+              <span className="label-mono !text-[#ece8e1] border-b border-[#292929] pb-4 block">
+                01 / QUALIFIED CANDIDATES
+              </span>
+              <ul className="space-y-4">
+                {isFor.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <span className="label-mono text-[#f4521c] text-xs mt-0.5">[{idx + 1}]</span>
+                    <p className="font-inter text-xs sm:text-sm text-[#ece8e1] leading-relaxed">{item}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="border border-[#292929] bg-[#050609] p-8 space-y-6">
+              <span className="label-mono text-[#8a8a8a] border-b border-[#292929] pb-4 block">
+                02 / NON-FIT CRITERIA
+              </span>
+              <ul className="space-y-4">
+                {isNotFor.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <span className="label-mono text-[#8a8a8a] text-xs mt-0.5">[X]</span>
+                    <p className="font-inter text-xs sm:text-sm text-[#8a8a8a] leading-relaxed">{item}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Application Form ────────────────────────────────────────────────── */}
+      <section id="apply" className="py-24" aria-label="Membership Application">
+        <div className="container-luxury max-w-2xl mx-auto">
+          <div className="text-center mb-12 space-y-3">
+            <span className="label-mono !text-[#f4521c] block">ADMISSIONS</span>
+            <h2 className="font-inter font-black uppercase text-3xl sm:text-4xl text-[#ece8e1]">
+              JOIN THE ADVISORY WAITLIST
+            </h2>
+            <p className="font-inter text-xs sm:text-sm text-[#8a8a8a] max-w-md mx-auto">
+              Membership intake opens each quarter. Submit your details below to be notified when the next opening is allocated.
+            </p>
+          </div>
+
+          <div className="border border-[#292929] bg-[#0b0c10] p-8">
             <ApplicationForm
               defaultInterest="membership"
               pageSource="membership"
-              submitText="Submit Syndicate Application"
+              title="MEMBERSHIP ADMISSION FORM"
+              subtitle="All details reviewed personally by Sakib Ziad."
+              submitText="SUBMIT ADMISSION REQUEST →"
             />
-          </RevealSection>
+          </div>
         </div>
       </section>
 

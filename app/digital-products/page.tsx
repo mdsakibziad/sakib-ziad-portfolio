@@ -1,45 +1,9 @@
 'use client'
 
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
-import { motion, useInView } from 'framer-motion'
-import {
-  CheckCircle2,
-  ArrowRight,
-  BookOpen,
-  Cpu,
-  Compass,
-  Loader2,
-} from 'lucide-react'
+import { ArrowRight, BookOpen, Cpu, Compass } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-
-const EASE_LUXURY = [0.16, 1, 0.3, 1] as const
-
-function RevealSection({
-  children,
-  delay = 0,
-  className = '',
-}: {
-  children: React.ReactNode
-  delay?: number
-  className?: string
-}) {
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-60px 0px' })
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.85, ease: EASE_LUXURY, delay }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
 
 export default function DigitalProductsPage() {
   const [newsletterEmail, setNewsletterEmail] = useState('')
@@ -83,282 +47,223 @@ export default function DigitalProductsPage() {
 
   const products = [
     {
-      // TODO: confirm product name/contents/price ($249) with owner before official public cart launch
       id: 'brief-system',
-      name: 'The Beauty Brand AI Creative Brief & Prompt Blueprint',
-      tag: 'Framework & Blueprint',
-      badge: 'Immediate Download',
+      num: '01',
+      name: 'THE BEAUTY BRAND CREATIVE BRIEF & PROMPT BLUEPRINT',
+      tag: 'FRAMEWORK & BLUEPRINT',
+      badge: 'IMMEDIATE DOWNLOAD',
       price: '$249',
       schemaCode: 'SYS.01 // PROMPT ARCHITECTURE',
       icon: BookOpen,
-      // Flagged claim pending owner verification: 40+ tested blueprints
       metric: 'CURATED BLUEPRINTS',
       description:
-        'The exact prompt architecture, visual reference taxonomies, and art direction frameworks used to concept publication-grade beauty campaigns across Midjourney and Flux.',
+        'The exact prompt architecture, visual reference taxonomies, and art direction frameworks used to concept publication-grade beauty campaigns across Midjourney and modern virtual studios.',
       deliverables: [
-        // Flagged claim pending owner verification: 40+ tested prompt blueprints
         'Curated Prompt Blueprints: Botanical caustics, skin subsurface scattering & glass refraction',
         'Art Direction Taxonomy Guide: Photographic lenses, aperture codes & luxury lighting schemas',
-        'Notion Creative Brief Hub: Structured briefing workflow for marketing teams',
-        'Commercial Guardrail Checklist: Ensuring brand consistency and avoiding artifacting',
+        'Notion Creative Brief Hub: Structured briefing workflow for high-velocity marketing teams',
+        'Commercial Guardrail Checklist: Ensuring brand consistency and eliminating artifacting',
       ],
-      cta: 'Enquire About This Kit',
+      cta: 'ENQUIRE ABOUT THIS KIT',
     },
     {
-      // TODO: confirm product name/contents/price ($495) with owner before official public cart launch
       id: 'agent-kit',
-      name: 'Autonomous AI Content Engine & Agent Blueprint',
-      tag: 'Automation Architecture',
-      badge: 'Turnkey System',
+      num: '02',
+      name: 'AUTONOMOUS CONTENT ENGINE & ASSET PIPELINE',
+      tag: 'AUTOMATION ARCHITECTURE',
+      badge: 'TURNKEY SYSTEM',
       price: '$495',
       schemaCode: 'AUT.02 // PIPELINE ORCHESTRATION',
       icon: Cpu,
       metric: 'TURNKEY WORKFLOW',
       description:
-        'A comprehensive automation blueprint that maps customer review angles and search intent directly into synthesized visual briefs and multi-platform content pipelines.',
+        'A comprehensive automation blueprint that maps consumer review sentiment and friction angles directly into synthesized visual briefs and multi-platform content pipelines.',
       deliverables: [
         'Make.com & n8n Scenario Blueprints: Pre-configured API connections for automated workflows',
         'Tone-of-Voice Prompt Engine: Calibrated for prestige skincare copy & social scripts',
         'Dynamic Asset Storage & Tagging Pipeline: Automatic multi-aspect ratio rendering',
-        'Complete Architecture Walkthrough: 45-minute step-by-step setup tutorial',
+        'Complete Architecture Walkthrough: 45-minute step-by-step setup video tutorial',
       ],
-      cta: 'Enquire About This Kit',
+      cta: 'ENQUIRE ABOUT THIS KIT',
     },
     {
-      // TODO: confirm cohort start dates and pricing with owner before official launch
       id: 'masterclass',
-      name: 'Executive Masterclass: In-House Generative Direction',
-      tag: 'Cohort Masterclass',
-      badge: 'Cohort Waitlist',
-      price: 'Waitlist Application',
+      num: '03',
+      name: 'EXECUTIVE MASTERCLASS: IN-HOUSE COMMERCIAL DIRECTION',
+      tag: 'COHORT MASTERCLASS',
+      badge: 'COHORT WAITLIST',
+      price: 'WAITLIST APPLICATION',
       schemaCode: 'EXE.03 // PRIVATE COHORT',
       icon: Compass,
       metric: '4-WEEK INTENSIVE',
       description:
-        'A 4-week private intensive for founders and creative directors learning how to install and direct internal generative pipelines without losing artistic prestige.',
+        'A 4-week private intensive for founders and creative directors learning how to install and direct internal generative pipelines without compromising artistic prestige.',
       deliverables: [
-        'Live weekly strategy & prompt architecture workshops with Sakib Ziad',
+        'Live weekly strategy & prompt architecture workshops directly with Sakib Ziad',
         'Custom model fine-tuning and brand LoRA training walkthroughs',
-        'Private peer group with beauty & cosmetic brand operators',
+        'Private peer group with cosmetics & skincare brand operators',
         'Lifetime access to template updates and model upgrade blueprints',
       ],
-      cta: 'Join Cohort Waitlist',
+      cta: 'JOIN COHORT WAITLIST',
     },
   ]
 
   return (
-    <div className="bg-background text-ivory min-h-screen selection:bg-[#141416] selection:text-white dark:selection:bg-white dark:selection:text-black pt-36 sm:pt-40">
+    <div className="bg-[#050609] text-[#ece8e1] min-h-screen selection:bg-[#f4521c] selection:text-[#050609] pt-28 sm:pt-36">
+
+      {/* ── Top Meta Bar ── */}
+      <div className="container-luxury border-b border-[#292929] pb-4 mb-12">
+        <div className="flex items-center justify-between">
+          <span className="label-mono !text-[#f4521c] flex items-center gap-2">
+            <span className="w-2 h-2 bg-[#f4521c]" />
+            IDX/04 — PLAYBOOKS
+          </span>
+          <span className="label-mono text-[#8a8a8a]">
+            PRODUCTIZED ARCHITECTURE
+          </span>
+        </div>
+      </div>
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="section-pad border-b border-black/[0.08] dark:border-white/[0.08]" aria-label="Digital Products Hero">
-        <div className="container-luxury">
-          <div className="max-w-4xl">
-            <RevealSection>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full liquid-glass-pill text-[11px] uppercase tracking-[0.2em] text-zinc-700 dark:text-white/80 mb-8">
-                Productized Intelligence
-              </div>
-            </RevealSection>
+      <section className="container-luxury pb-16 border-b border-[#292929]" aria-label="Digital Products Hero">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+          <div className="lg:col-span-8 space-y-6">
+            <h1 className="font-inter font-black uppercase text-[clamp(2.5rem,6.2vw,5.5rem)] leading-[0.92] tracking-[-0.05em] text-[#ece8e1]">
+              COMMERCIAL CREATIVE <br />
+              <span className="text-[#f4521c]">PLAYBOOKS FOR</span> <br />
+              BEAUTY &amp; SKINCARE.
+            </h1>
 
-            <RevealSection delay={0.1}>
-              <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
-                Commercial creative playbooks built for{' '}
-                <span className="italic font-fraunces font-light text-zinc-600 dark:text-zinc-300">
-                  serious brand growth.
-                </span>
-              </h1>
-            </RevealSection>
+            <p className="font-inter text-base sm:text-lg md:text-xl font-medium text-[#bdb8b0] max-w-2xl leading-relaxed tracking-tight">
+              Proprietary art direction frameworks, sensory hook matrices, and creative direction kits distilled directly from active client engagements in beauty and skincare.
+            </p>
+          </div>
 
-            <RevealSection delay={0.2}>
-              <p className="body-editorial text-lg sm:text-xl text-zinc-700 dark:text-zinc-300 max-w-2xl">
-                Proprietary art direction frameworks, sensory hook matrices, and creative direction kits distilled directly from active client engagements in beauty and skincare.
-              </p>
-            </RevealSection>
+          <div className="lg:col-span-4 border-t lg:border-t-0 lg:border-l border-[#292929] pt-6 lg:pt-0 lg:pl-8 space-y-4">
+            <span className="label-mono text-[#8a8a8a] block">// TACTICAL BLUEPRINTS</span>
+            <p className="label-mono text-xs text-[#bdb8b0] leading-relaxed">
+              Every playbook is field-tested on real consumer ad spend across Meta and TikTok, preserving luxury brand equity while maximizing thumb-stop rate.
+            </p>
+            <div className="pt-2">
+              <span className="label-mono !text-[#f4521c] text-xs">
+                EXTRACTED FROM REAL STUDIO ENGAGEMENTS
+              </span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── Product Grid ─────────────────────────────────────────────────── */}
-      <section className="section-pad bg-surface/30" aria-label="Products Catalog">
+      <section className="py-20 border-b border-[#292929]" aria-label="Products Catalog">
         <div className="container-luxury">
-          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
-            <p className="eyebrow-luxury mb-4 text-zinc-500 dark:text-zinc-400">Tactical Blueprints</p>
-            <h2 className="heading-section text-[#141416] dark:text-white">Deployable Systems for Immediate Leverage</h2>
-          </RevealSection>
+          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">
+            <span className="label-mono !text-[#f4521c]">AVAILABLE BLUEPRINTS</span>
+            <span className="label-mono text-[#8a8a8a]">03 DEPLOYABLE KITS</span>
+          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
-            {products.map((product, idx) => (
-              <RevealSection key={product.id} delay={idx * 0.1}>
-                <div className="card-surface overflow-hidden flex flex-col justify-between h-full group">
-                  
-                  {/* Abstract Monochrome Liquid-Glass Graphic Treatment */}
-                  <div className="relative aspect-[16/10] overflow-hidden border-b border-black/10 dark:border-white/10 bg-[#FAF9F6] dark:bg-[#0C0C0C] p-6 flex flex-col justify-between group-hover:border-black/20 dark:group-hover:border-white/20 transition-colors">
-                    {/* Precision dot matrix overlay */}
-                    <div 
-                      className="absolute inset-0 opacity-[0.06] pointer-events-none"
-                      style={{
-                        backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
-                        backgroundSize: '20px 20px'
-                      }}
-                    />
-
-                    {/* Ambient white/black radial glow */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-black/[0.02] dark:bg-white/[0.04] blur-3xl pointer-events-none group-hover:bg-black/[0.04] dark:group-hover:bg-white/[0.08] transition-all duration-700" />
-
-                    {/* Concentric circles */}
-                    <div className="absolute -right-8 -bottom-8 w-44 h-44 rounded-full border border-black/[0.04] dark:border-white/[0.06] pointer-events-none" />
-                    <div className="absolute -right-2 -bottom-2 w-32 h-32 rounded-full border border-black/[0.06] dark:border-white/[0.1] pointer-events-none" />
-
-                    {/* Top Row: System Code & Badge */}
-                    <div className="relative z-10 flex items-center justify-between w-full">
-                      <span className="font-mono text-[10px] tracking-[0.2em] text-zinc-500 dark:text-white/50 uppercase">
-                        {product.schemaCode}
-                      </span>
-                      <span className="px-3 py-1 rounded-full text-[10px] font-inter uppercase tracking-wider bg-black/[0.04] dark:bg-white/10 backdrop-blur-md text-zinc-900 dark:text-white border border-black/10 dark:border-white/15">
-                        {product.badge}
-                      </span>
-                    </div>
-
-                    {/* Central Emblem */}
-                    <div className="relative z-10 my-auto flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-2xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/15 flex items-center justify-center text-zinc-900 dark:text-white shadow-[0_2px_12px_rgba(0,0,0,0.04)] dark:shadow-[0_0_24px_rgba(255,255,255,0.06)] group-hover:border-black/25 dark:group-hover:border-white/30 group-hover:scale-105 transition-all duration-500">
-                        <product.icon className="w-6 h-6 stroke-[1.5]" />
-                      </div>
-                      <div>
-                        <span className="font-fraunces text-xs uppercase tracking-[0.2em] text-zinc-500 dark:text-white/40 block">Digital Architecture</span>
-                        <span className="font-inter text-xs text-zinc-800 dark:text-zinc-300 font-medium">{product.tag}</span>
-                      </div>
-                    </div>
-
-                    {/* Bottom Bar */}
-                    <div className="relative z-10 flex items-center justify-between text-[11px] text-zinc-500 dark:text-zinc-400 font-mono pt-3 border-t border-black/10 dark:border-white/10">
-                      <span className="text-zinc-700 dark:text-zinc-300 tracking-wider">{product.metric}</span>
-                      <span className="text-zinc-900 dark:text-white flex items-center gap-1.5 tracking-wider">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-white inline-block animate-pulse" />
-                        READY
-                      </span>
-                    </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {products.map((product) => (
+              <div
+                key={product.id}
+                className="border border-[#292929] bg-[#0b0c10] p-8 flex flex-col justify-between hover:border-[#f4521c] transition-colors group"
+              >
+                <div>
+                  <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-6">
+                    <span className="label-mono !text-[#f4521c]">BLUEPRINT — {product.num}</span>
+                    <span className="label-mono text-[#8a8a8a]">{product.badge}</span>
                   </div>
 
-                  {/* Card Content */}
-                  <div className="p-6 sm:p-8 flex flex-col justify-between flex-1">
-                    <div>
-                      <h3 className="heading-card text-xl sm:text-2xl mb-3 text-[#141416] dark:text-white">
-                        {product.name}
-                      </h3>
-                      <p className="body-muted text-sm text-zinc-600 dark:text-zinc-400 mb-6 leading-relaxed">
-                        {product.description}
-                      </p>
+                  <span className="label-mono text-[10px] text-[#8a8a8a] block mb-2">{product.schemaCode}</span>
+                  <h3 className="font-inter font-black uppercase text-xl text-[#ece8e1] mb-4 group-hover:text-[#f4521c] transition-colors leading-snug">
+                    {product.name}
+                  </h3>
+                  <p className="font-inter text-xs text-[#8a8a8a] mb-6 leading-relaxed">
+                    {product.description}
+                  </p>
 
-                      <div className="space-y-3 pt-6 border-t border-black/[0.08] dark:border-white/10 mb-8">
-                        <p className="eyebrow-luxury text-[10px] text-zinc-500 dark:text-zinc-400">What's Inside</p>
-                        <ul className="space-y-2.5 body-editorial text-xs sm:text-sm text-zinc-700 dark:text-zinc-300">
-                          {product.deliverables.map((item) => (
-                            <li key={item} className="flex items-start gap-2.5">
-                              <CheckCircle2 className="w-4 h-4 text-zinc-700 dark:text-white/70 shrink-0 mt-0.5" />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
+                  <div className="space-y-3 pt-6 border-t border-[#292929] mb-8">
+                    <span className="label-mono text-[10px] text-[#8a8a8a] block mb-2">SYSTEM COMPONENTS</span>
+                    {product.deliverables.map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-2.5">
+                        <span className="w-1 h-1 bg-[#f4521c] mt-2 shrink-0" />
+                        <span className="font-inter text-xs text-[#bdb8b0] leading-relaxed">{item}</span>
                       </div>
-                    </div>
-
-                    <div className="pt-6 border-t border-black/[0.08] dark:border-white/10 flex items-center justify-between gap-4">
-                      <div>
-                        <span className="eyebrow-luxury text-[10px] text-zinc-500 dark:text-zinc-400 block">Tier</span>
-                        <p className="font-fraunces text-xl sm:text-2xl text-[#141416] dark:text-white font-light">
-                          {product.price}
-                        </p>
-                      </div>
-
-                      {product.id === 'masterclass' ? (
-                        <Button asChild variant="outline" size="md">
-                          <Link href="/contact" className="flex items-center gap-2">
-                            <span>{product.cta}</span>
-                            <ArrowRight className="w-3.5 h-3.5" />
-                          </Link>
-                        </Button>
-                      ) : (
-                        <Button
-                          variant="default"
-                          size="md"
-                          disabled={checkoutLoading === product.id}
-                          onClick={() => handleCheckout(product.id)}
-                          className="flex items-center gap-2"
-                        >
-                          {checkoutLoading === product.id ? (
-                            <>
-                              <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                              <span>Redirecting...</span>
-                            </>
-                          ) : (
-                            <>
-                              <span>Purchase Blueprint</span>
-                              <ArrowRight className="w-3.5 h-3.5" />
-                            </>
-                          )}
-                        </Button>
-                      )}
-                    </div>
+                    ))}
                   </div>
-
                 </div>
-              </RevealSection>
+
+                <div className="pt-6 border-t border-[#292929] space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="label-mono text-[10px] text-[#8a8a8a]">TIER PRICING</span>
+                    <span className="font-inter font-black text-lg text-[#ece8e1]">{product.price}</span>
+                  </div>
+
+                  <Button asChild className="btn-acid h-11 w-full rounded-none">
+                    <Link href="/contact" className="flex items-center justify-center gap-2">
+                      <span>{product.cta}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Why These Exist Editorial Section ─────────────────────────────── */}
-      <section className="section-pad border-t border-black/[0.08] dark:border-white/[0.08]" aria-label="Philosophy">
-        <div className="container-luxury max-w-4xl mx-auto">
-          <RevealSection className="card-surface p-8 sm:p-12 md:p-14">
-            <span className="eyebrow-luxury mb-3 block text-zinc-500 dark:text-zinc-400">Field Intelligence</span>
-            <h2 className="heading-section text-3xl sm:text-4xl mb-6 text-[#141416] dark:text-white">
-              Extracted from real campaign rooms — never theoretical.
-            </h2>
-            <div className="space-y-4 body-editorial text-base sm:text-lg text-zinc-700 dark:text-zinc-300">
+      {/* ── Why These Exist ──────────────────────────────────────────────── */}
+      <section className="py-20 border-b border-[#292929] bg-[#0b0c10]" aria-label="Rationale">
+        <div className="container-luxury">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-6 space-y-4">
+              <span className="label-mono !text-[#f4521c] block">// RATIONALE</span>
+              <h2 className="font-inter font-black uppercase text-2xl sm:text-4xl text-[#ece8e1] leading-tight">
+                BUILT FROM THE STRATEGY ROOM, NOT ACADEMIC THEORY.
+              </h2>
+            </div>
+            <div className="lg:col-span-6 space-y-4 font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed">
               <p>
-                Generic templates and uncalibrated tools fail because they lack category context. Cosmetics sell on tactile nuances—subsurface scattering on skin, accurate formula viscosity, and emotional prestige.
+                Most creative playbooks are compiled by generalists recycling identical AI prompts across unrelated niches.
               </p>
               <p>
-                Every framework and creative system in this library is extracted directly from the active commercial production environment of Witlyn. They have delivered publication-grade campaign assets, satisfied rigorous packaging standards, and established compounding visual authority for leading cosmetic brands.
+                These blueprints are extracted directly from active production sprints at Witlyn—specifically calibrated to the physical realities of cosmetic formulations, skin-tone lighting dynamics, and conversion-engineered video hooks.
               </p>
             </div>
-          </RevealSection>
+          </div>
         </div>
       </section>
 
-      {/* ── Newsletter Dispatch ────────────────────────────────────────────── */}
-      <section className="py-20 border-t border-black/[0.08] dark:border-white/[0.08] bg-surface/50 text-center" aria-label="Drop Alerts">
-        <div className="container-luxury max-w-xl mx-auto">
-          <RevealSection>
-            <p className="eyebrow-luxury mb-3 text-zinc-500 dark:text-zinc-400">Release Dispatches</p>
-            <h2 className="heading-section text-3xl sm:text-4xl mb-4 text-[#141416] dark:text-white">Be First When New Blueprints Drop</h2>
-            <p className="body-muted mb-8 text-sm text-zinc-600 dark:text-zinc-400">
-              New prompt blueprints and agent architectures are released on a rolling basis. Subscribers receive early access and launch pricing.
-            </p>
+      {/* ── Newsletter CTA ────────────────────────────────────────────────── */}
+      <section className="py-24 bg-[#050609]" aria-label="Playbook Updates">
+        <div className="container-luxury max-w-2xl mx-auto text-center space-y-6">
+          <span className="label-mono !text-[#f4521c] block">// RELEASE RADAR</span>
+          <h2 className="font-inter font-black uppercase text-3xl sm:text-4xl text-[#ece8e1]">
+            NEW PLAYBOOKS DROP PERIODICALLY.
+          </h2>
+          <p className="font-inter text-xs sm:text-sm text-[#8a8a8a]">
+            Receive immediate notifications when new cosmetic prompt blueprints, automation workflows, or private masterclasses open.
+          </p>
 
-            {newsletterSuccess ? (
-              <div className="card-surface p-6 inline-flex items-center gap-3 text-zinc-900 dark:text-white text-sm">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-white shrink-0" />
-                <span>Confirmed. You'll receive early access to new framework drops.</span>
-              </div>
-            ) : (
-              <form onSubmit={handleNewsletter} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <Input
-                  type="email"
-                  required
-                  placeholder="Enter your work email"
-                  value={newsletterEmail}
-                  onChange={(e) => setNewsletterEmail(e.target.value)}
-                  className="bg-white dark:bg-surface border-black/15 dark:border-white/10 text-zinc-900 dark:text-white placeholder:text-zinc-400 dark:placeholder:text-zinc-500 text-sm focus:border-black/40 dark:focus:border-white/40"
-                />
-                <Button type="submit" variant="default" size="md" className="shrink-0">
-                  Notify Me
-                </Button>
-              </form>
-            )}
-          </RevealSection>
+          {newsletterSuccess ? (
+            <div className="border border-[#f4521c] bg-[#0b0c10] p-6 text-center space-y-2">
+              <span className="label-mono !text-[#f4521c]">RADAR REGISTERED</span>
+              <p className="font-inter text-xs text-[#ece8e1]">You will receive upcoming blueprint releases directly in your inbox.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleNewsletter} className="flex flex-col sm:flex-row gap-3 pt-2">
+              <input
+                type="email"
+                required
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
+                placeholder="founder@yourbrand.com"
+                className="flex-1 px-4 py-3 bg-[#0b0c10] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
+              />
+              <Button type="submit" className="btn-acid h-12 px-8 rounded-none">
+                SUBSCRIBE →
+              </Button>
+            </form>
+          )}
         </div>
       </section>
 

@@ -3,8 +3,6 @@
 import React, { useState } from 'react'
 import { CheckCircle2, Calendar, ArrowRight, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
 
 export type AreaOfInterest =
   | 'consulting'
@@ -30,10 +28,10 @@ interface ApplicationFormProps {
 
 const INTEREST_OPTIONS: { value: AreaOfInterest; label: string; submissionType: 'consulting' | 'membership' | 'general' }[] = [
   { value: 'consulting', label: '1:1 Strategic Advisory & Direction', submissionType: 'consulting' },
-  { value: 'automation', label: 'Autonomous AI Brand Systems & Automation', submissionType: 'consulting' },
+  { value: 'automation', label: 'Autonomous Brand Systems & Asset Pipeline', submissionType: 'consulting' },
   { value: 'membership', label: 'Private Syndicate Membership', submissionType: 'membership' },
-  { value: 'digital-products', label: 'Digital Products & Prompt Frameworks', submissionType: 'general' },
-  { value: 'general', label: 'General Strategic Inquiry / Speaking', submissionType: 'general' },
+  { value: 'digital-products', label: 'Digital Products & Blueprint Frameworks', submissionType: 'general' },
+  { value: 'general', label: 'General Strategic Inquiry', submissionType: 'general' },
 ]
 
 export function ApplicationForm({
@@ -41,7 +39,7 @@ export function ApplicationForm({
   pageSource = 'contact',
   title,
   subtitle,
-  submitText = 'Submit Strategic Application',
+  submitText = 'SUBMIT APPLICATION →',
   className = '',
 }: ApplicationFormProps) {
   const [formData, setFormData] = useState({
@@ -106,36 +104,36 @@ export function ApplicationForm({
 
   if (isSubmitted) {
     return (
-      <div className={`card-surface p-8 sm:p-12 text-center animate-fade-in ${className}`}>
-        <div className="w-14 h-14 rounded-full bg-surface-elevated border border-border-strong flex items-center justify-center text-ivory mx-auto mb-6">
-          <CheckCircle2 className="w-7 h-7 text-emerald-500" />
+      <div className={`border border-[#292929] bg-[#050609] p-8 sm:p-12 text-center space-y-6 ${className}`}>
+        <div className="w-12 h-12 border border-[#f4521c] text-[#f4521c] flex items-center justify-center mx-auto">
+          <CheckCircle2 className="w-6 h-6" />
         </div>
-        <h3 className="heading-card text-2xl sm:text-3xl mb-3 text-ivory">
-          Application Received
+        <h3 className="font-inter font-black uppercase text-2xl sm:text-3xl text-[#ece8e1]">
+          APPLICATION TRANSMITTED
         </h3>
-        <p className="body-editorial text-sm sm:text-base text-muted-light max-w-md mx-auto mb-8 leading-relaxed">
+        <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] max-w-md mx-auto leading-relaxed">
           Thank you for detailing your brand. Sakib reviews all inquiries personally and will respond via email within 48 business hours.
         </p>
 
-        {/* Fast-Track Direct Meeting Window */}
-        <div className="card-surface p-6 text-left max-w-md mx-auto">
-          <div className="flex items-center gap-2.5 text-ivory mb-2">
-            <Calendar className="w-4 h-4 text-muted" />
-            <span className="font-fraunces text-base text-ivory">Direct Meeting Access</span>
+        {/* Meeting Window */}
+        <div className="border border-[#292929] bg-[#0b0c10] p-6 text-left max-w-md mx-auto space-y-3">
+          <div className="flex items-center justify-between border-b border-[#292929] pb-3">
+            <span className="label-mono !text-[#f4521c]">DIRECT CALENDAR ACCESS</span>
+            <Calendar className="w-4 h-4 text-[#8a8a8a]" />
           </div>
-          <p className="body-muted text-xs mb-4 leading-relaxed">
-            If your timing is urgent and you wish to reserve a strategic window directly on the calendar:
+          <p className="font-inter text-xs text-[#8a8a8a] leading-relaxed">
+            If your timeline is urgent and you wish to reserve a strategic window directly on the calendar:
           </p>
           {calUrl && !calUrl.includes('PLACEHOLDER') ? (
-            <Button asChild variant="default" size="md" className="w-full">
+            <Button asChild className="btn-acid h-11 w-full rounded-none">
               <a href={calUrl} target="_blank" rel="noopener noreferrer">
-                Open Strategy Calendar via Cal.com
+                OPEN STRATEGY CALENDAR VIA CAL.COM →
               </a>
             </Button>
           ) : (
-            <Button asChild variant="default" size="md" className="w-full">
+            <Button asChild className="btn-acid h-11 w-full rounded-none">
               <a href="mailto:Sakib@witlyn.com?subject=Priority%20Strategic%20Application">
-                Email Sakib Directly (Sakib@witlyn.com)
+                EMAIL SAKIB DIRECTLY (SAKIB@WITLYN.COM) →
               </a>
             </Button>
           )}
@@ -145,136 +143,139 @@ export function ApplicationForm({
   }
 
   return (
-    <div className={`card-surface p-6 sm:p-10 md:p-12 ${className}`}>
+    <div className={`space-y-6 ${className}`}>
       {title && (
-        <div className="mb-8">
-          <h3 className="heading-card text-2xl sm:text-3xl mb-2">{title}</h3>
-          {subtitle && <p className="body-muted text-sm">{subtitle}</p>}
+        <div className="border-b border-[#292929] pb-4">
+          <span className="label-mono !text-[#f4521c] block mb-1">INTAKE FORM</span>
+          <h3 className="font-inter font-black uppercase text-2xl text-[#ece8e1]">{title}</h3>
+          {subtitle && <p className="font-inter text-xs text-[#8a8a8a] mt-1">{subtitle}</p>}
         </div>
       )}
 
       {errorMessage && (
-        <div className="mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-500 dark:text-red-300 text-sm font-inter">
+        <div className="p-4 border border-[#f4521c] bg-[#f4521c]/10 text-[#f4521c] label-mono text-xs">
           {errorMessage}
         </div>
       )}
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
-            <label className="block text-xs uppercase tracking-wider text-muted font-inter mb-2">
-              Full Name *
+            <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
+              FULL NAME *
             </label>
-            <Input
+            <input
               required
               placeholder="e.g. Julian Vance"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              className="w-full px-4 py-2.5 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
             />
           </div>
           <div>
-            <label className="block text-xs uppercase tracking-wider text-muted font-inter mb-2">
-              Work Email *
+            <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
+              WORK EMAIL *
             </label>
-            <Input
+            <input
               required
               type="email"
               placeholder="julian@brand.com"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="w-full px-4 py-2.5 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
-            <label className="block text-xs uppercase tracking-wider text-muted font-inter mb-2">
-              Brand / Company Name *
+            <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
+              BRAND / COMPANY NAME *
             </label>
-            <Input
+            <input
               required
               placeholder="e.g. Solaé Botanicals"
               value={formData.brand}
               onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
+              className="w-full px-4 py-2.5 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
             />
           </div>
           <div>
-            <label className="block text-xs uppercase tracking-wider text-muted font-inter mb-2">
-              Website or Storefront URL *
+            <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
+              WEBSITE OR STOREFRONT URL *
             </label>
-            <Input
+            <input
               required
-              type="url"
               placeholder="https://yourbrand.com"
               value={formData.website}
               onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+              className="w-full px-4 py-2.5 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
-            <label className="block text-xs uppercase tracking-wider text-muted font-inter mb-2">
-              Area of Interest
+            <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
+              AREA OF INTEREST
             </label>
             <select
-              className="w-full h-11 px-4 rounded-xl bg-surface border border-border text-ivory font-inter text-sm focus:outline-none focus:border-border-strong focus:ring-1 focus:ring-border-strong transition-colors"
+              className="w-full h-11 px-4 bg-[#050609] border border-[#292929] text-[#ece8e1] font-inter text-sm focus:outline-none focus:border-[#f4521c] rounded-none"
               value={formData.interest}
               onChange={(e) => setFormData({ ...formData, interest: e.target.value as AreaOfInterest })}
             >
               {INTEREST_OPTIONS.map((opt) => (
-                <option key={opt.value} value={opt.value} className="bg-surface text-ivory">
+                <option key={opt.value} value={opt.value} className="bg-[#050609] text-[#ece8e1]">
                   {opt.label}
                 </option>
               ))}
             </select>
           </div>
           <div>
-            <label className="block text-xs uppercase tracking-wider text-muted font-inter mb-2">
-              Implementation Timeline
+            <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
+              IMPLEMENTATION TIMELINE
             </label>
             <select
-              className="w-full h-11 px-4 rounded-xl bg-surface border border-border text-ivory font-inter text-sm focus:outline-none focus:border-border-strong focus:ring-1 focus:ring-border-strong transition-colors"
+              className="w-full h-11 px-4 bg-[#050609] border border-[#292929] text-[#ece8e1] font-inter text-sm focus:outline-none focus:border-[#f4521c] rounded-none"
               value={formData.timeline}
               onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
             >
-              <option value="Immediately (Next 2–4 weeks)" className="bg-surface text-ivory">Immediately (Next 2–4 weeks)</option>
-              <option value="Within 1–2 months" className="bg-surface text-ivory">Within 1–2 months</option>
-              <option value="1–3 months out" className="bg-surface text-ivory">1–3 months out</option>
-              <option value="Exploring & Planning" className="bg-surface text-ivory">Exploring & Planning</option>
+              <option value="Immediately (Next 2–4 weeks)" className="bg-[#050609] text-[#ece8e1]">Immediately (Next 2–4 weeks)</option>
+              <option value="Within 1–2 months" className="bg-[#050609] text-[#ece8e1]">Within 1–2 months</option>
+              <option value="1–3 months out" className="bg-[#050609] text-[#ece8e1]">1–3 months out</option>
+              <option value="Exploring & Planning" className="bg-[#050609] text-[#ece8e1]">Exploring & Planning</option>
             </select>
           </div>
         </div>
 
         <div>
-          <label className="block text-xs uppercase tracking-wider text-muted font-inter mb-2">
-            Tell us about your brand and what you wish to achieve *
+          <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
+            TELL US ABOUT YOUR BRAND AND PRIMARY BOTTLENECK *
           </label>
-          <Textarea
+          <textarea
             required
             rows={4}
-            placeholder="What is your biggest creative or automation bottleneck, current monthly volume, and ideal outcome?"
+            placeholder="What is your biggest creative friction or CPA bottleneck, current ad spend, and target outcome?"
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            className="w-full p-4 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
           />
         </div>
 
         <Button
           type="submit"
-          variant="default"
-          size="lg"
-          className="w-full group/btn"
           disabled={isSubmitting}
+          className="w-full h-12 btn-acid rounded-none uppercase font-inter font-bold tracking-wider"
         >
           {isSubmitting ? (
             <span className="flex items-center gap-2">
               <Loader2 className="w-4 h-4 animate-spin" />
-              <span>Transmitting Application...</span>
+              <span>TRANSMITTING APPLICATION...</span>
             </span>
           ) : (
             <span className="flex items-center gap-2">
               <span>{submitText}</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+              <ArrowRight className="w-4 h-4" />
             </span>
           )}
         </Button>

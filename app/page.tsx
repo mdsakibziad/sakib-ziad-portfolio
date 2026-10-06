@@ -559,44 +559,40 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════════
           STEP 2 · CREDIBILITY & PRODUCTION STANDARD BAR
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="py-12 border-y border-black/[0.08] dark:border-white/[0.08] bg-black/[0.015] dark:bg-white/[0.015]">
+      <section className="py-8 border-y border-[#292929] bg-[#050609]">
         <div className="container-luxury">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 items-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 items-center">
             
-            <div className="text-center md:border-r border-black/[0.08] dark:border-white/[0.08] last:border-none p-2">
-              <span className="font-fraunces text-2xl sm:text-3xl text-zinc-950 dark:text-white font-light block mb-1">
-                Witlyn Standard
-              </span>
-              <p className="text-xs font-inter uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
-                Commercial Studio Grade
+            <div className="md:border-r border-[#292929] md:pr-6 space-y-1">
+              <span className="label-mono text-[#8a8a8a] block">001 // WITLYN STANDARD</span>
+              <p className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
+                STUDIO GRADE
               </p>
+              <span className="label-mono !text-[#f4521c] text-[10px] block">COMMERCIAL STANDARD</span>
             </div>
 
-            <div className="text-center md:border-r border-black/[0.08] dark:border-white/[0.08] last:border-none p-2">
-              <span className="font-fraunces text-2xl sm:text-3xl text-zinc-950 dark:text-white font-light block mb-1">
-                100% Specialized
-              </span>
-              <p className="text-xs font-inter uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
-                Beauty & Skincare Only
+            <div className="md:border-r border-[#292929] md:px-6 space-y-1">
+              <span className="label-mono text-[#8a8a8a] block">002 // SPECIALIZATION</span>
+              <p className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
+                BEAUTY ONLY
               </p>
+              <span className="label-mono !text-[#f4521c] text-[10px] block">100% COSMETICS</span>
             </div>
 
-            <div className="text-center md:border-r border-black/[0.08] dark:border-white/[0.08] last:border-none p-2">
-              <span className="font-fraunces text-2xl sm:text-3xl text-zinc-950 dark:text-white font-light block mb-1">
-                130+ Deliverables
-              </span>
-              <p className="text-xs font-inter uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
-                Master Campaign Assets
+            <div className="md:border-r border-[#292929] md:px-6 space-y-1">
+              <span className="label-mono text-[#8a8a8a] block">003 // PORTFOLIO ASSETS</span>
+              <p className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
+                135+ ASSETS
               </p>
+              <span className="label-mono !text-[#f4521c] text-[10px] block">MASTER CAMPAIGN VAULT</span>
             </div>
 
-            <div className="text-center p-2">
-              <span className="font-fraunces text-2xl sm:text-3xl text-zinc-950 dark:text-white font-light block mb-1">
-                72 Hours
-              </span>
-              <p className="text-xs font-inter uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
-                Rapid Creative Turnaround
+            <div className="md:pl-6 space-y-1">
+              <span className="label-mono text-[#8a8a8a] block">004 // EXECUTION SPEED</span>
+              <p className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
+                72 HOURS
               </p>
+              <span className="label-mono !text-[#f4521c] text-[10px] block">RAPID TURNAROUND</span>
             </div>
 
           </div>
@@ -606,21 +602,23 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════════
           STEP 3 · CATEGORY FRICTION (SELORA EDITORIAL INTRO SPEC)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-[#050609] pt-24 pb-20 border-b border-[#292929]" aria-label="Category Friction">
+      <section className="relative overflow-hidden bg-[#050609] pt-20 pb-20 border-b border-[#292929]" aria-label="Category Friction">
         <div className="container-luxury">
           {/* Top Label Row */}
           <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-8">
-            <span className="label-mono !text-[#f4521c]">COMMERCIAL LEVERAGE</span>
-            <span className="label-mono">// CATEGORY BOTTLENECK</span>
+            <span className="label-mono !text-[#f4521c] flex items-center gap-2">
+              <span className="w-2 h-2 bg-[#f4521c]" />
+              COMMERCIAL LEVERAGE
+            </span>
+            <span className="label-mono text-[#8a8a8a]">// CATEGORY BOTTLENECK</span>
           </div>
 
           {/* Large Split Header */}
-          <div className="my-12">
-            <MaskText
-              align="right"
-              lines={['TRADITIONAL SHOOTS ARE SLOW.', 'COMMERCIAL CREATIVE CANNOT WAIT.']}
-              className="text-[clamp(28px,5.8vw,82px)] font-black uppercase tracking-[-0.05em] leading-[0.98] text-[#ece8e1]"
-            />
+          <div className="my-10">
+            <h2 className="text-right font-inter font-black uppercase text-[clamp(28px,5.8vw,82px)] tracking-[-0.05em] leading-[0.98] text-[#ece8e1]">
+              <span className="block overflow-hidden"><span className="block">TRADITIONAL SHOOTS ARE SLOW.</span></span>
+              <span className="block overflow-hidden"><span className="block text-[#f4521c]">COMMERCIAL CREATIVE CANNOT WAIT.</span></span>
+            </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start my-12">
@@ -668,17 +666,19 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-[#050609] py-24 border-b border-[#292929]" aria-label="Strategic System">
         <div className="container-luxury">
           <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">
-            <span className="label-mono !text-[#f4521c]">SYSTEM ARCHITECTURE</span>
-            <span className="label-mono">05 MODULAR PHASES</span>
+            <span className="label-mono !text-[#f4521c] flex items-center gap-2">
+              <span className="w-2 h-2 bg-[#f4521c]" />
+              SYSTEM ARCHITECTURE
+            </span>
+            <span className="label-mono text-[#8a8a8a]">05 MODULAR PHASES</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16">
             <div className="lg:col-span-8">
-              <MaskText
-                align="left"
-                lines={['A PREDICTABLE ENGINE', 'FOR COMMERCIAL GROWTH.']}
-                className="text-[clamp(32px,5.4vw,76px)] font-black uppercase tracking-[-0.05em] leading-[0.95] text-[#ece8e1]"
-              />
+              <h2 className="font-inter font-black uppercase text-[clamp(32px,5.4vw,76px)] tracking-[-0.05em] leading-[0.95] text-[#ece8e1]">
+                <span className="block overflow-hidden"><span className="block">A PREDICTABLE ENGINE</span></span>
+                <span className="block overflow-hidden"><span className="block text-[#f4521c]">FOR COMMERCIAL GROWTH.</span></span>
+              </h2>
             </div>
             <div className="lg:col-span-4">
               <p className="label-mono text-[#bdb8b0] leading-relaxed">
@@ -730,99 +730,110 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════════
           STEP 5 · SELECTED WORK (5 FLAGSHIP CASE STUDIES · BEFORE PARTNER!)
       ════════════════════════════════════════════════════════════════════ */}
-      <section id="selected-work" className="section-pad relative overflow-hidden bg-[#F7F6F2] dark:bg-[#0E0E0D] border-t border-black/[0.08] dark:border-white/[0.08]" aria-label="Selected Work">
-        <div className="container-luxury relative z-10">
+      <section id="selected-work" className="py-24 bg-[#050609] border-b border-[#292929]" aria-label="Selected Work">
+        <div className="container-luxury">
           
-          <RevealSection className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16 border-b border-black/[0.08] dark:border-white/[0.08] pb-8">
-            <div>
-              <p className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 mb-3">Field Proof · Spec Commercials</p>
-              <h2 className="heading-section text-3xl sm:text-4xl lg:text-5xl text-[#141416] dark:text-white">Selected Campaign Systems</h2>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400 font-light mt-2">
-                Five category-defining skincare and beauty campaigns engineered for high conversion and brand prestige.
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16 border-b border-[#292929] pb-8">
+            <div className="space-y-3">
+              <span className="label-mono !text-[#f4521c] flex items-center gap-2">
+                <span className="w-2 h-2 bg-[#f4521c]" />
+                FIELD PROOF · 05 FLAGSHIP VAULTS
+              </span>
+              <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl text-[#ece8e1] leading-tight">
+                SELECTED CAMPAIGN SYSTEMS
+              </h2>
+              <p className="font-inter text-xs sm:text-sm text-[#8a8a8a] max-w-xl">
+                Five category-defining skincare and beauty campaigns engineered for high conversion and luxury prestige.
               </p>
             </div>
-            <Button asChild variant="outline" size="sm">
+            <Button asChild variant="outline" className="h-11 px-6 rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
               <Link href="/work" className="flex items-center gap-2">
-                <span>View Full Campaign Archive</span>
+                <span>VIEW COMPLETE ARCHIVE</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </Button>
-          </RevealSection>
+          </div>
 
           {/* 5 Flagship Case Studies */}
-          <div className="space-y-28">
+          <div className="space-y-32">
             {caseStudies.map((study, idx) => (
-              <RevealSection key={study.brand} delay={0.1}>
+              <div key={study.brand} className="pt-8 border-t border-[#292929] first:border-none first:pt-0">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
                   
                   {/* Left Column (5 Cols): Hero Product + 1 Short Sentence + Strategist Rationale */}
                   <div className={`lg:col-span-5 flex flex-col justify-between ${idx % 2 === 1 ? 'order-1 lg:order-2' : ''}`}>
-                    <div>
-                      <div className="flex items-center gap-3 mb-3">
-                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-black/[0.05] dark:bg-white/10 text-zinc-800 dark:text-zinc-200">
-                          Case Study {study.num}
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between border-b border-[#292929] pb-3">
+                        <span className="label-mono !text-[#f4521c]">
+                          CASE STUDY {study.num} // WITLYN VAULT
+                        </span>
+                        <span className="label-mono text-[#8a8a8a]">
+                          STUDIO GRADE
                         </span>
                       </div>
 
-                      <h3 className="heading-card text-3xl sm:text-4xl text-[#141416] dark:text-white mb-2">
-                        {study.brand}
-                      </h3>
-                      <p className="font-fraunces text-lg text-zinc-800 dark:text-zinc-200 mb-3 italic font-light">
-                        {study.tagline}
-                      </p>
+                      <div>
+                        <h3 className="font-inter font-black uppercase text-3xl sm:text-4xl text-[#ece8e1] hover:text-[#f4521c] transition-colors mb-1">
+                          <Link href={study.link}>{study.brand}</Link>
+                        </h3>
+                        <p className="label-mono text-xs text-[#bdb8b0]">
+                          {study.tagline}
+                        </p>
+                      </div>
 
                       {/* 1 Short Sentence Summary */}
-                      <p className="font-inter text-sm sm:text-base font-medium text-zinc-900 dark:text-white mb-6 pb-4 border-b border-black/[0.08] dark:border-white/[0.08]">
+                      <p className="font-inter text-xs sm:text-sm font-semibold text-[#ece8e1] leading-relaxed">
                         {study.oneLiner}
                       </p>
 
                       {/* Creative Strategist Rationale Card */}
-                      <div className="p-5 rounded-2xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 space-y-3.5 mb-6 text-xs text-zinc-700 dark:text-zinc-300 font-light">
+                      <div className="border border-[#292929] bg-[#0b0c10] p-5 space-y-3">
                         <div>
-                          <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-900 dark:text-white font-semibold block mb-1">
-                            Direction Strategy
+                          <span className="label-mono text-[10px] text-[#8a8a8a] block mb-1">
+                            01 // DIRECTION STRATEGY
                           </span>
-                          <p>{study.strategistThinking.whyChosen}</p>
+                          <p className="font-inter text-xs text-[#bdb8b0] leading-relaxed">{study.strategistThinking.whyChosen}</p>
                         </div>
-                        <div>
-                          <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-900 dark:text-white font-semibold block mb-1">
-                            Primary Hook Angle
+                        <div className="pt-2 border-t border-[#292929]">
+                          <span className="label-mono text-[10px] text-[#f4521c] block mb-1">
+                            02 // PRIMARY HOOK ANGLE
                           </span>
-                          <p className="font-medium text-zinc-900 dark:text-white">{study.strategistThinking.hookAngle}</p>
+                          <p className="font-inter text-xs text-[#ece8e1] font-bold">{study.strategistThinking.hookAngle}</p>
                         </div>
-                        <div>
-                          <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-900 dark:text-white font-semibold block mb-1">
-                            Commercial Advantage
+                        <div className="pt-2 border-t border-[#292929]">
+                          <span className="label-mono text-[10px] text-[#8a8a8a] block mb-1">
+                            03 // COMMERCIAL ADVANTAGE
                           </span>
-                          <p>{study.strategistThinking.commercialBenefit}</p>
+                          <p className="font-inter text-xs text-[#bdb8b0] leading-relaxed">{study.strategistThinking.commercialBenefit}</p>
                         </div>
                       </div>
 
-                      <div className="text-xs font-mono text-zinc-500 mb-6">
+                      <div className="label-mono text-[10px] text-[#8a8a8a]">
                         {study.deliverables}
                       </div>
                     </div>
 
-                    <Link
-                      href={study.link}
-                      className="inline-flex items-center gap-2 self-start text-xs font-inter uppercase tracking-[0.16em] text-zinc-950 dark:text-white font-semibold hover:underline group/link"
-                    >
-                      <span>Explore {study.brand} Campaign Vault</span>
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-                    </Link>
+                    <div className="pt-4">
+                      <Button asChild className="btn-acid h-11 w-full rounded-none">
+                        <Link href={study.link} className="flex items-center justify-between px-2">
+                          <span>EXPLORE {study.brand} CAMPAIGN VAULT</span>
+                          <ArrowRight className="w-4 h-4" />
+                        </Link>
+                      </Button>
+                    </div>
                   </div>
 
                   {/* Right Column (7 Cols): Split Preview of Hero Product + Video Highlight */}
                   <div className={`lg:col-span-7 grid grid-cols-1 sm:grid-cols-12 gap-4 ${idx % 2 === 1 ? 'order-2 lg:order-1' : ''}`}>
                     {/* Primary Hero Still with Selora Split-Shutter Reveal */}
-                    <div className="sm:col-span-7 group">
+                    <div className="sm:col-span-7 group border border-[#292929] bg-[#0b0c10] p-2">
                       <SplitRevealImage
                         src={study.heroImage}
                         alt={`${study.brand} campaign visual directed by Sakib Ziad`}
                         aspect="aspect-[4/5]"
-                        className="border border-[#292929]"
+                        className="w-full"
                       />
-                      <div className="mt-2 flex items-center justify-between label-mono text-[10px]">
+                      <div className="mt-2 flex items-center justify-between label-mono text-[10px] px-1">
                         <span className="text-[#ece8e1] group-hover:text-[#f4521c] transition-colors">
                           {study.brand} // HERO PLATE
                         </span>
@@ -831,11 +842,13 @@ export default function HomePage() {
                     </div>
 
                     {/* Motion Deliverable Preview with Audio Controls */}
-                    <HomepageVideoPlayer src={study.previewVideo} brand={study.brand} />
+                    <div className="sm:col-span-5 border border-[#292929] bg-[#0b0c10] p-2">
+                      <HomepageVideoPlayer src={study.previewVideo} brand={study.brand} />
+                    </div>
                   </div>
 
                 </div>
-              </RevealSection>
+              </div>
             ))}
           </div>
 
@@ -902,60 +915,64 @@ export default function HomePage() {
       <ChannelMultiplication />
 
       {/* ════════════════════════════════════════════════════════════════════
-          STEP 7 · FOUNDER PHILOSOPHY & ART DIRECTION STANDARDS
+          STEP 8 · FOUNDER PHILOSOPHY & ART DIRECTION STANDARDS
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad bg-background border-t border-black/[0.08] dark:border-white/[0.08]" aria-label="Founder Philosophy">
+      <section className="py-20 bg-[#050609] border-t border-[#292929]" aria-label="Founder Philosophy">
         <div className="container-luxury">
+          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-12">
+            <span className="label-mono !text-[#f4521c] flex items-center gap-2">
+              <span className="w-2 h-2 bg-[#f4521c]" />
+              IDX/08 — PHILOSOPHY
+            </span>
+            <span className="label-mono text-[#8a8a8a]">
+              COMMERCIAL ART DIRECTION
+            </span>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
-            {/* Left: Bleed Portrait Editorial Photo */}
+            {/* Left: Bleed Portrait Photo with Shutter Reveal */}
             <div className="lg:col-span-5">
-              <RevealSection>
-                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-black/10 dark:border-white/20 shadow-2xl group">
-                  <Image
-                    src="/images/sakib-ziad.jpg"
-                    alt="Sakib Ziad — Creative Strategist & Commercial Director"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 40vw"
-                    className="object-cover object-[50%_22%] scale-105 transition-transform duration-700 ease-luxury group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
-                  <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-black/60 backdrop-blur-md border border-white/20 shadow-lg">
-                    <p className="font-fraunces text-2xl text-white">Sakib Ziad</p>
-                    <p className="font-inter text-xs uppercase tracking-wider text-zinc-300 font-medium">
-                      Founder of Witlyn · Creative Strategist
-                    </p>
-                  </div>
+              <div className="border border-[#292929] bg-[#0b0c10] p-2">
+                <SplitRevealImage
+                  src="/images/sakib-ziad.jpg"
+                  alt="Sakib Ziad — Creative Strategist & Commercial Director"
+                  aspect="aspect-[4/5]"
+                  className="w-full"
+                />
+                <div className="flex items-center justify-between pt-3 px-2 label-mono text-[10px] text-[#8a8a8a]">
+                  <span className="text-[#ece8e1]">SAKIB ZIAD</span>
+                  <span className="text-[#f4521c]">FOUNDER // WITLYN</span>
                 </div>
-              </RevealSection>
+              </div>
             </div>
 
             {/* Right: Editorial Pull-Quote & Narrative */}
             <div className="lg:col-span-7 flex flex-col gap-6">
-              <RevealSection>
-                <span className="eyebrow-luxury text-zinc-600 dark:text-zinc-400">Founder Philosophy</span>
-                <h2 className="font-fraunces text-3xl sm:text-4xl lg:text-5xl text-[#141416] dark:text-white font-light italic my-4 leading-tight">
-                  “Creative direction is not decoration. It is commercial leverage.”
+              <div className="space-y-4">
+                <span className="label-mono !text-[#f4521c] block">DIRECTOR MANIFESTO</span>
+                <h2 className="font-inter font-black uppercase text-2xl sm:text-4xl lg:text-5xl text-[#ece8e1] leading-tight">
+                  “CREATIVE DIRECTION IS NOT DECORATION. IT IS COMMERCIAL LEVERAGE.”
                 </h2>
-              </RevealSection>
+              </div>
 
-              <RevealSection delay={0.1} className="space-y-4 body-editorial text-base sm:text-lg text-zinc-700 dark:text-zinc-300 font-light">
+              <div className="space-y-4 font-inter text-sm sm:text-base text-[#bdb8b0] leading-relaxed">
                 <p>
                   With an academic background in computational systems and an obsession for prestige cosmetics aesthetics, I founded Witlyn to prove that modern digital production could match and exceed traditional film sets in emotional depth and conversion velocity.
                 </p>
                 <p>
                   Through this advisory practice, I partner directly with founders and CMOs to build and install high-performing creative architecture—transforming erratic marketing campaigns into predictable, compounding commercial growth.
                 </p>
-              </RevealSection>
+              </div>
 
-              <RevealSection delay={0.2} className="pt-2">
-                <Button asChild variant="outline" size="md">
+              <div className="pt-2">
+                <Button asChild variant="outline" className="h-11 px-6 rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
                   <Link href="/about" className="flex items-center gap-2">
-                    <span>Read Full Founder Story</span>
+                    <span>READ FULL FOUNDER STORY</span>
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </Button>
-              </RevealSection>
+              </div>
             </div>
 
           </div>
@@ -963,298 +980,309 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          STEP 8 · THREE WAYS TO PARTNER (THE ENGAGEMENT HUB)
+          STEP 9 · THREE WAYS TO PARTNER (THE ENGAGEMENT HUB)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad relative overflow-hidden border-t border-black/[0.08] dark:border-white/[0.08] bg-[#F7F6F2] dark:bg-[#0A0A0A]" aria-label="Offerings">
-        <div className="container-luxury relative z-10">
-          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
-            <p className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 mb-3">Engagement Hub</p>
-            <h2 className="heading-section text-3xl sm:text-4xl text-[#141416] dark:text-white">Three Ways to Partner</h2>
-            <p className="body-muted text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+      <section className="py-24 border-t border-[#292929] bg-[#0b0c10]" aria-label="Offerings">
+        <div className="container-luxury">
+          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-12">
+            <span className="label-mono !text-[#f4521c] flex items-center gap-2">
+              <span className="w-2 h-2 bg-[#f4521c]" />
+              IDX/09 — ENGAGEMENT
+            </span>
+            <span className="label-mono text-[#8a8a8a]">
+              THREE PATHS TO PARTNERSHIP
+            </span>
+          </div>
+
+          <div className="max-w-2xl mb-14 space-y-3">
+            <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl text-[#ece8e1]">
+              THREE WAYS TO PARTNER
+            </h2>
+            <p className="font-inter text-xs sm:text-sm text-[#8a8a8a]">
               Structured for hands-on 1:1 counsel, self-serve playbooks, or ongoing strategic syndicate access.
             </p>
-          </RevealSection>
+          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
             
-            {/* Card 1: Consulting / Advisory (Flagship) */}
-            <RevealSection delay={0.1}>
-              <TiltCard className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full relative ring-1 ring-black/10 dark:ring-white/20">
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-black/[0.06] dark:bg-white/10 border border-black/15 dark:border-white/20 text-zinc-900 dark:text-white">
-                      By Application Only
-                    </span>
-                    <span className="text-xs font-mono font-semibold tracking-wider text-zinc-600 dark:text-zinc-300">FLAGSHIP</span>
-                  </div>
-
-                  <h3 className="heading-card text-2xl mb-3 text-[#141416] dark:text-white">1:1 Creative Advisory</h3>
-                  <p className="body-muted text-sm mb-6 leading-relaxed text-zinc-600 dark:text-zinc-400">
-                    Private executive direction covering creative audits, high-converting campaign concepts, and rapid commercial production systems for scaling beauty brands.
-                  </p>
-                  
-                  <div className="space-y-2.5 pt-4 border-t border-black/[0.08] dark:border-white/[0.08] mb-8 text-xs text-zinc-700 dark:text-zinc-300 font-light">
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white" />
-                      <span>Bi-weekly commercial strategy sessions</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white" />
-                      <span>Direct async review of all visual and copy hooks</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white" />
-                      <span>Strictly capped at 3 concurrent brands</span>
-                    </div>
-                  </div>
+            {/* Card 1: Consulting / Advisory */}
+            <div className="border border-[#292929] bg-[#050609] p-8 flex flex-col justify-between hover:border-[#f4521c] transition-colors">
+              <div>
+                <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-6">
+                  <span className="label-mono !text-[#f4521c]">FLAGSHIP // 01</span>
+                  <span className="label-mono text-[#8a8a8a]">APPLICATION ONLY</span>
                 </div>
 
-                <Link
-                  href="/consulting"
-                  className="inline-flex items-center justify-center gap-2 w-full h-12 px-6 rounded-full text-[#F7F6F2] bg-[#141416] dark:text-black dark:bg-white font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury shadow-[0_4px_16px_rgba(0,0,0,0.12)] dark:shadow-[0_0_24px_rgba(255,255,255,0.18)] hover:bg-zinc-800 dark:hover:bg-zinc-200 hover:scale-[1.02] group/btn"
-                >
-                  <span>Apply for Advisory</span>
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                <h3 className="font-inter font-black uppercase text-2xl text-[#ece8e1] mb-3 leading-snug">
+                  1:1 CREATIVE ADVISORY
+                </h3>
+                <p className="font-inter text-xs text-[#8a8a8a] mb-6 leading-relaxed">
+                  Private executive direction covering creative audits, high-converting campaign concepts, and rapid commercial production systems for scaling beauty brands.
+                </p>
+                
+                <div className="space-y-3 pt-6 border-t border-[#292929] mb-8 font-inter text-xs text-[#bdb8b0]">
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 bg-[#f4521c]" />
+                    <span>Bi-weekly commercial strategy sessions</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 bg-[#f4521c]" />
+                    <span>Direct async review of all visual and copy hooks</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 bg-[#f4521c]" />
+                    <span>Strictly capped at 3 concurrent brands</span>
+                  </div>
+                </div>
+              </div>
+
+              <Button asChild className="btn-acid h-11 w-full rounded-none">
+                <Link href="/consulting" className="flex items-center justify-center gap-2">
+                  <span>APPLY FOR ADVISORY</span>
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
-              </TiltCard>
-            </RevealSection>
+              </Button>
+            </div>
 
             {/* Card 2: Digital Products */}
-            <RevealSection delay={0.2}>
-              <TiltCard className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full">
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-black/[0.04] dark:bg-surface border border-black/10 dark:border-white/20 text-zinc-800 dark:text-zinc-200">
-                      Self-Serve Systems
-                    </span>
-                    <BookOpen className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
-                  </div>
-                  <h3 className="heading-card text-2xl mb-3 text-[#141416] dark:text-white">Systems & Playbooks</h3>
-                  <p className="body-muted text-sm mb-6 leading-relaxed text-zinc-600 dark:text-zinc-400">
-                    Field-tested creative frameworks, art direction templates, and direct-response hook databases built specifically for skincare and cosmetics founders.
-                  </p>
-
-                  <div className="space-y-2.5 pt-4 border-t border-black/[0.08] dark:border-white/[0.08] mb-8 text-xs text-zinc-700 dark:text-zinc-300 font-light">
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white" />
-                      <span>Commercial creative brief templates</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white" />
-                      <span>Skincare direct-response hook matrix</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white" />
-                      <span>Immediate access via digital portal</span>
-                    </div>
-                  </div>
+            <div className="border border-[#292929] bg-[#050609] p-8 flex flex-col justify-between hover:border-[#f4521c] transition-colors">
+              <div>
+                <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-6">
+                  <span className="label-mono !text-[#f4521c]">PLAYBOOKS // 02</span>
+                  <span className="label-mono text-[#8a8a8a]">SELF-SERVE</span>
                 </div>
 
-                <Link
-                  href="/digital-products"
-                  className="inline-flex items-center justify-center gap-2 w-full h-12 px-6 rounded-full bg-black/[0.04] dark:bg-surface border border-black/15 dark:border-white/20 text-zinc-900 dark:text-zinc-200 font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury hover:bg-[#141416] hover:text-white dark:hover:bg-white dark:hover:text-black hover:scale-[1.02] group/btn"
-                >
-                  <span>Enquire About Playbooks</span>
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                </Link>
-              </TiltCard>
-            </RevealSection>
+                <h3 className="font-inter font-black uppercase text-2xl text-[#ece8e1] mb-3 leading-snug">
+                  SYSTEMS &amp; PLAYBOOKS
+                </h3>
+                <p className="font-inter text-xs text-[#8a8a8a] mb-6 leading-relaxed">
+                  Field-tested creative frameworks, art direction templates, and direct-response hook databases built specifically for skincare and cosmetics founders.
+                </p>
 
-            {/* Card 3: Membership (Syndicate) */}
-            <RevealSection delay={0.3}>
-              <TiltCard className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full">
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-semibold bg-black/[0.04] dark:bg-white/10 border border-black/10 dark:border-white/20 text-zinc-800 dark:text-zinc-200">
-                      Syndicate Access
-                    </span>
-                    <Compass className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
+                <div className="space-y-3 pt-6 border-t border-[#292929] mb-8 font-inter text-xs text-[#bdb8b0]">
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 bg-[#f4521c]" />
+                    <span>Commercial creative brief templates</span>
                   </div>
-                  <h3 className="heading-card text-2xl mb-3 text-[#141416] dark:text-white">The Advisory Syndicate</h3>
-                  <p className="body-muted text-sm mb-6 leading-relaxed text-zinc-600 dark:text-zinc-400">
-                    Ongoing monthly creative intelligence, live campaign teardowns, private templates, and direct async guidance for brand operators playing the long game.
-                  </p>
-
-                  <div className="space-y-2.5 pt-4 border-t border-black/[0.08] dark:border-white/[0.08] mb-8 text-xs text-zinc-700 dark:text-zinc-300 font-light">
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white" />
-                      <span>Monthly beauty creative strategy dispatches</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white" />
-                      <span>Curated founder roundtables & ad reviews</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#141416] dark:bg-white" />
-                      <span>Direct async channel access for ad critiques</span>
-                    </div>
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 bg-[#f4521c]" />
+                    <span>Skincare direct-response hook matrix</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 bg-[#f4521c]" />
+                    <span>Immediate access via digital portal</span>
                   </div>
                 </div>
+              </div>
 
-                <Link
-                  href="/membership"
-                  className="inline-flex items-center justify-center gap-2 w-full h-12 px-6 rounded-full bg-black/[0.04] dark:bg-surface border border-black/15 dark:border-white/20 text-zinc-900 dark:text-zinc-200 font-inter text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-luxury hover:bg-[#141416] hover:text-white dark:hover:bg-white dark:hover:text-black hover:scale-[1.02] group/btn"
-                >
-                  <span>Explore Membership</span>
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+              <Button asChild variant="outline" className="h-11 w-full rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
+                <Link href="/digital-products" className="flex items-center justify-center gap-2">
+                  <span>EXPLORE PLAYBOOKS</span>
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
-              </TiltCard>
-            </RevealSection>
+              </Button>
+            </div>
+
+            {/* Card 3: Membership */}
+            <div className="border border-[#292929] bg-[#050609] p-8 flex flex-col justify-between hover:border-[#f4521c] transition-colors">
+              <div>
+                <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-6">
+                  <span className="label-mono !text-[#f4521c]">SYNDICATE // 03</span>
+                  <span className="label-mono text-[#8a8a8a]">LIMITED INTAKE</span>
+                </div>
+
+                <h3 className="font-inter font-black uppercase text-2xl text-[#ece8e1] mb-3 leading-snug">
+                  THE ADVISORY SYNDICATE
+                </h3>
+                <p className="font-inter text-xs text-[#8a8a8a] mb-6 leading-relaxed">
+                  Ongoing monthly creative intelligence, live campaign teardowns, private templates, and direct async guidance for brand operators playing the long game.
+                </p>
+
+                <div className="space-y-3 pt-6 border-t border-[#292929] mb-8 font-inter text-xs text-[#bdb8b0]">
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 bg-[#f4521c]" />
+                    <span>Monthly beauty creative strategy dispatches</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 bg-[#f4521c]" />
+                    <span>Curated founder roundtables &amp; ad reviews</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 bg-[#f4521c]" />
+                    <span>Direct async channel access for ad critiques</span>
+                  </div>
+                </div>
+              </div>
+
+              <Button asChild variant="outline" className="h-11 w-full rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
+                <Link href="/membership" className="flex items-center justify-center gap-2">
+                  <span>EXPLORE MEMBERSHIP</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </Button>
+            </div>
 
           </div>
 
           {/* Witlyn Studio Callout */}
-          <RevealSection delay={0.4} className="mt-14 text-center">
-            <div className="inline-flex items-center flex-wrap justify-center gap-2 px-6 py-3 rounded-full border border-black/10 dark:border-white/[0.08] bg-black/[0.02] dark:bg-surface/50 text-xs font-inter text-zinc-700 dark:text-zinc-300">
-              <span>Looking for full-service commercial production or done-for-you monthly retainers?</span>
+          <div className="mt-12 text-center border-t border-[#292929] pt-8">
+            <span className="label-mono text-xs text-[#8a8a8a]">
+              LOOKING FOR FULL-SERVICE PRODUCTION? VISIT{' '}
               <a
                 href="https://witlyn.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-950 dark:text-white font-medium hover:underline inline-flex items-center gap-1"
+                className="text-[#ece8e1] hover:text-[#f4521c] underline underline-offset-4"
               >
-                <span>Visit Witlyn Studio</span>
-                <ArrowUpRight className="w-3 h-3" />
+                WITLYN STUDIO (WITLYN.COM) →
               </a>
-            </div>
-          </RevealSection>
+            </span>
+          </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          STEP 9 · COMPLIMENTARY CREATIVE AUDIT & DIAGNOSTIC
+          STEP 10 · COMPLIMENTARY CREATIVE AUDIT & DIAGNOSTIC
       ════════════════════════════════════════════════════════════════════ */}
-      <section id="diagnostic" className="section-pad relative overflow-hidden border-t border-black/[0.08] dark:border-white/[0.08] bg-background" aria-label="Creative Diagnostic">
-        <div className="container-luxury relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <section id="diagnostic" className="py-24 border-t border-[#292929] bg-[#050609]" aria-label="Creative Diagnostic">
+        <div className="container-luxury">
+          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-12">
+            <span className="label-mono !text-[#f4521c] flex items-center gap-2">
+              <span className="w-2 h-2 bg-[#f4521c]" />
+              IDX/10 — DIAGNOSTIC
+            </span>
+            <span className="label-mono text-[#8a8a8a]">
+              COMPLIMENTARY CREATIVE AUDIT
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
             {/* Left Column: Context */}
-            <div className="lg:col-span-5">
-              <RevealSection>
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-black/10 dark:border-white/20 bg-black/[0.03] dark:bg-white/[0.04] text-[11px] uppercase tracking-[0.2em] text-zinc-700 dark:text-zinc-300 mb-6 backdrop-blur-md">
-                  Complimentary Creative Audit
+            <div className="lg:col-span-5 space-y-6">
+              <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl text-[#ece8e1] leading-tight">
+                GET A FREE GAP &amp; OPPORTUNITY SNAPSHOT
+              </h2>
+              <p className="font-inter text-sm sm:text-base text-[#bdb8b0] leading-relaxed">
+                Input your brand details. We analyze your digital creative presence and deliver 3 concrete, high-leverage opportunities directly to your inbox.
+              </p>
+              <div className="space-y-4 pt-4 border-t border-[#292929] font-inter text-xs text-[#bdb8b0]">
+                <div className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 bg-[#f4521c]" />
+                  <span>Forensic audit of your current aesthetic bottlenecks</span>
                 </div>
-                <h2 className="heading-section text-3xl sm:text-4xl text-[#141416] dark:text-white mb-6">
-                  Get a Free Gap & Opportunity Snapshot
-                </h2>
-                <p className="body-editorial text-base sm:text-lg mb-6 leading-relaxed text-zinc-700 dark:text-zinc-300 font-light">
-                  Input your brand details. We analyze your digital creative presence and deliver 3 concrete, high-leverage opportunities directly to your inbox.
-                </p>
-                <div className="space-y-4 text-xs font-inter text-zinc-700 dark:text-zinc-300 font-light">
-                  <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-zinc-800 dark:text-zinc-200 shrink-0" />
-                    <span>Forensic audit of your current aesthetic bottlenecks</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-zinc-800 dark:text-zinc-200 shrink-0" />
-                    <span>3 concrete commercial opportunities tailored to your vertical</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-zinc-800 dark:text-zinc-200 shrink-0" />
-                    <span>1 actionable 30-day next step (no spam, no obligation)</span>
-                  </div>
+                <div className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 bg-[#f4521c]" />
+                  <span>3 concrete commercial opportunities tailored to your vertical</span>
                 </div>
-              </RevealSection>
+                <div className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 bg-[#f4521c]" />
+                  <span>1 actionable 30-day next step (no spam, no obligation)</span>
+                </div>
+              </div>
             </div>
 
             {/* Right Column: Diagnostic Form Card */}
             <div className="lg:col-span-7">
-              <RevealSection delay={0.15}>
-                <TiltCard className="card-surface p-8 sm:p-12">
-                  {diagnosticStatus === 'success' ? (
-                    <div className="text-center py-8 space-y-6">
-                      <CheckCircle2 className="w-12 h-12 text-zinc-900 dark:text-white mx-auto" />
-                      <h3 className="heading-card text-2xl text-[#141416] dark:text-white">Audit Initiated</h3>
-                      <p className="body-editorial text-base max-w-md mx-auto text-zinc-700 dark:text-zinc-300">
-                        We are processing your brand synthesis. A detailed overview is being dispatched to your email, and our strategy team will follow up directly.
-                      </p>
-                      <Button asChild variant="gold" size="md">
-                        <Link href="/contact">Book Strategy Call</Link>
-                      </Button>
+              <div className="border border-[#292929] bg-[#0b0c10] p-8 sm:p-12">
+                {diagnosticStatus === 'success' ? (
+                  <div className="text-center py-8 space-y-6">
+                    <div className="w-12 h-12 border border-[#f4521c] text-[#f4521c] flex items-center justify-center mx-auto">
+                      <CheckCircle2 className="w-6 h-6" />
                     </div>
-                  ) : (
-                    <form onSubmit={handleDiagnosticSubmit} className="space-y-6">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block text-xs uppercase tracking-wider text-zinc-600 dark:text-zinc-400 font-inter mb-2">
-                            Brand Name *
-                          </label>
-                          <Input
-                            required
-                            placeholder="e.g. Solaé Botanicals"
-                            value={diagnosticForm.brandName}
-                            onChange={(e) => setDiagnosticForm({ ...diagnosticForm, brandName: e.target.value })}
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-xs uppercase tracking-wider text-zinc-600 dark:text-zinc-400 font-inter mb-2">
-                            Website URL *
-                          </label>
-                          <Input
-                            required
-                            type="url"
-                            placeholder="https://yourbrand.com"
-                            value={diagnosticForm.websiteUrl}
-                            onChange={(e) => setDiagnosticForm({ ...diagnosticForm, websiteUrl: e.target.value })}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block text-xs uppercase tracking-wider text-zinc-600 dark:text-zinc-400 font-inter mb-2">
-                            Work Email *
-                          </label>
-                          <Input
-                            required
-                            type="email"
-                            placeholder="founder@yourbrand.com"
-                            value={diagnosticForm.email}
-                            onChange={(e) => setDiagnosticForm({ ...diagnosticForm, email: e.target.value })}
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-xs uppercase tracking-wider text-zinc-600 dark:text-zinc-400 font-inter mb-2">
-                            Instagram Handle
-                          </label>
-                          <Input
-                            placeholder="@yourbrand"
-                            value={diagnosticForm.instagramHandle}
-                            onChange={(e) => setDiagnosticForm({ ...diagnosticForm, instagramHandle: e.target.value })}
-                          />
-                        </div>
-                      </div>
-
+                    <h3 className="font-inter font-black uppercase text-2xl text-[#ece8e1]">AUDIT INITIATED</h3>
+                    <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] max-w-md mx-auto">
+                      We are processing your brand synthesis. A detailed overview is being dispatched to your email, and our strategy team will follow up directly.
+                    </p>
+                    <Button asChild className="btn-acid h-11 px-8 rounded-none">
+                      <Link href="/contact">BOOK STRATEGY CALL</Link>
+                    </Button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleDiagnosticSubmit} className="space-y-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
-                        <label className="block text-xs uppercase tracking-wider text-zinc-600 dark:text-zinc-400 font-inter mb-2">
-                          Primary Creative / Growth Bottleneck *
+                        <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
+                          BRAND NAME *
                         </label>
-                        <Textarea
+                        <input
                           required
-                          rows={3}
-                          placeholder="What is limiting your creative velocity right now? (e.g. agency turnaround too slow, generic visuals, ad fatigue)"
-                          value={diagnosticForm.growthChallenge}
-                          onChange={(e) => setDiagnosticForm({ ...diagnosticForm, growthChallenge: e.target.value })}
+                          placeholder="e.g. Solaé Botanicals"
+                          value={diagnosticForm.brandName}
+                          onChange={(e) => setDiagnosticForm({ ...diagnosticForm, brandName: e.target.value })}
+                          className="w-full px-4 py-2.5 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
                         />
                       </div>
+                      <div>
+                        <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
+                          WEBSITE URL *
+                        </label>
+                        <input
+                          required
+                          type="url"
+                          placeholder="https://yourbrand.com"
+                          value={diagnosticForm.websiteUrl}
+                          onChange={(e) => setDiagnosticForm({ ...diagnosticForm, websiteUrl: e.target.value })}
+                          className="w-full px-4 py-2.5 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
+                        />
+                      </div>
+                    </div>
 
-                      <Button
-                        type="submit"
-                        variant="gold"
-                        size="lg"
-                        className="w-full"
-                        disabled={diagnosticStatus === 'loading'}
-                      >
-                        {diagnosticStatus === 'loading' ? 'Analyzing Brand System...' : 'Generate My Free Gap Snapshot →'}
-                      </Button>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div>
+                        <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
+                          WORK EMAIL *
+                        </label>
+                        <input
+                          required
+                          type="email"
+                          placeholder="founder@yourbrand.com"
+                          value={diagnosticForm.email}
+                          onChange={(e) => setDiagnosticForm({ ...diagnosticForm, email: e.target.value })}
+                          className="w-full px-4 py-2.5 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
+                        />
+                      </div>
+                      <div>
+                        <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
+                          INSTAGRAM HANDLE
+                        </label>
+                        <input
+                          placeholder="@yourbrand"
+                          value={diagnosticForm.instagramHandle}
+                          onChange={(e) => setDiagnosticForm({ ...diagnosticForm, instagramHandle: e.target.value })}
+                          className="w-full px-4 py-2.5 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
+                        />
+                      </div>
+                    </div>
 
-                      <p className="text-[11px] text-zinc-600 dark:text-zinc-400 text-center font-inter">
-                        100% confidential. No spam. Reviewed by Sakib Ziad personally.
-                      </p>
-                    </form>
-                  )}
-                </TiltCard>
-              </RevealSection>
+                    <div>
+                      <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
+                        PRIMARY CREATIVE / GROWTH BOTTLENECK *
+                      </label>
+                      <textarea
+                        required
+                        rows={3}
+                        placeholder="What is limiting your creative velocity right now? (e.g. agency turnaround too slow, generic visuals, ad fatigue)"
+                        value={diagnosticForm.growthChallenge}
+                        onChange={(e) => setDiagnosticForm({ ...diagnosticForm, growthChallenge: e.target.value })}
+                        className="w-full p-4 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
+                      />
+                    </div>
+
+                    <Button
+                      type="submit"
+                      disabled={diagnosticStatus === 'loading'}
+                      className="w-full h-12 btn-acid rounded-none uppercase font-inter font-bold tracking-wider"
+                    >
+                      {diagnosticStatus === 'loading' ? 'ANALYZING BRAND SYSTEM...' : 'GENERATE MY FREE GAP SNAPSHOT →'}
+                    </Button>
+
+                    <p className="label-mono text-[10px] text-[#8a8a8a] text-center pt-1">
+                      100% CONFIDENTIAL · ZERO SPAM · REVIEWED BY SAKIB ZIAD PERSONALLY
+                    </p>
+                  </form>
+                )}
+              </div>
             </div>
 
           </div>
@@ -1262,45 +1290,51 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          STEP 10 · OBJECTION-HANDLING FAQ & FINAL STRATEGY CTA
+          STEP 11 · OBJECTION-HANDLING FAQ & FINAL STRATEGY CTA
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad border-t border-black/[0.08] dark:border-white/[0.08] bg-[#F7F6F2] dark:bg-[#0E0E0D]" aria-label="FAQ">
-        <div className="container-luxury max-w-4xl mx-auto">
-          <RevealSection className="text-center mb-16">
-            <p className="eyebrow-luxury text-zinc-600 dark:text-zinc-400 mb-4">Clarity</p>
-            <h2 className="heading-section mb-4 text-[#141416] dark:text-white">Frequently Asked Questions</h2>
-            <p className="body-muted text-zinc-600 dark:text-zinc-400">Direct answers to strategic questions before applying.</p>
-          </RevealSection>
+      <section className="py-24 border-t border-[#292929] bg-[#050609]" aria-label="FAQ">
+        <div className="container-luxury max-w-4xl mx-auto space-y-20">
+          <div>
+            <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-8">
+              <span className="label-mono !text-[#f4521c]">FAQ // STRATEGIC CLARITY</span>
+              <span className="label-mono text-[#8a8a8a]">ANSWERS DIRECT</span>
+            </div>
+            <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl text-[#ece8e1] mb-4">
+              FREQUENTLY ASKED QUESTIONS
+            </h2>
+            <p className="font-inter text-xs sm:text-sm text-[#8a8a8a] mb-8">
+              Direct answers to strategic questions before submitting your partnership application.
+            </p>
 
-          <div className="space-y-2 mb-20">
-            {faqs.map((faq) => (
-              <RevealSection key={faq.question}>
-                <FaqItem question={faq.question} answer={faq.answer} />
-              </RevealSection>
-            ))}
+            <div className="space-y-0 border-t border-[#292929]">
+              {faqs.map((faq) => (
+                <FaqItem key={faq.question} question={faq.question} answer={faq.answer} />
+              ))}
+            </div>
           </div>
 
           {/* Final Call To Action Card */}
-          <RevealSection className="p-10 sm:p-14 rounded-3xl bg-black text-white dark:bg-white dark:text-black text-center shadow-2xl">
-            <p className="font-mono text-xs uppercase tracking-[0.25em] text-zinc-400 dark:text-zinc-600 mb-4">
-              Limited Availability
-            </p>
-            <h2 className="font-fraunces text-3xl sm:text-5xl mb-6 font-light">
-              Ready to elevate your beauty brand’s creative authority?
+          <div className="border border-[#292929] bg-[#0b0c10] p-10 sm:p-16 text-center space-y-6 relative overflow-hidden">
+            <div className="absolute top-0 inset-x-0 h-[2px] bg-[#f4521c]" />
+
+            <span className="label-mono !text-[#f4521c] block">
+              // LIMITED AVAILABILITY · STRICTLY 3 CONCURRENT BRANDS
+            </span>
+            <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl text-[#ece8e1] leading-tight max-w-2xl mx-auto">
+              READY TO ELEVATE YOUR BEAUTY BRAND’S COMMERCIAL CONVERSION?
             </h2>
-            <p className="font-inter text-sm sm:text-base text-zinc-300 dark:text-zinc-700 max-w-xl mx-auto mb-10 leading-relaxed font-light">
-              We review every application personally. Strictly capped cohorts ensure deep focus, rapid delivery, and direct strategic access.
+            <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] max-w-xl mx-auto leading-relaxed">
+              We review every application personally within 48 business hours. Strictly capped cohorts ensure deep focus, rapid turnaround, and direct partner access.
             </p>
-            <div className="inline-block relative group">
-              <div className="absolute -inset-1.5 rounded-full bg-gradient-to-r from-zinc-300/30 via-white/50 to-zinc-300/30 dark:from-zinc-400/30 dark:via-black/20 dark:to-zinc-400/30 blur-md opacity-60 group-hover:opacity-100 transition duration-500 animate-pulse pointer-events-none" />
-              <Button asChild variant="gold" size="xl" className="relative shadow-2xl">
+            <div className="pt-4">
+              <Button asChild className="btn-acid h-14 px-10 text-sm rounded-none uppercase font-inter font-bold tracking-wider">
                 <Link href="/contact" className="flex items-center gap-2">
-                  <span>Apply for a Strategy Call</span>
-                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+                  <span>APPLY FOR A STRATEGY CALL</span>
+                  <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>
             </div>
-          </RevealSection>
+          </div>
 
         </div>
       </section>

@@ -51,85 +51,87 @@ export function FloatingLeadTrigger() {
 
   return (
     <>
-      {/* ── Persistent Floating Trigger Pill (Bottom Right) ────────────────── */}
+      {/* ── Persistent Floating Trigger (Bottom Right) ────────────────── */}
       <div className="fixed bottom-6 right-6 z-40">
         <motion.button
           onClick={() => {
             setIsOpen(true)
             setHasPrompted(false)
           }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           aria-label="Request Free Creative Audit"
-          className="group flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#141416] dark:bg-white text-white dark:text-black shadow-2xl border border-white/20 dark:border-black/10 text-xs font-inter font-semibold uppercase tracking-wider transition-all duration-300"
+          className="group flex items-center gap-3 px-4 py-3 bg-[#050609] text-[#ece8e1] border border-[#292929] hover:border-[#f4521c] shadow-2xl transition-all duration-300"
         >
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span>Free Creative Audit</span>
-          <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+          <span className="w-2 h-2 bg-[#f4521c] block shrink-0" />
+          <span className="label-mono !text-[11px] text-[#ece8e1] group-hover:text-[#f4521c] transition-colors">
+            FREE CREATIVE AUDIT
+          </span>
+          <ArrowRight className="w-3.5 h-3.5 text-[#f4521c] transition-transform duration-300 group-hover:translate-x-1" />
         </motion.button>
       </div>
 
       {/* ── High-Converting Lead Modal ────────────────────────────────────── */}
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              initial={{ opacity: 0, scale: 0.96, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-lg rounded-3xl bg-[#0E0E10] text-[#F9F8F6] border border-white/15 p-6 sm:p-8 shadow-2xl overflow-hidden"
+              exit={{ opacity: 0, scale: 0.96, y: 16 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="relative w-full max-w-lg bg-[#050609] text-[#ece8e1] border border-[#292929] p-6 sm:p-8 shadow-2xl overflow-hidden"
             >
-              {/* Background Glow */}
-              <div className="absolute -top-24 -right-24 w-60 h-60 rounded-full bg-amber-400/10 blur-3xl pointer-events-none" />
+              {/* Top Accent Strip */}
+              <div className="absolute top-0 inset-x-0 h-[2px] bg-[#f4521c]" />
 
               {/* Close Button */}
               <button
                 onClick={() => setIsOpen(false)}
                 aria-label="Close modal"
-                className="absolute top-5 right-5 p-2 rounded-full text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"
+                className="absolute top-5 right-5 p-2 text-[#8a8a8a] hover:text-[#f4521c] border border-transparent hover:border-[#292929] transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
 
               {status === 'success' ? (
                 <div className="text-center py-8 space-y-4">
-                  <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
+                  <div className="w-12 h-12 border border-[#f4521c] text-[#f4521c] flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
-                  <h3 className="font-fraunces text-2xl text-white font-medium">
-                    Audit Dispatched to Your Inbox
+                  <h3 className="font-inter font-black uppercase text-2xl text-[#ece8e1]">
+                    AUDIT DISPATCHED
                   </h3>
-                  <p className="text-xs sm:text-sm text-zinc-400 font-light max-w-sm mx-auto leading-relaxed">
-                    We are analyzing <span className="text-white font-medium">{brandName}</span>. Your diagnostic breakdown and growth opportunities will arrive shortly.
+                  <p className="label-mono text-xs text-[#8a8a8a] max-w-sm mx-auto leading-relaxed">
+                    Analyzing <span className="text-[#ece8e1]">{brandName}</span>. Your diagnostic breakdown and growth opportunities will arrive in your inbox shortly.
                   </p>
                   <Button
                     onClick={() => setIsOpen(false)}
                     variant="outline"
-                    className="mt-4"
+                    className="mt-4 rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]"
                   >
-                    Close Window
+                    CLOSE WINDOW
                   </Button>
                 </div>
               ) : (
                 <div className="space-y-6">
                   <div>
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 text-zinc-300 font-mono text-[10px] uppercase tracking-widest mb-3">
-                      <Sparkles className="w-3 h-3 text-amber-300" />
-                      <span>Forensic Brand Diagnostic</span>
+                    <div className="flex items-center gap-2 label-mono !text-[#f4521c] mb-2">
+                      <span className="w-2 h-2 bg-[#f4521c]" />
+                      <span>FORENSIC BRAND DIAGNOSTIC</span>
                     </div>
-                    <h3 className="font-fraunces text-2xl sm:text-3xl text-white font-medium">
-                      Get a Free Creative Audit
+                    <h3 className="font-inter font-black uppercase text-2xl sm:text-3xl text-[#ece8e1] leading-tight">
+                      GET A FREE CREATIVE AUDIT
                     </h3>
-                    <p className="text-xs sm:text-sm text-zinc-400 font-light mt-1.5 leading-relaxed">
-                      Discover why your ad creative fatigues within 14 days and how a 72-hour commercial system cuts customer acquisition costs.
+                    <p className="label-mono text-xs text-[#8a8a8a] mt-2 leading-relaxed">
+                      Discover why your ad creative fatigues within 14 days and how a 72-hour commercial system cuts acquisition costs.
                     </p>
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                      <label className="block text-[11px] font-mono uppercase text-zinc-400 mb-1">
-                        Brand Name *
+                      <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
+                        BRAND NAME *
                       </label>
                       <input
                         type="text"
@@ -137,13 +139,13 @@ export function FloatingLeadTrigger() {
                         value={brandName}
                         onChange={(e) => setBrandName(e.target.value)}
                         placeholder="e.g. Solaé Skincare"
-                        className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/40 transition-colors"
+                        className="w-full px-4 py-2.5 bg-[#0b0c10] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] transition-colors rounded-none font-inter"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[11px] font-mono uppercase text-zinc-400 mb-1">
-                        Website or Instagram URL *
+                      <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
+                        WEBSITE OR INSTAGRAM URL *
                       </label>
                       <input
                         type="text"
@@ -151,13 +153,13 @@ export function FloatingLeadTrigger() {
                         value={websiteUrl}
                         onChange={(e) => setWebsiteUrl(e.target.value)}
                         placeholder="e.g. yourbrand.com or @yourbrand"
-                        className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/40 transition-colors"
+                        className="w-full px-4 py-2.5 bg-[#0b0c10] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] transition-colors rounded-none font-inter"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[11px] font-mono uppercase text-zinc-400 mb-1">
-                        Work Email *
+                      <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
+                        WORK EMAIL *
                       </label>
                       <input
                         type="email"
@@ -165,12 +167,12 @@ export function FloatingLeadTrigger() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="founder@yourbrand.com"
-                        className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/40 transition-colors"
+                        className="w-full px-4 py-2.5 bg-[#0b0c10] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] transition-colors rounded-none font-inter"
                       />
                     </div>
 
                     {status === 'error' && (
-                      <p className="text-xs text-red-400">
+                      <p className="label-mono text-xs text-[#f4521c]">
                         Something went wrong. Please check your information and try again.
                       </p>
                     )}
@@ -178,15 +180,13 @@ export function FloatingLeadTrigger() {
                     <Button
                       type="submit"
                       disabled={status === 'loading'}
-                      variant="gold"
-                      size="lg"
-                      className="w-full mt-2"
+                      className="w-full h-12 btn-acid rounded-none uppercase font-inter font-bold tracking-wider"
                     >
-                      {status === 'loading' ? 'Analyzing Brand...' : 'Generate My Creative Audit →'}
+                      {status === 'loading' ? 'ANALYZING...' : 'DISPATCH AUDIT REPORT →'}
                     </Button>
 
-                    <p className="text-[10px] font-mono text-zinc-500 text-center">
-                      Strictly confidential · Zero spam · Read personally by Sakib Ziad
+                    <p className="label-mono text-[10px] text-[#8a8a8a] text-center pt-1">
+                      CONFIDENTIAL · ZERO SPAM · READ PERSONALLY BY SAKIB ZIAD
                     </p>
                   </form>
                 </div>

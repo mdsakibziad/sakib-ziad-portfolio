@@ -1,45 +1,10 @@
 'use client'
 
-import React, { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import {
-  CheckCircle2,
-  XCircle,
-  ArrowRight,
-  ArrowUpRight,
-  Layers,
-  Sparkles,
-  Bot,
-} from 'lucide-react'
+import React from 'react'
+import Link from 'next/link'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ApplicationForm } from '@/components/application-form'
-
-const EASE_LUXURY = [0.16, 1, 0.3, 1] as const
-
-function RevealSection({
-  children,
-  delay = 0,
-  className = '',
-}: {
-  children: React.ReactNode
-  delay?: number
-  className?: string
-}) {
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-60px 0px' })
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.85, ease: EASE_LUXURY, delay }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
 
 export default function ConsultingPage() {
   const isFor = [
@@ -59,8 +24,8 @@ export default function ConsultingPage() {
   const engagements = [
     {
       num: '01',
-      title: 'The Creative & Conversion Architecture Audit',
-      badge: '90-Min Intensive + Blueprint',
+      title: 'FORENSIC CREATIVE AUDIT & BLUEPRINT',
+      badge: '90-MIN INTENSIVE + SYNTHESIS',
       ideal: 'Best for founders and executives seeking an objective, forensic evaluation of their brand’s creative bottlenecks and conversion leaks.',
       features: [
         '90-minute private strategy session with Sakib Ziad',
@@ -72,8 +37,8 @@ export default function ConsultingPage() {
     },
     {
       num: '02',
-      title: 'Monthly Advisory Retainer',
-      badge: 'Ongoing Strategic Partnership',
+      title: 'MONTHLY STRATEGIC ADVISORY RETAINER',
+      badge: 'ONGOING STRATEGIC PARTNERSHIP',
       ideal: 'Best for growth-stage beauty brands actively scaling ad spend and multi-channel creative output.',
       features: [
         'Bi-weekly strategic direction and creative hook reviews',
@@ -85,8 +50,8 @@ export default function ConsultingPage() {
     },
     {
       num: '03',
-      title: 'The Custom Creative Production System',
-      badge: 'Turnkey Infrastructure',
+      title: 'TURNKEY CREATIVE PRODUCTION SYSTEM',
+      badge: 'COMPLETE INFRASTRUCTURE BUILD',
       ideal: 'Best for established beauty brands seeking to deploy a full-scale in-house creative studio and rapid asset pipeline.',
       features: [
         'End-to-end architecture and deployment of brand-specific creative systems',
@@ -99,261 +64,311 @@ export default function ConsultingPage() {
   ]
 
   return (
-    <div className="bg-background text-ivory min-h-screen selection:bg-[#141416] selection:text-white dark:selection:bg-white dark:selection:text-black pt-36 sm:pt-40">
+    <div className="bg-[#050609] text-[#ece8e1] min-h-screen selection:bg-[#f4521c] selection:text-[#050609] pt-28 sm:pt-36">
+
+      {/* ── Top Meta Bar ── */}
+      <div className="container-luxury border-b border-[#292929] pb-4 mb-12">
+        <div className="flex items-center justify-between">
+          <span className="label-mono !text-[#f4521c] flex items-center gap-2">
+            <span className="w-2 h-2 bg-[#f4521c]" />
+            IDX/03 — ADVISORY
+          </span>
+          <span className="label-mono text-[#8a8a8a]">
+            PRIVATE STRATEGIC COUNSEL
+          </span>
+        </div>
+      </div>
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="section-pad border-b border-black/[0.08] dark:border-white/[0.08]" aria-label="Consulting Hero">
-        <div className="container-luxury">
-          <div className="max-w-4xl">
-            <RevealSection>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full liquid-glass-pill text-[11px] uppercase tracking-[0.2em] text-zinc-700 dark:text-white/80 mb-8">
-                Private Advisory & Infrastructure
-              </div>
-            </RevealSection>
+      <section className="container-luxury pb-16 border-b border-[#292929]" aria-label="Consulting Hero">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+          <div className="lg:col-span-8 space-y-6">
+            <h1 className="font-inter font-black uppercase text-[clamp(2.5rem,6.2vw,5.5rem)] leading-[0.92] tracking-[-0.05em] text-[#ece8e1]">
+              STRATEGIC CREATIVE <br />
+              <span className="text-[#f4521c]">COUNSEL FOR BEAUTY</span> <br />
+              BRANDS THAT SCALE.
+            </h1>
 
-            <RevealSection delay={0.1}>
-              <h1 className="heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8">
-                Strategic Creative Counsel for Beauty Brands That{' '}
-                <span className="italic font-fraunces font-light text-zinc-600 dark:text-zinc-300">
-                  Mean Business.
-                </span>
-              </h1>
-            </RevealSection>
+            <p className="font-inter text-base sm:text-lg md:text-xl font-medium text-[#bdb8b0] max-w-2xl leading-relaxed tracking-tight">
+              High-touch advisory spanning commercial creative direction, direct-response friction audits, and rapid asset production pipelines — engineered to make your creative operations unstoppable.
+            </p>
 
-            <RevealSection delay={0.2}>
-              <p className="body-editorial text-lg sm:text-xl text-zinc-700 dark:text-zinc-300 max-w-2xl mb-10">
-                High-touch advisory spanning commercial creative direction, direct-response audits, and rapid asset production pipelines — engineered to make your creative operations unstoppable.
-              </p>
-            </RevealSection>
-
-            <RevealSection delay={0.3}>
-              <Button asChild variant="gold" size="lg" className="w-full sm:w-auto">
-                <a href="#application" className="flex items-center justify-center gap-2">
-                  <span>Apply for Advisory Call</span>
+            <div className="pt-2 flex flex-wrap items-center gap-4">
+              <Button asChild className="btn-acid h-12 px-8 rounded-none">
+                <a href="#application" className="flex items-center gap-2">
+                  <span>APPLY FOR ADVISORY CALL</span>
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </Button>
-            </RevealSection>
+              <Button asChild variant="outline" className="h-12 px-8 rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
+                <a href="#engagements">VIEW ENGAGEMENT MODELS</a>
+              </Button>
+            </div>
+          </div>
+
+          <div className="lg:col-span-4 border-t lg:border-t-0 lg:border-l border-[#292929] pt-6 lg:pt-0 lg:pl-8 space-y-4">
+            <span className="label-mono text-[#8a8a8a] block">// ADVISORY PROTOCOL</span>
+            <div className="space-y-3">
+              <div className="space-y-1">
+                <div className="flex justify-between label-mono text-[10px]">
+                  <span>PARTNER CAPACITY</span>
+                  <span className="text-[#f4521c]">STRICTLY 3 BRANDS</span>
+                </div>
+                <div className="h-[2px] w-full bg-[#292929]">
+                  <div className="h-full w-full bg-[#f4521c]" />
+                </div>
+              </div>
+              <div className="space-y-1">
+                <div className="flex justify-between label-mono text-[10px]">
+                  <span>AUDIT VELOCITY</span>
+                  <span className="text-[#f4521c]">72H TURNAROUND</span>
+                </div>
+                <div className="h-[2px] w-full bg-[#292929]">
+                  <div className="h-full w-full bg-[#f4521c]" />
+                </div>
+              </div>
+              <div className="space-y-1">
+                <div className="flex justify-between label-mono text-[10px]">
+                  <span>CATEGORY SPECIALIZATION</span>
+                  <span className="text-[#f4521c]">BEAUTY &amp; SKINCARE ONLY</span>
+                </div>
+                <div className="h-[2px] w-full bg-[#292929]">
+                  <div className="h-full w-full bg-[#f4521c]" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Qualification Criteria ────────────────────────────────────────── */}
-      <section className="section-pad bg-surface/30" aria-label="Qualification">
+      {/* ── Qualification Criteria (Selora Comparison Format) ──────────────── */}
+      <section className="py-20 border-b border-[#292929]" aria-label="Qualification">
         <div className="container-luxury">
-          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
-            <p className="eyebrow-luxury mb-4 text-zinc-500 dark:text-zinc-400">Mutual Fit</p>
-            <h2 className="heading-section text-[#141416] dark:text-white">Selective by Necessity</h2>
-            <p className="body-muted text-zinc-600 dark:text-zinc-400">We protect outcomes by only partnering where we know we can create 10× leverage.</p>
-          </RevealSection>
+          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">
+            <span className="label-mono !text-[#f4521c]">QUALIFICATION MATRIX</span>
+            <span className="label-mono text-[#8a8a8a]">SELECTIVE BY NECESSITY</span>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* IS FOR */}
-            <RevealSection delay={0.1}>
-              <div className="card-surface p-6 sm:p-10 h-full">
-                <div className="flex items-center gap-3 mb-6">
-                  <CheckCircle2 className="w-6 h-6 text-emerald-600 dark:text-white" />
-                  <h3 className="heading-card text-2xl text-[#141416] dark:text-white">This Is For You If</h3>
-                </div>
-                <ul className="space-y-4">
-                  {isFor.map((item) => (
-                    <li key={item} className="flex items-start gap-3 body-editorial text-sm sm:text-base text-zinc-700 dark:text-zinc-300">
-                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/60 dark:bg-white/60 shrink-0 mt-2.5" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+            <div className="border border-[#292929] bg-[#0b0c10] p-8 space-y-6">
+              <div className="flex items-center justify-between border-b border-[#292929] pb-4">
+                <span className="label-mono !text-[#ece8e1]">01 / QUALIFIED FIT</span>
+                <span className="label-mono !text-[#f4521c]">IDEAL PARTNER</span>
               </div>
-            </RevealSection>
+              <ul className="space-y-4">
+                {isFor.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-4">
+                    <span className="label-mono text-[#f4521c] text-xs mt-0.5">[{idx + 1}]</span>
+                    <p className="font-inter text-xs sm:text-sm text-[#ece8e1] leading-relaxed">
+                      {item}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             {/* IS NOT FOR */}
-            <RevealSection delay={0.2}>
-              <div className="card-surface p-6 sm:p-10 h-full">
-                <div className="flex items-center gap-3 mb-6">
-                  <XCircle className="w-6 h-6 text-zinc-400 dark:text-zinc-500" />
-                  <h3 className="heading-card text-2xl text-[#141416] dark:text-white">This Is Not For You If</h3>
-                </div>
-                <ul className="space-y-4">
-                  {isNotFor.map((item) => (
-                    <li key={item} className="flex items-start gap-3 body-editorial text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
-                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600 shrink-0 mt-2.5" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+            <div className="border border-[#292929] bg-[#0b0c10] p-8 space-y-6">
+              <div className="flex items-center justify-between border-b border-[#292929] pb-4">
+                <span className="label-mono text-[#8a8a8a]">02 / NON-FIT CRITERIA</span>
+                <span className="label-mono text-[#8a8a8a]">DISQUALIFIED</span>
               </div>
-            </RevealSection>
+              <ul className="space-y-4">
+                {isNotFor.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-4">
+                    <span className="label-mono text-[#8a8a8a] text-xs mt-0.5">[X]</span>
+                    <p className="font-inter text-xs sm:text-sm text-[#8a8a8a] leading-relaxed">
+                      {item}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── Scope of Work (The Two Pillars) ─────────────────────────────────── */}
-      <section className="section-pad border-t border-black/[0.08] dark:border-white/[0.08]" aria-label="Scope of Work">
+      <section className="py-20 border-b border-[#292929]" aria-label="Scope of Work">
         <div className="container-luxury">
-          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
-            <p className="eyebrow-luxury mb-4 text-zinc-500 dark:text-zinc-400">Advisory Scope</p>
-            <h2 className="heading-section text-[#141416] dark:text-white">Two Pillars. One Strategic Partner.</h2>
-            <p className="body-muted text-zinc-600 dark:text-zinc-400">Artistic direction engineered with computational leverage.</p>
-          </RevealSection>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
-            {/* PILLAR 1 */}
-            <RevealSection delay={0.1}>
-              <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full">
-                <div>
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-black/[0.04] dark:bg-white/[0.05] border border-black/10 dark:border-white/15 flex items-center justify-center text-zinc-900 dark:text-white">
-                      <Sparkles className="w-6 h-6 stroke-[1.5]" />
-                    </div>
-                    <div>
-                      <span className="eyebrow-luxury text-[10px] text-zinc-500 dark:text-zinc-400">Pillar 01</span>
-                      <h3 className="heading-card text-xl sm:text-2xl text-[#141416] dark:text-white">Commercial Creative Strategy & Direction</h3>
-                    </div>
-                  </div>
-                  <ul className="space-y-3.5 body-editorial text-sm sm:text-base text-zinc-700 dark:text-zinc-300">
-                    <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
-                      <span>Proprietary art direction guidelines calibrated to cosmetic physics and packaging caustics</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
-                      <span>High-fashion visual worldbuilding and editorial moodboard synthesis</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
-                      <span>Internal team training on high-velocity commercial production workflows</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
-                      <span>Creative audits ensuring brand defensibility and high-converting asset standards</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </RevealSection>
-
-            {/* PILLAR 2 */}
-            <RevealSection delay={0.2}>
-              <div className="card-surface p-8 sm:p-10 flex flex-col justify-between h-full">
-                <div>
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-black/[0.04] dark:bg-white/[0.05] border border-black/10 dark:border-white/15 flex items-center justify-center text-zinc-900 dark:text-white">
-                      <Layers className="w-6 h-6 stroke-[1.5]" />
-                    </div>
-                    <div>
-                      <span className="eyebrow-luxury text-[10px] text-zinc-500 dark:text-zinc-400">Pillar 02</span>
-                      <h3 className="heading-card text-xl sm:text-2xl text-[#141416] dark:text-white">Performance Creative Architecture & Pipelines</h3>
-                    </div>
-                  </div>
-                  <ul className="space-y-3.5 body-editorial text-sm sm:text-base text-zinc-700 dark:text-zinc-300">
-                    <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
-                      <span>Automated customer review & sentiment ingestion mapped directly to visual briefs</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
-                      <span>Streamlined production orchestration connecting direct-response asset pipelines</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
-                      <span>Prestige skincare tone-of-voice frameworks for ad scripts and retention copy</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-900/50 dark:bg-white/50 shrink-0 mt-2" />
-                      <span>Multi-aspect ratio rendering pipelines for seamless omnichannel distribution</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </RevealSection>
+          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">
+            <span className="label-mono !text-[#f4521c]">ADVISORY SCOPE</span>
+            <span className="label-mono text-[#8a8a8a]">TWO PILLARS · ONE STRATEGIC PARTNER</span>
           </div>
 
-          {/* Studio Production Callout */}
-          <RevealSection>
-            <div className="card-surface p-8 sm:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-              <div className="max-w-2xl">
-                <span className="eyebrow-luxury mb-2 block text-zinc-500 dark:text-zinc-400">Production Alternative</span>
-                <h4 className="heading-card text-2xl text-[#141416] dark:text-white mb-2">Looking for Done-For-You Campaign Production?</h4>
-                <p className="body-muted text-zinc-600 dark:text-zinc-300">
-                  If you need a full creative studio to concept and execute complete campaigns rather than advisory guidance, visit Witlyn — my commercial creative studio.
-                </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            {/* PILLAR 1 */}
+            <div className="border border-[#292929] bg-[#0b0c10] p-8 space-y-6 hover:border-[#f4521c] transition-colors">
+              <div className="flex items-start justify-between border-b border-[#292929] pb-4">
+                <div>
+                  <span className="label-mono !text-[#f4521c] block mb-1">PILLAR 01</span>
+                  <h3 className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
+                    COMMERCIAL CREATIVE STRATEGY &amp; DIRECTION
+                  </h3>
+                </div>
+                <span className="label-mono text-[#8a8a8a]">01/02</span>
               </div>
-              <Button asChild variant="outline" size="lg" className="shrink-0 w-full sm:w-auto">
-                <a href="https://witlyn.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
-                  <span>Visit Witlyn Studio</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </a>
-              </Button>
+
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-[#f4521c] mt-2 shrink-0" />
+                  <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed">
+                    Proprietary art direction guidelines calibrated to cosmetic formula physics and packaging caustics.
+                  </p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-[#f4521c] mt-2 shrink-0" />
+                  <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed">
+                    High-fashion visual worldbuilding and editorial moodboard synthesis that elevates brand prestige.
+                  </p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-[#f4521c] mt-2 shrink-0" />
+                  <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed">
+                    Internal team training on high-velocity commercial production workflows and virtual studio pipelines.
+                  </p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-[#f4521c] mt-2 shrink-0" />
+                  <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed">
+                    Forensic ad creative audits to eliminate 14-day creative fatigue and solve high CPA bottlenecks.
+                  </p>
+                </li>
+              </ul>
             </div>
-          </RevealSection>
+
+            {/* PILLAR 2 */}
+            <div className="border border-[#292929] bg-[#0b0c10] p-8 space-y-6 hover:border-[#f4521c] transition-colors">
+              <div className="flex items-start justify-between border-b border-[#292929] pb-4">
+                <div>
+                  <span className="label-mono !text-[#f4521c] block mb-1">PILLAR 02</span>
+                  <h3 className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
+                    PERFORMANCE CREATIVE ARCHITECTURE &amp; PIPELINES
+                  </h3>
+                </div>
+                <span className="label-mono text-[#8a8a8a]">02/02</span>
+              </div>
+
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-[#f4521c] mt-2 shrink-0" />
+                  <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed">
+                    Automated consumer review &amp; friction sentiment ingestion mapped directly into high-converting briefs.
+                  </p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-[#f4521c] mt-2 shrink-0" />
+                  <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed">
+                    Streamlined production orchestration connecting direct-response asset pipelines across teams.
+                  </p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-[#f4521c] mt-2 shrink-0" />
+                  <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed">
+                    Prestige skincare tone-of-voice frameworks for paid-social hooks, video scripts, and retainers.
+                  </p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-[#f4521c] mt-2 shrink-0" />
+                  <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed">
+                    Multi-aspect ratio rendering pipelines (1:1, 9:16, 4:5) for seamless omnichannel distribution.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Studio Production Alternative Callout */}
+          <div className="border border-[#292929] bg-[#0b0c10] p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="max-w-2xl space-y-2">
+              <span className="label-mono !text-[#f4521c]">STUDIO PRODUCTION ALTERNATIVE</span>
+              <h4 className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
+                LOOKING FOR DONE-FOR-YOU CAMPAIGN PRODUCTION?
+              </h4>
+              <p className="font-inter text-xs sm:text-sm text-[#8a8a8a] leading-relaxed">
+                If you need a full creative studio to concept and execute complete campaigns rather than advisory guidance, visit Witlyn — my commercial creative studio.
+              </p>
+            </div>
+            <Button asChild variant="outline" className="shrink-0 h-12 px-6 rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
+              <a href="https://witlyn.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <span>VISIT WITLYN STUDIO</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
 
       {/* ── Engagement Structures ───────────────────────────────────────────── */}
-      <section className="section-pad bg-surface/30 border-t border-black/[0.08] dark:border-white/[0.08]" aria-label="Engagements">
+      <section id="engagements" className="py-20 border-b border-[#292929]" aria-label="Engagements">
         <div className="container-luxury">
-          <RevealSection className="text-center max-w-2xl mx-auto mb-16">
-            <p className="eyebrow-luxury mb-4 text-zinc-500 dark:text-zinc-400">Structure</p>
-            <h2 className="heading-section text-[#141416] dark:text-white">How We Work Together</h2>
-            <p className="body-muted text-zinc-600 dark:text-zinc-400">Structured for depth and partner-level attention.</p>
-          </RevealSection>
+          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">
+            <span className="label-mono !text-[#f4521c]">STRUCTURE</span>
+            <span className="label-mono text-[#8a8a8a]">HOW WE WORK TOGETHER</span>
+          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
-            {engagements.map((eng, idx) => (
-              <RevealSection key={eng.num} delay={idx * 0.1}>
-                <div className="card-surface p-6 sm:p-8 flex flex-col justify-between h-full">
-                  <div>
-                    <div className="flex items-center justify-between mb-6">
-                      <span className="font-fraunces text-2xl text-zinc-400 dark:text-white/40">{eng.num}</span>
-                      <span className="px-3 py-1 rounded-full text-[10px] font-inter uppercase tracking-wider bg-black/[0.04] dark:bg-white/10 border border-black/10 dark:border-white/15 text-zinc-900 dark:text-white">
-                        {eng.badge}
-                      </span>
-                    </div>
-
-                    <h3 className="heading-card text-xl sm:text-2xl mb-3 text-[#141416] dark:text-white">{eng.title}</h3>
-                    <p className="body-muted text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mb-6">{eng.ideal}</p>
-
-                    <ul className="space-y-3 pt-6 border-t border-black/[0.08] dark:border-white/10 mb-8 body-editorial text-xs sm:text-sm text-zinc-700 dark:text-zinc-300">
-                      {eng.features.map((feat) => (
-                        <li key={feat} className="flex items-start gap-2.5">
-                          <CheckCircle2 className="w-4 h-4 text-zinc-700 dark:text-white/70 shrink-0 mt-0.5" />
-                          <span>{feat}</span>
-                        </li>
-                      ))}
-                    </ul>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {engagements.map((eng) => (
+              <div
+                key={eng.num}
+                className="border border-[#292929] bg-[#0b0c10] p-8 flex flex-col justify-between hover:border-[#f4521c] transition-colors"
+              >
+                <div>
+                  <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-6">
+                    <span className="label-mono !text-[#f4521c]">ENGAGEMENT — {eng.num}</span>
+                    <span className="label-mono text-[#8a8a8a]">{eng.badge}</span>
                   </div>
 
-                  <div className="pt-6 border-t border-black/[0.08] dark:border-white/10">
-                    <span className="eyebrow-luxury text-[10px] text-zinc-500 dark:text-zinc-400 block mb-1">Pricing Model</span>
-                    <p className="font-inter text-xs text-zinc-700 dark:text-zinc-300 font-medium">{eng.investment}</p>
-                  </div>
+                  <h3 className="font-inter font-black uppercase text-xl text-[#ece8e1] mb-3 leading-snug">
+                    {eng.title}
+                  </h3>
+                  <p className="font-inter text-xs text-[#8a8a8a] mb-6 leading-relaxed">
+                    {eng.ideal}
+                  </p>
+
+                  <ul className="space-y-3 pt-6 border-t border-[#292929] mb-8">
+                    {eng.features.map((feat, i) => (
+                      <li key={i} className="flex items-start gap-2.5">
+                        <span className="w-1 h-1 bg-[#f4521c] mt-2 shrink-0" />
+                        <span className="font-inter text-xs text-[#bdb8b0] leading-relaxed">{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </RevealSection>
+
+                <div className="pt-6 border-t border-[#292929]">
+                  <span className="label-mono text-[10px] text-[#8a8a8a] block mb-1">PRICING MODEL</span>
+                  <p className="label-mono text-xs text-[#ece8e1]">{eng.investment}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── Unified Application Form ────────────────────────────────────────── */}
-      <section id="application" className="section-pad" aria-label="Advisory Application">
+      <section id="application" className="py-24" aria-label="Advisory Application">
         <div className="container-luxury max-w-2xl mx-auto">
-          <RevealSection className="text-center mb-12">
-            <p className="eyebrow-luxury mb-3">Qualification</p>
-            <h2 className="heading-section text-3xl sm:text-4xl mb-4">Apply for an Advisory Strategy Call</h2>
-            <p className="body-muted text-zinc-400">
+          <div className="text-center mb-12 space-y-3">
+            <span className="label-mono !text-[#f4521c] block">QUALIFICATION</span>
+            <h2 className="font-inter font-black uppercase text-3xl sm:text-4xl text-[#ece8e1]">
+              APPLY FOR AN ADVISORY STRATEGY CALL
+            </h2>
+            <p className="font-inter text-xs sm:text-sm text-[#8a8a8a] max-w-md mx-auto">
               Please detail your brand, current bottlenecks, and goals. Applications are reviewed personally within 48 business hours.
             </p>
-          </RevealSection>
+          </div>
 
-          <RevealSection delay={0.1}>
+          <div className="border border-[#292929] bg-[#0b0c10] p-8">
             <ApplicationForm
               defaultInterest="consulting"
               pageSource="consulting"
-              title="Advisory Qualification Form"
+              title="ADVISORY QUALIFICATION FORM"
               subtitle="All details remain strictly confidential under NDA principles."
-              submitText="Submit Advisory Application"
+              submitText="SUBMIT ADVISORY APPLICATION →"
             />
-          </RevealSection>
+          </div>
         </div>
       </section>
 
