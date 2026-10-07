@@ -4,6 +4,7 @@ import React, { useRef } from 'react'
 import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { Heart, MessageCircle, Share2, Volume2 } from 'lucide-react'
+import { MaskText } from '@/components/mask-text'
 
 const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
 
@@ -92,9 +93,13 @@ export function ChannelMultiplication() {
 
         <div className="max-w-3xl mb-16 space-y-4">
           <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl lg:text-6xl text-[#ece8e1] leading-[0.95] tracking-[-0.05em]">
-            ONE PRODUCT. <br />
-            <span className="text-[#f4521c]">EVERY CHANNEL,</span> <br />
-            ENGINEERED ON PURPOSE.
+            <MaskText
+              lines={[
+                'ONE PRODUCT.',
+                'EVERY CHANNEL,',
+                'ENGINEERED ON PURPOSE.',
+              ]}
+            />
           </h2>
 
           <p className="font-inter text-base sm:text-lg text-[#bdb8b0] max-w-2xl leading-relaxed">

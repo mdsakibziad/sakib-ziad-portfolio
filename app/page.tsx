@@ -34,6 +34,7 @@ import { AmbientHeroAtmosphere } from '@/components/ambient-hero-atmosphere'
 import { ChannelMultiplication } from '@/components/channel-multiplication'
 import { MaskText } from '@/components/mask-text'
 import { SplitRevealImage } from '@/components/split-reveal-image'
+import { EditorialReveal, StickyStackedSection } from '@/components/vertical-motion'
 
 /* ── Animation Curve ──────────────────────────────────────────────────────── */
 const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
@@ -510,37 +511,45 @@ export default function HomePage() {
         <div className="container-luxury">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 items-center">
             
-            <div className="md:border-r border-[#292929] md:pr-6 space-y-1">
-              <span className="label-mono text-[#8a8a8a] block">001 // WITLYN STANDARD</span>
-              <p className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
-                STUDIO GRADE
-              </p>
-              <span className="label-mono !text-[#f4521c] text-[10px] block">COMMERCIAL STANDARD</span>
-            </div>
+            <EditorialReveal delay={0.05}>
+              <div className="md:border-r border-[#292929] md:pr-6 space-y-1">
+                <span className="label-mono text-[#8a8a8a] block">001 // WITLYN STANDARD</span>
+                <p className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
+                  STUDIO GRADE
+                </p>
+                <span className="label-mono !text-[#f4521c] text-[10px] block">COMMERCIAL STANDARD</span>
+              </div>
+            </EditorialReveal>
 
-            <div className="md:border-r border-[#292929] md:px-6 space-y-1">
-              <span className="label-mono text-[#8a8a8a] block">002 // SPECIALIZATION</span>
-              <p className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
-                BEAUTY ONLY
-              </p>
-              <span className="label-mono !text-[#f4521c] text-[10px] block">100% COSMETICS</span>
-            </div>
+            <EditorialReveal delay={0.1}>
+              <div className="md:border-r border-[#292929] md:px-6 space-y-1">
+                <span className="label-mono text-[#8a8a8a] block">002 // SPECIALIZATION</span>
+                <p className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
+                  BEAUTY ONLY
+                </p>
+                <span className="label-mono !text-[#f4521c] text-[10px] block">100% COSMETICS</span>
+              </div>
+            </EditorialReveal>
 
-            <div className="md:border-r border-[#292929] md:px-6 space-y-1">
-              <span className="label-mono text-[#8a8a8a] block">003 // PORTFOLIO ASSETS</span>
-              <p className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
-                135+ ASSETS
-              </p>
-              <span className="label-mono !text-[#f4521c] text-[10px] block">MASTER CAMPAIGN VAULT</span>
-            </div>
+            <EditorialReveal delay={0.15}>
+              <div className="md:border-r border-[#292929] md:px-6 space-y-1">
+                <span className="label-mono text-[#8a8a8a] block">003 // PORTFOLIO ASSETS</span>
+                <p className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
+                  135+ ASSETS
+                </p>
+                <span className="label-mono !text-[#f4521c] text-[10px] block">MASTER CAMPAIGN VAULT</span>
+              </div>
+            </EditorialReveal>
 
-            <div className="md:pl-6 space-y-1">
-              <span className="label-mono text-[#8a8a8a] block">004 // EXECUTION SPEED</span>
-              <p className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
-                72 HOURS
-              </p>
-              <span className="label-mono !text-[#f4521c] text-[10px] block">RAPID TURNAROUND</span>
-            </div>
+            <EditorialReveal delay={0.2}>
+              <div className="md:pl-6 space-y-1">
+                <span className="label-mono text-[#8a8a8a] block">004 // EXECUTION SPEED</span>
+                <p className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
+                  72 HOURS
+                </p>
+                <span className="label-mono !text-[#f4521c] text-[10px] block">RAPID TURNAROUND</span>
+              </div>
+            </EditorialReveal>
 
           </div>
         </div>
@@ -560,13 +569,13 @@ export default function HomePage() {
             <span className="label-mono text-[#8a8a8a]">// CATEGORY REALITY</span>
           </div>
 
-          {/* Centered High-Fashion Study Image Plate (Exact Selora Intro Plate) */}
-          <div className="flex justify-center my-8">
-            <div className="relative overflow-hidden w-full max-w-4xl h-[42vh] md:h-[62vh] border border-[#292929] bg-[#0b0c10]">
+          {/* Centered High-Fashion Study Image Plate with Editorial Reveal */}
+          <EditorialReveal delay={0.1} className="flex justify-center my-8">
+            <div className="relative overflow-hidden w-full max-w-4xl h-[42vh] md:h-[62vh] border border-[#292929] bg-[#0b0c10] group">
               <img
                 src="/images/solae/editorial/solae-photo-01.jpg"
                 alt="Solaé Clear Serum Sensory Macro Study"
-                className="w-full h-full object-cover object-center filter contrast-110"
+                className="w-full h-full object-cover object-center filter contrast-110 transition-transform duration-700 ease-luxury group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050609]/80 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between label-mono text-[10px] text-[#ece8e1]/80">
@@ -574,7 +583,7 @@ export default function HomePage() {
                 <span className="text-[#f4521c]">STUDIO ARCHIVE</span>
               </div>
             </div>
-          </div>
+          </EditorialReveal>
 
           {/* Colossal Right-Aligned Headline (Exact Selora Editorial Split) */}
           <div className="mt-14 mb-12">
@@ -589,15 +598,17 @@ export default function HomePage() {
             </h2>
           </div>
 
-          {/* Editorial Reality Statement */}
-          <div className="border-t border-[#292929] pt-8 mt-10">
-            <div className="max-w-3xl space-y-3">
-              <p className="label-mono !text-[#f4521c]">// CAT — 1.07 · THE REALITY</p>
-              <p className="font-inter text-lg sm:text-2xl font-bold leading-snug tracking-tight text-[#ece8e1]">
-                Ad creative fatigues in 14 days. Legacy agency shoots demand 8 weeks and burn $50k+ in friction overhead.
-              </p>
+          {/* Editorial Reality Statement with Editorial Reveal */}
+          <EditorialReveal delay={0.15}>
+            <div className="border-t border-[#292929] pt-8 mt-10">
+              <div className="max-w-3xl space-y-3">
+                <p className="label-mono !text-[#f4521c]">// CAT — 1.07 · THE REALITY</p>
+                <p className="font-inter text-lg sm:text-2xl font-bold leading-snug tracking-tight text-[#ece8e1]">
+                  Ad creative fatigues in 14 days. Legacy agency shoots demand 8 weeks and burn $50k+ in friction overhead.
+                </p>
+              </div>
             </div>
-          </div>
+          </EditorialReveal>
         </div>
       </section>
 
@@ -629,35 +640,36 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Selora Process Module Cards Grid */}
+          {/* Selora Process Module Cards Grid with Vertical Stagger */}
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {strategicSteps.map((step) => (
-              <article
-                key={step.num}
-                className="group relative flex flex-col justify-between border border-[#292929] bg-[#0b0c10] p-6 hover:border-[#f4521c] transition-colors duration-500"
-              >
-                <div>
-                  <div className="flex items-start justify-between gap-4 mb-8">
-                    <span className="label-mono !text-[#f4521c]">MODULE — {step.num}</span>
-                    <span className="label-mono text-[#8a8a8a]">{step.num}/05</span>
+            {strategicSteps.map((step, idx) => (
+              <EditorialReveal key={step.num} delay={idx * 0.08} className="h-full">
+                <article
+                  className="group relative flex flex-col justify-between border border-[#292929] bg-[#0b0c10] p-6 hover:border-[#f4521c] transition-colors duration-500 h-full"
+                >
+                  <div>
+                    <div className="flex items-start justify-between gap-4 mb-8">
+                      <span className="label-mono !text-[#f4521c]">MODULE — {step.num}</span>
+                      <span className="label-mono text-[#8a8a8a]">{step.num}/05</span>
+                    </div>
+
+                    <div className="h-px w-full bg-[#292929] group-hover:bg-[#f4521c] transition-colors duration-500 mb-6" />
+
+                    <h3 className="font-inter text-base font-bold uppercase tracking-tight text-[#ece8e1] mb-3 group-hover:text-[#f4521c] transition-colors">
+                      {step.title}
+                    </h3>
+
+                    <p className="font-inter text-xs text-[#8a8a8a] leading-relaxed">
+                      {step.desc}
+                    </p>
                   </div>
 
-                  <div className="h-px w-full bg-[#292929] group-hover:bg-[#f4521c] transition-colors duration-500 mb-6" />
-
-                  <h3 className="font-inter text-base font-bold uppercase tracking-tight text-[#ece8e1] mb-3 group-hover:text-[#f4521c] transition-colors">
-                    {step.title}
-                  </h3>
-
-                  <p className="font-inter text-xs text-[#8a8a8a] leading-relaxed">
-                    {step.desc}
-                  </p>
-                </div>
-
-                <div className="pt-6 mt-6 border-t border-[#292929] flex items-center justify-between label-mono text-[10px]">
-                  <span>PROTOCOL</span>
-                  <span className="text-[#f4521c]">ACTIVE</span>
-                </div>
-              </article>
+                  <div className="pt-6 mt-6 border-t border-[#292929] flex items-center justify-between label-mono text-[10px]">
+                    <span>PROTOCOL</span>
+                    <span className="text-[#f4521c]">ACTIVE</span>
+                  </div>
+                </article>
+              </EditorialReveal>
             ))}
           </div>
 
@@ -697,76 +709,78 @@ export default function HomePage() {
           </div>
 
           {/* 5 Flagship Case Studies */}
-          <div className="space-y-32">
+          <div className="space-y-28">
             {caseStudies.map((study, idx) => (
-              <div key={study.brand} className="pt-8 border-t border-[#292929] first:border-none first:pt-0">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-                  
-                  {/* Left Column (5 Cols): Brand Title + Impact Takeaway */}
-                  <div className={`lg:col-span-5 flex flex-col justify-between ${idx % 2 === 1 ? 'order-1 lg:order-2' : ''}`}>
-                    <div className="space-y-6">
-                      <div className="flex items-center justify-between border-b border-[#292929] pb-3">
-                        <span className="label-mono !text-[#f4521c]">
-                          CASE STUDY {study.num} // WITLYN VAULT
-                        </span>
-                        <span className="label-mono text-[#8a8a8a]">
-                          STUDIO GRADE
-                        </span>
+              <EditorialReveal key={study.brand} delay={0.08} yOffset={36}>
+                <div className="pt-8 border-t border-[#292929] first:border-none first:pt-0">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+                    
+                    {/* Left Column (5 Cols): Brand Title + Impact Takeaway */}
+                    <div className={`lg:col-span-5 flex flex-col justify-between ${idx % 2 === 1 ? 'order-1 lg:order-2' : ''}`}>
+                      <div className="space-y-6">
+                        <div className="flex items-center justify-between border-b border-[#292929] pb-3">
+                          <span className="label-mono !text-[#f4521c]">
+                            CASE STUDY {study.num} // WITLYN VAULT
+                          </span>
+                          <span className="label-mono text-[#8a8a8a]">
+                            STUDIO GRADE
+                          </span>
+                        </div>
+
+                        <div>
+                          <h3 className="font-inter font-black uppercase text-3xl sm:text-4xl text-[#ece8e1] hover:text-[#f4521c] transition-colors">
+                            <Link href={study.link}>{study.brand}</Link>
+                          </h3>
+                        </div>
+
+                        {/* Strategic Commercial Result & Deliverables */}
+                        <div className="border-l-2 border-[#f4521c] pl-4 py-2 space-y-1.5 bg-[#0b0c10] border-y border-r border-[#292929]">
+                          <span className="label-mono text-[10px] text-[#8a8a8a] block">
+                            IMPACT // {study.deliverables}
+                          </span>
+                          <p className="font-inter text-xs sm:text-sm text-[#ece8e1] font-medium leading-relaxed">
+                            {study.strategistThinking.commercialBenefit}
+                          </p>
+                        </div>
                       </div>
 
-                      <div>
-                        <h3 className="font-inter font-black uppercase text-3xl sm:text-4xl text-[#ece8e1] hover:text-[#f4521c] transition-colors">
-                          <Link href={study.link}>{study.brand}</Link>
-                        </h3>
-                      </div>
-
-                      {/* Strategic Commercial Result & Deliverables */}
-                      <div className="border-l-2 border-[#f4521c] pl-4 py-2 space-y-1.5 bg-[#0b0c10] border-y border-r border-[#292929]">
-                        <span className="label-mono text-[10px] text-[#8a8a8a] block">
-                          IMPACT // {study.deliverables}
-                        </span>
-                        <p className="font-inter text-xs sm:text-sm text-[#ece8e1] font-medium leading-relaxed">
-                          {study.strategistThinking.commercialBenefit}
-                        </p>
+                      <div className="pt-4">
+                        <Button asChild className="btn-acid h-11 w-full rounded-none">
+                          <Link href={study.link} className="flex items-center justify-between px-2">
+                            <span>EXPLORE {study.brand} CAMPAIGN VAULT</span>
+                            <ArrowRight className="w-4 h-4" />
+                          </Link>
+                        </Button>
                       </div>
                     </div>
 
-                    <div className="pt-4">
-                      <Button asChild className="btn-acid h-11 w-full rounded-none">
-                        <Link href={study.link} className="flex items-center justify-between px-2">
-                          <span>EXPLORE {study.brand} CAMPAIGN VAULT</span>
-                          <ArrowRight className="w-4 h-4" />
-                        </Link>
-                      </Button>
+                    {/* Right Column (7 Cols): Split Preview of Hero Product + Video Highlight */}
+                    <div className={`lg:col-span-7 grid grid-cols-1 sm:grid-cols-12 gap-4 ${idx % 2 === 1 ? 'order-2 lg:order-1' : ''}`}>
+                      {/* Primary Hero Still with Selora Split-Shutter Reveal */}
+                      <div className="sm:col-span-7 group border border-[#292929] bg-[#0b0c10] p-2">
+                        <SplitRevealImage
+                          src={study.heroImage}
+                          alt={`${study.brand} campaign visual directed by Sakib Ziad`}
+                          aspect="aspect-[4/5]"
+                          className="w-full"
+                        />
+                        <div className="mt-2 flex items-center justify-between label-mono text-[10px] px-1">
+                          <span className="text-[#ece8e1] group-hover:text-[#f4521c] transition-colors">
+                            {study.brand} // HERO PLATE
+                          </span>
+                          <span className="text-[#8a8a8a]">4K STILL</span>
+                        </div>
+                      </div>
+
+                      {/* Motion Deliverable Preview with Audio Controls */}
+                      <div className="sm:col-span-5 border border-[#292929] bg-[#0b0c10] p-2">
+                        <HomepageVideoPlayer src={study.previewVideo} brand={study.brand} />
+                      </div>
                     </div>
+
                   </div>
-
-                  {/* Right Column (7 Cols): Split Preview of Hero Product + Video Highlight */}
-                  <div className={`lg:col-span-7 grid grid-cols-1 sm:grid-cols-12 gap-4 ${idx % 2 === 1 ? 'order-2 lg:order-1' : ''}`}>
-                    {/* Primary Hero Still with Selora Split-Shutter Reveal */}
-                    <div className="sm:col-span-7 group border border-[#292929] bg-[#0b0c10] p-2">
-                      <SplitRevealImage
-                        src={study.heroImage}
-                        alt={`${study.brand} campaign visual directed by Sakib Ziad`}
-                        aspect="aspect-[4/5]"
-                        className="w-full"
-                      />
-                      <div className="mt-2 flex items-center justify-between label-mono text-[10px] px-1">
-                        <span className="text-[#ece8e1] group-hover:text-[#f4521c] transition-colors">
-                          {study.brand} // HERO PLATE
-                        </span>
-                        <span className="text-[#8a8a8a]">4K STILL</span>
-                      </div>
-                    </div>
-
-                    {/* Motion Deliverable Preview with Audio Controls */}
-                    <div className="sm:col-span-5 border border-[#292929] bg-[#0b0c10] p-2">
-                      <HomepageVideoPlayer src={study.previewVideo} brand={study.brand} />
-                    </div>
-                  </div>
-
                 </div>
-              </div>
+              </EditorialReveal>
             ))}
           </div>
 
@@ -805,88 +819,94 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
             
             {/* Card 1: Consulting / Advisory */}
-            <div className="border border-[#292929] bg-[#050609] p-8 flex flex-col justify-between hover:border-[#f4521c] transition-colors">
-              <div>
-                <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-6">
-                  <span className="label-mono !text-[#f4521c]">FLAGSHIP // 01</span>
-                  <span className="label-mono text-[#8a8a8a]">APPLICATION ONLY</span>
+            <EditorialReveal delay={0.1} className="h-full">
+              <div className="border border-[#292929] bg-[#050609] p-8 flex flex-col justify-between hover:border-[#f4521c] transition-colors h-full">
+                <div>
+                  <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-6">
+                    <span className="label-mono !text-[#f4521c]">FLAGSHIP // 01</span>
+                    <span className="label-mono text-[#8a8a8a]">APPLICATION ONLY</span>
+                  </div>
+
+                  <h3 className="font-inter font-black uppercase text-2xl text-[#ece8e1] mb-3 leading-snug">
+                    1:1 CREATIVE ADVISORY
+                  </h3>
+                  <p className="font-inter text-xs text-[#8a8a8a] mb-8 leading-relaxed">
+                    Private high-touch counsel covering ad audits, campaign concepting, and rapid 72h commercial pipelines.
+                  </p>
+                  
+                  <div className="pt-4 border-t border-[#292929] mb-8 label-mono text-[11px] !text-[#f4521c]">
+                    // STRICTLY CAPPED AT 3 CONCURRENT BRANDS
+                  </div>
                 </div>
 
-                <h3 className="font-inter font-black uppercase text-2xl text-[#ece8e1] mb-3 leading-snug">
-                  1:1 CREATIVE ADVISORY
-                </h3>
-                <p className="font-inter text-xs text-[#8a8a8a] mb-8 leading-relaxed">
-                  Private high-touch counsel covering ad audits, campaign concepting, and rapid 72h commercial pipelines.
-                </p>
-                
-                <div className="pt-4 border-t border-[#292929] mb-8 label-mono text-[11px] !text-[#f4521c]">
-                  // STRICTLY CAPPED AT 3 CONCURRENT BRANDS
-                </div>
+                <Button asChild className="btn-acid h-11 w-full rounded-none">
+                  <Link href="/consulting" className="flex items-center justify-center gap-2">
+                    <span>APPLY FOR ADVISORY</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Button>
               </div>
-
-              <Button asChild className="btn-acid h-11 w-full rounded-none">
-                <Link href="/consulting" className="flex items-center justify-center gap-2">
-                  <span>APPLY FOR ADVISORY</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </Button>
-            </div>
+            </EditorialReveal>
 
             {/* Card 2: Campaign Systems */}
-            <div className="border border-[#292929] bg-[#050609] p-8 flex flex-col justify-between hover:border-[#f4521c] transition-colors">
-              <div>
-                <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-6">
-                  <span className="label-mono !text-[#f4521c]">SYSTEMS // 02</span>
-                  <span className="label-mono text-[#8a8a8a]">VAULT</span>
+            <EditorialReveal delay={0.2} className="h-full">
+              <div className="border border-[#292929] bg-[#050609] p-8 flex flex-col justify-between hover:border-[#f4521c] transition-colors h-full">
+                <div>
+                  <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-6">
+                    <span className="label-mono !text-[#f4521c]">SYSTEMS // 02</span>
+                    <span className="label-mono text-[#8a8a8a]">VAULT</span>
+                  </div>
+
+                  <h3 className="font-inter font-black uppercase text-2xl text-[#ece8e1] mb-3 leading-snug">
+                    CAMPAIGN SYSTEMS
+                  </h3>
+                  <p className="font-inter text-xs text-[#8a8a8a] mb-8 leading-relaxed">
+                    Battle-tested creative frameworks, commercial brief templates, and skincare hook matrices.
+                  </p>
+
+                  <div className="pt-4 border-t border-[#292929] mb-8 label-mono text-[11px] !text-[#f4521c]">
+                    // WITLYN PRODUCTION STANDARD
+                  </div>
                 </div>
 
-                <h3 className="font-inter font-black uppercase text-2xl text-[#ece8e1] mb-3 leading-snug">
-                  CAMPAIGN SYSTEMS
-                </h3>
-                <p className="font-inter text-xs text-[#8a8a8a] mb-8 leading-relaxed">
-                  Battle-tested creative frameworks, commercial brief templates, and skincare hook matrices.
-                </p>
-
-                <div className="pt-4 border-t border-[#292929] mb-8 label-mono text-[11px] !text-[#f4521c]">
-                  // WITLYN PRODUCTION STANDARD
-                </div>
+                <Button asChild variant="outline" className="h-11 w-full rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
+                  <Link href="/work" className="flex items-center justify-center gap-2">
+                    <span>EXPLORE CAMPAIGN VAULT</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Button>
               </div>
-
-              <Button asChild variant="outline" className="h-11 w-full rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
-                <Link href="/work" className="flex items-center justify-center gap-2">
-                  <span>EXPLORE CAMPAIGN VAULT</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </Button>
-            </div>
+            </EditorialReveal>
 
             {/* Card 3: Membership */}
-            <div className="border border-[#292929] bg-[#050609] p-8 flex flex-col justify-between hover:border-[#f4521c] transition-colors">
-              <div>
-                <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-6">
-                  <span className="label-mono !text-[#f4521c]">SYNDICATE // 03</span>
-                  <span className="label-mono text-[#8a8a8a]">LIMITED INTAKE</span>
+            <EditorialReveal delay={0.3} className="h-full">
+              <div className="border border-[#292929] bg-[#050609] p-8 flex flex-col justify-between hover:border-[#f4521c] transition-colors h-full">
+                <div>
+                  <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-6">
+                    <span className="label-mono !text-[#f4521c]">SYNDICATE // 03</span>
+                    <span className="label-mono text-[#8a8a8a]">LIMITED INTAKE</span>
+                  </div>
+
+                  <h3 className="font-inter font-black uppercase text-2xl text-[#ece8e1] mb-3 leading-snug">
+                    THE ADVISORY SYNDICATE
+                  </h3>
+                  <p className="font-inter text-xs text-[#8a8a8a] mb-8 leading-relaxed">
+                    Monthly beauty creative strategy dispatches, live campaign teardowns, and direct async feedback.
+                  </p>
+
+                  <div className="pt-4 border-t border-[#292929] mb-8 label-mono text-[11px] !text-[#f4521c]">
+                    // CURATED FOUNDER COHORT
+                  </div>
                 </div>
 
-                <h3 className="font-inter font-black uppercase text-2xl text-[#ece8e1] mb-3 leading-snug">
-                  THE ADVISORY SYNDICATE
-                </h3>
-                <p className="font-inter text-xs text-[#8a8a8a] mb-8 leading-relaxed">
-                  Monthly beauty creative strategy dispatches, live campaign teardowns, and direct async feedback.
-                </p>
-
-                <div className="pt-4 border-t border-[#292929] mb-8 label-mono text-[11px] !text-[#f4521c]">
-                  // CURATED FOUNDER COHORT
-                </div>
+                <Button asChild variant="outline" className="h-11 w-full rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
+                  <Link href="/membership" className="flex items-center justify-center gap-2">
+                    <span>EXPLORE MEMBERSHIP</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Button>
               </div>
-
-              <Button asChild variant="outline" className="h-11 w-full rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
-                <Link href="/membership" className="flex items-center justify-center gap-2">
-                  <span>EXPLORE MEMBERSHIP</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </Button>
-            </div>
+            </EditorialReveal>
 
           </div>
 
@@ -925,9 +945,10 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
             {/* Left Column: Context */}
-            <div className="lg:col-span-5 space-y-6">
+            {/* Left Column: Context */}
+            <EditorialReveal delay={0.1} className="lg:col-span-5 space-y-6">
               <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl text-[#ece8e1] leading-tight">
-                GET A FREE GAP &amp; OPPORTUNITY SNAPSHOT
+                <MaskText lines={['GET A FREE GAP &', 'OPPORTUNITY SNAPSHOT']} />
               </h2>
               <p className="font-inter text-sm sm:text-base text-[#bdb8b0] leading-relaxed">
                 Input your brand details. We analyze your digital creative presence and deliver 3 concrete, high-leverage opportunities directly to your inbox.
@@ -946,10 +967,10 @@ export default function HomePage() {
                   <span>1 actionable 30-day next step (no spam, no obligation)</span>
                 </div>
               </div>
-            </div>
+            </EditorialReveal>
 
             {/* Right Column: Diagnostic Form Card */}
-            <div className="lg:col-span-7">
+            <EditorialReveal delay={0.2} className="lg:col-span-7">
               <div className="border border-[#292929] bg-[#0b0c10] p-8 sm:p-12">
                 {diagnosticStatus === 'success' ? (
                   <div className="text-center py-8 space-y-6">
@@ -1009,7 +1030,7 @@ export default function HomePage() {
                   </form>
                 )}
               </div>
-            </div>
+            </EditorialReveal>
 
           </div>
         </div>
@@ -1021,29 +1042,30 @@ export default function HomePage() {
       <section className="py-24 border-t border-[#292929] bg-[#050609]" aria-label="FAQ">
         <div className="container-luxury max-w-4xl mx-auto space-y-20">
 
-
           {/* Final Call To Action Card */}
-          <div className="border border-[#292929] bg-[#0b0c10] p-10 sm:p-16 text-center space-y-6 relative overflow-hidden">
-            <div className="absolute top-0 inset-x-0 h-[2px] bg-[#f4521c]" />
+          <EditorialReveal delay={0.1}>
+            <div className="border border-[#292929] bg-[#0b0c10] p-10 sm:p-16 text-center space-y-6 relative overflow-hidden">
+              <div className="absolute top-0 inset-x-0 h-[2px] bg-[#f4521c]" />
 
-            <span className="label-mono !text-[#f4521c] block">
-              // LIMITED AVAILABILITY · STRICTLY 3 CONCURRENT BRANDS
-            </span>
-            <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl text-[#ece8e1] leading-tight max-w-2xl mx-auto">
-              READY TO ELEVATE YOUR BEAUTY BRAND’S COMMERCIAL CONVERSION?
-            </h2>
-            <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] max-w-xl mx-auto leading-relaxed">
-              We review every application personally within 48 business hours. Strictly capped cohorts ensure deep focus, rapid turnaround, and direct partner access.
-            </p>
-            <div className="pt-4">
-              <Button asChild className="btn-acid h-14 px-10 text-sm rounded-none uppercase font-inter font-bold tracking-wider">
-                <Link href="/contact" className="flex items-center gap-2">
-                  <span>APPLY FOR A STRATEGY CALL</span>
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
+              <span className="label-mono !text-[#f4521c] block">
+                // LIMITED AVAILABILITY · STRICTLY 3 CONCURRENT BRANDS
+              </span>
+              <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl text-[#ece8e1] leading-tight max-w-2xl mx-auto">
+                <MaskText align="center" lines={['READY TO ELEVATE YOUR BEAUTY BRAND’S', 'COMMERCIAL CONVERSION?']} />
+              </h2>
+              <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] max-w-xl mx-auto leading-relaxed">
+                We review every application personally within 48 business hours. Strictly capped cohorts ensure deep focus, rapid turnaround, and direct partner access.
+              </p>
+              <div className="pt-4">
+                <Button asChild className="btn-acid h-14 px-10 text-sm rounded-none uppercase font-inter font-bold tracking-wider">
+                  <Link href="/contact" className="flex items-center gap-2">
+                    <span>APPLY FOR A STRATEGY CALL</span>
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </Button>
+              </div>
             </div>
-          </div>
+          </EditorialReveal>
 
         </div>
       </section>

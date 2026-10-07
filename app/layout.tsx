@@ -4,6 +4,7 @@ import { Inter, IBM_Plex_Mono } from 'next/font/google'
 import './globals.css'
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
+import { SmoothScroll } from '@/components/smooth-scroll'
 import { FloatingLeadTrigger } from '@/components/floating-lead-trigger'
 import { StructuredData } from '@/components/structured-data'
 import { personSchema } from '@/lib/seo-schemas'
@@ -163,10 +164,12 @@ export default function RootLayout({
           {/* Site navigation with unified top guarantee banner */}
           <Navigation />
 
-          {/* Page content */}
-          <main id="main-content" className="relative">
-            {children}
-          </main>
+          {/* Page content with Lenis momentum scroll */}
+          <SmoothScroll>
+            <main id="main-content" className="relative">
+              {children}
+            </main>
+          </SmoothScroll>
 
           {/* Site footer */}
           <Footer />
