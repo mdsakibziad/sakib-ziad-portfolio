@@ -12,7 +12,6 @@ import { TopGuaranteeBanner } from './top-guarantee-banner'
 const NAV_LINKS = [
   { label: 'Work',       href: '/work' },
   { label: 'Consulting', href: '/consulting' },
-  { label: 'Products',   href: '/digital-products' },
   { label: 'Membership', href: '/membership' },
   { label: 'About',      href: '/about' },
   { label: 'Contact',    href: '/contact' },

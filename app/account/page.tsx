@@ -507,10 +507,10 @@ export default function AccountPage() {
                     </p>
                   </div>
                   <Link
-                    href="/digital-products"
+                    href="/work"
                     className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-ivory hover:text-muted transition-colors pt-2"
                   >
-                    <span>Browse Product Catalog</span>
+                    <span>Browse Campaign Vault</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -595,7 +595,7 @@ export default function AccountPage() {
                       </p>
                     </div>
                     <Button asChild variant="outline" size="sm" className="text-xs uppercase tracking-wider">
-                      <Link href="/digital-products">
+                      <Link href="/work">
                         <span>Browse Available Frameworks</span>
                         <ArrowRight className="w-3.5 h-3.5 ml-2" />
                       </Link>
@@ -618,15 +618,15 @@ export default function AccountPage() {
                           >
                             <div className="space-y-1.5">
                               <div className="flex items-center justify-between">
-                                <span className="text-[10px] font-mono uppercase tracking-wider text-muted">Commercial Framework</span>
-                                <span className="font-mono text-xs text-ivory">{prod.priceFormatted}</span>
+                                 <span className="text-[10px] font-mono uppercase tracking-wider text-muted">Commercial Framework</span>
+                                 <span className="font-mono text-xs text-ivory">{prod.priceFormatted}</span>
                               </div>
                               <h4 className="font-fraunces text-base text-ivory">{prod.name}</h4>
                               <p className="text-xs text-muted-light leading-relaxed">{prod.description}</p>
                             </div>
 
                             <Button asChild variant="outline" size="sm" className="w-full text-xs uppercase tracking-wider">
-                              <Link href="/digital-products">
+                              <Link href="/work">
                                 <span>View Specifications</span>
                                 <ArrowRight className="w-3.5 h-3.5 ml-2" />
                               </Link>

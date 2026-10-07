@@ -30,7 +30,7 @@ const INTEREST_OPTIONS: { value: AreaOfInterest; label: string; submissionType: 
   { value: 'consulting', label: '1:1 Strategic Advisory & Direction', submissionType: 'consulting' },
   { value: 'automation', label: 'Autonomous Brand Systems & Asset Pipeline', submissionType: 'consulting' },
   { value: 'membership', label: 'Private Syndicate Membership', submissionType: 'membership' },
-  { value: 'digital-products', label: 'Digital Products & Blueprint Frameworks', submissionType: 'general' },
+  { value: 'digital-products', label: 'Campaign Vault & Systems', submissionType: 'general' },
   { value: 'general', label: 'General Strategic Inquiry', submissionType: 'general' },
 ]
 

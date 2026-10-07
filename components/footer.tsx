@@ -67,7 +67,7 @@ export function Footer() {
               <li><Link href="/work" className="hover:opacity-70 transition-opacity">WORK</Link></li>
               <li><Link href="/consulting" className="hover:opacity-70 transition-opacity">ADVISORY</Link></li>
               <li><Link href="/about" className="hover:opacity-70 transition-opacity">ABOUT</Link></li>
-              <li><Link href="/digital-products" className="hover:opacity-70 transition-opacity">PLAYBOOKS</Link></li>
+              <li><Link href="/membership" className="hover:opacity-70 transition-opacity">MEMBERSHIP</Link></li>
               <li><Link href="/contact" className="hover:opacity-70 transition-opacity">CONTACT</Link></li>
               <li className="pt-2"><Link href="/privacy" className="text-[10px] text-[#050609]/75 hover:opacity-100">PRIVACY POLICY</Link></li>
               <li><Link href="/terms" className="text-[10px] text-[#050609]/75 hover:opacity-100">TERMS OF USE</Link></li>

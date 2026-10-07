@@ -650,42 +650,13 @@ export default function HomePage() {
             </h2>
           </div>
 
-          {/* Editorial Problem & Paradigm Comparison Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start my-10">
-            <div className="md:col-span-4 space-y-4">
+          {/* Editorial Reality Statement */}
+          <div className="border-t border-[#292929] pt-8 mt-10">
+            <div className="max-w-3xl space-y-3">
               <p className="label-mono !text-[#f4521c]">// CAT — 1.07 · THE REALITY</p>
-              <p className="font-inter text-base sm:text-lg font-bold leading-snug tracking-tight text-[#ece8e1]">
+              <p className="font-inter text-lg sm:text-2xl font-bold leading-snug tracking-tight text-[#ece8e1]">
                 Ad creative fatigues in 14 days. Legacy agency shoots demand 8 weeks and burn $50k+ in friction overhead.
               </p>
-            </div>
-
-            <div className="md:col-span-8 space-y-6">
-              <p className="font-inter text-lg sm:text-2xl font-bold uppercase tracking-tight text-[#ece8e1] leading-tight border-b border-[#292929] pb-6">
-                A PRACTICE OF SOLVING AD FATIGUE BEFORE IT DRAINS MARGINS. WE ENGINEER STUDIO-GRADE VISUALS DESIGNED TO CONVERT IN 72 HOURS.
-              </p>
-
-              <div className="border border-[#292929] bg-[#0b0c10] p-6 sm:p-8 space-y-6">
-                <div className="flex items-center justify-between border-b border-[#292929] pb-4">
-                  <span className="label-mono !text-[#ece8e1]">DIRECT PARADIGM COMPARISON</span>
-                  <span className="label-mono !text-[#f4521c]">STUDIO PROTOCOL</span>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
-                  <div className="border-l-2 border-[#292929] pl-4 space-y-2">
-                    <span className="label-mono text-[#8a8a8a]">01 / LEGACY AGENCY</span>
-                    <p className="font-inter text-xs text-[#8a8a8a] leading-relaxed">
-                      6–8 week wait, high set rentals, limited variants, rapid creative fatigue within 14 days.
-                    </p>
-                  </div>
-
-                  <div className="border-l-2 border-[#f4521c] pl-4 space-y-2">
-                    <span className="label-mono !text-[#f4521c]">02 / SAKIB ZIAD SYSTEM</span>
-                    <p className="font-inter text-xs text-[#ece8e1] font-medium leading-relaxed">
-                      72-hour turnaround, 25+ studio assets, sensory formula caustics, and multi-ratio conversion architecture.
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -774,8 +745,8 @@ export default function HomePage() {
               <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl text-[#ece8e1] leading-tight">
                 <MaskText lines={['SELECTED CAMPAIGN SYSTEMS']} />
               </h2>
-              <p className="font-inter text-xs sm:text-sm text-[#8a8a8a] max-w-xl">
-                Five category-defining skincare and beauty campaigns engineered for high conversion and luxury prestige.
+              <p className="font-inter text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#8a8a8a] max-w-xl">
+                Engineered to replace 8-week agency friction with 72-hour omnichannel commercial performance.
               </p>
             </div>
             <Button asChild variant="outline" className="h-11 px-6 rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
@@ -792,9 +763,9 @@ export default function HomePage() {
               <div key={study.brand} className="pt-8 border-t border-[#292929] first:border-none first:pt-0">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
                   
-                  {/* Left Column (5 Cols): Hero Product + 1 Short Sentence + Strategist Rationale */}
+                  {/* Left Column (5 Cols): Brand Title + Impact Takeaway */}
                   <div className={`lg:col-span-5 flex flex-col justify-between ${idx % 2 === 1 ? 'order-1 lg:order-2' : ''}`}>
-                    <div className="space-y-4">
+                    <div className="space-y-6">
                       <div className="flex items-center justify-between border-b border-[#292929] pb-3">
                         <span className="label-mono !text-[#f4521c]">
                           CASE STUDY {study.num} // WITLYN VAULT
@@ -805,25 +776,17 @@ export default function HomePage() {
                       </div>
 
                       <div>
-                        <h3 className="font-inter font-black uppercase text-3xl sm:text-4xl text-[#ece8e1] hover:text-[#f4521c] transition-colors mb-1">
+                        <h3 className="font-inter font-black uppercase text-3xl sm:text-4xl text-[#ece8e1] hover:text-[#f4521c] transition-colors">
                           <Link href={study.link}>{study.brand}</Link>
                         </h3>
-                        <p className="label-mono text-xs text-[#f4521c] font-bold">
-                          {study.tagline}
-                        </p>
                       </div>
 
-                      {/* Core Product Hook */}
-                      <p className="font-inter text-sm sm:text-base font-semibold text-[#ece8e1] leading-relaxed">
-                        {study.oneLiner}
-                      </p>
-
                       {/* Strategic Commercial Result & Deliverables */}
-                      <div className="border-l-2 border-[#f4521c] pl-3 py-1.5 space-y-1 bg-[#0b0c10] border-y border-r border-[#292929]">
+                      <div className="border-l-2 border-[#f4521c] pl-4 py-2 space-y-1.5 bg-[#0b0c10] border-y border-r border-[#292929]">
                         <span className="label-mono text-[10px] text-[#8a8a8a] block">
                           IMPACT // {study.deliverables}
                         </span>
-                        <p className="font-inter text-xs text-[#ece8e1] font-medium leading-relaxed">
+                        <p className="font-inter text-xs sm:text-sm text-[#ece8e1] font-medium leading-relaxed">
                           {study.strategistThinking.commercialBenefit}
                         </p>
                       </div>
@@ -1054,29 +1017,29 @@ export default function HomePage() {
               </Button>
             </div>
 
-            {/* Card 2: Digital Products */}
+            {/* Card 2: Campaign Systems */}
             <div className="border border-[#292929] bg-[#050609] p-8 flex flex-col justify-between hover:border-[#f4521c] transition-colors">
               <div>
                 <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-6">
-                  <span className="label-mono !text-[#f4521c]">PLAYBOOKS // 02</span>
-                  <span className="label-mono text-[#8a8a8a]">SELF-SERVE</span>
+                  <span className="label-mono !text-[#f4521c]">SYSTEMS // 02</span>
+                  <span className="label-mono text-[#8a8a8a]">VAULT</span>
                 </div>
 
                 <h3 className="font-inter font-black uppercase text-2xl text-[#ece8e1] mb-3 leading-snug">
-                  SYSTEMS &amp; PLAYBOOKS
+                  CAMPAIGN SYSTEMS
                 </h3>
                 <p className="font-inter text-xs text-[#8a8a8a] mb-8 leading-relaxed">
                   Battle-tested creative frameworks, commercial brief templates, and skincare hook matrices.
                 </p>
 
                 <div className="pt-4 border-t border-[#292929] mb-8 label-mono text-[11px] !text-[#f4521c]">
-                  // INSTANT ACCESS DIGITAL VAULT
+                  // WITLYN PRODUCTION STANDARD
                 </div>
               </div>
 
               <Button asChild variant="outline" className="h-11 w-full rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
-                <Link href="/digital-products" className="flex items-center justify-center gap-2">
-                  <span>EXPLORE PLAYBOOKS</span>
+                <Link href="/work" className="flex items-center justify-center gap-2">
+                  <span>EXPLORE CAMPAIGN VAULT</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </Button>
