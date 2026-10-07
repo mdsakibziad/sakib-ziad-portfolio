@@ -202,123 +202,12 @@ export default function ConsultingPage() {
         </div>
       </section>
 
-      {/* ── Scope of Work (The Two Pillars) ─────────────────────────────────── */}
-      <section className="py-20 border-b border-[#292929]" aria-label="Scope of Work">
-        <div className="container-luxury">
-          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">
-            <span className="label-mono !text-[#f4521c]">ADVISORY SCOPE</span>
-            <span className="label-mono text-[#8a8a8a]">TWO PILLARS · ONE STRATEGIC PARTNER</span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-            {/* PILLAR 1 */}
-            <div className="border border-[#292929] bg-[#0b0c10] p-8 space-y-6 hover:border-[#f4521c] transition-colors">
-              <div className="flex items-start justify-between border-b border-[#292929] pb-4">
-                <div>
-                  <span className="label-mono !text-[#f4521c] block mb-1">PILLAR 01</span>
-                  <h3 className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
-                    COMMERCIAL CREATIVE STRATEGY &amp; DIRECTION
-                  </h3>
-                </div>
-                <span className="label-mono text-[#8a8a8a]">01/02</span>
-              </div>
-
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 bg-[#f4521c] mt-2 shrink-0" />
-                  <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed">
-                    Proprietary art direction guidelines calibrated to cosmetic formula physics and packaging caustics.
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 bg-[#f4521c] mt-2 shrink-0" />
-                  <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed">
-                    High-fashion visual worldbuilding and editorial moodboard synthesis that elevates brand prestige.
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 bg-[#f4521c] mt-2 shrink-0" />
-                  <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed">
-                    Internal team training on high-velocity commercial production workflows and virtual studio pipelines.
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 bg-[#f4521c] mt-2 shrink-0" />
-                  <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed">
-                    Forensic ad creative audits to eliminate 14-day creative fatigue and solve high CPA bottlenecks.
-                  </p>
-                </li>
-              </ul>
-            </div>
-
-            {/* PILLAR 2 */}
-            <div className="border border-[#292929] bg-[#0b0c10] p-8 space-y-6 hover:border-[#f4521c] transition-colors">
-              <div className="flex items-start justify-between border-b border-[#292929] pb-4">
-                <div>
-                  <span className="label-mono !text-[#f4521c] block mb-1">PILLAR 02</span>
-                  <h3 className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
-                    PERFORMANCE CREATIVE ARCHITECTURE &amp; PIPELINES
-                  </h3>
-                </div>
-                <span className="label-mono text-[#8a8a8a]">02/02</span>
-              </div>
-
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 bg-[#f4521c] mt-2 shrink-0" />
-                  <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed">
-                    Automated consumer review &amp; friction sentiment ingestion mapped directly into high-converting briefs.
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 bg-[#f4521c] mt-2 shrink-0" />
-                  <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed">
-                    Streamlined production orchestration connecting direct-response asset pipelines across teams.
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 bg-[#f4521c] mt-2 shrink-0" />
-                  <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed">
-                    Prestige skincare tone-of-voice frameworks for paid-social hooks, video scripts, and retainers.
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 bg-[#f4521c] mt-2 shrink-0" />
-                  <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed">
-                    Multi-aspect ratio rendering pipelines (1:1, 9:16, 4:5) for seamless omnichannel distribution.
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Studio Production Alternative Callout */}
-          <div className="border border-[#292929] bg-[#0b0c10] p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div className="max-w-2xl space-y-2">
-              <span className="label-mono !text-[#f4521c]">STUDIO PRODUCTION ALTERNATIVE</span>
-              <h4 className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
-                LOOKING FOR DONE-FOR-YOU CAMPAIGN PRODUCTION?
-              </h4>
-              <p className="font-inter text-xs sm:text-sm text-[#8a8a8a] leading-relaxed">
-                If you need a full creative studio to concept and execute complete campaigns rather than advisory guidance, visit Witlyn — my commercial creative studio.
-              </p>
-            </div>
-            <Button asChild variant="outline" className="shrink-0 h-12 px-6 rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
-              <a href="https://witlyn.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                <span>VISIT WITLYN STUDIO</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Engagement Structures ───────────────────────────────────────────── */}
+      {/* ── Engagement Structures & Pricing Models ─────────────────────────── */}
       <section id="engagements" className="py-20 border-b border-[#292929]" aria-label="Engagements">
         <div className="container-luxury">
           <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">
-            <span className="label-mono !text-[#f4521c]">STRUCTURE</span>
-            <span className="label-mono text-[#8a8a8a]">HOW WE WORK TOGETHER</span>
+            <span className="label-mono !text-[#f4521c]">PRICING MODEL</span>
+            <span className="label-mono text-[#8a8a8a]">ENGAGEMENT STRUCTURE</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -329,28 +218,16 @@ export default function ConsultingPage() {
               >
                 <div>
                   <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-6">
-                    <span className="label-mono !text-[#f4521c]">ENGAGEMENT — {eng.num}</span>
+                    <span className="label-mono !text-[#f4521c]">MODEL — {eng.num}</span>
                     <span className="label-mono text-[#8a8a8a]">{eng.badge}</span>
                   </div>
 
                   <h3 className="font-inter font-black uppercase text-xl text-[#ece8e1] mb-3 leading-snug">
                     {eng.title}
                   </h3>
-                  <p className="font-inter text-xs text-[#8a8a8a] mb-6 leading-relaxed">
-                    {eng.ideal}
-                  </p>
-
-                  <ul className="space-y-3 pt-6 border-t border-[#292929] mb-8">
-                    {eng.features.map((feat, i) => (
-                      <li key={i} className="flex items-start gap-2.5">
-                        <span className="w-1 h-1 bg-[#f4521c] mt-2 shrink-0" />
-                        <span className="font-inter text-xs text-[#bdb8b0] leading-relaxed">{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
 
-                <div className="pt-6 border-t border-[#292929]">
+                <div className="pt-6 border-t border-[#292929] mt-8">
                   <span className="label-mono text-[10px] text-[#8a8a8a] block mb-1">PRICING MODEL</span>
                   <p className="label-mono text-xs text-[#ece8e1]">{eng.investment}</p>
                 </div>

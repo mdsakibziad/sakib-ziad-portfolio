@@ -7,33 +7,6 @@ import { Button } from '@/components/ui/button'
 import { ApplicationForm } from '@/components/application-form'
 
 export default function MembershipPage() {
-  const benefits = [
-    {
-      num: '01',
-      title: 'MONTHLY STRATEGY DEEP-DIVE',
-      body: 'A comprehensive monthly architectural breakdown detailing emerging generative systems, commercial prompt shifts, and competitive aesthetics in beauty.',
-    },
-    {
-      num: '02',
-      title: 'MONTHLY BLUEPRINT & PROMPT DROP',
-      body: 'Fresh, production-verified prompt architectures, lighting schemas, and Make.com automation blueprints delivered directly to your member repository every 30 days.',
-    },
-    {
-      num: '03',
-      title: 'DIRECT ASYNC STRATEGIC ADVISORY',
-      body: 'Direct access to Sakib Ziad inside a private member channel for fast feedback on prompt tuning, output critique, and tool stack recommendations.',
-    },
-    {
-      num: '04',
-      title: 'HANDS-ON TOOL & MODEL AUDITS',
-      body: 'Unbiased, rigorous testing of new commercial AI platforms. We separate enterprise-grade production tools from hype so your brand never wastes budget.',
-    },
-    {
-      num: '05',
-      title: 'CURATED FOUNDER ROUNDTABLES',
-      body: 'Bi-monthly confidential strategy roundtables with non-competing cosmetics and skincare operators sharing live acquisition metrics and performance wins.',
-    },
-  ]
 
   const isFor = [
     'Founders and CMOs building in-house creative capacity and seeking an ongoing strategic compass.',
@@ -101,38 +74,7 @@ export default function MembershipPage() {
         </div>
       </section>
 
-      {/* ── Benefits Modules ──────────────────────────────────────────────── */}
-      <section className="py-20 border-b border-[#292929]" aria-label="Membership Modules">
-        <div className="container-luxury">
-          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">
-            <span className="label-mono !text-[#f4521c]">MEMBERSHIP SYSTEM</span>
-            <span className="label-mono text-[#8a8a8a]">05 CORE DELIVERABLES</span>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {benefits.map((b) => (
-              <div
-                key={b.num}
-                className="border border-[#292929] bg-[#0b0c10] p-8 flex flex-col justify-between hover:border-[#f4521c] transition-colors"
-              >
-                <div>
-                  <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-6">
-                    <span className="label-mono !text-[#f4521c]">MODULE — {b.num}</span>
-                    <span className="label-mono text-[#8a8a8a]">MONTHLY</span>
-                  </div>
-
-                  <h3 className="font-inter font-black uppercase text-xl text-[#ece8e1] mb-4 leading-snug">
-                    {b.title}
-                  </h3>
-                  <p className="font-inter text-xs text-[#8a8a8a] leading-relaxed">
-                    {b.body}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── Who It Is For vs Not For ───────────────────────────────────────── */}
       <section className="py-20 border-b border-[#292929] bg-[#0b0c10]" aria-label="Mutual Fit">

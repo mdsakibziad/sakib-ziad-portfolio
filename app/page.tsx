@@ -153,41 +153,7 @@ function HomepageVideoPlayer({ src, brand }: { src: string; brand: string }) {
   )
 }
 
-/* ── FAQ Accordion Item ─────────────────────────────────────────────────────── */
-function FaqItem({ question, answer }: { question: string; answer: string }) {
-  const [open, setOpen] = useState(false)
 
-  return (
-    <div className="border-b border-black/[0.08] dark:border-white/[0.08] last:border-none">
-      <button
-        className="w-full flex items-start justify-between gap-6 py-7 text-left group focus-visible:outline-none"
-        onClick={() => setOpen((o) => !o)}
-        aria-expanded={open}
-      >
-        <span className="font-fraunces text-xl sm:text-2xl text-ivory font-light group-hover:text-black dark:group-hover:text-white transition-colors duration-300">
-          {question}
-        </span>
-        <motion.span
-          animate={{ rotate: open ? 180 : 0 }}
-          transition={{ duration: 0.3, ease: EASE_LUXURY }}
-          className="shrink-0 mt-1 text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white transition-colors"
-        >
-          <ChevronDown className="w-5 h-5" />
-        </motion.span>
-      </button>
-      <motion.div
-        initial={false}
-        animate={{ height: open ? 'auto' : 0, opacity: open ? 1 : 0 }}
-        transition={{ duration: 0.4, ease: EASE_LUXURY }}
-        className="overflow-hidden"
-      >
-        <p className="font-inter text-base sm:text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed pb-8 max-w-3xl font-light">
-          {answer}
-        </p>
-      </motion.div>
-    </div>
-  )
-}
 
 /* ══════════════════════════════════════════════════════════════════════════════
    HOME PAGE · STRATEGIC DIRECT-RESPONSE FLOW
@@ -371,34 +337,7 @@ export default function HomePage() {
     },
   ]
 
-  /* ── FAQ Data ──────────────────────────────────────────────────────────── */
-  const faqs = [
-    {
-      question: 'How do you turn around full commercial campaigns in 72 hours?',
-      answer:
-        'Traditional agencies waste weeks on location scouting, catering, weather delays, and manual retouchers. By combining commercial art direction with modern virtual studio systems and automated post-production pipelines, we execute high-fashion studio quality in days—without physical bottlenecks.',
-    },
-    {
-      question: 'Will this creative maintain our luxury brand equity?',
-      answer:
-        'Uncompromisingly. Every still and motion clip is directed under strict commercial aesthetic principles: accurate formula viscosity, realistic refractive glass physics, natural skin subsurface scattering, and bespoke color grading. The result routinely outperforms expensive traditional shoots.',
-    },
-    {
-      question: 'What is the difference between Sakib Ziad and Witlyn?',
-      answer:
-        'Witlyn (witlyn.com) is the commercial production studio I founded—handling large-scale done-for-you asset production and ongoing retainers. This advisory practice is my private strategic counsel: forensic audits, creative strategy architecture, and direct-response system design for founders and CMOs.',
-    },
-    {
-      question: 'Why do you specialize exclusively in beauty and skincare?',
-      answer:
-        'Cosmetics and skincare are deeply sensory categories where lighting caustics, skin-tone calibration, and emotional prestige determine whether an ad converts or fails. Generalist directors cannot capture the nuanced texture of a peptide lip serum or a clear sunscreen veil. Depth over breadth, always.',
-    },
-    {
-      question: 'How exclusive is your 1:1 advisory practice?',
-      answer:
-        'Strictly restricted. I work with a maximum of three brand partners concurrently to ensure complete immersion, rapid feedback, and direct strategic access. Engagements are admitted by application only.',
-    },
-  ]
+
 
   return (
     <div className="bg-background text-ivory overflow-x-hidden selection:bg-white selection:text-black">
@@ -835,133 +774,9 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          STEP 6 · SELORA-STYLE FEATURED ACID BREAK SECTION
-      ════════════════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-[#f4521c] text-[#050609] py-20 my-12" aria-label="Commercial Velocity">
-        {/* Giant Outlined Marquee Strip */}
-        <div className="border-y border-[#050609]/20 py-4 mb-12">
-          <div className="overflow-hidden w-full">
-            <div className="flex w-max animate-marquee items-center">
-              {[0, 1].map((dup) => (
-                <div key={dup} className="flex items-center" aria-hidden={dup === 1}>
-                  {['HIGH-PERFORMANCE DIRECTION', '72-HOUR COMMERCIAL ASSETS', 'HIGH-VELOCITY CREATIVE', 'DIRECT-RESPONSE CONVERSION'].map((text, i) => (
-                    <span key={i} className="flex items-center gap-8 px-6 font-inter font-black uppercase text-4xl sm:text-6xl md:text-7xl tracking-[-0.05em] whitespace-nowrap">
-                      <span>{text}</span>
-                      <span className="text-transparent" style={{ WebkitTextStroke: '1.5px #050609' }}>{text}</span>
-                    </span>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="container-luxury">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-5 space-y-4">
-              <span className="font-mono text-xs uppercase tracking-widest text-[#050609]/70 font-semibold">
-                // STUDY — 04.13 · CONVERSION LOGIC
-              </span>
-              <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl leading-[0.95] tracking-[-0.05em] text-[#050609]">
-                <MaskText lines={['SENSORY PROOF OUTPERFORMS EMPTY CLAIMS.']} />
-              </h2>
-              <p className="font-inter text-sm sm:text-base font-semibold text-[#050609]/80 leading-relaxed">
-                We design refractive lighting caustics, liquid flow physics, and real texture micro-zooms that allow consumers to visually feel the formula before checkout.
-              </p>
-            </div>
-
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="border border-[#050609]/25 bg-[#050609]/5 p-5 space-y-2">
-                <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#050609]">01 / HOOK STOP</span>
-                <p className="font-inter text-xs font-semibold text-[#050609]/80">Thumb-stop friction engineered in the first 1.5 seconds.</p>
-              </div>
-              <div className="border border-[#050609]/25 bg-[#050609]/5 p-5 space-y-2">
-                <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#050609]">02 / SENSORY TEXTURE</span>
-                <p className="font-inter text-xs font-semibold text-[#050609]/80">Physical demonstration over generic talking heads.</p>
-              </div>
-              <div className="border border-[#050609]/25 bg-[#050609]/5 p-5 space-y-2">
-                <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#050609]">03 / RAPID SCALING</span>
-                <p className="font-inter text-xs font-semibold text-[#050609]/80">Cross-channel 1:1, 9:16 and 4:5 ratios pre-formatted.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════════════
-          STEP 7 · CREATIVE MULTIPLICATION · ONE PRODUCT, EVERY CHANNEL
+          STEP 5 · CREATIVE MULTIPLICATION · ONE PRODUCT, EVERY CHANNEL
       ════════════════════════════════════════════════════════════════════ */}
       <ChannelMultiplication />
-
-      {/* ════════════════════════════════════════════════════════════════════
-          STEP 8 · FOUNDER PHILOSOPHY & ART DIRECTION STANDARDS
-      ════════════════════════════════════════════════════════════════════ */}
-      <section className="py-20 bg-[#050609] border-t border-[#292929]" aria-label="Founder Philosophy">
-        <div className="container-luxury">
-          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-12">
-            <span className="label-mono !text-[#f4521c] flex items-center gap-2">
-              <span className="w-2 h-2 bg-[#f4521c]" />
-              IDX/08 — PHILOSOPHY
-            </span>
-            <span className="label-mono text-[#8a8a8a]">
-              COMMERCIAL ART DIRECTION
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
-            {/* Left: Bleed Portrait Photo with Shutter Reveal */}
-            <div className="lg:col-span-5">
-              <div className="border border-[#292929] bg-[#0b0c10] p-2">
-                <SplitRevealImage
-                  src="/images/sakib-ziad.jpg"
-                  alt="Sakib Ziad — Creative Strategist & Commercial Director"
-                  aspect="aspect-[4/5]"
-                  className="w-full"
-                />
-                <div className="flex items-center justify-between pt-3 px-2 label-mono text-[10px] text-[#8a8a8a]">
-                  <span className="text-[#ece8e1]">SAKIB ZIAD</span>
-                  <span className="text-[#f4521c]">FOUNDER // WITLYN</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: Editorial Pull-Quote & Narrative */}
-            <div className="lg:col-span-7 flex flex-col gap-6">
-              <div className="space-y-4">
-                <span className="label-mono !text-[#f4521c] block">DIRECTOR MANIFESTO</span>
-                <h2 className="font-inter font-black uppercase text-2xl sm:text-4xl lg:text-5xl text-[#ece8e1] leading-tight">
-                  <MaskText
-                    lines={[
-                      '“CREATIVE DIRECTION IS NOT DECORATION.',
-                      'IT IS COMMERCIAL LEVERAGE.”',
-                    ]}
-                  />
-                </h2>
-              </div>
-
-              <div className="space-y-3 font-inter text-sm sm:text-base text-[#bdb8b0] leading-relaxed">
-                <p>
-                  I founded Witlyn to prove that high-velocity digital production can match traditional film sets in emotional prestige—at a fraction of the time and cost.
-                </p>
-                <p className="text-[#ece8e1] font-semibold">
-                  Through this advisory practice, I partner directly with founders to install predictable creative systems that scale conversion without agency bloat.
-                </p>
-              </div>
-
-              <div className="pt-2">
-                <Button asChild variant="outline" className="h-11 px-6 rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
-                  <Link href="/about" className="flex items-center gap-2">
-                    <span>READ FULL FOUNDER STORY</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </Button>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
 
       {/* ════════════════════════════════════════════════════════════════════
           STEP 9 · THREE WAYS TO PARTNER (THE ENGAGEMENT HUB)
@@ -1205,24 +1020,7 @@ export default function HomePage() {
       ════════════════════════════════════════════════════════════════════ */}
       <section className="py-24 border-t border-[#292929] bg-[#050609]" aria-label="FAQ">
         <div className="container-luxury max-w-4xl mx-auto space-y-20">
-          <div>
-            <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-8">
-              <span className="label-mono !text-[#f4521c]">FAQ // STRATEGIC CLARITY</span>
-              <span className="label-mono text-[#8a8a8a]">ANSWERS DIRECT</span>
-            </div>
-            <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl text-[#ece8e1] mb-4">
-              FREQUENTLY ASKED QUESTIONS
-            </h2>
-            <p className="font-inter text-xs sm:text-sm text-[#8a8a8a] mb-8">
-              Direct answers to strategic questions before submitting your partnership application.
-            </p>
 
-            <div className="space-y-0 border-t border-[#292929]">
-              {faqs.map((faq) => (
-                <FaqItem key={faq.question} question={faq.question} answer={faq.answer} />
-              ))}
-            </div>
-          </div>
 
           {/* Final Call To Action Card */}
           <div className="border border-[#292929] bg-[#0b0c10] p-10 sm:p-16 text-center space-y-6 relative overflow-hidden">

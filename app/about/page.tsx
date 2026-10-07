@@ -27,28 +27,6 @@ export default function AboutPage() {
     },
   ]
 
-  const timeline = [
-    {
-      phase: '01 / FOUNDATION',
-      title: 'Computing & Visual Systems Background',
-      desc: 'Rigorous technical training in visual computing systems, digital image processing, and cognitive modeling, establishing deep analytical precision.',
-    },
-    {
-      phase: '02 / IMMERSION',
-      title: 'Creative Direction & Beauty Specialization',
-      desc: 'Bridged engineering theory with luxury brand positioning, studying light refraction, cosmetic formulation aesthetics, and high-fashion editorial art direction.',
-    },
-    {
-      phase: '03 / VENTURE',
-      title: 'Founded Witlyn Studio',
-      desc: 'Launched Witlyn (witlyn.com) to provide full-service commercial campaign production, establishing proven commercial case studies for innovative skincare and cosmetics brands.',
-    },
-    {
-      phase: '04 / ADVISORY',
-      title: 'Executive Strategic Advisory',
-      desc: 'Initiated 1:1 strategic advisory and direct-response creative builds for beauty founders seeking to master internal creative infrastructure and escape traditional agency overhead.',
-    },
-  ]
 
   const expertisePoints = [
     {
@@ -159,14 +137,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Story Section with Shutter Reveal Portrait ─────────────────────── */}
-      <section className="py-20 border-b border-[#292929]" aria-label="Founder Story">
+      {/* ── Portrait & 3 Core Beliefs ── */}
+      <section className="py-20 border-b border-[#292929] bg-[#0b0c10]" aria-label="Beliefs">
         <div className="container-luxury">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            
-            {/* Left: Sakib Portrait with Selora Shutter Split Reveal */}
-            <div className="lg:col-span-5 lg:sticky lg:top-32">
-              <div className="border border-[#292929] bg-[#0b0c10] p-2">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-4">
+            <div className="lg:col-span-5">
+              <div className="border border-[#292929] bg-[#050609] p-2">
                 <SplitRevealImage
                   src="/images/sakib-ziad.jpg"
                   alt="Sakib Ziad photographed in studio"
@@ -180,106 +156,35 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Right: Narrative Editorial */}
-            <div className="lg:col-span-7 space-y-8">
-              <div className="border-b border-[#292929] pb-4">
-                <span className="label-mono !text-[#f4521c]">// THE BACKGROUND</span>
+            <div className="lg:col-span-7 space-y-6">
+              <div className="flex items-center justify-between border-b border-[#292929] pb-4">
+                <span className="label-mono !text-[#f4521c]">CORE BELIEFS</span>
+                <span className="label-mono text-[#8a8a8a]">FIRST PRINCIPLES</span>
               </div>
 
-              <div className="space-y-6 font-inter text-sm sm:text-base text-[#bdb8b0] leading-relaxed">
-                <p>
-                  With an academic foundation in computing and an obsession with luxury visual culture, I began investigating why cosmetics marketing felt trapped in an outdated loop of 8-week production timelines, bloated set costs, and 14-day creative fatigue.
-                </p>
-                <p>
-                  Beauty is among the most sensory categories in commercial direct-response: lighting caustics, packaging refraction, and realistic formula viscosity govern whether a consumer trusts a brand in the first 1.5 seconds.
-                </p>
-                <p>
-                  I established Witlyn (witlyn.com) to solve this bottleneck—engineering high-fashion virtual production workflows that generate 25+ studio-grade deliverables in 72 hours.
-                </p>
-                <p>
-                  This advisory practice exists to give founders and CMOs direct access to that strategic methodology: auditing conversion leaks, engineering contrarian hook angles, and installing compounding creative infrastructure.
-                </p>
-              </div>
-
-              {/* Direct Link to Studio */}
-              <div className="pt-4 border-t border-[#292929] flex items-center justify-between">
-                <span className="label-mono text-xs text-[#8a8a8a]">LOOKING FOR DONE-FOR-YOU PRODUCTION?</span>
-                <a
-                  href="https://witlyn.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 label-mono !text-[#f4521c] hover:underline text-xs"
-                >
-                  <span>VISIT WITLYN STUDIO</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
+              <div className="space-y-4">
+                {beliefs.map((b) => (
+                  <div
+                    key={b.num}
+                    className="border border-[#292929] bg-[#050609] p-6 space-y-3 hover:border-[#f4521c] transition-colors"
+                  >
+                    <div className="flex items-center justify-between border-b border-[#292929] pb-3">
+                      <span className="label-mono !text-[#f4521c]">BELIEF — {b.num}</span>
+                      <span className="label-mono text-[#8a8a8a]">0{b.num}/03</span>
+                    </div>
+                    <h3 className="font-inter font-black uppercase text-base sm:text-lg text-[#ece8e1] leading-snug">
+                      {b.title}
+                    </h3>
+                    <p className="font-inter text-xs text-[#8a8a8a] leading-relaxed">
+                      {b.body}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
-
           </div>
         </div>
       </section>
-
-      {/* ── 3 Core Beliefs (Selora Grid Cards) ─────────────────────────────── */}
-      <section className="py-20 border-b border-[#292929] bg-[#0b0c10]" aria-label="Beliefs">
-        <div className="container-luxury">
-          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">
-            <span className="label-mono !text-[#f4521c]">CORE BELIEFS</span>
-            <span className="label-mono text-[#8a8a8a]">FIRST PRINCIPLES</span>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {beliefs.map((b) => (
-              <div
-                key={b.num}
-                className="border border-[#292929] bg-[#050609] p-8 space-y-4 hover:border-[#f4521c] transition-colors"
-              >
-                <div className="flex items-center justify-between border-b border-[#292929] pb-4">
-                  <span className="label-mono !text-[#f4521c]">BELIEF — {b.num}</span>
-                  <span className="label-mono text-[#8a8a8a]">0{b.num}/03</span>
-                </div>
-                <h3 className="font-inter font-black uppercase text-lg text-[#ece8e1] leading-snug">
-                  {b.title}
-                </h3>
-                <p className="font-inter text-xs text-[#8a8a8a] leading-relaxed">
-                  {b.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Career Timeline ────────────────────────────────────────────────── */}
-      <section className="py-20 border-b border-[#292929]" aria-label="Timeline">
-        <div className="container-luxury">
-          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">
-            <span className="label-mono !text-[#f4521c]">TRAJECTORY</span>
-            <span className="label-mono text-[#8a8a8a]">EVOLUTION &amp; ACCREDITATION</span>
-          </div>
-
-          <div className="space-y-0">
-            {timeline.map((item, i) => (
-              <div
-                key={i}
-                className="border-b border-[#292929] py-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline hover:border-[#f4521c] transition-colors group"
-              >
-                <span className="md:col-span-3 label-mono !text-[#f4521c]">
-                  {item.phase}
-                </span>
-                <h3 className="md:col-span-4 font-inter font-black uppercase text-lg text-[#ece8e1] group-hover:text-[#f4521c] transition-colors">
-                  {item.title}
-                </h3>
-                <p className="md:col-span-5 font-inter text-xs text-[#8a8a8a] leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 10 Capabilities & Expertise Points ─────────────────────────────── */}
       <section className="py-20 border-b border-[#292929] bg-[#050609]" aria-label="Capabilities">
         <div className="container-luxury">
           <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">

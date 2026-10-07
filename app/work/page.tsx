@@ -107,14 +107,6 @@ export default function WorkPage() {
     },
   ]
 
-  const servicePillars = [
-    { num: '01', title: 'COMMERCIAL CAMPAIGN DIRECTION', desc: 'Prestige visual worldbuilding calibrated for high conversion across paid feeds.' },
-    { num: '02', title: 'SENSORY TEXTURE CAUSTICS', desc: '4K macro formula physics showing viscosity, refraction, and absorption on skin.' },
-    { num: '03', title: 'DIRECT-RESPONSE HOOK ARCHITECTURE', desc: '1.5-second thumb-stop angles engineered to solve consumer friction points.' },
-    { num: '04', title: '72-HOUR COMMERCIAL PIPELINE', desc: 'Virtual studio production replacing 8-week physical shoots and catering bottlenecks.' },
-    { num: '05', title: 'OMNICHANNEL RE-FORMATTING', desc: 'Pre-formatted master deliverables for Meta 1:1, IG Reels 9:16, TikTok, and E-comm.' },
-    { num: '06', title: 'VISUAL IDENTITY RIGOR', desc: 'Uncompromising luxury brand equity preserved under aggressive performance scaling.' },
-  ]
 
   return (
     <div className="bg-[#050609] text-[#ece8e1] min-h-screen selection:bg-[#f4521c] selection:text-[#050609] pt-28 sm:pt-36">
@@ -247,30 +239,6 @@ export default function WorkPage() {
                     </div>
                   </div>
 
-                  {/* 3-Step Strategy Breakdown in Selora Hairline Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="border border-[#292929] bg-[#0b0c10] p-5 space-y-2 hover:border-[#f4521c] transition-colors">
-                      <span className="label-mono !text-[#f4521c]">01 / OBJECTIVE</span>
-                      <p className="font-inter text-xs text-[#bdb8b0] leading-relaxed">
-                        {study.objective}
-                      </p>
-                    </div>
-
-                    <div className="border border-[#292929] bg-[#0b0c10] p-5 space-y-2 hover:border-[#f4521c] transition-colors">
-                      <span className="label-mono !text-[#f4521c]">02 / APPROACH</span>
-                      <p className="font-inter text-xs text-[#bdb8b0] leading-relaxed">
-                        {study.approach}
-                      </p>
-                    </div>
-
-                    <div className="border border-[#292929] bg-[#0b0c10] p-5 space-y-2 hover:border-[#f4521c] transition-colors">
-                      <span className="label-mono !text-[#f4521c]">03 / OUTCOME</span>
-                      <p className="font-inter text-xs text-[#bdb8b0] leading-relaxed">
-                        {study.outcome}
-                      </p>
-                    </div>
-                  </div>
-
                   {/* Bottom Link */}
                   <div className="pt-2">
                     <Link
@@ -287,37 +255,6 @@ export default function WorkPage() {
               </div>
             </article>
           ))}
-        </div>
-      </section>
-
-      {/* ── Services Hairline Rows (Selora Style) ─────────────────────────── */}
-      <section className="py-20 border-t border-[#292929] bg-[#050609]" aria-label="Capabilities">
-        <div className="container-luxury">
-          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">
-            <span className="label-mono !text-[#f4521c]">SYSTEM CAPABILITIES</span>
-            <span className="label-mono text-[#8a8a8a]">CROSS-CAMPAIGN RIGOR</span>
-          </div>
-
-          <div className="space-y-0">
-            {servicePillars.map((pillar) => (
-              <div
-                key={pillar.num}
-                className="group relative border-b border-[#292929] py-6 transition-colors hover:border-[#f4521c]"
-              >
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline">
-                  <span className="md:col-span-2 label-mono text-[#8a8a8a] group-hover:text-[#f4521c] transition-colors">
-                    MOD — {pillar.num}
-                  </span>
-                  <h3 className="md:col-span-5 font-inter font-black uppercase text-xl sm:text-2xl tracking-tight text-[#ece8e1] group-hover:text-[#f4521c] transition-colors">
-                    {pillar.title}
-                  </h3>
-                  <p className="md:col-span-5 font-inter text-xs text-[#8a8a8a] leading-relaxed">
-                    {pillar.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
