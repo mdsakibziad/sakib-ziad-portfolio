@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = 'Sakib Ziad — Creative Strategist & Commercial Director for Beauty & Skincare'
+export const alt = 'Sakib Ziad — AI Creative Strategist & AI Commercial Director'
 export const size = {
   width: 1200,
   height: 630,
@@ -19,10 +19,10 @@ export default async function Image() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          backgroundColor: '#050609',
+          backgroundColor: '#0a0a0a',
           padding: '64px 72px',
           fontFamily: 'sans-serif',
-          border: '1px solid #292929',
+          border: '1px solid #262626',
         }}
       >
         {/* Top bar */}
@@ -42,34 +42,36 @@ export default async function Image() {
           >
             <div
               style={{
-                width: '10px',
-                height: '10px',
-                backgroundColor: '#f4521c',
+                width: '8px',
+                height: '8px',
+                backgroundColor: '#ffffff',
+                borderRadius: '50%',
               }}
             />
             <span
               style={{
                 fontSize: '15px',
-                letterSpacing: '0.25em',
+                letterSpacing: '0.2em',
                 textTransform: 'uppercase',
-                color: '#ece8e1',
-                fontWeight: 700,
+                color: '#fafafa',
+                fontWeight: 600,
               }}
             >
-              Sakib Ziad // Creative Strategist
+              Sakib Ziad
             </span>
           </div>
 
           <div
             style={{
               padding: '6px 16px',
-              border: '1px solid #292929',
-              backgroundColor: '#0b0c10',
-              color: '#f4521c',
+              border: '1px solid #333333',
+              backgroundColor: '#171717',
+              color: '#d4d4d4',
               fontSize: '13px',
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
-              fontWeight: 600,
+              fontWeight: 500,
+              borderRadius: '9999px',
             }}
           >
             Beauty & Skincare
@@ -81,32 +83,31 @@ export default async function Image() {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: '16px',
+            gap: '20px',
             maxWidth: '1000px',
           }}
         >
           <h1
             style={{
-              fontSize: '60px',
-              lineHeight: 1.0,
-              color: '#ece8e1',
-              fontWeight: 800,
-              letterSpacing: '-0.04em',
-              textTransform: 'uppercase',
+              fontSize: '56px',
+              lineHeight: 1.1,
+              color: '#ffffff',
+              fontWeight: 700,
+              letterSpacing: '-0.03em',
               margin: 0,
             }}
           >
-            High-Performance Creative Direction For Beauty Brands.
+            AI Creative Strategist & AI Commercial Director
           </h1>
           <p
             style={{
               fontSize: '22px',
-              lineHeight: 1.4,
-              color: '#8a8a8a',
+              lineHeight: 1.5,
+              color: '#a3a3a3',
               margin: 0,
             }}
           >
-            Direct-response creative architecture, sensory hook design, and rapid 72-hour studio production.
+            Planning strategy and direct-response hooks for beauty and skincare brands, directing AI-made films and visuals that convert.
           </p>
         </div>
 
@@ -116,7 +117,7 @@ export default async function Image() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            borderTop: '1px solid #292929',
+            borderTop: '1px solid #262626',
             paddingTop: '24px',
           }}
         >
@@ -124,24 +125,24 @@ export default async function Image() {
             style={{
               display: 'flex',
               gap: '24px',
-              color: '#8a8a8a',
+              color: '#737373',
               fontSize: '14px',
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
             }}
           >
-            <span>Witlyn Founder</span>
+            <span>Founder, Witlyn Studio</span>
             <span>·</span>
-            <span>Commercial Director</span>
+            <span>BSc in Artificial Intelligence</span>
             <span>·</span>
-            <span>Campaign Systems</span>
+            <span>Concept Campaigns</span>
           </div>
 
           <span
             style={{
               color: '#ffffff',
               fontSize: '15px',
-              letterSpacing: '0.1em',
+              letterSpacing: '0.05em',
               fontWeight: 500,
             }}
           >

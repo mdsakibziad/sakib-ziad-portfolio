@@ -1,395 +1,114 @@
 'use client'
 
 import React from 'react'
-import { CaseStudyTemplate, CaseStudyData } from '@/components/case-study-template'
+import { CaseStudyTemplate, CaseStudyPageData } from '@/components/case-study-template'
 
-const LIPEA_DATA: CaseStudyData = {
+const LIPEA_DATA: CaseStudyPageData = {
   campaignId: 'lipea',
-  caseNumber: '02',
-  name: 'LIPÉA',
-  tagline: 'High-shine glass finish. Zero glue drag.',
-  skuFocus: 'Peptide Glass Lip Serum · 12ml',
-  deliverablesCount: '27 Master Production Assets',
-  channelsText: 'Meta · Instagram · Editorial',
+  name: 'Lipéa',
+  tag: 'Concept campaign',
+  oneLiner: 'A lip serum with high shine and no sticky feel, proven on camera.',
+  role: 'Strategy, hook writing, AI commercial direction',
+  year: '2026',
   heroImage: '/images/lipea/editorial/lipea-photo-01.jpg',
-  heroCaption: 'Thick-walled glass vial revealing the blush-pink peptide glaze beneath chrome hardware.',
-  heroBadge: 'Flagship Spec Commercial 02 · Witlyn Standard',
+  heroVideo: '/images/lipea/instagram/instagram-video-01.mp4',
   brief: {
     whatItIs:
-      'A 12ml cellular lip barrier recovery treatment serum disguised as a high-shine rose lip glaze. It visibly plumps fine vertical lip lines, restores deep moisture reserves, and delivers a mirror-reflective glass finish with clinical active care.',
+      'A peptide-enriched glass lip serum that unites cellular barrier recovery with an ultra-reflective, non-sticky cushion glaze.',
+    whoItIsFor:
+      'Beauty lovers who want mirror-glaze shine without heavy glue tackiness, painful chemical stinging, or messy hair-in-lip friction.',
     whyItExists:
-      'Standard lip balms hydrate without shine, while traditional lip glosses merely sit on top of the lips—providing 20 minutes of shine followed by hours of sticky hair traps ("glue drag") and accelerated moisture loss. LIPÉA solves both contradictions in a unified treatment formula.',
-    whyDifferent: [
-      {
-        title: 'Peptide Cushion with Zero Tack',
-        desc: 'Engineered with active multi-peptides and high-surface-tension liquid polymers that provide a cushiony mirror glaze without stringy stickiness, proven via the "Non-Sticky Hair Test".',
-      },
-      {
-        title: '8-Hour Cellular Barrier Recovery',
-        desc: 'Functions as therapeutic barrier medicine rather than surface makeup, actively healing chapped fissures and locking in moisture for 8 continuous hours.',
-      },
-    ],
-    targetAudience:
-      'Beauty consumers seeking a glossy, high-definition glass lip look without hair sticking to their mouth, alongside individuals struggling with chronically dry, peeling, or aging lip borders.',
-    packagingSpecs: {
-      container:
-        'Thick-walled transparent cylindrical glass vial showcasing a sheer blush-pink gloss base, crowned with a gleaming metallic chrome silver screw cap and collar.',
-      labelTypography:
-        'LIPÉA | PEPTIDE | GLASS LIP SERUM | 12ml (printed in crisp white architectural sans-serif)',
-    },
-    marketAngles: [
-      {
-        title: 'The Non-Sticky Hair Test',
-        desc: '"Love the high-shine glass look, but hate the sticky glue feeling?" — tactile visual proof of loose hair blowing across glossy lips without catching.',
-      },
-      {
-        title: 'Plumping Without the Burn',
-        desc: '"Skip the lip filler burn" — contrasting harsh pepper/menthol tingling plumper irritants with smooth, biologically restorative multi-peptides.',
-      },
-    ],
+      'Standard cosmetic glosses rely on thick polymer glues that dry out lips, while basic balms lack visual shine. Lipéa delivers clinical ceramide and peptide repair inside a high-shine cushion.',
   },
-  strategy: {
-    hooks: [
-      {
-        id: 1,
-        angle: 'The Universal Hair Trap Friction',
-        channelFit: 'Meta Feed & Instagram Reels',
-        quote: 'Love the high-shine glass look, but hate the sticky glue feeling?',
-        whyChosen:
-          'Over 80% of gloss wearers actively complain about the wind-blown hair trap. Leading with this tangible physical friction instantly pierces passive scrolling, establishing undeniable proof of the non-tacky peptide cushion.',
-        rationale:
-          'Visually exposes the daily irritation of wind blowing hair onto sticky lip gloss, immediately contrasted with LIPÉA non-tack peptide glide.',
-        projectedRoas: '4.2x – 4.8x Target ROAS',
-        thumbStopRate: '46%+ (3s View)',
-        cpaImpact: '-36% Lower CPA',
-        commercialBenefit: 'Drives high click-through rate from beauty buyers frustrated with traditional tacky lip glosses.',
-        expectedOutcome: '3.2x higher cold-traffic conversion rate and immediate validation before checkout.',
-      },
-      {
-        id: 2,
-        angle: 'Skincare-Disguised-as-Cosmetic',
-        channelFit: 'Editorial Stills & Paid Carousels',
-        quote: 'A treatment serum disguised as pure glass.',
-        whyChosen:
-          'Shifting the customer mindset from a decorative $12 gloss to a restorative $32 active barrier medicine changes the entire economic valuation for beauty buyers.',
-        rationale:
-          'Elevates the product beyond temporary decorative makeup to a medical-grade barrier repair serum that happens to look like liquid glass.',
-        projectedRoas: '3.9x – 4.4x Target ROAS',
-        thumbStopRate: '38%+ (3s View)',
-        cpaImpact: '-28% Blended CPA',
-        commercialBenefit: 'Justifies prestige $32+ price tier over cheap drugstore gloss competitors.',
-        expectedOutcome: 'Dramatically raises Average Order Value (AOV) by framing the product as daily clinical self-care.',
-      },
-      {
-        id: 3,
-        angle: 'Pain-Free Volume & Architecture',
-        channelFit: 'TikTok & Short-Form Video',
-        quote: 'Skip the lip filler burn.',
-        whyChosen:
-          'Addresses the surge in filler fatigue and painful capsaicin/menthol plumpers by proving that deep cellular peptide hydration creates optical volume without trauma.',
-        rationale:
-          'Attacks painful irritating chemical plumpers by showcasing how gentle moisture-binding peptides naturally smooth fine vertical lip creases.',
-        projectedRoas: '4.1x – 4.6x Target ROAS',
-        thumbStopRate: '43%+ (3s View)',
-        cpaImpact: '-34% Lower CPA',
-        commercialBenefit: 'Captures customers searching for non-invasive lip plumping alternatives.',
-        expectedOutcome: 'Drives massive organic sharing and word-of-mouth repurchases across Gen-Z and Millennial cohorts.',
-      },
-    ],
+  challenge:
+    'Lip gloss is plagued by one fatal consumer objection: stickiness. Customers assume that any product claiming glass shine will inevitably trap their hair in the wind or feel uncomfortably heavy.',
+  idea: {
+    coreHook: 'Mirror shine. Zero sticky glue trap.',
+    explanation:
+      'We validate the texture directly on camera through physical tests: hair strands glide effortlessly across lips without sticking, while macro lighting highlights the smoothing of vertical lip creases.',
   },
-  tabs: [
-    { id: 'all', label: 'All Assets' },
-    { id: 'editorial', label: 'Editorial Stills' },
-    { id: 'meta', label: 'Meta Ads' },
-    { id: 'instagram', label: 'Instagram Suite' },
-  ],
-  prevLink: {
-    href: '/work/solae',
-    label: '01 SOLAÉ Sun Serum',
-  },
-  nextLink: {
-    href: '/work/nuecera',
-    label: '03 NUÉCERA Moisturizer',
-  },
-  assets: [
-    // Editorial Stills (9)
+  hooks: [
     {
-      id: 'lipea-ed-01',
-      title: 'Glass Vial Master Studio Still',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/lipea/editorial/lipea-photo-01.jpg',
-      formatLabel: 'Editorial Still · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Thick-walled glass vial reflecting clean studio lighting across its blush-pink serum core.',
+      id: 1,
+      hookLine: 'Mirror shine. Zero sticky glue trap.',
+      angleExplanation:
+        'Addresses the core objection directly by proving reflective shine without tacky polymer adhesion.',
+      videoSrc: '/images/lipea/instagram/instagram-video-01.mp4',
+      posterSrc: '/images/lipea/editorial/lipea-photo-01.jpg',
     },
     {
-      id: 'lipea-ed-02',
-      title: 'Chrome Cap Caustic Highlight',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/lipea/editorial/lipea-photo-02.jpg',
-      formatLabel: 'Macro Still · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Direct macro focus on the polished chrome cap catching pure specular highlights.',
+      id: 2,
+      hookLine: 'The windy day hair test: zero stick.',
+      angleExplanation:
+        'Physical demonstration on camera showing loose hair strands sliding cleanly off glossy lips.',
+      videoSrc: '/images/lipea/instagram/instagram-video-01.mp4',
+      posterSrc: '/images/lipea/instagram/instagram-still-01.jpg',
     },
     {
-      id: 'lipea-ed-03',
-      title: 'Peptide Droplet Swatch',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/lipea/editorial/lipea-photo-03.jpg',
-      formatLabel: 'Texture Still · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Dense rose-tinted gloss bead demonstrating exceptional surface tension and clarity.',
+      id: 3,
+      hookLine: 'Stop burning your lips with irritating chemical plumpers.',
+      angleExplanation:
+        'Contrarian angle that contrasts painful chemical irritants against soothing peptide barrier volume.',
+      videoSrc: '/images/lipea/instagram/instagram-video-01.mp4',
+      posterSrc: '/images/lipea/instagram/instagram-still-02.jpg',
     },
     {
-      id: 'lipea-ed-04',
-      title: 'Refractive Glass Dispersion',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/lipea/editorial/lipea-photo-04.jpg',
-      formatLabel: 'Optics Still · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Prismatic light dispersion passing through the transparent lip serum glass base.',
+      id: 4,
+      hookLine: '8 hours of continuous lip barrier recovery.',
+      angleExplanation:
+        'Positions the serum as active overnight care and daily hydration rather than just makeup.',
+      videoSrc: '/images/lipea/instagram/instagram-video-01.mp4',
+      posterSrc: '/images/lipea/instagram/instagram-still-03.jpg',
     },
     {
-      id: 'lipea-ed-05',
-      title: 'Lip Contour Application Macro',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/lipea/editorial/lipea-photo-05.jpg',
-      formatLabel: 'Macro In-Use · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Smooth cushion applicator contouring the lip edge with high-precision gloss placement.',
-    },
-    {
-      id: 'lipea-ed-06',
-      title: 'Vertical Crease Fill Demonstration',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/lipea/editorial/lipea-photo-06.jpg',
-      formatLabel: 'Clinical Macro · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Visible reduction of fine vertical lip creases following immediate peptide cushion contact.',
-    },
-    {
-      id: 'lipea-ed-07',
-      title: 'Minimalist Monolith Staging',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/lipea/editorial/lipea-photo-07.jpg',
-      formatLabel: 'Architectural Still · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Clean architectural plinth elevating the lip serum vial against a warm backdrop.',
-    },
-    {
-      id: 'lipea-ed-08',
-      title: 'Gloss Bevel Shadow Study',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/lipea/editorial/lipea-photo-08.jpg',
-      formatLabel: 'Studio Still · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Soft shadow gradient accentuating the weighty glass volume of the packaging.',
-    },
-    {
-      id: 'lipea-ed-09',
-      title: 'Mirror Glaze Horizon Capture',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/lipea/editorial/lipea-photo-09.jpg',
-      formatLabel: 'Reflective Still · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Extreme angle capturing the mirror-like reflective surface of the cushion formula.',
-    },
-
-    // Meta Platform Assets (8)
-    {
-      id: 'lipea-meta-s01',
-      title: 'Meta Hero Feed Still',
-      platform: 'meta',
-      type: 'image',
-      src: '/images/lipea/meta/meta-still-01.jpg',
-      formatLabel: '1:1 Square Feed',
-      aspectRatio: 'aspect-square',
-      caption: 'Centered hero packshot designed for high thumb-stop rates on Meta feeds.',
-    },
-    {
-      id: 'lipea-meta-s02',
-      title: 'Meta Friction Callout Still',
-      platform: 'meta',
-      type: 'image',
-      src: '/images/lipea/meta/meta-still-02.jpg',
-      formatLabel: '4:5 Feed Portrait',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Graphic comparison addressing sticky gloss hair traps versus clean peptide glide.',
-    },
-    {
-      id: 'lipea-meta-s03',
-      title: 'Meta Plumping Benefit Still',
-      platform: 'meta',
-      type: 'image',
-      src: '/images/lipea/meta/meta-still-03.jpg',
-      formatLabel: '4:5 Feed Portrait',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Visual breakdown of the active peptide chain restoring cellular moisture volume.',
-    },
-    {
-      id: 'lipea-meta-feed01',
-      title: 'Meta Organic Feed Asset',
-      platform: 'meta',
-      type: 'image',
-      src: '/images/lipea/meta/meta-feed-01.jpg',
-      formatLabel: '1:1 Square Feed',
-      aspectRatio: 'aspect-square',
-      caption: 'Clean aesthetic composition optimized for conversion in sponsored ad placements.',
-    },
-    {
-      id: 'lipea-ig-v01',
-      title: 'Instagram Reel: Gloss Application',
-      platform: 'instagram',
-      type: 'video',
-      src: '/images/lipea/instagram/instagram-video-01.mp4',
-      formatLabel: '9:16 Vertical Reel',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Satisfying real-time swipe showing high-gloss coverage in a single stroke.',
-    },
-    {
-      id: 'lipea-meta-v01',
-      title: 'Meta Motion Reel: Hair Resistance Test',
-      platform: 'meta',
-      type: 'video',
-      src: '/images/lipea/meta/meta-video-01.mp4',
-      formatLabel: '9:16 Vertical Video',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Sensory video demonstrating loose hair gliding cleanly off glossy lips without sticking.',
-    },
-    {
-      id: 'lipea-meta-v02',
-      title: 'Meta Motion Reel: Glass Applicator Glide',
-      platform: 'meta',
-      type: 'video',
-      src: '/images/lipea/meta/meta-video-02.mp4',
-      formatLabel: '9:16 Vertical Video',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Precision close-up showing the doe-foot applicator depositing a mirror glaze.',
-    },
-    {
-      id: 'lipea-meta-v03',
-      title: 'Meta Motion Reel: 8-Hour Hydration Lock',
-      platform: 'meta',
-      type: 'video',
-      src: '/images/lipea/meta/meta-video-03.mp4',
-      formatLabel: '9:16 Vertical Video',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Time-lapse simulation proving lips remain plump and moisturized throughout the day.',
-    },
-    {
-      id: 'lipea-meta-v04',
-      title: 'Meta Motion Reel: Optical Shine Flare',
-      platform: 'meta',
-      type: 'video',
-      src: '/images/lipea/meta/meta-video-04.mp4',
-      formatLabel: '9:16 Vertical Video',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Rotating studio angle displaying brilliant glass reflection without heavy buildup.',
-    },
-
-    // Instagram Suite (10)
-    {
-      id: 'lipea-ig-s01',
-      title: 'Instagram Editorial Feed Still 01',
-      platform: 'instagram',
-      type: 'image',
-      src: '/images/lipea/instagram/instagram-still-01.jpg',
-      formatLabel: '4:5 Feed Portrait',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Soft warm aesthetic shot styled for luxury beauty curations on Instagram.',
-    },
-    {
-      id: 'lipea-ig-s02',
-      title: 'Instagram Detail Still 02',
-      platform: 'instagram',
-      type: 'image',
-      src: '/images/lipea/instagram/instagram-still-02.jpg',
-      formatLabel: '4:5 Feed Portrait',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Angle capturing the silver chrome typography against the sheer rose glaze.',
-    },
-    {
-      id: 'lipea-ig-s03',
-      title: 'Instagram Editorial Feed Still 03',
-      platform: 'instagram',
-      type: 'image',
-      src: '/images/lipea/instagram/instagram-still-03.jpg',
-      formatLabel: '4:5 Feed Portrait',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Atmospheric light framing the pocket-sized vial in a modern vanity setup.',
-    },
-    {
-      id: 'lipea-ig-story01',
-      title: 'Instagram Story Creative 01',
-      platform: 'instagram',
-      type: 'image',
-      src: '/images/lipea/instagram/instagram-story-01.jpg',
-      formatLabel: '9:16 Vertical Story',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Vertical story template calibrated for swipe-up link interactions.',
-    },
-    {
-      id: 'lipea-ig-story02',
-      title: 'Instagram Story Creative 02',
-      platform: 'instagram',
-      type: 'image',
-      src: '/images/lipea/instagram/instagram-story-02.jpg',
-      formatLabel: '9:16 Vertical Story',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Full-bleed product highlight tailored for direct-to-cart conversion campaigns.',
-    },
-    {
-      id: 'lipea-ig-story03',
-      title: 'Instagram Story Creative 03',
-      platform: 'instagram',
-      type: 'image',
-      src: '/images/lipea/instagram/instagram-story-03.jpg',
-      formatLabel: '9:16 Vertical Story',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Minimalist story layout highlighting key clinical ingredients and texture benefits.',
-    },
-    {
-      id: 'lipea-ig-v02',
-      title: 'Instagram Reel: Non-Sticky Touch Test',
-      platform: 'instagram',
-      type: 'video',
-      src: '/images/lipea/instagram/instagram-video-02.mp4',
-      formatLabel: '9:16 Vertical Reel',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Fingertip press test showing zero stringy glue pull between lips.',
-    },
-    {
-      id: 'lipea-ig-v03',
-      title: 'Instagram Reel: Cellular Hydration',
-      platform: 'instagram',
-      type: 'video',
-      src: '/images/lipea/instagram/instagram-video-03.mp4',
-      formatLabel: '9:16 Vertical Reel',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Visual simulation of active peptides nourishing deep epidermal lip layers.',
-    },
-    {
-      id: 'lipea-ig-story-v01',
-      title: 'Instagram Story Video Ad',
-      platform: 'instagram',
-      type: 'video',
-      src: '/images/lipea/instagram/instagram-story-video-01.mp4',
-      formatLabel: '9:16 Story Motion',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Dynamic vertical clip engineered to stop rapid thumb swiping in story feeds.',
+      id: 5,
+      hookLine: 'From dry lip lines to smooth cushion glaze in one swipe.',
+      angleExplanation:
+        'Macro applicator swipe visual demonstrating immediate vertical crease-filling reflection.',
+      videoSrc: '/images/lipea/instagram/instagram-video-01.mp4',
+      posterSrc: '/images/lipea/meta/meta-still-01.jpg',
     },
   ],
+  platformAssets: {
+    meta: [
+      { id: 'l-m1', src: '/images/lipea/editorial/lipea-photo-01.jpg', caption: 'Editorial glass vial with soft rose gold reflection' },
+      { id: 'l-m2', src: '/images/lipea/meta/meta-still-01.jpg', caption: '1:1 feed applicator droplet cushion' },
+      { id: 'l-m3', src: '/images/lipea/meta/meta-still-02.jpg', caption: 'Mirror reflection on clean lips' },
+    ],
+    instagram: [
+      { id: 'l-i1', src: '/images/lipea/instagram/instagram-still-01.jpg', caption: 'Daylight handbag travel aesthetic' },
+      { id: 'l-i2', src: '/images/lipea/instagram/instagram-still-02.jpg', caption: 'Macro glass caustics on transparent formula' },
+      { id: 'l-i3', src: '/images/lipea/instagram/instagram-still-03.jpg', caption: '9:16 vertical single-swipe demonstration' },
+    ],
+    tiktok: [
+      { id: 'l-t1', src: '/images/lipea/instagram/instagram-story-01.jpg', caption: 'Tactile hair drag test in vertical video' },
+      { id: 'l-t2', src: '/images/lipea/instagram/instagram-story-02.jpg', caption: 'Peptide barrier ingredient breakdown' },
+    ],
+    website: [
+      { id: 'l-w1', src: '/images/lipea/editorial/lipea-photo-01.jpg', caption: 'PDP above-the-fold hero image' },
+      { id: 'l-w2', src: '/images/lipea/meta/meta-still-03.jpg', caption: 'Shade transparency and non-greasy cushion proof' },
+    ],
+  },
+  totalAssetsCount: 27,
+  strategySummary: {
+    whyItWorks:
+      'By anticipating the consumer’s biggest objection—hair sticking to gloss—and answering it physically within the first 3 seconds, the creative eliminates buying hesitation before checkout.',
+    angleLogic:
+      'We combine top-of-funnel virality (The Non-Sticky Hair Test) with deep product education (Peptide Barrier Recovery) to convert casual TikTok and Instagram browsers.',
+    projectedOutcomes: {
+      targetRoas: '3.8x – 4.6x target return on ad spend',
+      thumbStopRate: '46% – 54% projected 3-second hook rate',
+      cpaImpact: 'Estimated 22% – 32% lower customer acquisition cost',
+      notes:
+        'These figures are strategic benchmarks and forecasts for ad spend testing, not historical client records.',
+    },
+  },
+  nextCampaign: {
+    name: 'Vyraa',
+    href: '/work/vyraa',
+  },
 }
 
-export default function LipeaPage() {
+export default function LipeaCaseStudyPage() {
   return <CaseStudyTemplate data={LIPEA_DATA} />
 }

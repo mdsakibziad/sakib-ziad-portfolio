@@ -1,420 +1,114 @@
 'use client'
 
 import React from 'react'
-import { CaseStudyTemplate, CaseStudyData } from '@/components/case-study-template'
+import { CaseStudyTemplate, CaseStudyPageData } from '@/components/case-study-template'
 
-const SOLAE_DATA: CaseStudyData = {
+const SOLAE_DATA: CaseStudyPageData = {
   campaignId: 'solae',
-  caseNumber: '01',
-  name: 'SOLAÉ',
-  tagline: 'Feels like water. Shields like SPF50+.',
-  skuFocus: 'AIRVEIL Invisible Sun Serum · 50ml (SPF50+ PA++++)',
-  deliverablesCount: '29 Master Production Assets',
-  channelsText: 'Meta · Instagram · Editorial',
+  name: 'Solaé',
+  tag: 'Concept campaign',
+  oneLiner: 'Daily SPF made to feel like part of a morning ritual.',
+  role: 'Strategy, hook writing, AI commercial direction',
+  year: '2026',
   heroImage: '/images/solae/editorial/solae-photo-01.jpg',
-  heroCaption: 'Frosted ivory bottle with sculptural swirl crest and champagne-gold pump.',
-  heroBadge: 'Flagship Spec Commercial 01 · Witlyn Standard',
+  heroVideo: '/images/solae/instagram/instagram-video-01.mp4',
   brief: {
     whatItIs:
-      'A 50ml daily facial sunscreen and hydrating serum hybrid (SPF50+ PA++++) delivering broad-spectrum UVA and UVB defense. It operates simultaneously as a high-level photoprotective shield, a deeply hydrating daily serum, and a lightweight gripping primer under foundation.',
+      'An SPF50+ PA++++ invisible hydrating sun serum formulated with hyaluronic acid and niacinamide, designed to disappear into skin with zero white cast.',
+    whoItIsFor:
+      'Daily skincare users and makeup wearers across diverse complexions who dread chalky residues, clogged pores, and greasy afternoon shine.',
     whyItExists:
-      'Up to 90% of consumers avoid or skip daily sunscreen because traditional formulas leave a chalky white cast, feel heavy and greasy in humid climates, clog pores, sting delicate eyes, and cause foundation to pill. SOLAÉ exists to eliminate every sensory and aesthetic friction point of daily sun protection.',
-    whyDifferent: [
-      {
-        title: '100% Clear Water-Veil Texture',
-        desc: 'Dispenses as a crystal-clear, ultra-fluid water-serum rather than a heavy white lotion, absorbing in 3 seconds with zero white cast on any skin tone.',
-      },
-      {
-        title: 'Air-Light & Makeup-Friendly',
-        desc: 'Engineered specifically for hot, humid climates to dry down to an imperceptible, non-greasy satin finish that grips makeup without pilling or midday sebum breakthrough.',
-      },
-    ],
-    targetAudience:
-      'Daily makeup wearers, urban commuters living in warm or humid climates prone to sweat and shine, and prestige skincare buyers demanding high UV protection without pore congestion.',
-    packagingSpecs: {
-      container:
-        'Slim 50ml frosted cylindrical bottle in soft ivory-cream finish, featuring a 3D sculptural embossed petal swirl crest with a brushed champagne-gold pump.',
-      labelTypography:
-        'SOLAÉ (clean serif with acute accent) | AIRVEIL | SPF50+ PA++++ | Invisible Sun Serum | 50ml',
+      'Sunscreen is universally recommended by dermatologists but routinely skipped because traditional formulas feel thick, smell medicinal, and pill under cosmetics.',
+  },
+  challenge:
+    'Sun protection is widely treated as an obligatory chore. Consumers are tired of white sunscreen casts and heavy chemical odors, making them skeptical of claims promising truly weightless wear.',
+  idea: {
+    coreHook: 'Sunscreen shouldn’t look like white paint.',
+    explanation:
+      'We contrast standard opaque white sun creams against Solaé’s 100% clear water-veil droplet. Within 3 seconds on camera, the formula absorbs completely into skin, leaving behind a natural skin finish without grease or chalk.',
+  },
+  hooks: [
+    {
+      id: 1,
+      hookLine: 'Sunscreen shouldn’t look like white paint.',
+      angleExplanation:
+        'Contrarian visual comparing thick white paste to an instantaneous transparent water-veil droplet.',
+      videoSrc: '/images/solae/instagram/instagram-video-01.mp4',
+      posterSrc: '/images/solae/editorial/solae-photo-01.jpg',
     },
-    marketAngles: [
-      {
-        title: 'Anti-White Cast Reality',
-        desc: '"Sunscreen shouldn\'t look like white paint" — direct-response visual proof showing instantaneous clear absorption on dark and melanin-rich skin.',
-      },
-      {
-        title: 'Cosmetic Compatibility Hook',
-        desc: '"If your SPF pills under foundation, you\'re wearing the wrong formula" — establishing SOLAÉ as the ultimate weightless priming step.',
-      },
-    ],
-  },
-  strategy: {
-    hooks: [
-      {
-        id: 1,
-        angle: 'Sensory Friction Angle (Anti-White Paint)',
-        channelFit: 'Meta 4:5 Feed & Instagram Reels',
-        quote: "Sunscreen shouldn't look like white paint.",
-        whyChosen:
-          'Sunscreen category marketing is flooded with generic beach lifestyle models while consumers secretly harbor frustration over chalky mineral casts. Confronting the "white paint" friction head-on stops high-intent beauty buyers instantly with undeniable contrast proof.',
-        rationale:
-          'Visually confronts the universal frustration of chalky mineral casts by opening with a side-by-side comparison of opaque white cream versus SOLAÉ crystal-clear water veil on deeper skin tones.',
-        projectedRoas: '4.6x – 5.2x (Prospecting)',
-        thumbStopRate: '49%+ (First 3 Seconds)',
-        cpaImpact: '-38% Blended Acquisition Cost',
-        commercialBenefit: 'Halts passive scroll within 1.2s; unlocks higher ROAS across diverse skin tone demographics.',
-        expectedOutcome:
-          'Unlocks scale on top-of-funnel Meta prospecting with a 2.4x higher video completion rate and immediate DTC cart adds without heavy discount incentives.',
-      },
-      {
-        id: 2,
-        angle: 'Sensory Viscosity & 3-Second Melt Hook',
-        channelFit: 'Instagram Stories & Meta Feed Stills',
-        quote: 'Feels like water. Shields like SPF50+.',
-        whyChosen:
-          'Consumers perceive SPF50+ protection as unavoidably thick, occlusive, and pore-clogging. This angle pairs extreme sensory lightness ("water") with maximum dermatological efficacy ("SPF50+ PA++++") to eliminate sensory resistance.',
-        rationale:
-          'Highlights the high-spreadability micro-fluid texture that absorbs in under three seconds, proving high protection does not require thick greasy occlusives or suffocating dimethicones.',
-        projectedRoas: '4.4x – 4.9x (Middle-of-Funnel)',
-        thumbStopRate: '45%+ (Story Swipe-Up Rate 8.2%)',
-        cpaImpact: '-34% Retargeting CPA',
-        commercialBenefit: 'Converts skincare purists who historically reject daily sunscreens due to pore congestion.',
-        expectedOutcome:
-          'Converts hesitant warm prospects by proving immediate invisible finish, yielding a 35% higher checkout conversion rate on DTC landing pages.',
-      },
-      {
-        id: 3,
-        angle: 'Foundation Pilling Contrarian Truth',
-        channelFit: 'Paid Social Video & Carousels',
-        quote: "If your SPF pills under foundation, you're wearing the wrong formula.",
-        whyChosen:
-          'Makeup wearers experience daily frustration when morning SPF balls up into flakes under foundation. Calling out this cosmetic clash positions SOLAÉ as the non-negotiable primer step in their morning beauty ritual.',
-        rationale:
-          'Calls out the friction caused when skincare actives ball up under makeup, positioning AIRVEIL as an invisible cosmetic grip layer that locks in foundation smoothly for 12 hours.',
-        projectedRoas: '4.2x – 4.8x (Cross-Sell / AOV Lift)',
-        thumbStopRate: '44%+ (Retargeting)',
-        cpaImpact: '-31% Blended CPA',
-        commercialBenefit: 'Expands market reach into daily makeup buyers, doubling repeat purchase frequency.',
-        expectedOutcome:
-          'Expands TAM into everyday cosmetic wearers, establishing SOLAÉ as an indispensable dual-purpose primer-sunscreen with recurring 60-day subscription retention.',
-      },
-    ],
-  },
-  tabs: [
-    { id: 'all', label: 'All Assets' },
-    { id: 'editorial', label: 'Editorial Stills' },
-    { id: 'meta', label: 'Meta Ads' },
-    { id: 'instagram', label: 'Instagram Suite' },
+    {
+      id: 2,
+      hookLine: 'Zero white cast. Zero makeup pilling.',
+      angleExplanation:
+        'Targets beauty lovers who need seamless cosmetic prep without foundation separation.',
+      videoSrc: '/images/solae/instagram/instagram-video-01.mp4',
+      posterSrc: '/images/solae/meta/meta-still-01.jpg',
+    },
+    {
+      id: 3,
+      hookLine: 'Water-veil absorption in 3 seconds.',
+      angleExplanation:
+        'Proves rapid skin penetration on camera without leaving an oily reflective film.',
+      videoSrc: '/images/solae/instagram/instagram-video-01.mp4',
+      posterSrc: '/images/solae/instagram/instagram-still-01.jpg',
+    },
+    {
+      id: 4,
+      hookLine: 'Your daily SPF should feel like a morning serum.',
+      angleExplanation:
+        'Elevates sun care into an enjoyable, hydrating step in the customer’s morning ritual.',
+      videoSrc: '/images/solae/instagram/instagram-video-01.mp4',
+      posterSrc: '/images/solae/editorial/solae-photo-02.jpg',
+    },
+    {
+      id: 5,
+      hookLine: 'The humid commute test: no greasy forehead.',
+      angleExplanation:
+        'Validates breathability and sweat-resistant comfort in hot, muggy weather.',
+      videoSrc: '/images/solae/instagram/instagram-video-01.mp4',
+      posterSrc: '/images/solae/instagram/instagram-still-03.jpg',
+    },
   ],
-  prevLink: {
-    href: '/work/vyraa',
-    label: '05 VYRAA Neck Complex',
+  platformAssets: {
+    meta: [
+      { id: 's-m1', src: '/images/solae/editorial/solae-photo-01.jpg', caption: 'Editorial water-veil dropper capture' },
+      { id: 's-m2', src: '/images/solae/meta/meta-still-01.jpg', caption: '1:1 feed clear droplet skin swatch' },
+      { id: 's-m3', src: '/images/solae/meta/meta-still-02.jpg', caption: 'Zero-cast comparison on diverse skin' },
+    ],
+    instagram: [
+      { id: 's-i1', src: '/images/solae/instagram/instagram-still-01.jpg', caption: 'Daylight morning mirror aesthetic' },
+      { id: 's-i2', src: '/images/solae/instagram/instagram-still-02.jpg', caption: 'Glass dropper caustics under sunlight' },
+      { id: 's-i3', src: '/images/solae/instagram/instagram-still-03.jpg', caption: '9:16 vertical application swatch' },
+    ],
+    tiktok: [
+      { id: 's-t1', src: '/images/solae/instagram/instagram-story-01.jpg', caption: '3-second absorption challenge' },
+      { id: 's-t2', src: '/images/solae/editorial/solae-photo-02.jpg', caption: 'Under-makeup foundation test' },
+    ],
+    website: [
+      { id: 's-w1', src: '/images/solae/editorial/solae-photo-01.jpg', caption: 'E-commerce hero product presentation' },
+      { id: 's-w2', src: '/images/solae/meta/meta-still-03.jpg', caption: 'Clinical SPF50+ PA++++ certification badge' },
+    ],
   },
-  nextLink: {
+  totalAssetsCount: 29,
+  strategySummary: {
+    whyItWorks:
+      'It instantly arrests the scroll by calling out the single universal irritation with sunscreen: the chalky white mask. By replacing that friction with clear water droplets and morning light, it positions the product as an upgrade to everyday living.',
+    angleLogic:
+      'Top-of-funnel ads challenge white sunscreen formulas directly, while retargeting variants focus on cosmetic compatibility under foundation and sweat resistance.',
+    projectedOutcomes: {
+      targetRoas: '4.0x – 4.8x target return on ad spend',
+      thumbStopRate: '45% – 52% projected 3-second hook rate',
+      cpaImpact: 'Estimated 25% – 38% lower customer acquisition cost',
+      notes:
+        'These figures are strategic benchmarks and forecasts for ad spend testing, not historical client records.',
+    },
+  },
+  nextCampaign: {
+    name: 'Lipéa',
     href: '/work/lipea',
-    label: '02 LIPÉA Lip Serum',
   },
-  assets: [
-    // Motion & Performance Video Assets (8) — Videos First, solae-ig-v01 First!
-    {
-      id: 'solae-ig-v01',
-      title: 'Instagram Reel: Texture Bloom',
-      platform: 'instagram',
-      type: 'video',
-      src: '/images/solae/instagram/instagram-video-01.mp4',
-      formatLabel: '9:16 Vertical Reel',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Sensory close-up of water serum spreading weightlessly across skin.',
-    },
-    {
-      id: 'solae-ig-v02',
-      title: 'Instagram Reel: 3-Second Absorb',
-      platform: 'instagram',
-      type: 'video',
-      src: '/images/solae/instagram/instagram-video-02.mp4',
-      formatLabel: '9:16 Vertical Reel',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Real-time absorption test under warm daylight showing zero residue.',
-    },
-    {
-      id: 'solae-ig-v03',
-      title: 'Instagram Reel: Foundation Test',
-      platform: 'instagram',
-      type: 'video',
-      src: '/images/solae/instagram/instagram-video-03.mp4',
-      formatLabel: '9:16 Vertical Reel',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Brush-buffed liquid foundation layered over the serum with complete adherence.',
-    },
-    {
-      id: 'solae-ig-v04',
-      title: 'Instagram Reel: UV Shield Visualizer',
-      platform: 'instagram',
-      type: 'video',
-      src: '/images/solae/instagram/instagram-video-04.mp4',
-      formatLabel: '9:16 Vertical Reel',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Dynamic visual motion demonstrating full-spectrum protection against UV exposure.',
-    },
-    {
-      id: 'solae-meta-v01',
-      title: 'Meta Motion Reel: 3-Second Melt',
-      platform: 'meta',
-      type: 'video',
-      src: '/images/solae/meta/meta-video-01.mp4',
-      formatLabel: '9:16 Vertical Video',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Rapid three-second skin absorption test captured in high-definition video.',
-    },
-    {
-      id: 'solae-meta-v02',
-      title: 'Meta Motion Reel: Water Drop Velocity',
-      platform: 'meta',
-      type: 'video',
-      src: '/images/solae/meta/meta-video-02.mp4',
-      formatLabel: '9:16 Vertical Video',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Kinetic drop dispense highlighting the lightweight serum viscosity.',
-    },
-    {
-      id: 'solae-meta-v03',
-      title: 'Meta Motion Reel: Foundation Grip',
-      platform: 'meta',
-      type: 'video',
-      src: '/images/solae/meta/meta-video-03.mp4',
-      formatLabel: '9:16 Vertical Video',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Smooth foundation glide over AIRVEIL showing zero pilling or patchiness.',
-    },
-    {
-      id: 'solae-meta-v04',
-      title: 'Meta Motion Reel: Solar Defense Test',
-      platform: 'meta',
-      type: 'video',
-      src: '/images/solae/meta/meta-video-04.mp4',
-      formatLabel: '9:16 Vertical Video',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Micro-droplet dispersion visually proving broad-spectrum photoprotection.',
-    },
-
-    // Editorial Stills (10)
-    {
-      id: 'solae-ed-01',
-      title: 'Ivory Bottle Studio Capture',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/solae/editorial/solae-photo-01.jpg',
-      formatLabel: 'Editorial Still · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Frosted ivory bottle positioned under soft directional morning light.',
-    },
-    {
-      id: 'solae-ed-02',
-      title: 'Water Droplet Texture Study',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/solae/editorial/solae-photo-02.jpg',
-      formatLabel: 'Macro Still · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Macro surface capture highlighting the crystal-clear water droplet viscosity.',
-    },
-    {
-      id: 'solae-ed-03',
-      title: 'Sculptural Swirl Emboss',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/solae/editorial/solae-photo-03.jpg',
-      formatLabel: 'Packaging Detail · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Close-up of the tactile petal crest embossed on the frosted ivory glass.',
-    },
-    {
-      id: 'solae-ed-04',
-      title: 'Champagne-Gold Pump Detail',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/solae/editorial/solae-photo-04.jpg',
-      formatLabel: 'Hardware Still · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Brushed metallic champagne-gold pump engineered for clean dosage control.',
-    },
-    {
-      id: 'solae-ed-05',
-      title: 'Atmospheric Refraction Still',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/solae/editorial/solae-photo-05.jpg',
-      formatLabel: 'Editorial Still · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Direct sunlight caustic reflections casting warmth behind the sun serum bottle.',
-    },
-    {
-      id: 'solae-ed-06',
-      title: 'Formula Spatula Spread',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/solae/editorial/solae-photo-06.jpg',
-      formatLabel: 'Texture Still · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Ultra-thin water film spreading effortlessly across a cold acrylic plate.',
-    },
-    {
-      id: 'solae-ed-07',
-      title: 'Skin Melting Interaction',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/solae/editorial/solae-photo-07.jpg',
-      formatLabel: 'In-Use Still · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Liquid water serum absorbing immediately into skin upon light fingertip contact.',
-    },
-    {
-      id: 'solae-ed-08',
-      title: 'Hydration Dew Finish',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/solae/editorial/solae-photo-08.jpg',
-      formatLabel: 'Skin Finish · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Subtle hydrated sheen remaining on skin with zero white film or oily shine.',
-    },
-    {
-      id: 'solae-ed-09',
-      title: 'Architectural Pedestal Display',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/solae/editorial/solae-photo-09.jpg',
-      formatLabel: 'Studio Still · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Minimalist travertine podium framing the product against an airy warm background.',
-    },
-    {
-      id: 'solae-ed-10',
-      title: 'Sunlight Flare Silhouette',
-      platform: 'editorial',
-      type: 'image',
-      src: '/images/solae/editorial/solae-photo-10.jpg',
-      formatLabel: 'Mood Still · 4:5',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Golden optical lens flare accentuating the lightweight protective concept.',
-    },
-
-    // Meta Ads Stills (5)
-    {
-      id: 'solae-meta-s01',
-      title: 'Meta Core Feed Still',
-      platform: 'meta',
-      type: 'image',
-      src: '/images/solae/meta/meta-still-01.jpg',
-      formatLabel: '1:1 Square Feed',
-      aspectRatio: 'aspect-square',
-      caption: 'Direct-response hero composition formatted specifically for Meta square feeds.',
-    },
-    {
-      id: 'solae-meta-s01sep',
-      title: 'Meta Variant Feed Still',
-      platform: 'meta',
-      type: 'image',
-      src: '/images/solae/meta/meta-still-01-sep.jpg',
-      formatLabel: '1:1 Square Feed',
-      aspectRatio: 'aspect-square',
-      caption: 'Alternate product perspective highlighting clean packaging typography.',
-    },
-    {
-      id: 'solae-meta-s02',
-      title: 'Meta Zero Cast Comparison',
-      platform: 'meta',
-      type: 'image',
-      src: '/images/solae/meta/meta-still-02.jpg',
-      formatLabel: '4:5 Feed Portrait',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Visual demonstration showing invisible sun defense on deeper skin tones.',
-    },
-    {
-      id: 'solae-meta-s03',
-      title: 'Meta Sensory Water Splash',
-      platform: 'meta',
-      type: 'image',
-      src: '/images/solae/meta/meta-still-03.jpg',
-      formatLabel: '4:5 Feed Portrait',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Dynamic water splash surrounding the bottle to convey deep hydration.',
-    },
-    {
-      id: 'solae-meta-s04',
-      title: 'Meta Daily Commuter Angle',
-      platform: 'meta',
-      type: 'image',
-      src: '/images/solae/meta/meta-still-04.jpg',
-      formatLabel: '4:5 Feed Portrait',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Clean lifestyle framing emphasizing effortless reapplication throughout the day.',
-    },
-
-    // Instagram Suite Stills & Story (6)
-    {
-      id: 'solae-ig-s01',
-      title: 'Instagram Aesthetic Still 01',
-      platform: 'instagram',
-      type: 'image',
-      src: '/images/solae/instagram/instagram-still-01.jpg',
-      formatLabel: '4:5 Feed Portrait',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Architectural composition styled with ivory stone for organic engagement.',
-    },
-    {
-      id: 'solae-ig-s01sep',
-      title: 'Instagram Detail Capture',
-      platform: 'instagram',
-      type: 'image',
-      src: '/images/solae/instagram/instagram-still-01-sep.jpg',
-      formatLabel: '4:5 Feed Portrait',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'High-contrast angled lighting revealing the precision embossed petal crest.',
-    },
-    {
-      id: 'solae-ig-s02',
-      title: 'Instagram Vanity Context',
-      platform: 'instagram',
-      type: 'image',
-      src: '/images/solae/instagram/instagram-still-02.jpg',
-      formatLabel: '4:5 Feed Portrait',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Morning skincare routine arrangement pairing the serum with daily essentials.',
-    },
-    {
-      id: 'solae-ig-s03',
-      title: 'Instagram Texture Swatch',
-      platform: 'instagram',
-      type: 'image',
-      src: '/images/solae/instagram/instagram-still-03.jpg',
-      formatLabel: '4:5 Feed Portrait',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Fingertip swatch showcasing crystal-clear transparency without white tint.',
-    },
-    {
-      id: 'solae-ig-s04',
-      title: 'Instagram Humidity Test Still',
-      platform: 'instagram',
-      type: 'image',
-      src: '/images/solae/instagram/instagram-still-04.jpg',
-      formatLabel: '4:5 Feed Portrait',
-      aspectRatio: 'aspect-[4/5]',
-      caption: 'Mist droplets beading cleanly off the bottle to symbolize humidity resistance.',
-    },
-    {
-      id: 'solae-ig-story01',
-      title: 'Instagram Vertical Story Still',
-      platform: 'instagram',
-      type: 'image',
-      src: '/images/solae/instagram/instagram-story-01.jpg',
-      formatLabel: '9:16 Fullscreen Story',
-      aspectRatio: 'aspect-[9/16]',
-      caption: 'Full-bleed vertical creative designed with tap-through zones for Instagram stories.',
-    },
-  ],
 }
 
-export default function SolaePage() {
+export default function SolaeCaseStudyPage() {
   return <CaseStudyTemplate data={SOLAE_DATA} />
 }

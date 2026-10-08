@@ -1,235 +1,88 @@
 'use client'
 
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
 import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
   Play,
   Pause,
-  X,
-  ChevronLeft,
-  ChevronRight,
   ChevronDown,
-  Layers,
-  Sparkles,
-  Sliders,
-  Package,
-  Target,
-  CheckCircle2,
-  Eye,
-  ShieldCheck,
+  ChevronRight,
+  Check,
   Video,
-  Camera,
-  Compass,
   Volume2,
   VolumeX,
 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 
-const EASE_LUXURY = [0.16, 1, 0.3, 1] as const
-
-export interface CaseStudyAsset {
-  id: string
-  title: string
-  platform: 'all' | 'meta' | 'instagram' | 'editorial' | 'tiktok' | 'website' | 'studio'
-  type: 'image' | 'video'
-  src: string
-  formatLabel: string
-  aspectRatio: string
-  caption: string // Exactly 1 simple short sentence
+export interface CaseStudyHook {
+  id: number
+  hookLine: string
+  angleExplanation: string
+  videoSrc?: string
+  posterSrc?: string
 }
 
-export interface CaseStudyData {
+export interface PlatformAssetItem {
+  id: string
+  src: string
+  caption: string
+}
+
+export interface CaseStudyPageData {
   campaignId: string
-  caseNumber: string
   name: string
-  tagline: string
-  skuFocus: string
-  deliverablesCount: string
-  channelsText: string
+  tag: string // strictly 'Concept campaign'
+  oneLiner: string
+  role: string
+  year: string
   heroImage: string
-  heroCaption: string
-  heroBadge?: string
+  heroVideo?: string
   brief: {
     whatItIs: string
+    whoItIsFor: string
     whyItExists: string
-    whyDifferent: { title: string; desc: string }[]
-    targetAudience: string
-    packagingSpecs: {
-      container: string
-      labelTypography: string
+  }
+  challenge: string
+  idea: {
+    coreHook: string
+    explanation: string
+  }
+  hooks: CaseStudyHook[]
+  platformAssets: {
+    meta: PlatformAssetItem[]
+    instagram: PlatformAssetItem[]
+    tiktok: PlatformAssetItem[]
+    website: PlatformAssetItem[]
+  }
+  totalAssetsCount: number
+  strategySummary: {
+    whyItWorks: string
+    angleLogic: string
+    projectedOutcomes: {
+      targetRoas: string
+      thumbStopRate: string
+      cpaImpact: string
+      notes: string
     }
-    marketAngles?: { title: string; desc: string }[]
   }
-  strategy: {
-    hooks: {
-      id: number
-      angle: string
-      channelFit: string
-      quote: string
-      whyChosen?: string
-      rationale: string
-      projectedRoas?: string
-      thumbStopRate?: string
-      cpaImpact?: string
-      commercialBenefit?: string
-      expectedOutcome?: string
-    }[]
+  nextCampaign: {
+    name: string
+    href: string
   }
-  assets: CaseStudyAsset[]
-  tabs: { id: string; label: string }[]
-  prevLink: { href: string; label: string }
-  nextLink: { href: string; label: string }
 }
 
-// ── Horizontal Swipeable Row Component for Stills ─────────────────────────
-function SwipeableStillsRow({
-  title,
-  subtitle,
-  assets,
-  badgeText,
+// ── Single Video Card with audio and pause controls ─────────────────────────
+function CaseStudyVideoCard({
+  hook,
 }: {
-  title: string
-  subtitle: string
-  assets: CaseStudyAsset[]
-  badgeText: string
-}) {
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const [canScrollLeft, setCanScrollLeft] = useState(false)
-  const [canScrollRight, setCanScrollRight] = useState(true)
-
-  const checkScroll = () => {
-    if (!scrollRef.current) return
-    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current
-    setCanScrollLeft(scrollLeft > 10)
-    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10)
-  }
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (!scrollRef.current) return
-    const offset = direction === 'left' ? -360 : 360
-    scrollRef.current.scrollBy({ left: offset, behavior: 'smooth' })
-  }
-
-  if (assets.length === 0) return null
-
-  return (
-    <div className="space-y-4 pt-8 border-t border-black/[0.08] dark:border-white/[0.08] first:border-none first:pt-0">
-      {/* Row Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
-              {badgeText}
-            </span>
-            <span className="text-[10px] font-mono px-2 py-0.2 rounded-full bg-black/[0.05] dark:bg-white/[0.08] text-zinc-600 dark:text-zinc-300">
-              {assets.length} Stills · Swipe ➔
-            </span>
-          </div>
-          <h3 className="font-fraunces text-xl sm:text-2xl text-zinc-900 dark:text-white font-medium">
-            {title}
-          </h3>
-          <p className="text-xs text-zinc-600 dark:text-zinc-400 font-light">
-            {subtitle}
-          </p>
-        </div>
-
-        {/* Scroll Arrows */}
-        <div className="flex items-center gap-2 self-end sm:self-auto">
-          <button
-            onClick={() => scroll('left')}
-            disabled={!canScrollLeft}
-            aria-label="Scroll left"
-            className="w-8 h-8 rounded-full liquid-glass border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-700 dark:text-zinc-300 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-          <button
-            onClick={() => scroll('right')}
-            disabled={!canScrollRight}
-            aria-label="Scroll right"
-            className="w-8 h-8 rounded-full liquid-glass border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-700 dark:text-zinc-300 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
-
-      {/* Swipeable Scroll Container */}
-      <div
-        ref={scrollRef}
-        onScroll={checkScroll}
-        className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 pt-1 scroll-smooth snap-x snap-mandatory scrollbar-none"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-      >
-        {assets.map((asset, idx) => (
-          <div
-            key={asset.id}
-            className="snap-start shrink-0 w-[280px] sm:w-[320px] rounded-2xl liquid-glass border border-black/10 dark:border-white/15 p-3 flex flex-col justify-between group hover:border-black/25 dark:hover:border-white/30 transition-all duration-300 shadow-md"
-          >
-            {/* Full Image Container — Strictly Preserved & Uncropped */}
-            <div className="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-black/[0.03] dark:bg-black/40">
-              <Image
-                src={asset.src}
-                alt={asset.title}
-                fill
-                unoptimized
-                sizes="320px"
-                className="object-contain p-1 transition-transform duration-500 ease-luxury group-hover:scale-102"
-              />
-              <div className="absolute top-2 left-2 z-10">
-                <span className="px-2 py-0.5 rounded text-[9px] font-mono uppercase bg-black/70 backdrop-blur-md text-white border border-white/20">
-                  Still 0{idx + 1}
-                </span>
-              </div>
-            </div>
-
-            {/* 1 Short Sentence Caption directly visible up front */}
-            <div className="pt-3 px-1 space-y-1">
-              <div className="flex items-center justify-between text-[11px] font-inter">
-                <span className="font-semibold text-zinc-900 dark:text-zinc-100 truncate">
-                  {asset.title}
-                </span>
-                <span className="text-[10px] font-mono text-zinc-500 shrink-0 ml-1">
-                  {asset.formatLabel.split(' ')[0]}
-                </span>
-              </div>
-              <p className="text-[11px] font-inter text-zinc-600 dark:text-zinc-400 font-light leading-snug">
-                {asset.caption}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-// ── Interactive Video Player Card Component ───────────────────────────────
-function VideoCard({
-  video,
-  index,
-}: {
-  video: CaseStudyAsset
-  index: number
+  hook: CaseStudyHook
 }) {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [isPlaying, setIsPlaying] = useState(true)
+  const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(true)
-
-  useEffect(() => {
-    const el = videoRef.current
-    if (el) {
-      el.muted = isMuted
-      el.play().catch(() => {
-        // Fallback if browser enforces user gesture
-      })
-    }
-  }, [isMuted])
 
   const togglePlay = () => {
     if (!videoRef.current) return
@@ -251,524 +104,393 @@ function VideoCard({
   }
 
   return (
-    <div className="rounded-2xl liquid-glass border border-black/10 dark:border-white/15 p-3 sm:p-4 flex flex-col justify-between group hover:border-black/25 dark:hover:border-white/30 transition-all duration-300 shadow-lg">
+    <div className="liquid-glass p-4 flex flex-col justify-between space-y-4">
       {/* Video Container */}
-      <div className="relative aspect-[9/16] w-full rounded-xl overflow-hidden bg-black shadow-inner cursor-pointer" onClick={togglePlay}>
-        <video
-          ref={videoRef}
-          src={video.src}
-          autoPlay
-          preload="metadata"
-          loop
-          muted={isMuted}
-          playsInline
-          onPlay={() => setIsPlaying(true)}
-          onPause={() => setIsPlaying(false)}
-          className="w-full h-full object-cover"
-        />
+      <div
+        onClick={togglePlay}
+        className="relative aspect-[9/16] w-full rounded-xl overflow-hidden bg-neutral-900 cursor-pointer group"
+      >
+        {hook.videoSrc ? (
+          <video
+            ref={videoRef}
+            src={hook.videoSrc}
+            preload="metadata"
+            loop
+            muted={isMuted}
+            playsInline
+            poster={hook.posterSrc}
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
+            className="w-full h-full object-cover"
+          />
+        ) : hook.posterSrc ? (
+          <Image
+            src={hook.posterSrc}
+            alt={hook.hookLine}
+            fill
+            sizes="(max-width: 768px) 100vw, 300px"
+            className="object-cover"
+          />
+        ) : null}
 
-        {/* Video Overlay Badge */}
-        <div className="absolute top-2 left-2 z-10">
-          <span className="px-2 py-0.5 rounded text-[9px] font-mono uppercase bg-black/75 backdrop-blur-md text-white border border-white/20 flex items-center gap-1">
-            <Video className="w-3 h-3 text-emerald-400" />
-            <span>Motion 0{index + 1}</span>
-          </span>
-        </div>
+        {hook.videoSrc && (
+          <>
+            {/* Audio Toggle */}
+            <button
+              type="button"
+              onClick={toggleMute}
+              aria-label={isMuted ? 'Unmute' : 'Mute'}
+              className="absolute top-2.5 right-2.5 z-10 p-2 rounded-full bg-black/70 text-white backdrop-blur-md hover:bg-black transition-all"
+            >
+              {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
+            </button>
 
-        {/* Audio Sound Toggle Button */}
-        <button
-          onClick={toggleMute}
-          aria-label={isMuted ? "Unmute audio" : "Mute audio"}
-          title={isMuted ? "Click to unmute" : "Click to mute"}
-          className="absolute top-2 right-2 z-20 p-2 rounded-full bg-black/75 backdrop-blur-md text-white border border-white/20 hover:bg-black hover:scale-110 active:scale-95 transition-all shadow-md group/btn"
-        >
-          {isMuted ? (
-            <VolumeX className="w-3.5 h-3.5 text-zinc-300 group-hover/btn:text-white" />
-          ) : (
-            <Volume2 className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
-          )}
-        </button>
+            {/* Play/Pause Indicator */}
+            <div className="absolute inset-0 bg-black/20 flex items-center justify-center transition-opacity">
+              <div
+                className={`w-11 h-11 rounded-full bg-white text-black flex items-center justify-center shadow-lg transition-transform ${
+                  isPlaying ? 'opacity-0 group-hover:opacity-90 scale-90' : 'opacity-100 scale-100'
+                }`}
+              >
+                {isPlaying ? <Pause className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 ml-0.5 fill-current" />}
+              </div>
+            </div>
+          </>
+        )}
 
-        {/* Play/Pause Button Overlay */}
-        <div className="absolute inset-0 bg-black/20 flex items-center justify-center transition-opacity pointer-events-none">
-          <div className={`w-12 h-12 rounded-full bg-white/95 text-black flex items-center justify-center shadow-xl transition-transform ${isPlaying ? 'opacity-0 group-hover:opacity-90 scale-90' : 'opacity-100 scale-100'}`}>
-            {isPlaying ? (
-              <Pause className="w-5 h-5 fill-current" />
-            ) : (
-              <Play className="w-5 h-5 ml-0.5 fill-current" />
-            )}
-          </div>
-        </div>
-
-        <div className="absolute bottom-2 right-2 z-10 text-[9px] font-mono text-white/80 bg-black/60 px-1.5 py-0.5 rounded flex items-center gap-1.5">
-          <span>{isPlaying ? 'Playing' : 'Tap to Play'}</span>
-          <span>·</span>
-          <span>{isMuted ? 'Muted' : 'Sound On'}</span>
+        <div className="absolute bottom-2.5 left-2.5 px-2 py-0.5 rounded text-[10px] font-mono bg-black/75 text-white backdrop-blur-md">
+          Hook 0{hook.id} · 9:16
         </div>
       </div>
 
-      {/* 1 Short Sentence Caption directly underneath */}
-      <div className="pt-3 px-1 space-y-1">
-        <div className="flex items-center justify-between text-xs font-inter">
-          <span className="font-semibold text-zinc-900 dark:text-zinc-100 truncate">
-            {video.title}
-          </span>
-          <span className="text-[10px] font-mono text-zinc-500 uppercase">
-            9:16 Vertical
-          </span>
-        </div>
-        <p className="text-xs font-inter text-zinc-600 dark:text-zinc-400 font-light leading-snug">
-          {video.caption}
+      {/* Caption & Explanation */}
+      <div className="space-y-1.5 pt-1">
+        <h4 className="text-sm font-bold text-neutral-900 dark:text-neutral-100 leading-snug">
+          "{hook.hookLine}"
+        </h4>
+        <p className="text-xs text-neutral-600 dark:text-neutral-400 font-normal leading-relaxed">
+          {hook.angleExplanation}
         </p>
       </div>
     </div>
   )
 }
 
-export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
-  const [openHookIndex, setOpenHookIndex] = useState<number | null>(0)
+export function CaseStudyTemplate({ data }: { data: CaseStudyPageData }) {
+  const [showAllAssets, setShowAllAssets] = useState(false)
 
-  // Separate Videos and Stills
-  const videoAssets = data.assets.filter((a) => a.type === 'video')
-  const stillAssets = data.assets.filter((a) => a.type === 'image')
+  // Flatten and group assets
+  const allAssetsList = [
+    ...data.platformAssets.meta.map((a) => ({ ...a, channel: 'Meta' })),
+    ...data.platformAssets.instagram.map((a) => ({ ...a, channel: 'Instagram' })),
+    ...data.platformAssets.tiktok.map((a) => ({ ...a, channel: 'TikTok' })),
+    ...data.platformAssets.website.map((a) => ({ ...a, channel: 'Website' })),
+  ]
 
-  // Group Stills by Platform
-  const metaStills = stillAssets.filter((a) => a.platform === 'meta')
-  const instagramStills = stillAssets.filter((a) => a.platform === 'instagram')
-  const editorialStills = stillAssets.filter(
-    (a) => a.platform === 'editorial' || a.platform === 'studio'
-  )
-  const otherStills = stillAssets.filter(
-    (a) =>
-      a.platform !== 'meta' &&
-      a.platform !== 'instagram' &&
-      a.platform !== 'editorial' &&
-      a.platform !== 'studio'
-  )
+  const visibleAssets = showAllAssets ? allAssetsList : allAssetsList.slice(0, 8)
 
   return (
-    <div className="bg-background text-ivory min-h-screen selection:bg-[#141416] selection:text-white dark:selection:bg-white dark:selection:text-black">
-      
-      {/* ── Top Breadcrumb Header ──────────────────────────────────────── */}
-      <div className="pt-28 sm:pt-36 border-b border-black/[0.06] dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.02]">
-        <div className="container-luxury py-3 flex items-center justify-between text-xs font-inter">
+    <div className="py-12 sm:py-20 space-y-20 sm:space-y-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 sm:space-y-28">
+
+        {/* ── Breadcrumb & Back ── */}
+        <div>
           <Link
             href="/work"
-            className="inline-flex items-center gap-2 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Work Archive</span>
+            <span>Back to Work</span>
           </Link>
-
-          <div className="flex items-center gap-3">
-            <span className="text-zinc-400 dark:text-zinc-500">Case Study {data.caseNumber}</span>
-            <span className="w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-700" />
-            <span className="font-semibold text-zinc-900 dark:text-white">{data.name}</span>
-            <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase bg-black/[0.04] dark:bg-white/[0.06] border border-black/10 dark:border-white/10 text-zinc-700 dark:text-zinc-300">
-              {data.deliverablesCount}
-            </span>
-          </div>
         </div>
-      </div>
 
-      {/* ════════════════════════════════════════════════════════════════════
-          1. HERO SECTION: PRODUCT HERO WITH 1 SHORT SENTENCE
-      ════════════════════════════════════════════════════════════════════ */}
-      <section className="relative pt-12 pb-20 sm:pt-16 sm:pb-28 border-b border-black/[0.08] dark:border-white/[0.08] overflow-hidden" aria-label={`${data.name} Hero`}>
-        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-b from-amber-200/20 to-transparent dark:from-white/[0.03] blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-10 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-rose-100/20 to-transparent dark:from-zinc-800/[0.1] blur-3xl pointer-events-none" />
+        {/* ── 1. HEADER ── */}
+        <section className="space-y-6 max-w-4xl">
+          <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200">
+            {data.tag}
+          </div>
 
-        <div className="container-luxury relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
-            {/* Left Narrative Column */}
-            <div className="lg:col-span-6 flex flex-col justify-center">
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, ease: EASE_LUXURY }}
-              >
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full liquid-glass-pill text-[11px] uppercase tracking-[0.2em] text-zinc-700 dark:text-white/80 mb-6">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  {data.heroBadge || 'Flagship Commercial Direction · Witlyn Standard'}
-                </div>
+          <h1 className="text-neutral-950 dark:text-white">
+            {data.name}
+          </h1>
 
-                <h1 className="heading-hero text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-[#141416] dark:text-white mb-6">
-                  {data.name}
-                </h1>
+          <p className="text-xl sm:text-2xl text-neutral-700 dark:text-neutral-300 font-normal leading-relaxed">
+            {data.oneLiner}
+          </p>
 
-                {/* 1 Short Sentence Positioning */}
-                <div className="mb-8 p-5 rounded-2xl liquid-glass border border-black/10 dark:border-white/10">
-                  <span className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-widest block mb-1.5">
-                    Creative Strategy Rationale
-                  </span>
-                  <p className="font-fraunces text-xl sm:text-2xl text-zinc-800 dark:text-zinc-200 font-light italic leading-snug">
-                    {data.tagline}
-                  </p>
-                </div>
-
-                {/* Quick Meta Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-black/[0.08] dark:border-white/[0.08] text-xs font-inter text-zinc-600 dark:text-zinc-300">
-                  <div>
-                    <span className="block text-[10px] font-mono uppercase text-zinc-400 dark:text-zinc-500 mb-1">SKU Focus</span>
-                    <span className="font-medium text-zinc-900 dark:text-white">{data.skuFocus}</span>
-                  </div>
-                  <div>
-                    <span className="block text-[10px] font-mono uppercase text-zinc-400 dark:text-zinc-500 mb-1">Asset Vault</span>
-                    <span className="font-medium text-zinc-900 dark:text-white">{data.deliverablesCount}</span>
-                  </div>
-                  <div className="col-span-2 sm:col-span-1">
-                    <span className="block text-[10px] font-mono uppercase text-zinc-400 dark:text-zinc-500 mb-1">Distribution</span>
-                    <span className="font-medium text-zinc-900 dark:text-white">{data.channelsText}</span>
-                  </div>
-                </div>
-              </motion.div>
+          <div className="pt-4 flex flex-wrap gap-y-3 gap-x-8 text-xs font-medium text-neutral-500 dark:text-neutral-400 border-t border-black/[0.06] dark:border-white/[0.08]">
+            <div>
+              <span className="block text-[11px] uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-0.5">Role</span>
+              <span className="text-neutral-900 dark:text-neutral-100">{data.role}</span>
             </div>
-
-            {/* Right: Clean Hero Anchor Visual */}
-            <div className="lg:col-span-6">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.1, ease: EASE_LUXURY }}
-                className="relative aspect-square sm:aspect-[4/3] lg:aspect-square w-full rounded-3xl overflow-hidden liquid-glass border border-black/10 dark:border-white/20 shadow-2xl group"
-              >
-                <Image
-                  src={data.heroImage}
-                  alt={`${data.name} master visual`}
-                  fill
-                  priority
-                  unoptimized
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-102"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white drop-shadow">
-                  <div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-white/70 block">Hero Product</span>
-                    <p className="font-fraunces text-sm sm:text-base font-light">{data.heroCaption}</p>
-                  </div>
-                  <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-mono uppercase border border-white/30 shrink-0 ml-2">
-                    Master SKU
-                  </span>
-                </div>
-              </motion.div>
+            <div>
+              <span className="block text-[11px] uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-0.5">Year</span>
+              <span className="text-neutral-900 dark:text-neutral-100">{data.year}</span>
             </div>
-
+            <div>
+              <span className="block text-[11px] uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-0.5">Assets</span>
+              <span className="text-neutral-900 dark:text-neutral-100">{data.totalAssetsCount} creative assets</span>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ════════════════════════════════════════════════════════════════════
-          2. CREATIVE STRATEGIST DIRECT-RESPONSE ARCHITECTURE & HOOKS
-      ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad border-b border-black/[0.08] dark:border-white/[0.08] bg-surface/30" aria-label="Creative Strategy">
-        <div className="container-luxury max-w-4xl space-y-10">
-          
-          <div>
-            <p className="eyebrow-luxury text-zinc-500 dark:text-zinc-400 mb-2">01 · Strategic Rationale</p>
-            <h2 className="heading-section text-2xl sm:text-3xl lg:text-4xl text-[#141416] dark:text-white">
-              Creative Strategy &amp; Hook Architecture
-            </h2>
-            <p className="body-muted text-sm sm:text-base text-zinc-600 dark:text-zinc-400 mt-1">
-              Every creative angle targets consumer friction points to maximize thumb-stop rate and paid-social conversion.
-            </p>
+        {/* ── 2. HERO FILM OR BEST IMAGE ── */}
+        <section className="liquid-glass overflow-hidden border border-black/[0.08] dark:border-white/[0.1]">
+          <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full bg-neutral-900">
+            {data.heroVideo ? (
+              <video
+                src={data.heroVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                poster={data.heroImage}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <Image
+                src={data.heroImage}
+                alt={`${data.name} hero asset`}
+                fill
+                priority
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                className="object-cover"
+              />
+            )}
           </div>
+        </section>
 
-          {/* Hook Accordion */}
-          <div className="space-y-3">
-            {data.strategy.hooks.map((item, index) => {
-              const isOpen = openHookIndex === index
-              return (
-                <div
-                  key={item.id}
-                  className="rounded-2xl liquid-glass border border-black/10 dark:border-white/10 overflow-hidden transition-all"
-                >
-                  <button
-                    onClick={() => setOpenHookIndex(isOpen ? null : index)}
-                    className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors"
-                  >
-                    <div className="flex items-center gap-3 sm:gap-4">
-                      <span className="font-mono text-xs sm:text-sm text-zinc-400">0{item.id}</span>
-                      <div>
-                        <h4 className="font-fraunces text-base sm:text-lg text-zinc-900 dark:text-white font-medium">
-                          {item.angle}
-                        </h4>
-                        <span className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400">
-                          Channel Fit: {item.channelFit}
-                        </span>
-                      </div>
-                    </div>
-                    <ChevronDown
-                      className={`w-4 h-4 text-zinc-400 transition-transform duration-300 ${
-                        isOpen ? 'rotate-180 text-zinc-900 dark:text-white' : ''
-                      }`}
-                    />
-                  </button>
-
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: EASE_LUXURY }}
-                        className="px-5 pb-6 sm:px-6 sm:pb-7 pt-2 border-t border-black/[0.05] dark:border-white/[0.05] space-y-4"
-                      >
-                        {/* Script Hook Quote */}
-                        <div className="p-4 rounded-xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/5 dark:border-white/10">
-                          <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 block mb-1">
-                            Script Hook Line (First 1.5s Thumb-Stop)
-                          </span>
-                          <p className="font-fraunces text-base sm:text-xl italic text-zinc-950 dark:text-white">
-                            "{item.quote}"
-                          </p>
-                        </div>
-
-                        {/* Performance & ROAS Scorecard */}
-                        {(item.projectedRoas || item.thumbStopRate || item.cpaImpact) && (
-                          <div className="grid grid-cols-3 gap-3 p-3.5 rounded-xl bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/10 text-center">
-                            <div>
-                              <span className="text-[9px] font-mono uppercase text-zinc-500 block">Target ROAS</span>
-                              <span className="text-xs sm:text-sm font-fraunces text-zinc-900 dark:text-white font-medium">
-                                {item.projectedRoas || '3.8x – 4.5x'}
-                              </span>
-                            </div>
-                            <div className="border-x border-black/5 dark:border-white/10">
-                              <span className="text-[9px] font-mono uppercase text-zinc-500 block">Thumb-Stop Rate</span>
-                              <span className="text-xs sm:text-sm font-fraunces text-zinc-900 dark:text-white font-medium">
-                                {item.thumbStopRate || '40%+ (3s View)'}
-                              </span>
-                            </div>
-                            <div>
-                              <span className="text-[9px] font-mono uppercase text-zinc-500 block">CPA Efficiency</span>
-                              <span className="text-xs sm:text-sm font-fraunces text-zinc-900 dark:text-white font-medium">
-                                {item.cpaImpact || '-30% to -40%'}
-                              </span>
-                            </div>
-                          </div>
-                        )}
-                        
-                        {/* Why This Hook Was Chosen */}
-                        {item.whyChosen && (
-                          <div className="space-y-1.5">
-                            <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400 block font-semibold">
-                              🎯 Why This Hook Was Chosen
-                            </span>
-                            <p className="text-xs sm:text-sm font-inter text-zinc-700 dark:text-zinc-200 leading-relaxed font-light">
-                              {item.whyChosen}
-                            </p>
-                          </div>
-                        )}
-
-                        {/* Psychological Rationale */}
-                        <div className="space-y-1.5">
-                          <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400 block font-semibold">
-                            🧠 Consumer Psychological Rationale
-                          </span>
-                          <p className="text-xs sm:text-sm font-inter text-zinc-700 dark:text-zinc-200 leading-relaxed font-light">
-                            {item.rationale}
-                          </p>
-                        </div>
-
-                        {/* Commercial Benefit & Expected Outcome */}
-                        <div className="pt-2 border-t border-black/5 dark:border-white/5 space-y-2">
-                          {item.commercialBenefit && (
-                            <div className="flex items-start gap-2 text-xs font-inter text-emerald-700 dark:text-emerald-400">
-                              <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
-                              <span><strong>Commercial Benefit:</strong> {item.commercialBenefit}</span>
-                            </div>
-                          )}
-                          {item.expectedOutcome && (
-                            <div className="flex items-start gap-2 text-xs font-inter text-zinc-800 dark:text-zinc-300">
-                              <Target className="w-4 h-4 shrink-0 mt-0.5 text-zinc-500" />
-                              <span><strong>Expected Conversion Outcome:</strong> {item.expectedOutcome}</span>
-                            </div>
-                          )}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              )
-            })}
-          </div>
-
-          {/* Product Brief Details */}
-          <div className="pt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 rounded-2xl liquid-glass border border-black/10 dark:border-white/10 space-y-2">
-              <span className="text-[10px] font-mono uppercase text-emerald-600 dark:text-emerald-400">Formula Definition</span>
-              <h4 className="font-fraunces text-lg text-zinc-900 dark:text-white font-medium">What It Is</h4>
-              <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 font-light leading-relaxed">
+        {/* ── 3. THE BRIEF ── */}
+        <section className="space-y-6 max-w-4xl">
+          <h2 className="text-neutral-950 dark:text-white">The brief</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="liquid-glass p-6 space-y-2">
+              <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 block">
+                What it is
+              </span>
+              <p className="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed font-normal">
                 {data.brief.whatItIs}
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl liquid-glass border border-black/10 dark:border-white/10 space-y-2">
-              <span className="text-[10px] font-mono uppercase text-amber-600 dark:text-amber-400">Consumer Pain Point</span>
-              <h4 className="font-fraunces text-lg text-zinc-900 dark:text-white font-medium">Why It Exists</h4>
-              <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 font-light leading-relaxed">
+            <div className="liquid-glass p-6 space-y-2">
+              <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 block">
+                Who it is for
+              </span>
+              <p className="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed font-normal">
+                {data.brief.whoItIsFor}
+              </p>
+            </div>
+
+            <div className="liquid-glass p-6 space-y-2">
+              <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 block">
+                Why it exists
+              </span>
+              <p className="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed font-normal">
                 {data.brief.whyItExists}
               </p>
             </div>
           </div>
+        </section>
 
-        </div>
-      </section>
+        {/* ── 4. THE CHALLENGE ── */}
+        <section className="space-y-4 max-w-3xl">
+          <h2 className="text-neutral-950 dark:text-white">The challenge</h2>
+          <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal">
+            {data.challenge}
+          </p>
+        </section>
 
-      {/* ════════════════════════════════════════════════════════════════════
-          3. THE DELIVERABLES: VIDEOS FIRST, THEN SWIPEABLE STILLS
-      ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad" aria-label={`${data.name} Campaign Vault`}>
-        <div className="container-luxury space-y-16">
-          
-          {/* Section Introduction */}
-          <div className="border-b border-black/[0.08] dark:border-white/[0.08] pb-6">
-            <p className="eyebrow-luxury text-zinc-500 dark:text-zinc-400 mb-2">02 // Campaign Deliverables</p>
-            <h2 className="heading-section text-3xl sm:text-4xl text-[#141416] dark:text-white">
-              The Production Vault
-            </h2>
-            <p className="body-muted text-sm sm:text-base text-zinc-600 dark:text-zinc-400 mt-1">
-              Performance video creatives followed by swipeable still suites. All assets fully visible up front.
+        {/* ── 5. THE IDEA ── */}
+        <section className="space-y-4 max-w-3xl">
+          <h2 className="text-neutral-950 dark:text-white">The idea</h2>
+          <div className="liquid-glass p-8 space-y-3">
+            <p className="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white leading-snug">
+              "{data.idea.coreHook}"
+            </p>
+            <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 font-normal leading-relaxed">
+              {data.idea.explanation}
+            </p>
+          </div>
+        </section>
+
+        {/* ── 6. THE 5 HOOKS ── */}
+        <section className="space-y-8">
+          <div className="space-y-2">
+            <h2 className="text-neutral-950 dark:text-white">The 5 hooks</h2>
+            <p className="text-sm text-neutral-600 dark:text-neutral-400 font-normal">
+              Five distinct script angles created for Meta, Instagram Reels and TikTok testing.
             </p>
           </div>
 
-          {/* ── PART A: MOTION & PERFORMANCE VIDEOS (FIRST!) ─────────────── */}
-          {videoAssets.length > 0 && (
-            <div className="space-y-6">
-              <div className="flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <h3 className="font-fraunces text-2xl text-zinc-900 dark:text-white font-medium">
-                  Part 1 · Motion & Paid-Social Videos ({videoAssets.length})
-                </h3>
-              </div>
-              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-light -mt-3">
-                Calibrated for high thumb-stop rate in the first 3 seconds with sensory formula textures and sound-on cues.
-              </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+            {data.hooks.map((hook) => (
+              <CaseStudyVideoCard key={hook.id} hook={hook} />
+            ))}
+          </div>
+        </section>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                {videoAssets.map((video, idx) => (
-                  <VideoCard key={video.id} video={video} index={idx} />
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* ── PART B: STILL ASSET SUITES (SWIPEABLE 1, 2, 3, 4) ────────── */}
-          <div className="space-y-12">
-            <div>
-              <h3 className="font-fraunces text-2xl text-zinc-900 dark:text-white font-medium mb-1">
-                Part 2 · Omnichannel Stills & Swatches ({stillAssets.length})
-              </h3>
-              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-light">
-                Swipe right to inspect each creative variant. Complete uncropped view without opening modals.
+        {/* ── 7. PLATFORM ASSETS (GROUPED & COLLAPSED) ── */}
+        <section className="space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div className="space-y-2">
+              <h2 className="text-neutral-950 dark:text-white">Platform assets</h2>
+              <p className="text-sm text-neutral-600 dark:text-neutral-400 font-normal">
+                Ad stills for Meta, Instagram, TikTok and website PDP integration.
               </p>
             </div>
-
-            {/* Meta Platform Stills Row */}
-            {metaStills.length > 0 && (
-              <SwipeableStillsRow
-                badgeText="Meta Platform Suite"
-                title="Meta Feed & Sponsored Stills"
-                subtitle="Engineered for high conversion across 1:1 square feeds and 4:5 sponsored portraits."
-                assets={metaStills}
-              />
-            )}
-
-            {/* Instagram Suite Stills Row */}
-            {instagramStills.length > 0 && (
-              <SwipeableStillsRow
-                badgeText="Instagram Architecture"
-                title="Instagram Organic & Stories"
-                subtitle="High-aesthetic beauty curation tailored for luxury feed algorithms and swipe-up stories."
-                assets={instagramStills}
-              />
-            )}
-
-            {/* Editorial & Master Studio Stills Row */}
-            {editorialStills.length > 0 && (
-              <SwipeableStillsRow
-                badgeText="Studio Master Archives"
-                title="Editorial Macro & Texture Captures"
-                subtitle="Directional lighting studies focusing on packaging caustics, dropper dispense, and formula physics."
-                assets={editorialStills}
-              />
-            )}
-
-            {/* Other Stills (TikTok / Website) */}
-            {otherStills.length > 0 && (
-              <SwipeableStillsRow
-                badgeText="Omnichannel Variants"
-                title="TikTok Verticals & E-Commerce Banners"
-                subtitle="Rapid vertical creator framing and wide-format e-commerce store headers."
-                assets={otherStills}
-              />
-            )}
+            <span className="text-xs font-semibold text-neutral-500 dark:text-neutral-400">
+              {allAssetsList.length} total deliverables
+            </span>
           </div>
 
-        </div>
-      </section>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {visibleAssets.map((asset, i) => (
+              <div key={asset.id || i} className="liquid-glass p-2.5 space-y-2">
+                <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-neutral-900">
+                  <Image
+                    src={asset.src}
+                    alt={asset.caption}
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 250px"
+                    className="object-cover"
+                  />
+                  <span className="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-mono bg-black/75 text-white backdrop-blur-md">
+                    {asset.channel}
+                  </span>
+                </div>
+                <p className="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-1 px-1">
+                  {asset.caption}
+                </p>
+              </div>
+            ))}
+          </div>
 
-      {/* ════════════════════════════════════════════════════════════════════
-          4. PAGINATION & DIRECT ADVISORY CTA
-      ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad border-t border-black/[0.08] dark:border-white/[0.08]">
-        <div className="container-luxury max-w-4xl space-y-12">
-          
-          {/* Next / Previous Case Study Switcher */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Link
-              href={data.prevLink.href}
-              className="p-5 rounded-2xl liquid-glass border border-black/10 dark:border-white/10 hover:border-black/25 dark:hover:border-white/30 transition-all group flex items-center justify-between"
-            >
-              <div className="flex items-center gap-3">
-                <ChevronLeft className="w-5 h-5 text-zinc-400 group-hover:-translate-x-1 transition-transform" />
+          {allAssetsList.length > 8 && (
+            <div className="text-center pt-4">
+              <button
+                type="button"
+                onClick={() => setShowAllAssets(!showAllAssets)}
+                className="btn-secondary min-h-[46px] px-8 text-xs font-medium"
+              >
+                {showAllAssets
+                  ? 'Show fewer assets'
+                  : `Show all ${allAssetsList.length} assets`}
+              </button>
+            </div>
+          )}
+        </section>
+
+        {/* ── 8. STRATEGY SUMMARY & PROJECTED OUTCOMES ── */}
+        <section className="space-y-8 max-w-4xl">
+          <div className="space-y-2">
+            <h2 className="text-neutral-950 dark:text-white">Strategy summary</h2>
+          </div>
+
+          <div className="liquid-glass p-8 sm:p-10 space-y-6">
+            <div className="space-y-2">
+              <h3 className="text-base font-bold text-neutral-950 dark:text-white">
+                Why the creative works
+              </h3>
+              <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 font-normal leading-relaxed">
+                {data.strategySummary.whyItWorks}
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="text-base font-bold text-neutral-950 dark:text-white">
+                Angle logic
+              </h3>
+              <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 font-normal leading-relaxed">
+                {data.strategySummary.angleLogic}
+              </p>
+            </div>
+
+            {/* Clearly Labelled Forecast Box */}
+            <div className="p-6 rounded-2xl border border-black/10 dark:border-white/15 bg-black/[0.02] dark:bg-white/[0.03] space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-neutral-500" />
+                <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300">
+                  Projected outcomes (estimates, not live results)
+                </h4>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
                 <div>
-                  <span className="text-[10px] font-mono uppercase text-zinc-400 block">Previous Case</span>
-                  <span className="font-fraunces text-base text-zinc-900 dark:text-white font-medium">
-                    {data.prevLink.label}
+                  <span className="block text-[11px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                    Projected Target ROAS
+                  </span>
+                  <span className="text-base font-bold text-neutral-950 dark:text-white">
+                    {data.strategySummary.projectedOutcomes.targetRoas}
+                  </span>
+                </div>
+                <div>
+                  <span className="block text-[11px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                    Projected Hook Retention Rate
+                  </span>
+                  <span className="text-base font-bold text-neutral-950 dark:text-white">
+                    {data.strategySummary.projectedOutcomes.thumbStopRate}
+                  </span>
+                </div>
+                <div>
+                  <span className="block text-[11px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                    Projected CPA Efficiency
+                  </span>
+                  <span className="text-base font-bold text-neutral-950 dark:text-white">
+                    {data.strategySummary.projectedOutcomes.cpaImpact}
                   </span>
                 </div>
               </div>
+
+              <p className="text-xs text-neutral-500 dark:text-neutral-400 pt-2 border-t border-black/[0.04] dark:border-white/[0.06] font-normal leading-relaxed">
+                {data.strategySummary.projectedOutcomes.notes}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 9. NEXT CAMPAIGN & CTA ── */}
+        <section className="pt-8 border-t border-black/[0.06] dark:border-white/[0.08] space-y-12">
+          {/* Next Campaign Link */}
+          <div className="flex justify-between items-center">
+            <Link
+              href="/work"
+              className="text-xs font-medium text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white"
+            >
+              All campaigns
             </Link>
 
             <Link
-              href={data.nextLink.href}
-              className="p-5 rounded-2xl liquid-glass border border-black/10 dark:border-white/10 hover:border-black/25 dark:hover:border-white/30 transition-all group flex items-center justify-between text-right"
+              href={data.nextCampaign.href}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-950 dark:text-white hover:underline underline-offset-4"
             >
-              <div className="ml-auto">
-                <span className="text-[10px] font-mono uppercase text-zinc-400 block">Next Case</span>
-                <span className="font-fraunces text-base text-zinc-900 dark:text-white font-medium">
-                  {data.nextLink.label}
-                </span>
-              </div>
-              <ChevronRight className="w-5 h-5 text-zinc-400 group-hover:translate-x-1 transition-transform ml-3" />
+              <span>Next: {data.nextCampaign.name}</span>
+              <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
 
-          {/* Direct CTA */}
-          <div className="p-8 sm:p-10 rounded-3xl liquid-glass border border-black/10 dark:border-white/20 text-center space-y-4">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
-              Commercial Direction & Advisory
-            </span>
-            <h3 className="font-fraunces text-2xl sm:text-3xl text-zinc-900 dark:text-white font-medium">
-              Want category-defining creative systems for your brand?
+          {/* Book a Call CTA */}
+          <div className="liquid-glass p-8 sm:p-14 text-center space-y-6 max-w-2xl mx-auto">
+            <h3 className="text-2xl sm:text-3xl font-bold text-neutral-950 dark:text-white">
+              Want this for your brand?
             </h3>
-            <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 font-light max-w-lg mx-auto leading-relaxed">
-              I partner with a small roster of beauty and skincare founders each quarter for full commercial direction, creative audits, and paid-social asset systems.
+            <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 font-normal leading-relaxed">
+              Book a strategy call to discuss your product, your customer and the right campaign creative.
             </p>
-            <div className="pt-2">
-              <Link href="/contact">
-                <Button size="lg" className="font-inter text-xs tracking-[0.2em] uppercase font-semibold">
-                  Apply for a Strategy Call
-                </Button>
+            <div>
+              <Link
+                href="/contact#book"
+                className="btn-primary min-h-[48px] px-8 text-sm font-medium"
+              >
+                <span>Book a call</span>
+                <ArrowUpRight className="w-4 h-4 ml-2" />
               </Link>
             </div>
           </div>
+        </section>
 
-        </div>
-      </section>
-
+      </div>
     </div>
   )
 }

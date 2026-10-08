@@ -29,8 +29,8 @@ interface ApplicationFormProps {
 const INTEREST_OPTIONS: { value: AreaOfInterest; label: string; submissionType: 'consulting' | 'membership' | 'general' }[] = [
   { value: 'consulting', label: '1:1 Strategic Advisory & Direction', submissionType: 'consulting' },
   { value: 'automation', label: 'Autonomous Brand Systems & Asset Pipeline', submissionType: 'consulting' },
-  { value: 'membership', label: 'Private Syndicate Membership', submissionType: 'membership' },
-  { value: 'digital-products', label: 'Campaign Vault & Systems', submissionType: 'general' },
+  { value: 'membership', label: 'Private Membership', submissionType: 'membership' },
+  { value: 'digital-products', label: 'Campaign Packages & Frameworks', submissionType: 'general' },
   { value: 'general', label: 'General Strategic Inquiry', submissionType: 'general' },
 ]
 

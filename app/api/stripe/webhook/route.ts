@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
         const catalogItem = PRODUCTS_CATALOG[productId]
 
         if (productType === 'subscription' || session.mode === 'subscription') {
-          // Advisory Syndicate Membership
+          // Advisory Membership
           let currentPeriodEnd = new Date()
           if (session.subscription) {
             const subscription: any = await stripe.subscriptions.retrieve(session.subscription as string)

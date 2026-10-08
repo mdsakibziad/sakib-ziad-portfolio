@@ -1,19 +1,19 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'LIPÉA — Peptide Glass Lip Serum | Sakib Ziad',
+  title: 'Lipéa — Concept Campaign | Sakib Ziad',
   description:
-    'Complete paid-social campaign suite and creative asset vault for LIPÉA Peptide Glass Lip Serum (12ml). 27 curated stills and motion reels across Meta, Instagram, and Editorial.',
+    'Concept campaign for Lipéa Peptide Glass Lip Serum: creative strategy, hook videos, and platform ad assets directed by Sakib Ziad.',
   openGraph: {
-    title: 'LIPÉA — AI-Native Campaign System | Sakib Ziad',
+    title: 'Lipéa — Concept Campaign | Sakib Ziad',
     description:
-      'Explore the 27-asset campaign vault engineered around LIPÉA Peptide Glass Lip Serum.',
+      'Concept campaign for Lipéa Peptide Glass Lip Serum: creative strategy, hook videos, and platform ad assets.',
     images: [
       {
         url: '/images/lipea/editorial/lipea-photo-01.jpg',
         width: 1200,
         height: 1200,
-        alt: 'LIPÉA Peptide Glass Lip Serum Master Still',
+        alt: 'Lipéa Peptide Glass Lip Serum Still',
       },
     ],
   },

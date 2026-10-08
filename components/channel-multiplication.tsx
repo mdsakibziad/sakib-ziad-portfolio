@@ -97,7 +97,7 @@ export function ChannelMultiplication() {
               lines={[
                 'ONE PRODUCT.',
                 'EVERY CHANNEL,',
-                'ENGINEERED ON PURPOSE.',
+                'DIRECTED ON PURPOSE.',
               ]}
             />
           </h2>

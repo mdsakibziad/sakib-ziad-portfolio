@@ -1,19 +1,19 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'NUÉCERA — Visual Identity & Omnichannel Creative Vault | Sakib Ziad',
+  title: 'Nuécera — Concept Campaign | Sakib Ziad',
   description:
-    'Complete omnichannel campaign suite and generative asset vault for Nuécera Moisturizing Cream. 35 curated stills, videos, and multi-format creatives engineered across Meta, Instagram, TikTok, and Web.',
+    'Concept campaign for Nuécera Botanical Moisturizing Cream: creative strategy, hook videos, and platform ad assets directed by Sakib Ziad.',
   openGraph: {
-    title: 'NUÉCERA — AI-Native Campaign System | Sakib Ziad',
+    title: 'Nuécera — Concept Campaign | Sakib Ziad',
     description:
-      'Explore the 35-asset campaign vault engineered around Nuécera Botanical Moisturizing Cream.',
+      'Concept campaign for Nuécera Botanical Moisturizing Cream: creative strategy, hook videos, and platform ad assets.',
     images: [
       {
         url: '/images/nuecera/meta/meta-product-02.jpg',
         width: 1200,
         height: 1200,
-        alt: 'NUÉCERA Moisturizing Cream Master Still',
+        alt: 'Nuécera Moisturizing Cream Still',
       },
     ],
   },

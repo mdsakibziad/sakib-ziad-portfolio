@@ -13,6 +13,30 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
+  async redirects() {
+    return [
+      {
+        source: '/consulting',
+        destination: '/services',
+        permanent: true,
+      },
+      {
+        source: '/membership',
+        destination: '/services',
+        permanent: true,
+      },
+      {
+        source: '/digital-products',
+        destination: '/services',
+        permanent: true,
+      },
+      {
+        source: '/insights',
+        destination: '/work',
+        permanent: true,
+      },
+    ]
+  },
   async headers() {
     return [
       {

@@ -1,19 +1,19 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'AURA PURIFY — Barrier Gel-to-Milk Cleanser | Sakib Ziad',
+  title: 'Aura Purify — Concept Campaign | Sakib Ziad',
   description:
-    'Complete paid-social campaign suite and creative asset vault for AURA PURIFY Barrier Gel-to-Milk Cleanser (200 ml / 6.7 fl. oz.). 27 curated stills, motion reels, and studio master captures across Studio, Meta, and Instagram.',
+    'Concept campaign for Aura Purify Barrier Gel-to-Milk Cleanser: creative strategy, hook videos, and platform ad assets directed by Sakib Ziad.',
   openGraph: {
-    title: 'AURA PURIFY — AI-Native Campaign System | Sakib Ziad',
+    title: 'Aura Purify — Concept Campaign | Sakib Ziad',
     description:
-      'Explore the 27-asset campaign vault engineered around AURA PURIFY Barrier Gel-to-Milk Cleanser.',
+      'Concept campaign for Aura Purify Barrier Gel-to-Milk Cleanser: creative strategy, hook videos, and platform ad assets.',
     images: [
       {
         url: '/images/aura-purify/studio/aura-product-01.jpg',
         width: 1200,
         height: 1200,
-        alt: 'AURA PURIFY Barrier Cleanser Master Still',
+        alt: 'Aura Purify Barrier Cleanser Still',
       },
     ],
   },
