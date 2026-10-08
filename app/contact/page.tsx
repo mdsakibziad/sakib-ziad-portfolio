@@ -72,10 +72,10 @@ export default function ContactPage() {
                 <div>
                   <span className="label-mono text-[10px] text-[#8a8a8a] block mb-1">DIRECT INQUIRIES</span>
                   <a
-                    href="mailto:Sakib@witlyn.com"
+                    href="mailto:witlyn@sakibziad.my"
                     className="font-inter font-bold text-lg text-[#ece8e1] hover:text-[#f4521c] transition-colors"
                   >
-                    Sakib@witlyn.com
+                    witlyn@sakibziad.my
                   </a>
                 </div>
 

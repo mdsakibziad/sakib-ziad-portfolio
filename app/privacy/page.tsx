@@ -166,10 +166,10 @@ export default function PrivacyPage() {
             <p>
               For any privacy-related questions, requests, or concerns, please reach out to:{' '}
               <a
-                href="mailto:Sakib@witlyn.com"
+                href="mailto:witlyn@sakibziad.my"
                 className="text-white underline underline-offset-4 hover:text-white/80 transition-colors duration-200"
               >
-                Sakib@witlyn.com
+                witlyn@sakibziad.my
               </a>
             </p>
           </section>

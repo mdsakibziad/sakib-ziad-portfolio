@@ -25,7 +25,7 @@ import { generateGapReport, type GapReportInput } from '@/lib/ai-report'
 const FROM_EMAIL =
   process.env.RESEND_FROM_EMAIL ?? 'Portfolio <onboarding@resend.dev>'
 const NOTIFICATION_EMAIL =
-  process.env.NOTIFICATION_EMAIL ?? 'Sakib@witlyn.com'
+  process.env.NOTIFICATION_EMAIL ?? 'witlyn@sakibziad.my'
 
 // ---------------------------------------------------------------------------
 // Validation schema

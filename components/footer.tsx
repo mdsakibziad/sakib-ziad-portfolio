@@ -39,10 +39,10 @@ export function Footer() {
           <div className="md:col-span-4 space-y-4">
             <div>
               <a
-                href="mailto:Sakib@witlyn.com"
+                href="mailto:witlyn@sakibziad.my"
                 className="text-2xl sm:text-3xl font-black tracking-tight text-[#050609] hover:opacity-75 transition-opacity block"
               >
-                Sakib@witlyn.com
+                witlyn@sakibziad.my
               </a>
               <span className="font-mono text-xs uppercase tracking-wider text-[#050609]/75 block mt-1 font-bold">
                 COMMERCIAL INTAKE

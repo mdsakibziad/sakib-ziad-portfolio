@@ -30,7 +30,7 @@ BT
 0 -16 Td
 (Beauty & Skincare Advertising | Based in Malaysia, Working Worldwide) Tj
 0 -16 Td
-(Email: Sakib@witlyn.com | LinkedIn: linkedin.com/in/sakib-ziad-290104211) Tj
+(Email: witlyn@sakibziad.my | LinkedIn: linkedin.com/in/sakib-ziad-290104211) Tj
 
 /F1 13 Tf
 0 -34 Td

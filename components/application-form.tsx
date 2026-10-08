@@ -137,8 +137,8 @@ export function ApplicationForm({
             </Button>
           ) : (
             <Button asChild className="btn-acid h-11 w-full rounded-none">
-              <a href="mailto:Sakib@witlyn.com?subject=Priority%20Strategic%20Application">
-                EMAIL SAKIB DIRECTLY (SAKIB@WITLYN.COM) →
+              <a href="mailto:witlyn@sakibziad.my?subject=Priority%20Strategic%20Application">
+                EMAIL SAKIB DIRECTLY (WITLYN@SAKIBZIAD.MY) →
               </a>
             </Button>
           )}

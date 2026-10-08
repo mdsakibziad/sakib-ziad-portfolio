@@ -190,7 +190,7 @@ export function TopGuaranteeBanner() {
                         <AlertCircle className="w-4 h-4 shrink-0 text-[#f4521c]" />
                         <span>
                           Couldn&apos;t send right now. Email me directly at{' '}
-                          <a href="mailto:Sakib@witlyn.com" className="underline text-[#f4521c]">Sakib@witlyn.com</a>.
+                          <a href="mailto:witlyn@sakibziad.my" className="underline text-[#f4521c]">witlyn@sakibziad.my</a>.
                         </span>
                       </div>
                     )}

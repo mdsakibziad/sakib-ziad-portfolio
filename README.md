@@ -82,7 +82,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 | `STRIPE_SECRET_KEY` | Yes | Stripe Secret Key (`sk_test_...`) |
 | `STRIPE_WEBHOOK_SECRET` | Yes | Stripe Webhook Secret (`whsec_...`) |
 | `RESEND_API_KEY` | Yes | API key from [resend.com](https://resend.com) |
-| `NOTIFICATION_EMAIL` | Optional | Inbound notification destination (default: `Sakib@witlyn.com`) |
+| `NOTIFICATION_EMAIL` | Optional | Inbound notification destination (default: `witlyn@sakibziad.my`) |
 | `OPENAI_API_KEY` | Optional | For AI Gap & Opportunity Diagnostic Report generation |
 | `ANTHROPIC_API_KEY` | Optional | Alternative LLM fallback for diagnostic report |
 | `SLACK_WEBHOOK_URL` | Optional | Inbound webhook URL for Slack notifications |

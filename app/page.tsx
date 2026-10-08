@@ -245,7 +245,7 @@ export default function HomePage() {
     },
     {
       q: 'How do we initiate a collaboration or interview?',
-      a: 'For brand founders: submit the complimentary diagnostic form above or apply for a strategy call via the contact page. For agency leads and talent recruiters: view my official résumé (PDF) or reach out directly at Sakib@witlyn.com.',
+      a: 'For brand founders: submit the complimentary diagnostic form above or apply for a strategy call via the contact page. For agency leads and talent recruiters: view my official résumé (PDF) or reach out directly at witlyn@sakibziad.my.',
     },
   ]
 
@@ -1070,7 +1070,7 @@ export default function HomePage() {
                   href="/contact"
                   className="text-center pt-2 font-mono text-[11px] text-[#f4521c] hover:underline"
                 >
-                  Direct Inquiry: Sakib@witlyn.com →
+                  Direct Inquiry: witlyn@sakibziad.my →
                 </Link>
               </div>
 

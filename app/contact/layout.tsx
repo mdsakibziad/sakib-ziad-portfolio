@@ -32,7 +32,7 @@ export default function ContactLayout({
     mainEntity: {
       '@type': 'Person',
       name: 'Sakib Ziad',
-      email: 'Sakib@witlyn.com',
+      email: 'witlyn@sakibziad.my',
       url: 'https://sakibziad.my',
     },
   }

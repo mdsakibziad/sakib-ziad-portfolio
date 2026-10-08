@@ -124,10 +124,10 @@ export default function TermsPage() {
             <p>
               For any payment disputes or billing questions, contact{' '}
               <a
-                href="mailto:Sakib@witlyn.com"
+                href="mailto:witlyn@sakibziad.my"
                 className="text-white underline underline-offset-4 hover:text-white/80 transition-colors duration-200"
               >
-                Sakib@witlyn.com
+                witlyn@sakibziad.my
               </a>
               .
             </p>
@@ -174,10 +174,10 @@ export default function TermsPage() {
             <p>
               Questions about these Terms should be directed to:{' '}
               <a
-                href="mailto:Sakib@witlyn.com"
+                href="mailto:witlyn@sakibziad.my"
                 className="text-white underline underline-offset-4 hover:text-white/80 transition-colors duration-200"
               >
-                Sakib@witlyn.com
+                witlyn@sakibziad.my
               </a>
             </p>
           </section>

@@ -838,10 +838,10 @@ export default function AccountPage() {
                     Have questions about commercial multi-brand licensing, custom corporate billing, or scheduling your strategic review?
                   </p>
                   <a
-                    href="mailto:Sakib@witlyn.com"
+                    href="mailto:witlyn@sakibziad.my"
                     className="inline-block text-ivory font-mono text-xs underline underline-offset-4 hover:text-muted transition-colors"
                   >
-                    Sakib@witlyn.com
+                    witlyn@sakibziad.my
                   </a>
                 </div>
               </div>
