@@ -54,7 +54,7 @@ const CHANNELS: ChannelOutput[] = [
     format: '9:16 FOR-YOU FEED',
     annotation: 'Native 3-second absorption proof',
     imageSrc: '/images/solae/instagram/instagram-still-03.jpg',
-    videoSrc: '/images/solae/instagram/instagram-video-01.mp4',
+    videoSrc: '/images/solae/instagram/instagram-video-02.mp4',
     frameType: 'phone-tiktok',
     delay: 0.5,
   },

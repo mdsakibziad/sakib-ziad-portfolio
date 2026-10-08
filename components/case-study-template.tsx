@@ -118,22 +118,22 @@ function SwipeableStillsRow({
   if (assets.length === 0) return null
 
   return (
-    <div className="space-y-4 pt-8 border-t border-black/[0.08] dark:border-white/[0.08] first:border-none first:pt-0">
+    <div className="space-y-4 pt-8 border-t border-[#292929] first:border-none first:pt-0">
       {/* Row Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
+            <span className="label-mono !text-[#f4521c]">
               {badgeText}
             </span>
-            <span className="text-[10px] font-mono px-2 py-0.2 rounded-full bg-black/[0.05] dark:bg-white/[0.08] text-zinc-600 dark:text-zinc-300">
-              {assets.length} Stills · Swipe ➔
+            <span className="label-mono text-[#8a8a8a] text-[10px]">
+              · {assets.length} Stills · Swipe ➔
             </span>
           </div>
-          <h3 className="font-fraunces text-xl sm:text-2xl text-zinc-900 dark:text-white font-medium">
+          <h3 className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
             {title}
           </h3>
-          <p className="text-xs text-zinc-600 dark:text-zinc-400 font-light">
+          <p className="font-inter text-xs text-[#8a8a8a]">
             {subtitle}
           </p>
         </div>
@@ -144,7 +144,7 @@ function SwipeableStillsRow({
             onClick={() => scroll('left')}
             disabled={!canScrollLeft}
             aria-label="Scroll left"
-            className="w-8 h-8 rounded-full liquid-glass border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-700 dark:text-zinc-300 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+            className="w-8 h-8 border border-[#292929] bg-[#0b0c10] flex items-center justify-center text-[#ece8e1] disabled:opacity-30 disabled:cursor-not-allowed hover:border-[#f4521c] transition-colors"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -152,7 +152,7 @@ function SwipeableStillsRow({
             onClick={() => scroll('right')}
             disabled={!canScrollRight}
             aria-label="Scroll right"
-            className="w-8 h-8 rounded-full liquid-glass border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-700 dark:text-zinc-300 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+            className="w-8 h-8 border border-[#292929] bg-[#0b0c10] flex items-center justify-center text-[#ece8e1] disabled:opacity-30 disabled:cursor-not-allowed hover:border-[#f4521c] transition-colors"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
@@ -169,10 +169,10 @@ function SwipeableStillsRow({
         {assets.map((asset, idx) => (
           <div
             key={asset.id}
-            className="snap-start shrink-0 w-[280px] sm:w-[320px] rounded-2xl liquid-glass border border-black/10 dark:border-white/15 p-3 flex flex-col justify-between group hover:border-black/25 dark:hover:border-white/30 transition-all duration-300 shadow-md"
+            className="snap-start shrink-0 w-[280px] sm:w-[320px] border border-[#292929] bg-[#0b0c10] p-3 flex flex-col justify-between group hover:border-[#f4521c] transition-all duration-300"
           >
             {/* Full Image Container — Strictly Preserved & Uncropped */}
-            <div className="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-black/[0.03] dark:bg-black/40">
+            <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#050609]">
               <Image
                 src={asset.src}
                 alt={asset.title}
@@ -182,7 +182,7 @@ function SwipeableStillsRow({
                 className="object-contain p-1 transition-transform duration-500 ease-luxury group-hover:scale-102"
               />
               <div className="absolute top-2 left-2 z-10">
-                <span className="px-2 py-0.5 rounded text-[9px] font-mono uppercase bg-black/70 backdrop-blur-md text-white border border-white/20">
+                <span className="px-2 py-0.5 text-[9px] font-mono uppercase bg-black/85 text-[#ece8e1] border border-[#292929]">
                   Still 0{idx + 1}
                 </span>
               </div>
@@ -191,14 +191,14 @@ function SwipeableStillsRow({
             {/* 1 Short Sentence Caption directly visible up front */}
             <div className="pt-3 px-1 space-y-1">
               <div className="flex items-center justify-between text-[11px] font-inter">
-                <span className="font-semibold text-zinc-900 dark:text-zinc-100 truncate">
+                <span className="font-bold uppercase text-[#ece8e1] truncate">
                   {asset.title}
                 </span>
-                <span className="text-[10px] font-mono text-zinc-500 shrink-0 ml-1">
+                <span className="label-mono text-[#8a8a8a] text-[10px] shrink-0 ml-1">
                   {asset.formatLabel.split(' ')[0]}
                 </span>
               </div>
-              <p className="text-[11px] font-inter text-zinc-600 dark:text-zinc-400 font-light leading-snug">
+              <p className="font-inter text-[11px] text-[#8a8a8a] leading-snug">
                 {asset.caption}
               </p>
             </div>
@@ -251,9 +251,9 @@ function VideoCard({
   }
 
   return (
-    <div className="rounded-2xl liquid-glass border border-black/10 dark:border-white/15 p-3 sm:p-4 flex flex-col justify-between group hover:border-black/25 dark:hover:border-white/30 transition-all duration-300 shadow-lg">
+    <div className="border border-[#292929] bg-[#0b0c10] p-3 sm:p-4 flex flex-col justify-between group hover:border-[#f4521c] transition-all duration-300">
       {/* Video Container */}
-      <div className="relative aspect-[9/16] w-full rounded-xl overflow-hidden bg-black shadow-inner cursor-pointer" onClick={togglePlay}>
+      <div className="relative aspect-[9/16] w-full overflow-hidden bg-black cursor-pointer" onClick={togglePlay}>
         <video
           ref={videoRef}
           src={video.src}
@@ -269,8 +269,8 @@ function VideoCard({
 
         {/* Video Overlay Badge */}
         <div className="absolute top-2 left-2 z-10">
-          <span className="px-2 py-0.5 rounded text-[9px] font-mono uppercase bg-black/75 backdrop-blur-md text-white border border-white/20 flex items-center gap-1">
-            <Video className="w-3 h-3 text-emerald-400" />
+          <span className="px-2 py-0.5 text-[9px] font-mono uppercase bg-black/85 text-[#ece8e1] border border-[#292929] flex items-center gap-1">
+            <Video className="w-3 h-3 text-[#f4521c]" />
             <span>Motion 0{index + 1}</span>
           </span>
         </div>
@@ -280,18 +280,18 @@ function VideoCard({
           onClick={toggleMute}
           aria-label={isMuted ? "Unmute audio" : "Mute audio"}
           title={isMuted ? "Click to unmute" : "Click to mute"}
-          className="absolute top-2 right-2 z-20 p-2 rounded-full bg-black/75 backdrop-blur-md text-white border border-white/20 hover:bg-black hover:scale-110 active:scale-95 transition-all shadow-md group/btn"
+          className="absolute top-2 right-2 z-20 p-2 bg-black/85 text-[#ece8e1] border border-[#292929] hover:border-[#f4521c] hover:scale-105 active:scale-95 transition-all shadow-md group/btn"
         >
           {isMuted ? (
-            <VolumeX className="w-3.5 h-3.5 text-zinc-300 group-hover/btn:text-white" />
+            <VolumeX className="w-3.5 h-3.5 text-[#8a8a8a] group-hover/btn:text-white" />
           ) : (
-            <Volume2 className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+            <Volume2 className="w-3.5 h-3.5 text-[#f4521c] animate-pulse" />
           )}
         </button>
 
         {/* Play/Pause Button Overlay */}
         <div className="absolute inset-0 bg-black/20 flex items-center justify-center transition-opacity pointer-events-none">
-          <div className={`w-12 h-12 rounded-full bg-white/95 text-black flex items-center justify-center shadow-xl transition-transform ${isPlaying ? 'opacity-0 group-hover:opacity-90 scale-90' : 'opacity-100 scale-100'}`}>
+          <div className={`w-12 h-12 bg-black/80 border border-[#f4521c] text-[#ece8e1] flex items-center justify-center shadow-xl transition-transform ${isPlaying ? 'opacity-0 group-hover:opacity-90 scale-90' : 'opacity-100 scale-100'}`}>
             {isPlaying ? (
               <Pause className="w-5 h-5 fill-current" />
             ) : (
@@ -300,7 +300,7 @@ function VideoCard({
           </div>
         </div>
 
-        <div className="absolute bottom-2 right-2 z-10 text-[9px] font-mono text-white/80 bg-black/60 px-1.5 py-0.5 rounded flex items-center gap-1.5">
+        <div className="absolute bottom-2 right-2 z-10 text-[9px] font-mono text-[#ece8e1]/80 bg-black/80 border border-[#292929] px-1.5 py-0.5 flex items-center gap-1.5">
           <span>{isPlaying ? 'Playing' : 'Tap to Play'}</span>
           <span>·</span>
           <span>{isMuted ? 'Muted' : 'Sound On'}</span>
@@ -310,14 +310,14 @@ function VideoCard({
       {/* 1 Short Sentence Caption directly underneath */}
       <div className="pt-3 px-1 space-y-1">
         <div className="flex items-center justify-between text-xs font-inter">
-          <span className="font-semibold text-zinc-900 dark:text-zinc-100 truncate">
+          <span className="font-bold uppercase text-[#ece8e1] truncate">
             {video.title}
           </span>
-          <span className="text-[10px] font-mono text-zinc-500 uppercase">
+          <span className="label-mono text-[#8a8a8a] text-[10px] uppercase">
             9:16 Vertical
           </span>
         </div>
-        <p className="text-xs font-inter text-zinc-600 dark:text-zinc-400 font-light leading-snug">
+        <p className="font-inter text-xs text-[#8a8a8a] leading-snug">
           {video.caption}
         </p>
       </div>
@@ -347,24 +347,24 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
   )
 
   return (
-    <div className="bg-background text-ivory min-h-screen selection:bg-[#141416] selection:text-white dark:selection:bg-white dark:selection:text-black">
+    <div className="bg-[#050609] text-[#ece8e1] min-h-screen selection:bg-[#f4521c] selection:text-[#050609]">
       
       {/* ── Top Breadcrumb Header ──────────────────────────────────────── */}
-      <div className="pt-28 sm:pt-36 border-b border-black/[0.06] dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.02]">
+      <div className="pt-28 sm:pt-36 border-b border-[#292929] bg-[#07080c]">
         <div className="container-luxury py-3 flex items-center justify-between text-xs font-inter">
           <Link
             href="/work"
-            className="inline-flex items-center gap-2 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-[#8a8a8a] hover:text-[#f4521c] transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Work Archive</span>
           </Link>
 
           <div className="flex items-center gap-3">
-            <span className="text-zinc-400 dark:text-zinc-500">Case Study {data.caseNumber}</span>
-            <span className="w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-700" />
-            <span className="font-semibold text-zinc-900 dark:text-white">{data.name}</span>
-            <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase bg-black/[0.04] dark:bg-white/[0.06] border border-black/10 dark:border-white/10 text-zinc-700 dark:text-zinc-300">
+            <span className="label-mono text-[#8a8a8a] text-[11px]">CASE STUDY {data.caseNumber}</span>
+            <span className="w-1 h-1 bg-[#f4521c]" />
+            <span className="font-bold text-[#ece8e1] uppercase">{data.name}</span>
+            <span className="hidden sm:inline-block px-2.5 py-0.5 text-[10px] font-mono uppercase bg-[#111216] border border-[#292929] text-[#8a8a8a]">
               {data.deliverablesCount}
             </span>
           </div>
@@ -374,52 +374,50 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
       {/* ════════════════════════════════════════════════════════════════════
           1. HERO SECTION: PRODUCT HERO WITH 1 SHORT SENTENCE
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="relative pt-12 pb-20 sm:pt-16 sm:pb-28 border-b border-black/[0.08] dark:border-white/[0.08] overflow-hidden" aria-label={`${data.name} Hero`}>
-        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-b from-amber-200/20 to-transparent dark:from-white/[0.03] blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-10 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-rose-100/20 to-transparent dark:from-zinc-800/[0.1] blur-3xl pointer-events-none" />
-
+      <section className="relative pt-12 pb-20 sm:pt-16 sm:pb-28 border-b border-[#292929] overflow-hidden bg-[#050609]" aria-label={`${data.name} Hero`}>
         <div className="container-luxury relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
             {/* Left Narrative Column */}
-            <div className="lg:col-span-6 flex flex-col justify-center">
+            <div className="lg:col-span-6 flex flex-col justify-center space-y-6">
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: EASE_LUXURY }}
+                className="space-y-6"
               >
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full liquid-glass-pill text-[11px] uppercase tracking-[0.2em] text-zinc-700 dark:text-white/80 mb-6">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  {data.heroBadge || 'Flagship Commercial Direction · Witlyn Standard'}
+                <div className="inline-flex items-center gap-2 border border-[#292929] bg-[#0b0c10] px-3.5 py-1 text-[11px] uppercase tracking-[0.2em] text-[#ece8e1]">
+                  <span className="w-1.5 h-1.5 bg-[#f4521c]" />
+                  <span>{data.heroBadge || 'SPEC COMMERCIAL · WITLYN STANDARD'}</span>
                 </div>
 
-                <h1 className="heading-hero text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-[#141416] dark:text-white mb-6">
+                <h1 className="font-inter font-black uppercase text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-[#ece8e1]">
                   {data.name}
                 </h1>
 
                 {/* 1 Short Sentence Positioning */}
-                <div className="mb-8 p-5 rounded-2xl liquid-glass border border-black/10 dark:border-white/10">
-                  <span className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-widest block mb-1.5">
-                    Creative Strategy Rationale
+                <div className="p-6 border border-[#292929] bg-[#0b0c10] space-y-2">
+                  <span className="label-mono !text-[#f4521c] text-[10px] block">
+                    CREATIVE STRATEGY RATIONALE
                   </span>
-                  <p className="font-fraunces text-xl sm:text-2xl text-zinc-800 dark:text-zinc-200 font-light italic leading-snug">
+                  <p className="font-inter text-base sm:text-lg text-[#ece8e1] font-medium leading-snug">
                     {data.tagline}
                   </p>
                 </div>
 
                 {/* Quick Meta Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-black/[0.08] dark:border-white/[0.08] text-xs font-inter text-zinc-600 dark:text-zinc-300">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-[#292929] text-xs font-inter text-[#8a8a8a]">
                   <div>
-                    <span className="block text-[10px] font-mono uppercase text-zinc-400 dark:text-zinc-500 mb-1">SKU Focus</span>
-                    <span className="font-medium text-zinc-900 dark:text-white">{data.skuFocus}</span>
+                    <span className="block label-mono text-[10px] text-[#8a8a8a] mb-1">SKU FOCUS</span>
+                    <span className="font-bold text-[#ece8e1]">{data.skuFocus}</span>
                   </div>
                   <div>
-                    <span className="block text-[10px] font-mono uppercase text-zinc-400 dark:text-zinc-500 mb-1">Asset Vault</span>
-                    <span className="font-medium text-zinc-900 dark:text-white">{data.deliverablesCount}</span>
+                    <span className="block label-mono text-[10px] text-[#8a8a8a] mb-1">ASSET VAULT</span>
+                    <span className="font-bold text-[#ece8e1]">{data.deliverablesCount}</span>
                   </div>
                   <div className="col-span-2 sm:col-span-1">
-                    <span className="block text-[10px] font-mono uppercase text-zinc-400 dark:text-zinc-500 mb-1">Distribution</span>
-                    <span className="font-medium text-zinc-900 dark:text-white">{data.channelsText}</span>
+                    <span className="block label-mono text-[10px] text-[#8a8a8a] mb-1">DISTRIBUTION</span>
+                    <span className="font-bold text-[#ece8e1]">{data.channelsText}</span>
                   </div>
                 </div>
               </motion.div>
@@ -431,7 +429,7 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.1, ease: EASE_LUXURY }}
-                className="relative aspect-square sm:aspect-[4/3] lg:aspect-square w-full rounded-3xl overflow-hidden liquid-glass border border-black/10 dark:border-white/20 shadow-2xl group"
+                className="relative aspect-square sm:aspect-[4/3] lg:aspect-square w-full overflow-hidden border border-[#292929] bg-[#0b0c10] group"
               >
                 <Image
                   src={data.heroImage}
@@ -442,14 +440,14 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-102"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white drop-shadow">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-[#ece8e1]">
                   <div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-white/70 block">Hero Product</span>
-                    <p className="font-fraunces text-sm sm:text-base font-light">{data.heroCaption}</p>
+                    <span className="label-mono text-[10px] text-[#8a8a8a] block">HERO PRODUCT</span>
+                    <p className="font-inter text-sm sm:text-base font-bold uppercase">{data.heroCaption}</p>
                   </div>
-                  <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-mono uppercase border border-white/30 shrink-0 ml-2">
-                    Master SKU
+                  <span className="px-3 py-1 bg-black/80 text-[10px] font-mono uppercase border border-[#292929] shrink-0 ml-2">
+                    MASTER SKU
                   </span>
                 </div>
               </motion.div>
@@ -462,15 +460,15 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
       {/* ════════════════════════════════════════════════════════════════════
           2. CREATIVE STRATEGIST DIRECT-RESPONSE ARCHITECTURE & HOOKS
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad border-b border-black/[0.08] dark:border-white/[0.08] bg-surface/30" aria-label="Creative Strategy">
+      <section className="py-20 border-b border-[#292929] bg-[#07080c]" aria-label="Creative Strategy">
         <div className="container-luxury max-w-4xl space-y-10">
           
           <div>
-            <p className="eyebrow-luxury text-zinc-500 dark:text-zinc-400 mb-2">01 · Strategic Rationale</p>
-            <h2 className="heading-section text-2xl sm:text-3xl lg:text-4xl text-[#141416] dark:text-white">
-              Creative Strategy &amp; Hook Architecture
+            <p className="label-mono !text-[#f4521c] mb-2">01 // STRATEGIC RATIONALE</p>
+            <h2 className="font-inter font-black uppercase text-2xl sm:text-4xl text-[#ece8e1]">
+              CREATIVE STRATEGY &amp; HOOK ARCHITECTURE
             </h2>
-            <p className="body-muted text-sm sm:text-base text-zinc-600 dark:text-zinc-400 mt-1">
+            <p className="font-inter text-xs sm:text-sm text-[#8a8a8a] mt-1">
               Every creative angle targets consumer friction points to maximize thumb-stop rate and paid-social conversion.
             </p>
           </div>
@@ -482,26 +480,26 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
               return (
                 <div
                   key={item.id}
-                  className="rounded-2xl liquid-glass border border-black/10 dark:border-white/10 overflow-hidden transition-all"
+                  className="border border-[#292929] bg-[#0b0c10] overflow-hidden transition-all"
                 >
                   <button
                     onClick={() => setOpenHookIndex(isOpen ? null : index)}
-                    className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors"
+                    className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 hover:bg-[#111216] transition-colors"
                   >
                     <div className="flex items-center gap-3 sm:gap-4">
-                      <span className="font-mono text-xs sm:text-sm text-zinc-400">0{item.id}</span>
+                      <span className="label-mono !text-[#f4521c]">0{item.id}</span>
                       <div>
-                        <h4 className="font-fraunces text-base sm:text-lg text-zinc-900 dark:text-white font-medium">
+                        <h4 className="font-inter font-bold uppercase text-sm sm:text-base text-[#ece8e1]">
                           {item.angle}
                         </h4>
-                        <span className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400">
-                          Channel Fit: {item.channelFit}
+                        <span className="label-mono text-[10px] text-[#8a8a8a]">
+                          CHANNEL FIT: {item.channelFit}
                         </span>
                       </div>
                     </div>
                     <ChevronDown
-                      className={`w-4 h-4 text-zinc-400 transition-transform duration-300 ${
-                        isOpen ? 'rotate-180 text-zinc-900 dark:text-white' : ''
+                      className={`w-4 h-4 text-[#8a8a8a] transition-transform duration-300 ${
+                        isOpen ? 'rotate-180 text-[#f4521c]' : ''
                       }`}
                     />
                   </button>
@@ -513,36 +511,36 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: EASE_LUXURY }}
-                        className="px-5 pb-6 sm:px-6 sm:pb-7 pt-2 border-t border-black/[0.05] dark:border-white/[0.05] space-y-4"
+                        className="px-5 pb-6 sm:px-6 sm:pb-7 pt-2 border-t border-[#292929] space-y-4"
                       >
                         {/* Script Hook Quote */}
-                        <div className="p-4 rounded-xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/5 dark:border-white/10">
-                          <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 block mb-1">
-                            Script Hook Line (First 1.5s Thumb-Stop)
+                        <div className="p-4 bg-[#050609] border border-[#292929]">
+                          <span className="label-mono text-[10px] text-[#8a8a8a] block mb-1">
+                            SCRIPT HOOK LINE (FIRST 1.5S THUMB-STOP)
                           </span>
-                          <p className="font-fraunces text-base sm:text-xl italic text-zinc-950 dark:text-white">
+                          <p className="font-inter text-base sm:text-lg font-bold text-[#ece8e1]">
                             "{item.quote}"
                           </p>
                         </div>
 
                         {/* Performance & ROAS Scorecard */}
                         {(item.projectedRoas || item.thumbStopRate || item.cpaImpact) && (
-                          <div className="grid grid-cols-3 gap-3 p-3.5 rounded-xl bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/10 text-center">
+                          <div className="grid grid-cols-3 gap-3 p-3.5 bg-[#050609] border border-[#292929] text-center">
                             <div>
-                              <span className="text-[9px] font-mono uppercase text-zinc-500 block">Target ROAS</span>
-                              <span className="text-xs sm:text-sm font-fraunces text-zinc-900 dark:text-white font-medium">
+                              <span className="label-mono text-[9px] text-[#8a8a8a] block">TARGET ROAS</span>
+                              <span className="text-xs sm:text-sm font-mono text-[#ece8e1] font-bold">
                                 {item.projectedRoas || '3.8x – 4.5x'}
                               </span>
                             </div>
-                            <div className="border-x border-black/5 dark:border-white/10">
-                              <span className="text-[9px] font-mono uppercase text-zinc-500 block">Thumb-Stop Rate</span>
-                              <span className="text-xs sm:text-sm font-fraunces text-zinc-900 dark:text-white font-medium">
+                            <div className="border-x border-[#292929]">
+                              <span className="label-mono text-[9px] text-[#8a8a8a] block">THUMB-STOP RATE</span>
+                              <span className="text-xs sm:text-sm font-mono text-[#ece8e1] font-bold">
                                 {item.thumbStopRate || '40%+ (3s View)'}
                               </span>
                             </div>
                             <div>
-                              <span className="text-[9px] font-mono uppercase text-zinc-500 block">CPA Efficiency</span>
-                              <span className="text-xs sm:text-sm font-fraunces text-zinc-900 dark:text-white font-medium">
+                              <span className="label-mono text-[9px] text-[#8a8a8a] block">CPA EFFICIENCY</span>
+                              <span className="text-xs sm:text-sm font-mono text-[#f4521c] font-bold">
                                 {item.cpaImpact || '-30% to -40%'}
                               </span>
                             </div>
@@ -552,10 +550,10 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
                         {/* Why This Hook Was Chosen */}
                         {item.whyChosen && (
                           <div className="space-y-1.5">
-                            <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400 block font-semibold">
-                              🎯 Why This Hook Was Chosen
+                            <span className="label-mono text-[10px] text-[#8a8a8a] block">
+                              WHY THIS HOOK WAS CHOSEN
                             </span>
-                            <p className="text-xs sm:text-sm font-inter text-zinc-700 dark:text-zinc-200 leading-relaxed font-light">
+                            <p className="text-xs sm:text-sm font-inter text-[#bdb8b0] leading-relaxed">
                               {item.whyChosen}
                             </p>
                           </div>
@@ -563,25 +561,25 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
 
                         {/* Psychological Rationale */}
                         <div className="space-y-1.5">
-                          <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400 block font-semibold">
-                            🧠 Consumer Psychological Rationale
+                          <span className="label-mono text-[10px] text-[#8a8a8a] block">
+                            CONSUMER PSYCHOLOGICAL RATIONALE
                           </span>
-                          <p className="text-xs sm:text-sm font-inter text-zinc-700 dark:text-zinc-200 leading-relaxed font-light">
+                          <p className="text-xs sm:text-sm font-inter text-[#bdb8b0] leading-relaxed">
                             {item.rationale}
                           </p>
                         </div>
 
                         {/* Commercial Benefit & Expected Outcome */}
-                        <div className="pt-2 border-t border-black/5 dark:border-white/5 space-y-2">
+                        <div className="pt-2 border-t border-[#292929] space-y-2">
                           {item.commercialBenefit && (
-                            <div className="flex items-start gap-2 text-xs font-inter text-emerald-700 dark:text-emerald-400">
-                              <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
+                            <div className="flex items-start gap-2 text-xs font-inter text-[#ece8e1]">
+                              <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5 text-[#f4521c]" />
                               <span><strong>Commercial Benefit:</strong> {item.commercialBenefit}</span>
                             </div>
                           )}
                           {item.expectedOutcome && (
-                            <div className="flex items-start gap-2 text-xs font-inter text-zinc-800 dark:text-zinc-300">
-                              <Target className="w-4 h-4 shrink-0 mt-0.5 text-zinc-500" />
+                            <div className="flex items-start gap-2 text-xs font-inter text-[#8a8a8a]">
+                              <Target className="w-4 h-4 shrink-0 mt-0.5 text-[#8a8a8a]" />
                               <span><strong>Expected Conversion Outcome:</strong> {item.expectedOutcome}</span>
                             </div>
                           )}
@@ -596,18 +594,18 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
 
           {/* Product Brief Details */}
           <div className="pt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 rounded-2xl liquid-glass border border-black/10 dark:border-white/10 space-y-2">
-              <span className="text-[10px] font-mono uppercase text-emerald-600 dark:text-emerald-400">Formula Definition</span>
-              <h4 className="font-fraunces text-lg text-zinc-900 dark:text-white font-medium">What It Is</h4>
-              <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 font-light leading-relaxed">
+            <div className="p-6 border border-[#292929] bg-[#0b0c10] space-y-2">
+              <span className="label-mono !text-[#f4521c] text-[10px]">FORMULA DEFINITION</span>
+              <h4 className="font-inter font-bold uppercase text-lg text-[#ece8e1]">What It Is</h4>
+              <p className="text-xs sm:text-sm text-[#8a8a8a] leading-relaxed">
                 {data.brief.whatItIs}
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl liquid-glass border border-black/10 dark:border-white/10 space-y-2">
-              <span className="text-[10px] font-mono uppercase text-amber-600 dark:text-amber-400">Consumer Pain Point</span>
-              <h4 className="font-fraunces text-lg text-zinc-900 dark:text-white font-medium">Why It Exists</h4>
-              <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 font-light leading-relaxed">
+            <div className="p-6 border border-[#292929] bg-[#0b0c10] space-y-2">
+              <span className="label-mono !text-[#f4521c] text-[10px]">CONSUMER PAIN POINT</span>
+              <h4 className="font-inter font-bold uppercase text-lg text-[#ece8e1]">Why It Exists</h4>
+              <p className="text-xs sm:text-sm text-[#8a8a8a] leading-relaxed">
                 {data.brief.whyItExists}
               </p>
             </div>
@@ -619,16 +617,16 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
       {/* ════════════════════════════════════════════════════════════════════
           3. THE DELIVERABLES: VIDEOS FIRST, THEN SWIPEABLE STILLS
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad" aria-label={`${data.name} Campaign Vault`}>
+      <section className="py-24 border-b border-[#292929] bg-[#050609]" aria-label={`${data.name} Campaign Vault`}>
         <div className="container-luxury space-y-16">
           
           {/* Section Introduction */}
-          <div className="border-b border-black/[0.08] dark:border-white/[0.08] pb-6">
-            <p className="eyebrow-luxury text-zinc-500 dark:text-zinc-400 mb-2">02 // Campaign Deliverables</p>
-            <h2 className="heading-section text-3xl sm:text-4xl text-[#141416] dark:text-white">
-              The Production Vault
+          <div className="border-b border-[#292929] pb-6">
+            <p className="label-mono !text-[#f4521c] mb-2">02 // CAMPAIGN DELIVERABLES</p>
+            <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl text-[#ece8e1]">
+              THE PRODUCTION VAULT
             </h2>
-            <p className="body-muted text-sm sm:text-base text-zinc-600 dark:text-zinc-400 mt-1">
+            <p className="font-inter text-xs sm:text-sm text-[#8a8a8a] mt-1">
               Performance video creatives followed by swipeable still suites. All assets fully visible up front.
             </p>
           </div>
@@ -637,12 +635,12 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
           {videoAssets.length > 0 && (
             <div className="space-y-6">
               <div className="flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <h3 className="font-fraunces text-2xl text-zinc-900 dark:text-white font-medium">
-                  Part 1 · Motion & Paid-Social Videos ({videoAssets.length})
+                <span className="w-2 h-2 bg-[#f4521c]" />
+                <h3 className="font-inter font-bold uppercase text-xl sm:text-2xl text-[#ece8e1]">
+                  Part 1 · Motion &amp; Paid-Social Videos ({videoAssets.length})
                 </h3>
               </div>
-              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-light -mt-3">
+              <p className="font-inter text-xs text-[#8a8a8a] -mt-3">
                 Calibrated for high thumb-stop rate in the first 3 seconds with sensory formula textures and sound-on cues.
               </p>
 
@@ -657,10 +655,10 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
           {/* ── PART B: STILL ASSET SUITES (SWIPEABLE 1, 2, 3, 4) ────────── */}
           <div className="space-y-12">
             <div>
-              <h3 className="font-fraunces text-2xl text-zinc-900 dark:text-white font-medium mb-1">
-                Part 2 · Omnichannel Stills & Swatches ({stillAssets.length})
+              <h3 className="font-inter font-bold uppercase text-xl sm:text-2xl text-[#ece8e1] mb-1">
+                Part 2 · Omnichannel Stills &amp; Swatches ({stillAssets.length})
               </h3>
-              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-light">
+              <p className="font-inter text-xs text-[#8a8a8a]">
                 Swipe right to inspect each creative variant. Complete uncropped view without opening modals.
               </p>
             </div>
@@ -712,20 +710,20 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
       {/* ════════════════════════════════════════════════════════════════════
           4. PAGINATION & DIRECT ADVISORY CTA
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="section-pad border-t border-black/[0.08] dark:border-white/[0.08]">
+      <section className="py-24 border-t border-[#292929] bg-[#07080c]">
         <div className="container-luxury max-w-4xl space-y-12">
           
           {/* Next / Previous Case Study Switcher */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Link
               href={data.prevLink.href}
-              className="p-5 rounded-2xl liquid-glass border border-black/10 dark:border-white/10 hover:border-black/25 dark:hover:border-white/30 transition-all group flex items-center justify-between"
+              className="p-5 border border-[#292929] bg-[#0b0c10] hover:border-[#f4521c] transition-all group flex items-center justify-between"
             >
               <div className="flex items-center gap-3">
-                <ChevronLeft className="w-5 h-5 text-zinc-400 group-hover:-translate-x-1 transition-transform" />
+                <ChevronLeft className="w-5 h-5 text-[#8a8a8a] group-hover:-translate-x-1 transition-transform group-hover:text-[#f4521c]" />
                 <div>
-                  <span className="text-[10px] font-mono uppercase text-zinc-400 block">Previous Case</span>
-                  <span className="font-fraunces text-base text-zinc-900 dark:text-white font-medium">
+                  <span className="label-mono text-[10px] text-[#8a8a8a] block">PREVIOUS CASE</span>
+                  <span className="font-inter font-bold uppercase text-base text-[#ece8e1] group-hover:text-[#f4521c] transition-colors">
                     {data.prevLink.label}
                   </span>
                 </div>
@@ -734,35 +732,40 @@ export function CaseStudyTemplate({ data }: { data: CaseStudyData }) {
 
             <Link
               href={data.nextLink.href}
-              className="p-5 rounded-2xl liquid-glass border border-black/10 dark:border-white/10 hover:border-black/25 dark:hover:border-white/30 transition-all group flex items-center justify-between text-right"
+              className="p-5 border border-[#292929] bg-[#0b0c10] hover:border-[#f4521c] transition-all group flex items-center justify-between text-right"
             >
               <div className="ml-auto">
-                <span className="text-[10px] font-mono uppercase text-zinc-400 block">Next Case</span>
-                <span className="font-fraunces text-base text-zinc-900 dark:text-white font-medium">
+                <span className="label-mono text-[10px] text-[#8a8a8a] block">NEXT CASE</span>
+                <span className="font-inter font-bold uppercase text-base text-[#ece8e1] group-hover:text-[#f4521c] transition-colors">
                   {data.nextLink.label}
                 </span>
               </div>
-              <ChevronRight className="w-5 h-5 text-zinc-400 group-hover:translate-x-1 transition-transform ml-3" />
+              <ChevronRight className="w-5 h-5 text-[#8a8a8a] group-hover:translate-x-1 transition-transform ml-3 group-hover:text-[#f4521c]" />
             </Link>
           </div>
 
           {/* Direct CTA */}
-          <div className="p-8 sm:p-10 rounded-3xl liquid-glass border border-black/10 dark:border-white/20 text-center space-y-4">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
-              Commercial Direction & Advisory
+          <div className="p-8 sm:p-12 border border-[#292929] bg-[#0b0c10] text-center space-y-5">
+            <span className="label-mono !text-[#f4521c] block">
+              // COMMERCIAL DIRECTION &amp; ADVISORY
             </span>
-            <h3 className="font-fraunces text-2xl sm:text-3xl text-zinc-900 dark:text-white font-medium">
-              Want category-defining creative systems for your brand?
+            <h3 className="font-inter font-black uppercase text-2xl sm:text-4xl text-[#ece8e1]">
+              WANT CATEGORY-DEFINING CREATIVE SYSTEMS FOR YOUR BRAND?
             </h3>
-            <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 font-light max-w-lg mx-auto leading-relaxed">
-              I partner with a small roster of beauty and skincare founders each quarter for full commercial direction, creative audits, and paid-social asset systems.
+            <p className="font-inter text-xs sm:text-sm text-[#8a8a8a] max-w-lg mx-auto leading-relaxed">
+              I partner with a select roster of beauty and skincare founders each quarter for full commercial direction, creative audits, and paid-social asset systems.
             </p>
-            <div className="pt-2">
-              <Link href="/contact">
-                <Button size="lg" className="font-inter text-xs tracking-[0.2em] uppercase font-semibold">
-                  Apply for a Strategy Call
-                </Button>
-              </Link>
+            <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
+              <Button asChild className="btn-acid h-11 px-8 rounded-none">
+                <Link href="/contact">
+                  APPLY FOR A STRATEGY CALL
+                </Link>
+              </Button>
+              <Button asChild variant="outline" className="h-11 px-8 rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
+                <a href="/resume.pdf" download="Sakib_Ziad_Resume.pdf">
+                  DOWNLOAD RÉSUMÉ (PDF)
+                </a>
+              </Button>
             </div>
           </div>
 

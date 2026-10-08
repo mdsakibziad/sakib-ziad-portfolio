@@ -220,37 +220,37 @@ export default function HomePage() {
     }
   }
 
-  /* ── The 5-Step Strategic System ───────────────────────────────────────── */
+  /* ── The 5-Stage Commercial Production Pipeline ────────────────────────── */
   const strategicSteps = [
     {
       num: '01',
-      title: 'Forensic Creative Audit',
-      phase: 'Step 01 · Diagnostic',
-      desc: 'Dissecting ad accounts to identify creative fatigue, 2-second drop-offs, and margin bleed.',
+      title: 'Objection Mapping & Consumer Audit',
+      phase: 'Stage 01 · Creative Strategy',
+      desc: 'Deconstructing consumer friction, category fatigue, and why target audiences hesitate before purchase.',
     },
     {
       num: '02',
-      title: 'Sensory Texture Architecture',
-      phase: 'Step 02 · Art Direction',
-      desc: 'Refractive lighting and macro formula caustics so customers visually feel the texture on skin.',
+      title: 'First-Frame Hook Engineering',
+      phase: 'Stage 02 · Behavioral Psychology',
+      desc: 'Scripting 5+ contrarian, sensory, and transformation angles to arrest scroll within 1.5 seconds without brand degradation.',
     },
     {
       num: '03',
-      title: 'Direct-Response Hook Scripting',
-      phase: 'Step 03 · Psychology',
-      desc: 'Thumb-stopping consumer friction hooks scripted to arrest scroll in 1.5 seconds without brand degradation.',
+      title: 'Neural Staging & Macro Physics',
+      phase: 'Stage 03 · Commercial Direction',
+      desc: 'Directing refractive caustics, micro fluid dynamics, and photorealistic skin subsurface scattering with zero plastic artifacting.',
     },
     {
       num: '04',
-      title: 'Rapid Studio Production',
-      phase: 'Step 04 · Execution',
-      desc: 'High-fashion 4K motion deliverables and studio stills engineered in 72 hours instead of 8 weeks.',
+      title: 'Generative Motion & Camera Trajectory',
+      phase: 'Stage 04 · Cinematic Direction',
+      desc: 'Choreographing 100mm macro orbits, speed ramps, and tactile skin interactions to prove formula efficacy in motion.',
     },
     {
       num: '05',
-      title: 'Cross-Channel Deployment',
-      phase: 'Step 05 · Distribution',
-      desc: 'Master assets pre-formatted for Meta 1:1, Instagram Reels 9:16, TikTok, and e-commerce stores.',
+      title: 'Color Grading, ASMR Sound & Mastering',
+      phase: 'Stage 05 · Omnichannel Delivery',
+      desc: 'DaVinci Resolve finishing, tactile foley audio (ASMR textures), and native rendering across Meta 1:1, IG 9:16, TikTok, and Web.',
     },
   ]
 
@@ -371,10 +371,10 @@ export default function HomePage() {
           <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-[#050609] to-transparent" />
         </div>
 
-        {/* ── Top Meta Row (Exact Selora Layout) ── */}
+        {/* ── Top Meta Row ── */}
         <div className="relative z-10 flex items-start justify-between gap-6 container-luxury pt-[14vh] md:pt-[16vh]">
           <div>
-            <p className="label-mono !text-[#ece8e1]/70">IDX/SZ — 2026</p>
+            <p className="label-mono !text-[#ece8e1]/70">SAKIB ZIAD · 2026 // PORTFOLIO</p>
           </div>
           <div>
             <p className="label-mono text-right !text-[#ece8e1]/70 uppercase">
@@ -383,7 +383,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* ── Main Hero Editorial Statement & Phase Meters ── */}
+        {/* ── Main Hero Editorial Statement & Directorial Indicators ── */}
         <div className="relative z-10 flex flex-1 items-center container-luxury py-8 my-auto">
           <div className="grid w-full grid-cols-1 items-center gap-10 md:grid-cols-12">
             
@@ -391,16 +391,19 @@ export default function HomePage() {
             <div className="md:col-span-7 space-y-4">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#f4521c] block" />
+                <span className="label-mono !text-[#f4521c] text-[10px] tracking-wider uppercase">
+                  BEAUTY &amp; SKINCARE CAMPAIGN DIRECTION
+                </span>
               </div>
 
-              <h1 className="font-inter font-black uppercase text-[clamp(28px,5.4vw,74px)] leading-[1.02] tracking-[-0.05em] text-[#ece8e1] m-0">
+              <h1 className="font-inter font-black uppercase text-[clamp(28px,5vw,70px)] leading-[1.02] tracking-[-0.05em] text-[#ece8e1] m-0">
                 <MaskText
                   immediate
                   delay={0.1}
                   lines={[
-                    <span key="1">I KILL 8-WEEK SHOOTS</span>,
-                    <span key="2">TO BUILD WHAT</span>,
-                    <span key="3">ACTUALLY CONVERTS.</span>,
+                    <span key="1">WHERE CONSUMER PSYCHOLOGY</span>,
+                    <span key="2">MEETS PRESTIGE</span>,
+                    <span key="3" className="text-[#f4521c]">COMMERCIAL DIRECTION.</span>,
                   ]}
                 />
               </h1>
@@ -411,12 +414,11 @@ export default function HomePage() {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
                 className="font-inter text-xs sm:text-sm md:text-base font-bold text-[#f5f2eb] max-w-xl leading-relaxed uppercase pt-3 tracking-wide"
               >
-                <span className="text-[#f4521c] font-black mr-2">72-HOUR</span>
-                HIGH-PERFORMANCE COMMERCIAL CREATIVE DIRECTION FOR BEAUTY &amp; SKINCARE BRANDS.
+                I direct high-converting beauty and skincare ad campaigns by engineering macro formula conviction, friction-breaking hooks, and AI-native production scale.
               </motion.p>
             </div>
 
-            {/* Right 4 Cols: Phase Meters (col-start-9) */}
+            {/* Right 4 Cols: Directorial Focus Indicators (col-start-9) */}
             <div className="md:col-span-4 md:col-start-9 space-y-0">
               
               <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 border-t border-[#292929] py-[10px]">
@@ -425,7 +427,7 @@ export default function HomePage() {
                   <span className="absolute inset-y-0 left-0 block w-full origin-left bg-[#f4521c]" />
                 </div>
                 <span className="label-mono text-[#ece8e1]/70 text-[11px]">
-                  PHASE/<span className="text-[#f4521c]">BREAK</span>
+                  STRATEGY/<span className="text-[#f4521c]">PSYCHOLOGY</span>
                 </span>
               </div>
 
@@ -435,7 +437,7 @@ export default function HomePage() {
                   <span className="absolute inset-y-0 left-0 block w-[85%] origin-left bg-[#f4521c]" />
                 </div>
                 <span className="label-mono text-[#ece8e1]/70 text-[11px]">
-                  PHASE/<span className="text-[#f4521c]">BUILD</span>
+                  DIRECTING/<span className="text-[#f4521c]">MACRO PHYSICS</span>
                 </span>
               </div>
 
@@ -445,17 +447,17 @@ export default function HomePage() {
                   <span className="absolute inset-y-0 left-0 block w-full origin-left bg-[#f4521c]" />
                 </div>
                 <span className="label-mono text-[#ece8e1]/70 text-[11px]">
-                  PHASE/<span className="text-[#f4521c]">BEND</span>
+                  RETENTION/<span className="text-[#f4521c]">FIRST 3 SECONDS</span>
                 </span>
               </div>
 
               <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 border-t border-[#292929] py-[10px]">
                 <span className="label-mono text-[#ece8e1]/45 text-[11px]">004</span>
                 <div aria-hidden="true" className="relative h-px w-full bg-[#292929] overflow-hidden">
-                  <span className="absolute inset-y-0 left-0 block w-[60%] origin-left bg-[#f4521c]" />
+                  <span className="absolute inset-y-0 left-0 block w-[70%] origin-left bg-[#f4521c]" />
                 </div>
                 <span className="label-mono text-[#ece8e1]/70 text-[11px]">
-                  PHASE/<span className="text-[#f4521c]">RELEASE</span>
+                  DELIVERY/<span className="text-[#f4521c]">OMNICHANNEL SUITE</span>
                 </span>
               </div>
 
@@ -505,7 +507,7 @@ export default function HomePage() {
 
 
       {/* ════════════════════════════════════════════════════════════════════
-          STEP 2 · CREDIBILITY & PRODUCTION STANDARD BAR
+          STEP 2 · CREDIBILITY & PROFESSIONAL STANDARDS BAR
       ════════════════════════════════════════════════════════════════════ */}
       <section className="py-8 border-y border-[#292929] bg-[#050609]">
         <div className="container-luxury">
@@ -513,11 +515,11 @@ export default function HomePage() {
             
             <EditorialReveal delay={0.05}>
               <div className="md:border-r border-[#292929] md:pr-6 space-y-1">
-                <span className="label-mono text-[#8a8a8a] block">001 // WITLYN STANDARD</span>
+                <span className="label-mono text-[#8a8a8a] block">001 // ACADEMIC FOUNDATION</span>
                 <p className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
-                  STUDIO GRADE
+                  BSc IN AI
                 </p>
-                <span className="label-mono !text-[#f4521c] text-[10px] block">COMMERCIAL STANDARD</span>
+                <span className="label-mono !text-[#f4521c] text-[10px] block">LINCOLN UNIVERSITY (2026)</span>
               </div>
             </EditorialReveal>
 
@@ -527,7 +529,7 @@ export default function HomePage() {
                 <p className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
                   BEAUTY ONLY
                 </p>
-                <span className="label-mono !text-[#f4521c] text-[10px] block">100% COSMETICS</span>
+                <span className="label-mono !text-[#f4521c] text-[10px] block">PRESTIGE COSMETICS &amp; SKINCARE</span>
               </div>
             </EditorialReveal>
 
@@ -537,17 +539,17 @@ export default function HomePage() {
                 <p className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
                   135+ ASSETS
                 </p>
-                <span className="label-mono !text-[#f4521c] text-[10px] block">MASTER CAMPAIGN VAULT</span>
+                <span className="label-mono !text-[#f4521c] text-[10px] block">5 MASTER CAMPAIGN PACKAGES</span>
               </div>
             </EditorialReveal>
 
             <EditorialReveal delay={0.2}>
               <div className="md:pl-6 space-y-1">
-                <span className="label-mono text-[#8a8a8a] block">004 // EXECUTION SPEED</span>
+                <span className="label-mono text-[#8a8a8a] block">004 // PRODUCTION STUDIO</span>
                 <p className="font-inter font-black uppercase text-xl sm:text-2xl text-[#ece8e1]">
-                  72 HOURS
+                  WITLYN STUDIO
                 </p>
-                <span className="label-mono !text-[#f4521c] text-[10px] block">RAPID TURNAROUND</span>
+                <span className="label-mono !text-[#f4521c] text-[10px] block">FOUNDER &amp; COMMERCIAL DIRECTOR</span>
               </div>
             </EditorialReveal>
 
@@ -556,17 +558,17 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          STEP 3 · CATEGORY FRICTION (SELORA EDITORIAL INTRO SPEC)
+          STEP 3 · THE CATEGORY THESIS (CONSUMER SKEPTICISM & SENSORY PROOF)
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-[#050609] pt-16 pb-24 border-b border-[#292929]" aria-label="Category Friction">
+      <section className="relative overflow-hidden bg-[#050609] pt-16 pb-24 border-b border-[#292929]" aria-label="Category Thesis">
         <div className="container-luxury">
           {/* Top Meta Bar */}
           <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-8">
             <span className="label-mono !text-[#f4521c] flex items-center gap-2">
               <span className="w-2 h-2 bg-[#f4521c]" />
-              RELEASE WITHOUT RESTRAINT
+              THE STRATEGIC THESIS
             </span>
-            <span className="label-mono text-[#8a8a8a]">// CATEGORY REALITY</span>
+            <span className="label-mono text-[#8a8a8a]">// WHY BEAUTY ADS FAIL</span>
           </div>
 
           {/* Centered High-Fashion Study Image Plate with Editorial Reveal */}
@@ -579,20 +581,20 @@ export default function HomePage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050609]/80 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between label-mono text-[10px] text-[#ece8e1]/80">
-                <span>PLATE — 01 // REFRACTIVE FORMULA CAUSTICS</span>
+                <span>MACRO STUDY // REFRACTIVE FORMULA CAUSTICS</span>
                 <span className="text-[#f4521c]">STUDIO ARCHIVE</span>
               </div>
             </div>
           </EditorialReveal>
 
-          {/* Colossal Right-Aligned Headline (Exact Selora Editorial Split) */}
+          {/* Colossal Right-Aligned Headline */}
           <div className="mt-14 mb-12">
-            <h2 className="text-right font-inter font-black uppercase text-[clamp(32px,6.5vw,94px)] tracking-[-0.05em] leading-[0.98] text-[#ece8e1]">
+            <h2 className="text-right font-inter font-black uppercase text-[clamp(28px,5.8vw,86px)] tracking-[-0.05em] leading-[0.98] text-[#ece8e1]">
               <MaskText
                 align="right"
                 lines={[
-                  <span key="1">TRADITIONAL SHOOTS ARE SLOW.</span>,
-                  <span key="2" className="text-[#f4521c]">COMMERCIAL CREATIVE CANNOT WAIT.</span>,
+                  <span key="1">BEAUTY ADS DON’T FAIL FROM LACK OF BUDGET.</span>,
+                  <span key="2" className="text-[#f4521c]">THEY FAIL FROM LACK OF SENSORY CONVICTION.</span>,
                 ]}
               />
             </h2>
@@ -602,9 +604,9 @@ export default function HomePage() {
           <EditorialReveal delay={0.15}>
             <div className="border-t border-[#292929] pt-8 mt-10">
               <div className="max-w-3xl space-y-3">
-                <p className="label-mono !text-[#f4521c]">// CAT — 1.07 · THE REALITY</p>
+                <p className="label-mono !text-[#f4521c]">// CONSUMER SKEPTICISM &amp; VISUAL PROOF</p>
                 <p className="font-inter text-lg sm:text-2xl font-bold leading-snug tracking-tight text-[#ece8e1]">
-                  Ad creative fatigues in 14 days. Legacy agency shoots demand 8 weeks and burn $50k+ in friction overhead.
+                  Ad creative fatigues rapidly because modern consumers ignore empty claims. They convert only when they visually feel the texture, see zero white-cast proof, and witness undeniable physical efficacy.
                 </p>
               </div>
             </div>
@@ -613,30 +615,30 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════
-          STEP 4 · THE 5-STEP STRATEGIC SYSTEM (SELORA PROCESS MODULES)
+          STEP 4 · THE 5-STAGE COMMERCIAL PRODUCTION PIPELINE
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-[#050609] py-24 border-b border-[#292929]" aria-label="Strategic System">
+      <section className="relative overflow-hidden bg-[#050609] py-24 border-b border-[#292929]" aria-label="Production Pipeline">
         <div className="container-luxury">
           <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">
             <span className="label-mono !text-[#f4521c] flex items-center gap-2">
               <span className="w-2 h-2 bg-[#f4521c]" />
-              SYSTEM ARCHITECTURE
+              THE PRODUCTION PIPELINE
             </span>
-            <span className="label-mono text-[#8a8a8a]">05 MODULAR PHASES</span>
+            <span className="label-mono text-[#8a8a8a]">05 INTEGRATED STAGES</span>
           </div>
 
           <div className="mb-14">
-            <h2 className="font-inter font-black uppercase text-[clamp(28px,5.2vw,78px)] tracking-[-0.05em] leading-[0.98] text-[#ece8e1]">
+            <h2 className="font-inter font-black uppercase text-[clamp(26px,4.8vw,72px)] tracking-[-0.05em] leading-[0.98] text-[#ece8e1]">
               <MaskText
                 lines={[
-                  <span key="1">A DISCIPLINED METHODOLOGY</span>,
-                  <span key="2">MOVING FROM FORENSIC FRICTION AUDITS</span>,
-                  <span key="3" className="text-[#f4521c]">TO STUDIO-GRADE OMNICHANNEL DEPLOYMENT.</span>,
+                  <span key="1">A DISCIPLINED DIRECTING METHODOLOGY</span>,
+                  <span key="2">BRIDGING BEHAVIORAL SCIENCE</span>,
+                  <span key="3" className="text-[#f4521c]">AND PHOTOREALISTIC COMMERCIAL PRODUCTION.</span>,
                 ]}
               />
             </h2>
             <p className="font-inter text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#8a8a8a] max-w-2xl mt-6">
-              Engineered to replace 8-week agency friction with 72-hour omnichannel commercial performance.
+              Eliminating months of traditional agency bloat while elevating brand prestige and algorithmic acquisition performance.
             </p>
           </div>
 
@@ -691,13 +693,13 @@ export default function HomePage() {
             <div className="space-y-3">
               <span className="label-mono !text-[#f4521c] flex items-center gap-2">
                 <span className="w-2 h-2 bg-[#f4521c]" />
-                FIELD PROOF · 05 FLAGSHIP VAULTS
+                COMMERCIAL PORTFOLIO · 05 SPEC CAMPAIGNS
               </span>
               <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl text-[#ece8e1] leading-tight">
-                <MaskText lines={['SELECTED CAMPAIGN SYSTEMS']} />
+                <MaskText lines={['SELECTED COMMERCIAL WORK']} />
               </h2>
               <p className="font-inter text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#8a8a8a] max-w-xl">
-                Engineered to replace 8-week agency friction with 72-hour omnichannel commercial performance.
+                Real category friction, scripted hook psychology, and studio-grade macro directing executed for prestige beauty SKUs.
               </p>
             </div>
             <Button asChild variant="outline" className="h-11 px-6 rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
@@ -923,6 +925,127 @@ export default function HomePage() {
                 WITLYN STUDIO (WITLYN.COM) →
               </a>
             </span>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════════════
+          STEP 9.5 · TALENT & RECRUITMENT FAST-TRACK (FOR CREATIVE LEADS & RECRUITERS)
+      ════════════════════════════════════════════════════════════════════ */}
+      <section id="recruitment-fast-track" className="py-24 border-t border-[#292929] bg-[#07080c]" aria-label="Talent and Recruitment">
+        <div className="container-luxury">
+          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-12">
+            <span className="label-mono !text-[#f4521c] flex items-center gap-2">
+              <span className="w-2 h-2 bg-[#f4521c]" />
+              TALENT &amp; LEADERSHIP EVALUATION
+            </span>
+            <span className="label-mono text-[#8a8a8a]">
+              FOR AGENCIES &amp; BRAND RECRUITERS
+            </span>
+          </div>
+
+          <div className="border border-[#292929] bg-[#0b0c10] p-8 sm:p-12 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-32 h-[2px] bg-[#f4521c]" />
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+              
+              {/* Left Column: Heading and Context */}
+              <div className="lg:col-span-7 space-y-5">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#f4521c] block animate-pulse" />
+                  <span className="label-mono !text-[#f4521c] text-[10px] tracking-wider uppercase">
+                    OPEN FOR SELECT CREATIVE ROLES
+                  </span>
+                </div>
+
+                <h2 className="font-inter font-black uppercase text-2xl sm:text-4xl text-[#ece8e1] leading-tight">
+                  EVALUATING FOR A CREATIVE STRATEGIST OR COMMERCIAL DIRECTOR ROLE?
+                </h2>
+
+                <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed max-w-xl">
+                  Available for select Full-Time, Fractional, or Lead positions (Remote / Global). Bridging computational AI workflows with high-fashion sensory commercial directing.
+                </p>
+
+                {/* 4 Pillars of Candidate Fit */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-[#292929]">
+                  <div className="space-y-1">
+                    <span className="label-mono text-[10px] text-[#8a8a8a] block">EDUCATION &amp; DEGREE</span>
+                    <p className="font-inter text-xs text-[#ece8e1] font-bold">
+                      BSc in Artificial Intelligence
+                    </p>
+                    <p className="text-[11px] text-[#8a8a8a]">Lincoln University College (2026)</p>
+                  </div>
+
+                  <div className="space-y-1">
+                    <span className="label-mono text-[10px] text-[#8a8a8a] block">DIRECTORIAL STACK</span>
+                    <p className="font-inter text-xs text-[#ece8e1] font-bold">
+                      Neural Film &amp; Generative AI
+                    </p>
+                    <p className="text-[11px] text-[#8a8a8a]">Midjourney v6 · ComfyUI · Gen-3 · Luma</p>
+                  </div>
+
+                  <div className="space-y-1">
+                    <span className="label-mono text-[10px] text-[#8a8a8a] block">POST-PRODUCTION</span>
+                    <p className="font-inter text-xs text-[#ece8e1] font-bold">
+                      Studio Finishing &amp; Audio
+                    </p>
+                    <p className="text-[11px] text-[#8a8a8a]">DaVinci Resolve · Foley ASMR · Premiere</p>
+                  </div>
+
+                  <div className="space-y-1">
+                    <span className="label-mono text-[10px] text-[#8a8a8a] block">PAID PERFORMANCE</span>
+                    <p className="font-inter text-xs text-[#ece8e1] font-bold">
+                      Ad Architecture &amp; Psychology
+                    </p>
+                    <p className="text-[11px] text-[#8a8a8a]">Meta Ads · TikTok Creative · Hook Systems</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Instant Recruiter Actions */}
+              <div className="lg:col-span-5 flex flex-col gap-3 justify-center bg-[#050609] p-6 sm:p-8 border border-[#292929]">
+                <span className="label-mono text-[10px] text-[#8a8a8a] block mb-2">
+                  DIRECT RECRUITER ACTIONS
+                </span>
+
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-acid h-12 w-full flex items-center justify-between px-5 font-bold text-xs uppercase tracking-wider rounded-none"
+                >
+                  <span>VIEW OFFICIAL RÉSUMÉ (PDF)</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </a>
+
+                <a
+                  href="/resume.pdf"
+                  download="Sakib_Ziad_Resume.pdf"
+                  className="h-11 w-full border border-[#383838] bg-[#111216] text-[#ece8e1] hover:border-[#f4521c] hover:text-[#f4521c] flex items-center justify-between px-5 font-mono text-xs uppercase tracking-wider transition-colors"
+                >
+                  <span>DOWNLOAD RÉSUMÉ (PDF)</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/sakib-ziad-290104211/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="h-11 w-full border border-[#292929] bg-transparent text-[#8a8a8a] hover:text-[#ece8e1] hover:border-[#383838] flex items-center justify-between px-5 font-mono text-xs uppercase tracking-wider transition-colors"
+                >
+                  <span>VIEW LINKEDIN PROFILE</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+
+                <Link
+                  href="/contact"
+                  className="text-center pt-2 font-mono text-[11px] text-[#f4521c] hover:underline"
+                >
+                  Direct Inquiry: Sakib@witlyn.com →
+                </Link>
+              </div>
+
+            </div>
           </div>
         </div>
       </section>

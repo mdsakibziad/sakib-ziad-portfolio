@@ -185,6 +185,67 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* ── Verified Credentials & Technical Stack ── */}
+      <section className="py-20 border-b border-[#292929] bg-[#07080c]" aria-label="Credentials">
+        <div className="container-luxury">
+          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">
+            <span className="label-mono !text-[#f4521c]">ACADEMIC &amp; DIRECTORIAL CREDENTIALS</span>
+            <span className="label-mono text-[#8a8a8a]">OFFICIAL DOSSIER</span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="border border-[#292929] bg-[#0b0c10] p-6 space-y-3">
+              <span className="label-mono text-[#8a8a8a] text-[10px] block">ACADEMIC FOUNDATION</span>
+              <h3 className="font-inter font-black uppercase text-xl text-[#ece8e1]">
+                BSc in Artificial Intelligence
+              </h3>
+              <p className="font-inter text-xs text-[#8a8a8a] leading-relaxed">
+                Lincoln University College (2026). Specializing in computational vision systems, neural models, and AI workflow architecture.
+              </p>
+            </div>
+
+            <div className="border border-[#292929] bg-[#0b0c10] p-6 space-y-3">
+              <span className="label-mono text-[#8a8a8a] text-[10px] block">STUDIO LEADERSHIP</span>
+              <h3 className="font-inter font-black uppercase text-xl text-[#ece8e1]">
+                Founder &amp; Creative Director
+              </h3>
+              <p className="font-inter text-xs text-[#8a8a8a] leading-relaxed">
+                Witlyn Studio — dedicated commercial production lab directing AI-native campaigns for prestige beauty and skincare brands globally.
+              </p>
+            </div>
+
+            <div className="border border-[#292929] bg-[#0b0c10] p-6 space-y-3">
+              <span className="label-mono text-[#8a8a8a] text-[10px] block">DIRECTORIAL STACK</span>
+              <h3 className="font-inter font-black uppercase text-xl text-[#ece8e1]">
+                Production &amp; Post-Grading
+              </h3>
+              <p className="font-inter text-xs text-[#8a8a8a] leading-relaxed">
+                Midjourney v6, ComfyUI, Runway Gen-3, Luma Dream Machine, DaVinci Resolve Studio (Color &amp; Audio), Premiere Pro, Meta Ads Architecture.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 border border-[#292929] bg-[#050609] p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="space-y-1">
+              <span className="label-mono !text-[#f4521c] text-[10px]">VERIFIED CANDIDATE RÉSUMÉ</span>
+              <p className="font-inter text-xs sm:text-sm text-[#ece8e1] font-bold">
+                Download official 1-page résumé detailing education, technical stack, and commercial background.
+              </p>
+            </div>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-acid h-11 px-6 font-bold text-xs uppercase tracking-wider flex items-center gap-2 rounded-none shrink-0"
+            >
+              <span>VIEW RÉSUMÉ (PDF)</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 border-b border-[#292929] bg-[#050609]" aria-label="Capabilities">
         <div className="container-luxury">
           <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">

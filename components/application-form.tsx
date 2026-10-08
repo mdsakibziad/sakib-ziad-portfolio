@@ -9,6 +9,7 @@ export type AreaOfInterest =
   | 'automation'
   | 'membership'
   | 'digital-products'
+  | 'recruiter'
   | 'general'
 
 interface ApplicationFormProps {
@@ -28,6 +29,7 @@ interface ApplicationFormProps {
 
 const INTEREST_OPTIONS: { value: AreaOfInterest; label: string; submissionType: 'consulting' | 'membership' | 'general' }[] = [
   { value: 'consulting', label: '1:1 Strategic Advisory & Direction', submissionType: 'consulting' },
+  { value: 'recruiter', label: 'Talent / Agency Recruitment & Hiring Inquiry', submissionType: 'general' },
   { value: 'automation', label: 'Autonomous Brand Systems & Asset Pipeline', submissionType: 'consulting' },
   { value: 'membership', label: 'Private Syndicate Membership', submissionType: 'membership' },
   { value: 'digital-products', label: 'Campaign Vault & Systems', submissionType: 'general' },
@@ -42,12 +44,15 @@ export function ApplicationForm({
   submitText = 'SUBMIT APPLICATION →',
   className = '',
 }: ApplicationFormProps) {
+  const [inquiryType, setInquiryType] = useState<'founder' | 'recruiter'>(
+    defaultInterest === 'recruiter' ? 'recruiter' : 'founder'
+  )
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     brand: '',
     website: '',
-    interest: defaultInterest,
+    interest: defaultInterest === 'recruiter' ? ('recruiter' as AreaOfInterest) : defaultInterest,
     timeline: 'Within 1–2 months',
     message: '',
   })
@@ -146,9 +151,62 @@ export function ApplicationForm({
     <div className={`space-y-6 ${className}`}>
       {title && (
         <div className="border-b border-[#292929] pb-4">
-          <span className="label-mono !text-[#f4521c] block mb-1">INTAKE FORM</span>
+          <span className="label-mono !text-[#f4521c] block mb-1">INTAKE GATEWAY</span>
           <h3 className="font-inter font-black uppercase text-2xl text-[#ece8e1]">{title}</h3>
           {subtitle && <p className="font-inter text-xs text-[#8a8a8a] mt-1">{subtitle}</p>}
+        </div>
+      )}
+
+      {/* Role Selector: Founder vs Recruiter */}
+      <div className="grid grid-cols-2 gap-2 border border-[#292929] bg-[#050609] p-1.5">
+        <button
+          type="button"
+          onClick={() => {
+            setInquiryType('founder')
+            setFormData(prev => ({ ...prev, interest: 'consulting' }))
+          }}
+          className={`py-2 px-3 text-xs font-mono font-bold uppercase tracking-wider transition-all ${
+            inquiryType === 'founder'
+              ? 'bg-[#111216] text-[#ece8e1] border border-[#f4521c]/60 shadow-sm'
+              : 'text-[#8a8a8a] hover:text-[#ece8e1]'
+          }`}
+        >
+          Brand Founder / CMO
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            setInquiryType('recruiter')
+            setFormData(prev => ({ ...prev, interest: 'recruiter' }))
+          }}
+          className={`py-2 px-3 text-xs font-mono font-bold uppercase tracking-wider transition-all ${
+            inquiryType === 'recruiter'
+              ? 'bg-[#111216] text-[#ece8e1] border border-[#f4521c]/60 shadow-sm'
+              : 'text-[#8a8a8a] hover:text-[#ece8e1]'
+          }`}
+        >
+          Agency Recruiter / Talent Lead
+        </button>
+      </div>
+
+      {inquiryType === 'recruiter' && (
+        <div className="border border-[#292929] bg-[#07080c] p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="space-y-0.5">
+            <span className="label-mono !text-[#f4521c] text-[10px]">CANDIDATE DOSSIER</span>
+            <p className="font-inter text-xs text-[#ece8e1]">
+              Evaluating for a Creative Strategist or AI Commercial Director role?
+            </p>
+          </div>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-acid h-8 px-3 text-[11px] font-mono uppercase font-bold shrink-0 flex items-center gap-1.5 rounded-none"
+          >
+            <span>Open Résumé (PDF)</span>
+            <ArrowRight className="w-3 h-3" />
+          </a>
         </div>
       )}
 
@@ -166,7 +224,7 @@ export function ApplicationForm({
             </label>
             <input
               required
-              placeholder="e.g. Julian Vance"
+              placeholder={inquiryType === 'recruiter' ? 'e.g. Sarah Jenkins' : 'e.g. Julian Vance'}
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className="w-full px-4 py-2.5 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
@@ -179,7 +237,7 @@ export function ApplicationForm({
             <input
               required
               type="email"
-              placeholder="julian@brand.com"
+              placeholder={inquiryType === 'recruiter' ? 'sarah@agency.com' : 'julian@brand.com'}
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className="w-full px-4 py-2.5 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
@@ -190,11 +248,11 @@ export function ApplicationForm({
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
             <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
-              BRAND / COMPANY NAME *
+              {inquiryType === 'recruiter' ? 'AGENCY / COMPANY NAME *' : 'BRAND / COMPANY NAME *'}
             </label>
             <input
               required
-              placeholder="e.g. Solaé Botanicals"
+              placeholder={inquiryType === 'recruiter' ? 'e.g. Ogilvy / Glossier / WPP' : 'e.g. Solaé Botanicals'}
               value={formData.brand}
               onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
               className="w-full px-4 py-2.5 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
@@ -202,11 +260,11 @@ export function ApplicationForm({
           </div>
           <div>
             <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
-              WEBSITE OR STOREFRONT URL *
+              {inquiryType === 'recruiter' ? 'COMPANY WEBSITE / CAREERS LINK *' : 'WEBSITE OR STOREFRONT URL *'}
             </label>
             <input
               required
-              placeholder="https://yourbrand.com"
+              placeholder={inquiryType === 'recruiter' ? 'https://agency.com' : 'https://yourbrand.com'}
               value={formData.website}
               onChange={(e) => setFormData({ ...formData, website: e.target.value })}
               className="w-full px-4 py-2.5 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"
@@ -217,7 +275,7 @@ export function ApplicationForm({
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
             <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
-              AREA OF INTEREST
+              {inquiryType === 'recruiter' ? 'ROLE SCOPE' : 'AREA OF INTEREST'}
             </label>
             <select
               className="w-full h-11 px-4 bg-[#050609] border border-[#292929] text-[#ece8e1] font-inter text-sm focus:outline-none focus:border-[#f4521c] rounded-none"
@@ -233,7 +291,7 @@ export function ApplicationForm({
           </div>
           <div>
             <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
-              IMPLEMENTATION TIMELINE
+              {inquiryType === 'recruiter' ? 'HIRING TIMELINE' : 'IMPLEMENTATION TIMELINE'}
             </label>
             <select
               className="w-full h-11 px-4 bg-[#050609] border border-[#292929] text-[#ece8e1] font-inter text-sm focus:outline-none focus:border-[#f4521c] rounded-none"
@@ -250,12 +308,18 @@ export function ApplicationForm({
 
         <div>
           <label className="block label-mono text-[10px] text-[#8a8a8a] mb-1.5">
-            TELL US ABOUT YOUR BRAND AND PRIMARY BOTTLENECK *
+            {inquiryType === 'recruiter'
+              ? 'ROLE DETAILS, CANDIDATE SCOPE & INTERVIEW REQUEST *'
+              : 'TELL US ABOUT YOUR BRAND AND PRIMARY BOTTLENECK *'}
           </label>
           <textarea
             required
             rows={4}
-            placeholder="What is your biggest creative friction or CPA bottleneck, current ad spend, and target outcome?"
+            placeholder={
+              inquiryType === 'recruiter'
+                ? 'Overview of the role (e.g. Lead Creative Strategist, AI Commercial Director), team structure, and proposed next steps.'
+                : 'What is your biggest creative friction or CPA bottleneck, current ad spend, and target outcome?'
+            }
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
             className="w-full p-4 bg-[#050609] border border-[#292929] text-[#ece8e1] placeholder-[#8a8a8a]/60 text-sm focus:outline-none focus:border-[#f4521c] rounded-none font-inter"

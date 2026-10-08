@@ -282,6 +282,11 @@ export default function WorkPage() {
                 LEARN ABOUT ADVISORY
               </Link>
             </Button>
+            <Button asChild variant="outline" className="h-12 px-8 rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
+              <a href="/resume.pdf" download="Sakib_Ziad_Resume.pdf">
+                DOWNLOAD RÉSUMÉ (PDF)
+              </a>
+            </Button>
           </div>
         </div>
       </section>
