@@ -222,7 +222,14 @@ export function Navigation() {
                 <p className="label-mono">BEAUTY & SKINCARE CREATIVE STRATEGIST</p>
               </div>
 
-              <div className="flex items-center gap-4 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+                <a
+                  href="/resume.pdf"
+                  download="Sakib_Ziad_Resume.pdf"
+                  className="px-4 py-3 border border-[#383838] bg-[#111216]/90 text-xs font-mono uppercase font-bold text-[#ece8e1] hover:border-[#f4521c] hover:text-[#f4521c] text-center tracking-wider transition-all"
+                >
+                  Download Résumé (PDF)
+                </a>
                 <Link
                   href="/contact"
                   onClick={() => setMenuOpen(false)}

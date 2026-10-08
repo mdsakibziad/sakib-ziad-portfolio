@@ -13,6 +13,15 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
+  async redirects() {
+    return [
+      {
+        source: '/resume',
+        destination: '/resume.pdf',
+        permanent: false,
+      },
+    ]
+  },
   async headers() {
     return [
       {
