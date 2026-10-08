@@ -137,7 +137,7 @@ function SignUpContent() {
               Create Your Account
             </h1>
             <p className="font-inter text-xs text-muted">
-              Access your licensed prompt frameworks, tools, and client portal.
+              Access your licensed prompt frameworks, tools, and Syndicate portal.
             </p>
           </div>
 

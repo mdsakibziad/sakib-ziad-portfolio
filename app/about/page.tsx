@@ -1,156 +1,251 @@
-import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowRight, ArrowUpRight, Download, Linkedin, Calendar } from 'lucide-react'
-import type { Metadata } from 'next'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'About | Sakib Ziad — AI Creative Strategist & AI Commercial Director',
-  description:
-    'About Sakib Ziad, AI Creative Strategist and AI Commercial Director specializing in beauty and skincare ad campaigns. Based in Malaysia, working worldwide.',
-}
+import React from 'react'
+import Link from 'next/link'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { SplitRevealImage } from '@/components/split-reveal-image'
+import { MaskText } from '@/components/mask-text'
+import { motion } from 'framer-motion'
 
 export default function AboutPage() {
-  const credentials = [
-    'BSc in Artificial Intelligence',
-    'Founder, Witlyn Studio',
-    'AI solution engineering (agents and automation)',
+  const beliefs = [
+    {
+      num: '01',
+      title: 'CREATIVE DIRECTION IS LEVERAGE, NOT DECORATION',
+      body: 'The beauty brands that will dominate are not replacing human creative direction with automated shortcuts. They are empowering taste with technical systems — achieving visual scale and velocity previously restricted to conglomerate budgets.',
+    },
+    {
+      num: '02',
+      title: 'PRESTIGE AESTHETICS DEMAND VERTICAL SPECIALIZATION',
+      body: 'Generalist creators produce plastic, uninspired caricatures. Beauty and cosmetics require deep category intuition: botanical caustics, skin subsurface scattering, packaging refraction, and emotional luxury positioning.',
+    },
+    {
+      num: '03',
+      title: 'TACTICS EXPIRE. PROPRIETARY SYSTEMS COMPOUND',
+      body: 'A viral video trend delivers temporary traffic and vanishes. An internal creative architecture and rapid commercial production pipeline compounds in velocity, consistency, and margin every single month.',
+    },
   ]
 
-  const tools = ['Claude', 'Google Flow', 'Higgsfield', 'n8n']
+
+  const expertisePoints = [
+    {
+      num: '01',
+      title: 'DIRECT-RESPONSE CREATIVE ARCHITECTURE',
+      desc: 'Translating abstract cosmetic benefits into scroll-stopping paid-social video hooks and visual proof demonstrations that consistently cut CPA by 30%–45%.',
+    },
+    {
+      num: '02',
+      title: 'SENSORY COSMETIC DIRECTING & TEXTURE PHYSICS',
+      desc: 'Engineering studio lighting caustics, optical bottle reflections, and tactile formula dispersion (gel-to-milk blooms, peptide matrix cushion, clear water-veils) so consumers instantly feel the formula on skin.',
+    },
+    {
+      num: '03',
+      title: 'FIRST-FRAME HOOK ENGINEERING (1.5S THUMB-STOP)',
+      desc: 'Confronting consumer category friction head-on with contrarian truth angles ("Sunscreen shouldn’t look like white paint", "Cellular tension. Zero collar grease") that drive 48%+ 3-second hold rates.',
+    },
+    {
+      num: '04',
+      title: 'OMNICHANNEL DERIVATIVE SCALING',
+      desc: 'Structuring master visual captures that branch natively into Meta 1:1 square feeds, 4:5 sponsored portraits, 9:16 Instagram Reels, TikTok video feeds, and e-commerce hero banners with zero awkward cropping.',
+    },
+    {
+      num: '05',
+      title: 'RAPID 72-HOUR COMMERCIAL STUDIO TURNAROUND',
+      desc: 'Replacing antiquated 6–8 week agency shoot bottlenecks and $50k+ overhead with agile 72-hour studio workflows delivering 25+ publication-grade commercial assets under the Witlyn standard.',
+    },
+    {
+      num: '06',
+      title: 'PAID-SOCIAL FORENSIC AD ACCOUNT AUDITING',
+      desc: 'Dissecting historical Meta & TikTok ad data to pinpoint creative fatigue drop-offs, hook decay rates, and ad spend leakage across top-of-funnel prospecting vs middle-of-funnel retargeting.',
+    },
+    {
+      num: '07',
+      title: 'PRESTIGE BRAND EQUITY DEFENSE',
+      desc: 'Ensuring aggressive direct-response conversion never compromises luxury prestige. We balance high-performance copywriting with refined editorial art direction and typographic rigor.',
+    },
+    {
+      num: '08',
+      title: 'COSMETIC SENSORY FRICTION DIAGNOSTICS',
+      desc: 'Diagnosing the hidden friction points that stop beauty buyers (chalky white casts, foundation pilling, midday shine breakthrough, sticky hair gloss traps) and scripting undeniable visual counters.',
+    },
+    {
+      num: '09',
+      title: 'DTC E-COMMERCE CONVERSION ALIGNMENT',
+      desc: 'Synchronizing paid social ad creative hooks directly with Product Detail Page (PDP) hero copy, driving higher first-visit cart conversion and increasing Average Order Value (AOV) via routine bundles.',
+    },
+    {
+      num: '10',
+      title: 'EXECUTIVE ADVISORY & IN-HOUSE TEAM ENABLEMENT',
+      desc: 'Working 1:1 with beauty founders and CMOs to build and install sustainable in-house creative pipelines—turning creative velocity into a compounding competitive moat.',
+    },
+  ]
 
   return (
-    <div className="py-16 sm:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-        
-        {/* Page Title */}
-        <div className="max-w-3xl space-y-3">
-          <p className="text-xs font-mono uppercase tracking-widest text-neutral-500">
-            Background & Direction
-          </p>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-neutral-900 dark:text-neutral-50">
-            About
-          </h1>
-        </div>
+    <div className="bg-[#050609] text-[#ece8e1] min-h-screen selection:bg-[#f4521c] selection:text-[#050609] pt-28 sm:pt-36">
 
-        {/* Story Section: Image & First-person Story */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          
-          {/* Headshot Column (Stacked on mobile, side-by-side on desktop - NO OVERLAPPING) */}
-          <div className="lg:col-span-5 w-full">
-            <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:max-w-none rounded-2xl overflow-hidden border border-neutral-200/80 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 shadow-sm">
-              <Image
-                src="/images/sakib-ziad.jpg"
-                alt="Sakib Ziad — AI Creative Strategist & AI Commercial Director"
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                priority
-                className="object-cover object-top filter grayscale contrast-105"
+      {/* ── Top Meta Bar ── */}
+      <div className="container-luxury border-b border-[#292929] pb-4 mb-12">
+        <div className="flex items-center justify-between">
+          <span className="label-mono !text-[#f4521c] flex items-center gap-2">
+            <span className="w-2 h-2 bg-[#f4521c]" />
+            IDX/05 — ABOUT
+          </span>
+          <span className="label-mono text-[#8a8a8a]">
+            FOUNDER &amp; CREATIVE STRATEGIST
+          </span>
+        </div>
+      </div>
+
+      {/* ── Hero ──────────────────────────────────────────────────────────── */}
+      <section className="container-luxury pb-16 border-b border-[#292929]" aria-label="About Hero">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+          <div className="lg:col-span-8 space-y-6">
+            <h1 className="font-inter font-black uppercase text-[clamp(2.5rem,6.2vw,5.5rem)] leading-[0.92] tracking-[-0.05em] text-[#ece8e1]">
+              <MaskText
+                immediate
+                delay={0.1}
+                lines={[
+                  <span key="1">CREATIVE DIRECTION</span>,
+                  <span key="2" className="text-[#f4521c]">IS AN AMPLIFIER,</span>,
+                  <span key="3">NOT DECORATION.</span>,
+                ]}
               />
-            </div>
-            <p className="mt-3 text-xs text-center lg:text-left text-neutral-500 font-mono">
-              Sakib Ziad · Based in Malaysia, working worldwide.
-            </p>
+            </h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+              className="font-inter text-base sm:text-lg md:text-xl font-medium text-[#bdb8b0] max-w-2xl leading-relaxed tracking-tight"
+            >
+              “I built Witlyn to prove that high-performance creative transforms cosmetics brands. I built this advisory practice to show founders how to think in commercial systems.”
+            </motion.p>
           </div>
 
-          {/* Text Column */}
-          <div className="lg:col-span-7 space-y-8">
-            <div className="space-y-6 text-base sm:text-lg text-neutral-700 dark:text-neutral-300 font-sans leading-relaxed">
-              <p>
-                I&apos;m Sakib Ziad, an AI Creative Strategist and AI Commercial Director focusing exclusively on beauty, skincare, and cosmetics. I partner with founders and marketing teams to plan and direct high-converting paid social ad campaigns for Meta, Instagram, and TikTok.
-              </p>
-
-              <p>
-                I studied Artificial Intelligence, earning my BSc before transitioning directly into creative strategy and commercial direction. Seeing how traditional agency production often takes weeks of friction and unnecessary overhead, I built Witlyn Studio to prove that AI-native workflows can deliver publication-grade beauty visuals in days.
-              </p>
-
-              <p>
-                My philosophy is simple: strategy first, creative second. Every ad should have one clear reason to exist—whether answering an unspoken buyer hesitation, proving a formula texture on camera, or reframing a daily skin routine. When the strategy and hook are solid, the visuals convert with conviction.
-              </p>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center gap-3">
-              <a
-                href="/resume.pdf"
-                download="Sakib_Ziad_Resume.pdf"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium bg-neutral-900 text-neutral-50 hover:bg-neutral-800 dark:bg-neutral-100 dark:text-neutral-950 dark:hover:bg-white transition-colors"
-              >
-                <Download className="w-4 h-4" />
-                <span>Download résumé</span>
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/sakib-ziad-290104211/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium border border-neutral-300 dark:border-neutral-700 bg-white/70 dark:bg-neutral-900/60 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors text-neutral-800 dark:text-neutral-200"
-              >
-                <Linkedin className="w-4 h-4" />
-                <span>Connect on LinkedIn</span>
-              </a>
-
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium border border-neutral-300 dark:border-neutral-700 bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors text-neutral-800 dark:text-neutral-200"
-              >
-                <Calendar className="w-4 h-4" />
-                <span>Book a call</span>
-              </Link>
+          <div className="lg:col-span-4 border-t lg:border-t-0 lg:border-l border-[#292929] pt-6 lg:pt-0 lg:pl-8 space-y-4">
+            <span className="label-mono text-[#8a8a8a] block">// POSITIONING MEMORANDUM</span>
+            <p className="label-mono text-xs text-[#bdb8b0] leading-relaxed">
+              Sakib Ziad is the founder of Witlyn and an executive creative strategist advising high-growth beauty, skincare, and fragrance brands globally.
+            </p>
+            <div className="pt-2">
+              <span className="label-mono !text-[#f4521c] text-xs">
+                FOUNDER OF WITLYN · COMMERCIAL DIRECTOR
+              </span>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Credentials Strip */}
-        <div className="rounded-2xl p-8 sm:p-10 border border-neutral-200/80 dark:border-neutral-800 bg-white/60 dark:bg-neutral-900/50 backdrop-blur-md space-y-4">
-          <p className="text-xs font-mono uppercase tracking-widest text-neutral-500">
-            Verified Credentials
-          </p>
-          <div className="flex flex-wrap items-center gap-y-3 gap-x-6 text-sm sm:text-base font-medium text-neutral-800 dark:text-neutral-200">
-            {credentials.map((cred, idx) => (
-              <React.Fragment key={cred}>
-                <span>{cred}</span>
-                {idx < credentials.length - 1 && (
-                  <span className="text-neutral-300 dark:text-neutral-700 hidden sm:inline">
-                    ·
-                  </span>
-                )}
-              </React.Fragment>
+      {/* ── Portrait & 3 Core Beliefs ── */}
+      <section className="py-20 border-b border-[#292929] bg-[#0b0c10]" aria-label="Beliefs">
+        <div className="container-luxury">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-4">
+            <div className="lg:col-span-5">
+              <div className="border border-[#292929] bg-[#050609] p-2">
+                <SplitRevealImage
+                  src="/images/sakib-ziad.jpg"
+                  alt="Sakib Ziad photographed in studio"
+                  aspect="aspect-[4/5]"
+                  className="w-full"
+                />
+                <div className="flex items-center justify-between pt-3 px-2 label-mono text-[10px] text-[#8a8a8a]">
+                  <span className="text-[#ece8e1]">SAKIB ZIAD</span>
+                  <span className="text-[#f4521c]">PORTRAIT / 2026</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7 space-y-6">
+              <div className="flex items-center justify-between border-b border-[#292929] pb-4">
+                <span className="label-mono !text-[#f4521c]">CORE BELIEFS</span>
+                <span className="label-mono text-[#8a8a8a]">FIRST PRINCIPLES</span>
+              </div>
+
+              <div className="space-y-4">
+                {beliefs.map((b) => (
+                  <div
+                    key={b.num}
+                    className="border border-[#292929] bg-[#050609] p-6 space-y-3 hover:border-[#f4521c] transition-colors"
+                  >
+                    <div className="flex items-center justify-between border-b border-[#292929] pb-3">
+                      <span className="label-mono !text-[#f4521c]">BELIEF — {b.num}</span>
+                      <span className="label-mono text-[#8a8a8a]">0{b.num}/03</span>
+                    </div>
+                    <h3 className="font-inter font-black uppercase text-base sm:text-lg text-[#ece8e1] leading-snug">
+                      {b.title}
+                    </h3>
+                    <p className="font-inter text-xs text-[#8a8a8a] leading-relaxed">
+                      {b.body}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-20 border-b border-[#292929] bg-[#050609]" aria-label="Capabilities">
+        <div className="container-luxury">
+          <div className="flex items-center justify-between border-b border-[#292929] pb-4 mb-10">
+            <span className="label-mono !text-[#f4521c]">TECHNICAL CAPABILITIES</span>
+            <span className="label-mono text-[#8a8a8a]">10 OPERATIONAL PILLARS</span>
+          </div>
+
+          <div className="space-y-0">
+            {expertisePoints.map((ep) => (
+              <div
+                key={ep.num}
+                className="border-b border-[#292929] py-5 grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline hover:border-[#f4521c] transition-colors group"
+              >
+                <span className="md:col-span-2 label-mono text-[#8a8a8a] group-hover:text-[#f4521c] transition-colors">
+                  MOD — {ep.num}
+                </span>
+                <h3 className="md:col-span-5 font-inter font-black uppercase text-base sm:text-lg text-[#ece8e1] group-hover:text-[#f4521c] transition-colors">
+                  {ep.title}
+                </h3>
+                <p className="md:col-span-5 font-inter text-xs text-[#8a8a8a] leading-relaxed">
+                  {ep.desc}
+                </p>
+              </div>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Tools and Setup */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="rounded-2xl p-8 border border-neutral-200/80 dark:border-neutral-800 bg-white/60 dark:bg-neutral-900/50 backdrop-blur-md space-y-3">
-            <p className="text-xs font-mono uppercase tracking-widest text-neutral-500">
-              Tool Stack
-            </p>
-            <h3 className="text-lg font-serif text-neutral-900 dark:text-neutral-100">
-              Production & Direction Stack
-            </h3>
-            <p className="text-sm text-neutral-600 dark:text-neutral-400 font-mono">
-              {tools.join(' · ')}
-            </p>
-            <p className="text-xs text-neutral-500 pt-2">
-              Clean prompt engineering, customized workflow automations, and studio-grade visual generation models.
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-8 border border-neutral-200/80 dark:border-neutral-800 bg-white/60 dark:bg-neutral-900/50 backdrop-blur-md space-y-3">
-            <p className="text-xs font-mono uppercase tracking-widest text-neutral-500">
-              Location & Availability
-            </p>
-            <h3 className="text-lg font-serif text-neutral-900 dark:text-neutral-100">
-              Based in Malaysia, working worldwide.
-            </h3>
-            <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              Serving direct-to-consumer beauty, skincare, and cosmetics brands globally across US, UK, APAC, and European markets.
-            </p>
+      {/* ── Bottom CTA ────────────────────────────────────────────────────── */}
+      <section className="py-24 bg-[#0b0c10]" aria-label="About CTA">
+        <div className="container-luxury text-center max-w-3xl space-y-6">
+          <span className="label-mono !text-[#f4521c] block">
+            // APPLICATION REQUIRED · 3 PARTNER SLOTS
+          </span>
+          <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl tracking-[-0.05em] text-[#ece8e1] leading-tight">
+            READY TO ARCHITECT YOUR BRAND'S CREATIVE EDGE?
+          </h2>
+          <p className="font-inter text-sm sm:text-base text-[#bdb8b0] leading-relaxed">
+            I review all advisory applications personally within 48 business hours. Let's discuss your brand's bottlenecks and growth objectives.
+          </p>
+          <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
+            <Button asChild className="btn-acid h-12 px-8 rounded-none">
+              <Link href="/contact" className="flex items-center gap-2">
+                <span>APPLY FOR A STRATEGY CALL</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" className="h-12 px-8 rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
+              <a href="/resume.pdf" download="Sakib_Ziad_Resume.pdf">
+                DOWNLOAD RÉSUMÉ (PDF)
+              </a>
+            </Button>
+            <Button asChild variant="outline" className="h-12 px-8 rounded-none border-[#292929] text-[#ece8e1] hover:border-[#f4521c]">
+              <Link href="/work">
+                EXPLORE CASE ARCHIVE
+              </Link>
+            </Button>
           </div>
         </div>
+      </section>
 
-      </div>
     </div>
   )
 }

@@ -116,7 +116,7 @@ function SignInContent() {
               Sign In to Your Account
             </h1>
             <p className="font-inter text-xs text-muted">
-              Access your digital products, blueprints, and client portal.
+              Access your digital products, blueprints, and Syndicate membership.
             </p>
           </div>
 

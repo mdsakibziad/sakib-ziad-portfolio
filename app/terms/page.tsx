@@ -119,7 +119,7 @@ export default function TermsPage() {
               All prices are displayed in USD unless stated otherwise. Payment is processed through third-party providers; by completing a purchase you also agree to that provider's terms and conditions.
             </p>
             <p className="mb-3">
-              Digital products and downloadable blueprints are non-refundable once accessed or downloaded due to their proprietary nature. Memberships may be cancelled at any time prior to the next billing cycle. Advisory and custom projects are governed by their respective individual Statements of Work.
+              Digital products and downloadable blueprints are non-refundable once accessed or downloaded due to their proprietary nature. Syndicate memberships may be cancelled at any time prior to the next billing cycle. Advisory and custom system builds are governed by their respective individual Statements of Work.
             </p>
             <p>
               For any payment disputes or billing questions, contact{' '}

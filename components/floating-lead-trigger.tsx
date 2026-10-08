@@ -35,7 +35,7 @@ export function FloatingLeadTrigger() {
         body: JSON.stringify({
           brandName,
           websiteUrl: websiteUrl.startsWith('http') ? websiteUrl : `https://${websiteUrl}`,
-          primaryChallenge: primaryChallenge || 'Requesting ad creative review.',
+          primaryChallenge: primaryChallenge || 'Requesting forensic ad creative friction audit.',
           email,
         }),
       })
@@ -118,7 +118,7 @@ export function FloatingLeadTrigger() {
                   <div>
                     <div className="flex items-center gap-2 label-mono !text-[#f4521c] mb-2">
                       <span className="w-2 h-2 bg-[#f4521c]" />
-                      <span>CREATIVE BRAND DIAGNOSTIC</span>
+                      <span>FORENSIC BRAND DIAGNOSTIC</span>
                     </div>
                     <h3 className="font-inter font-black uppercase text-2xl sm:text-3xl text-[#ece8e1] leading-tight">
                       GET A FREE CREATIVE AUDIT

@@ -49,7 +49,7 @@ interface MembershipData {
   stripe_customer_id: string | null
 }
 
-type TabType = 'overview' | 'library' | 'membership' | 'security'
+type TabType = 'overview' | 'vault' | 'membership' | 'security'
 
 export default function AccountPage() {
   const router = useRouter()
@@ -271,7 +271,7 @@ export default function AccountPage() {
                     }`}
                   >
                     <span className={`w-1.5 h-1.5 rounded-full ${isMemberActive ? 'bg-emerald-500' : 'bg-muted'}`} />
-                    {isMemberActive ? 'Advisory Member' : 'Verified Client'}
+                    {isMemberActive ? 'Syndicate Member' : 'Verified Client'}
                   </span>
                 </div>
 
@@ -323,7 +323,7 @@ export default function AccountPage() {
               <ShieldCheck className="w-4 h-4 text-muted group-hover:text-ivory transition-colors" />
             </div>
             <p className="font-fraunces text-xl text-ivory font-light mb-1">
-              {isMemberActive ? 'Active Advisory' : 'Direct Advisory'}
+              {isMemberActive ? 'Active Syndicate' : 'Direct Advisory'}
             </p>
             <p className="text-[11px] font-inter text-muted-light">
               {isMemberActive
@@ -339,7 +339,7 @@ export default function AccountPage() {
           {/* Metric 2 */}
           <div className="card-surface p-5 relative overflow-hidden group hover:border-border-strong transition-all">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-muted">Asset Library</span>
+              <span className="text-[10px] font-mono uppercase tracking-widest text-muted">Asset Vault</span>
               <Package className="w-4 h-4 text-muted group-hover:text-ivory transition-colors" />
             </div>
             <p className="font-fraunces text-xl text-ivory font-light mb-1">
@@ -369,8 +369,8 @@ export default function AccountPage() {
         <div className="flex items-center gap-1 sm:gap-2 border-b border-border mb-8 overflow-x-auto pb-px scrollbar-none">
           {[
             { id: 'overview', label: 'Command Overview', icon: Activity },
-            { id: 'library', label: 'Asset Library', icon: Layers, badge: purchases.length > 0 ? purchases.length : undefined },
-            { id: 'membership', label: 'Executive Advisory', icon: ShieldCheck, badge: isMemberActive ? 'Active' : undefined },
+            { id: 'vault', label: 'Asset Vault', icon: Layers, badge: purchases.length > 0 ? purchases.length : undefined },
+            { id: 'membership', label: 'Syndicate Advisory', icon: ShieldCheck, badge: isMemberActive ? 'Active' : undefined },
             { id: 'security', label: 'Security & Profile', icon: KeyRound },
           ].map((tab) => {
             const Icon = tab.icon
@@ -429,7 +429,7 @@ export default function AccountPage() {
                   <div className="flex items-center gap-2.5">
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                     <span className="text-[10px] font-mono uppercase tracking-widest text-muted">
-                      Confidential Advisory Dispatch · Q4 Strategy
+                      Confidential Advisory Dispatch · Q4 Architecture
                     </span>
                   </div>
                   <span className="text-[11px] font-mono text-muted">Calibrated for Beauty & Skincare</span>
@@ -440,7 +440,7 @@ export default function AccountPage() {
                     AI Creative Direction: Moving Beyond Generic Diffusion
                   </h2>
                   <p className="text-xs sm:text-sm text-muted-light font-inter leading-relaxed">
-                    Most beauty brands fail in AI production because they use one-shot prompts without directional staging or lighting taxonomies. We have updated our proprietary brief direction with multi-stage diffusion workflows specifically calibrated for realistic skin micro-textures, moisture sheen, and cosmetic pigment precision.
+                    Most beauty brands fail in AI production because they use one-shot prompts without directional staging or lighting taxonomies. We have updated our proprietary brief architecture with multi-stage diffusion workflows specifically calibrated for realistic skin micro-textures, moisture sheen, and cosmetic pigment precision.
                   </p>
                 </div>
 
@@ -464,10 +464,10 @@ export default function AccountPage() {
                 </div>
               </div>
 
-              {/* Quick Jump Sections (2 Columns) */}
+              {/* Quick Jump Modules (2 Columns) */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
-                {/* Section 1: Production Engine */}
+                {/* Module 1: Production Engine */}
                 <div className="card-surface p-6 hover:border-border-strong transition-all space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="w-10 h-10 rounded-xl bg-surface-elevated border border-border flex items-center justify-center text-ivory">
@@ -492,7 +492,7 @@ export default function AccountPage() {
                   </a>
                 </div>
 
-                {/* Section 2: Blueprints & Frameworks */}
+                {/* Module 2: Blueprints & Frameworks */}
                 <div className="card-surface p-6 hover:border-border-strong transition-all space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="w-10 h-10 rounded-xl bg-surface-elevated border border-border flex items-center justify-center text-ivory">
@@ -503,14 +503,14 @@ export default function AccountPage() {
                   <div>
                     <h3 className="font-fraunces text-lg text-ivory mb-1">Explore Available Frameworks</h3>
                     <p className="text-xs text-muted-light leading-relaxed">
-                      Browse production-proven creative briefs, autonomous brand agent stacks, and multi-model campaign playbooks.
+                      Browse production-proven creative briefing architectures, autonomous brand agent stacks, and multi-model campaign playbooks.
                     </p>
                   </div>
                   <Link
                     href="/work"
                     className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-ivory hover:text-muted transition-colors pt-2"
                   >
-                    <span>Browse Campaign Library</span>
+                    <span>Browse Campaign Vault</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -519,10 +519,10 @@ export default function AccountPage() {
             </motion.div>
           )}
 
-          {/* TAB 2: ASSET LIBRARY */}
-          {activeTab === 'library' && (
+          {/* TAB 2: ASSET VAULT */}
+          {activeTab === 'vault' && (
             <motion.div
-              key="library"
+              key="vault"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
@@ -655,7 +655,7 @@ export default function AccountPage() {
                   <div className="flex items-center gap-3">
                     <ShieldCheck className="w-5 h-5 text-ivory" />
                     <div>
-                      <h2 className="font-fraunces text-xl text-ivory font-light">Executive Advisory</h2>
+                      <h2 className="font-fraunces text-xl text-ivory font-light">The Advisory Syndicate</h2>
                       <p className="text-xs text-muted font-mono">Private Executive Retainer & AI Advisory</p>
                     </div>
                   </div>
@@ -722,12 +722,12 @@ export default function AccountPage() {
                       </Button>
 
                       <a
-                        href="https://witlyn.com/portal"
+                        href="https://witlyn.com/syndicate/portal"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-muted-light hover:text-ivory transition-colors"
                       >
-                        <span>Access Private Library</span>
+                        <span>Access Private Vault</span>
                         <ExternalLink className="w-3.5 h-3.5" />
                       </a>
                     </div>
@@ -735,7 +735,7 @@ export default function AccountPage() {
                 ) : (
                   <div className="space-y-6">
                     <p className="text-xs sm:text-sm text-muted-light leading-relaxed max-w-2xl font-inter">
-                      Executive Advisory is an ongoing strategic partnership for beauty and cosmetics founders. Members receive monthly 1:1 strategy reviews, bespoke prompt direction calibrations, and private Slack access to Sakib Ziad.
+                      The Advisory Syndicate is an ongoing strategic partnership for beauty and cosmetics founders. Members receive monthly 1:1 strategy reviews, bespoke prompt architecture calibrations, and private Slack access to Sakib Ziad.
                     </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
@@ -755,7 +755,7 @@ export default function AccountPage() {
                     <div className="pt-4 border-t border-border flex items-center gap-4">
                       <Button asChild variant="default" size="sm">
                         <Link href="/membership" className="inline-flex items-center gap-2 text-xs uppercase tracking-wider">
-                          <span>Explore Advisory & Apply</span>
+                          <span>Explore Syndicate & Apply</span>
                           <ArrowRight className="w-3.5 h-3.5" />
                         </Link>
                       </Button>
