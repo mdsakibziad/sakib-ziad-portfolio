@@ -220,6 +220,35 @@ export default function HomePage() {
     }
   }
 
+  /* ── FAQ State & Questions ──────────────────────────────────────────────── */
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0)
+  const faqs = [
+    {
+      q: 'How does AI commercial directing differ from traditional production houses?',
+      a: 'Traditional production houses demand 6–8 weeks, physical studio rentals, actor casting, equipment shipping, and $50k+ in overhead for a single ad set that fatigues in 14 days. As an AI Commercial Director, I orchestrate generative neural pipelines (Midjourney, ComfyUI, Gen-3, Luma) to engineer photorealistic lighting caustics, macro formula physics, and cinematic motion plates, delivering 25–35 master production deliverables in 72 hours without compromising luxury brand equity.',
+    },
+    {
+      q: 'Are the 5 portfolio campaigns concept work or live client ad spend?',
+      a: 'The 5 flagship campaigns (Solaé, Lipéa, Nuécera, Aura Purify, Vyraa) are concept campaigns: real consumer objection deconstruction, scripted hook psychology, and studio-grade deliverables produced under the Witlyn commercial standard. When partnering with client brands on advisory or production, assets are integrated directly into live Meta and TikTok ad accounts.',
+    },
+    {
+      q: 'Are you available for full-time or leadership roles at agencies or brands?',
+      a: 'Yes. In addition to private brand advisory and Witlyn studio production, I am open to select Full-Time, Fractional, and Lead Creative Strategist & AI Commercial Director positions for forward-thinking global agencies and beauty conglomerates (Remote / Global). You can download my official résumé directly from the header or recruiter hub.',
+    },
+    {
+      q: 'What is your academic and technical background?',
+      a: 'I hold a BSc in Artificial Intelligence from Lincoln University College (2026). My background bridges computational deep learning models, generative AI pipelines, and high-fashion post-production (DaVinci Resolve Studio color grading & ASMR audio mastering).',
+    },
+    {
+      q: 'What is the difference between Sakib Ziad and Witlyn?',
+      a: 'Witlyn (witlyn.com) is the full-service AI commercial production studio handling done-for-you campaign execution and multi-asset retainers. This personal site represents my executive practice: creative strategy audits, direct 1:1 advisory, and directorial leadership.',
+    },
+    {
+      q: 'How do we initiate a collaboration or interview?',
+      a: 'For brand founders: submit the complimentary diagnostic form above or apply for a strategy call via the contact page. For agency leads and talent recruiters: view my official résumé (PDF) or reach out directly at Sakib@witlyn.com.',
+    },
+  ]
+
   /* ── The 5-Stage Commercial Production Pipeline ────────────────────────── */
   const strategicSteps = [
     {
@@ -1162,8 +1191,69 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════════
           STEP 11 · OBJECTION-HANDLING FAQ & FINAL STRATEGY CTA
       ════════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 border-t border-[#292929] bg-[#050609]" aria-label="FAQ">
+      <section id="faq" className="py-24 border-t border-[#292929] bg-[#050609]" aria-label="Frequently Asked Questions">
         <div className="container-luxury max-w-4xl mx-auto space-y-20">
+
+          {/* FAQ Accordion Section */}
+          <div className="space-y-8">
+            <div className="border-b border-[#292929] pb-4 flex items-center justify-between">
+              <span className="label-mono !text-[#f4521c] flex items-center gap-2">
+                <span className="w-2 h-2 bg-[#f4521c]" />
+                COMMON QUESTIONS
+              </span>
+              <span className="label-mono text-[#8a8a8a]">
+                DIRECT ANSWERS
+              </span>
+            </div>
+
+            <div className="space-y-4">
+              <h2 className="font-inter font-black uppercase text-3xl sm:text-5xl text-[#ece8e1] leading-tight">
+                <MaskText lines={['FREQUENTLY ASKED QUESTIONS']} />
+              </h2>
+              <p className="font-inter text-xs sm:text-sm text-[#8a8a8a] max-w-xl">
+                Addressing core commercial production standards, candidate availability, and strategic engagement models upfront.
+              </p>
+            </div>
+
+            <div className="space-y-3 pt-4">
+              {faqs.map((faq, idx) => {
+                const isOpen = openFaqIndex === idx
+                return (
+                  <div
+                    key={idx}
+                    className="border border-[#292929] bg-[#0b0c10] overflow-hidden transition-all duration-300"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
+                      className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 hover:bg-[#111216] transition-colors"
+                      aria-expanded={isOpen}
+                    >
+                      <div className="flex items-center gap-4">
+                        <span className="label-mono !text-[#f4521c] text-xs">0{idx + 1}</span>
+                        <h3 className="font-inter font-bold uppercase text-sm sm:text-base text-[#ece8e1] pr-2">
+                          {faq.q}
+                        </h3>
+                      </div>
+                      <ChevronDown
+                        className={`w-4 h-4 text-[#8a8a8a] shrink-0 transition-transform duration-300 ${
+                          isOpen ? 'rotate-180 text-[#f4521c]' : ''
+                        }`}
+                      />
+                    </button>
+
+                    {isOpen && (
+                      <div className="px-5 pb-6 sm:px-6 sm:pb-7 pt-2 border-t border-[#292929] bg-[#07080c]">
+                        <p className="font-inter text-xs sm:text-sm text-[#bdb8b0] leading-relaxed">
+                          {faq.a}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
 
           {/* Final Call To Action Card */}
           <EditorialReveal delay={0.1}>
