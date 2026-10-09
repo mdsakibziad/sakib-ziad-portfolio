@@ -35,6 +35,9 @@ import { ChannelMultiplication } from '@/components/channel-multiplication'
 import { MaskText } from '@/components/mask-text'
 import { SplitRevealImage } from '@/components/split-reveal-image'
 import { EditorialReveal, StickyStackedSection } from '@/components/vertical-motion'
+import { HeroCommercialFilm } from '@/components/hero-commercial-film'
+import { DirectorIntroSection } from '@/components/director-intro-section'
+import { ScreeningRoom } from '@/components/screening-room'
 
 /* ── Animation Curve ──────────────────────────────────────────────────────── */
 const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
@@ -534,6 +537,15 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ════════════════════════════════════════════════════════════════════
+          STEP 1.5 · LIPÉA HERO COMMERCIAL FILM (SHOWSTOPPER)
+      ════════════════════════════════════════════════════════════════════ */}
+      <HeroCommercialFilm />
+
+      {/* ════════════════════════════════════════════════════════════════════
+          STEP 1.8 · SAKIB ZIAD INTRO VIDEO & DIRECTORIAL THESIS
+      ════════════════════════════════════════════════════════════════════ */}
+      <DirectorIntroSection />
 
       {/* ════════════════════════════════════════════════════════════════════
           STEP 2 · CREDIBILITY & PROFESSIONAL STANDARDS BAR
@@ -711,6 +723,10 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ════════════════════════════════════════════════════════════════════
+          STEP 4.5 · THE DIRECTORIAL SCREENING ROOM (ELARA & SOLAÉ)
+      ════════════════════════════════════════════════════════════════════ */}
+      <ScreeningRoom />
 
       {/* ════════════════════════════════════════════════════════════════════
           STEP 5 · SELECTED WORK (5 FLAGSHIP CASE STUDIES · BEFORE PARTNER!)
