@@ -38,6 +38,7 @@ import { EditorialReveal, StickyStackedSection } from '@/components/vertical-mot
 import { HeroCommercialFilm } from '@/components/hero-commercial-film'
 import { DirectorIntroSection } from '@/components/director-intro-section'
 import { ScreeningRoom } from '@/components/screening-room'
+import { VerticalCommercialsShowcase } from '@/components/vertical-commercials-showcase'
 
 /* ── Animation Curve ──────────────────────────────────────────────────────── */
 const EASE_LUXURY = [0.22, 1, 0.36, 1] as const
@@ -727,6 +728,11 @@ export default function HomePage() {
           STEP 4.5 · THE DIRECTORIAL SCREENING ROOM (ELARA & SOLAÉ)
       ════════════════════════════════════════════════════════════════════ */}
       <ScreeningRoom />
+
+      {/* ════════════════════════════════════════════════════════════════════
+          STEP 4.6 · 9:16 PERFORMANCE COMMERCIALS VAULT (FILMS 05 & 06)
+      ════════════════════════════════════════════════════════════════════ */}
+      <VerticalCommercialsShowcase />
 
       {/* ════════════════════════════════════════════════════════════════════
           STEP 5 · SELECTED WORK (5 FLAGSHIP CASE STUDIES · BEFORE PARTNER!)
