@@ -11,8 +11,8 @@ const AURA_PURIFY_DATA: CaseStudyData = {
   skuFocus: 'Barrier Gel-to-Milk Cleanser · 200 ml / 6.7 fl. oz.',
   deliverablesCount: '27 Master Production Assets',
   channelsText: 'Studio · Meta · Instagram',
-  heroImage: '/images/aura-purify/studio/aura-product-01.jpg',
-  heroCaption: 'Frosted amber apothecary glass bottle with matte black industrial pump on stone.',
+  heroImage: '/images/aura-purify/studio/aura-macro-foam-pump.jpg',
+  heroCaption: 'Extreme macro capture: dense cloud micro-foam cascading down the matte pump head over amber apothecary glass.',
   heroBadge: 'Flagship Spec Commercial 04 · Witlyn Standard',
   brief: {
     whatItIs:
@@ -180,13 +180,13 @@ const AURA_PURIFY_DATA: CaseStudyData = {
     // Meta Platform Assets (11)
     {
       id: 'aura-meta-s01',
-      title: 'Meta Hero Feed Still',
+      title: 'Extreme Macro Foam & Pump Physics',
       platform: 'meta',
       type: 'image',
-      src: '/images/aura-purify/meta/meta-still-01.jpg',
-      formatLabel: '1:1 Square Feed',
-      aspectRatio: 'aspect-square',
-      caption: 'High-contrast square hero packshot designed for high click-through ad campaigns.',
+      src: '/images/aura-purify/studio/aura-macro-foam-pump.jpg',
+      formatLabel: '4:5 Feed Portrait',
+      aspectRatio: 'aspect-[4/5]',
+      caption: 'Direct proof of dense, micro-aerated foam texture cascading over the matte pump head on dark slate.',
     },
     {
       id: 'aura-meta-s01var',

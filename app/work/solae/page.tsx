@@ -11,8 +11,8 @@ const SOLAE_DATA: CaseStudyData = {
   skuFocus: 'AIRVEIL Invisible Sun Serum · 50ml (SPF50+ PA++++)',
   deliverablesCount: '29 Master Production Assets',
   channelsText: 'Meta · Instagram · Editorial',
-  heroImage: '/images/solae/editorial/solae-photo-01.jpg',
-  heroCaption: 'Frosted ivory bottle with sculptural swirl crest and champagne-gold pump.',
+  heroImage: '/images/solae/editorial/solae-model-swimsuit-hero.jpg',
+  heroCaption: 'High-fashion campaign billboard: model in emerald swimwear holding AIRVEIL under intense azure sky.',
   heroBadge: 'Flagship Spec Commercial 01 · Witlyn Standard',
   brief: {
     whatItIs:
@@ -200,13 +200,13 @@ const SOLAE_DATA: CaseStudyData = {
     // Editorial Stills (10)
     {
       id: 'solae-ed-01',
-      title: 'Ivory Bottle Studio Capture',
+      title: 'Everyday Leather Tote Carry POV',
       platform: 'editorial',
       type: 'image',
-      src: '/images/solae/editorial/solae-photo-01.jpg',
+      src: '/images/solae/editorial/solae-tote-bag-pov.jpg',
       formatLabel: 'Editorial Still · 4:5',
       aspectRatio: 'aspect-[4/5]',
-      caption: 'Frosted ivory bottle positioned under soft directional morning light.',
+      caption: 'In-the-bag perspective of AIRVEIL inside a luxury leather tote under bright sun.',
     },
     {
       id: 'solae-ed-02',
@@ -302,13 +302,13 @@ const SOLAE_DATA: CaseStudyData = {
     // Meta Ads Stills (5)
     {
       id: 'solae-meta-s01',
-      title: 'Meta Core Feed Still',
+      title: 'Summer Street Heatwave Hook',
       platform: 'meta',
       type: 'image',
-      src: '/images/solae/meta/meta-still-01.jpg',
-      formatLabel: '1:1 Square Feed',
-      aspectRatio: 'aspect-square',
-      caption: 'Direct-response hero composition formatted specifically for Meta square feeds.',
+      src: '/images/solae/meta/solae-taxi-popsicle-hook.jpg',
+      formatLabel: '4:5 Feed Portrait',
+      aspectRatio: 'aspect-[4/5]',
+      caption: 'Contrarian urban hook pairing AIRVEIL with an ice-blue popsicle in front of a classic NYC taxi.',
     },
     {
       id: 'solae-meta-s01sep',

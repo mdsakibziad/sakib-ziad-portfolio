@@ -11,8 +11,8 @@ const LIPEA_DATA: CaseStudyData = {
   skuFocus: 'Peptide Glass Lip Serum · 12ml',
   deliverablesCount: '27 Master Production Assets',
   channelsText: 'Meta · Instagram · Editorial',
-  heroImage: '/images/lipea/editorial/lipea-photo-01.jpg',
-  heroCaption: 'Thick-walled glass vial revealing the blush-pink peptide glaze beneath chrome hardware.',
+  heroImage: '/images/lipea/editorial/lipea-bag-flatlay-suite.jpg',
+  heroCaption: 'Everyday carry flatlay: full LIPÉA multi-SKU collection arranged inside a canvas tote on concrete terrazzo.',
   heroBadge: 'Flagship Spec Commercial 02 · Witlyn Standard',
   brief: {
     whatItIs:
@@ -207,13 +207,13 @@ const LIPEA_DATA: CaseStudyData = {
     // Meta Platform Assets (8)
     {
       id: 'lipea-meta-s01',
-      title: 'Meta Hero Feed Still',
+      title: 'Everyday Tote Bag Flatlay Suite',
       platform: 'meta',
       type: 'image',
-      src: '/images/lipea/meta/meta-still-01.jpg',
-      formatLabel: '1:1 Square Feed',
-      aspectRatio: 'aspect-square',
-      caption: 'Centered hero packshot designed for high thumb-stop rates on Meta feeds.',
+      src: '/images/lipea/editorial/lipea-bag-flatlay-suite.jpg',
+      formatLabel: '3:4 Organic Flatlay',
+      aspectRatio: 'aspect-[3/4]',
+      caption: 'Full multi-product collection flatlay showcasing peptide glaze tubes, compacts, and dropper bottles.',
     },
     {
       id: 'lipea-meta-s02',
